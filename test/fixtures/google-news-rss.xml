@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>News</title>
+    <item>
+      <title>BYD launches new blade battery</title>
+      <link>https://byd.com/news/blade</link>
+      <pubDate>Sun, 15 Jun 2026 08:00:00 GMT</pubDate>
+      <description>BYD unveiled its next-gen battery...</description>
+      <source url="https://byd.com">BYD</source>
+    </item>
+    <item>
+      <title>BYD expands to Europe</title>
+      <link>https://byd.com/news/europe</link>
+      <pubDate>Sat, 14 Jun 2026 12:00:00 GMT</pubDate>
+      <description>BYD announces new European...</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://byd.com/news/bad</link>
+      <pubDate>Fri, 13 Jun 2026 10:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
