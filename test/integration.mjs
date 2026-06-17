@@ -79,7 +79,7 @@ test('full pipeline produces valid data, manifest, and HTML', async () => {
     const homepageHtml = renderHomepage(manifest);
     assert.match(industryHtml, /electric-vehicles-industry|electric vehicles/);
     assert.match(homepageHtml, /electric vehicles/);
-    assert.match(homepageHtml, /12 items/);
+    assert.match(homepageHtml, /12 条新闻/);
   } finally {
     rmSync(tmpDir, { recursive: true, force: true });
   }
