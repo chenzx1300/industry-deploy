@@ -3,6 +3,7 @@
 
 import { readFileSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
 import { parseGoogleNewsRss } from './src/lib/rss-parser.mjs';
+import { filterNewsItems } from './src/lib/news-filter.mjs';
 import { renderIndustryPage, renderHomepage } from './src/pipeline/render.mjs';
 import { addToManifest, loadManifest } from './src/pipeline/manifest.mjs';
 
@@ -25,22 +26,24 @@ const COMPANIES = [
 
 const PER_COMPANY = 10;
 
-function fetchAndParse(file, maxItems) {
+function fetchAndParse(file, companyName, maxItems) {
   const path = `${RSS_DIR}/${file}`;
   if (!existsSync(path)) {
     console.warn(`  ⚠ ${file} not found, skipping`);
-    return [];
+    return { raw: 0, filtered: 0 };
   }
   const xml = readFileSync(path, 'utf-8');
-  const items = parseGoogleNewsRss(xml).slice(0, maxItems);
-  return items;
+  const overFetch = maxItems * 4;
+  const raw = parseGoogleNewsRss(xml).slice(0, overFetch);
+  const filtered = filterNewsItems(raw, companyName).slice(0, maxItems);
+  return { raw: raw.length, filtered: filtered.length, items: filtered };
 }
 
 const generated_at = new Date().toISOString();
-const companies = COMPANIES.map(c => ({
-  ...c,
-  news: fetchAndParse(c.file, PER_COMPANY),
-}));
+const companies = COMPANIES.map(c => {
+  const result = fetchAndParse(c.file, c.name, PER_COMPANY);
+  return { ...c, news: result.items || [] };
+});
 
 const data = { slug: SLUG, prompt: PROMPT, generated_at, companies };
 const totalNews = companies.reduce((s, c) => s + c.news.length, 0);
