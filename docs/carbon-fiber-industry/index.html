@@ -220,26 +220,11 @@ main section { margin-bottom: 56px; animation: fadeIn 0.3s ease; }
 }
 main section h2 {
   font-family: var(--font-sans);
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 700;
-  margin-bottom: 8px;
-  letter-spacing: -0.025em;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
   line-height: 1.1;
-}
-main section .company-meta {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  color: var(--text-soft);
-  font-size: 14px;
-  margin-bottom: 28px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--divider);
-}
-main section .company-meta .domain {
-  font-family: ui-monospace, 'SF Mono', 'Menlo', monospace;
-  font-size: 13px;
-  color: var(--text-faint);
 }
 
 .summary {
@@ -250,14 +235,21 @@ main section .company-meta .domain {
   margin-bottom: 36px;
   box-shadow: var(--shadow-sm);
 }
-.summary h3 {
+.summary-label {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.08em;
   color: var(--accent);
-  text-transform: uppercase;
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.summary-label::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
 }
 .summary ul { list-style: none; margin-bottom: 16px; }
 .summary li {
@@ -285,6 +277,44 @@ main section .company-meta .domain {
   color: var(--text-soft);
   padding-top: 14px;
   border-top: 1px solid var(--divider);
+}
+
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--divider);
+}
+.company-header .logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.company-header .name-block { flex: 1; min-width: 0; }
+.company-header h2 {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.company-header .domain {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13px;
+  color: var(--text-faint);
 }
 
 ul.news-list { list-style: none; }
@@ -427,21 +457,19 @@ footer {
     <h1>碳纤维</h1>
     <p class="meta">
       <span><strong>6 家头部公司</strong></span>
-      <span class="dot">·</span>
       <span>39 条新闻</span>
-      <span class="dot">·</span>
       <span>生成于 2026-06-21</span>
     </p>
   </header>
   <nav class="tabs">
     <div class="region-block cn">
-      <div class="region-label"><span class="flag">🇨🇳</span><span>中国头部</span></div>
+      <div class="region-label">中国头部</div>
       <div class="region-tabs">
         <button class="tab" data-co="sinofibers"><span class="name">中复神鹰 Sinofibers</span><span class="count">1</span></button><button class="tab" data-co="weihai"><span class="name">威海拓展 Weihai Tuozhan</span><span class="count">4</span></button><button class="tab" data-co="guangwei"><span class="name">光威复材 Guangwei</span><span class="count">10</span></button>
       </div>
     </div>
     <div class="region-block intl">
-      <div class="region-label"><span class="flag">🌍</span><span>国际头部</span></div>
+      <div class="region-label">国际头部</div>
       <div class="region-tabs">
         <button class="tab" data-co="toray"><span class="name">Toray 东丽</span><span class="count">10</span></button><button class="tab" data-co="hexcel"><span class="name">Hexcel 赫氏</span><span class="count">4</span></button><button class="tab" data-co="sgl"><span class="name">SGL Carbon 西格里</span><span class="count">10</span></button>
       </div>
@@ -449,15 +477,17 @@ footer {
   </nav>
   <main>
     <section data-co="sinofibers">
-      <h2>中复神鹰 Sinofibers</h2>
-      <div class="company-meta">
-        <span>中国</span>
-        <span class="dot">·</span>
-        <span class="domain">sinofibers.com</span>
-        <span class="dot">·</span>
-        <span>1 条新闻</span>
+      <div class="company-header">
+        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="#1e40af"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">复</text>
+  </svg>
+        <div class="name-block">
+          <h2>中复神鹰 Sinofibers</h2>
+          <span class="domain">sinofibers.com</span>
+        </div>
       </div>
-      <div class="summary"><h3>本周要点</h3><ul><li>中复神鹰发布全球首款高强高模型碳纤维产品 - Sohu</li></ul><div class="stats">1 条新闻 · 最近更新 2024-09-02</div></div>
+      <div class="summary"><div class="summary-label">本周要点</div><ul><li>中复神鹰发布全球首款高强高模型碳纤维产品 - Sohu</li></ul><div class="stats">1 条新闻 · 最近 2024-09-02</div></div>
       <ul class="news-list">
         
           <li class="news-item">
@@ -465,9 +495,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiVEFVX3lxTE8zTWpsd3c1ZXVsVVVmYjNxTTd4ZFhVLVdGblczYVJLbHZlSThjczRLWGNKZVYxN3lqRGg4b1BLbEFBTVVtVGJOQjM0RGFONTFOd1Z0NQ?oc=5&quot; target=&quot;_blank&quot;&gt;中复神鹰发布全球首款高强高模型碳纤维产品&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Sohu&lt;/font&gt;</p>
             <span class="news-meta">
               <span>sohu.com</span>
-              <span class="dot">·</span>
               <span>2024-09-02</span>
-              <span class="dot">·</span>
               <span>2024-09-02</span>
             </span>
           </li>
@@ -475,15 +503,17 @@ footer {
       </ul>
     </section>
     <section data-co="weihai" hidden>
-      <h2>威海拓展 Weihai Tuozhan</h2>
-      <div class="company-meta">
-        <span>中国</span>
-        <span class="dot">·</span>
-        <span class="domain">weihaifiber.com</span>
-        <span class="dot">·</span>
-        <span>4 条新闻</span>
+      <div class="company-header">
+        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="#0d9488"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">海</text>
+  </svg>
+        <div class="name-block">
+          <h2>威海拓展 Weihai Tuozhan</h2>
+          <span class="domain">weihaifiber.com</span>
+        </div>
       </div>
-      <div class="summary"><h3>本周要点</h3><ul><li>全省首个、国家电网区域内首个园区类源网荷储一体化项目在威海建成 - 碳索储能网</li><li>全省首个、国家电网区域内首个园区类源网荷储一体化项目在威海建成 - 威海新闻网</li><li>一束碳纤维，“编织”轨道交通“轻”未来丨开局“十五五”奋斗正当时 ·一线报道 - 威海新闻网</li></ul><div class="stats">4 条新闻 · 最近更新 5d ago</div></div>
+      <div class="summary"><div class="summary-label">本周要点</div><ul><li>全省首个、国家电网区域内首个园区类源网荷储一体化项目在威海建成 - 碳索储能网</li><li>全省首个、国家电网区域内首个园区类源网荷储一体化项目在威海建成 - 威海新闻网</li><li>一束碳纤维，“编织”轨道交通“轻”未来丨开局“十五五”奋斗正当时 ·一线报道 - 威海新闻网</li></ul><div class="stats">4 条新闻 · 最近 2026-06-16</div></div>
       <ul class="news-list">
         
           <li class="news-item">
@@ -491,9 +521,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiVkFVX3lxTE1pRzc3RnIxQndseXhyY09hM0lCUFNRVmI3cEhMdnBtcjJtakxWSlhVZ1JiZnVKQWUxM19rX2hBLWZTQnpHaGVFM1pnNFo1ajdHSUxhU0F3?oc=5&quot; target=&quot;_blank&quot;&gt;全省首个、国家电网区域内首个园区类源网荷储一体化项目在威海建成&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;碳索储能网&lt;/font&gt;</p>
             <span class="news-meta">
               <span>mcn.solarbe.com</span>
-              <span class="dot">·</span>
               <span>2026-06-16</span>
-              <span class="dot">·</span>
               <span>5d ago</span>
             </span>
           </li>
@@ -503,9 +531,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMib0FVX3lxTE4zNXBNNmF0VWFsR3p1Q09fRGsxRFQ2eXVZTjRfYVh2eVBDTXcxV3dTenZqYjh0a1dHVjd5ZTBYSUlRRUt4aUs0RFJ3Z3hSajNlNmpwc2JNR3diR19UREFaQ0VPdjJFTHM5blBDaG44RQ?oc=5&quot; target=&quot;_blank&quot;&gt;全省首个、国家电网区域内首个园区类源网荷储一体化项目在威海建成&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;威海新闻网&lt;/font&gt;</p>
             <span class="news-meta">
               <span>whnews.cn</span>
-              <span class="dot">·</span>
               <span>2026-06-15</span>
-              <span class="dot">·</span>
               <span>6d ago</span>
             </span>
           </li>
@@ -515,9 +541,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMibkFVX3lxTE5jVEdKX0hSUmpTQ2M3NHVjX2hBa2JwSmhjWFR2S2o2bElvMFhuOGhlRi14UGplX1FtQUluU0UtWXMyaHN0Vk42X29SaGlDWUdGR2dValFaaktDMlJ0TG5ZWWM4OTF6M0paaEJ4Nlh3?oc=5&quot; target=&quot;_blank&quot;&gt;一束碳纤维，“编织”轨道交通“轻”未来丨开局“十五五”奋斗正当时 ·一线报道&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;威海新闻网&lt;/font&gt;</p>
             <span class="news-meta">
               <span>whnews.cn</span>
-              <span class="dot">·</span>
               <span>2026-01-07</span>
-              <span class="dot">·</span>
               <span>2026-01-07</span>
             </span>
           </li>
@@ -527,9 +551,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiZEFVX3lxTFBsejJFRkw3SnBWcmtqd1BqUVBTeTJYMXRoYmZDQXNjMjAxQXlvOFBudU9kY1ota0c3TjJlS3VzanU3ay1mZzFQaGhiQ1M4YkpsQk16X2VjcVhaRzV4Wmk4YUx4c0k?oc=5&quot; target=&quot;_blank&quot;&gt;“渔具之城”抢占新材料高地——山东威海高端碳纤维产业发展观察&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;新华网&lt;/font&gt;</p>
             <span class="news-meta">
               <span>news.cn</span>
-              <span class="dot">·</span>
               <span>2023-12-15</span>
-              <span class="dot">·</span>
               <span>2023-12-15</span>
             </span>
           </li>
@@ -537,15 +559,17 @@ footer {
       </ul>
     </section>
     <section data-co="guangwei" hidden>
-      <h2>光威复材 Guangwei</h2>
-      <div class="company-meta">
-        <span>中国</span>
-        <span class="dot">·</span>
-        <span class="domain">guangweicf.com</span>
-        <span class="dot">·</span>
-        <span>10 条新闻</span>
+      <div class="company-header">
+        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="#475569"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">光</text>
+  </svg>
+        <div class="name-block">
+          <h2>光威复材 Guangwei</h2>
+          <span class="domain">guangweicf.com</span>
+        </div>
       </div>
-      <div class="summary"><h3>本周要点</h3><ul><li>光威复材：4月30日融券卖出5900股，融资融券余额10.81 亿元 - MSN</li><li>光威复材：融资净买入352.5万元，融资余额10.38亿元 - 东方财富</li><li>学习先辈攻坚事迹，厚植实业爱国情怀｜光威复材开展陈光威事迹专题授课活动 - 新浪财经</li></ul><div class="stats">10 条新闻 · 最近更新 4d ago</div></div>
+      <div class="summary"><div class="summary-label">本周要点</div><ul><li>光威复材：4月30日融券卖出5900股，融资融券余额10.81 亿元 - MSN</li><li>光威复材：融资净买入352.5万元，融资余额10.38亿元 - 东方财富</li><li>学习先辈攻坚事迹，厚植实业爱国情怀｜光威复材开展陈光威事迹专题授课活动 - 新浪财经</li></ul><div class="stats">10 条新闻 · 最近 2026-06-17</div></div>
       <ul class="news-list">
         
           <li class="news-item">
@@ -553,9 +577,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMi0wJBVV95cUxQOTdRZVdQLVhwbG5Hc0ZtRmdBMVpaTkl3ejBnbGJiVEt0WnFYUy1NT1oyLW1idGhVVDZDOXFPNlJUMFo2anc3UHkxblBzS1JhM2M0dW5WdFl1ejFZb0x2eE10U2NuMnJFX3QxYjEwbUxpOXFTaXRIdDE4anFuTzM0WFJTMXVNc2Z5eDV0NVFYMlhXc2lWNjl3QTV6c0JsSmxMbk9hNUdkWlNjVjJpTzUzaFBRRW5kemU3VnpRSldHOVpGaVEzOGZmdEtGd3dfNjM1MDJpalpnZHROMVdTTlNKR01NTkZoTHBoVU9Pd1pNUzkyRnZ1VjM3LUZxQVZ4SXN6RmlTUXQ0dzBjdnp3azJDNl95X0hOTGJOWWp2dzVYWVA2SHJkWERoQXdFQUtkUmpGdXREUHVSVjdETjY4d3dOVGV4amdxWjJacU1iSGlrRkIxZmc?oc=5&quot; target=&quot;_blank&quot;&gt;光威复材：4月30日融券卖出5900股，融资融券余额10.81 亿元&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;MSN&lt;/font&gt;</p>
             <span class="news-meta">
               <span>msn.com</span>
-              <span class="dot">·</span>
               <span>2026-06-17</span>
-              <span class="dot">·</span>
               <span>4d ago</span>
             </span>
           </li>
@@ -565,9 +587,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiZkFVX3lxTFBSdGZwMDJnbUI3ak5MT1pkQkRDLVFPRWNKNXliZDdPLW5hcDlNekp3R015a3dWUGxUdXlQOTRtcmFZNjhHSTBVaGhad3I5bUdYZTlEZFdJcklmYlF3Um1QU2J3eGtGdw?oc=5&quot; target=&quot;_blank&quot;&gt;光威复材：融资净买入352.5万元，融资余额10.38亿元&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;东方财富&lt;/font&gt;</p>
             <span class="news-meta">
               <span>finance.eastmoney.com</span>
-              <span class="dot">·</span>
               <span>2026-06-16</span>
-              <span class="dot">·</span>
               <span>5d ago</span>
             </span>
           </li>
@@ -577,9 +597,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMidkFVX3lxTE5kMzUzVlNDQ242ZWRkbGtENTM1THo2WTZZWUJYT2FZQ3daNkt1VS01RW9RR0ppR2V1Y3pQdDAzYkNoaUo0SFNMWk1GTm54YlZwVkc3SUI4SEtoU3IzOG9UMEpoRXUyQzB0bnFTaE9CZlhjUzh3REE?oc=5&quot; target=&quot;_blank&quot;&gt;学习先辈攻坚事迹，厚植实业爱国情怀｜光威复材开展陈光威事迹专题授课活动&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;新浪财经&lt;/font&gt;</p>
             <span class="news-meta">
               <span>finance.sina.com.cn</span>
-              <span class="dot">·</span>
               <span>2026-06-16</span>
-              <span class="dot">·</span>
               <span>5d ago</span>
             </span>
           </li>
@@ -589,9 +607,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiUkFVX3lxTE5HZHo0Ym1XMFEtX3JJcFB1dGpPeXFfRWQxclMxLU4xVzkxM0dNSWg2OC1qb2Z1ZVJEU01NS212UXN0MU9fYm5rVWtwaEpvLVhQeEE?oc=5&quot; target=&quot;_blank&quot;&gt;光威复材：6月11日融资买入2285.12万元，融资融券余额10.42亿元&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Sohu&lt;/font&gt;</p>
             <span class="news-meta">
               <span>sohu.com</span>
-              <span class="dot">·</span>
               <span>2026-06-12</span>
-              <span class="dot">·</span>
               <span>9d ago</span>
             </span>
           </li>
@@ -601,9 +617,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiYEFVX3lxTE0yVllDVEhlc2lCMnZiblVZZW1TVWN6emQ0Q0JMQzNOTjQ4b1lyS0Jwb3hhektBRUdqYVc2ZDJsMF84TGViT0pwbjZkZWcyaVJNZDlKT196SHFjZTNjeDZqXw?oc=5&quot; target=&quot;_blank&quot;&gt;股票行情快报：光威复材（300699）6月11日主力资金净卖出818.35万元_主力研究&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;证券之星&lt;/font&gt;</p>
             <span class="news-meta">
               <span>stock.stockstar.com</span>
-              <span class="dot">·</span>
               <span>2026-06-11</span>
-              <span class="dot">·</span>
               <span>10d ago</span>
             </span>
           </li>
@@ -613,9 +627,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMihAFBVV95cUxPMU1hZXBzTWxzU0FFUUNEem5BVEliVlk0d0pQQzg2TFZBSkJmcEI3aWJKRFl6ZlNGWnMzTEpQenBQSHF1dmV1WmZ5OTNoZHN1aExYMUhxR1RjMlFIcUkyZTVBSzFOT21yZFVzQUcydXdvRjQ5X05kLXdWa2lxZDl0NDI5X2M?oc=5&quot; target=&quot;_blank&quot;&gt;光威复材6月10日获融资买入2972.30万元，融资余额10.42亿元&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;新浪财经&lt;/font&gt;</p>
             <span class="news-meta">
               <span>cj.sina.cn</span>
-              <span class="dot">·</span>
               <span>2026-06-11</span>
-              <span class="dot">·</span>
               <span>10d ago</span>
             </span>
           </li>
@@ -625,10 +637,8 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiWkFVX3lxTE95UWlUNnhaSzJvODlkX2ZrQlBDS1AxRUM2a1g0Y2JHZzFSSTl3R3JETG1BVFNCTkhKR1doalhhc0hINWhYclFrb0QySXNDc1lxUEowX3N4ZW1GZw?oc=5&quot; target=&quot;_blank&quot;&gt;光威复材(300699.SZ)2025年年度权益分派：每10股派利5元&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Moomoo&lt;/font&gt;</p>
             <span class="news-meta">
               <span>moomoo.com</span>
-              <span class="dot">·</span>
               <span>2026-06-10</span>
-              <span class="dot">·</span>
-              <span>10d ago</span>
+              <span>11d ago</span>
             </span>
           </li>
         
@@ -637,10 +647,8 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMieEFVX3lxTE5GRUpRM2FPY3lhR1I5bDIzMHJQTWo3ZV94aVp6TUZEYXU4T1h0S2VsT1ZCWG1ZN0FDYmlVdkNURmhlTUtiLXJobTZtYzhUTDVUdVdKU3B6dmZqUS0wZVRfb2pWdFRxb0xzOElGVkp6QnBySGdHaVBkYw?oc=5&quot; target=&quot;_blank&quot;&gt;光威复材A股股东户数减少977户降幅1.02%，流通A股户均持股8679.41股增幅1.03%，户均持股市值23.97万元降幅6.73%&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;新浪财经&lt;/font&gt;</p>
             <span class="news-meta">
               <span>finance.sina.cn</span>
-              <span class="dot">·</span>
               <span>2026-06-10</span>
-              <span class="dot">·</span>
-              <span>10d ago</span>
+              <span>11d ago</span>
             </span>
           </li>
         
@@ -649,9 +657,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMijAFBVV95cUxPSkxjZl9NRk5XN2N2ck5FNFU3SmJkckhkRW1oekRRYXVieVFnV19FRzlwLW9ob2Nqc2pweW5yYWs4MXRxSWtWTGNoYzlMc19IZGNMZXA4VU53RmdUZERGTzM1RFRaWnVxWjNaY3ZQVm9kZkk5UXAtcUNBQk1jRjllOElzYmo2Um84TXJSTQ?oc=5&quot; target=&quot;_blank&quot;&gt;光威复材A股股东户数减少977户降幅1.02%，流通A股户均持股8679.41股增幅1.03%，户均持股市值23.97万元降幅6.73%&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;新浪财经&lt;/font&gt;</p>
             <span class="news-meta">
               <span>finance.sina.com.cn</span>
-              <span class="dot">·</span>
               <span>2026-06-10</span>
-              <span class="dot">·</span>
               <span>11d ago</span>
             </span>
           </li>
@@ -661,9 +667,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMibkFVX3lxTFByZDNUM0lBdGxfajR3cV9tV1lMREtWTV9td2t4NjdPcVBmWDR6ZHpWaW9yODNzbDd5Rl9zUzQ3Zno1bXF4ZUs1NDNBaFZRR1RqTXBJbHJVMTdyZ0tlRTFkcktmbk9QUm1rZHVBeU13?oc=5&quot; target=&quot;_blank&quot;&gt;光威复材：2025年年度权益分派实施公告&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;新浪财经&lt;/font&gt;</p>
             <span class="news-meta">
               <span>cj.sina.cn</span>
-              <span class="dot">·</span>
               <span>2026-06-10</span>
-              <span class="dot">·</span>
               <span>11d ago</span>
             </span>
           </li>
@@ -671,15 +675,17 @@ footer {
       </ul>
     </section>
     <section data-co="toray" hidden>
-      <h2>Toray 东丽</h2>
-      <div class="company-meta">
-        <span>国际</span>
-        <span class="dot">·</span>
-        <span class="domain">toray.com</span>
-        <span class="dot">·</span>
-        <span>10 条新闻</span>
+      <div class="company-header">
+        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="#9f1239"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">T</text>
+  </svg>
+        <div class="name-block">
+          <h2>Toray 东丽</h2>
+          <span class="domain">toray.com</span>
+        </div>
       </div>
-      <div class="summary"><h3>本周要点</h3><ul><li>Toray to Set Up TORELINA™ PPS Resin Production Facility in India - Toray</li><li>Toray to Launch Next-Generation Reverse Osmosis Membranes Offering Industry-Leading Salt Rejection for More Cost-Effective Seawater Desalination - Toray</li><li>Toray Composite Materials America and Syensqo Enter into Long-Term Carbon Fiber Supply Agreement for Aerospace Applications - Toray</li></ul><div class="stats">10 条新闻 · 最近更新 17d ago</div></div>
+      <div class="summary"><div class="summary-label">本周要点</div><ul><li>Toray to Set Up TORELINA™ PPS Resin Production Facility in India - Toray</li><li>Toray to Launch Next-Generation Reverse Osmosis Membranes Offering Industry-Leading Salt Rejection for More Cost-Effective Seawater Desalination - Toray</li><li>Toray Composite Materials America and Syensqo Enter into Long-Term Carbon Fiber Supply Agreement for Aerospace Applications - Toray</li></ul><div class="stats">10 条新闻 · 最近 2026-06-04</div></div>
       <ul class="news-list">
         
           <li class="news-item">
@@ -687,9 +693,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiakFVX3lxTFBhNHh5eFdNTDV3SndxTG1IZFNESXB5cWFMVnZzWFhCR0dnOVJDU2xjc05VdTBNdm13YS1VQU1TZ2MyWUpOeE5rbjl1cUhJeTd0empxOWh1R2o0TEpEMU9zZHR3dzJLWGFVT1E?oc=5&quot; target=&quot;_blank&quot;&gt;Toray to Set Up TORELINA™ PPS Resin Production Facility in India&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Toray&lt;/font&gt;</p>
             <span class="news-meta">
               <span>toray.com</span>
-              <span class="dot">·</span>
               <span>2026-06-04</span>
-              <span class="dot">·</span>
               <span>17d ago</span>
             </span>
           </li>
@@ -699,9 +703,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiakFVX3lxTE8yRktYYmxjdlVZaTU1YW5GWWhHT3Z3ZXE0U3BIellleENTV3JFU1FHRko1c1FpQ3hFYTFONmppeU80WEpPb1BXdkstRFUyVkNQWmlidHpMNk9EaDFCc0Z3eHRieUQ0QkN4N3c?oc=5&quot; target=&quot;_blank&quot;&gt;Toray to Launch Next-Generation Reverse Osmosis Membranes Offering Industry-Leading Salt Rejection for More Cost-Effective Seawater Desalination&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Toray&lt;/font&gt;</p>
             <span class="news-meta">
               <span>toray.com</span>
-              <span class="dot">·</span>
               <span>2026-06-04</span>
-              <span class="dot">·</span>
               <span>17d ago</span>
             </span>
           </li>
@@ -711,9 +713,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiakFVX3lxTE14dThieHBCazNObEw0d1dYUFV5aDd1UHNNeTEyeTZrNnRvcS1pYUU1cVJDVXNfTmtuZDRVc0hnSjBvbGw4UkdZOXJSN01hVkd1N1dIWXVZRjZTZHI4Rl84MlRENDdZU0FPYlE?oc=5&quot; target=&quot;_blank&quot;&gt;Toray Composite Materials America and Syensqo Enter into Long-Term Carbon Fiber Supply Agreement for Aerospace Applications&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Toray&lt;/font&gt;</p>
             <span class="news-meta">
               <span>toray.com</span>
-              <span class="dot">·</span>
               <span>2026-04-13</span>
-              <span class="dot">·</span>
               <span>2026-04-13</span>
             </span>
           </li>
@@ -723,9 +723,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiakFVX3lxTE5iaXdfWDNvVVQ0dTZfX3NmeVdmLUNlMkNmX0xFa21yeVBRQm9TaDA3OFpUb082MFhRdFBpblZmRHhHSWROOVFoWVJCVTBIbDZoY1NPSXBFNU9lN0JEUUlFVER3cllQTVI3R1E?oc=5&quot; target=&quot;_blank&quot;&gt;Toray Set to Commercialize Award-Winning Advanced Photosensitive Polyimide Patterning Technology&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Toray&lt;/font&gt;</p>
             <span class="news-meta">
               <span>toray.com</span>
-              <span class="dot">·</span>
               <span>2026-03-18</span>
-              <span class="dot">·</span>
               <span>2026-03-18</span>
             </span>
           </li>
@@ -735,9 +733,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiakFVX3lxTE9oMzdHOXJCTjNtQnhGRkdXUDRnUFdPS2NXa0J4cUFPTmFCdElSYTJadmYtckVfQU9SZTJlNXBEcVZYUl9UcFpxODRtTHBlYnQ0YjJ3YVNTN2h1ZDJVaWRUdFFVcUR1dzdsZ1E?oc=5&quot; target=&quot;_blank&quot;&gt;Toray Develops Spherical Polyamide 12 Particles for 3D Printers – Delivering Superior Surface Quality and High Impact Strength in 3D-Printed Parts&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Toray&lt;/font&gt;</p>
             <span class="news-meta">
               <span>toray.com</span>
-              <span class="dot">·</span>
               <span>2026-02-24</span>
-              <span class="dot">·</span>
               <span>2026-02-24</span>
             </span>
           </li>
@@ -747,9 +743,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiakFVX3lxTE9lRXVXeEJoR3JoT21QbWR5cVVtSm1RSkttMGd4ZWtLRnU5cDJVNlpBYjdOY0Y5QWp5UWhxN2JxZ0ZVM0EyWDlscC1xTENDRFVlY1Rtb0FLbjFlcGtpLTY5VW1kQ2o5Y2JtYVE?oc=5&quot; target=&quot;_blank&quot;&gt;Toray Unveils World’s First 160°C-Resistant Polypropylene Release Film to Help Cut Fluorinated Film Use in IC Substrate and Carbon Fiber-Reinforced Plastic Processing&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Toray&lt;/font&gt;</p>
             <span class="news-meta">
               <span>toray.com</span>
-              <span class="dot">·</span>
               <span>2026-01-22</span>
-              <span class="dot">·</span>
               <span>2026-01-22</span>
             </span>
           </li>
@@ -759,9 +753,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiakFVX3lxTE5jblhGaTZRMXk4QzNMbWJEMTFTb2xzaloyQzBXM3JQRzdMMVBjM21GeDBHNkZuejVlSWJsWWIycC1LbllQUnduSWtESEhzTHdRb2dCTE9oazJSWW5GWjdiSW45M3lhTDZiZkE?oc=5&quot; target=&quot;_blank&quot;&gt;Toray Trial Shows All-Carbon CO₂ Separation Membrane Cuts Moisture Removal Costs in Biogas Purification by 70%&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Toray&lt;/font&gt;</p>
             <span class="news-meta">
               <span>toray.com</span>
-              <span class="dot">·</span>
               <span>2026-01-08</span>
-              <span class="dot">·</span>
               <span>2026-01-08</span>
             </span>
           </li>
@@ -771,9 +763,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiakFVX3lxTE0xY2k1UDFiSVZmeDY2dDA1eXhVdTV1WEdvLUlmRnY4OERIZWNjR1B5Z3lUc091S2x0N2lTdG9pYjJ2Ti0zQjdnRVI3dzNGbThpWk9zbzRPZjNRc3VxNl9hVElFdHlzMndVZ3c?oc=5&quot; target=&quot;_blank&quot;&gt;Toray to Increase TORAYCA™ Carbon Fiber Prices&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Toray&lt;/font&gt;</p>
             <span class="news-meta">
               <span>toray.com</span>
-              <span class="dot">·</span>
               <span>2025-12-11</span>
-              <span class="dot">·</span>
               <span>2025-12-11</span>
             </span>
           </li>
@@ -783,9 +773,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiakFVX3lxTE9IVldvdVpEbFB3UEZwSVMtSDZfLVpaN1daSGlHZFdEcmRIMVBlRF9tY1ljZVVTbnhqSUk4VVdmUE8tcmJGZ0g2NkF3UHNVYXBQR2dqR0tTbHN2TUJLOU4xY1ZmQm5QRWdxb2c?oc=5&quot; target=&quot;_blank&quot;&gt;Toray Develops Highly Antistatic ABS Resin for Semiconductor and Electronic Component Processes&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Toray&lt;/font&gt;</p>
             <span class="news-meta">
               <span>toray.com</span>
-              <span class="dot">·</span>
               <span>2025-12-10</span>
-              <span class="dot">·</span>
               <span>2025-12-10</span>
             </span>
           </li>
@@ -795,9 +783,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiakFVX3lxTE40VjVDMERENlF6MFhydWVWaDBWNEtfVG1fUXVIMXZVb3pSTVltY3lFLXJUSWstWk0tYTEwWmpmVGQ3SEhzLVRaeDBZREhvUGR2YWw3c3BWbkxoUkpoblBNVzZYVWFadmxiYVE?oc=5&quot; target=&quot;_blank&quot;&gt;Toray to Exhibit at SEMICON Japan 2025&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Toray&lt;/font&gt;</p>
             <span class="news-meta">
               <span>toray.com</span>
-              <span class="dot">·</span>
               <span>2025-12-02</span>
-              <span class="dot">·</span>
               <span>2025-12-02</span>
             </span>
           </li>
@@ -805,15 +791,17 @@ footer {
       </ul>
     </section>
     <section data-co="hexcel" hidden>
-      <h2>Hexcel 赫氏</h2>
-      <div class="company-meta">
-        <span>国际</span>
-        <span class="dot">·</span>
-        <span class="domain">hexcel.com</span>
-        <span class="dot">·</span>
-        <span>4 条新闻</span>
+      <div class="company-header">
+        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="#3730a3"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">H</text>
+  </svg>
+        <div class="name-block">
+          <h2>Hexcel 赫氏</h2>
+          <span class="domain">hexcel.com</span>
+        </div>
       </div>
-      <div class="summary"><h3>本周要点</h3><ul><li>Deutsche Aircraft and Hexcel Announce Long‑Term Composite Partnership for the D328eco® Regional Aircraft Programme - Hexcel Corp. - Investor Relations</li><li>Hexcel at ILA Berlin 2026 - Hexcel</li><li>Hexcel, NIAR Break Ground on New Hexcel Applications Center at Wichita State University - Hexcel Corp. - Investor Relations</li></ul><div class="stats">4 条新闻 · 最近更新 9d ago</div></div>
+      <div class="summary"><div class="summary-label">本周要点</div><ul><li>Deutsche Aircraft and Hexcel Announce Long‑Term Composite Partnership for the D328eco® Regional Aircraft Programme - Hexcel Corp. - Investor Relations</li><li>Hexcel at ILA Berlin 2026 - Hexcel</li><li>Hexcel, NIAR Break Ground on New Hexcel Applications Center at Wichita State University - Hexcel Corp. - Investor Relations</li></ul><div class="stats">4 条新闻 · 最近 2026-06-12</div></div>
       <ul class="news-list">
         
           <li class="news-item">
@@ -821,9 +809,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiogJBVV95cUxNQy12SW1zWldTQnM5eUYzM1J4MVMyWEdDLVpOMnYwMkdpWnRaZEhieE1SZDlSOGhNT2c3eUJHdzZHNDdCTEVsNG5lb2liaEZmN20xTV9aYVI3WDdTSHY2Q1hiRjctYWdaa0tlUUM4WlI2RlZoMnEwcFZlZlNBRkg3dnp5Y0RLemVtb2FhcjZOMG84Si03SGw4RlR5RGdVUTRDc2xPOXEtRnBITkZ1X0NqYVh3bDBTam9UdU5YZDBfMVhRUzZjRDY5aHdlTTJfX3JZYW5ZMXVyNlRLdVVCMXVzLVh5ZlZTa2RQal9Td0ZoRlBTbTNyT01CMDBrbnJQVzJHcEVRMHFjZHJHeEMtS3A3MXRKenhIWkFMNWpyVmhTamRqZw?oc=5&quot; target=&quot;_blank&quot;&gt;Deutsche Aircraft and Hexcel Announce Long‑Term Composite Partnership for the D328eco® Regional Aircraft Programme&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Hexcel Corp. - Investor Relations&lt;/font&gt;</p>
             <span class="news-meta">
               <span>investors.hexcel.com</span>
-              <span class="dot">·</span>
               <span>2026-06-12</span>
-              <span class="dot">·</span>
               <span>9d ago</span>
             </span>
           </li>
@@ -833,9 +819,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMisgFBVV95cUxNZHIzNDZvNEFDMWlzQ0pIQW55UmdiNXh5RWFRMXg2RUM1U3dtSk9vdzhoTHVPNHYxOHRQX3lsZ0UwYXU3RFczX1BVUnBLaEJ2OWJWckQtUkJnaUowMzE5ejRLakppSlZVelJLY0FtM21yVUpudGdQMkY0ZE56Y1lIRDRmRkNtZk9Oekp6T0tuR245aEdwaTM4WUZEVGcxSTR0QzBaRVZ0Z3ZzVUZSVXdZRjd3?oc=5&quot; target=&quot;_blank&quot;&gt;Hexcel at ILA Berlin 2026&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Hexcel&lt;/font&gt;</p>
             <span class="news-meta">
               <span>hexcel.com</span>
-              <span class="dot">·</span>
               <span>2026-06-03</span>
-              <span class="dot">·</span>
               <span>18d ago</span>
             </span>
           </li>
@@ -845,9 +829,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMi_wFBVV95cUxPV25yWEk5bmpxZWRKdlJDaEsxWUd5MTluWFdJUHlRQ1oyVThKbEJfYlRHRDF4R293bFc2c3dDcGtheGppOVhSeGs3aTIwWHVPSGJIVjU0dzc5TF9McVNQcDZEa1lBbUNqYXlmVXVsTmdWMFY1eHM3YVVvVEo5T0ZkQmFzbzg2TGtaNXA1M2JWNUwzRllOODVLWXhENWtoWUluLTB0a2dXZEROZThpejlQTzRKdE1iSXh6cXROWU9mQUtaZldzOWluNWUxdnBVMF9wSWN4RkdKR2hxTk9vV2tJcEZ6VEVqNGpyZ2NKUXFkUFRjVTkyWEFfZ1l2X0tQd28?oc=5&quot; target=&quot;_blank&quot;&gt;Hexcel, NIAR Break Ground on New Hexcel Applications Center at Wichita State University&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Hexcel Corp. - Investor Relations&lt;/font&gt;</p>
             <span class="news-meta">
               <span>investors.hexcel.com</span>
-              <span class="dot">·</span>
               <span>2026-05-28</span>
-              <span class="dot">·</span>
               <span>24d ago</span>
             </span>
           </li>
@@ -857,9 +839,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiwwFBVV95cUxNR3laWjlWemstRDJGcmd4b1lkbDlqbjhzTy1zNlZOQURQOWs5cnRuQjQxQkhkcXUyMUR4UXJoYkM3TjE5TXRYRF84YzNUR1BtVE1aNzFUbGhaanBCVHdKSWtEdEF3cXVZdzVEYUFHazdjZEVJM01hZXZwNXdTcmZ5aTlZTVhwTllMWWRZVFFyMzFmMzBEcHNaRDJTejREc2VLbUVhQWlteloxQXoyMks3TzhNQ0UtWnFVdkJFQ0tBc0FqMWs?oc=5&quot; target=&quot;_blank&quot;&gt;Hexcel Reports 2026 First Quarter Results&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Hexcel Corp. - Investor Relations&lt;/font&gt;</p>
             <span class="news-meta">
               <span>investors.hexcel.com</span>
-              <span class="dot">·</span>
               <span>2026-04-22</span>
-              <span class="dot">·</span>
               <span>2026-04-22</span>
             </span>
           </li>
@@ -867,15 +847,17 @@ footer {
       </ul>
     </section>
     <section data-co="sgl" hidden>
-      <h2>SGL Carbon 西格里</h2>
-      <div class="company-meta">
-        <span>国际</span>
-        <span class="dot">·</span>
-        <span class="domain">sglcarbon.com</span>
-        <span class="dot">·</span>
-        <span>10 条新闻</span>
+      <div class="company-header">
+        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="#1f2937"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">S</text>
+  </svg>
+        <div class="name-block">
+          <h2>SGL Carbon 西格里</h2>
+          <span class="domain">sglcarbon.com</span>
+        </div>
       </div>
-      <div class="summary"><h3>本周要点</h3><ul><li>SGL Carbon commissions photovoltaic system and lays the foundation for a new nitrogen plant at its Meitingen site - SGL Carbon</li><li>SGL Carbon holds successful Annual General Meeting with strong approval of proposed resolutions - SGL Carbon</li><li>SGL Carbon and BMW Group receive JEC Innovation Award for Natural Fiber Composites Project - SGL Carbon</li></ul><div class="stats">10 条新闻 · 最近更新 2026-05-22</div></div>
+      <div class="summary"><div class="summary-label">本周要点</div><ul><li>SGL Carbon commissions photovoltaic system and lays the foundation for a new nitrogen plant at its Meitingen site - SGL Carbon</li><li>SGL Carbon holds successful Annual General Meeting with strong approval of proposed resolutions - SGL Carbon</li><li>SGL Carbon and BMW Group receive JEC Innovation Award for Natural Fiber Composites Project - SGL Carbon</li></ul><div class="stats">10 条新闻 · 最近 2026-05-22</div></div>
       <ul class="news-list">
         
           <li class="news-item">
@@ -883,9 +865,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMigwJBVV95cUxQSVh1U3VHa3NGeHp2LW11MXNwbHFWYy1xVGN2VFZPNFRNWHktU3pKTUFiYzgxSktJSG9hallQNTFPaWtMenFOemU3QlZFeXJuY3d1STNhZ0ZWeHZjMGh1bDg4LUc2OF9QdkVfTkNxRUFXclVUcmt1enhVdGhZMTBtT29GODFlUE5wTnBlYzJxSXhCRXRxVFpnYXFleHVVaVVxal8tbDVSNjJ5Y3NSOWhGUHhJZFFFcDkySl9VUXF3WklQeHJnZzM2aUdQLUZBSEtLbS0zVExTWlZnZHo0TWFhMmowajk1LTRfZmlUdG1xMmxhMS1RVEJheWk3bF9SUmV5MEZN?oc=5&quot; target=&quot;_blank&quot;&gt;SGL Carbon commissions photovoltaic system and lays the foundation for a new nitrogen plant at its Meitingen site&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;SGL Carbon&lt;/font&gt;</p>
             <span class="news-meta">
               <span>sglcarbon.com</span>
-              <span class="dot">·</span>
               <span>2026-05-22</span>
-              <span class="dot">·</span>
               <span>2026-05-22</span>
             </span>
           </li>
@@ -895,9 +875,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiqwFBVV95cUxOUXFUdXp1X2p1S0tVMmRoWm12UUNRTGRiN2pYZWZkdUZVU1k3Sjk2ck5HdlRvUXoxMlNmMHh5YkJ0dnRCSjNVam5XV0NkQ0ZOSzFMMXk5YWlTZURCOFgzVFlLbXdjUUkzaW5qNEQzNFJ6djZuZG1MZVRUUElJVEwxdzNqR01zWDlqdXoyUlZsNDJBc2VBM2dsUFdIVVNuSkxQUzZvQlZyR0NFdUU?oc=5&quot; target=&quot;_blank&quot;&gt;SGL Carbon holds successful Annual General Meeting with strong approval of proposed resolutions&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;SGL Carbon&lt;/font&gt;</p>
             <span class="news-meta">
               <span>sglcarbon.com</span>
-              <span class="dot">·</span>
               <span>2026-05-20</span>
-              <span class="dot">·</span>
               <span>2026-05-20</span>
             </span>
           </li>
@@ -907,9 +885,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMi4AFBVV95cUxNdFVrR1RFR3k3bGZmRk9KdG5DaFR1Tld3LWxjQXh5alAtcF9fdjBLVHd2THFSUnZlbU9zTVJRX3JEaEttVl85NzZNdHN3cFZ0cFRKM3FDcy1JN09QZFk0T0luUzhydXI4bjhaT3c5MHZyUk9ValIzYlNUUm8waURIMEZiZlBadmR0eVJZUHlTU0hiRDVjUE84eFJ0RTMxeFl3dmZnQ2hpVFJXTWtZRlJuOUQyazF4NXVRR3lXLXVDbFhiZ3VqRkptU09SbW1Da2o1dXpOMnRCbS1hRGFiLTA3dQ?oc=5&quot; target=&quot;_blank&quot;&gt;SGL Carbon and BMW Group receive JEC Innovation Award for Natural Fiber Composites Project&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;SGL Carbon&lt;/font&gt;</p>
             <span class="news-meta">
               <span>sglcarbon.com</span>
-              <span class="dot">·</span>
               <span>2026-01-13</span>
-              <span class="dot">·</span>
               <span>2026-01-13</span>
             </span>
           </li>
@@ -919,9 +895,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMikwJBVV95cUxQVjFVUDN4dkk3ZUJJeV9GM0xaUWdYcUhzUXVGMVl5ak5JaUI2akg5aGtKNWE3ZkJsbVpETkpjRVA1cVo0TEhDeTZQVW1VaGFENGJtUVczR0JiMnNjeVB3bFRvaGtYT2tGdGdEWkowQVpkZkRabXRiV01VcWNYQnkzQllQYjRPNG4wUnl5R3VrN0plX3RHVFB1Z1VBYWFkNEZKYmtuaGN1cTEyVWtTQzZyZkdDYVVZRUU1UEFtZ09HZHdXeXNua29Ha2JrdHhNVTh1cUlqNzVGd1lvekYyTGM5dVVJcE1TaEZTUTQzQlM1aUNZSmVIRW1fVi05UE8ydWJZdkFOVTRINWFqRTM3OENYY0FPbw?oc=5&quot; target=&quot;_blank&quot;&gt;Brembo SGL Carbon Ceramic Brakes (BSCCB) successfully expands production capacity by 50% in Germany and Italy to meet rising demand&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;SGL Carbon&lt;/font&gt;</p>
             <span class="news-meta">
               <span>sglcarbon.com</span>
-              <span class="dot">·</span>
               <span>2025-09-15</span>
-              <span class="dot">·</span>
               <span>2025-09-15</span>
             </span>
           </li>
@@ -931,9 +905,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiiwJBVV95cUxOWjVDRThOVnF6eFBOZFZpdEU0a1lGdm5XRG9uZXN6Z1UzajZOYmwtZkV0UEdIbk1WblpXTDVwVVdsaXNhVEljd2ZISV9qVU9RYVV5cFEyNmhxMzlGcHR6QmpCTTYzUVBwYTgyQ2psRGJmenRpUDZRSURCaXVDQ01MYnE4cEZkMkFzdmtfRzJHTERNMF85eUhDM2h5ajJlR2pjc1hTNGVWQ2U4WnpJRUx0UGlGbGlGUFRqbUhEZktwaWVzRUJqOW5yODhlRzVXbG1VaEdSZ3RNcDZXamhqb01hcGpXX1psZmhOWmdwWlhSclZ0X3lLelFsV1g0MEFOS0Q5d2pIX3RzVUp1SEk?oc=5&quot; target=&quot;_blank&quot;&gt;SGL Carbon decides to restructure its Carbon Fibers business unit. Presentation of preliminary figures for fiscal year 2024&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;SGL Carbon&lt;/font&gt;</p>
             <span class="news-meta">
               <span>sglcarbon.com</span>
-              <span class="dot">·</span>
               <span>2025-02-18</span>
-              <span class="dot">·</span>
               <span>2025-02-18</span>
             </span>
           </li>
@@ -943,9 +915,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiiwJBVV95cUxOcXNPTi1oN2lKbUVwUVVuTE15LTJJOVBGeTBCcG9qUUlaeFhFWE9JZWJJOHRfcWEzNkJ3QUtkZXgyM1hwRHJKUW1wQ1o0ZmRPaEFNdWJrVjNBdUI0U1paVE9ldm5KWGtTR3JQWUs0QnRsYzlqN2VtSnMxYzZSYmtnR3k4Y1N4cUk2LUsyUUVnV3A2Qjdmc3JDTUk3RmJVWHlxUGVnY0NjVXFCQXV6VU5DQUhxMWZJbzVQd1lfNXdILVVaMFd6U0lhR2EwV0VBdUgxbS03eWxTVG9qN1ZOdi10d1Foa3BFaE1pbmRtVmdVa2x1emJXdFpsV1I1NEh3SFhpMEdyMU1MSHZFUUU?oc=5&quot; target=&quot;_blank&quot;&gt;SGL Carbon secures natural graphite supply chains through diversification and remains a reliable partner for its customers&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;SGL Carbon&lt;/font&gt;</p>
             <span class="news-meta">
               <span>sglcarbon.com</span>
-              <span class="dot">·</span>
               <span>2025-01-30</span>
-              <span class="dot">·</span>
               <span>2025-01-30</span>
             </span>
           </li>
@@ -955,9 +925,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMi8AFBVV95cUxQOU03Z3IxUjFJcG11Wk1RbnVVcjVSZUlDa2RuT3FGUThTRjFQanJKM2JiQU9Ca3Z4RkV6WGdtZjlzUXFCQ3BRTXhmR1FubWZkdEVwU1ZWM2NZRU5VUGpzNXNsNTdwNl9FaW5wMGRwMW4wUy1RVGdENUxaYmhDQVBTa2UtUjdNQlJhcVhtcVFDRVE4RjdfcjI4RFpoX3k2bUJpUEUtQ1Q0TTZPZWQ2a0dwbmRiZTlxNnhDWUp5TzNQT184YlJVMzgtVm1JX2VRU2tFcU94THQyYUhMYXhBY1dhNHhsbk1lYU55b3Z0V0VzbDI?oc=5&quot; target=&quot;_blank&quot;&gt;Andreas Klein appointed as new CEO of SGL Carbon SE&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;SGL Carbon&lt;/font&gt;</p>
             <span class="news-meta">
               <span>sglcarbon.com</span>
-              <span class="dot">·</span>
               <span>2024-11-19</span>
-              <span class="dot">·</span>
               <span>2024-11-19</span>
             </span>
           </li>
@@ -967,9 +935,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMihAFBVV95cUxQb0xVT2pzaXNMVEd4X2Nxek1xS1RBZllFQkp2Nk1FQk51UWowS25Ca0xrdkRtTnJCMEt4TXRSWEdrVHJnalNCZUdyY2VZZk1KNFFCdWlNUU9HQ2RVX0I3UUtFWk1wTGhtMFNwNG9CTUhCR2xrTWZCZlAwSlkzVjdtWWRISzM?oc=5&quot; target=&quot;_blank&quot;&gt;Financial reports, Publications, News &amp; Key Figures&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;SGL Carbon&lt;/font&gt;</p>
             <span class="news-meta">
               <span>sglcarbon.com</span>
-              <span class="dot">·</span>
               <span>2022-01-11</span>
-              <span class="dot">·</span>
               <span>2022-01-11</span>
             </span>
           </li>
@@ -979,9 +945,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMipAFBVV95cUxQaXRHcTFLTEZvX3dLTGlkekkxS2JKcWpaQWZ4eVRWT25IQjN1bk1KZWlId0hfNFExeGtiSTU5c0NfYm1OdUVhZFFCNktwWEZ2QnlpeU5XS3BFUmZnRlM1VFNyRjFKTzVUWjM3RjVGYWp6WFZXSVpycU9kWElOc2F3d0dBWHY3d0I0R0hsME02VGR4VC1zRVc2b0M3TVdkTG4tM3Z4VA?oc=5&quot; target=&quot;_blank&quot;&gt;SIGRACELL® Expanded Graphite Battery Additives&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;SGL Carbon&lt;/font&gt;</p>
             <span class="news-meta">
               <span>sglcarbon.com</span>
-              <span class="dot">·</span>
               <span>2021-03-01</span>
-              <span class="dot">·</span>
               <span>2021-03-01</span>
             </span>
           </li>
@@ -991,9 +955,7 @@ footer {
             <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMijwFBVV95cUxPcTE2eXVNZk04VWxoZHhKS2NvcVZrRWo3WDlBRF81Znlab29XQzM4RXplQ0d0MXh6SDlRWWlhMTNzTGRHeC1kNmJVNGZUUDYtWVROSi1ldFg0LU45aXAwU1BQZXpmUTBlXzhMWjV3VWFtY0JOcjZxY2w2V0N0V3NvUTktM0RVNHFkdTRqVzdraw?oc=5&quot; target=&quot;_blank&quot;&gt;SIGRAFINE® ISO graphite for electronic applications&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;SGL Carbon&lt;/font&gt;</p>
             <span class="news-meta">
               <span>sglcarbon.com</span>
-              <span class="dot">·</span>
               <span>2020-03-09</span>
-              <span class="dot">·</span>
               <span>2020-03-09</span>
             </span>
           </li>

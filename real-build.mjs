@@ -16,12 +16,12 @@ const OUT_DIR = 'docs';
 // Real carbon fiber industry data — companies identified via my knowledge.
 // (Claude API skipped: I am the LLM, used my knowledge directly.)
 const COMPANIES = [
-  { id: 'sinofibers', name: '中复神鹰 Sinofibers', region: 'cn', domain: 'sinofibers.com', file: 'sinofibers.xml' },
-  { id: 'weihai',     name: '威海拓展 Weihai Tuozhan', region: 'cn', domain: 'weihaifiber.com', file: 'weihai.xml' },
-  { id: 'guangwei',   name: '光威复材 Guangwei', region: 'cn', domain: 'guangweicf.com', file: 'guangwei.xml' },
-  { id: 'toray',      name: 'Toray 东丽', region: 'intl', domain: 'toray.com', file: 'toray.xml' },
-  { id: 'hexcel',     name: 'Hexcel 赫氏', region: 'intl', domain: 'hexcel.com', file: 'hexcel.xml' },
-  { id: 'sgl',        name: 'SGL Carbon 西格里', region: 'intl', domain: 'sglcarbon.com', file: 'sgl.xml' },
+  { id: 'sinofibers', name: '中复神鹰 Sinofibers', region: 'cn', domain: 'sinofibers.com', file: 'sinofibers.xml', monogram: '复', monogram_color: '#1e40af' },
+  { id: 'weihai',     name: '威海拓展 Weihai Tuozhan', region: 'cn', domain: 'weihaifiber.com', file: 'weihai.xml', monogram: '海', monogram_color: '#0d9488' },
+  { id: 'guangwei',   name: '光威复材 Guangwei', region: 'cn', domain: 'guangweicf.com', file: 'guangwei.xml', monogram: '光', monogram_color: '#475569' },
+  { id: 'toray',      name: 'Toray 东丽', region: 'intl', domain: 'toray.com', file: 'toray.xml', monogram: 'T', monogram_color: '#9f1239' },
+  { id: 'hexcel',     name: 'Hexcel 赫氏', region: 'intl', domain: 'hexcel.com', file: 'hexcel.xml', monogram: 'H', monogram_color: '#3730a3' },
+  { id: 'sgl',        name: 'SGL Carbon 西格里', region: 'intl', domain: 'sglcarbon.com', file: 'sgl.xml', monogram: 'S', monogram_color: '#1f2937' },
 ];
 
 const PER_COMPANY = 10;
@@ -42,7 +42,9 @@ function fetchAndParse(file, companyName, maxItems) {
 const generated_at = new Date().toISOString();
 const companies = COMPANIES.map(c => {
   const result = fetchAndParse(c.file, c.name, PER_COMPANY);
-  return { ...c, news: result.items || [] };
+  // Strip helper fields before rendering
+  const { file, ...rest } = c;
+  return { ...rest, news: result.items || [] };
 });
 
 const data = { slug: SLUG, prompt: PROMPT, generated_at, companies };

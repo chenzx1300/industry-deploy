@@ -216,26 +216,11 @@ main section { margin-bottom: 56px; animation: fadeIn 0.3s ease; }
 }
 main section h2 {
   font-family: var(--font-sans);
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 700;
-  margin-bottom: 8px;
-  letter-spacing: -0.025em;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
   line-height: 1.1;
-}
-main section .company-meta {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  color: var(--text-soft);
-  font-size: 14px;
-  margin-bottom: 28px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--divider);
-}
-main section .company-meta .domain {
-  font-family: ui-monospace, 'SF Mono', 'Menlo', monospace;
-  font-size: 13px;
-  color: var(--text-faint);
 }
 
 .summary {
@@ -246,14 +231,21 @@ main section .company-meta .domain {
   margin-bottom: 36px;
   box-shadow: var(--shadow-sm);
 }
-.summary h3 {
+.summary-label {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.08em;
   color: var(--accent);
-  text-transform: uppercase;
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.summary-label::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
 }
 .summary ul { list-style: none; margin-bottom: 16px; }
 .summary li {
@@ -281,6 +273,44 @@ main section .company-meta .domain {
   color: var(--text-soft);
   padding-top: 14px;
   border-top: 1px solid var(--divider);
+}
+
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--divider);
+}
+.company-header .logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.company-header .name-block { flex: 1; min-width: 0; }
+.company-header h2 {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.company-header .domain {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13px;
+  color: var(--text-faint);
 }
 
 ul.news-list { list-style: none; }
@@ -462,6 +492,15 @@ ${body}
 </html>`;
 }
 
+// Render an SVG monogram (1-2 chars in a colored rounded square).
+// Use as a stand-in for the company logo when we can't fetch the real one.
+function monogramSvg(text, color) {
+  return `<svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="${escapeHtml(color)}"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">${escapeHtml(text)}</text>
+  </svg>`;
+}
+
 // Build a "this week's highlights" summary from the top 3 headlines.
 function buildSummary(company) {
   if (!company.news || company.news.length === 0) {
@@ -469,8 +508,9 @@ function buildSummary(company) {
   }
   const top = company.news.slice(0, 3);
   const items = top.map(n => `<li>${escapeHtml(n.title)}</li>`).join('');
-  const stats = `${company.news.length} 条新闻 · 最近更新 ${relativeTime(company.news[0].published_at, new Date())}`;
-  return `<div class="summary"><h3>本周要点</h3><ul>${items}</ul><div class="stats">${escapeHtml(stats)}</div></div>`;
+  const now = new Date();
+  const stats = `${company.news.length} 条新闻 · 最近 ${formatDate(company.news[0].published_at)}`;
+  return `<div class="summary"><div class="summary-label">本周要点</div><ul>${items}</ul><div class="stats">${escapeHtml(stats)}</div></div>`;
 }
 
 export function renderIndustryPage(data) {
@@ -481,7 +521,7 @@ export function renderIndustryPage(data) {
 
   const tabsHtml = (companies, region) =>
     `<div class="region-block ${region}">
-      <div class="region-label"><span class="flag">${region === 'cn' ? '🇨🇳' : '🌍'}</span><span>${region === 'cn' ? '中国头部' : '国际头部'}</span></div>
+      <div class="region-label">${region === 'cn' ? '中国头部' : '国际头部'}</div>
       <div class="region-tabs">
         ${companies.map(c =>
           `<button class="tab" data-co="${escapeHtml(c.id)}"><span class="name">${escapeHtml(c.name)}</span><span class="count">${c.news.length}</span></button>`
@@ -490,7 +530,6 @@ export function renderIndustryPage(data) {
     </div>`;
 
   const sectionsHtml = data.companies.map((c, idx) => {
-    const regionLabel = c.region === 'cn' ? '中国' : '国际';
     const newsList = c.news.length === 0
       ? '<p class="empty">暂无该公司的近期新闻。</p>'
       : `<ul class="news-list">
@@ -500,23 +539,22 @@ export function renderIndustryPage(data) {
             <p class="news-snippet">${escapeHtml(n.snippet)}</p>
             <span class="news-meta">
               <span>${escapeHtml(n.source)}</span>
-              <span class="dot">·</span>
               <span>${formatDate(n.published_at)}</span>
-              <span class="dot">·</span>
               <span>${relativeTime(n.published_at, now)}</span>
             </span>
           </li>
         `).join('')}
       </ul>`;
+    const monoChar = (c.monogram || c.name.charAt(0)).slice(0, 2);
+    const monoColor = c.monogram_color || '#475569';
     return `
     <section data-co="${escapeHtml(c.id)}"${idx !== 0 ? ' hidden' : ''}>
-      <h2>${escapeHtml(c.name)}</h2>
-      <div class="company-meta">
-        <span>${regionLabel}</span>
-        <span class="dot">·</span>
-        <span class="domain">${escapeHtml(c.domain)}</span>
-        <span class="dot">·</span>
-        <span>${c.news.length} 条新闻</span>
+      <div class="company-header">
+        ${monogramSvg(monoChar, monoColor)}
+        <div class="name-block">
+          <h2>${escapeHtml(c.name)}</h2>
+          <span class="domain">${escapeHtml(c.domain)}</span>
+        </div>
       </div>
       ${buildSummary(c)}
       ${newsList}
@@ -530,9 +568,7 @@ export function renderIndustryPage(data) {
     <h1>${escapeHtml(data.prompt)}</h1>
     <p class="meta">
       <span><strong>6 家头部公司</strong></span>
-      <span class="dot">·</span>
       <span>${totalNews} 条新闻</span>
-      <span class="dot">·</span>
       <span>生成于 ${formatDate(data.generated_at)}</span>
     </p>
   </header>

@@ -220,26 +220,11 @@ main section { margin-bottom: 56px; animation: fadeIn 0.3s ease; }
 }
 main section h2 {
   font-family: var(--font-sans);
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 700;
-  margin-bottom: 8px;
-  letter-spacing: -0.025em;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
   line-height: 1.1;
-}
-main section .company-meta {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  color: var(--text-soft);
-  font-size: 14px;
-  margin-bottom: 28px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--divider);
-}
-main section .company-meta .domain {
-  font-family: ui-monospace, 'SF Mono', 'Menlo', monospace;
-  font-size: 13px;
-  color: var(--text-faint);
 }
 
 .summary {
@@ -250,14 +235,21 @@ main section .company-meta .domain {
   margin-bottom: 36px;
   box-shadow: var(--shadow-sm);
 }
-.summary h3 {
+.summary-label {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.08em;
   color: var(--accent);
-  text-transform: uppercase;
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.summary-label::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
 }
 .summary ul { list-style: none; margin-bottom: 16px; }
 .summary li {
@@ -285,6 +277,44 @@ main section .company-meta .domain {
   color: var(--text-soft);
   padding-top: 14px;
   border-top: 1px solid var(--divider);
+}
+
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--divider);
+}
+.company-header .logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.company-header .name-block { flex: 1; min-width: 0; }
+.company-header h2 {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.company-header .domain {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13px;
+  color: var(--text-faint);
 }
 
 ul.news-list { list-style: none; }
@@ -429,24 +459,24 @@ footer {
   </header>
   <main><ul class="industry-grid">
     <li class="industry-card">
-      <a href="new-energy-vehicles-industry/">
-        <h3>新能源汽车</h3>
-        <span class="stats">
-          <span>6 家公司</span>
-          <span>·</span>
-          <span>61 条新闻</span>
-        </span>
-        <time>生成于 2026-06-21</time>
-      </a>
-    </li>
-  
-    <li class="industry-card">
       <a href="carbon-fiber-industry/">
         <h3>碳纤维</h3>
         <span class="stats">
           <span>6 家公司</span>
           <span>·</span>
           <span>39 条新闻</span>
+        </span>
+        <time>生成于 2026-06-21</time>
+      </a>
+    </li>
+  
+    <li class="industry-card">
+      <a href="new-energy-vehicles-industry/">
+        <h3>新能源汽车</h3>
+        <span class="stats">
+          <span>6 家公司</span>
+          <span>·</span>
+          <span>61 条新闻</span>
         </span>
         <time>生成于 2026-06-21</time>
       </a>

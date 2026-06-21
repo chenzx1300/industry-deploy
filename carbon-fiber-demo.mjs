@@ -17,7 +17,7 @@ const data = {
   generated_at: new Date().toISOString(),
   companies: [
     {
-      id: 'sinofibers', name: '中复神鹰 Sinofibers', region: 'cn', domain: 'sinofibers.com',
+      id: 'sinofibers', name: '中复神鹰 Sinofibers', region: 'cn', domain: 'sinofibers.com', monogram: '复', monogram_color: '#1e40af',
       news: [
         { title: '中复神鹰 T1100 级碳纤维实现万吨级量产', snippet: '中复神鹰宣布其自主研发的 T1100 级高强高模碳纤维正式突破万吨级年产能，成为全球第二家掌握该级别碳纤维工业化生产的企业。', url: 'https://www.sinofibers.com/news/t1100-10kt', source: 'sinofibers.com', published_at: '2026-06-15T08:00:00Z' },
         { title: '中复神鹰西宁 2.4 万吨碳纤维基地全面投产', snippet: '位于青海西宁的中复神鹰 2.4 万吨/年碳纤维项目全部产线投产，采用干喷湿纺工艺，主要面向风电叶片和氢能储罐市场。', url: 'https://www.sinofibers.com/news/xining-full', source: 'sinofibers.com', published_at: '2026-06-12T14:30:00Z' },
@@ -33,7 +33,7 @@ const data = {
       ],
     },
     {
-      id: 'weihai', name: '威海拓展 Weihai Tuozhan', region: 'cn', domain: 'weihaifiber.com',
+      id: 'weihai', name: '威海拓展 Weihai Tuozhan', region: 'cn', domain: 'weihaifiber.com', monogram: '海', monogram_color: '#0d9488',
       news: [
         { title: '威海拓展成为国产大飞机 C929 主供应商', snippet: '威海拓展纤维股份有限公司正式成为中国商飞 C929 宽体客机碳纤维复合材料主供应商，承担机身和机翼复合材料部件制造。', url: 'https://www.weihaifiber.com/news/c929-main', source: 'weihaifiber.com', published_at: '2026-06-14T03:00:00Z' },
         { title: '威海拓展 QM4550 中模量碳纤维量产突破 5 千吨', snippet: '威海拓展 QM4550 中模量碳纤维年产能突破 5000 吨，成为继东丽 T800 之后全球第二个突破该级别工业化生产的产品。', url: 'https://www.weihaifiber.com/news/qm4550-5kt', source: 'weihaifiber.com', published_at: '2026-06-10T11:00:00Z' },
@@ -48,7 +48,7 @@ const data = {
       ],
     },
     {
-      id: 'guangwei', name: '光威复材 Guangwei', region: 'cn', domain: 'guangweicf.com',
+      id: 'guangwei', name: '光威复材 Guangwei', region: 'cn', domain: 'guangweicf.com', monogram: '光', monogram_color: '#475569',
       news: [
         { title: '光威复材国产 T800 替代项目进入批量交付阶段', snippet: '光威复材承担的国家重点 T800 级碳纤维国产替代项目进入批量交付阶段，2026 年预计交付 1500 吨，配套航空航天型号。', url: 'https://www.guangweicf.com/news/t800-batch', source: 'guangweicf.com', published_at: '2026-06-13T16:20:00Z' },
         { title: '光威复材包头 1.2 万吨大丝束项目投产', snippet: '光威复材位于内蒙古包头的 1.2 万吨/年大丝束碳纤维项目正式投产，主要面向风电叶片、新能源汽车和氢能储罐等民用市场。', url: 'https://www.guangweicf.com/news/baotou-online', source: 'guangweicf.com', published_at: '2026-06-09T07:45:00Z' },
@@ -63,7 +63,7 @@ const data = {
       ],
     },
     {
-      id: 'toray', name: 'Toray 东丽', region: 'intl', domain: 'toray.com',
+      id: 'toray', name: 'Toray 东丽', region: 'intl', domain: 'toray.com', monogram: 'T', monogram_color: '#9f1239',
       news: [
         { title: '东丽发布全球最高强度碳纤维 T1200X，拉伸强度 8.0 GPa', snippet: '日本东丽工业发布全球拉伸强度最高的 T1200X 碳纤维（8.0 GPa），将用于下一代航空发动机复合材料叶片和火箭壳体。', url: 'https://www.toray.com/news/t1200x', source: 'toray.com', published_at: '2026-06-16T01:00:00Z' },
         { title: '东丽收购德国碳纤维预浸料企业 MTC', snippet: '东丽工业宣布以 4.2 亿欧元收购德国碳纤维预浸料企业 MTC（Mobile Technology Composite），扩大欧洲市场布局。', url: 'https://www.toray.com/news/mtc-acquisition', source: 'toray.com', published_at: '2026-06-12T18:00:00Z' },
@@ -78,7 +78,7 @@ const data = {
       ],
     },
     {
-      id: 'hexcel', name: 'Hexcel 赫氏', region: 'intl', domain: 'hexcel.com',
+      id: 'hexcel', name: 'Hexcel 赫氏', region: 'intl', domain: 'hexcel.com', monogram: 'H', monogram_color: '#3730a3',
       news: [
         { title: 'Hexcel 发布新一代 HexPly M91 快速固化预浸料', snippet: 'Hexcel 发布 HexPly M91 快速固化预浸料，固化时间缩短至 60 秒，专为航空航天和汽车复合材料大规模量产设计。', url: 'https://www.hexcel.com/news/m91-prepreg', source: 'hexcel.com', published_at: '2026-06-15T10:00:00Z' },
         { title: 'Hexcel 与 Archer Aviation 联合开发 Midnight eVTOL', snippet: 'Hexcel 与 Archer Aviation 扩大合作，为其 Midnight 电动垂直起降飞行器提供碳纤维预浸料和蜂窝芯材，目标 2025 年取证。', url: 'https://www.hexcel.com/news/archer-midnight', source: 'hexcel.com', published_at: '2026-06-11T08:30:00Z' },
@@ -93,7 +93,7 @@ const data = {
       ],
     },
     {
-      id: 'sgl', name: 'SGL Carbon 西格里', region: 'intl', domain: 'sglcarbon.com',
+      id: 'sgl', name: 'SGL Carbon 西格里', region: 'intl', domain: 'sglcarbon.com', monogram: 'S', monogram_color: '#1f2937',
       news: [
         { title: 'SGL Carbon 推出 SIGRACELL 燃料电池双极板', snippet: 'SGL Carbon 推出新一代 SIGRACELL 碳纤维复合双极板，专为氢燃料电池设计，功率密度达 4.2 kW/L，领先行业。', url: 'https://www.sglcarbon.com/news/sigracell', source: 'sglcarbon.com', published_at: '2026-06-13T05:00:00Z' },
         { title: 'SGL Carbon 与宝马联合开发氢燃料电池储罐', snippet: 'SGL Carbon 与宝马集团联合开发 700 bar 高压氢燃料电池储罐，采用碳纤维缠绕工艺，搭载于 BMW iX5 Hydrogen。', url: 'https://www.sglcarbon.com/news/bmw-h2', source: 'sglcarbon.com', published_at: '2026-06-09T14:00:00Z' },

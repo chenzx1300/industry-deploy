@@ -154,6 +154,7 @@ To re-run with fresh data, just rebuild — dedupe is by slug.
 
 ## Related
 
+- Skill: `github-pages-deploy` (user-level) — one-shot GitHub Pages deployment
 - Memory: `~/.claude/projects/F--claude/memory/codegraph-usage.md`
 - Spec: `design/superpowers/specs/2026-06-16-industry-news-deploy-design.md`
 - Plan: `design/superpowers/plans/2026-06-16-industry-news-deploy.md`

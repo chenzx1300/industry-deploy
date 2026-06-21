@@ -18,7 +18,7 @@ const data = {
   generated_at: new Date().toISOString(),
   companies: [
     {
-      id: 'byd', name: '比亚迪 BYD', region: 'cn', domain: 'byd.com',
+      id: 'byd', name: '比亚迪 BYD', region: 'cn', domain: 'byd.com', monogram: '比', monogram_color: '#dc2626',
       news: [
         { title: '比亚迪发布第三代刀片电池，CLTC 续航突破 1000 公里', snippet: '比亚迪在深圳举行发布会，正式推出第三代刀片电池平台，能量密度提升 35%，搭载该电池的汉 EV 旗舰版 CLTC 续航达 1050 公里，10–80% 快充仅需 12 分钟。', url: 'https://www.byd.com/news/blade-3', source: 'byd.com', published_at: '2026-06-15T08:00:00Z' },
         { title: '比亚迪匈牙利塞格德工厂正式投产，年产能 20 万辆', snippet: '比亚迪欧洲第二座整车工厂在匈牙利塞格德开业，主要面向欧盟市场生产 Atto 3、Dolphin 和 Seal 三款车型，初期年产能 20 万辆，未来将扩至 30 万辆。', url: 'https://www.byd.com/news/hungary-plant', source: 'byd.com', published_at: '2026-06-12T14:30:00Z' },
@@ -34,7 +34,7 @@ const data = {
       ],
     },
     {
-      id: 'catl', name: '宁德时代 CATL', region: 'cn', domain: 'catl.com',
+      id: 'catl', name: '宁德时代 CATL', region: 'cn', domain: 'catl.com', monogram: '宁', monogram_color: '#0ea5e9',
       news: [
         { title: '宁德时代四川宜宾超级工厂投产，年产能 100 GWh', snippet: '宁德时代在四川宜宾的全新超级工厂正式投产，主要生产 LFP 磷酸铁锂电芯，配套入门级电动车市场和储能市场，年产能 100 GWh。', url: 'https://www.catl.com/news/yibin-plant', source: 'catl.com', published_at: '2026-06-14T03:00:00Z' },
         { title: '宁德时代与宝马联合开发固态电池中试线', snippet: 'CATL 与宝马集团宣布在宁德总部建设固态电池联合中试线，初期产能 0.5 GWh，目标 2027 年小批量装车验证。', url: 'https://www.catl.com/news/bmw-ssb', source: 'catl.com', published_at: '2026-06-10T11:00:00Z' },
@@ -49,7 +49,7 @@ const data = {
       ],
     },
     {
-      id: 'nio', name: '蔚来 NIO', region: 'cn', domain: 'nio.com',
+      id: 'nio', name: '蔚来 NIO', region: 'cn', domain: 'nio.com', monogram: '蔚', monogram_color: '#059669',
       news: [
         { title: '蔚来乐道品牌登陆欧洲，德荷两国率先开售', snippet: '蔚来旗下子品牌乐道（Onvo）正式进入欧洲市场，德国柏林和荷兰阿姆斯特丹的首批展厅同步开业，首发车型为乐道 L60，售价 €39,900 起。', url: 'https://www.nio.com/news/onvo-europe', source: 'nio.com', published_at: '2026-06-13T16:20:00Z' },
         { title: '蔚来 5 月交付 2.8 万辆，创单月历史新高', snippet: '蔚来公布 2026 年 5 月交付数据：全品牌共交付 28,052 辆，其中蔚来品牌 18,500 辆、乐道 7,800 辆、萤火虫 1,752 辆。', url: 'https://www.nio.com/news/may-deliveries', source: 'nio.com', published_at: '2026-06-09T07:45:00Z' },
@@ -64,7 +64,7 @@ const data = {
       ],
     },
     {
-      id: 'tesla', name: 'Tesla 特斯拉', region: 'intl', domain: 'tesla.com',
+      id: 'tesla', name: 'Tesla 特斯拉', region: 'intl', domain: 'tesla.com', monogram: 'T', monogram_color: '#dc2626',
       news: [
         { title: 'Tesla Model 2 在得州超级工厂发布，起售价 $19,999', snippet: 'Tesla 推出长期承诺的平价车型 Model 2，定位紧凑型纯电轿车，入门版起售价 $19,999，WLTP 续航 380 公里，2026 Q4 开启交付。', url: 'https://www.tesla.com/news/model-2-unveil', source: 'tesla.com', published_at: '2026-06-16T01:00:00Z' },
         { title: 'Tesla Robotaxi 在奥斯汀和凤凰城正式商业化运营', snippet: 'Tesla 自动驾驶出租车服务在美国奥斯汀和凤凰城全面上线，无安全员、车内仅乘客，按里程计价（$0.79/英里），覆盖两大都会区超 200 平方公里。', url: 'https://www.tesla.com/news/robotaxi-launch', source: 'tesla.com', published_at: '2026-06-14T18:00:00Z' },
@@ -79,7 +79,7 @@ const data = {
       ],
     },
     {
-      id: 'vw', name: 'Volkswagen 大众', region: 'intl', domain: 'volkswagen.com',
+      id: 'vw', name: 'Volkswagen 大众', region: 'intl', domain: 'volkswagen.com', monogram: 'V', monogram_color: '#1e40af',
       news: [
         { title: '大众 ID.2all 确认售价 €24,999 起，欧洲开售', snippet: '大众正式确认 ID.2all 紧凑型纯电两厢车起售价 €24,999，将于 2026 Q4 开启欧洲交付，WLTP 续航 450 公里，支持 175 kW 快充。', url: 'https://www.volkswagen.com/news/id2all-pricing', source: 'volkswagen.com', published_at: '2026-06-15T10:00:00Z' },
         { title: '大众追加投资 Rivian 20 亿美元，加速软件平台落地', snippet: '大众集团宣布向与 Rivian 的合资企业再投资 20 亿美元，用于统一软件平台（SSP）的开发，目标 2027 年搭载于 ID. 系列新车型。', url: 'https://www.volkswagen.com/news/rivian-jv', source: 'volkswagen.com', published_at: '2026-06-11T08:30:00Z' },
@@ -94,7 +94,7 @@ const data = {
       ],
     },
     {
-      id: 'toyota', name: 'Toyota 丰田', region: 'intl', domain: 'toyota.com',
+      id: 'toyota', name: 'Toyota 丰田', region: 'intl', domain: 'toyota.com', monogram: 'T', monogram_color: '#b91c1c',
       news: [
         { title: '丰田 bZ4X 改款上市，CLTC 续航提升至 720 公里', snippet: '丰田发布 bZ4X 2027 款，搭载宁德时代 LFP 磷酸铁锂电池包，CLTC 续航提升至 720 公里，30–80% 快充时间缩短至 18 分钟。', url: 'https://global.toyota/en/news/bz4x-2027', source: 'toyota.com', published_at: '2026-06-13T05:00:00Z' },
         { title: '丰田与雷克萨斯宣布 2028 年欧/美/中全 BEV 化', snippet: '丰田汽车宣布加速电动化：到 2028 年，丰田和雷克萨斯在欧洲、美国和中国市场销售的所有车型将全部为纯电动（BEV），停售燃油和混动车型。', url: 'https://global.toyota/en/news/bev-roadmap', source: 'toyota.com', published_at: '2026-06-09T14:00:00Z' },
