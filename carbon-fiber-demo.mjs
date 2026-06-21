@@ -9,7 +9,7 @@ import { addToManifest, loadManifest } from './src/pipeline/manifest.mjs';
 const SLUG = 'carbon-fiber-industry';
 const PROMPT = '碳纤维';
 const DATA_DIR = 'data';
-const DIST_DIR = 'dist';
+const OUT_DIR = 'docs';
 
 const data = {
   slug: SLUG,
@@ -125,15 +125,15 @@ async function main() {
 
   const manifest = await loadManifest(DATA_DIR);
 
-  await mkdir(join(DIST_DIR, SLUG), { recursive: true });
-  await writeFile(join(DIST_DIR, SLUG, 'index.html'), renderIndustryPage(data));
-  await writeFile(join(DIST_DIR, 'index.html'), renderHomepage(manifest));
+  await mkdir(join(OUT_DIR, SLUG), { recursive: true });
+  await writeFile(join(OUT_DIR, SLUG, 'index.html'), renderIndustryPage(data));
+  await writeFile(join(OUT_DIR, 'index.html'), renderHomepage(manifest));
 
   console.log(`✓ ${totalNews} 条新闻分布在 ${data.companies.length} 家公司`);
   for (const c of data.companies) {
     console.log(`  · ${c.name}: ${c.news.length} 条`);
   }
-  console.log(`✓ 已生成 dist/index.html 与 dist/${SLUG}/index.html`);
+  console.log(`✓ 已生成 docs/index.html 与 docs/${SLUG}/index.html`);
 }
 
 main().catch(err => { console.error(err); process.exit(1); });

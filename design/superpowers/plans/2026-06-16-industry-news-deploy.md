@@ -144,7 +144,7 @@ npm run deploy
 
 ## Data flow
 
-See `docs/superpowers/specs/2026-06-16-industry-news-deploy-design.md`.
+See `design/superpowers/specs/2026-06-16-industry-news-deploy-design.md`.
 ```
 
 - [ ] **Step 7: First commit**
@@ -2170,7 +2170,7 @@ CLI tool that generates tabbed HTML news reports for any industry. Top 3 Chinese
 
 7-step pipeline: `slugify → tavily search → claude identify → google news rss fetch → normalize → render → netlify deploy`.
 
-See `docs/superpowers/specs/2026-06-16-industry-news-deploy-design.md` for the full design.
+See `design/superpowers/specs/2026-06-16-industry-news-deploy-design.md` for the full design.
 
 ## Setup
 

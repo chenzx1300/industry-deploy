@@ -11,7 +11,7 @@ const SLUG = 'carbon-fiber-industry';
 const PROMPT = '碳纤维';
 const RSS_DIR = './tmp-rss-cache';
 const DATA_DIR = 'data';
-const DIST_DIR = 'dist';
+const OUT_DIR = 'docs';
 
 // Real carbon fiber industry data — companies identified via my knowledge.
 // (Claude API skipped: I am the LLM, used my knowledge directly.)
@@ -58,14 +58,14 @@ await addToManifest(DATA_DIR, {
 });
 const manifest = await loadManifest(DATA_DIR);
 
-mkdirSync(`${DIST_DIR}/${SLUG}`, { recursive: true });
-writeFileSync(`${DIST_DIR}/${SLUG}/index.html`, renderIndustryPage(data));
-writeFileSync(`${DIST_DIR}/index.html`, renderHomepage(manifest));
+mkdirSync(`${OUT_DIR}/${SLUG}`, { recursive: true });
+writeFileSync(`${OUT_DIR}/${SLUG}/index.html`, renderIndustryPage(data));
+writeFileSync(`${OUT_DIR}/index.html`, renderHomepage(manifest));
 
 console.log(`✓ ${totalNews} 条真实新闻（来自 Google News）`);
 for (const c of companies) {
   console.log(`  · ${c.name}: ${c.news.length} 条`);
 }
 console.log(`\n✓ data/${SLUG}.json (raw)`);
-console.log(`✓ dist/${SLUG}/index.html (industry)`);
-console.log(`✓ dist/index.html (homepage)`);
+console.log(`✓ ${OUT_DIR}/${SLUG}/index.html (industry)`);
+console.log(`✓ ${OUT_DIR}/index.html (homepage)`);

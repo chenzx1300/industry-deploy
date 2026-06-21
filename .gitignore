@@ -2,4 +2,6 @@ node_modules/
 .env
 data/*.json
 dist/
+tmp-rss-cache/
+docs/.cache/
 *.log

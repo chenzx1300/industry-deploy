@@ -13,7 +13,7 @@ import { step, ok, fail } from './lib/logger.mjs';
 
 const ROOT = resolve('.');
 const DATA_DIR = join(ROOT, 'data');
-const DIST_DIR = join(ROOT, 'dist');
+const OUT_DIR = join(ROOT, 'docs');
 
 async function main() {
   const prompt = process.argv[2];
@@ -72,15 +72,15 @@ async function main() {
     const industryHtml = renderIndustryPage(data);
     const homepageHtml = renderHomepage(manifest);
 
-    await mkdir(join(DIST_DIR, slug), { recursive: true });
-    await writeFile(join(DIST_DIR, slug, 'index.html'), industryHtml);
-    await writeFile(join(DIST_DIR, 'index.html'), homepageHtml);
-    ok('dist/index.html + dist/' + slug + '/index.html');
+    await mkdir(join(OUT_DIR, slug), { recursive: true });
+    await writeFile(join(OUT_DIR, slug, 'index.html'), industryHtml);
+    await writeFile(join(OUT_DIR, 'index.html'), homepageHtml);
+    ok('docs/index.html + docs/' + slug + '/index.html');
 
     step(7, 7, 'done');
-    ok(`Run: npm run deploy`);
-    if (process.env.NETLIFY_SITE_ID) {
-      ok(`URL: https://${process.env.NETLIFY_SITE_ID}.netlify.app/${slug}/`);
+    ok(`Commit docs/ and push to GitHub. Enable Pages in repo settings → Source: master → /docs.`);
+    if (process.env.GITHUB_PAGES_URL) {
+      ok(`URL: ${process.env.GITHUB_PAGES_URL}/${slug}/`);
     }
   } catch (err) {
     fail(err.message);

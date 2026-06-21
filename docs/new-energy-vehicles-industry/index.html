@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新能源汽车 · 行业雷达</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #f5f5f7;
+  --surface-elevated: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.16);
+  --divider: rgba(0, 0, 0, 0.06);
+  --text: #1d1d1f;
+  --text-soft: #6e6e73;
+  --text-faint: #86868b;
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --accent-soft: rgba(0, 113, 227, 0.08);
+  --accent-tint: rgba(0, 113, 227, 0.04);
+  --cn-tint: #ff3b30;
+  --intl-tint: #0071e3;
+  --highlight: #fff8e6;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-serif: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Songti SC', serif;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 18px;
+}
+[data-theme="dark"] {
+  --bg: #000000;
+  --surface: #1c1c1e;
+  --surface-soft: #2c2c2e;
+  --surface-elevated: #2c2c2e;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --divider: rgba(255, 255, 255, 0.06);
+  --text: #f5f5f7;
+  --text-soft: #98989d;
+  --text-faint: #6e6e73;
+  --accent: #0a84ff;
+  --accent-hover: #409cff;
+  --accent-soft: rgba(10, 132, 255, 0.16);
+  --accent-tint: rgba(10, 132, 255, 0.06);
+  --cn-tint: #ff453a;
+  --intl-tint: #0a84ff;
+  --highlight: #3a2e0a;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--bg); }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+.container { max-width: 980px; margin: 0 auto; padding: 64px 32px; }
+
+.theme-toggle {
+  position: fixed; top: 24px; right: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 980px;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s;
+  z-index: 10;
+}
+[data-theme="dark"] .theme-toggle {
+  background: rgba(28, 28, 30, 0.72);
+}
+.theme-toggle:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.theme-toggle:active { transform: translateY(0); }
+
+header { margin-bottom: 56px; }
+.chip {
+  display: inline-block;
+  background: var(--accent-tint);
+  color: var(--accent);
+  padding: 5px 12px;
+  border-radius: 980px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+header h1 {
+  font-family: var(--font-sans);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+}
+header .meta {
+  color: var(--text-soft);
+  font-size: 15px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+header .meta strong { color: var(--text); font-weight: 600; }
+header .meta .dot { color: var(--text-faint); }
+
+nav.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 40px 0 56px;
+}
+.region-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  transition: border-color 0.2s;
+}
+.region-block:hover { border-color: var(--border-strong); }
+.region-block.cn { border-left: 3px solid var(--cn-tint); }
+.region-block.intl { border-left: 3px solid var(--intl-tint); }
+.region-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.region-label .flag { font-size: 14px; }
+.region-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+nav.tabs button {
+  font-family: var(--font-sans);
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: var(--text-soft);
+  font-size: 14.5px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  text-align: left;
+  width: 100%;
+}
+nav.tabs button:hover {
+  color: var(--text);
+  background: var(--surface-soft);
+}
+nav.tabs button.active {
+  color: var(--accent);
+  background: var(--accent-tint);
+  font-weight: 600;
+}
+nav.tabs .name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+nav.tabs .count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-faint);
+  background: var(--surface-soft);
+  padding: 1px 8px;
+  border-radius: 980px;
+  min-width: 24px;
+  flex-shrink: 0;
+}
+nav.tabs button.active .count {
+  color: var(--accent);
+  background: var(--surface);
+}
+
+main section { margin-bottom: 56px; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+main section h2 {
+  font-family: var(--font-sans);
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+main section .company-meta {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  color: var(--text-soft);
+  font-size: 14px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--divider);
+}
+main section .company-meta .domain {
+  font-family: ui-monospace, 'SF Mono', 'Menlo', monospace;
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+.summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 36px;
+  box-shadow: var(--shadow-sm);
+}
+.summary h3 {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.summary ul { list-style: none; margin-bottom: 16px; }
+.summary li {
+  padding: 10px 0 10px 22px;
+  position: relative;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  border-bottom: 1px solid var(--divider);
+  letter-spacing: -0.01em;
+}
+.summary li:last-child { border-bottom: none; }
+.summary li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.summary .stats {
+  font-size: 13px;
+  color: var(--text-soft);
+  padding-top: 14px;
+  border-top: 1px solid var(--divider);
+}
+
+ul.news-list { list-style: none; }
+li.news-item {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--divider);
+  transition: padding-left 0.2s;
+}
+li.news-item:hover { padding-left: 8px; }
+a.news-title {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 600;
+  display: inline;
+  line-height: 1.4;
+  font-family: var(--font-sans);
+  letter-spacing: -0.015em;
+  transition: color 0.15s;
+}
+li.news-item:hover a.news-title { color: var(--accent); }
+a.news-title .arrow {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-faint);
+  margin-left: 4px;
+  transition: color 0.15s;
+}
+li.news-item:hover a.news-title .arrow { color: var(--accent); }
+p.news-snippet {
+  color: var(--text-soft);
+  font-size: 15px;
+  margin: 8px 0 10px;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+span.news-meta {
+  color: var(--text-faint);
+  font-size: 13px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+span.news-meta .dot { color: var(--border-strong); }
+.empty {
+  color: var(--text-soft);
+  padding: 40px 0;
+  text-align: center;
+  font-size: 15px;
+}
+footer {
+  margin-top: 96px;
+  padding-top: 28px;
+  border-top: 1px solid var(--divider);
+  color: var(--text-faint);
+  font-size: 13px;
+  text-align: center;
+}
+
+.industry-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.industry-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.industry-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.industry-card a {
+  display: block;
+  padding: 32px;
+  text-decoration: none;
+  color: var(--text);
+}
+.industry-card h3 {
+  font-family: var(--font-sans);
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+.industry-card .stats {
+  color: var(--text-soft);
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+}
+.industry-card time {
+  display: block;
+  color: var(--text-faint);
+  font-size: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--divider);
+}
+.empty-state {
+  text-align: center;
+  padding: 96px 32px;
+  color: var(--text-soft);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.empty-state code {
+  font-family: ui-monospace, 'SF Mono', 'Menlo', monospace;
+  background: var(--surface-soft);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 48px 20px; }
+  header h1 { font-size: 36px; }
+  .region-tabs { grid-template-columns: 1fr; }
+  main section h2 { font-size: 28px; }
+  .theme-toggle { top: 16px; right: 16px; padding: 6px 12px; font-size: 12px; }
+  .industry-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <span class="chip">行业雷达</span>
+    <h1>新能源汽车</h1>
+    <p class="meta">
+      <span><strong>6 家头部公司</strong></span>
+      <span class="dot">·</span>
+      <span>61 条新闻</span>
+      <span class="dot">·</span>
+      <span>生成于 2026-06-21</span>
+    </p>
+  </header>
+  <nav class="tabs">
+    <div class="region-block cn">
+      <div class="region-label"><span class="flag">🇨🇳</span><span>中国头部</span></div>
+      <div class="region-tabs">
+        <button class="tab" data-co="byd"><span class="name">比亚迪 BYD</span><span class="count">11</span></button><button class="tab" data-co="catl"><span class="name">宁德时代 CATL</span><span class="count">10</span></button><button class="tab" data-co="nio"><span class="name">蔚来 NIO</span><span class="count">10</span></button>
+      </div>
+    </div>
+    <div class="region-block intl">
+      <div class="region-label"><span class="flag">🌍</span><span>国际头部</span></div>
+      <div class="region-tabs">
+        <button class="tab" data-co="tesla"><span class="name">Tesla 特斯拉</span><span class="count">10</span></button><button class="tab" data-co="vw"><span class="name">Volkswagen 大众</span><span class="count">10</span></button><button class="tab" data-co="toyota"><span class="name">Toyota 丰田</span><span class="count">10</span></button>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <section data-co="byd">
+      <h2>比亚迪 BYD</h2>
+      <div class="company-meta">
+        <span>中国</span>
+        <span class="dot">·</span>
+        <span class="domain">byd.com</span>
+        <span class="dot">·</span>
+        <span>11 条新闻</span>
+      </div>
+      <div class="summary"><h3>本周要点</h3><ul><li>比亚迪发布第三代刀片电池，CLTC 续航突破 1000 公里</li><li>比亚迪匈牙利塞格德工厂正式投产，年产能 20 万辆</li><li>比亚迪 Q1 全球纯电销量 42 万辆，超越特斯拉</li></ul><div class="stats">11 条新闻 · 最近更新 6d ago</div></div>
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.byd.com/news/blade-3" target="_blank" rel="noopener">比亚迪发布第三代刀片电池，CLTC 续航突破 1000 公里<span class="arrow">↗</span></a>
+            <p class="news-snippet">比亚迪在深圳举行发布会，正式推出第三代刀片电池平台，能量密度提升 35%，搭载该电池的汉 EV 旗舰版 CLTC 续航达 1050 公里，10–80% 快充仅需 12 分钟。</p>
+            <span class="news-meta">
+              <span>byd.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-15</span>
+              <span class="dot">·</span>
+              <span>6d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.byd.com/news/hungary-plant" target="_blank" rel="noopener">比亚迪匈牙利塞格德工厂正式投产，年产能 20 万辆<span class="arrow">↗</span></a>
+            <p class="news-snippet">比亚迪欧洲第二座整车工厂在匈牙利塞格德开业，主要面向欧盟市场生产 Atto 3、Dolphin 和 Seal 三款车型，初期年产能 20 万辆，未来将扩至 30 万辆。</p>
+            <span class="news-meta">
+              <span>byd.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-12</span>
+              <span class="dot">·</span>
+              <span>9d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.byd.com/news/q1-sales" target="_blank" rel="noopener">比亚迪 Q1 全球纯电销量 42 万辆，超越特斯拉<span class="arrow">↗</span></a>
+            <p class="news-snippet">行业数据显示，比亚迪 2026 年 Q1 全球纯电动车销量达 42 万辆，超越特斯拉的 41.2 万辆，首次登顶全球纯电销量冠军。</p>
+            <span class="news-meta">
+              <span>byd.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-08</span>
+              <span class="dot">·</span>
+              <span>13d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.byd.com/news/brazil-lfp" target="_blank" rel="noopener">比亚迪宣布在巴西建设磷酸铁锂材料工厂<span class="arrow">↗</span></a>
+            <p class="news-snippet">比亚迪与巴西矿业巨头 Vale 签署协议，将在巴伊亚州建设年产能 15 万吨的磷酸铁锂正极材料工厂，2027 年 Q3 投产。</p>
+            <span class="news-meta">
+              <span>byd.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-05</span>
+              <span class="dot">·</span>
+              <span>16d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.byd.com/news/yangwang-u7" target="_blank" rel="noopener">仰望 U7 豪华旗舰轿车开启预售，售价 60 万元起<span class="arrow">↗</span></a>
+            <p class="news-snippet">比亚迪旗下高端品牌仰望推出全新旗舰轿车 U7，搭载四电机驱动，0-100 km/h 加速 2.3 秒，CLTC 续航 720 公里，预售价 60–80 万元。</p>
+            <span class="news-meta">
+              <span>byd.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-03</span>
+              <span class="dot">·</span>
+              <span>18d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.byd.com/news/toyota-dmi" target="_blank" rel="noopener">比亚迪携手丰田深化混动技术合作<span class="arrow">↗</span></a>
+            <p class="news-snippet">比亚迪与丰田签署扩大合作协议，将在更多车型上搭载比亚迪 DM-i 混动系统，覆盖紧凑型到中大型轿车和 SUV。</p>
+            <span class="news-meta">
+              <span>byd.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-30</span>
+              <span class="dot">·</span>
+              <span>22d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.byd.com/news/seal-06-touring" target="_blank" rel="noopener">比亚迪海豹 06 DM-i 旅行版上市，售价 12.98 万起<span class="arrow">↗</span></a>
+            <p class="news-snippet">比亚迪海洋网推出海豹 06 DM-i 旅行版，纯电续航 80/120 公里，馈电油耗 3.8L/100km，主打家庭长途出行市场。</p>
+            <span class="news-meta">
+              <span>byd.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-27</span>
+              <span class="dot">·</span>
+              <span>25d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.byd.com/news/mexico-bus" target="_blank" rel="noopener">比亚迪完成墨西哥城电动公交订单交付<span class="arrow">↗</span></a>
+            <p class="news-snippet">比亚迪向墨西哥城交付 500 辆纯电公交客车，这是拉美地区规模最大的电动公交订单，预计每年减少碳排放 6 万吨。</p>
+            <span class="news-meta">
+              <span>byd.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-24</span>
+              <span class="dot">·</span>
+              <span>28d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.byd.com/news/ess-overseas" target="_blank" rel="noopener">比亚迪储能业务海外订单突破 30 GWh<span class="arrow">↗</span></a>
+            <p class="news-snippet">比亚迪储能业务部宣布 2026 上半年海外储能订单累计超 30 GWh，主要市场为美国、欧洲和澳洲，覆盖工商业储能和电网侧储能。</p>
+            <span class="news-meta">
+              <span>byd.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-21</span>
+              <span class="dot">·</span>
+              <span>2026-05-21</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.byd.com/news/fangchengbao-8" target="_blank" rel="noopener">比亚迪方程豹豹 8 越野 SUV 月销破 2 万辆<span class="arrow">↗</span></a>
+            <p class="news-snippet">方程豹品牌旗下硬派越野 SUV 豹 8 在 5 月单月销量突破 2 万辆，超过坦克 500 Hi4-Z，成为国内中大型越野 SUV 销冠。</p>
+            <span class="news-meta">
+              <span>byd.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-18</span>
+              <span class="dot">·</span>
+              <span>2026-05-18</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.byd.com/news/10m-units" target="_blank" rel="noopener">比亚迪第 1000 万辆新能源车下线<span class="arrow">↗</span></a>
+            <p class="news-snippet">比亚迪在西安工厂举行仪式，庆祝第 1000 万辆新能源车下线，从 0 到 1000 万辆用时约 14 年，成为全球首家达成此里程碑的车企。</p>
+            <span class="news-meta">
+              <span>byd.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-15</span>
+              <span class="dot">·</span>
+              <span>2026-05-15</span>
+            </span>
+          </li>
+        
+      </ul>
+    </section>
+    <section data-co="catl" hidden>
+      <h2>宁德时代 CATL</h2>
+      <div class="company-meta">
+        <span>中国</span>
+        <span class="dot">·</span>
+        <span class="domain">catl.com</span>
+        <span class="dot">·</span>
+        <span>10 条新闻</span>
+      </div>
+      <div class="summary"><h3>本周要点</h3><ul><li>宁德时代四川宜宾超级工厂投产，年产能 100 GWh</li><li>宁德时代与宝马联合开发固态电池中试线</li><li>麒麟 3.0 电池量产装车，能量密度 300 Wh/kg</li></ul><div class="stats">10 条新闻 · 最近更新 7d ago</div></div>
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.catl.com/news/yibin-plant" target="_blank" rel="noopener">宁德时代四川宜宾超级工厂投产，年产能 100 GWh<span class="arrow">↗</span></a>
+            <p class="news-snippet">宁德时代在四川宜宾的全新超级工厂正式投产，主要生产 LFP 磷酸铁锂电芯，配套入门级电动车市场和储能市场，年产能 100 GWh。</p>
+            <span class="news-meta">
+              <span>catl.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-14</span>
+              <span class="dot">·</span>
+              <span>7d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.catl.com/news/bmw-ssb" target="_blank" rel="noopener">宁德时代与宝马联合开发固态电池中试线<span class="arrow">↗</span></a>
+            <p class="news-snippet">CATL 与宝马集团宣布在宁德总部建设固态电池联合中试线，初期产能 0.5 GWh，目标 2027 年小批量装车验证。</p>
+            <span class="news-meta">
+              <span>catl.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-10</span>
+              <span class="dot">·</span>
+              <span>11d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.catl.com/news/qilin-3" target="_blank" rel="noopener">麒麟 3.0 电池量产装车，能量密度 300 Wh/kg<span class="arrow">↗</span></a>
+            <p class="news-snippet">CATL 第三代麒麟电池量产，能量密度突破 300 Wh/kg，支持 5C 超快充，10–80% 仅需 6 分钟，首发车型为极氪 001 FR。</p>
+            <span class="news-meta">
+              <span>catl.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-07</span>
+              <span class="dot">·</span>
+              <span>14d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.catl.com/news/shenxing-plus" target="_blank" rel="noopener">宁德时代发布神行 PLUS LFP 电池，10 分钟充至 80%<span class="arrow">↗</span></a>
+            <p class="news-snippet">CATL 发布神行系列升级版——神行 PLUS LFP 电池，峰值充电功率 700 kW，常温下 10 分钟内可从 10% 充至 80%。</p>
+            <span class="news-meta">
+              <span>catl.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-04</span>
+              <span class="dot">·</span>
+              <span>17d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.catl.com/news/tesla-200gwh" target="_blank" rel="noopener">宁德时代与特斯拉签署 5 年 200 GWh 长期供货协议<span class="arrow">↗</span></a>
+            <p class="news-snippet">宁德时代宣布与特斯拉签署 5 年期长期供货协议，总规模约 200 GWh，覆盖 Model 2、Model 3、Model Y 在上海工厂的生产需求。</p>
+            <span class="news-meta">
+              <span>catl.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-01</span>
+              <span class="dot">·</span>
+              <span>20d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.catl.com/news/indonesia" target="_blank" rel="noopener">宁德时代印尼电池厂 2027 年投产，规划 60 GWh<span class="arrow">↗</span></a>
+            <p class="news-snippet">CATL 与印尼国有矿业公司 Mind Id 合作的电池工厂将于 2027 年 Q1 投产，一期产能 20 GWh，最终扩至 60 GWh，配套东南亚电动车市场。</p>
+            <span class="news-meta">
+              <span>catl.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-29</span>
+              <span class="dot">·</span>
+              <span>23d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.catl.com/news/hk-ipo" target="_blank" rel="noopener">宁德时代香港 IPO 募资 53 亿美元<span class="arrow">↗</span></a>
+            <p class="news-snippet">CATL 在香港联交所完成第二上市，发行价 263 港元，募资约 53 亿美元，主要用于海外产能扩张和固态电池研发。</p>
+            <span class="news-meta">
+              <span>catl.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-26</span>
+              <span class="dot">·</span>
+              <span>26d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.catl.com/news/charging-network" target="_blank" rel="noopener">神行超充网络全国突破 5000 根<span class="arrow">↗</span></a>
+            <p class="news-snippet">CATL 旗下神行超充网络在国内已建成超 5000 根 600 kW+ 超充桩，覆盖 280+ 城市，与 30+ 车企实现互联互通。</p>
+            <span class="news-meta">
+              <span>catl.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-22</span>
+              <span class="dot">·</span>
+              <span>2026-05-22</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.catl.com/news/enerc-3" target="_blank" rel="noopener">宁德时代发布家用储能系统 CATL EnerC Plus 3.0<span class="arrow">↗</span></a>
+            <p class="news-snippet">CATL 推出第三代家储产品 EnerC Plus 3.0，单机容量 10–30 kWh，循环寿命 12000 次，10 年质保，瞄准欧洲和澳洲家储市场。</p>
+            <span class="news-meta">
+              <span>catl.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-19</span>
+              <span class="dot">·</span>
+              <span>2026-05-19</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.catl.com/news/sodium-ion" target="_blank" rel="noopener">宁德时代钠离子电池量产装车奇瑞 iCAR 03<span class="arrow">↗</span></a>
+            <p class="news-snippet">CATL 钠离子电池量产版首批装车奇瑞 iCAR 03，电池包能量密度 160 Wh/kg，CLTC 续航 200 公里，主打 A0 级入门电动车。</p>
+            <span class="news-meta">
+              <span>catl.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-16</span>
+              <span class="dot">·</span>
+              <span>2026-05-16</span>
+            </span>
+          </li>
+        
+      </ul>
+    </section>
+    <section data-co="nio" hidden>
+      <h2>蔚来 NIO</h2>
+      <div class="company-meta">
+        <span>中国</span>
+        <span class="dot">·</span>
+        <span class="domain">nio.com</span>
+        <span class="dot">·</span>
+        <span>10 条新闻</span>
+      </div>
+      <div class="summary"><h3>本周要点</h3><ul><li>蔚来乐道品牌登陆欧洲，德荷两国率先开售</li><li>蔚来 5 月交付 2.8 万辆，创单月历史新高</li><li>蔚来 ET9 行政旗舰轿车开启全国交付</li></ul><div class="stats">10 条新闻 · 最近更新 8d ago</div></div>
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.nio.com/news/onvo-europe" target="_blank" rel="noopener">蔚来乐道品牌登陆欧洲，德荷两国率先开售<span class="arrow">↗</span></a>
+            <p class="news-snippet">蔚来旗下子品牌乐道（Onvo）正式进入欧洲市场，德国柏林和荷兰阿姆斯特丹的首批展厅同步开业，首发车型为乐道 L60，售价 €39,900 起。</p>
+            <span class="news-meta">
+              <span>nio.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-13</span>
+              <span class="dot">·</span>
+              <span>8d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.nio.com/news/may-deliveries" target="_blank" rel="noopener">蔚来 5 月交付 2.8 万辆，创单月历史新高<span class="arrow">↗</span></a>
+            <p class="news-snippet">蔚来公布 2026 年 5 月交付数据：全品牌共交付 28,052 辆，其中蔚来品牌 18,500 辆、乐道 7,800 辆、萤火虫 1,752 辆。</p>
+            <span class="news-meta">
+              <span>nio.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-09</span>
+              <span class="dot">·</span>
+              <span>12d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.nio.com/news/et9-delivery" target="_blank" rel="noopener">蔚来 ET9 行政旗舰轿车开启全国交付<span class="arrow">↗</span></a>
+            <p class="news-snippet">蔚来 ET9 正式开始向预定用户交付，搭载 900V 高压平台、神玑 NX9031 智驾芯片、零重力后排座椅，售价 78.8 万元起。</p>
+            <span class="news-meta">
+              <span>nio.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-06</span>
+              <span class="dot">·</span>
+              <span>15d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.nio.com/news/5000-swap" target="_blank" rel="noopener">蔚来第 5000 座换电站上线，平均换电 2 分 40 秒<span class="arrow">↗</span></a>
+            <p class="news-snippet">蔚来宣布全国第 5000 座换电站——G30 连霍高速宝鸡服务区换电站正式上线，全国高速换电网络基本成型，平均换电耗时 2 分 40 秒。</p>
+            <span class="news-meta">
+              <span>nio.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-03</span>
+              <span class="dot">·</span>
+              <span>18d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.nio.com/news/firefly-oslo" target="_blank" rel="noopener">蔚来萤火虫（Firefly）海外首店开业，落地挪威奥斯陆<span class="arrow">↗</span></a>
+            <p class="news-snippet">蔚来第三品牌萤火虫欧洲首店在挪威奥斯陆开业，首款车型萤火虫 EC1 同步开启预订，售价 €29,900，定位精品小车市场。</p>
+            <span class="news-meta">
+              <span>nio.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-31</span>
+              <span class="dot">·</span>
+              <span>21d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.nio.com/news/shenji-chip" target="_blank" rel="noopener">蔚来神玑 NX9031 智驾芯片流片成功，算力 2000 TOPS<span class="arrow">↗</span></a>
+            <p class="news-snippet">蔚来自研智驾芯片神玑 NX9031 完成流片回片，单颗算力 2000 TOPS，将于 7 月起在新车 ET9、ES8 上首发搭载。</p>
+            <span class="news-meta">
+              <span>nio.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-28</span>
+              <span class="dot">·</span>
+              <span>24d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.nio.com/news/es8-2026" target="_blank" rel="noopener">蔚来 ES8 2026 款上市，起售价 49.8 万元<span class="arrow">↗</span></a>
+            <p class="news-snippet">蔚来 ES8 2026 款正式上市，全系标配 100 kWh 电池包、空气悬架、L3 级硬件平台，起售价 49.8 万元，与理想 L9、问界 M9 形成直接竞争。</p>
+            <span class="news-meta">
+              <span>nio.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-25</span>
+              <span class="dot">·</span>
+              <span>27d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.nio.com/news/ssb-jv" target="_blank" rel="noopener">蔚来与宁德时代签署固态电池联合开发协议<span class="arrow">↗</span></a>
+            <p class="news-snippet">蔚来与 CATL 签署固态电池联合开发协议，目标 2027 年实现半固态电池小批量装车，2028 年实现全固态电池量产。</p>
+            <span class="news-meta">
+              <span>nio.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-22</span>
+              <span class="dot">·</span>
+              <span>2026-05-22</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.nio.com/news/me-launch" target="_blank" rel="noopener">蔚来在中东开启交付，首批 ES8 抵达阿联酋<span class="arrow">↗</span></a>
+            <p class="news-snippet">蔚来在中东市场首批 ES8 运抵阿联酋迪拜和沙特利雅得展厅，正式开启交付，售价较国内贵约 30%，主打高端电动车市场。</p>
+            <span class="news-meta">
+              <span>nio.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-19</span>
+              <span class="dot">·</span>
+              <span>2026-05-19</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.nio.com/news/nio-power-funding" target="_blank" rel="noopener">蔚来能源获中东主权基金 30 亿美元战略投资<span class="arrow">↗</span></a>
+            <p class="news-snippet">蔚来能源（NIO Power）宣布完成 30 亿美元战略融资，由阿布扎比主权基金 Mubadala 领投，资金用于海外换电站网络扩张。</p>
+            <span class="news-meta">
+              <span>nio.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-16</span>
+              <span class="dot">·</span>
+              <span>2026-05-16</span>
+            </span>
+          </li>
+        
+      </ul>
+    </section>
+    <section data-co="tesla" hidden>
+      <h2>Tesla 特斯拉</h2>
+      <div class="company-meta">
+        <span>国际</span>
+        <span class="dot">·</span>
+        <span class="domain">tesla.com</span>
+        <span class="dot">·</span>
+        <span>10 条新闻</span>
+      </div>
+      <div class="summary"><h3>本周要点</h3><ul><li>Tesla Model 2 在得州超级工厂发布，起售价 $19,999</li><li>Tesla Robotaxi 在奥斯汀和凤凰城正式商业化运营</li><li>Tesla 储能业务 Q2 装机量同比增长 73%</li></ul><div class="stats">10 条新闻 · 最近更新 5d ago</div></div>
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.tesla.com/news/model-2-unveil" target="_blank" rel="noopener">Tesla Model 2 在得州超级工厂发布，起售价 $19,999<span class="arrow">↗</span></a>
+            <p class="news-snippet">Tesla 推出长期承诺的平价车型 Model 2，定位紧凑型纯电轿车，入门版起售价 $19,999，WLTP 续航 380 公里，2026 Q4 开启交付。</p>
+            <span class="news-meta">
+              <span>tesla.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-16</span>
+              <span class="dot">·</span>
+              <span>5d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.tesla.com/news/robotaxi-launch" target="_blank" rel="noopener">Tesla Robotaxi 在奥斯汀和凤凰城正式商业化运营<span class="arrow">↗</span></a>
+            <p class="news-snippet">Tesla 自动驾驶出租车服务在美国奥斯汀和凤凰城全面上线，无安全员、车内仅乘客，按里程计价（$0.79/英里），覆盖两大都会区超 200 平方公里。</p>
+            <span class="news-meta">
+              <span>tesla.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-14</span>
+              <span class="dot">·</span>
+              <span>7d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.tesla.com/news/q2-storage" target="_blank" rel="noopener">Tesla 储能业务 Q2 装机量同比增长 73%<span class="arrow">↗</span></a>
+            <p class="news-snippet">Tesla 能源部门公布 Q2 数据：Megapack 和 Powerwall 合计装机 16 GWh，同比增长 73%；上海储能超级工厂产能扩张至 10 GWh/月。</p>
+            <span class="news-meta">
+              <span>tesla.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-11</span>
+              <span class="dot">·</span>
+              <span>10d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.tesla.com/news/recall-12m" target="_blank" rel="noopener">Tesla 召回 120 万辆汽车，更新自动驾驶软件<span class="arrow">↗</span></a>
+            <p class="news-snippet">Tesla 发起自愿召回，覆盖 2022–2024 年生产的 Model 3/Y 共 120 万辆，修复自动驾驶系统在特定路口的视觉识别缺陷，OTA 远程完成。</p>
+            <span class="news-meta">
+              <span>tesla.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-07</span>
+              <span class="dot">·</span>
+              <span>14d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.tesla.com/news/optimus-gen3" target="_blank" rel="noopener">Tesla Optimus 第三代人形机器人量产启动<span class="arrow">↗</span></a>
+            <p class="news-snippet">Tesla Optimus Gen 3 在得州工厂开始小批量量产，单台成本降至 $20,000 以下，主要用于 Tesla 自身工厂的搬运和装配作业。</p>
+            <span class="news-meta">
+              <span>tesla.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-04</span>
+              <span class="dot">·</span>
+              <span>17d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.tesla.com/news/monterrey-first" target="_blank" rel="noopener">Tesla 墨西哥蒙特雷工厂首车下线<span class="arrow">↗</span></a>
+            <p class="news-snippet">Tesla 墨西哥新莱昂州蒙特雷超级工厂首台 Model 3 下线，该工厂投资 50 亿美元，年产能规划 50 万辆，主要供应北美和拉美市场。</p>
+            <span class="news-meta">
+              <span>tesla.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-01</span>
+              <span class="dot">·</span>
+              <span>20d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.tesla.com/news/fsd-v13-china" target="_blank" rel="noopener">Tesla FSD v13 在中国全面推送<span class="arrow">↗</span></a>
+            <p class="news-snippet">Tesla 中国正式推送 FSD v13，采用端到端神经网络方案，已覆盖中国所有高速和高架场景，城市道路开放上海、深圳、北京、广州、杭州。</p>
+            <span class="news-meta">
+              <span>tesla.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-29</span>
+              <span class="dot">·</span>
+              <span>23d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.tesla.com/news/powerwall-1m" target="_blank" rel="noopener">Tesla Powerwall 3 出货量突破 100 万台<span class="arrow">↗</span></a>
+            <p class="news-snippet">Tesla 宣布家用储能 Powerwall 3 全球累计出货突破 100 万台，2026 上半年单季出货 25 万台，同比增长 110%。</p>
+            <span class="news-meta">
+              <span>tesla.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-26</span>
+              <span class="dot">·</span>
+              <span>26d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.tesla.com/news/semi-pepsi" target="_blank" rel="noopener">Tesla Semi 电动卡车获百事可乐 500 辆追加订单<span class="arrow">↗</span></a>
+            <p class="news-snippet">百事可乐宣布向 Tesla Semi 追加 500 辆订单，使其 Tesla Semi 总订单数达到 1500 辆，将于 2027 年底前全部交付。</p>
+            <span class="news-meta">
+              <span>tesla.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-23</span>
+              <span class="dot">·</span>
+              <span>29d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.tesla.com/news/berlin-model2" target="_blank" rel="noopener">Tesla 柏林工厂将改产 Model 2，年产能 30 万辆<span class="arrow">↗</span></a>
+            <p class="news-snippet">Tesla 柏林超级工厂计划在 2026 Q4 切换至 Model 2 生产线，规划年产能 30 万辆，主要面向欧洲市场。</p>
+            <span class="news-meta">
+              <span>tesla.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-20</span>
+              <span class="dot">·</span>
+              <span>2026-05-20</span>
+            </span>
+          </li>
+        
+      </ul>
+    </section>
+    <section data-co="vw" hidden>
+      <h2>Volkswagen 大众</h2>
+      <div class="company-meta">
+        <span>国际</span>
+        <span class="dot">·</span>
+        <span class="domain">volkswagen.com</span>
+        <span class="dot">·</span>
+        <span>10 条新闻</span>
+      </div>
+      <div class="summary"><h3>本周要点</h3><ul><li>大众 ID.2all 确认售价 €24,999 起，欧洲开售</li><li>大众追加投资 Rivian 20 亿美元，加速软件平台落地</li><li>大众沃尔夫斯堡新电动车工厂正式投产</li></ul><div class="stats">10 条新闻 · 最近更新 6d ago</div></div>
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.volkswagen.com/news/id2all-pricing" target="_blank" rel="noopener">大众 ID.2all 确认售价 €24,999 起，欧洲开售<span class="arrow">↗</span></a>
+            <p class="news-snippet">大众正式确认 ID.2all 紧凑型纯电两厢车起售价 €24,999，将于 2026 Q4 开启欧洲交付，WLTP 续航 450 公里，支持 175 kW 快充。</p>
+            <span class="news-meta">
+              <span>volkswagen.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-15</span>
+              <span class="dot">·</span>
+              <span>6d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.volkswagen.com/news/rivian-jv" target="_blank" rel="noopener">大众追加投资 Rivian 20 亿美元，加速软件平台落地<span class="arrow">↗</span></a>
+            <p class="news-snippet">大众集团宣布向与 Rivian 的合资企业再投资 20 亿美元，用于统一软件平台（SSP）的开发，目标 2027 年搭载于 ID. 系列新车型。</p>
+            <span class="news-meta">
+              <span>volkswagen.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-11</span>
+              <span class="dot">·</span>
+              <span>10d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.volkswagen.com/news/wolfsburg-ev" target="_blank" rel="noopener">大众沃尔夫斯堡新电动车工厂正式投产<span class="arrow">↗</span></a>
+            <p class="news-snippet">大众在沃尔夫斯堡总部的全新电动车工厂 MeA 投产，取代此前的高尔夫燃油车产线，初期年产能 20 万辆，生产 ID.3 和 ID.4 改款车型。</p>
+            <span class="news-meta">
+              <span>volkswagen.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-05</span>
+              <span class="dot">·</span>
+              <span>16d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.volkswagen.com/news/q6-etron-cn" target="_blank" rel="noopener">奥迪 Q6 e-tron 在中国上市，售价 49.99 万起<span class="arrow">↗</span></a>
+            <p class="news-snippet">奥迪基于 PPE 平台的 Q6 e-tron 在中国上市，搭载 800V 高压架构，CLTC 续航 700 公里，售价 49.99–59.99 万元。</p>
+            <span class="news-meta">
+              <span>volkswagen.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-02</span>
+              <span class="dot">·</span>
+              <span>19d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.volkswagen.com/news/macan-ev-100k" target="_blank" rel="noopener">保时捷 Macan EV 全球累计交付突破 10 万辆<span class="arrow">↗</span></a>
+            <p class="news-snippet">保时捷首款纯电 SUV Macan EV 自 2024 年上市以来全球累计交付突破 10 万辆，2025 年全年交付 8.7 万辆，超过燃油版 Macan。</p>
+            <span class="news-meta">
+              <span>volkswagen.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-30</span>
+              <span class="dot">·</span>
+              <span>22d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.volkswagen.com/news/xpeng-jv" target="_blank" rel="noopener">大众中国与小鹏汽车合作车型 2026 年下半年上市<span class="arrow">↗</span></a>
+            <p class="news-snippet">大众汽车集团（中国）与小鹏汽车联合开发的首款车型——基于大众 CEA 架构的 A+ 级纯电 SUV 将于 2026 Q4 在中国上市，售价 20 万元区间。</p>
+            <span class="news-meta">
+              <span>volkswagen.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-27</span>
+              <span class="dot">·</span>
+              <span>25d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.volkswagen.com/news/elroq" target="_blank" rel="noopener">斯柯达推出 Elroq 紧凑型纯电 SUV<span class="arrow">↗</span></a>
+            <p class="news-snippet">斯柯达品牌推出全新紧凑型纯电 SUV Elroq，基于 MEB+ 平台，续航 480 公里，欧洲起售价 €33,900，将于 2026 Q3 交付。</p>
+            <span class="news-meta">
+              <span>volkswagen.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-24</span>
+              <span class="dot">·</span>
+              <span>28d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.volkswagen.com/news/idbuzz-us" target="_blank" rel="noopener">大众 ID.Buzz 长轴距版美国上市，起售价 $59,995<span class="arrow">↗</span></a>
+            <p class="news-snippet">大众 ID.Buzz 长轴距版（LWB）正式登陆美国市场，搭载 91 kWh 电池和 7 座布局，EPA 续航 380 公里，起售价 $59,995。</p>
+            <span class="news-meta">
+              <span>volkswagen.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-21</span>
+              <span class="dot">·</span>
+              <span>2026-05-21</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.volkswagen.com/news/cariad-restruct" target="_blank" rel="noopener">CARIAD 软件部门重组，独立运营<span class="arrow">↗</span></a>
+            <p class="news-snippet">大众集团宣布 CARIAD 软件部门完成重组，拆分为 CARIAD SDV（软件平台）和 CARIAD ADAS（自动驾驶）两个独立子公司。</p>
+            <span class="news-meta">
+              <span>volkswagen.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-18</span>
+              <span class="dot">·</span>
+              <span>2026-05-18</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://www.volkswagen.com/news/scout-traveler" target="_blank" rel="noopener">大众 Scout 越野品牌复活，电动皮卡 Traveler 量产<span class="arrow">↗</span></a>
+            <p class="news-snippet">大众集团旗下 Scout Motors 复活 Scout 越野品牌，首款车型纯电皮卡 Traveler 在南卡罗来纳工厂开始量产，起售价 $51,500。</p>
+            <span class="news-meta">
+              <span>volkswagen.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-15</span>
+              <span class="dot">·</span>
+              <span>2026-05-15</span>
+            </span>
+          </li>
+        
+      </ul>
+    </section>
+    <section data-co="toyota" hidden>
+      <h2>Toyota 丰田</h2>
+      <div class="company-meta">
+        <span>国际</span>
+        <span class="dot">·</span>
+        <span class="domain">toyota.com</span>
+        <span class="dot">·</span>
+        <span>10 条新闻</span>
+      </div>
+      <div class="summary"><h3>本周要点</h3><ul><li>丰田 bZ4X 改款上市，CLTC 续航提升至 720 公里</li><li>丰田与雷克萨斯宣布 2028 年欧/美/中全 BEV 化</li><li>丰田与比亚迪合资纯电车型 bZ3 在中国月销破 2 万</li></ul><div class="stats">10 条新闻 · 最近更新 8d ago</div></div>
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <a class="news-title" href="https://global.toyota/en/news/bz4x-2027" target="_blank" rel="noopener">丰田 bZ4X 改款上市，CLTC 续航提升至 720 公里<span class="arrow">↗</span></a>
+            <p class="news-snippet">丰田发布 bZ4X 2027 款，搭载宁德时代 LFP 磷酸铁锂电池包，CLTC 续航提升至 720 公里，30–80% 快充时间缩短至 18 分钟。</p>
+            <span class="news-meta">
+              <span>toyota.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-13</span>
+              <span class="dot">·</span>
+              <span>8d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://global.toyota/en/news/bev-roadmap" target="_blank" rel="noopener">丰田与雷克萨斯宣布 2028 年欧/美/中全 BEV 化<span class="arrow">↗</span></a>
+            <p class="news-snippet">丰田汽车宣布加速电动化：到 2028 年，丰田和雷克萨斯在欧洲、美国和中国市场销售的所有车型将全部为纯电动（BEV），停售燃油和混动车型。</p>
+            <span class="news-meta">
+              <span>toyota.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-09</span>
+              <span class="dot">·</span>
+              <span>12d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://global.toyota/en/news/bz3-sales" target="_blank" rel="noopener">丰田与比亚迪合资纯电车型 bZ3 在中国月销破 2 万<span class="arrow">↗</span></a>
+            <p class="news-snippet">丰田与比亚迪合资研发的纯电轿车 bZ3 在中国市场月销突破 2 万辆，单价 16.98 万元起，已成为合资品牌中最畅销的纯电轿车。</p>
+            <span class="news-meta">
+              <span>toyota.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-06</span>
+              <span class="dot">·</span>
+              <span>15d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://global.toyota/en/news/ssb-2027" target="_blank" rel="noopener">丰田固态电池 2027 年小批量装车验证<span class="arrow">↗</span></a>
+            <p class="news-snippet">丰田宣布固态电池研发取得关键突破，2027 年将在雷克萨斯车型上小批量装车验证，能量密度目标 450 Wh/kg，10 分钟充满。</p>
+            <span class="news-meta">
+              <span>toyota.com</span>
+              <span class="dot">·</span>
+              <span>2026-06-03</span>
+              <span class="dot">·</span>
+              <span>18d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://global.toyota/en/news/hilux-bev" target="_blank" rel="noopener">丰田发布全新 Hilux BEV 电动皮卡概念车<span class="arrow">↗</span></a>
+            <p class="news-snippet">丰田在泰国车展发布 Hilux BEV 电动皮卡概念车，搭载双电机四驱系统，WLTP 续航 400 公里，规划 2027 年量产，瞄准东南亚和澳洲市场。</p>
+            <span class="news-meta">
+              <span>toyota.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-31</span>
+              <span class="dot">·</span>
+              <span>21d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://global.toyota/en/news/camry-9-phev" target="_blank" rel="noopener">丰田凯美瑞第九代推出 PHEV 版，纯电续航 100 公里<span class="arrow">↗</span></a>
+            <p class="news-snippet">丰田发布第九代凯美瑞，首次提供 PHEV 插混版本，搭载 2.5L 发动机和 18.5 kWh 电池包，纯电续航 100 公里，预计 2026 Q4 上市。</p>
+            <span class="news-meta">
+              <span>toyota.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-28</span>
+              <span class="dot">·</span>
+              <span>24d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://global.toyota/en/news/brazil-invest" target="_blank" rel="noopener">丰田在巴西投资 18 亿美元扩产混动车型<span class="arrow">↗</span></a>
+            <p class="news-snippet">丰田宣布在巴西圣保罗工厂追加投资 18 亿美元，用于扩产 Corolla Cross 混动版和 Yaris Cross 混动版，应对拉美市场强劲需求。</p>
+            <span class="news-meta">
+              <span>toyota.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-25</span>
+              <span class="dot">·</span>
+              <span>27d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://global.toyota/en/news/rz-2027" target="_blank" rel="noopener">雷克萨斯 RZ 改款上市，CLTC 续航提升至 650 公里<span class="arrow">↗</span></a>
+            <p class="news-snippet">雷克萨斯 RZ 纯电 SUV 改款上市，搭载 90 kWh 电池包和 DIRECT4 四驱系统，CLTC 续航 650 公里，新增 L2+ 智驾系统。</p>
+            <span class="news-meta">
+              <span>toyota.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-22</span>
+              <span class="dot">·</span>
+              <span>2026-05-22</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://global.toyota/en/news/battery-recycling" target="_blank" rel="noopener">丰田与住友商事合作回收电动车电池<span class="arrow">↗</span></a>
+            <p class="news-snippet">丰田与住友商事签署合作协议，将在日本、爱尔兰和泰国建立电动车电池回收网络，目标 2030 年实现 100% 退役电池回收利用。</p>
+            <span class="news-meta">
+              <span>toyota.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-19</span>
+              <span class="dot">·</span>
+              <span>2026-05-19</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://global.toyota/en/news/gr-yaris-ev" target="_blank" rel="noopener">丰田 GR Yaris EV 性能版 2027 年上市<span class="arrow">↗</span></a>
+            <p class="news-snippet">丰田 GR 部门宣布 GR Yaris 电动版将于 2027 年上市，搭载三电机四驱系统，最大功率 600 马力，0-100 km/h 加速小于 2.5 秒。</p>
+            <span class="news-meta">
+              <span>toyota.com</span>
+              <span class="dot">·</span>
+              <span>2026-05-16</span>
+              <span class="dot">·</span>
+              <span>2026-05-16</span>
+            </span>
+          </li>
+        
+      </ul>
+    </section></main>
+  <footer>数据来源：Google News · 生成于 2026-06-21 · 仅供参考</footer>
+</div>
+<script>
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.co;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('section[data-co]').forEach(s => s.hidden = s.dataset.co !== target);
+    tab.classList.add('active');
+    history.replaceState(null, '', '#' + target);
+  });
+});
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = location.hash.replace('#', '');
+  if (hash) {
+    const tab = document.querySelector('.tab[data-co="' + hash + '"]');
+    if (tab) tab.click();
+  }
+  const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.dataset.theme = theme;
+  const btn = document.querySelector('.theme-toggle');
+  if (btn) {
+    btn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色';
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      btn.textContent = next === 'dark' ? '☀️ 浅色' : '🌙 深色';
+    });
+  }
+});
+</script>
+</body>
+</html>

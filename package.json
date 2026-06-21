@@ -7,12 +7,13 @@
     "test": "node --test test/unit/*.test.mjs",
     "test:integration": "node test/integration.mjs",
     "build": "node src/build.mjs",
-    "deploy": "node deploy.mjs"
+    "demo": "node demo-build.mjs",
+    "demo:carbon-fiber": "node carbon-fiber-demo.mjs",
+    "real": "node real-build.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.27.0",
     "fast-xml-parser": "^4.5.0",
-    "archiver": "^7.0.1",
     "dotenv": "^16.4.5"
   },
   "engines": {
