@@ -11,7 +11,14 @@
     {
       "slug": "new-energy-vehicles-industry",
       "prompt": "新能源汽车",
-      "news_count": 41,
+      "news_count": 45,
+      "total_companies": 6,
+      "ok": true
+    },
+    {
+      "slug": "semiconductor-industry",
+      "prompt": "半导体",
+      "news_count": 43,
       "total_companies": 6,
       "ok": true
     }
