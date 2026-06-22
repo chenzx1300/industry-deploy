@@ -1,0 +1,19 @@
+{
+  "date": "2026-06-22",
+  "results": [
+    {
+      "slug": "carbon-fiber-industry",
+      "prompt": "碳纤维",
+      "news_count": 22,
+      "total_companies": 6,
+      "ok": true
+    },
+    {
+      "slug": "new-energy-vehicles-industry",
+      "prompt": "新能源汽车",
+      "news_count": 41,
+      "total_companies": 6,
+      "ok": true
+    }
+  ]
+}
