@@ -1,0 +1,28 @@
+{
+  "industries": [
+    {
+      "slug": "carbon-fiber-industry",
+      "prompt": "碳纤维",
+      "companies": [
+        { "id": "sinofibers", "name": "中复神鹰 Sinofibers", "region": "cn", "domain": "sinofibers.com", "monogram": "复", "monogram_color": "#1e40af" },
+        { "id": "weihai", "name": "威海拓展 Weihai Tuozhan", "region": "cn", "domain": "weihaifiber.com", "monogram": "海", "monogram_color": "#0d9488" },
+        { "id": "guangwei", "name": "光威复材 Guangwei", "region": "cn", "domain": "guangweicf.com", "monogram": "光", "monogram_color": "#475569" },
+        { "id": "toray", "name": "Toray 东丽", "region": "intl", "domain": "toray.com", "monogram": "T", "monogram_color": "#9f1239" },
+        { "id": "hexcel", "name": "Hexcel 赫氏", "region": "intl", "domain": "hexcel.com", "monogram": "H", "monogram_color": "#3730a3" },
+        { "id": "sgl", "name": "SGL Carbon 西格里", "region": "intl", "domain": "sglcarbon.com", "monogram": "S", "monogram_color": "#1f2937" }
+      ]
+    },
+    {
+      "slug": "new-energy-vehicles-industry",
+      "prompt": "新能源汽车",
+      "companies": [
+        { "id": "byd", "name": "比亚迪 BYD", "region": "cn", "domain": "byd.com", "monogram": "比", "monogram_color": "#dc2626" },
+        { "id": "catl", "name": "宁德时代 CATL", "region": "cn", "domain": "catl.com", "monogram": "宁", "monogram_color": "#0ea5e9" },
+        { "id": "nio", "name": "蔚来 NIO", "region": "cn", "domain": "nio.com", "monogram": "蔚", "monogram_color": "#059669" },
+        { "id": "tesla", "name": "Tesla 特斯拉", "region": "intl", "domain": "tesla.com", "monogram": "T", "monogram_color": "#dc2626" },
+        { "id": "vw", "name": "Volkswagen 大众", "region": "intl", "domain": "volkswagen.com", "monogram": "V", "monogram_color": "#1e40af" },
+        { "id": "toyota", "name": "Toyota 丰田", "region": "intl", "domain": "toyota.com", "monogram": "T", "monogram_color": "#b91c1c" }
+      ]
+    }
+  ]
+}

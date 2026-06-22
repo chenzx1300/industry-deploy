@@ -1,6 +1,9 @@
 node_modules/
 .env
+# Generated industry data (gitignored); config files (industries.json, latest-build.json) tracked
 data/*.json
+!data/industries.json
+!data/latest-build.json
 dist/
 tmp-rss-cache/
 docs/.cache/
