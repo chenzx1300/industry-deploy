@@ -34,7 +34,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/ data/latest-build.json data/<slug>.json data/manifest.json 2>/dev/null || true
+          git add docs/ data/latest-build.json data/manifest.json
+          # Also add all generated industry data files
+          for slug in $(jq -r '.industries[].slug' data/industries.json); do
+            [ -f "data/${slug}.json" ] && git add "data/${slug}.json"
+          done
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
