@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>半导体 · 行业雷达</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #f5f5f7;
+  --surface-elevated: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.16);
+  --divider: rgba(0, 0, 0, 0.06);
+  --text: #1d1d1f;
+  --text-soft: #6e6e73;
+  --text-faint: #86868b;
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --accent-soft: rgba(0, 113, 227, 0.08);
+  --accent-tint: rgba(0, 113, 227, 0.04);
+  --cn-tint: #ff3b30;
+  --intl-tint: #0071e3;
+  --highlight: #fff8e6;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-serif: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Songti SC', serif;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 18px;
+}
+[data-theme="dark"] {
+  --bg: #000000;
+  --surface: #1c1c1e;
+  --surface-soft: #2c2c2e;
+  --surface-elevated: #2c2c2e;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --divider: rgba(255, 255, 255, 0.06);
+  --text: #f5f5f7;
+  --text-soft: #98989d;
+  --text-faint: #6e6e73;
+  --accent: #0a84ff;
+  --accent-hover: #409cff;
+  --accent-soft: rgba(10, 132, 255, 0.16);
+  --accent-tint: rgba(10, 132, 255, 0.06);
+  --cn-tint: #ff453a;
+  --intl-tint: #0a84ff;
+  --highlight: #3a2e0a;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--bg); }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+.container { max-width: 980px; margin: 0 auto; padding: 64px 32px; }
+
+.theme-toggle {
+  position: fixed; top: 24px; right: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 980px;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s;
+  z-index: 10;
+}
+[data-theme="dark"] .theme-toggle {
+  background: rgba(28, 28, 30, 0.72);
+}
+.theme-toggle:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.theme-toggle:active { transform: translateY(0); }
+
+header { margin-bottom: 56px; }
+.chip {
+  display: inline-block;
+  background: var(--accent-tint);
+  color: var(--accent);
+  padding: 5px 12px;
+  border-radius: 980px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+header h1 {
+  font-family: var(--font-sans);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+}
+header .meta {
+  color: var(--text-soft);
+  font-size: 15px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+header .meta strong { color: var(--text); font-weight: 600; }
+header .meta .dot { color: var(--text-faint); }
+
+nav.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 40px 0 56px;
+}
+.region-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  transition: border-color 0.2s;
+}
+.region-block:hover { border-color: var(--border-strong); }
+.region-block.cn { border-left: 3px solid var(--cn-tint); }
+.region-block.intl { border-left: 3px solid var(--intl-tint); }
+.region-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.region-label .flag { font-size: 14px; }
+.region-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+nav.tabs button {
+  font-family: var(--font-sans);
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: var(--text-soft);
+  font-size: 14.5px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  text-align: left;
+  width: 100%;
+}
+nav.tabs button:hover {
+  color: var(--text);
+  background: var(--surface-soft);
+}
+nav.tabs button.active {
+  color: var(--accent);
+  background: var(--accent-tint);
+  font-weight: 600;
+}
+nav.tabs .name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+nav.tabs .count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-faint);
+  background: var(--surface-soft);
+  padding: 1px 8px;
+  border-radius: 980px;
+  min-width: 24px;
+  flex-shrink: 0;
+}
+nav.tabs button.active .count {
+  color: var(--accent);
+  background: var(--surface);
+}
+
+main section { margin-bottom: 56px; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+main section h2 {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 36px;
+  box-shadow: var(--shadow-sm);
+}
+.summary-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.summary-label::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+}
+.summary ul { list-style: none; margin-bottom: 16px; }
+.summary li {
+  padding: 10px 0 10px 22px;
+  position: relative;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  border-bottom: 1px solid var(--divider);
+  letter-spacing: -0.01em;
+}
+.summary li:last-child { border-bottom: none; }
+.summary li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.summary .stats {
+  font-size: 13px;
+  color: var(--text-soft);
+  padding-top: 14px;
+  border-top: 1px solid var(--divider);
+}
+
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--divider);
+}
+.company-header .logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.company-header .name-block { flex: 1; min-width: 0; }
+.company-header h2 {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.company-header .domain {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+ul.news-list { list-style: none; }
+li.news-item {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--divider);
+  transition: padding-left 0.2s;
+}
+li.news-item:hover { padding-left: 8px; }
+a.news-title {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 600;
+  display: inline;
+  line-height: 1.4;
+  font-family: var(--font-sans);
+  letter-spacing: -0.015em;
+  transition: color 0.15s;
+}
+li.news-item:hover a.news-title { color: var(--accent); }
+a.news-title .arrow {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-faint);
+  margin-left: 4px;
+  transition: color 0.15s;
+}
+li.news-item:hover a.news-title .arrow { color: var(--accent); }
+p.news-snippet {
+  color: var(--text-soft);
+  font-size: 15px;
+  margin: 8px 0 10px;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+span.news-meta {
+  color: var(--text-faint);
+  font-size: 13px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+span.news-meta .dot { color: var(--border-strong); }
+.empty {
+  color: var(--text-soft);
+  padding: 40px 0;
+  text-align: center;
+  font-size: 15px;
+}
+footer {
+  margin-top: 96px;
+  padding-top: 28px;
+  border-top: 1px solid var(--divider);
+  color: var(--text-faint);
+  font-size: 13px;
+  text-align: center;
+}
+
+.industry-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.industry-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.industry-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.industry-card a {
+  display: block;
+  padding: 32px;
+  text-decoration: none;
+  color: var(--text);
+}
+.industry-card h3 {
+  font-family: var(--font-sans);
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+.industry-card .stats {
+  color: var(--text-soft);
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+}
+.industry-card time {
+  display: block;
+  color: var(--text-faint);
+  font-size: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--divider);
+}
+.empty-state {
+  text-align: center;
+  padding: 96px 32px;
+  color: var(--text-soft);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.empty-state code {
+  font-family: ui-monospace, 'SF Mono', 'Menlo', monospace;
+  background: var(--surface-soft);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 48px 20px; }
+  header h1 { font-size: 36px; }
+  .region-tabs { grid-template-columns: 1fr; }
+  main section h2 { font-size: 28px; }
+  .theme-toggle { top: 16px; right: 16px; padding: 6px 12px; font-size: 12px; }
+  .industry-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <span class="chip">行业雷达</span>
+    <h1>半导体</h1>
+    <p class="meta">
+      <span><strong>6 家头部公司</strong></span>
+      <span>53 条新闻</span>
+      <span>生成于 2026-06-22</span>
+    </p>
+  </header>
+  <nav class="tabs">
+    <div class="region-block cn">
+      <div class="region-label">中国头部</div>
+      <div class="region-tabs">
+        <button class="tab" data-co="smic"><span class="name">中芯国际 SMIC</span><span class="count">10</span></button><button class="tab" data-co="ymtc"><span class="name">长江存储 YMTC</span><span class="count">3</span></button><button class="tab" data-co="cxmt"><span class="name">长鑫存储 CXMT</span><span class="count">10</span></button>
+      </div>
+    </div>
+    <div class="region-block intl">
+      <div class="region-label">国际头部</div>
+      <div class="region-tabs">
+        <button class="tab" data-co="tsmc"><span class="name">台积电 TSMC</span><span class="count">10</span></button><button class="tab" data-co="samsung"><span class="name">三星电子 Samsung</span><span class="count">10</span></button><button class="tab" data-co="intel"><span class="name">Intel</span><span class="count">10</span></button>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <section data-co="smic">
+      <div class="company-header">
+        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="#dc2626"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">中</text>
+  </svg>
+        <div class="name-block">
+          <h2>中芯国际 SMIC</h2>
+          <span class="domain">smics.com</span>
+        </div>
+      </div>
+      <div class="summary"><div class="summary-label">本周要点</div><ul><li>花旗：中芯国际上调至“买入”评级 目标价上调至90港元 - 新浪财经</li><li>大摩：成熟制程上升周期即将到来 上调中芯国际及华虹半导体目标价 - 新浪财经</li><li>港股半导体股集体走强，华虹宏力涨超10%，中芯国际涨超4% - 新浪财经</li></ul><div class="stats">10 条新闻 · 最近 2026-06-18</div></div>
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMirgVBVV95cUxPT3lqSW1TWUs2TTlaSHdaRHpCYzYtdElDbGRrSW5rdkRoRVR0Nm1ZODNKUDZIWV9YMkt1U1l4WTNteG01NGVVUE5Xa05DUW5oOEg2VUgyVVlvRVpUNlR5anRpUFFMRzJmRENJT19uQkhmMlU1aWU1eHk5aDYtLXlfR0M4OW5KZ0ZDX19mLU9kS1h3NS1DUTE0S0VfcVE4aE9laTV4UXRJdjhYREdVN3Z0Mk1nZGRLd09FSzZ5UEpyOVM5UU9jZGZlYkhoUjNhSV9yd2ZidEF2SlN4UlNSeVF3cFpQSll3NTNkS05OYUdlaXFuOXpOWnN5ZnVIbmdEQkh3SXk4SUJmNGEyaG5zaDhlSFF5c3RjMkRyVGNWdDFBODJ4TndzamFhTVA3Z3JFNnlJSGNCaGZCZF9PSU5KcjQtcHEtRlVhTGRYWnRHWDZiS01xVk13bDZMY2lzY0c2eWFvTXhlU3d6bnJYR1JxLUpjdm5aMi1yRHBwdERHaEhNd0tWZFRMQS1yMmVKM0VhTGxMbU93czV3T3lsc3NLUXpaa2hIS0V0N3JDREZGNXJQY3VvdnFjOG5mM0QtQWU1bmMyNVhTOUtJNkQ5S3k3OFF4SzE0ZllJemttZzZEalpDcVRRUHBjeGwtZ1lJRUlRQTFtbUxCZkF1T3RTaHF0RmtOVTBWTF93WHUzdHpPRXh2c0JfQlJYUHdqVXlTSWZKNE9wQmRYazlBbjdqUUFSZF9VdzA0UmVsUkRGN2xkaG85RFNvdk1lTUpNcWJDaTB6aW51QzVydVdyTHlwUEljS3RYNVZ3MG9GVkZXYjNCczVtUVI3YlFqWlB2RWNvcHRhcFQ1aUFsT3lfZVR1UHp5SUZxcEEwd3Y5WWR5RFNPVnBzdlFjNERYX2h2WTliU2VCQQ?oc=5" target="_blank" rel="noopener">花旗：中芯国际上调至“买入”评级 目标价上调至90港元 - 新浪财经<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMirgVBVV95cUxPT3lqSW1TWUs2TTlaSHdaRHpCYzYtdElDbGRrSW5rdkRoRVR0Nm1ZODNKUDZIWV9YMkt1U1l4WTNteG01NGVVUE5Xa05DUW5oOEg2VUgyVVlvRVpUNlR5anRpUFFMRzJmRENJT19uQkhmMlU1aWU1eHk5aDYtLXlfR0M4OW5KZ0ZDX19mLU9kS1h3NS1DUTE0S0VfcVE4aE9laTV4UXRJdjhYREdVN3Z0Mk1nZGRLd09FSzZ5UEpyOVM5UU9jZGZlYkhoUjNhSV9yd2ZidEF2SlN4UlNSeVF3cFpQSll3NTNkS05OYUdlaXFuOXpOWnN5ZnVIbmdEQkh3SXk4SUJmNGEyaG5zaDhlSFF5c3RjMkRyVGNWdDFBODJ4TndzamFhTVA3Z3JFNnlJSGNCaGZCZF9PSU5KcjQtcHEtRlVhTGRYWnRHWDZiS01xVk13bDZMY2lzY0c2eWFvTXhlU3d6bnJYR1JxLUpjdm5aMi1yRHBwdERHaEhNd0tWZFRMQS1yMmVKM0VhTGxMbU93czV3T3lsc3NLUXpaa2hIS0V0N3JDREZGNXJQY3VvdnFjOG5mM0QtQWU1bmMyNVhTOUtJNkQ5S3k3OFF4SzE0ZllJemttZzZEalpDcVRRUHBjeGwtZ1lJRUlRQTFtbUxCZkF1T3RTaHF0RmtOVTBWTF93WHUzdHpPRXh2c0JfQlJYUHdqVXlTSWZKNE9wQmRYazlBbjdqUUFSZF9VdzA0UmVsUkRGN2xkaG85RFNvdk1lTUpNcWJDaTB6aW51QzVydVdyTHlwUEljS3RYNVZ3MG9GVkZXYjNCczVtUVI3YlFqWlB2RWNvcHRhcFQ1aUFsT3lfZVR1UHp5SUZxcEEwd3Y5WWR5RFNPVnBzdlFjNERYX2h2WTliU2VCQQ?oc=5&quot; target=&quot;_blank&quot;&gt;花旗：中芯国际上调至“买入”评级 目标价上调至90港元&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;新浪财经&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>finance.sina.cn</span>
+              <span>2026-06-18</span>
+              <span>3d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiwgRBVV95cUxNVE10dEQ5YnRVYXdXSk1HMHZvUFU3QlZ4dDhWT0ptd3E0RVlJcHdRay1WeFRBTEJjaE5SdXFIYjVuTEcwckx4dTVsUWNsd0pJdmo3Y2lnOGpFTTZjYnF1QWNSREVqZUl6UXFGdklsTmlXdk5mdjJKMkpuR2F2d2JGaUpaTUhvRV9BcFZBOVJGNjdHdmZfNFJQMS1XZUhDMFZCeloyN2VrOW9jQnlsQ2hyOVdDVzZ6UXVHX0U1WlVEeXVHSWlhdnBQTUd6dVo1UXBGZExuelFfblo2ekN5YjRfOHY1a1VTY2E3TDJubzF5ZlgwMUZpTDA4dXI3T043bVQwYmtpMHY4M2NDRnFyVmdBNmJxYi16OTcxN3FTV2JMZVB2eHBQbzV6YmE1eGJTLVYyRHlyTElsMlIzNExacW5XdG5wdkpOZmRmUWtoSk03TGJJNWw0RmwxaVk3TWs1ZHV5LTJwZHJGdmZPUWFlN2dRVl91RVBDZWlpYTFLMWhxRlNUS3RpYVFvZF9fNjd1NGl1eUF4VWlGbXlTUm42N1pWZ0V1ekxjR1ZLZlBaOUN6SGd2enVPcmtOcjlvQnh6WnhpZUJVaHFILUEyeUpRR0lWcVdJeHVwN19KR2FZdEZNaHN2clktMk5OTzFxOE8wV25pZkxvLVB4RmRSRHM4TDZ5NnRrVTZiWEg1bnBsdU9hczNIcVBlR1h4S243ZWZHeEhSMmNHd0pCWWxyVWdmTVU1TXNEeUJWbGF4QVFTMmxHS1NOdw?oc=5" target="_blank" rel="noopener">大摩：成熟制程上升周期即将到来 上调中芯国际及华虹半导体目标价 - 新浪财经<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiwgRBVV95cUxNVE10dEQ5YnRVYXdXSk1HMHZvUFU3QlZ4dDhWT0ptd3E0RVlJcHdRay1WeFRBTEJjaE5SdXFIYjVuTEcwckx4dTVsUWNsd0pJdmo3Y2lnOGpFTTZjYnF1QWNSREVqZUl6UXFGdklsTmlXdk5mdjJKMkpuR2F2d2JGaUpaTUhvRV9BcFZBOVJGNjdHdmZfNFJQMS1XZUhDMFZCeloyN2VrOW9jQnlsQ2hyOVdDVzZ6UXVHX0U1WlVEeXVHSWlhdnBQTUd6dVo1UXBGZExuelFfblo2ekN5YjRfOHY1a1VTY2E3TDJubzF5ZlgwMUZpTDA4dXI3T043bVQwYmtpMHY4M2NDRnFyVmdBNmJxYi16OTcxN3FTV2JMZVB2eHBQbzV6YmE1eGJTLVYyRHlyTElsMlIzNExacW5XdG5wdkpOZmRmUWtoSk03TGJJNWw0RmwxaVk3TWs1ZHV5LTJwZHJGdmZPUWFlN2dRVl91RVBDZWlpYTFLMWhxRlNUS3RpYVFvZF9fNjd1NGl1eUF4VWlGbXlTUm42N1pWZ0V1ekxjR1ZLZlBaOUN6SGd2enVPcmtOcjlvQnh6WnhpZUJVaHFILUEyeUpRR0lWcVdJeHVwN19KR2FZdEZNaHN2clktMk5OTzFxOE8wV25pZkxvLVB4RmRSRHM4TDZ5NnRrVTZiWEg1bnBsdU9hczNIcVBlR1h4S243ZWZHeEhSMmNHd0pCWWxyVWdmTVU1TXNEeUJWbGF4QVFTMmxHS1NOdw?oc=5&quot; target=&quot;_blank&quot;&gt;大摩：成熟制程上升周期即将到来 上调中芯国际及华虹半导体目标价&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;新浪财经&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>finance.sina.cn</span>
+              <span>2026-06-16</span>
+              <span>5d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMib0FVX3lxTFBLVlJrejBISHBTYmJYSVdra3hySThob3g5dmJpSS1yaVZtR0d3bXEwbjkyX2JaVm1DV2hITjROX21iWWd4STd4eFlHOHF6ZTZnNUFXYVByWTEtdUMtUHpQYTBscjZKbTlrYUFMWk0xUQ?oc=5" target="_blank" rel="noopener">港股半导体股集体走强，华虹宏力涨超10%，中芯国际涨超4% - 新浪财经<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMib0FVX3lxTFBLVlJrejBISHBTYmJYSVdra3hySThob3g5dmJpSS1yaVZtR0d3bXEwbjkyX2JaVm1DV2hITjROX21iWWd4STd4eFlHOHF6ZTZnNUFXYVByWTEtdUMtUHpQYTBscjZKbTlrYUFMWk0xUQ?oc=5&quot; target=&quot;_blank&quot;&gt;港股半导体股集体走强，华虹宏力涨超10%，中芯国际涨超4%&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;新浪财经&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>cj.sina.cn</span>
+              <span>2026-06-15</span>
+              <span>7d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiYkFVX3lxTE1aTzJ5TFdBMGtyeVVNQkZxNXc0UW51VEJabWdGMXJBcE9ZVGxLQnUxTHVEVmp3Zm5TNzVUS0ZQcmM0dnRVNklKMkdQUHdSZnNwWFdORG9XRzN3MTNUZ3JUZlJn?oc=5" target="_blank" rel="noopener">6月9日大唐电信涨停：中芯国际概念股，半导体，国产芯片概念热股_个股掘金 - 证券之星<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiYkFVX3lxTE1aTzJ5TFdBMGtyeVVNQkZxNXc0UW51VEJabWdGMXJBcE9ZVGxLQnUxTHVEVmp3Zm5TNzVUS0ZQcmM0dnRVNklKMkdQUHdSZnNwWFdORG9XRzN3MTNUZ3JUZlJn?oc=5&quot; target=&quot;_blank&quot;&gt;6月9日大唐电信涨停：中芯国际概念股，半导体，国产芯片概念热股_个股掘金&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;证券之星&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>stock.stockstar.com</span>
+              <span>2026-06-09</span>
+              <span>13d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE8wZWg5Z1kxOGM3SlR0Q0p4WG5rNmg0cjdPWDJZdnk0YWVMbXZnSmtxbnNzci1zMjBFSnFSNlJrcTVMWjlJbnZudmtUWG9hd3Q4dWZVQ1hqLXRCNEExQklZYg?oc=5" target="_blank" rel="noopener">6月9日港股半导体行业沽空数据盘点，中芯国际、华虹宏力、澜起科技沽空金额位居行业前三 - 证券之星<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiYEFVX3lxTE8wZWg5Z1kxOGM3SlR0Q0p4WG5rNmg0cjdPWDJZdnk0YWVMbXZnSmtxbnNzci1zMjBFSnFSNlJrcTVMWjlJbnZudmtUWG9hd3Q4dWZVQ1hqLXRCNEExQklZYg?oc=5&quot; target=&quot;_blank&quot;&gt;6月9日港股半导体行业沽空数据盘点，中芯国际、华虹宏力、澜起科技沽空金额位居行业前三&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;证券之星&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>wap.stockstar.com</span>
+              <span>2026-06-09</span>
+              <span>13d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE5jcDhnLXhRM3JkbG5wQWRiVVkydVhnSFhtWFhrQjVhR250Mkp1ZHB2dHBGMHM5SmFlVjQzazlCUENQOUNsOG5ELWlqMG9SOWRsOHVhTzZkT2x3QnF2b29UdA?oc=5" target="_blank" rel="noopener">前中芯国际HR创业，六年六轮融资，营收三年近增四倍！上海半导体独角兽，冲刺港股上市 - 东方财富<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiYEFVX3lxTE5jcDhnLXhRM3JkbG5wQWRiVVkydVhnSFhtWFhrQjVhR250Mkp1ZHB2dHBGMHM5SmFlVjQzazlCUENQOUNsOG5ELWlqMG9SOWRsOHVhTzZkT2x3QnF2b29UdA?oc=5&quot; target=&quot;_blank&quot;&gt;前中芯国际HR创业，六年六轮融资，营收三年近增四倍！上海半导体独角兽，冲刺港股上市&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;东方财富&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>wap.eastmoney.com</span>
+              <span>2026-06-06</span>
+              <span>15d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiUEFVX3lxTE5KamdYSC1UaHJib0tUWWtmU3FKanZPZTJXZFR1eHdMN0ZLNmxqMmMwbXRNdU9iSXpFRXZFbnhTSmFTemFpcktQTzN3bmp5T0xG?oc=5" target="_blank" rel="noopener">$中芯国际(00981)$ 减持节奏： 华虹半导体更早启动减持、2021-2024 年持续年年出货； 中芯国际202... - 雪球<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiUEFVX3lxTE5KamdYSC1UaHJib0tUWWtmU3FKanZPZTJXZFR1eHdMN0ZLNmxqMmMwbXRNdU9iSXpFRXZFbnhTSmFTemFpcktQTzN3bmp5T0xG?oc=5&quot; target=&quot;_blank&quot;&gt;$中芯国际(00981)$ 减持节奏： 华虹半导体更早启动减持、2021-2024 年持续年年出货； 中芯国际202...&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;雪球&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>xueqiu.com</span>
+              <span>2026-06-03</span>
+              <span>19d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE00TTZ3UmJ6YmdNaWlBTVFCZ2ZfR2dnWTZaTll5M2tNTDhUbk5hZVBqY050d2o3c0JZcUZxZFJrM1hvM0FscFNYM3VsZnhtWk16ZWVmbTB2OEFLVWRyTHgzT0RCaVc3UQ?oc=5" target="_blank" rel="noopener">港股半导体卖空潮涌 中芯国际卖空规模刷新历史峰值 - 东方财富<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiZkFVX3lxTE00TTZ3UmJ6YmdNaWlBTVFCZ2ZfR2dnWTZaTll5M2tNTDhUbk5hZVBqY050d2o3c0JZcUZxZFJrM1hvM0FscFNYM3VsZnhtWk16ZWVmbTB2OEFLVWRyTHgzT0RCaVc3UQ?oc=5&quot; target=&quot;_blank&quot;&gt;港股半导体卖空潮涌 中芯国际卖空规模刷新历史峰值&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;东方财富&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>finance.eastmoney.com</span>
+              <span>2026-05-29</span>
+              <span>24d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMib0FVX3lxTE9CZG5yNUlnWjdUZ2VqV2xDZjJFb2pNTGRWUVNsMnNvd0tKUUUxX3F1aW02cmY2WHNGZUh0TlEyaHcyWUxBa1M1VkRHanl2cGQwd1ZqMlJ1ZGJqV0ZFTWFhU1ZzdXZEdVFqb0lVbnhGQQ?oc=5" target="_blank" rel="noopener">A股半导体股集体下挫，中芯国际跌超5% - 新浪财经<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMib0FVX3lxTE9CZG5yNUlnWjdUZ2VqV2xDZjJFb2pNTGRWUVNsMnNvd0tKUUUxX3F1aW02cmY2WHNGZUh0TlEyaHcyWUxBa1M1VkRHanl2cGQwd1ZqMlJ1ZGJqV0ZFTWFhU1ZzdXZEdVFqb0lVbnhGQQ?oc=5&quot; target=&quot;_blank&quot;&gt;A股半导体股集体下挫，中芯国际跌超5%&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;新浪财经&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>cj.sina.cn</span>
+              <span>2026-05-29</span>
+              <span>24d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNSldyNFdZTi1nTlowczF2Z2RHeWRVVnkzeVRhNTdkS2xOQlNBX191bms0cTJYOXFHN3Zrcm1IV1ZKM0J4cll4Qkc1Tzc1Yk5iQ0JOWTBhU1MxY01oRk5RVno3TjNuZkZuZGpBX1hEUE15UU5KY0ZsR0VNSmpOUDdqT0QtaVUxZjVubjJ0WnZ0OA?oc=5" target="_blank" rel="noopener">A股全线收跌，半导体板块大跌，中芯国际跌8.97%，寒武纪跌5.86%；白酒板块走高，电力板块多股涨停 - 21财经<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMijwFBVV95cUxNSldyNFdZTi1nTlowczF2Z2RHeWRVVnkzeVRhNTdkS2xOQlNBX191bms0cTJYOXFHN3Zrcm1IV1ZKM0J4cll4Qkc1Tzc1Yk5iQ0JOWTBhU1MxY01oRk5RVno3TjNuZkZuZGpBX1hEUE15UU5KY0ZsR0VNSmpOUDdqT0QtaVUxZjVubjJ0WnZ0OA?oc=5&quot; target=&quot;_blank&quot;&gt;A股全线收跌，半导体板块大跌，中芯国际跌8.97%，寒武纪跌5.86%；白酒板块走高，电力板块多股涨停&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;21财经&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>21jingji.com</span>
+              <span>2026-05-29</span>
+              <span>24d ago</span>
+            </span>
+          </li>
+        
+      </ul>
+    </section>
+    <section data-co="ymtc" hidden>
+      <div class="company-header">
+        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="#7c3aed"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">江</text>
+  </svg>
+        <div class="name-block">
+          <h2>长江存储 YMTC</h2>
+          <span class="domain">ymtc.com</span>
+        </div>
+      </div>
+      <div class="summary"><div class="summary-label">本周要点</div><ul><li>致态TiPlus7100s固态硬盘正式发布，性能全面跃迁 - 长江存储官网</li><li>长江存储推出UFS 3.1高速闪存芯片，加速5G时代存储升级 - 长江存储官网</li><li>“2020中国IC风云榜”揭晓 长江存储荣获年度技术突破奖 - 长江存储官网</li></ul><div class="stats">3 条新闻 · 最近 2025-11-10</div></div>
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE0tNXYyQVQ1YVMzM2c5b1lyTlZlc2pZd2RKZ2lxYmxOZy1aOWZPNkNtcjRqRG9VME5iRUZaSEJWckVUYnJUQWVFcm5rSXo?oc=5" target="_blank" rel="noopener">致态TiPlus7100s固态硬盘正式发布，性能全面跃迁 - 长江存储官网<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiTEFVX3lxTE0tNXYyQVQ1YVMzM2c5b1lyTlZlc2pZd2RKZ2lxYmxOZy1aOWZPNkNtcjRqRG9VME5iRUZaSEJWckVUYnJUQWVFcm5rSXo?oc=5&quot; target=&quot;_blank&quot;&gt;致态TiPlus7100s固态硬盘正式发布，性能全面跃迁&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;长江存储官网&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>ymtc.com</span>
+              <span>2025-11-10</span>
+              <span>2025-11-10</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE42cFl3dWdXZWoxMGFXWWRHekEwWmFOQjZuV2NBTFdNekRpMm5sUnBVMjNSUzBzN2U0aTRERWFSM0Ixb2pPeUxoZFE2Tmg?oc=5" target="_blank" rel="noopener">长江存储推出UFS 3.1高速闪存芯片，加速5G时代存储升级 - 长江存储官网<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiTEFVX3lxTE42cFl3dWdXZWoxMGFXWWRHekEwWmFOQjZuV2NBTFdNekRpMm5sUnBVMjNSUzBzN2U0aTRERWFSM0Ixb2pPeUxoZFE2Tmg?oc=5&quot; target=&quot;_blank&quot;&gt;长江存储推出UFS 3.1高速闪存芯片，加速5G时代存储升级&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;长江存储官网&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>ymtc.com</span>
+              <span>2022-04-19</span>
+              <span>2022-04-19</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE1SUFVCcFcxLTdTT3hYMGtMMjNrTVZWWjktN2tiWFBsTHRFRFdFTjZRMFlPZXdpUVFzWVhJcGg5MGstMVJrRl8teGdoTjI?oc=5" target="_blank" rel="noopener">“2020中国IC风云榜”揭晓 长江存储荣获年度技术突破奖 - 长江存储官网<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiTEFVX3lxTE1SUFVCcFcxLTdTT3hYMGtMMjNrTVZWWjktN2tiWFBsTHRFRFdFTjZRMFlPZXdpUVFzWVhJcGg5MGstMVJrRl8teGdoTjI?oc=5&quot; target=&quot;_blank&quot;&gt;“2020中国IC风云榜”揭晓 长江存储荣获年度技术突破奖&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;长江存储官网&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>ymtc.com</span>
+              <span>2021-12-15</span>
+              <span>2021-12-15</span>
+            </span>
+          </li>
+        
+      </ul>
+    </section>
+    <section data-co="cxmt" hidden>
+      <div class="company-header">
+        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="#0891b2"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">存</text>
+  </svg>
+        <div class="name-block">
+          <h2>长鑫存储 CXMT</h2>
+          <span class="domain">cxmt.com</span>
+        </div>
+      </div>
+      <div class="summary"><div class="summary-label">本周要点</div><ul><li>长鑫存储亮相IC China，首次全面展示DDR5和LPDDR5X最新产品- 企业动态 - cxmt.com</li><li>长鑫存储宣布已量产LPDDR5X产品 - cxmt.com</li><li>长鑫成立北京地区科协助力区域科技发展- 企业动态 - cxmt.com</li></ul><div class="stats">10 条新闻 · 最近 2025-11-23</div></div>
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiT0FVX3lxTFBoY1hnb0pEMWJPblVKaUFoWFVHSV9tUTVLQngyQ0NMZUpud05GaW1pbm5vNVJycUIzTm5KMzE0NFd3QW00TXk2WlduTURsRk0?oc=5" target="_blank" rel="noopener">长鑫存储亮相IC China，首次全面展示DDR5和LPDDR5X最新产品- 企业动态 - cxmt.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiT0FVX3lxTFBoY1hnb0pEMWJPblVKaUFoWFVHSV9tUTVLQngyQ0NMZUpud05GaW1pbm5vNVJycUIzTm5KMzE0NFd3QW00TXk2WlduTURsRk0?oc=5&quot; target=&quot;_blank&quot;&gt;长鑫存储亮相IC China，首次全面展示DDR5和LPDDR5X最新产品- 企业动态&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;cxmt.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>cxmt.com</span>
+              <span>2025-11-23</span>
+              <span>2025-11-23</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE5JLUEwSXA2WFZqb2piSTdPUWFxdlhZZzhFdGF2ZE04ZnlXOVN1UG5mV05iSVVhdHZOY3lkeUFoTlk0cDR1QVE0TWtkZ0JGa2s?oc=5" target="_blank" rel="noopener">长鑫存储宣布已量产LPDDR5X产品 - cxmt.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiT0FVX3lxTE5JLUEwSXA2WFZqb2piSTdPUWFxdlhZZzhFdGF2ZE04ZnlXOVN1UG5mV05iSVVhdHZOY3lkeUFoTlk0cDR1QVE0TWtkZ0JGa2s?oc=5&quot; target=&quot;_blank&quot;&gt;长鑫存储宣布已量产LPDDR5X产品&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;cxmt.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>cxmt.com</span>
+              <span>2025-10-28</span>
+              <span>2025-10-28</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE85U0NuRWU4dE9XdkJGRURwWURPN1F5T2RfQy1YcGJEbEFnYTdLQ2xiQzhHdFhrU3k5UnQ0RFJEMUJNM2F1ZFpaN091VXluemc?oc=5" target="_blank" rel="noopener">长鑫成立北京地区科协助力区域科技发展- 企业动态 - cxmt.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiT0FVX3lxTE85U0NuRWU4dE9XdkJGRURwWURPN1F5T2RfQy1YcGJEbEFnYTdLQ2xiQzhHdFhrU3k5UnQ0RFJEMUJNM2F1ZFpaN091VXluemc?oc=5&quot; target=&quot;_blank&quot;&gt;长鑫成立北京地区科协助力区域科技发展- 企业动态&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;cxmt.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>cxmt.com</span>
+              <span>2025-04-13</span>
+              <span>2025-04-13</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE5VclhyY0hZNm1jRFVnRjdPTmRKbWQ1RnZmVk9mTTZ5WFlPV2EzWnVRMUNFeFhkRjBXdF9sZjFubXVzR3Fjak9vQ29UelVDV0E?oc=5" target="_blank" rel="noopener">长鑫存储推出多款LPDDR5产品 - cxmt.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiT0FVX3lxTE5VclhyY0hZNm1jRFVnRjdPTmRKbWQ1RnZmVk9mTTZ5WFlPV2EzWnVRMUNFeFhkRjBXdF9sZjFubXVzR3Fjak9vQ29UelVDV0E?oc=5&quot; target=&quot;_blank&quot;&gt;长鑫存储推出多款LPDDR5产品&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;cxmt.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>cxmt.com</span>
+              <span>2023-11-28</span>
+              <span>2023-11-28</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE0zWWEwLVBNQ0pWYmVVR1F4dTJIRFpURnA4MmNTYVhkLUhJNW1rZVF0WFYxTmxuYlFuMEJEdGZ4dVlrbjlnV1UwSnhXRTh3ZXM?oc=5" target="_blank" rel="noopener">长鑫存储与SEMI举办节能降碳研讨会- 企业动态 - cxmt.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiT0FVX3lxTE0zWWEwLVBNQ0pWYmVVR1F4dTJIRFpURnA4MmNTYVhkLUhJNW1rZVF0WFYxTmxuYlFuMEJEdGZ4dVlrbjlnV1UwSnhXRTh3ZXM?oc=5&quot; target=&quot;_blank&quot;&gt;长鑫存储与SEMI举办节能降碳研讨会- 企业动态&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;cxmt.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>cxmt.com</span>
+              <span>2023-09-27</span>
+              <span>2023-09-27</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE9fMXV4ZG9zUUpYMkJxd1J5QXI2d0RvcTNMTzhtYmtpT09Qd0RhYmF6a3JycDFHZ0RoblpYT0xHVm01QWZUSGQxM24xQmd4V0U?oc=5" target="_blank" rel="noopener">长鑫存储与合肥八中共建“长鑫科创班” - cxmt.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiT0FVX3lxTE9fMXV4ZG9zUUpYMkJxd1J5QXI2d0RvcTNMTzhtYmtpT09Qd0RhYmF6a3JycDFHZ0RoblpYT0xHVm01QWZUSGQxM24xQmd4V0U?oc=5&quot; target=&quot;_blank&quot;&gt;长鑫存储与合肥八中共建“长鑫科创班”&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;cxmt.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>cxmt.com</span>
+              <span>2023-09-06</span>
+              <span>2023-09-06</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE9rS1JFRnY5dVJtT3lCVmFKTy1SaWxRRktHdW5EeHc5TWlmck5hRGZYeDVrSV91WmIzd09WYlItcmtqTkw1cFhmMElHa2JQYzAzaVZNbVRtN2tIZw?oc=5" target="_blank" rel="noopener">长鑫存储8Gb DDR4启动生产 - cxmt.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiWkFVX3lxTE9rS1JFRnY5dVJtT3lCVmFKTy1SaWxRRktHdW5EeHc5TWlmck5hRGZYeDVrSV91WmIzd09WYlItcmtqTkw1cFhmMElHa2JQYzAzaVZNbVRtN2tIZw?oc=5&quot; target=&quot;_blank&quot;&gt;长鑫存储8Gb DDR4启动生产&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;cxmt.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>cxmt.com</span>
+              <span>2023-07-12</span>
+              <span>2023-07-12</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9TMGhQZnh1dlYyX0ZxdHRwbl9WdENTaE05T2tZWEtJZi1QZWhWNTREN1M4a3pyOHJQT01EWWpYRmp1OTZnWmRSQTRNQUtNcmNONU4xR0txZGdpcDFFLWt3b2V0STdWZFN1dHRrbDFMSVU?oc=5" target="_blank" rel="noopener">合作伙伴商业道德行为准则 - cxmt.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMicEFVX3lxTE9TMGhQZnh1dlYyX0ZxdHRwbl9WdENTaE05T2tZWEtJZi1QZWhWNTREN1M4a3pyOHJQT01EWWpYRmp1OTZnWmRSQTRNQUtNcmNONU4xR0txZGdpcDFFLWt3b2V0STdWZFN1dHRrbDFMSVU?oc=5&quot; target=&quot;_blank&quot;&gt;合作伙伴商业道德行为准则&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;cxmt.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>cxmt.com</span>
+              <span>2023-07-10</span>
+              <span>2023-07-10</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE1SY3pZWFpoR0p1UGF3WnlTa0pNX0JxUUdyekFqaGxNNTVpbVBfN2g0YVBWbGtiV1JYYkdlOVNKdkFudjlPc1k5T0s1RW1PRFE?oc=5" target="_blank" rel="noopener">长鑫存储8Gb DDR4启动生产- 企业动态 - cxmt.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiT0FVX3lxTE1SY3pZWFpoR0p1UGF3WnlTa0pNX0JxUUdyekFqaGxNNTVpbVBfN2g0YVBWbGtiV1JYYkdlOVNKdkFudjlPc1k5T0s1RW1PRFE?oc=5&quot; target=&quot;_blank&quot;&gt;长鑫存储8Gb DDR4启动生产- 企业动态&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;cxmt.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>cxmt.com</span>
+              <span>2023-02-01</span>
+              <span>2023-02-01</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE1zMERMTGVUbzhSb243RHJsWk9kY1IyZ1pGWl9DLWFPRUNsYi0wMTktUlVJeXJJeGs4Tm9Qc1NDTGJiWHJpUUxPSUFkTjE4cjg?oc=5" target="_blank" rel="noopener">长鑫存储首次亮相国际论坛- 企业动态 - cxmt.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiT0FVX3lxTE1zMERMTGVUbzhSb243RHJsWk9kY1IyZ1pGWl9DLWFPRUNsYi0wMTktUlVJeXJJeGs4Tm9Qc1NDTGJiWHJpUUxPSUFkTjE4cjg?oc=5&quot; target=&quot;_blank&quot;&gt;长鑫存储首次亮相国际论坛- 企业动态&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;cxmt.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>cxmt.com</span>
+              <span>2023-02-01</span>
+              <span>2023-02-01</span>
+            </span>
+          </li>
+        
+      </ul>
+    </section>
+    <section data-co="tsmc" hidden>
+      <div class="company-header">
+        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="#cc0000"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">台</text>
+  </svg>
+        <div class="name-block">
+          <h2>台积电 TSMC</h2>
+          <span class="domain">tsmc.com</span>
+        </div>
+      </div>
+      <div class="summary"><div class="summary-label">本周要点</div><ul><li>[Summer 2027] TSMC AZ Internship Opportunities - Facility Roles - careers.tsmc.com</li><li>TSMC May 2026 Revenue Report|Taiwan Semiconductor Manufacturing Company Limited - pr.tsmc.com</li><li>Senior Circuit Design Engineer - AI &amp; HPC (7708) Job Details - TSMC</li></ul><div class="stats">10 条新闻 · 最近 2026-06-12</div></div>
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMilwFBVV95cUxOYlRCNkhxVi1Qc3ROcHRpSDVTTFB0aWRlamszdEVWRFVHeHlrVERfVXQ5VEpVcXhuTFdzczZ2eENkcThrRzRRMWJMTHFBMEZPU3NBRm1zVUdva1g3RTBlRGZBVGtRcHdaSFdFR3JBUWNrUDVDWXdaeHBCdTRlX1hsLUhnZ3ZxZmk4NEtMSFlwMVVfOFBwcWpZ?oc=5" target="_blank" rel="noopener">[Summer 2027] TSMC AZ Internship Opportunities - Facility Roles - careers.tsmc.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMilwFBVV95cUxOYlRCNkhxVi1Qc3ROcHRpSDVTTFB0aWRlamszdEVWRFVHeHlrVERfVXQ5VEpVcXhuTFdzczZ2eENkcThrRzRRMWJMTHFBMEZPU3NBRm1zVUdva1g3RTBlRGZBVGtRcHdaSFdFR3JBUWNrUDVDWXdaeHBCdTRlX1hsLUhnZ3ZxZmk4NEtMSFlwMVVfOFBwcWpZ?oc=5&quot; target=&quot;_blank&quot;&gt;[Summer 2027] TSMC AZ Internship Opportunities - Facility Roles&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;careers.tsmc.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>careers.tsmc.com</span>
+              <span>2026-06-12</span>
+              <span>10d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiTkFVX3lxTFB3SWxLeU1fb0Jwd0tnY0VyVzdqN2IxUUtRdmptdGZiamlvTHFYY3dLeGdGcmJSNW1jNks4U0tYajVYQzNiTHNWOG51V0o1UQ?oc=5" target="_blank" rel="noopener">TSMC May 2026 Revenue Report|Taiwan Semiconductor Manufacturing Company Limited - pr.tsmc.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiTkFVX3lxTFB3SWxLeU1fb0Jwd0tnY0VyVzdqN2IxUUtRdmptdGZiamlvTHFYY3dLeGdGcmJSNW1jNks4U0tYajVYQzNiTHNWOG51V0o1UQ?oc=5&quot; target=&quot;_blank&quot;&gt;TSMC May 2026 Revenue Report|Taiwan Semiconductor Manufacturing Company Limited&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;pr.tsmc.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>pr.tsmc.com</span>
+              <span>2026-06-10</span>
+              <span>12d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNQlZtMkdRMTJwWkNBaDRLMnFhTTZDZUNwcjBWSGVwcjhaUktub244OWdvdnBDX0Q0b211UUFjWElJMjdOWjRSRzRERU1GekpFbXh2R1o1eUVUT2VMNG1jUjVJUGRSWnFUMjVZVzREY1FyQWdSZU5nR05qQllrUVpQZEJXY1VvLTkzZm5LMXNTSmU0YUtyOWFVR1cxa2V2UjMyNzhrLTRoc3RlZFJMdDBSMUhR?oc=5" target="_blank" rel="noopener">Senior Circuit Design Engineer - AI &amp; HPC (7708) Job Details - TSMC<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMisgFBVV95cUxNQlZtMkdRMTJwWkNBaDRLMnFhTTZDZUNwcjBWSGVwcjhaUktub244OWdvdnBDX0Q0b211UUFjWElJMjdOWjRSRzRERU1GekpFbXh2R1o1eUVUT2VMNG1jUjVJUGRSWnFUMjVZVzREY1FyQWdSZU5nR05qQllrUVpQZEJXY1VvLTkzZm5LMXNTSmU0YUtyOWFVR1cxa2V2UjMyNzhrLTRoc3RlZFJMdDBSMUhR?oc=5&quot; target=&quot;_blank&quot;&gt;Senior Circuit Design Engineer - AI &amp; HPC (7708) Job Details&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;TSMC&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>ro.careers.tsmc.com</span>
+              <span>2026-05-30</span>
+              <span>23d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPQWNsVVZyS3BfdUxGemtqZ2htWFVMSW1pZjJYNEVFMmplQUUxRnVMTFhySDY5akM3bS0zYmNvVmxNNUZ2Ym1KeTJKVjJRU0l1NXEtWDhkOWNwbF9jcWw0ZkdpZVFhSUttMUpEamMtOWZBNVdHaXVOODNPeEtwY1NfSUtHT2IxZHc4c1A5QVJzVmZiOC1VQkhaTFEwWDlDcV90bVl1UlNTNjhvRFZEVE5LekZPWlZHSmJLNjBHTEZkenNCaDBJYjE0?oc=5" target="_blank" rel="noopener">Design &amp; Verification Engineer, Analog Power Management (7682) Job Details - TSMC<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMixwFBVV95cUxPQWNsVVZyS3BfdUxGemtqZ2htWFVMSW1pZjJYNEVFMmplQUUxRnVMTFhySDY5akM3bS0zYmNvVmxNNUZ2Ym1KeTJKVjJRU0l1NXEtWDhkOWNwbF9jcWw0ZkdpZVFhSUttMUpEamMtOWZBNVdHaXVOODNPeEtwY1NfSUtHT2IxZHc4c1A5QVJzVmZiOC1VQkhaTFEwWDlDcV90bVl1UlNTNjhvRFZEVE5LekZPWlZHSmJLNjBHTEZkenNCaDBJYjE0?oc=5&quot; target=&quot;_blank&quot;&gt;Design &amp; Verification Engineer, Analog Power Management (7682) Job Details&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;TSMC&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>ro.careers.tsmc.com</span>
+              <span>2026-05-29</span>
+              <span>23d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiUEFVX3lxTE40LTFUZ0J2UktSdkJEZTB6NDFkOHc5TXRJTktmREZmLTBhQ1hKMlR4b21oSGhROHFMelczQnFoOXVXb1NiQXQ3Vmlscl9idDhH?oc=5" target="_blank" rel="noopener">TSMC Regenerates Electronic-Grade Carbon Dioxide to Aid Green Transformation - TSMC<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiUEFVX3lxTE40LTFUZ0J2UktSdkJEZTB6NDFkOHc5TXRJTktmREZmLTBhQ1hKMlR4b21oSGhROHFMelczQnFoOXVXb1NiQXQ3Vmlscl9idDhH?oc=5&quot; target=&quot;_blank&quot;&gt;TSMC Regenerates Electronic-Grade Carbon Dioxide to Aid Green Transformation&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;TSMC&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>esg.tsmc.com</span>
+              <span>2026-05-17</span>
+              <span>2026-05-17</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE9NWGFtOGJuazg0TnNsVWtzUHNOQ2s5MnB6a1RVNDNaQVJzU085RWVlNzZNNUVGXzBvUUFjUDJXMzR2b0tHRTNjclpoUmJMQQ?oc=5" target="_blank" rel="noopener">Sony Semiconductor Solutions and TSMC Enter Preliminary Agreement for Next-Generation Image Sensor Strategic Partnership|Taiwan Semiconductor Manufacturing Company Limited - pr.tsmc.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiTkFVX3lxTE9NWGFtOGJuazg0TnNsVWtzUHNOQ2s5MnB6a1RVNDNaQVJzU085RWVlNzZNNUVGXzBvUUFjUDJXMzR2b0tHRTNjclpoUmJMQQ?oc=5&quot; target=&quot;_blank&quot;&gt;Sony Semiconductor Solutions and TSMC Enter Preliminary Agreement for Next-Generation Image Sensor Strategic Partnership|Taiwan Semiconductor Manufacturing Company Limited&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;pr.tsmc.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>pr.tsmc.com</span>
+              <span>2026-05-08</span>
+              <span>2026-05-08</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQUHA5OTk0dGNzZFE5ZEdkazVGeDB4NDZQVHlJM3Rtc2tsU0ExRndYMjRqX2Y3UmN1b3FyR3dXZXZnVGFfbVdrQ3hoZ1RjS0gwVjB3LURTV3BPa2ExNlI5a2ZwQWdfeG44R1FWQnRnYXVFRTdZSC1JdHhhRzcxNzZYUl9fdHBoZHJ0ZlpuWXZCSDBhQ1QtTnlwRUVfcnZPSjVmQ3JaY0dIZjNGaXh6Rmt6d0ZPS1V0RjN3amY0?oc=5" target="_blank" rel="noopener">Dispatching Algorithm &amp; Infrastructure Software Developers Job Details - TSMC<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiuwFBVV95cUxQUHA5OTk0dGNzZFE5ZEdkazVGeDB4NDZQVHlJM3Rtc2tsU0ExRndYMjRqX2Y3UmN1b3FyR3dXZXZnVGFfbVdrQ3hoZ1RjS0gwVjB3LURTV3BPa2ExNlI5a2ZwQWdfeG44R1FWQnRnYXVFRTdZSC1JdHhhRzcxNzZYUl9fdHBoZHJ0ZlpuWXZCSDBhQ1QtTnlwRUVfcnZPSjVmQ3JaY0dIZjNGaXh6Rmt6d0ZPS1V0RjN3amY0?oc=5&quot; target=&quot;_blank&quot;&gt;Dispatching Algorithm &amp; Infrastructure Software Developers Job Details&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;TSMC&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>ro.careers.tsmc.com</span>
+              <span>2026-04-24</span>
+              <span>2026-04-24</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiUEFVX3lxTE5tLVc2MGxpajlJTXJwSkFXWHkxRGo0cnY2ZXRzRGpIbnQ3Q1h3Y05ESk1haEZscU5JVzBBaDZPNG0yajA4YkVUT1cxYk1xb0xZ?oc=5" target="_blank" rel="noopener">TSMC Adopts Two-Pronged Approach to Build a New Base for Water Resources Learning - TSMC<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiUEFVX3lxTE5tLVc2MGxpajlJTXJwSkFXWHkxRGo0cnY2ZXRzRGpIbnQ3Q1h3Y05ESk1haEZscU5JVzBBaDZPNG0yajA4YkVUT1cxYk1xb0xZ?oc=5&quot; target=&quot;_blank&quot;&gt;TSMC Adopts Two-Pronged Approach to Build a New Base for Water Resources Learning&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;TSMC&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>esg.tsmc.com</span>
+              <span>2026-04-20</span>
+              <span>2026-04-20</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE05eGtHUXotYkVhWWgxMXVzZndnclVWUXFPMkxrNWNEaUJMaExoZ3pqYjJpSjd4SGFyRU1CVndnTmctMWJLaVZ6OTlhUEdBQQ?oc=5" target="_blank" rel="noopener">TSMC Files Annual Report on Form 20-F for 2025|Taiwan Semiconductor Manufacturing Company Limited - pr.tsmc.com<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiTkFVX3lxTE05eGtHUXotYkVhWWgxMXVzZndnclVWUXFPMkxrNWNEaUJMaExoZ3pqYjJpSjd4SGFyRU1CVndnTmctMWJLaVZ6OTlhUEdBQQ?oc=5&quot; target=&quot;_blank&quot;&gt;TSMC Files Annual Report on Form 20-F for 2025|Taiwan Semiconductor Manufacturing Company Limited&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;pr.tsmc.com&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>pr.tsmc.com</span>
+              <span>2026-04-16</span>
+              <span>2026-04-16</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxNMHJQdXBtU1F4VDVNMndRZXBGbnRRZFR1WnNuNHhZWVlFRVp4WkVyX282RHZHNjByWVR4ZFQxUm1vY3Y5ZmI5YkNyQm1iNWFva3hyZW9aaG5jZkp0TDJmUGtZUGZZVGtBMVFuRjd5NUFkQlg1OEp6WUkyaWNiREFCRk04RUJDOEdNd2hkTWdQdEEyRy1HWWhHUEFqNXNycjJuODlWLTB0WlE2X3ZUUlNNVnV6X3pURlltbzVpeUhLME1wZVVGNTh5UXdGSGpPZGgyMnNiT25wNmZLalZkZEM4?oc=5" target="_blank" rel="noopener">Q1 2026 Taiwan Semiconductor Manufacturing Co Ltd Earnings Call (Chinese, English) on April 16, 2026 / 6:00AM - TSMC<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMi3wFBVV95cUxNMHJQdXBtU1F4VDVNMndRZXBGbnRRZFR1WnNuNHhZWVlFRVp4WkVyX282RHZHNjByWVR4ZFQxUm1vY3Y5ZmI5YkNyQm1iNWFva3hyZW9aaG5jZkp0TDJmUGtZUGZZVGtBMVFuRjd5NUFkQlg1OEp6WUkyaWNiREFCRk04RUJDOEdNd2hkTWdQdEEyRy1HWWhHUEFqNXNycjJuODlWLTB0WlE2X3ZUUlNNVnV6X3pURlltbzVpeUhLME1wZVVGNTh5UXdGSGpPZGgyMnNiT25wNmZLalZkZEM4?oc=5&quot; target=&quot;_blank&quot;&gt;Q1 2026 Taiwan Semiconductor Manufacturing Co Ltd Earnings Call (Chinese, English) on April 16, 2026 / 6:00AM&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;TSMC&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>investor.tsmc.com</span>
+              <span>2026-04-16</span>
+              <span>2026-04-16</span>
+            </span>
+          </li>
+        
+      </ul>
+    </section>
+    <section data-co="samsung" hidden>
+      <div class="company-header">
+        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="#1428a0"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">S</text>
+  </svg>
+        <div class="name-block">
+          <h2>三星电子 Samsung</h2>
+          <span class="domain">samsung.com</span>
+        </div>
+      </div>
+      <div class="summary"><div class="summary-label">本周要点</div><ul><li>Erfrischung für eure Seele Community - Samsung</li><li>Samsung Solve for Tomorrow Brings Design Thinking to Jammu &amp; Kashmir, Inspires Youth to Build AI-Powered Solutions for Local Challenges - Samsung</li><li>Art Basel in Basel 2026: Samsung Art TV Brings Personal Curation to the Center of the Art World - Samsung</li></ul><div class="stats">10 条新闻 · 最近 2026-06-22</div></div>
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNanFrWEVXVGJaTmRzWDVwOWNwRWhsTURwNEpPNzJDdWwtNmhSdGs3NVJiQUI2cE9TLWloVDdLUlk5bGtfVlA2djdVN1l3azJfOXFpTUJfMXUwTUp0SE5CN0pUc2VDOWJUeV9ObUk3aHVSUFhkcGZleFQzbGlmNzRNbEI1WHc3NjNpVy1iWk9HMV9lSkV6UlFHRmxBR2ZIWHdzb1BtRFZXV2dPZw?oc=5" target="_blank" rel="noopener">Erfrischung für eure Seele Community - Samsung<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiqgFBVV95cUxNanFrWEVXVGJaTmRzWDVwOWNwRWhsTURwNEpPNzJDdWwtNmhSdGs3NVJiQUI2cE9TLWloVDdLUlk5bGtfVlA2djdVN1l3azJfOXFpTUJfMXUwTUp0SE5CN0pUc2VDOWJUeV9ObUk3aHVSUFhkcGZleFQzbGlmNzRNbEI1WHc3NjNpVy1iWk9HMV9lSkV6UlFHRmxBR2ZIWHdzb1BtRFZXV2dPZw?oc=5&quot; target=&quot;_blank&quot;&gt;Erfrischung für eure Seele Community&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Samsung&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>eu.community.samsung.com</span>
+              <span>2026-06-22</span>
+              <span>4h ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMi8gFBVV95cUxOeU5fTTl6OVdzNHBWYjNranZjSEVic1o0RUtVbXdVbHVQUWZFVHJ1N0MxU29ld0dwcWFBclkybndrRHJZUnpnNlVtU2RFcDhnYW9MU1oyQzlCNENrdVRJYnNEdURTVng4UVBZdjNMdWE1c3dDX05HNDdEVUdfQ2xybFc5amVmaEVMM2oyOHBHTUFKRlZXZG1pQmRNWHpPWVl3OWVZbGkzd1BVeUlTMXM1cllHUHpzVFFHVlVlUWZNd1dWX0djUWtvZHo4SllxTHZTWDE2czBmakNxNVRQTmJPU3hFTHZYSzc1NV8xSXdYV0J1UQ?oc=5" target="_blank" rel="noopener">Samsung Solve for Tomorrow Brings Design Thinking to Jammu &amp; Kashmir, Inspires Youth to Build AI-Powered Solutions for Local Challenges - Samsung<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMi8gFBVV95cUxOeU5fTTl6OVdzNHBWYjNranZjSEVic1o0RUtVbXdVbHVQUWZFVHJ1N0MxU29ld0dwcWFBclkybndrRHJZUnpnNlVtU2RFcDhnYW9MU1oyQzlCNENrdVRJYnNEdURTVng4UVBZdjNMdWE1c3dDX05HNDdEVUdfQ2xybFc5amVmaEVMM2oyOHBHTUFKRlZXZG1pQmRNWHpPWVl3OWVZbGkzd1BVeUlTMXM1cllHUHpzVFFHVlVlUWZNd1dWX0djUWtvZHo4SllxTHZTWDE2czBmakNxNVRQTmJPU3hFTHZYSzc1NV8xSXdYV0J1UQ?oc=5&quot; target=&quot;_blank&quot;&gt;Samsung Solve for Tomorrow Brings Design Thinking to Jammu &amp; Kashmir, Inspires Youth to Build AI-Powered Solutions for Local Challenges&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Samsung&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>news.samsung.com</span>
+              <span>2026-06-22</span>
+              <span>6h ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMixAFBVV95cUxNbXdVTm1QZzl5YkNBUzRpLURTbzV1bGJOSXF2OERlbUhRZFpQTzBXNlZQMmNDdDFlekg5UmJaUDQ4dExlZEY4eklKZGpyeW03VXZHcDNqcWFRcGZyWlF6TmgwMmdYUXRCTG8zRXlzeTNleUJGczAyRjVkV3VKeEFKbmtXT0l1WXZORkZQZjloNWpPcHRzbDlKOERKUk01U1RPM3pvSWtRc2tmQkRvSlU0VkIzUEtqanMyOERzSlRBNEl5ZG5v?oc=5" target="_blank" rel="noopener">Art Basel in Basel 2026: Samsung Art TV Brings Personal Curation to the Center of the Art World - Samsung<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMixAFBVV95cUxNbXdVTm1QZzl5YkNBUzRpLURTbzV1bGJOSXF2OERlbUhRZFpQTzBXNlZQMmNDdDFlekg5UmJaUDQ4dExlZEY4eklKZGpyeW03VXZHcDNqcWFRcGZyWlF6TmgwMmdYUXRCTG8zRXlzeTNleUJGczAyRjVkV3VKeEFKbmtXT0l1WXZORkZQZjloNWpPcHRzbDlKOERKUk01U1RPM3pvSWtRc2tmQkRvSlU0VkIzUEtqanMyOERzSlRBNEl5ZG5v?oc=5&quot; target=&quot;_blank&quot;&gt;Art Basel in Basel 2026: Samsung Art TV Brings Personal Curation to the Center of the Art World&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Samsung&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>news.samsung.com</span>
+              <span>2026-06-21</span>
+              <span>16h ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOSllmWlBDcTBCUnNpY0ZQMGNDM3BHS3hOTERkX1BhWnF4blNOZFhNb2FLOGRMeFk4S2I5V2VLb3J5U1JRMzJGSHdtRjJZV3JaSW11UDBZSmRRU0Z6NEpLQ3Bfb2g2YU1PUHFrWTJsaHNud0dlVzR1VWVocWgzUjF5WUhQU09XUVkxdzZIU0lFTEtYbHRBNzlBS0tJV0ktb1hBRjJCQnR3a0NOMnpoVW1qMw?oc=5" target="_blank" rel="noopener">Buy Unlocked Galaxy S26 Ultra 256GB Violet Smartphone - Samsung<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMisAFBVV95cUxOSllmWlBDcTBCUnNpY0ZQMGNDM3BHS3hOTERkX1BhWnF4blNOZFhNb2FLOGRMeFk4S2I5V2VLb3J5U1JRMzJGSHdtRjJZV3JaSW11UDBZSmRRU0Z6NEpLQ3Bfb2g2YU1PUHFrWTJsaHNud0dlVzR1VWVocWgzUjF5WUhQU09XUVkxdzZIU0lFTEtYbHRBNzlBS0tJV0ktb1hBRjJCQnR3a0NOMnpoVW1qMw?oc=5&quot; target=&quot;_blank&quot;&gt;Buy Unlocked Galaxy S26 Ultra 256GB Violet Smartphone&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Samsung&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>samsung.com</span>
+              <span>2026-06-21</span>
+              <span>21h ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOU0pwekZxOWl6dnV5bDE0RExCZWQxLWZtenR3VndCN0FBa054UVZCUVE4Uk5aUnllVmFPYjBLTGlrTEd2ZkhwZVNrQjlCSTluNmQzeXNlWGx2b0ZDVU1RaHhKb3NXdE9LNzZaaG0zQXNMaGRmVVNDbjAyWmxWYUxScUhyelVNQWJqVkJMMVcxZXZNNzdEYXB4T1hnd3M5MHduZ1MxMW9lMHNxTmlwaEE?oc=5" target="_blank" rel="noopener">Buy Unlocked Galaxy S26+ 512GB Silver Smartphone - Samsung<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMirgFBVV95cUxOU0pwekZxOWl6dnV5bDE0RExCZWQxLWZtenR3VndCN0FBa054UVZCUVE4Uk5aUnllVmFPYjBLTGlrTEd2ZkhwZVNrQjlCSTluNmQzeXNlWGx2b0ZDVU1RaHhKb3NXdE9LNzZaaG0zQXNMaGRmVVNDbjAyWmxWYUxScUhyelVNQWJqVkJMMVcxZXZNNzdEYXB4T1hnd3M5MHduZ1MxMW9lMHNxTmlwaEE?oc=5&quot; target=&quot;_blank&quot;&gt;Buy Unlocked Galaxy S26+ 512GB Silver Smartphone&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Samsung&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>samsung.com</span>
+              <span>2026-06-20</span>
+              <span>2d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMihwJBVV95cUxOUmVSOVRmbWJZMkh4NGkwc1JKMHppQmlHUWVNQkJyTDJJVE9nNW1hcnBFUExPT2N1WjQ3bDdSdjFRRFU1Ylk0Q1lFNExLLVpITjlPeWFLemw0NVZFQWxXVzRwbEhVUDNiMnpSdlF4OWZxRmxvZURPdndhNHFCZWhPZkRyTlI2WlNscG1Zb1hzMFNUbjBsOHZHM2VFcUFuVWJiVWFFWTVyekhJaGhXc3JiU0pMOWNyQnlYS1hzS2RMcmtkQzV1NGtTRVVPQW9kRDBNWnBjU2l0enJlM1R2cXNYSHYzYV9uc1FYUTlJQzZKcFZISFV1NlFWTkxWUk9CQlJDMEZRY0haYw?oc=5" target="_blank" rel="noopener">Samsung Launches Full 2026 TV Lineup Led by Flagship Micro RGB Vision AI Companion for More Intelligent and Personalized AI Features | Samsung Hong Kong - Samsung<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMihwJBVV95cUxOUmVSOVRmbWJZMkh4NGkwc1JKMHppQmlHUWVNQkJyTDJJVE9nNW1hcnBFUExPT2N1WjQ3bDdSdjFRRFU1Ylk0Q1lFNExLLVpITjlPeWFLemw0NVZFQWxXVzRwbEhVUDNiMnpSdlF4OWZxRmxvZURPdndhNHFCZWhPZkRyTlI2WlNscG1Zb1hzMFNUbjBsOHZHM2VFcUFuVWJiVWFFWTVyekhJaGhXc3JiU0pMOWNyQnlYS1hzS2RMcmtkQzV1NGtTRVVPQW9kRDBNWnBjU2l0enJlM1R2cXNYSHYzYV9uc1FYUTlJQzZKcFZISFV1NlFWTkxWUk9CQlJDMEZRY0haYw?oc=5&quot; target=&quot;_blank&quot;&gt;Samsung Launches Full 2026 TV Lineup Led by Flagship Micro RGB Vision AI Companion for More Intelligent and Personalized AI Features | Samsung Hong Kong&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Samsung&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>samsung.com</span>
+              <span>2026-06-19</span>
+              <span>2d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxOdUZjeGItRzRZTWl0dmxsZFg3cnhDNVNOcS03cXRpY0lPYTUtUEVvY2VyUzRfMWdSZXNaVTVxQnhtUElha19KbGFrMFlNdlR1MDk2MU9NQU5KSC1oMGtqbkZ0S3d3UjhDbFNqckhEZXZZSHVlRnlIV1QyOHZyS0dsWGpJaExRWWhfVUlhbVVWRkRkR1pKOWYxZGtoRkhRVURfVE9xX1NoQTUzSkxMd3d5WS1R?oc=5" target="_blank" rel="noopener">Samsung Brings “Awesome Intelligence” to Life with Bold New Galaxy A Series Local Film - Samsung<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMisgFBVV95cUxOdUZjeGItRzRZTWl0dmxsZFg3cnhDNVNOcS03cXRpY0lPYTUtUEVvY2VyUzRfMWdSZXNaVTVxQnhtUElha19KbGFrMFlNdlR1MDk2MU9NQU5KSC1oMGtqbkZ0S3d3UjhDbFNqckhEZXZZSHVlRnlIV1QyOHZyS0dsWGpJaExRWWhfVUlhbVVWRkRkR1pKOWYxZGtoRkhRVURfVE9xX1NoQTUzSkxMd3d5WS1R?oc=5&quot; target=&quot;_blank&quot;&gt;Samsung Brings “Awesome Intelligence” to Life with Bold New Galaxy A Series Local Film&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Samsung&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>news.samsung.com</span>
+              <span>2026-06-19</span>
+              <span>2d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiygFBVV95cUxOWDNpSUxUMHEwNENRRlg2am04dThvRGU0R1MtTWdEOFV1RVVCOUoxZElsRG1tcXMwdnhta3VpVy1UODVNOFBDejgzWkNSUUpuTmZYelhZMEdaSjN1YzJBNjhObGZWaGpQMTZKcHNaVW1FcXJHQTJ5di1uTUFObzd3UmZjLXhDbVJORnFXOU1PVGlYVVlmbVd0TzlxNFpnX0tlc1VtdkdHSHVOWkdUeXZja2tJWWRHWnkwN0xEbmlCeFJkZ29zbGtVWGVR?oc=5" target="_blank" rel="noopener">Samsung Highlights Open Ecosystem To Accelerate Connected Care for Daily Wellness at VivaTech 2026 - Samsung<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiygFBVV95cUxOWDNpSUxUMHEwNENRRlg2am04dThvRGU0R1MtTWdEOFV1RVVCOUoxZElsRG1tcXMwdnhta3VpVy1UODVNOFBDejgzWkNSUUpuTmZYelhZMEdaSjN1YzJBNjhObGZWaGpQMTZKcHNaVW1FcXJHQTJ5di1uTUFObzd3UmZjLXhDbVJORnFXOU1PVGlYVVlmbVd0TzlxNFpnX0tlc1VtdkdHSHVOWkdUeXZja2tJWWRHWnkwN0xEbmlCeFJkZ29zbGtVWGVR?oc=5&quot; target=&quot;_blank&quot;&gt;Samsung Highlights Open Ecosystem To Accelerate Connected Care for Daily Wellness at VivaTech 2026&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Samsung&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>news.samsung.com</span>
+              <span>2026-06-19</span>
+              <span>3d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxQbTZKVjhfOFFkRW9RQm9tZDlJUklLYnpySFhaX1VhWDZCSGlzcmNPYWlwX0JCNTc3aFBfajdQM0dKYTdGR1R6U043MXczYVY1SmxxczFMSHVncVVCTzFCV05YZzE4OWtVMXB6VU1ZQmtpWkNmcF9BTEJRMHVFZ3JzMm0tbjN3VG5pUkxsMXdYcXJlTkxYakRFamNLV1Z6ODZkSGdnSlB4Z05jR0tsb09nTUhDNGZlcVNaVENBYS1vTGhnVmpzaXhWV2sxRXhnSmMxQWVONGJ2VQ?oc=5" target="_blank" rel="noopener">[Infographic] Explore the New Samsung 2026 Odyssey G8 &amp; G7 Models: From the Industry-First 6K Resolution Monitor to new OLED Monitors - Samsung<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMi1wFBVV95cUxQbTZKVjhfOFFkRW9RQm9tZDlJUklLYnpySFhaX1VhWDZCSGlzcmNPYWlwX0JCNTc3aFBfajdQM0dKYTdGR1R6U043MXczYVY1SmxxczFMSHVncVVCTzFCV05YZzE4OWtVMXB6VU1ZQmtpWkNmcF9BTEJRMHVFZ3JzMm0tbjN3VG5pUkxsMXdYcXJlTkxYakRFamNLV1Z6ODZkSGdnSlB4Z05jR0tsb09nTUhDNGZlcVNaVENBYS1vTGhnVmpzaXhWV2sxRXhnSmMxQWVONGJ2VQ?oc=5&quot; target=&quot;_blank&quot;&gt;[Infographic] Explore the New Samsung 2026 Odyssey G8 &amp; G7 Models: From the Industry-First 6K Resolution Monitor to new OLED Monitors&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Samsung&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>news.samsung.com</span>
+              <span>2026-06-18</span>
+              <span>3d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNRnVSa05hbnhXblpoV2U4QjMxeDNFeld0SHBmWjlPeGUyaWNXX0UzcUZXOGpTLVU3SVdJRVRKbWdDVDJ0N1dNQTh5Z3BXdHBEZ3V2X3poazExcTd3QWZxVWxVQmlkeEFOSGJsV3JabmdIanNVdGhvS0VJUURWNktZZi13bTg0SC1iemIxV2dHdGVvWTBlUmVZeHIzWkdtbENncmhHdGUzeHZsdGs?oc=5" target="_blank" rel="noopener">Buy Galaxy Z Fold7 256GB | Mint Smartphone (Unlocked) | Price &amp; Deals - Samsung<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiqwFBVV95cUxNRnVSa05hbnhXblpoV2U4QjMxeDNFeld0SHBmWjlPeGUyaWNXX0UzcUZXOGpTLVU3SVdJRVRKbWdDVDJ0N1dNQTh5Z3BXdHBEZ3V2X3poazExcTd3QWZxVWxVQmlkeEFOSGJsV3JabmdIanNVdGhvS0VJUURWNktZZi13bTg0SC1iemIxV2dHdGVvWTBlUmVZeHIzWkdtbENncmhHdGUzeHZsdGs?oc=5&quot; target=&quot;_blank&quot;&gt;Buy Galaxy Z Fold7 256GB | Mint Smartphone (Unlocked) | Price &amp; Deals&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Samsung&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>samsung.com</span>
+              <span>2026-06-18</span>
+              <span>4d ago</span>
+            </span>
+          </li>
+        
+      </ul>
+    </section>
+    <section data-co="intel" hidden>
+      <div class="company-header">
+        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="48" height="48" rx="10" fill="#0071c5"/>
+    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">I</text>
+  </svg>
+        <div class="name-block">
+          <h2>Intel</h2>
+          <span class="domain">intel.com</span>
+        </div>
+      </div>
+      <div class="summary"><div class="summary-label">本周要点</div><ul><li>VLSI 2026: Intel 18A Platform Momentum from Devices to Routed Designs - Intel Community</li><li>Intel(R) UHD screen overlay &amp; stuttering issues post win11 upgrade - Intel Community</li><li>Re: An Intel Driver Update Issue is Causing Further Problems on My Device. - Intel Community</li></ul><div class="stats">10 条新闻 · 最近 2026-06-16</div></div>
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxON0tpNzhTMzVBbWp1cEpmRzYtVHFubmdVVXA1X2RzaVVRdUZISkV1SU5IdzY1ekR5NlJjQ3BqT2s5SjZKY1VISlpQTHJ5ZXV2QmZTQjI0aC1Eb1dUMWFEclNQTTNyWThIaUxvTXlxdkFvaVhxb3VqM21rZEJvajdrOENsYXUtZnRIQVFITlcxSTl4MkZSUEZLcTZSd3JKX3d2VnZfUXRDMFhGUmdWYTBpbm9aTnpqcUg4V3hGZlZuVWZxdXY0eXNpMUFBdjZ3WHJIY0h0bDFtcTZKNmZPRUJoNm0xbDlKdkZjYnBF?oc=5" target="_blank" rel="noopener">VLSI 2026: Intel 18A Platform Momentum from Devices to Routed Designs - Intel Community<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMi6wFBVV95cUxON0tpNzhTMzVBbWp1cEpmRzYtVHFubmdVVXA1X2RzaVVRdUZISkV1SU5IdzY1ekR5NlJjQ3BqT2s5SjZKY1VISlpQTHJ5ZXV2QmZTQjI0aC1Eb1dUMWFEclNQTTNyWThIaUxvTXlxdkFvaVhxb3VqM21rZEJvajdrOENsYXUtZnRIQVFITlcxSTl4MkZSUEZLcTZSd3JKX3d2VnZfUXRDMFhGUmdWYTBpbm9aTnpqcUg4V3hGZlZuVWZxdXY0eXNpMUFBdjZ3WHJIY0h0bDFtcTZKNmZPRUJoNm0xbDlKdkZjYnBF?oc=5&quot; target=&quot;_blank&quot;&gt;VLSI 2026: Intel 18A Platform Momentum from Devices to Routed Designs&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Intel Community&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>community.intel.com</span>
+              <span>2026-06-16</span>
+              <span>5d ago</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxOVklHVk5sMy1HMWp3RE8tRWhXeUFvTnBkbVhnZmxDQ1hCaEZFTlJIaGpzVl9MY0lVSWdRNzZoZWF1NjBxdmdURVNYRDk0R3owdnRZNll6QjFCZk9KdmRSekJfb1k5ZXZRSGRrc09KWkpRT1FyQTQ2b1p4LV9GXzdnWTNLYVRLbXluNHRtWXJfZGF0NUJ4RUNzNVlnR2dDN0tUcmkzT3VwaVhtZ1RsaHpYWE9n?oc=5" target="_blank" rel="noopener">Intel(R) UHD screen overlay &amp; stuttering issues post win11 upgrade - Intel Community<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMisgFBVV95cUxOVklHVk5sMy1HMWp3RE8tRWhXeUFvTnBkbVhnZmxDQ1hCaEZFTlJIaGpzVl9MY0lVSWdRNzZoZWF1NjBxdmdURVNYRDk0R3owdnRZNll6QjFCZk9KdmRSekJfb1k5ZXZRSGRrc09KWkpRT1FyQTQ2b1p4LV9GXzdnWTNLYVRLbXluNHRtWXJfZGF0NUJ4RUNzNVlnR2dDN0tUcmkzT3VwaVhtZ1RsaHpYWE9n?oc=5&quot; target=&quot;_blank&quot;&gt;Intel(R) UHD screen overlay &amp; stuttering issues post win11 upgrade&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Intel Community&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>community.intel.com</span>
+              <span>2026-02-16</span>
+              <span>2026-02-16</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxQMkNVcGU1c1FrWFpVMDJLU3lROFF5VF94b3JZWURkSm00c1pFOFdxNTI3X2RzczRlaEhrd1VwRGpHNzRCdU1CN0dVaVdXeHZPRFFZRVJ3Q1E3X1BIRHlsNHFpcEYyMWVNUmlQVHR4dHdCRVdoZHJRdmxOaloxcVJQeTZUYnFJZzA1c3RKQ0w1cDc2em1PdEpRNEQ1YXUxZkNFYVNhNnc4VE5tLXNsaV90NXhQUW5SOHVTMzAzeWJZdnRrdkRsSll6Wg?oc=5" target="_blank" rel="noopener">Re: An Intel Driver Update Issue is Causing Further Problems on My Device. - Intel Community<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiyAFBVV95cUxQMkNVcGU1c1FrWFpVMDJLU3lROFF5VF94b3JZWURkSm00c1pFOFdxNTI3X2RzczRlaEhrd1VwRGpHNzRCdU1CN0dVaVdXeHZPRFFZRVJ3Q1E3X1BIRHlsNHFpcEYyMWVNUmlQVHR4dHdCRVdoZHJRdmxOaloxcVJQeTZUYnFJZzA1c3RKQ0w1cDc2em1PdEpRNEQ1YXUxZkNFYVNhNnc4VE5tLXNsaV90NXhQUW5SOHVTMzAzeWJZdnRrdkRsSll6Wg?oc=5&quot; target=&quot;_blank&quot;&gt;Re: An Intel Driver Update Issue is Causing Further Problems on My Device.&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Intel Community&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>community.intel.com</span>
+              <span>2026-02-02</span>
+              <span>2026-02-02</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQTkxYZUt0UDlYWEJYQWU0MXhzZ3plSFZ3TFgybk5sU25weHY4RmtoWmxobTJ4bTlsRmhVbkpSMlRQVHZaV01XYmlGRmxELVYyM1JkSHRtaWJjdWo3MW1jYmEyS21qbWJWNXppUHl6UV9YMkRlVW9NTVhHelBDRTZpUHFPMExTTjJjSWU0M3I3UEMzVnZ4NmRIa1BGOW82b0ZqTGkwUklyXzU?oc=5" target="_blank" rel="noopener">intel ax211 bluetooth parrin issues 24.10.0.4 driver - Intel Community<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiqAFBVV95cUxQTkxYZUt0UDlYWEJYQWU0MXhzZ3plSFZ3TFgybk5sU25weHY4RmtoWmxobTJ4bTlsRmhVbkpSMlRQVHZaV01XYmlGRmxELVYyM1JkSHRtaWJjdWo3MW1jYmEyS21qbWJWNXppUHl6UV9YMkRlVW9NTVhHelBDRTZpUHFPMExTTjJjSWU0M3I3UEMzVnZ4NmRIa1BGOW82b0ZqTGkwUklyXzU?oc=5&quot; target=&quot;_blank&quot;&gt;intel ax211 bluetooth parrin issues 24.10.0.4 driver&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Intel Community&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>community.intel.com</span>
+              <span>2026-01-27</span>
+              <span>2026-01-27</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOWlYwbGJEQUxZZHlJMUdDOWNmSUNOUWZjcmtsMFpGWVpfQVY4SHdyc1JRU3RyVnVoYmN2eV9oYnRGaExLRlMtUlB0R0VYNXdlWXN1TTEzOU5pd1VjRjZ1YkN0SDBPLTMwTUFKRzY3TnNFMVZVdFo5MUFLV1VlaTE1Nl9JazVvVTVVWHZHVkNJU003NXU3MldBd3hNSXd6RW51b1UwQ2VuUHU1WndIQ2dGOVpCRXZ1SG84ckVBSW1qRWpjVzBQeGZQS1pJWGMzZW8?oc=5" target="_blank" rel="noopener">Re: Intel Arc B580 - sudden drop of FPS related to the game Fallout 4 - Intel Community<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMizwFBVV95cUxOWlYwbGJEQUxZZHlJMUdDOWNmSUNOUWZjcmtsMFpGWVpfQVY4SHdyc1JRU3RyVnVoYmN2eV9oYnRGaExLRlMtUlB0R0VYNXdlWXN1TTEzOU5pd1VjRjZ1YkN0SDBPLTMwTUFKRzY3TnNFMVZVdFo5MUFLV1VlaTE1Nl9JazVvVTVVWHZHVkNJU003NXU3MldBd3hNSXd6RW51b1UwQ2VuUHU1WndIQ2dGOVpCRXZ1SG84ckVBSW1qRWpjVzBQeGZQS1pJWGMzZW8?oc=5&quot; target=&quot;_blank&quot;&gt;Re: Intel Arc B580 - sudden drop of FPS related to the game Fallout 4&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Intel Community&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>community.intel.com</span>
+              <span>2026-01-20</span>
+              <span>2026-01-20</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMieEFVX3lxTFBRaHlRZzgwX3MwY2kteVFReTNoRFpiSE5HQkVmTE9YUlp6RHZXbEtkc2VDV2lxQ2FrN084QjBpcEhZeExJZWdFTjJpcW5EVGZXSWRjcWZTcnVtdm02aVZ6anY3Slp3OEQzV0M5d2VkYzNvMWJwWnFFZQ?oc=5" target="_blank" rel="noopener">2025 Holiday Buyers Guide - Intel Newsroom<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMieEFVX3lxTFBRaHlRZzgwX3MwY2kteVFReTNoRFpiSE5HQkVmTE9YUlp6RHZXbEtkc2VDV2lxQ2FrN084QjBpcEhZeExJZWdFTjJpcW5EVGZXSWRjcWZTcnVtdm02aVZ6anY3Slp3OEQzV0M5d2VkYzNvMWJwWnFFZQ?oc=5&quot; target=&quot;_blank&quot;&gt;2025 Holiday Buyers Guide&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Intel Newsroom&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>newsroom.intel.com</span>
+              <span>2025-11-26</span>
+              <span>2025-11-26</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxPX2ZJYTdwUFVUdHcxd1J0UWUzUW4tbHhmTjQySkpjdnBZTU1vVVdsai1FY3N6NUcydHpPNEk5bE5VaXhzM0lEcUtDV0pfVk1LTVk1RHZTbUpXZXowemR0aUtkeFVOcmVQakZwVmtKV2NwSjd5NUlzT1BHdF9BS0FLdVl1eXNVeUF5Y0ZMQmYtbFZqRk41Q3R3NllQUy1xN0VuSGVMdVRldF9ONmJMRVNsXzBNTTZUNEZXY1hDZnp1M1I0SkQxSkFhNF9ubw?oc=5" target="_blank" rel="noopener">&quot;Your current hardware doesn&#39;t support any graphics features&quot; on Intel graphics software - Intel Community<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMiywFBVV95cUxPX2ZJYTdwUFVUdHcxd1J0UWUzUW4tbHhmTjQySkpjdnBZTU1vVVdsai1FY3N6NUcydHpPNEk5bE5VaXhzM0lEcUtDV0pfVk1LTVk1RHZTbUpXZXowemR0aUtkeFVOcmVQakZwVmtKV2NwSjd5NUlzT1BHdF9BS0FLdVl1eXNVeUF5Y0ZMQmYtbFZqRk41Q3R3NllQUy1xN0VuSGVMdVRldF9ONmJMRVNsXzBNTTZUNEZXY1hDZnp1M1I0SkQxSkFhNF9ubw?oc=5&quot; target=&quot;_blank&quot;&gt;&quot;Your current hardware doesn&#39;t support any graphics features&quot; on Intel graphics software&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Intel Community&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>community.intel.com</span>
+              <span>2025-11-18</span>
+              <span>2025-11-18</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMimAFBVV95cUxPalVOcGJXMUhDc0Rlc0pwTVRfYjYxaWFoRW9ydERmaXBFWWgyZkFGandQUU1JU2E4azY4eXRVdUpfbjZpaEk2clRPWFVUQndXSExnUnRfYjdHdTNZd1lUZ29xTUo4dm1BZkgwWG9KSXRJcndrRVI0bmRSdFdfa1dwWGZJNElnWHItUWhzamNZdjZoSDdRS1lvOQ?oc=5" target="_blank" rel="noopener">Wi-Fi 6 AX200 160MHz; No Internet, secured - Intel Community<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMimAFBVV95cUxPalVOcGJXMUhDc0Rlc0pwTVRfYjYxaWFoRW9ydERmaXBFWWgyZkFGandQUU1JU2E4azY4eXRVdUpfbjZpaEk2clRPWFVUQndXSExnUnRfYjdHdTNZd1lUZ29xTUo4dm1BZkgwWG9KSXRJcndrRVI0bmRSdFdfa1dwWGZJNElnWHItUWhzamNZdjZoSDdRS1lvOQ?oc=5&quot; target=&quot;_blank&quot;&gt;Wi-Fi 6 AX200 160MHz; No Internet, secured&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Intel Community&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>community.intel.com</span>
+              <span>2025-09-01</span>
+              <span>2025-09-01</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOTTRsSTFVclI4NGVJUnZmZlNGS3BraVJNV1ZoMUxlZ2x3TDZydloteXA3R2x4MEo0ZWZnbGl3S3U5enExMklMUGZpYlppbElzQjRfUUVDMDZHTTJKeWtIamNILTNCekFzMTVCVThKUm5kR0l4UEhMUHhhdGthWjhkZEZqbmFxZkNlX0tfT0Q5bXNDTE9rbE5HQjUwREJHUlU1cUUzUzhuSHd0NGZKX3h6Mw?oc=5" target="_blank" rel="noopener">Solved: Issue with compiler runtime software download - Intel Community<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMisAFBVV95cUxOTTRsSTFVclI4NGVJUnZmZlNGS3BraVJNV1ZoMUxlZ2x3TDZydloteXA3R2x4MEo0ZWZnbGl3S3U5enExMklMUGZpYlppbElzQjRfUUVDMDZHTTJKeWtIamNILTNCekFzMTVCVThKUm5kR0l4UEhMUHhhdGthWjhkZEZqbmFxZkNlX0tfT0Q5bXNDTE9rbE5HQjUwREJHUlU1cUUzUzhuSHd0NGZKX3h6Mw?oc=5&quot; target=&quot;_blank&quot;&gt;Solved: Issue with compiler runtime software download&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Intel Community&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>community.intel.com</span>
+              <span>2025-08-21</span>
+              <span>2025-08-21</span>
+            </span>
+          </li>
+        
+          <li class="news-item">
+            <a class="news-title" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQNjhCRjduNzZtRUFucmFwc29XYThnUURzYU9uR0lzcVEtR0UxSlhGWDJNczUzMVk1Qlp3VzU0UC1keFdLWm1UaXNPYVJuNVdjYnBRSmNQUzdJU3dmRDNZTWtzV1RrMDBzdGhYNndUSUxnNkNBdUFmVGEwMGl0Y210UlQtZlkxenNqZnFUMHNxRjlhUjQ4MlRfQ0NNempFMmJwdHVPcnJBVHF2eENB?oc=5" target="_blank" rel="noopener">Developer Guide and Reference - Intel<span class="arrow">↗</span></a>
+            <p class="news-snippet">&lt;a href=&quot;https://news.google.com/rss/articles/CBMirAFBVV95cUxQNjhCRjduNzZtRUFucmFwc29XYThnUURzYU9uR0lzcVEtR0UxSlhGWDJNczUzMVk1Qlp3VzU0UC1keFdLWm1UaXNPYVJuNVdjYnBRSmNQUzdJU3dmRDNZTWtzV1RrMDBzdGhYNndUSUxnNkNBdUFmVGEwMGl0Y210UlQtZlkxenNqZnFUMHNxRjlhUjQ4MlRfQ0NNempFMmJwdHVPcnJBVHF2eENB?oc=5&quot; target=&quot;_blank&quot;&gt;Developer Guide and Reference&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=&quot;#6f6f6f&quot;&gt;Intel&lt;/font&gt;</p>
+            <span class="news-meta">
+              <span>intel.com</span>
+              <span>2025-06-27</span>
+              <span>2025-06-27</span>
+            </span>
+          </li>
+        
+      </ul>
+    </section></main>
+  <footer>数据来源：Google News · 生成于 2026-06-22 · 仅供参考</footer>
+</div>
+<script>
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.co;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('section[data-co]').forEach(s => s.hidden = s.dataset.co !== target);
+    tab.classList.add('active');
+    history.replaceState(null, '', '#' + target);
+  });
+});
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = location.hash.replace('#', '');
+  if (hash) {
+    const tab = document.querySelector('.tab[data-co="' + hash + '"]');
+    if (tab) tab.click();
+  }
+  const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.dataset.theme = theme;
+  const btn = document.querySelector('.theme-toggle');
+  if (btn) {
+    btn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色';
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      btn.textContent = next === 'dark' ? '☀️ 浅色' : '🌙 深色';
+    });
+  }
+});
+</script>
+</body>
+</html>
