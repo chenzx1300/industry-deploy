@@ -33,6 +33,9 @@ export function parseGoogleNewsRss(xmlString) {
       title,
       snippet: (raw.description || '').toString().trim(),
       url,
+      // Direct publisher URL (works in China, unlike news.google.com redirects)
+      // Falls back to Google News URL only if source domain can't be extracted.
+      direct_url: source !== 'unknown' ? `https://${source}` : url,
       source,
       published_at,
     });

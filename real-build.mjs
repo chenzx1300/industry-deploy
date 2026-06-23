@@ -35,7 +35,9 @@ function fetchAndParse(file, companyName, maxItems) {
   const xml = readFileSync(path, 'utf-8');
   const overFetch = maxItems * 4;
   const raw = parseGoogleNewsRss(xml).slice(0, overFetch);
-  const filtered = filterNewsItems(raw, companyName).slice(0, maxItems);
+  // Use direct publisher URL (works in China) instead of news.google.com redirect.
+  const items = raw.map(i => ({ ...i, url: i.direct_url || i.url }));
+  const filtered = filterNewsItems(items, companyName).slice(0, maxItems);
   return { raw: raw.length, filtered: filtered.length, items: filtered };
 }
 

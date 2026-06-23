@@ -45,7 +45,8 @@ async function buildOne(industry) {
     if (!xml) return { ...c, news: [] };
     const overFetch = 10 * 4;
     const all = parseGoogleNewsRss(xml).slice(0, overFetch);
-    const filtered = filterNewsItems(all, c.name).slice(0, 10);
+    const items = all.map(i => ({ ...i, url: i.direct_url || i.url }));
+    const filtered = filterNewsItems(items, c.name).slice(0, 10);
     return { ...c, news: filtered };
   }));
 

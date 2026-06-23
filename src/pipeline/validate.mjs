@@ -5,13 +5,18 @@ export function validateData(data) {
   if (!data.slug || typeof data.slug !== 'string') {
     return { ok: false, error: 'missing slug' };
   }
-  if (!Array.isArray(data.companies) || data.companies.length !== 6) {
-    return { ok: false, error: 'expected 6 companies' };
+  if (!Array.isArray(data.companies) || data.companies.length < 6) {
+    return { ok: false, error: 'expected at least 6 companies' };
   }
+  // Enforce at least 3 CN + 3 Intl. International can exceed 3 (e.g., semiconductor
+  // adds NVIDIA / AMD / Qualcomm for a 3 CN + 6 Intl = 9-company layout).
   const cnCount = data.companies.filter(c => c.region === 'cn').length;
   const intlCount = data.companies.filter(c => c.region === 'intl').length;
-  if (cnCount !== 3 || intlCount !== 3) {
-    return { ok: false, error: 'expected 3 cn + 3 intl region companies' };
+  if (cnCount < 3) {
+    return { ok: false, error: `expected at least 3 cn region companies, got ${cnCount}` };
+  }
+  if (intlCount < 3) {
+    return { ok: false, error: `expected at least 3 intl region companies, got ${intlCount}` };
   }
   for (const c of data.companies) {
     if (!c.id || !c.name || !c.domain || !Array.isArray(c.news)) {
