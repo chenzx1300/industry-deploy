@@ -1,5 +1,5 @@
 {
-  "date": "2026-06-22",
+  "date": "2026-06-23",
   "results": [
     {
       "slug": "carbon-fiber-industry",
@@ -11,14 +11,14 @@
     {
       "slug": "new-energy-vehicles-industry",
       "prompt": "新能源汽车",
-      "news_count": 45,
+      "news_count": 48,
       "total_companies": 6,
       "ok": true
     },
     {
       "slug": "semiconductor-industry",
       "prompt": "半导体",
-      "news_count": 43,
+      "news_count": 41,
       "total_companies": 6,
       "ok": true
     }
