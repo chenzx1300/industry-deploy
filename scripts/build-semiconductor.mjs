@@ -50,7 +50,7 @@ const totalNews = companies.reduce((s, c) => s + c.news.length, 0);
 console.log(`✓ ${totalNews} 条新闻分布在 ${companies.length} 家公司`);
 for (const c of companies) console.log(`  · ${c.name}: ${c.news.length} 条`);
 
-const data = { slug: SLUG, prompt: PROMPT, generated_at, companies };
+const data = { slug: SLUG, prompt: PROMPT, generated_at, companies, default_id: 'tsmc' };
 mkdirSync(DATA_DIR, { recursive: true });
 writeFileSync(`${DATA_DIR}/${SLUG}.json`, JSON.stringify(data, null, 2));
 

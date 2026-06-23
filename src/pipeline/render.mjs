@@ -547,8 +547,11 @@ export function renderIndustryPage(data) {
       </ul>`;
     const monoChar = (c.monogram || c.name.charAt(0)).slice(0, 2);
     const monoColor = c.monogram_color || '#475569';
+    // Default visible section: data.default_id if set, else first company.
+    const defaultId = data.default_id || data.companies[0]?.id;
+    const isVisible = c.id === defaultId;
     return `
-    <section data-co="${escapeHtml(c.id)}"${idx !== 0 ? ' hidden' : ''}>
+    <section data-co="${escapeHtml(c.id)}"${isVisible ? '' : ' hidden'}>
       <div class="company-header">
         ${monogramSvg(monoChar, monoColor)}
         <div class="name-block">
