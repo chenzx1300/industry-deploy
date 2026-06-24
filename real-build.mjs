@@ -16,17 +16,17 @@ const OUT_DIR = 'docs';
 // Real carbon fiber industry data — companies identified via my knowledge.
 // (Claude API skipped: I am the LLM, used my knowledge directly.)
 const COMPANIES = [
-  { id: 'sinofibers', name: '中复神鹰 Sinofibers', region: 'cn', domain: 'sinofibers.com', file: 'sinofibers.xml', monogram: '复', monogram_color: '#1e40af' },
-  { id: 'weihai',     name: '威海拓展 Weihai Tuozhan', region: 'cn', domain: 'weihaifiber.com', file: 'weihai.xml', monogram: '海', monogram_color: '#0d9488' },
-  { id: 'guangwei',   name: '光威复材 Guangwei', region: 'cn', domain: 'guangweicf.com', file: 'guangwei.xml', monogram: '光', monogram_color: '#475569' },
-  { id: 'toray',      name: 'Toray 东丽', region: 'intl', domain: 'toray.com', file: 'toray.xml', monogram: 'T', monogram_color: '#9f1239' },
-  { id: 'hexcel',     name: 'Hexcel 赫氏', region: 'intl', domain: 'hexcel.com', file: 'hexcel.xml', monogram: 'H', monogram_color: '#3730a3' },
-  { id: 'sgl',        name: 'SGL Carbon 西格里', region: 'intl', domain: 'sglcarbon.com', file: 'sgl.xml', monogram: 'S', monogram_color: '#1f2937' },
+  { id: 'sinofibers', name: '中复神鹰 Sinofibers', region: 'cn', domain: 'sinofibers.com', file: 'sinofibers.xml', monogram: '复', monogram_color: '#1e40af', news_url: 'https://www.sinofibers.com' },
+  { id: 'weihai',     name: '威海拓展 Weihai Tuozhan', region: 'cn', domain: 'weihaifiber.com', file: 'weihai.xml', monogram: '海', monogram_color: '#0d9488', news_url: 'https://www.weihaifiber.com' },
+  { id: 'guangwei',   name: '光威复材 Guangwei', region: 'cn', domain: 'guangweicf.com', file: 'guangwei.xml', monogram: '光', monogram_color: '#475569', news_url: 'https://www.guangweicf.com' },
+  { id: 'toray',      name: 'Toray 东丽', region: 'intl', domain: 'toray.com', file: 'toray.xml', monogram: 'T', monogram_color: '#9f1239', news_url: 'https://www.toray.com/news/index.html' },
+  { id: 'hexcel',     name: 'Hexcel 赫氏', region: 'intl', domain: 'hexcel.com', file: 'hexcel.xml', monogram: 'H', monogram_color: '#3730a3', news_url: 'https://www.hexcel.com/news-events/news' },
+  { id: 'sgl',        name: 'SGL Carbon 西格里', region: 'intl', domain: 'sglcarbon.com', file: 'sgl.xml', monogram: 'S', monogram_color: '#1f2937', news_url: 'https://www.sglcarbon.com/newsroom' },
 ];
 
 const PER_COMPANY = 10;
 
-function fetchAndParse(file, companyName, maxItems) {
+function fetchAndParse(file, companyName, maxItems, newsUrl) {
   const path = `${RSS_DIR}/${file}`;
   if (!existsSync(path)) {
     console.warn(`  ⚠ ${file} not found, skipping`);
@@ -35,15 +35,16 @@ function fetchAndParse(file, companyName, maxItems) {
   const xml = readFileSync(path, 'utf-8');
   const overFetch = maxItems * 4;
   const raw = parseGoogleNewsRss(xml).slice(0, overFetch);
-  // Use direct publisher URL (works in China) instead of news.google.com redirect.
-  const items = raw.map(i => ({ ...i, url: i.direct_url || i.url }));
+  // Prefer curated news center URL over publisher homepage.
+  const baseUrl = newsUrl || (raw[0]?.direct_url);
+  const items = raw.map(i => ({ ...i, url: baseUrl || i.url }));
   const filtered = filterNewsItems(items, companyName).slice(0, maxItems);
   return { raw: raw.length, filtered: filtered.length, items: filtered };
 }
 
 const generated_at = new Date().toISOString();
 const companies = COMPANIES.map(c => {
-  const result = fetchAndParse(c.file, c.name, PER_COMPANY);
+  const result = fetchAndParse(c.file, c.name, PER_COMPANY, c.news_url);
   // Strip helper fields before rendering
   const { file, ...rest } = c;
   return { ...rest, news: result.items || [] };

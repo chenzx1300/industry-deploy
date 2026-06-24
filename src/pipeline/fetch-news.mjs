@@ -20,8 +20,9 @@ export async function fetchNewsForCompanies(companies, { fetchImpl = globalThis.
       if (!res.ok) return { ...company, news: [] };
       const xml = await res.text();
       const allItems = parseGoogleNewsRss(xml).slice(0, fetchSize);
-      // Use direct_url (publisher homepage) instead of news.google.com redirect.
-      const items = allItems.map(i => ({ ...i, url: i.direct_url || i.url }));
+      // Prefer company.news_url (curated news center) over publisher homepage.
+      const baseUrl = company.news_url || (allItems[0]?.direct_url);
+      const items = allItems.map(i => ({ ...i, url: baseUrl || i.url }));
       const filtered = filterNewsItems(items, company.name).slice(0, maxItems);
       return { ...company, news: filtered };
     } catch {
