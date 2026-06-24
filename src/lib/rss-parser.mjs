@@ -29,13 +29,17 @@ export function parseGoogleNewsRss(xmlString) {
     }
     const pubDate = raw.pubDate ? new Date(raw.pubDate) : null;
     const published_at = pubDate && !isNaN(pubDate.getTime()) ? pubDate.toISOString() : new Date().toISOString();
+    // Strip HTML tags from description (Google News RSS embeds links in <a> inside description)
+    const rawDesc = (raw.description || '').toString();
+    const snippet = rawDesc
+      .replace(/<[^>]+>/g, ' ')    // strip tags
+      .replace(/\s+/g, ' ')         // collapse whitespace
+      .replace(/https?:\/\/\S+/g, '') // strip any remaining URLs
+      .trim();
     items.push({
       title,
-      snippet: (raw.description || '').toString().trim(),
+      snippet,
       url,
-      // Direct publisher URL: built from source domain (publisher homepage).
-      // For a more specific news-center link, callers should set
-      // company.news_url and override in the build script.
       direct_url: source !== 'unknown' ? `https://${source}` : url,
       source,
       published_at,

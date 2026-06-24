@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.27.0",
+    "@mozilla/readability": "^0.6.0",
+    "dotenv": "^16.4.5",
     "fast-xml-parser": "^4.5.0",
-    "dotenv": "^16.4.5"
+    "jsdom": "^29.1.1"
   },
   "engines": {
     "node": ">=20"

@@ -4,6 +4,7 @@
 import { readFileSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
 import { parseGoogleNewsRss } from '../src/lib/rss-parser.mjs';
 import { filterNewsItems } from '../src/lib/news-filter.mjs';
+import { scrapeNewsCenter, matchItemsToArticles } from '../src/lib/news-scraper.mjs';
 import { renderIndustryPage, renderHomepage } from '../src/pipeline/render.mjs';
 import { addToManifest, loadManifest } from '../src/pipeline/manifest.mjs';
 
@@ -33,19 +34,37 @@ function fetchAndParse(file, companyName, maxItems, newsUrl) {
   const xml = readFileSync(path, 'utf-8');
   const overFetch = maxItems * 4;
   const raw = parseGoogleNewsRss(xml).slice(0, overFetch);
-  // Prefer curated news center URL over publisher homepage.
-  const baseUrl = newsUrl || (raw[0]?.direct_url);
-  const items = raw.map(i => ({ ...i, url: baseUrl || i.url }));
-  const filtered = filterNewsItems(items, companyName).slice(0, maxItems);
+  const filtered = filterNewsItems(raw, companyName).slice(0, maxItems);
   return { items: filtered };
 }
 
+async function resolveUrls(items, companyName, newsUrl) {
+  if (!newsUrl) return items;
+  // Try: scrape news center, match titles, use article URL
+  let scraped = [];
+  try {
+    scraped = await scrapeNewsCenter(newsUrl, { maxArticles: 30 });
+  } catch {}
+  if (scraped.length > 0) {
+    // For matched items: use scraped article URL
+    // For unmatched items: use news center URL (better than Google News redirect)
+    const firstScrapedUrl = scraped[0].url;
+    return matchItemsToArticles(items, scraped).map(i => ({
+      ...i,
+      url: (i._matchScore && i._matchScore >= 0.3) ? i.url : newsUrl,
+    }));
+  }
+  // No scraped data → all items point to news center
+  return items.map(i => ({ ...i, url: newsUrl }));
+}
+
 const generated_at = new Date().toISOString();
-const companies = COMPANIES.map(c => {
+const companies = await Promise.all(COMPANIES.map(async c => {
   const r = fetchAndParse(c.file, c.name, PER_COMPANY, c.news_url);
+  const items = await resolveUrls(r.items, c.name, c.news_url);
   const { file, ...rest } = c;
-  return { ...rest, news: r.items };
-});
+  return { ...rest, news: items };
+}));
 
 const totalNews = companies.reduce((s, c) => s + c.news.length, 0);
 console.log(`✓ ${totalNews} 条新闻分布在 ${companies.length} 家公司`);
