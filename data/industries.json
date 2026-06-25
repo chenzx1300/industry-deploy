@@ -143,22 +143,22 @@
           "news_url": "https://www.smics.com/en/site/company_news/"
         },
         {
-          "id": "empyrean",
-          "name": "华大九天 Empyrean",
+          "id": "ymtc",
+          "name": "长江存储 YMTC",
           "region": "cn",
-          "domain": "empyrean-tech.com",
-          "monogram": "华",
-          "monogram_color": "#0891b2",
-          "news_url": "https://www.empyrean-tech.com/article/"
+          "domain": "ymtc.com",
+          "monogram": "江",
+          "monogram_color": "#7c3aed",
+          "news_url": "https://www.ymtc.com"
         },
         {
-          "id": "jcet",
-          "name": "长电科技 JCET",
+          "id": "cxmt",
+          "name": "长鑫存储 CXMT",
           "region": "cn",
-          "domain": "jcetglobal.com",
-          "monogram": "电",
-          "monogram_color": "#7c3aed",
-          "news_url": "https://www.jcetglobal.com/en/site/news"
+          "domain": "cxmt.com",
+          "monogram": "鑫",
+          "monogram_color": "#0891b2",
+          "news_url": "https://www.cxmt.com/news"
         },
         {
           "id": "tsmc",

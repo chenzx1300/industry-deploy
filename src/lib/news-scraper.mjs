@@ -13,6 +13,8 @@
 
 import { Readability } from '@mozilla/readability';
 import { JSDOM } from 'jsdom';
+import { fetchGoogleNewsRss, resolveGoogleNewsUrls } from './google-news.mjs';
+import { fetchEefocusNews } from './eefocus-news.mjs';
 
 const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
@@ -340,7 +342,8 @@ export async function scrapeNewsCenterWithPlaywright(newsCenterUrl, { maxArticle
  * article is paired with that article's url; for RSS items without scraped
  * matches, news center URL is used as fallback).
  */
-export async function buildNewsItems(rssItems, companyName, newsUrl, perCompany = 10) {
+export async function buildNewsItems(rssItems, companyName, newsUrl, perCompany = 10, opts = {}) {
+  const siteDomain = opts.siteDomain || null;
   if (!newsUrl) return rssItems.slice(0, perCompany);
 
   // Threshold: if simple fetch returns at least this many, skip Playwright.
@@ -355,6 +358,32 @@ export async function buildNewsItems(rssItems, companyName, newsUrl, perCompany 
     if (scraped.length < PLAYWRIGHT_THRESHOLD) {
       await new Promise(r => setTimeout(r, 1500));
       try { scraped = scraped.concat(await scrapeNewsCenterWithPlaywright(newsUrl, { maxArticles: 30 })); } catch {}
+    }
+  }
+
+  if (scraped.length === 0) {
+    // Fallback 1: EEFocus (CN electronics industry news site). CN-friendly, fast,
+    // and covers most CN semi/tech companies. Used when company has no scrapable
+    // news center of its own (YMTC, CXMT, etc.).
+    try {
+      const eefocus = await fetchEefocusNews(companyName, { maxResults: 30 });
+      if (eefocus.length > 0) {
+        scraped = eefocus.map(it => ({ title: it.title, url: it.url }));
+      }
+    } catch {}
+
+    // Fallback 2: Google News RSS — used only if EEFocus returns nothing AND
+    // the sandbox can reach Google News (often blocked).
+    if (scraped.length === 0) {
+      try {
+        const rss = await fetchGoogleNewsRss(companyName, siteDomain || '', { maxResults: 30 });
+        if (rss.length > 0) {
+          const resolved = await resolveGoogleNewsUrls(rss, { concurrency: 4 });
+          scraped = resolved
+            .filter(it => it.url && !it.url.includes('news.google.com'))
+            .map(it => ({ title: it.title, url: it.url }));
+        }
+      } catch {}
     }
   }
 

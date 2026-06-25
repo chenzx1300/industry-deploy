@@ -27,7 +27,7 @@ const COMPANIES = industry.companies;
 const generated_at = new Date().toISOString();
 const companies = await Promise.all(COMPANIES.map(async c => ({
   ...c,
-  news: await buildNewsItems([], c.name, c.news_url, PER_COMPANY),
+  news: await buildNewsItems([], c.name, c.news_url, PER_COMPANY, { siteDomain: c.domain }),
 })));
 
 const data = { slug: SLUG, prompt: PROMPT, generated_at, companies };
