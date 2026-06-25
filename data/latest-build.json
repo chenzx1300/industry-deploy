@@ -1,11 +1,21 @@
 {
+<<<<<<< HEAD
   "date": "2026-06-25",
+=======
+  "date": "2026-06-24",
+>>>>>>> 409159cce076245fc93ce4391bc62abf3f963af9
   "results": [
     {
       "slug": "carbon-fiber-industry",
       "prompt": "碳纤维",
+<<<<<<< HEAD
       "ok": false,
       "error": "fetch failed"
+=======
+      "news_count": 23,
+      "total_companies": 6,
+      "ok": true
+>>>>>>> 409159cce076245fc93ce4391bc62abf3f963af9
     },
     {
       "slug": "new-energy-vehicles-industry",
@@ -16,8 +26,14 @@
     {
       "slug": "semiconductor-industry",
       "prompt": "半导体",
+<<<<<<< HEAD
       "ok": false,
       "error": "fetch failed"
+=======
+      "news_count": 64,
+      "total_companies": 9,
+      "ok": true
+>>>>>>> 409159cce076245fc93ce4391bc62abf3f963af9
     }
   ]
 }
