@@ -41,22 +41,22 @@
           "news_url": "https://www.toray.com/news/index.html"
         },
         {
-          "id": "hexcel",
-          "name": "Hexcel 赫氏",
+          "id": "teijin",
+          "name": "帝人 Teijin",
           "region": "intl",
-          "domain": "hexcel.com",
-          "monogram": "H",
-          "monogram_color": "#3730a3",
-          "news_url": "https://www.hexcel.com/news-events/news"
+          "domain": "teijin.com",
+          "monogram": "T",
+          "monogram_color": "#8b5cf6",
+          "news_url": "https://www.teijin.com/news/"
         },
         {
-          "id": "sgl",
-          "name": "SGL Carbon 西格里",
+          "id": "mitsubishi",
+          "name": "三菱化学 Mitsubishi Chemical",
           "region": "intl",
-          "domain": "sglcarbon.com",
-          "monogram": "S",
-          "monogram_color": "#1f2937",
-          "news_url": "https://www.sglcarbon.com/newsroom"
+          "domain": "m-chemical.co.jp",
+          "monogram": "三",
+          "monogram_color": "#dc2626",
+          "news_url": "https://www.m-chemical.co.jp/en/news/"
         }
       ]
     },
@@ -89,8 +89,8 @@
           "domain": "nio.com",
           "monogram": "蔚",
           "monogram_color": "#059669",
-          "news_url": "https://www.nio.com/news"
-        },
+          "news_url": "https://ir.nio.com/"
+        }
         {
           "id": "tesla",
           "name": "Tesla 特斯拉",

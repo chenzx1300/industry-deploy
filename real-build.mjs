@@ -20,8 +20,8 @@ const COMPANIES = [
   { id: 'weihai',     name: '威海拓展 Weihai Tuozhan', region: 'cn', domain: 'weihaifiber.com', file: 'weihai.xml', monogram: '海', monogram_color: '#0d9488', news_url: 'https://www.weihaifiber.com' },
   { id: 'guangwei',   name: '光威复材 Guangwei', region: 'cn', domain: 'guangweicf.com', file: 'guangwei.xml', monogram: '光', monogram_color: '#475569', news_url: 'https://www.guangweicf.com' },
   { id: 'toray',      name: 'Toray 东丽', region: 'intl', domain: 'toray.com', file: 'toray.xml', monogram: 'T', monogram_color: '#9f1239', news_url: 'https://www.toray.com/news/index.html' },
-  { id: 'hexcel',     name: 'Hexcel 赫氏', region: 'intl', domain: 'hexcel.com', file: 'hexcel.xml', monogram: 'H', monogram_color: '#3730a3', news_url: 'https://www.hexcel.com/news-events/news' },
-  { id: 'sgl',        name: 'SGL Carbon 西格里', region: 'intl', domain: 'sglcarbon.com', file: 'sgl.xml', monogram: 'S', monogram_color: '#1f2937', news_url: 'https://www.sglcarbon.com/newsroom' },
+  { id: 'teijin',     name: '帝人 Teijin',         region: 'intl', domain: 'teijin.com',        file: null,         monogram: 'T', monogram_color: '#8b5cf6', news_url: 'https://www.teijin.com/news/' },
+  { id: 'mitsubishi', name: '三菱化学 Mitsubishi', region: 'intl', domain: 'm-chemical.co.jp', file: null,         monogram: '三', monogram_color: '#dc2626', news_url: 'https://www.m-chemical.co.jp/en/news/' },
 ];
 
 const PER_COMPANY = 10;

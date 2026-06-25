@@ -18,7 +18,7 @@ const PER_COMPANY = 10;
 const COMPANIES = [
   { id: 'byd',   name: '比亚迪 BYD',      region: 'cn',   domain: 'byd.com',        monogram: '比', monogram_color: '#dc2626', news_url: 'https://www.bydglobal.com/en/news.html' },
   { id: 'catl',  name: '宁德时代 CATL',   region: 'cn',   domain: 'catl.com',        monogram: '宁', monogram_color: '#0ea5e9', news_url: 'https://www.catl.com/en/' },
-  { id: 'nio',   name: '蔚来 NIO',         region: 'cn',   domain: 'nio.com',         monogram: '蔚', monogram_color: '#059669', news_url: 'https://www.nio.com/news' },
+  { id: 'nio',   name: '蔚来 NIO',         region: 'cn',   domain: 'nio.com',         monogram: '蔚', monogram_color: '#059669', news_url: 'https://ir.nio.com/' },
   { id: 'tesla', name: 'Tesla 特斯拉',    region: 'intl', domain: 'tesla.com',       monogram: 'T', monogram_color: '#dc2626', news_url: 'https://www.tesla.com/blog' },
   { id: 'vw',    name: 'Volkswagen 大众', region: 'intl', domain: 'volkswagen.com',  monogram: 'V', monogram_color: '#1e40af', news_url: 'https://www.volkswagen-newsroom.com/en/press-releases' },
   { id: 'toyota',name: 'Toyota 丰田',     region: 'intl', domain: 'toyota.com',      monogram: 'T', monogram_color: '#b91c1c', news_url: 'https://global.toyota/en/newsroom/' },
