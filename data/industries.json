@@ -149,7 +149,16 @@
           "domain": "cxmt.com",
           "monogram": "存",
           "monogram_color": "#0891b2",
-          "news_url": "https://www.cxmt.com"
+          "news_url": "https://www.cxmt.com/news"
+        },
+        {
+          "id": "jcet",
+          "name": "长电科技 JCET",
+          "region": "cn",
+          "domain": "jcetglobal.com",
+          "monogram": "电",
+          "monogram_color": "#7c3aed",
+          "news_url": "https://www.jcetglobal.com"
         },
         {
           "id": "tsmc",
@@ -158,7 +167,7 @@
           "domain": "tsmc.com",
           "monogram": "台",
           "monogram_color": "#cc0000",
-          "news_url": "https://pr.tsmc.com/english/news"
+          "news_url": "https://www.broadcom.com/company/news"
         },
         {
           "id": "samsung",
@@ -204,6 +213,15 @@
           "monogram": "Q",
           "monogram_color": "#3253dc",
           "news_url": "https://www.qualcomm.com/news/releases"
+        },
+        {
+          "id": "asml",
+          "name": "ASML 阿斯麦",
+          "region": "intl",
+          "domain": "asml.com",
+          "monogram": "A",
+          "monogram_color": "#0067b1",
+          "news_url": "https://www.asml.com/en/news/press-releases"
         }
       ]
     }

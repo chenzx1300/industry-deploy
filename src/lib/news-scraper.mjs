@@ -46,6 +46,19 @@ const NON_ARTICLE_TITLE_PATTERNS = [
   /^\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4}$/,  // bare date
   /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*\s*\d{0,2}$/i,  // bare month
   /^(home|首页|返回|更多|查看|next|prev|上页|下页|更多|登录|注册)$/i,  // CN nav
+  /^[^-—\n]{1,40}\s*[-—]\s*[^-—\n]{1,40}$/,  // "X - Y" short pattern (often nav like "About - Company")
+  /^(首页|业务|产品|技术|应用|服务|关于|加入|联系|帮助|帮助中心|投资者|公司|企业|管理|团队|里程碑|文化|资质|证书)/,  // CN nav single words
+];
+
+// Require at least one news signal: a date (year 20XX) or a news action verb
+const NEWS_INDICATORS = [
+  /\b(19|20)\d{2}\b/,        // any year 1900-2099 (covers 2025, 2026, 2027, etc.)
+  /\b二零[一二三四五六七八九〇]+\b/,  // Chinese year notation like 二零二六
+  /\b第[一二三四五]?[一二三四五六七八九十百\d]+季\b/,  // 第X季 (quarterly)
+  /\bQ[1-4]\b/i,            // Q1, Q2, etc.
+  /发布|推出|签署|完成|收购|合作|投资|启动|扩张|宣布|突破|增长|减少|投产|下线|上线|任命|成为|获得|推出|正式|公布|宣布|透露|披露|报道|推出|拓展|达成|战略|协议/,  // CN news verbs
+  /\b(launch|announce|partner|invest|acquire|complete|start|sign|introduce|release|report|reveal|expand|unveil|appoint|raise|achieve|win|secure|develop|complete|ship|deliver|join|leave|merge|acquire)\b/i,
+  /\b(report|earnings|revenue|profit|partnership|deal|launches?|shipments?|orders?)\b/i,
 ];
 
 function isArticleUrl(href) {
@@ -55,13 +68,17 @@ function isArticleUrl(href) {
   return true;
 }
 
-// Heuristic: a real article title is usually 10+ chars with substantive content.
-// Bare 2-3 char words like "首页", "产品", "关于" are nav items.
+// Heuristic: a real article title has substantive content + at least one news
+// signal (date, action verb, or report keyword). Nav/UI items are short and
+// lack news signals.
 function isArticleTitle(text) {
   if (!text) return false;
   const t = text.trim();
   if (t.length < 10 || t.length > 300) return false;
   for (const re of NON_ARTICLE_TITLE_PATTERNS) if (re.test(t)) return false;
+  // Must have at least one news indicator (date, year, or news verb)
+  const hasNewsSignal = NEWS_INDICATORS.some(re => re.test(t));
+  if (!hasNewsSignal) return false;
   return true;
 }
 
@@ -214,33 +231,91 @@ export async function searchArticleViaDDG(title, siteDomain, { fetchImpl = globa
 }
 
 /**
+ * Playwright-based scrape: launches a real headless browser, navigates to the
+ * news center, and extracts article links. Used as a fallback when simple
+ * fetch-based scraping returns too few results (JS-rendered sites).
+ */
+export async function scrapeNewsCenterWithPlaywright(newsCenterUrl, { maxArticles = MAX_ARTICLES, timeout = 30000 } = {}) {
+  if (!newsCenterUrl) return [];
+  let browser;
+  try {
+    const { chromium } = await import('playwright');
+    browser = await chromium.launch({ headless: true });
+    const ctx = await browser.newContext({
+      userAgent: BROWSER_UA,
+      viewport: { width: 1280, height: 800 },
+    });
+    const page = await ctx.newPage();
+    await page.goto(newsCenterUrl, { waitUntil: 'domcontentloaded', timeout });
+    // Give the page a moment for JS to render
+    await page.waitForTimeout(2000);
+    const anchors = await page.$$('a[href]');
+    const seen = new Set();
+    const articles = [];
+    for (const a of anchors) {
+      const data = await a.evaluate(el => {
+        let n = el;
+        while (n && n !== document.body) {
+          const tag = n.tagName?.toLowerCase();
+          if (tag === 'nav' || tag === 'header' || tag === 'footer' || tag === 'aside') return null;
+          if (n.getAttribute('role') === 'navigation' || n.getAttribute('role') === 'banner' || n.getAttribute('role') === 'contentinfo') return null;
+          n = n.parentElement;
+        }
+        return {
+          href: el.getAttribute('href'),
+          text: (el.textContent || '').replace(/\s+/g, ' ').trim(),
+        };
+      });
+      if (!data || !data.href) continue;
+      if (!isArticleUrl(data.href)) continue;
+      if (!isArticleTitle(data.text)) continue;
+      const abs = normalizeUrl(data.href, newsCenterUrl);
+      if (!abs || seen.has(abs)) continue;
+      seen.add(abs);
+      articles.push({ title: data.text, url: abs });
+      if (articles.length >= maxArticles) break;
+    }
+    return articles;
+  } catch (err) {
+    return [];
+  } finally {
+    if (browser) {
+      try { await browser.close(); } catch {}
+    }
+  }
+}
+
+/**
  * Resolve a single RSS item to a real article URL.
- * Tries: (1) direct news-center scrape + match, (2) DDG site-search.
- * Falls back to newsCenterUrl if both fail.
+ * Tries: (1) simple fetch scrape + match, (2) Playwright headless browser
+ * (for JS-rendered or anti-bot sites), (3) DDG site-search.
+ * Falls back to newsCenterUrl if all fail.
  */
 export async function resolveArticleUrl(rssItem, companyName, newsCenterUrl, opts = {}) {
-  const { fetchImpl, logger = () => {} } = opts;
+  const { usePlaywright = true } = opts;
 
-  // 1. Try scraping news center
   if (newsCenterUrl) {
-    const scraped = await scrapeNewsCenter(newsCenterUrl, { fetchImpl });
+    // 1. Try simple fetch
+    const scraped = await scrapeNewsCenter(newsCenterUrl);
     if (scraped.length > 0) {
       const matches = matchItemsToArticles([rssItem], scraped);
       if (matches[0].url && matches[0]._matchScore && matches[0]._matchScore >= 0.3) {
         return { url: matches[0].url, source: 'scraped', score: matches[0]._matchScore };
       }
     }
-  }
 
-  // 2. Try DDG site-search
-  if (newsCenterUrl) {
-    try {
-      const base = new URL(newsCenterUrl);
-      const results = await searchArticleViaDDG(rssItem.title, base.hostname.replace(/^www\./, ''), { fetchImpl });
-      if (results.length > 0) {
-        return { url: results[0].url, source: 'ddg', title: results[0].title };
-      }
-    } catch {}
+    // 2. Playwright fallback (for JS-rendered or anti-bot sites)
+    if (usePlaywright) {
+      try {
+        const pwScraped = await scrapeNewsCenterWithPlaywright(newsCenterUrl);
+        if (pwScraped.length > 0) {
+          const matches = matchItemsToArticles([rssItem], pwScraped);
+          if (matches[0].url && matches[0]._matchScore && matches[0]._matchScore >= 0.3) {
+            return { url: matches[0].url, source: 'playwright', score: matches[0]._matchScore };
+          }
+        }
+      } catch {}
+    }
   }
 
   // 3. Fall back to news center URL
