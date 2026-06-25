@@ -4,25 +4,25 @@
 
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { readFileSync } from 'node:fs';
 import { buildNewsItems } from './src/lib/news-scraper.mjs';
 import { renderIndustryPage, renderHomepage } from './src/pipeline/render.mjs';
 import { addToManifest, loadManifest } from './src/pipeline/manifest.mjs';
 
 const SLUG = 'new-energy-vehicles-industry';
-const PROMPT = '新能源汽车';
 const DATA_DIR = 'data';
 const OUT_DIR = 'docs';
 const PER_COMPANY = 10;
 
-// 6 EV head companies with curated news center URLs (real publishers)
-const COMPANIES = [
-  { id: 'byd',   name: '比亚迪 BYD',      region: 'cn',   domain: 'byd.com',        monogram: '比', monogram_color: '#dc2626', news_url: 'https://www.bydglobal.com/en/news.html' },
-  { id: 'catl',  name: '宁德时代 CATL',   region: 'cn',   domain: 'catl.com',        monogram: '宁', monogram_color: '#0ea5e9', news_url: 'https://www.catl.com/en/' },
-  { id: 'nio',   name: '蔚来 NIO',         region: 'cn',   domain: 'nio.com',         monogram: '蔚', monogram_color: '#059669', news_url: 'https://ir.nio.com/' },
-  { id: 'tesla', name: 'Tesla 特斯拉',    region: 'intl', domain: 'tesla.com',       monogram: 'T', monogram_color: '#dc2626', news_url: 'https://www.tesla.com/blog' },
-  { id: 'vw',    name: 'Volkswagen 大众', region: 'intl', domain: 'volkswagen.com',  monogram: 'V', monogram_color: '#1e40af', news_url: 'https://www.volkswagen-newsroom.com/en/press-releases' },
-  { id: 'toyota',name: 'Toyota 丰田',     region: 'intl', domain: 'toyota.com',      monogram: 'T', monogram_color: '#b91c1c', news_url: 'https://global.toyota/en/newsroom/' },
-];
+// Load companies + prompt from data/industries.json (single source of truth).
+const industries = JSON.parse(readFileSync(`${DATA_DIR}/industries.json`, 'utf-8')).industries;
+const industry = industries.find(i => i.slug === SLUG);
+if (!industry) {
+  console.error(`Industry '${SLUG}' not found in ${DATA_DIR}/industries.json`);
+  process.exit(1);
+}
+const PROMPT = industry.prompt;
+const COMPANIES = industry.companies;
 
 const generated_at = new Date().toISOString();
 const companies = await Promise.all(COMPANIES.map(async c => ({

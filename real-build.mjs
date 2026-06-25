@@ -8,23 +8,20 @@ import { renderIndustryPage, renderHomepage } from './src/pipeline/render.mjs';
 import { addToManifest, loadManifest } from './src/pipeline/manifest.mjs';
 
 const SLUG = 'carbon-fiber-industry';
-const PROMPT = '碳纤维';
 const RSS_DIR = './tmp-rss-cache';
 const DATA_DIR = 'data';
 const OUT_DIR = 'docs';
-
-// Real carbon fiber industry data — companies identified via my knowledge.
-// (Claude API skipped: I am the LLM, used my knowledge directly.)
-const COMPANIES = [
-  { id: 'sinofibers', name: '中复神鹰 Sinofibers', region: 'cn', domain: 'sinofibers.com', file: 'sinofibers.xml', monogram: '复', monogram_color: '#1e40af', news_url: 'https://www.sinofibers.com' },
-  { id: 'weihai',     name: '威海拓展 Weihai Tuozhan', region: 'cn', domain: 'weihaifiber.com', file: 'weihai.xml', monogram: '海', monogram_color: '#0d9488', news_url: 'https://www.weihaifiber.com' },
-  { id: 'guangwei',   name: '光威复材 Guangwei', region: 'cn', domain: 'guangweicf.com', file: 'guangwei.xml', monogram: '光', monogram_color: '#475569', news_url: 'https://www.guangweicf.com' },
-  { id: 'toray',      name: 'Toray 东丽', region: 'intl', domain: 'toray.com', file: 'toray.xml', monogram: 'T', monogram_color: '#9f1239', news_url: 'https://www.toray.com/news/index.html' },
-  { id: 'teijin',     name: '帝人 Teijin',         region: 'intl', domain: 'teijin.com',        file: null,         monogram: 'T', monogram_color: '#8b5cf6', news_url: 'https://www.teijin.com/news/' },
-  { id: 'mitsubishi', name: '三菱化学 Mitsubishi', region: 'intl', domain: 'm-chemical.co.jp', file: null,         monogram: '三', monogram_color: '#dc2626', news_url: 'https://www.m-chemical.co.jp/en/news/' },
-];
-
 const PER_COMPANY = 10;
+
+// Load companies + prompt from data/industries.json (single source of truth).
+const industries = JSON.parse(readFileSync(`${DATA_DIR}/industries.json`, 'utf-8')).industries;
+const industry = industries.find(i => i.slug === SLUG);
+if (!industry) {
+  console.error(`Industry '${SLUG}' not found in ${DATA_DIR}/industries.json`);
+  process.exit(1);
+}
+const PROMPT = industry.prompt;
+const COMPANIES = industry.companies;
 
 function fetchRssItems(file) {
   const path = `${RSS_DIR}/${file}`;
@@ -35,10 +32,9 @@ function fetchRssItems(file) {
 
 const generated_at = new Date().toISOString();
 const companies = await Promise.all(COMPANIES.map(async c => {
-  const rssItems = fetchRssItems(c.file);
+  const rssItems = fetchRssItems(`${c.id}.xml`);
   const news = await buildNewsItems(rssItems, c.name, c.news_url, PER_COMPANY);
-  const { file, ...rest } = c;
-  return { ...rest, news };
+  return { ...c, news };
 }));
 
 const data = { slug: SLUG, prompt: PROMPT, generated_at, companies };
@@ -58,7 +54,7 @@ mkdirSync(`${OUT_DIR}/${SLUG}`, { recursive: true });
 writeFileSync(`${OUT_DIR}/${SLUG}/index.html`, renderIndustryPage(data));
 writeFileSync(`${OUT_DIR}/index.html`, renderHomepage(manifest));
 
-console.log(`✓ ${totalNews} 条真实新闻（来自 Google News）`);
+console.log(`✓ ${totalNews} 条真实新闻（来自公司新闻中心）`);
 for (const c of companies) {
   console.log(`  · ${c.name}: ${c.news.length} 条`);
 }

@@ -2,35 +2,8 @@
   "industries": [
     {
       "slug": "carbon-fiber-industry",
-      "prompt": "碳纤维",
+      "prompt": "碳纤维 · 先进复合材料",
       "companies": [
-        {
-          "id": "sinofibers",
-          "name": "中复神鹰 Sinofibers",
-          "region": "cn",
-          "domain": "sinofibers.com",
-          "monogram": "复",
-          "monogram_color": "#1e40af",
-          "news_url": "https://www.sinofibers.com"
-        },
-        {
-          "id": "weihai",
-          "name": "威海拓展 Weihai Tuozhan",
-          "region": "cn",
-          "domain": "weihaifiber.com",
-          "monogram": "海",
-          "monogram_color": "#0d9488",
-          "news_url": "https://www.weihaifiber.com"
-        },
-        {
-          "id": "guangwei",
-          "name": "光威复材 Guangwei",
-          "region": "cn",
-          "domain": "guangweicf.com",
-          "monogram": "光",
-          "monogram_color": "#475569",
-          "news_url": "https://www.guangweicf.com"
-        },
         {
           "id": "toray",
           "name": "Toray 东丽",
@@ -38,7 +11,7 @@
           "domain": "toray.com",
           "monogram": "T",
           "monogram_color": "#9f1239",
-          "news_url": "https://www.toray.com/news/index.html"
+          "news_url": "https://www.toray.com/news/"
         },
         {
           "id": "teijin",
@@ -57,6 +30,33 @@
           "monogram": "三",
           "monogram_color": "#dc2626",
           "news_url": "https://www.m-chemical.co.jp/en/news/"
+        },
+        {
+          "id": "solvay",
+          "name": "Solvay 苏威",
+          "region": "intl",
+          "domain": "solvay.com",
+          "monogram": "S",
+          "monogram_color": "#0ea5e9",
+          "news_url": "https://www.solvay.com/en/"
+        },
+        {
+          "id": "jushi",
+          "name": "中国巨石 Jushi",
+          "region": "cn",
+          "domain": "jushi.com",
+          "monogram": "巨",
+          "monogram_color": "#7c3aed",
+          "news_url": "https://www.jushi.com/news/"
+        },
+        {
+          "id": "toyobo",
+          "name": "Toyobo 东洋纺",
+          "region": "intl",
+          "domain": "toyobo-global.com",
+          "monogram": "T",
+          "monogram_color": "#0d9488",
+          "news_url": "https://www.toyobo-global.com/news/"
         }
       ]
     },
@@ -90,15 +90,15 @@
           "monogram": "蔚",
           "monogram_color": "#059669",
           "news_url": "https://ir.nio.com/"
-        }
+        },
         {
-          "id": "tesla",
-          "name": "Tesla 特斯拉",
+          "id": "bmw",
+          "name": "BMW 宝马",
           "region": "intl",
-          "domain": "tesla.com",
-          "monogram": "T",
-          "monogram_color": "#dc2626",
-          "news_url": "https://www.tesla.com/blog"
+          "domain": "bmwgroup.com",
+          "monogram": "B",
+          "monogram_color": "#0066b1",
+          "news_url": "https://www.bmwgroup.com/en/news.html"
         },
         {
           "id": "vw",
@@ -134,22 +134,22 @@
           "news_url": "https://huahonggrace.com/s/news.php?year=2026"
         },
         {
-          "id": "ymtc",
-          "name": "长江存储 YMTC",
+          "id": "smic",
+          "name": "中芯国际 SMIC",
           "region": "cn",
-          "domain": "ymtc.com",
-          "monogram": "江",
-          "monogram_color": "#7c3aed",
-          "news_url": "https://www.ymtc.com"
+          "domain": "smics.com",
+          "monogram": "芯",
+          "monogram_color": "#0d9488",
+          "news_url": "https://www.smics.com/en/site/company_news/"
         },
         {
-          "id": "cxmt",
-          "name": "长鑫存储 CXMT",
+          "id": "empyrean",
+          "name": "华大九天 Empyrean",
           "region": "cn",
-          "domain": "cxmt.com",
-          "monogram": "存",
+          "domain": "empyrean-tech.com",
+          "monogram": "华",
           "monogram_color": "#0891b2",
-          "news_url": "https://www.cxmt.com/news"
+          "news_url": "https://www.empyrean-tech.com/article/"
         },
         {
           "id": "jcet",
@@ -158,7 +158,7 @@
           "domain": "jcetglobal.com",
           "monogram": "电",
           "monogram_color": "#7c3aed",
-          "news_url": "https://www.jcetglobal.com"
+          "news_url": "https://www.jcetglobal.com/en/site/news"
         },
         {
           "id": "tsmc",
@@ -206,13 +206,13 @@
           "news_url": "https://www.amd.com/en/newsroom.html"
         },
         {
-          "id": "qualcomm",
-          "name": "Qualcomm 高通",
+          "id": "broadcom",
+          "name": "Broadcom 博通",
           "region": "intl",
-          "domain": "qualcomm.com",
-          "monogram": "Q",
-          "monogram_color": "#3253dc",
-          "news_url": "https://www.qualcomm.com/news/releases"
+          "domain": "broadcom.com",
+          "monogram": "B",
+          "monogram_color": "#cc092f",
+          "news_url": "https://www.broadcom.com/company/news"
         },
         {
           "id": "asml",
