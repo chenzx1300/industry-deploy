@@ -286,38 +286,52 @@ export async function scrapeNewsCenterWithPlaywright(newsCenterUrl, { maxArticle
 }
 
 /**
- * Resolve a single RSS item to a real article URL.
- * Tries: (1) simple fetch scrape + match, (2) Playwright headless browser
- * (for JS-rendered or anti-bot sites), (3) DDG site-search.
- * Falls back to newsCenterUrl if all fail.
+ * Build a list of news items for a company:
+ *   1. Try scraping the news center (simple fetch)
+ *   2. Fall back to Playwright if simple fetch returns 0
+ *   3. If no scraped data, return raw RSS items with news center URL
+ *
+ * Each returned item has title + url that always correspond (title from scraped
+ * article is paired with that article's url; for RSS items without scraped
+ * matches, news center URL is used as fallback).
  */
-export async function resolveArticleUrl(rssItem, companyName, newsCenterUrl, opts = {}) {
-  const { usePlaywright = true } = opts;
+export async function buildNewsItems(rssItems, companyName, newsUrl, perCompany = 10) {
+  if (!newsUrl) return rssItems.slice(0, perCompany);
 
-  if (newsCenterUrl) {
-    // 1. Try simple fetch
-    const scraped = await scrapeNewsCenter(newsCenterUrl);
-    if (scraped.length > 0) {
-      const matches = matchItemsToArticles([rssItem], scraped);
-      if (matches[0].url && matches[0]._matchScore && matches[0]._matchScore >= 0.3) {
-        return { url: matches[0].url, source: 'scraped', score: matches[0]._matchScore };
-      }
-    }
-
-    // 2. Playwright fallback (for JS-rendered or anti-bot sites)
-    if (usePlaywright) {
-      try {
-        const pwScraped = await scrapeNewsCenterWithPlaywright(newsCenterUrl);
-        if (pwScraped.length > 0) {
-          const matches = matchItemsToArticles([rssItem], pwScraped);
-          if (matches[0].url && matches[0]._matchScore && matches[0]._matchScore >= 0.3) {
-            return { url: matches[0].url, source: 'playwright', score: matches[0]._matchScore };
-          }
-        }
-      } catch {}
-    }
+  let scraped = [];
+  try { scraped = await scrapeNewsCenter(newsUrl, { maxArticles: 30 }); } catch {}
+  if (scraped.length === 0) {
+    try { scraped = await scrapeNewsCenterWithPlaywright(newsUrl, { maxArticles: 30 }); } catch {}
   }
 
-  // 3. Fall back to news center URL
-  return { url: newsCenterUrl, source: 'fallback' };
+  if (scraped.length === 0) {
+    // No scraped articles: return ONE generic item pointing to news center.
+    // Title matches the URL destination (both = "Visit [Company] news center").
+    return [{
+      title: `查看 ${companyName} 新闻中心`,
+      url: newsUrl,
+      snippet: '',
+    }];
+  }
+
+  // Use ONLY scraped articles. Each item's title and url always match.
+  const itemsToShow = [];
+  for (let idx = 0; idx < perCompany; idx++) {
+    const scrapedArt = scraped[idx];
+    if (!scrapedArt) break;
+    const rssItem = rssItems[idx];
+    let snippet = '';
+    if (rssItem) {
+      const matches = matchItemsToArticles([rssItem], [scrapedArt]);
+      if (matches[0]._matchScore && matches[0]._matchScore >= 0.3 && matches[0].url === scrapedArt.url) {
+        snippet = rssItem.snippet || '';
+      }
+    }
+    itemsToShow.push({
+      title: scrapedArt.title,
+      url: scrapedArt.url,
+      snippet,
+    });
+  }
+  return itemsToShow;
 }

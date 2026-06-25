@@ -18,7 +18,7 @@ const COMPANIES = [
   { id: 'huahong',   name: '华虹半导体 Hua Hong', region: 'cn',   domain: 'huahonggrace.com', file: 'huahong.xml',   monogram: '华', monogram_color: '#dc2626', news_url: 'https://huahonggrace.com/s/news.php?year=2026' },
   { id: 'ymtc',      name: '长江存储 YMTC',       region: 'cn',   domain: 'ymtc.com',        file: 'ymtc.xml',      monogram: '江', monogram_color: '#7c3aed', news_url: 'https://www.ymtc.com/news/' },
   { id: 'jcet',      name: '长电科技 JCET',       region: 'cn',   domain: 'jcetglobal.com',   file: null,            monogram: '电', monogram_color: '#7c3aed', news_url: 'https://www.jcetglobal.com' },
-  { id: 'tsmc',      name: '台积电 TSMC',         region: 'intl', domain: 'tsmc.com',        file: 'tsmc.xml',      monogram: '台', monogram_color: '#cc0000', news_url: 'https://www.broadcom.com/company/news' },
+  { id: 'tsmc',      name: '台积电 TSMC',         region: 'intl', domain: 'tsmc.com',        file: 'tsmc.xml',      monogram: '台', monogram_color: '#cc0000', news_url: 'https://pr.tsmc.com/chinese' },
   { id: 'samsung',   name: '三星电子 Samsung',    region: 'intl', domain: 'samsung.com',     file: 'samsung.xml',   monogram: 'S', monogram_color: '#1428a0', news_url: 'https://news.samsung.com/global/' },
   { id: 'intel',     name: 'Intel',               region: 'intl', domain: 'intel.com',       file: 'intel.xml',     monogram: 'I', monogram_color: '#0071c5', news_url: 'https://www.intel.com/content/www/us/en/newsroom/news-release.html' },
   { id: 'nvidia',    name: 'NVIDIA 英伟达',       region: 'intl', domain: 'nvidia.com',      file: 'nvidia.xml',    monogram: 'N', monogram_color: '#76b900', news_url: 'https://nvidianews.nvidia.com/' },
@@ -38,40 +38,59 @@ function fetchAndParse(file, companyName, maxItems, newsUrl) {
   return { items: filtered };
 }
 
-async function resolveUrls(items, companyName, newsUrl) {
-  if (!newsUrl) return items;
-  // 1. Try simple fetch first (fast, works for most sites)
+async function resolveUrls(rssItems, companyName, newsUrl) {
+  if (!newsUrl) return rssItems;
+
+  // 1. Try simple fetch
   let scraped = [];
   try {
     scraped = await scrapeNewsCenter(newsUrl, { maxArticles: 30 });
   } catch {}
-  // 2. If simple fetch got 0 results, try Playwright (slower but handles JS / anti-bot)
+  // 2. If 0, try Playwright
   if (scraped.length === 0) {
     try {
       scraped = await scrapeNewsCenterWithPlaywright(newsUrl, { maxArticles: 30 });
     } catch {}
   }
 
-  // If we have scraped articles, use them as the news source.
-  // If items is empty (no RSS), generate items from scraped.
-  if (scraped.length > 0) {
-    const baseItems = items.length > 0 ? items : scraped.slice(0, PER_COMPANY).map(s => ({
-      title: s.title, snippet: '', url: s.url, source: '',
-    }));
-    return matchItemsToArticles(baseItems, scraped).map((i, idx) => {
-      if (i._matchScore && i._matchScore >= 0.3) {
-        return { ...i, url: i.url };
+  if (scraped.length === 0) {
+    // No scraped data: keep RSS items, point at news center.
+    return rssItems.map(i => ({ ...i, url: newsUrl }));
+  }
+
+  // We have scraped articles. CRITICAL: ensure title and URL match.
+  // Strategy: use ONLY the scraped articles (not RSS). Each item's
+  // title comes from the scraped article; its URL points to that article.
+  // This guarantees displayed.title === URL leads to that article.
+  //
+  // If RSS items exist, try to match them to scraped articles by title
+  // similarity. RSS items that don't match are dropped (better than
+  // showing a mismatched title/url).
+  const itemsToShow = [];
+  for (let idx = 0; idx < PER_COMPANY; idx++) {
+    const rssItem = rssItems[idx];
+    const scrapedArt = scraped[idx];
+    if (!scrapedArt) break;
+    if (rssItem) {
+      const matches = matchItemsToArticles([rssItem], [scrapedArt]);
+      if (matches[0]._matchScore && matches[0]._matchScore >= 0.3 && matches[0].url === scrapedArt.url) {
+        // Use RSS snippet (often richer) with scraped title/url
+        itemsToShow.push({
+          title: scrapedArt.title,
+          url: scrapedArt.url,
+          snippet: rssItem.snippet,
+        });
+        continue;
       }
-      // Unmatched: use next scraped article
-      const fallback = scraped[idx] || scraped[0];
-      if (fallback) {
-        return { ...i, title: fallback.title, url: fallback.url };
-      }
-      return { ...i, url: newsUrl };
+    }
+    // Fallback: use scraped article as-is
+    itemsToShow.push({
+      title: scrapedArt.title,
+      url: scrapedArt.url,
+      snippet: '',
     });
   }
-  // No scraped data: keep RSS title, point at news center
-  return items.map(i => ({ ...i, url: newsUrl }));
+  return itemsToShow;
 }
 
 const generated_at = new Date().toISOString();
