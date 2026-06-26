@@ -15,6 +15,7 @@ import { Readability } from '@mozilla/readability';
 import { JSDOM } from 'jsdom';
 import { fetchGoogleNewsRss, resolveGoogleNewsUrls } from './google-news.mjs';
 import { fetchEefocusNews } from './eefocus-news.mjs';
+import { fetchBingNews } from './bing-news.mjs';
 
 const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
@@ -362,18 +363,37 @@ export async function buildNewsItems(rssItems, companyName, newsUrl, perCompany 
   }
 
   if (scraped.length === 0) {
-    // Fallback 1: EEFocus (CN electronics industry news site). CN-friendly, fast,
-    // and covers most CN semi/tech companies. Used when company has no scrapable
-    // news center of its own (YMTC, CXMT, etc.).
+    // Extract English keyword for Bing News (which works best in EN locale).
+    // The full company name like "长江存储 YMTC" splits into CN + EN — try the
+    // English word first, fall back to the full name.
+    const enMatch = companyName.match(/[A-Za-z][A-Za-z0-9-]+/);
+    const enQuery = enMatch ? enMatch[0] : null;
+
+    // Fallback 1: Bing News (EN locale). Try English keyword first, then full name.
     try {
-      const eefocus = await fetchEefocusNews(companyName, { maxResults: 30 });
-      if (eefocus.length > 0) {
-        scraped = eefocus.map(it => ({ title: it.title, url: it.url }));
+      const candidates = [enQuery, companyName].filter(Boolean);
+      for (const q of candidates) {
+        const bing = await fetchBingNews(q, { maxResults: 30 });
+        if (bing.length > 0) {
+          scraped = bing.map(it => ({ title: it.title, url: it.url }));
+          break;
+        }
       }
     } catch {}
 
-    // Fallback 2: Google News RSS — used only if EEFocus returns nothing AND
-    // the sandbox can reach Google News (often blocked).
+    // Fallback 2: EEFocus (CN electronics industry site). CN-friendly, covers
+    // CN semi companies in Chinese.
+    if (scraped.length === 0) {
+      try {
+        const eefocus = await fetchEefocusNews(companyName, { maxResults: 30 });
+        if (eefocus.length > 0) {
+          scraped = eefocus.map(it => ({ title: it.title, url: it.url }));
+        }
+      } catch {}
+    }
+
+    // Fallback 3: Google News RSS. Works via proxy but URLs are Google News
+    // redirects that may not resolve. Best when other sources return nothing.
     if (scraped.length === 0) {
       try {
         const rss = await fetchGoogleNewsRss(companyName, siteDomain || '', { maxResults: 30 });
