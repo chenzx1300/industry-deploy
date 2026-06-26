@@ -362,49 +362,70 @@ export async function buildNewsItems(rssItems, companyName, newsUrl, perCompany 
     }
   }
 
-  if (scraped.length === 0) {
-    // Extract English keyword for Bing News (which works best in EN locale).
-    // The full company name like "长江存储 YMTC" splits into CN + EN — try the
-    // English word first, fall back to the full name.
-    const enMatch = companyName.match(/[A-Za-z][A-Za-z0-9-]+/);
-    const enQuery = enMatch ? enMatch[0] : null;
-
-    // Fallback 1: Bing News (EN locale). Try English keyword first, then full name.
+  // If we have fewer than perCompany articles, supplement with Bing News + EEFocus.
+// We always try these (not just when scraping fails) to fill out the list
+// for companies whose news centers don't return enough.
+if (scraped.length < perCompany) {
     try {
+      const enMatch = companyName.match(/[A-Za-z][A-Za-z0-9-]+/);
+      const enQuery = enMatch ? enMatch[0] : null;
       const candidates = [enQuery, companyName].filter(Boolean);
+      const currentYear = new Date().getFullYear();
+      const RECENT_YEAR_FLOOR = currentYear - 2;  // drop items older than 2 years
+
+      // Filter out obvious wrong-company matches (e.g. "Ben Song" actor vs Bensong company)
+      const isWrongCompany = (title) => {
+        const t = title.toLowerCase();
+        // Detect people named Bensong / Ben Song (actor, person) vs the company
+        if (/ben song\b.*(shares|secret|actor|star|trailer|quantum leap)/i.test(title)) return true;
+        if (/(shares his|her|their) secret/i.test(title)) return true;
+        if (/actor|actress|celebrity|musician|singer/i.test(title)) return true;
+        return false;
+      };
+
       for (const q of candidates) {
         const bing = await fetchBingNews(q, { maxResults: 30 });
         if (bing.length > 0) {
-          scraped = bing.map(it => ({ title: it.title, url: it.url }));
+          const filtered = bing
+            .filter(it => !isWrongCompany(it.title))
+            .filter(it => {
+              const m = it.title.match(/\b(20\d{2})\b/);
+              return !m || parseInt(m[1]) >= RECENT_YEAR_FLOOR;
+            });
+          scraped = scraped.concat(filtered.map(it => ({ title: it.title, url: it.url })));
           break;
         }
       }
     } catch {}
 
-    // Fallback 2: EEFocus (CN electronics industry site). CN-friendly, covers
-    // CN semi companies in Chinese.
-    if (scraped.length === 0) {
+    // EEFocus supplement: for CN companies (or sparse results), try EEFocus
+    // which has good CN industry coverage.
+    if (scraped.length < perCompany) {
       try {
         const eefocus = await fetchEefocusNews(companyName, { maxResults: 30 });
         if (eefocus.length > 0) {
-          scraped = eefocus.map(it => ({ title: it.title, url: it.url }));
+          const enMatch = companyName.match(/[A-Za-z][A-Za-z0-9-]+/);
+          const cnName = companyName.replace(/[A-Za-z][A-Za-z0-9-]+/g, '').trim().split(/\s+/)[0];
+          const filtered = cnName.length >= 2
+            ? eefocus.filter(it => it.title.includes(cnName) || it.title.toLowerCase().includes((enMatch?.[0]||'').toLowerCase()))
+            : eefocus;
+          scraped = scraped.concat(filtered.map(it => ({ title: it.title, url: it.url })));
         }
       } catch {}
     }
+  }
 
-    // Fallback 3: Google News RSS. Works via proxy but URLs are Google News
-    // redirects that may not resolve. Best when other sources return nothing.
-    if (scraped.length === 0) {
-      try {
-        const rss = await fetchGoogleNewsRss(companyName, siteDomain || '', { maxResults: 30 });
-        if (rss.length > 0) {
-          const resolved = await resolveGoogleNewsUrls(rss, { concurrency: 4 });
-          scraped = resolved
-            .filter(it => it.url && !it.url.includes('news.google.com'))
-            .map(it => ({ title: it.title, url: it.url }));
-        }
-      } catch {}
-    }
+  // If still empty after Bing + EEFocus supplement, try Google News RSS
+  if (scraped.length === 0) {
+    try {
+      const rss = await fetchGoogleNewsRss(companyName, siteDomain || '', { maxResults: 30 });
+      if (rss.length > 0) {
+        const resolved = await resolveGoogleNewsUrls(rss, { concurrency: 4 });
+        scraped = resolved
+          .filter(it => it.url && !it.url.includes('news.google.com'))
+          .map(it => ({ title: it.title, url: it.url }));
+      }
+    } catch {}
   }
 
   if (scraped.length === 0) {

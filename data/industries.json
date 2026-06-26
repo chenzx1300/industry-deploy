@@ -61,6 +61,66 @@
       ]
     },
     {
+      "slug": "thermal-materials-industry",
+      "prompt": "高导热材料",
+      "companies": [
+        {
+          "id": "bensong",
+          "name": "本松新材 Bensong",
+          "region": "cn",
+          "domain": "bensong.com.cn",
+          "monogram": "本",
+          "monogram_color": "#dc2626",
+          "news_url": "https://www.bensong.com.cn"
+        },
+        {
+          "id": "feirongda",
+          "name": "飞荣达 Fenghuangda",
+          "region": "cn",
+          "domain": "frd.cn",
+          "monogram": "飞",
+          "monogram_color": "#0d9488",
+          "news_url": "https://www.frd.cn/news"
+        },
+        {
+          "id": "zhongshi",
+          "name": "中石科技 Sinopec",
+          "region": "cn",
+          "domain": "sinopec.com",
+          "monogram": "中",
+          "monogram_color": "#7c3aed",
+          "news_url": "https://www.zsjituan.com"
+        },
+        {
+          "id": "henkel",
+          "name": "汉高 Henkel",
+          "region": "intl",
+          "domain": "henkel.com",
+          "monogram": "H",
+          "monogram_color": "#0066b1",
+          "news_url": "https://www.henkel.com/press"
+        },
+        {
+          "id": "mmm",
+          "name": "3M",
+          "region": "intl",
+          "domain": "3m.com",
+          "monogram": "3",
+          "monogram_color": "#cc0000",
+          "news_url": "https://news.3m.com"
+        },
+        {
+          "id": "honeywell",
+          "name": "霍尼韦尔 Honeywell",
+          "region": "intl",
+          "domain": "honeywell.com",
+          "monogram": "H",
+          "monogram_color": "#0891b2",
+          "news_url": "https://www.honeywell.com/us/en/news"
+        }
+      ]
+    },
+    {
       "slug": "new-energy-vehicles-industry",
       "prompt": "新能源汽车",
       "companies": [
