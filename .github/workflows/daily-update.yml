@@ -23,12 +23,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
       - name: Run daily update
         id: update
         run: node scripts/daily-update.mjs
 
       - name: Show build summary
         run: cat data/latest-build.json
+
+      - name: Check link health
+        if: success()
+        id: links
+        run: node scripts/check-links.mjs
+
+      - name: Show link health
+        if: always()
+        run: cat data/link-health.json
 
       - name: Commit and push
         run: |
@@ -55,12 +67,18 @@ jobs:
             const ok = summary.results.filter(r => r.ok);
             const failed = summary.results.filter(r => !r.ok);
 
+            // Load link health if available
+            let linkHealth = null;
+            try { linkHealth = JSON.parse(fs.readFileSync('data/link-health.json', 'utf-8')); } catch {}
+
             const body = [
               `## 📡 Daily Update — ${date}`,
               '',
               ...ok.map(r => `- **[${r.prompt}](${baseUrl}/${r.slug}/)** · ${r.news_count} news · ${r.total_companies} companies`),
               '',
-              failed.length ? `\n### ⚠️ Failed\n${failed.map(r => `- ${r.slug}: ${r.error}`).join('\n')}` : '',
+              failed.length ? `\n### ⚠️ Build failures\n${failed.map(r => `- ${r.slug}: ${r.error}`).join('\n')}` : '',
+              linkHealth ? `\n### 🔗 Link health\n${linkHealth.ok} OK · ${linkHealth.broken} broken · ${linkHealth.skipped} known-bot-protected (${(linkHealth.broken / linkHealth.total * 100).toFixed(1)}% broken)` : '',
+              linkHealth && linkHealth.broken_details?.length ? `\n**Broken:**\n${linkHealth.broken_details.map(b => `- ${b.industry} / ${b.company}: ${b.title.slice(0,40)}… [\`${b.status}\`](${b.url})`).join('\n')}` : '',
               '\n---\n_Automated by industry-news-radar. Site live at <https://github.com/${context.repo.owner}/${context.repo.repo}>._'
             ].filter(Boolean).join('\n');
 

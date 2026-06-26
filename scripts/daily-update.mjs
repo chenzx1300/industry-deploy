@@ -1,59 +1,48 @@
 #!/usr/bin/env node
-// Daily update runner: reads data/industries.json, fetches fresh RSS for each,
-// renders HTML, writes to docs/. Designed to run via GitHub Actions cron.
+// Daily update runner: for each industry, fetches fresh news using the same
+// buildNewsItems() chain as the one-shot build scripts. Writes JSON + HTML,
+// updates homepage, records a summary.
+//
+// Strategy per company (in buildNewsItems, src/lib/news-scraper.mjs):
+//   1. Direct news center scraping (fetch + Playwright)
+//   2. Bing News EN (broadest results, returns real publisher URLs)
+//   3. EEFocus (CN electronics industry site)
+//   4. Google News RSS (last resort)
 //
 // Usage: node scripts/daily-update.mjs
 
 import { mkdir, writeFile } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { fetchNewsForCompanies } from '../src/pipeline/fetch-news.mjs';
+import { buildNewsItems } from '../src/lib/news-scraper.mjs';
 import { renderIndustryPage, renderHomepage } from '../src/pipeline/render.mjs';
 import { addToManifest, loadManifest } from '../src/pipeline/manifest.mjs';
 
 const DATA_DIR = 'data';
 const DIST_DIR = 'docs';
 const CONFIG_FILE = join(DATA_DIR, 'industries.json');
-
-async function curlRss(domain, hl = 'en-US', gl = 'US', ceid = 'US:en') {
-  const url = `https://news.google.com/rss/search?q=site:${encodeURIComponent(domain)}&hl=${hl}&gl=${gl}&ceid=${ceid}`;
-  const res = await fetch(url, {
-    headers: { 'User-Agent': 'Mozilla/5.0 (industry-news-radar/1.0)' },
-  });
-  if (!res.ok) return '';
-  return await res.text();
-}
-
-async function curlRssCn(domain) {
-  // Try Chinese Google News for CN domains
-  return curlRss(domain, 'zh-CN', 'CN', 'CN:zh-Hans');
-}
-
-function isLikelyCn(company) {
-  return company.region === 'cn';
-}
+const PER_COMPANY = 10;
 
 async function buildOne(industry) {
   console.log(`▸ Building "${industry.prompt}" (${industry.slug})`);
   const companies = industry.companies;
+
   const results = await Promise.all(companies.map(async c => {
-    const xml = isLikelyCn(c) ? await curlRssCn(c.domain) : await curlRss(c.domain);
-    // Parse via Node's fetch → fetchNewsForCompanies handles parse
-    // We bypass fetchNewsForCompanies and inline the parse because we already have the XML
-    const { parseGoogleNewsRss } = await import('../src/lib/rss-parser.mjs');
-    const { filterNewsItems } = await import('../src/lib/news-filter.mjs');
-    if (!xml) return { ...c, news: [] };
-    const overFetch = 10 * 4;
-    const all = parseGoogleNewsRss(xml).slice(0, overFetch);
-    // Prefer company.news_url (curated news center) over the publisher homepage.
-    const baseUrl = c.news_url || (all[0]?.direct_url);
-    const items = all.map(i => ({ ...i, url: baseUrl || i.url }));
-    const filtered = filterNewsItems(items, c.name).slice(0, 10);
-    return { ...c, news: filtered };
+    try {
+      const news = await buildNewsItems([], c.name, c.news_url, PER_COMPANY, { siteDomain: c.domain });
+      const { ...rest } = c;
+      return { ...rest, news };
+    } catch (err) {
+      console.error(`  ⚠ ${c.name}: ${err.message}`);
+      return { ...c, news: [] };
+    }
   }));
 
   const totalNews = results.reduce((s, c) => s + c.news.length, 0);
-  console.log(`  ✓ ${totalNews} news items across ${results.length} companies`);
+  const totalFallbacks = results.reduce(
+    (s, c) => s + c.news.filter(n => n.title.startsWith('查看 ')).length, 0
+  );
+  console.log(`  ✓ ${totalNews} news items across ${results.length} companies (${totalFallbacks} fallbacks)`);
 
   const data = {
     slug: industry.slug,
@@ -76,7 +65,13 @@ async function buildOne(industry) {
     generated_at: data.generated_at,
   });
 
-  return { slug: industry.slug, prompt: industry.prompt, news_count: totalNews, total_companies: results.length };
+  return {
+    slug: industry.slug,
+    prompt: industry.prompt,
+    news_count: totalNews,
+    fallback_count: totalFallbacks,
+    total_companies: results.length,
+  };
 }
 
 async function main() {
