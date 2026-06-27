@@ -50,6 +50,42 @@
           "news_url": "https://www.jushi.com/news/"
         },
         {
+          "id": "sinofiber",
+          "name": "中复神鹰 SinoFiber",
+          "region": "cn",
+          "domain": "sinofiber.com",
+          "monogram": "鹰",
+          "monogram_color": "#dc2626",
+          "news_url": "https://www.sinofiber.com.cn/news/"
+        },
+        {
+          "id": "guangwei",
+          "name": "光威复材 Guangwei",
+          "region": "cn",
+          "domain": "gwcomposite.com",
+          "monogram": "威",
+          "monogram_color": "#0d9488",
+          "news_url": "https://www.gwcomposite.com/news/"
+        },
+        {
+          "id": "jlhx",
+          "name": "吉林化纤 JL Fiber",
+          "region": "cn",
+          "domain": "jlhx.com.cn",
+          "monogram": "吉",
+          "monogram_color": "#0ea5e9",
+          "news_url": "https://www.jlhx.com.cn/news/"
+        },
+        {
+          "id": "zoomlion",
+          "name": "中联重科 Zoomlion (碳纤维)",
+          "region": "cn",
+          "domain": "zoomlion.com",
+          "monogram": "联",
+          "monogram_color": "#0891b2",
+          "news_url": "https://en.zoomlion.com.cn/news/"
+        },
+        {
           "id": "toyobo",
           "name": "Toyobo 东洋纺",
           "region": "intl",

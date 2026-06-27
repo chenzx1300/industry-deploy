@@ -4,23 +4,23 @@
     {
       "slug": "carbon-fiber-industry",
       "prompt": "碳纤维 · 先进复合材料",
-      "news_count": 45,
+      "news_count": 90,
       "fallback_count": 0,
-      "total_companies": 6,
+      "total_companies": 10,
       "ok": true
     },
     {
       "slug": "thermal-materials-industry",
       "prompt": "高导热材料",
-      "news_count": 42,
-      "fallback_count": 1,
+      "news_count": 51,
+      "fallback_count": 0,
       "total_companies": 6,
       "ok": true
     },
     {
       "slug": "new-energy-vehicles-industry",
       "prompt": "新能源汽车",
-      "news_count": 59,
+      "news_count": 58,
       "fallback_count": 0,
       "total_companies": 6,
       "ok": true
@@ -28,7 +28,7 @@
     {
       "slug": "semiconductor-industry",
       "prompt": "半导体",
-      "news_count": 94,
+      "news_count": 100,
       "fallback_count": 0,
       "total_companies": 11,
       "ok": true
