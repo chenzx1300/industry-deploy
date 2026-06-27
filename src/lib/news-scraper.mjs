@@ -25,13 +25,136 @@ function isFileUrl(url) {
 }
 
 // Fetch meta summaries for a list of HTML pages (skips files, runs in parallel).
+// Three-stage strategy:
+//   Stage 1: regular fetch (fast, ~1-2s per item)
+//   Stage 2: Playwright browser fallback for blocked/paywall sites (403/401)
+//   Stage 3: DuckDuckGo HTML search to find a mirror URL on a non-blocked
+//            domain (e.g. yahoo article mirrored on reuters / yahoo via DDG)
 async function fillSnippets(scraped) {
   const htmlItems = scraped.filter(s => !isFileUrl(s.url));
-  const fetches = htmlItems.map(async item => {
+
+  // Stage 1: regular fetch (fast)
+  await Promise.all(htmlItems.map(async item => {
     const summary = await fetchMetaSummary(item.url);
     if (summary) item.snippet = summary;
-  });
-  await Promise.all(fetches);
+  }));
+
+  // Stage 2 + 3: handle items still missing snippet
+  const needsMore = scraped.filter(s => !isFileUrl(s.url) && (!s.snippet || s.snippet.length === 0));
+  if (needsMore.length === 0) return;
+
+  // Known bot-blocked domains (always 403 to non-browser fetches)
+  const BLOCKED_DOMAINS = [
+    'finance.yahoo.com', 'aol.com', 'reuters.com', 'barrons.com',
+    'nasdaq.com', 'onmsft.com', 'venturebeat.com', '247wallst.com',
+    'pr.tsmc.com', 'investor.tsmc.com', 'bydglobal.com', 'solvay.com',
+  ];
+  const isBlocked = (url) => {
+    try { return BLOCKED_DOMAINS.some(d => new URL(url).hostname.includes(d)); }
+    catch { return false; }
+  };
+
+  // Stage 2: Playwright browser fetch
+  await tryPlaywrightSnippets(needsMore);
+
+  // Stage 3: For items still empty AND on blocked domains, search DuckDuckGo
+  // for a mirror of the same article (e.g. Yahoo Finance article reprinted
+  // on Reuters or Nasdaq).
+  const stillEmpty = needsMore.filter(s => !s.snippet && isBlocked(s.url));
+  await tryMirrorSnippets(stillEmpty);
+}
+
+// Stage 2: Playwright headless browser extraction
+async function tryPlaywrightSnippets(items) {
+  if (items.length === 0) return;
+  let browser;
+  try {
+    const { chromium } = await import('playwright');
+    browser = await chromium.launch({ headless: true });
+    const ctx = await browser.newContext({
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      viewport: { width: 1280, height: 800 },
+    });
+    const PARALLEL = 3;
+    for (let i = 0; i < items.length; i += PARALLEL) {
+      const batch = items.slice(i, i + PARALLEL);
+      await Promise.all(batch.map(async item => {
+        let page;
+        try {
+          page = await ctx.newPage();
+          try {
+            await page.goto(item.url, { waitUntil: 'domcontentloaded', timeout: 15000 });
+          } catch {
+            // Page may still have rendered something even if goto timed out
+          }
+          await page.waitForTimeout(800);
+          const snippet = await page.evaluate(() => {
+            const m1 = document.querySelector('meta[name="description"]');
+            if (m1 && m1.content && m1.content.length > 30) return m1.content.trim();
+            const m2 = document.querySelector('meta[property="og:description"]');
+            if (m2 && m2.content && m2.content.length > 30) return m2.content.trim();
+            const m3 = document.querySelector('meta[name="twitter:description"]');
+            if (m3 && m3.content && m3.content.length > 30) return m3.content.trim();
+            const scope = document.querySelector('article') || document.querySelector('main') || document.body;
+            if (!scope) return '';
+            for (const p of scope.querySelectorAll('p')) {
+              const text = (p.textContent || '').trim().replace(/\s+/g, ' ');
+              if (text.length >= 60 && !/cookie|consent|subscribe|sign up|privacy/i.test(text)) {
+                return text.slice(0, 240) + (text.length > 240 ? '…' : '');
+              }
+            }
+            return '';
+          });
+          if (snippet && snippet.length >= 30) item.snippet = snippet;
+        } catch {
+          // skip
+        } finally {
+          if (page) try { await page.close(); } catch {}
+        }
+      }));
+    }
+  } catch {
+    // Playwright unavailable
+  } finally {
+    if (browser) try { await browser.close(); } catch {}
+  }
+}
+
+// Stage 3: DuckDuckGo search to find a mirror article, then fetch its snippet
+async function tryMirrorSnippets(items) {
+  if (items.length === 0) return;
+  // Use a process-wide concurrency of 2 to keep it gentle
+  for (const item of items) {
+    try {
+      const title = item.title.replace(/[^\w\s一-鿿]/g, ' ').slice(0, 80);
+      // Search DuckDuckGo HTML (bot-friendly, no captcha)
+      const ddgUrl = `https://html.duckduckgo.com/html/?q=${encodeURIComponent(title + ' news')}`;
+      const r = await fetch(ddgUrl, {
+        headers: { 'User-Agent': 'Mozilla/5.0' },
+        signal: AbortSignal.timeout(8000),
+      });
+      if (!r.ok) continue;
+      const html = await r.text();
+      // Find first result that is NOT the blocked domain
+      const anchorRegex = /<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g;
+      let m;
+      while ((m = anchorRegex.exec(html)) !== null) {
+        const href = decodeURIComponent(m[1].replace(/&amp;/g, '&'));
+        let mirrorHost = '';
+        try { mirrorHost = new URL(href).hostname; } catch {}
+        if (mirrorHost && !['finance.yahoo.com', 'aol.com', 'reuters.com', 'barrons.com', 'nasdaq.com', 'duckduckgo.com'].some(d => mirrorHost.includes(d))) {
+          // Try to fetch snippet from mirror
+          const summary = await fetchMetaSummary(href);
+          if (summary && summary.length >= 30) {
+            item.snippet = summary;
+            break;
+          }
+        }
+      }
+    } catch {
+      // skip this item
+    }
+  }
 }
 
 const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
