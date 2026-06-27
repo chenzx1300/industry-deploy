@@ -12,7 +12,7 @@
     {
       "slug": "thermal-materials-industry",
       "prompt": "高导热材料",
-      "news_count": 51,
+      "news_count": 50,
       "fallback_count": 0,
       "total_companies": 6,
       "ok": true
@@ -20,7 +20,7 @@
     {
       "slug": "new-energy-vehicles-industry",
       "prompt": "新能源汽车",
-      "news_count": 58,
+      "news_count": 59,
       "fallback_count": 0,
       "total_companies": 6,
       "ok": true
@@ -28,7 +28,7 @@
     {
       "slug": "semiconductor-industry",
       "prompt": "半导体",
-      "news_count": 100,
+      "news_count": 103,
       "fallback_count": 0,
       "total_companies": 11,
       "ok": true
