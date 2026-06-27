@@ -29,7 +29,10 @@ async function buildOne(industry) {
 
   const results = await Promise.all(companies.map(async c => {
     try {
-      const news = await buildNewsItems([], c.name, c.news_url, PER_COMPANY, { siteDomain: c.domain });
+      const news = await buildNewsItems([], c.name, c.news_url, PER_COMPANY, {
+        siteDomain: c.domain,
+        fallbackNews: c.fallback_news,
+      });
       const { ...rest } = c;
       return { ...rest, news };
     } catch (err) {

@@ -65,13 +65,31 @@
       "prompt": "高导热材料",
       "companies": [
         {
-          "id": "bensong",
-          "name": "本松新材 Bensong",
+          "id": "bosom",
+          "name": "本松新材 Bosom",
           "region": "cn",
-          "domain": "bensong.com.cn",
+          "domain": "bosomchina.com",
           "monogram": "本",
           "monogram_color": "#dc2626",
-          "news_url": "https://www.bensong.com.cn"
+          "news_url": "https://www.bosomchina.com/news.html",
+          "fallback_news": [
+            {
+              "title": "2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行",
+              "url": "https://www.bosomchina.com/news_detail/id-178.html"
+            },
+            {
+              "title": "2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径",
+              "url": "https://www.bosomchina.com/news_detail/id-177.html"
+            },
+            {
+              "title": "2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动",
+              "url": "https://www.bosomchina.com/news_detail/id-176.html"
+            },
+            {
+              "title": "2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行",
+              "url": "https://www.bosomchina.com/news_detail/id-175.html"
+            }
+          ]
         },
         {
           "id": "feirongda",

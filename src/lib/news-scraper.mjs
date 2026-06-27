@@ -285,6 +285,9 @@ export async function searchArticleViaDDG(title, siteDomain, { fetchImpl = globa
  */
 export async function scrapeNewsCenterWithPlaywright(newsCenterUrl, { maxArticles = MAX_ARTICLES, timeout = 30000 } = {}) {
   if (!newsCenterUrl) return [];
+  // Use longer timeouts and 'commit' wait — many CN sites (e.g. bosomchina.com)
+  // are slow / JS-heavy and never reach domcontentloaded within 30s.
+  const effectiveTimeout = Math.max(timeout, 60000);
   let browser;
   try {
     const { chromium } = await import('playwright');
@@ -294,9 +297,19 @@ export async function scrapeNewsCenterWithPlaywright(newsCenterUrl, { maxArticle
       viewport: { width: 1280, height: 800 },
     });
     const page = await ctx.newPage();
-    await page.goto(newsCenterUrl, { waitUntil: 'domcontentloaded', timeout });
-    // Give the page a moment for JS to render
-    await page.waitForTimeout(2000);
+    try {
+      // domcontentloaded is more reliable than commit (which fails on some
+      // HTTP/2 sites like bosomchina.com with ERR_HTTP2_PROTOCOL_ERROR).
+      await page.goto(newsCenterUrl, { waitUntil: 'domcontentloaded', timeout: effectiveTimeout });
+    } catch (e) {
+      // domcontentloaded timed out — try with 'load' which is more lenient
+      console.warn(`[playwright] domcontentloaded timeout for ${newsCenterUrl}, retrying...`);
+      try { await page.goto(newsCenterUrl, { waitUntil: 'load', timeout: effectiveTimeout }); }
+      catch { /* even load timed out, but the page may have rendered something */ }
+    }
+    // Give the page time to fully render. Slow CN sites (e.g. bosomchina.com)
+    // need up to 8s after first byte to render article lists.
+    await page.waitForTimeout(8000);
     const anchors = await page.$$('a[href]');
     const seen = new Set();
     const articles = [];
@@ -373,13 +386,34 @@ if (scraped.length < perCompany) {
       const currentYear = new Date().getFullYear();
       const RECENT_YEAR_FLOOR = currentYear - 2;  // drop items older than 2 years
 
-      // Filter out obvious wrong-company matches (e.g. "Ben Song" actor vs Bensong company)
-      const isWrongCompany = (title) => {
+      // Filter out obvious wrong-company matches (e.g. "Ben Song" actor,
+      // "Bosom Buddies" TV show, "decline of the bosom" articles). For
+      // Chinese companies, we check the URL domain — only allow items on
+      // the company's actual domain OR a CN news site that mentions the
+      // company by its full Chinese name.
+      const isWrongCompany = (title, url) => {
         const t = title.toLowerCase();
         // Detect people named Bensong / Ben Song (actor, person) vs the company
         if (/ben song\b.*(shares|secret|actor|star|trailer|quantum leap)/i.test(title)) return true;
         if (/(shares his|her|their) secret/i.test(title)) return true;
         if (/actor|actress|celebrity|musician|singer/i.test(title)) return true;
+        // "Bosom Buddies" TV show, "decline of the bosom" articles, beauty articles
+        if (/bosom budd(ies|y)/i.test(title)) return true;
+        if (/decline of the bosom/i.test(title)) return true;
+        if (/grow your bosom|grow.*bosom/i.test(title)) return true;
+        if (/bosom button/i.test(title)) return true;
+        if (/a bosom friend/i.test(title)) return true;
+        if (/\bbosom\b/i.test(title) && !/本松|bosomchina|新材料|hangzhou/i.test(title)) return true;
+        // For CN companies, only accept results from CN domains or domains
+        // that mention the company in URL (filters out english entertainment news)
+        try {
+          const u = new URL(url);
+          const host = u.hostname.toLowerCase();
+          const isForeignHost = !host.endsWith('.cn') && !host.includes('bosomchina.com') &&
+            !host.includes('caixin') && !host.includes('scmp') && !host.includes('yicai') &&
+            !host.includes('chinadaily') && !host.includes('globaltimes') && !host.includes('sina');
+          if (isForeignHost && !siteDomain) return true;  // for English companies, accept any
+        } catch {}
         return false;
       };
 
@@ -387,7 +421,7 @@ if (scraped.length < perCompany) {
         const bing = await fetchBingNews(q, { maxResults: 30 });
         if (bing.length > 0) {
           const filtered = bing
-            .filter(it => !isWrongCompany(it.title))
+            .filter(it => !isWrongCompany(it.title, it.url))
             .filter(it => {
               const m = it.title.match(/\b(20\d{2})\b/);
               return !m || parseInt(m[1]) >= RECENT_YEAR_FLOOR;
@@ -429,8 +463,17 @@ if (scraped.length < perCompany) {
   }
 
   if (scraped.length === 0) {
-    // No scraped articles: return ONE generic item pointing to news center.
-    // Title matches the URL destination (both = "Visit [Company] news center").
+    // Last resort: use manually-curated fallback_news from industries.json
+    // if provided. Useful for companies whose news center can't be scraped
+    // (HTTP/2 issues, bot-protected) or whose news isn't indexed by aggregators.
+    if (opts.fallbackNews && Array.isArray(opts.fallbackNews) && opts.fallbackNews.length > 0) {
+      return opts.fallbackNews.slice(0, perCompany).map(n => ({
+        title: n.title,
+        url: n.url,
+        snippet: '',
+      }));
+    }
+    // No scraped articles and no fallback: return ONE generic item pointing to news center.
     return [{
       title: `查看 ${companyName} 新闻中心`,
       url: newsUrl,

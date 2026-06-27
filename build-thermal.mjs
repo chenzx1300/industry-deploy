@@ -23,7 +23,10 @@ const COMPANIES = industry.companies;
 
 const generated_at = new Date().toISOString();
 const companies = await Promise.all(COMPANIES.map(async c => {
-  const news = await buildNewsItems([], c.name, c.news_url, PER_COMPANY, { siteDomain: c.domain });
+  const news = await buildNewsItems([], c.name, c.news_url, PER_COMPANY, {
+    siteDomain: c.domain,
+    fallbackNews: c.fallback_news,
+  });
   return { ...c, news };
 }));
 

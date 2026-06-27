@@ -35,7 +35,10 @@ function fetchRssItems(file, companyName) {
 const generated_at = new Date().toISOString();
 const companies = await Promise.all(COMPANIES.map(async c => {
   const rssItems = fetchRssItems(`${c.id}.xml`, c.name);
-  const news = await buildNewsItems(rssItems, c.name, c.news_url, PER_COMPANY, { siteDomain: c.domain });
+  const news = await buildNewsItems(rssItems, c.name, c.news_url, PER_COMPANY, {
+    siteDomain: c.domain,
+    fallbackNews: c.fallback_news,
+  });
   return { ...c, news };
 }));
 
