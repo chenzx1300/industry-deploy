@@ -628,54 +628,13 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   margin-bottom: 32px;
 }
 
-/* ============ REGION ROWS (CN row + INTL row, both visible) ============ */
-.region-row {
-  margin-bottom: 56px;
-  scroll-margin-top: 80px;
-}
-.region-row-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 24px 0 16px;
-  margin-bottom: 16px;
-  border-bottom: 2px solid var(--border);
-}
-.region-row-title {
-  font-family: var(--font-serif);
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.region-row-title.cn { color: var(--accent); }
-.region-row-title.intl { color: var(--intl); }
-.region-row-title::before {
-  content: '';
-  display: inline-block;
-  width: 5px;
-  height: 24px;
-  border-radius: 2px;
-  background: currentColor;
-}
-.region-row-meta {
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 13px;
-  color: var(--text-faint);
-  letter-spacing: 0.04em;
-}
-.region-row-sections {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+/* ============ CONTENT AREA (single company section at a time) ============ */
+.content-area {
+  min-height: 400px;
 }
 .company-section {
   scroll-margin-top: 80px;
-  transition: background 0.3s, padding 0.3s;
-  padding: 12px 0;
+  animation: fadeIn 0.3s ease;
 }
 
 /* ============ FOOTER ============ */
@@ -849,50 +808,69 @@ footer .mono {
   <span class="mono">GitHub Pages · 2026-06-27</span>
 </footer>
 <script>
-// Company tab click: switch hero + highlight active section + scroll to it.
-// All company sections remain visible at once (CN row and INTL row).
-document.querySelectorAll('.company-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = tab.dataset.co;
-    // Toggle active class on tabs
-    document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    // Switch hero: show only the matching one
-    document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
-    // Highlight the matching company section
-    document.querySelectorAll('.company-section').forEach(s => {
-      s.classList.toggle('is-active', s.dataset.co === target);
-    });
-    // Scroll the company section into view
-    const section = document.querySelector('.company-section[data-co="' + target + '"]');
-    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.replaceState(null, '', '#' + target);
+// Region tab click: filter company tabs + content area to that region.
+// Active company stays selected; if its region changes, auto-select first visible.
+function selectRegion(region) {
+  document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+  document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
+  // Filter company tabs by region
+  document.querySelectorAll('.company-tab').forEach(c => {
+    c.hidden = c.dataset.region !== region;
   });
-});
+  // Filter company sections in content area
+  document.querySelectorAll('.company-section').forEach(s => {
+    s.hidden = s.dataset.region !== region;
+  });
+  // Filter hero by region
+  document.querySelectorAll('.hero[data-co]').forEach(h => {
+    h.hidden = h.dataset.region !== region;
+  });
+  // Auto-select first visible company tab and trigger its hero/section
+  const firstVisible = document.querySelector('.company-tab:not([hidden])');
+  if (firstVisible) selectCompany(firstVisible.dataset.co);
+}
 
-// Region tab click: scroll to that region row
-document.querySelectorAll('.tab-region').forEach(tab => {
-  tab.addEventListener('click', () => {
-    const region = tab.dataset.region;
-    document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    const target = document.getElementById('region-' + region);
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+// Company tab click: switch hero + show only that company's section.
+function selectCompany(co) {
+  document.querySelectorAll('.company-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.co === co);
   });
+  // Hero: show only matching one
+  document.querySelectorAll('.hero[data-co]').forEach(h => {
+    h.hidden = h.dataset.co !== co;
+  });
+  // Section: show only matching one (within current region)
+  document.querySelectorAll('.company-section').forEach(s => {
+    s.hidden = s.dataset.co !== co;
+  });
+  history.replaceState(null, '', '#' + co);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.tab-region').forEach(tab => {
+  tab.addEventListener('click', () => selectRegion(tab.dataset.region));
+});
+document.querySelectorAll('.company-tab').forEach(tab => {
+  tab.addEventListener('click', () => selectCompany(tab.dataset.co));
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-  // Click tab from URL hash
+  // Restore state from URL hash if present
   const hash = location.hash.replace('#', '');
   if (hash) {
     const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
     if (tab) {
-      // Manually trigger to set hero + active state, without scroll animation
-      const target = hash;
-      document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
-      document.querySelectorAll('.company-section').forEach(s => s.classList.toggle('is-active', s.dataset.co === target));
+      // Make sure the right region is active
+      const region = tab.dataset.region;
+      document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+      document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
+      document.querySelectorAll('.company-tab').forEach(c => {
+        c.hidden = c.dataset.region !== region;
+      });
+      document.querySelectorAll('.hero[data-co]').forEach(h => {
+        h.hidden = h.dataset.region !== region;
+      });
+      selectCompany(hash);
     }
   }
   // Theme toggle

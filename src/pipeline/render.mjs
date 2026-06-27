@@ -637,54 +637,13 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   margin-bottom: 32px;
 }
 
-/* ============ REGION ROWS (CN row + INTL row, both visible) ============ */
-.region-row {
-  margin-bottom: 56px;
-  scroll-margin-top: 80px;
-}
-.region-row-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 24px 0 16px;
-  margin-bottom: 16px;
-  border-bottom: 2px solid var(--border);
-}
-.region-row-title {
-  font-family: var(--font-serif);
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.region-row-title.cn { color: var(--accent); }
-.region-row-title.intl { color: var(--intl); }
-.region-row-title::before {
-  content: '';
-  display: inline-block;
-  width: 5px;
-  height: 24px;
-  border-radius: 2px;
-  background: currentColor;
-}
-.region-row-meta {
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 13px;
-  color: var(--text-faint);
-  letter-spacing: 0.04em;
-}
-.region-row-sections {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+/* ============ CONTENT AREA (single company section at a time) ============ */
+.content-area {
+  min-height: 400px;
 }
 .company-section {
   scroll-margin-top: 80px;
-  transition: background 0.3s, padding 0.3s;
-  padding: 12px 0;
+  animation: fadeIn 0.3s ease;
 }
 
 /* ============ FOOTER ============ */
@@ -773,50 +732,69 @@ footer .mono {
 `;
 
 const SCRIPT = `
-// Company tab click: switch hero + highlight active section + scroll to it.
-// All company sections remain visible at once (CN row and INTL row).
-document.querySelectorAll('.company-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = tab.dataset.co;
-    // Toggle active class on tabs
-    document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    // Switch hero: show only the matching one
-    document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
-    // Highlight the matching company section
-    document.querySelectorAll('.company-section').forEach(s => {
-      s.classList.toggle('is-active', s.dataset.co === target);
-    });
-    // Scroll the company section into view
-    const section = document.querySelector('.company-section[data-co="' + target + '"]');
-    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.replaceState(null, '', '#' + target);
+// Region tab click: filter company tabs + content area to that region.
+// Active company stays selected; if its region changes, auto-select first visible.
+function selectRegion(region) {
+  document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+  document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
+  // Filter company tabs by region
+  document.querySelectorAll('.company-tab').forEach(c => {
+    c.hidden = c.dataset.region !== region;
   });
-});
+  // Filter company sections in content area
+  document.querySelectorAll('.company-section').forEach(s => {
+    s.hidden = s.dataset.region !== region;
+  });
+  // Filter hero by region
+  document.querySelectorAll('.hero[data-co]').forEach(h => {
+    h.hidden = h.dataset.region !== region;
+  });
+  // Auto-select first visible company tab and trigger its hero/section
+  const firstVisible = document.querySelector('.company-tab:not([hidden])');
+  if (firstVisible) selectCompany(firstVisible.dataset.co);
+}
 
-// Region tab click: scroll to that region row
-document.querySelectorAll('.tab-region').forEach(tab => {
-  tab.addEventListener('click', () => {
-    const region = tab.dataset.region;
-    document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    const target = document.getElementById('region-' + region);
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+// Company tab click: switch hero + show only that company's section.
+function selectCompany(co) {
+  document.querySelectorAll('.company-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.co === co);
   });
+  // Hero: show only matching one
+  document.querySelectorAll('.hero[data-co]').forEach(h => {
+    h.hidden = h.dataset.co !== co;
+  });
+  // Section: show only matching one (within current region)
+  document.querySelectorAll('.company-section').forEach(s => {
+    s.hidden = s.dataset.co !== co;
+  });
+  history.replaceState(null, '', '#' + co);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.tab-region').forEach(tab => {
+  tab.addEventListener('click', () => selectRegion(tab.dataset.region));
+});
+document.querySelectorAll('.company-tab').forEach(tab => {
+  tab.addEventListener('click', () => selectCompany(tab.dataset.co));
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-  // Click tab from URL hash
+  // Restore state from URL hash if present
   const hash = location.hash.replace('#', '');
   if (hash) {
     const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
     if (tab) {
-      // Manually trigger to set hero + active state, without scroll animation
-      const target = hash;
-      document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
-      document.querySelectorAll('.company-section').forEach(s => s.classList.toggle('is-active', s.dataset.co === target));
+      // Make sure the right region is active
+      const region = tab.dataset.region;
+      document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+      document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
+      document.querySelectorAll('.company-tab').forEach(c => {
+        c.hidden = c.dataset.region !== region;
+      });
+      document.querySelectorAll('.hero[data-co]').forEach(h => {
+        h.hidden = h.dataset.region !== region;
+      });
+      selectCompany(hash);
     }
   }
   // Theme toggle
@@ -945,47 +923,47 @@ export function renderIndustryPage(data) {
   const now = new Date(data.generated_at);
   const promptName = data.prompt || '行业新闻';
 
+  // Default region = CN; default company = first CN company (unless explicit default_id)
+  const defaultCo = cn[0] || data.companies.find(c => c.id === data.default_id) || data.companies[0];
+  const defaultRegion = defaultCo.region;
+
   // Collect latest news across all companies for the ticker
   const latestNews = [];
   for (const c of data.companies) {
     for (const n of c.news.slice(0, 2)) latestNews.push(n);
   }
-  // Sort by date (most recent first) for ticker
   latestNews.sort((a, b) => {
     const da = new Date(a.published_at || 0);
     const db = new Date(b.published_at || 0);
     return db - da;
   });
 
-  // Build hero for EVERY company (hidden by default except first).
-  // JS shows the matching one when a company tab is clicked.
-  const defaultCo = data.companies.find(c => c.id === data.default_id) || data.companies[0];
+  // Hero for every company (hidden except the default one)
   const heroesHtml = data.companies.map(c =>
-    `<div class="hero" data-co="${escapeHtml(c.id)}"${c.id === defaultCo.id ? '' : ' hidden'}>${buildHero(c.news, c.name)}</div>`
+    `<div class="hero" data-co="${escapeHtml(c.id)}" data-region="${c.region}"${c.id === defaultCo.id ? '' : ' hidden'}>${buildHero(c.news, c.name)}</div>`
   ).join('');
 
-  // Two clear region rows: CN (中国头部) and INTL (国际头部).
-  // Each row contains its companies' news sections, all visible at once.
+  // Region tabs (cn = active by default)
   const regionTabsHtml = `
 <nav class="section-tabs">
-  <button class="tab-region cn" data-region="cn">中国头部 <span class="count">${cn.length} 家</span></button>
-  <button class="tab-region intl" data-region="intl">国际头部 <span class="count">${intl.length} 家</span></button>
+  <button class="tab-region cn${defaultRegion === 'cn' ? ' active' : ''}" data-region="cn">中国头部 <span class="count">${cn.length} 家</span></button>
+  <button class="tab-region intl${defaultRegion === 'intl' ? ' active' : ''}" data-region="intl">国际头部 <span class="count">${intl.length} 家</span></button>
 </nav>`;
 
-  // Company tabs (one for each company, all visible)
-  const cnTabs = cn.map(c =>
-    `<button class="company-tab" data-co="${escapeHtml(c.id)}" data-region="cn">${escapeHtml(c.name)}<span class="mono-count">${c.news.length}</span></button>`
-  ).join('');
-  const intlTabs = intl.map(c =>
-    `<button class="company-tab" data-co="${escapeHtml(c.id)}" data-region="intl">${escapeHtml(c.name)}<span class="mono-count">${c.news.length}</span></button>`
-  ).join('');
+  // Company tabs — only the active region's tabs visible at first
+  function makeTab(c) {
+    const hidden = c.region !== defaultRegion ? ' hidden' : '';
+    return `<button class="company-tab${c.id === defaultCo.id ? ' active' : ''}" data-co="${escapeHtml(c.id)}" data-region="${c.region}"${hidden}>${escapeHtml(c.name)}<span class="mono-count">${c.news.length}</span></button>`;
+  }
+  const cnTabs = cn.map(makeTab).join('');
+  const intlTabs = intl.map(makeTab).join('');
   const companyTabsHtml = `
 <div class="company-tabs">
   ${cnTabs}
   ${intlTabs}
 </div>`;
 
-  // Per-company news sections (all visible, grouped by region row)
+  // Per-company news sections — only the default company visible at first
   function renderCompanySection(c) {
     const newsCards = c.news.length === 0
       ? '<p class="empty">暂无该公司的近期新闻。</p>'
@@ -1013,9 +991,10 @@ export function renderIndustryPage(data) {
     const monoChar = (c.monogram || c.name.charAt(0)).slice(0, 2);
     const monoColor = c.monogram_color || (c.region === 'cn' ? '#c00' : '#1a5490');
     const isCn = c.region === 'cn';
-    const isActive = c.id === defaultCo.id ? ' is-active' : '';
+    // Only default company is visible at first; others hidden
+    const hidden = c.id === defaultCo.id ? '' : ' hidden';
     return `
-<section data-co="${escapeHtml(c.id)}" data-region="${c.region}" class="company-section${isActive}">
+<section data-co="${escapeHtml(c.id)}" data-region="${c.region}" class="company-section"${hidden}>
   <div class="company-header">
     ${monogramSvg(monoChar, monoColor)}
     <div class="name-block">
@@ -1028,8 +1007,10 @@ export function renderIndustryPage(data) {
 </section>`;
   }
 
-  const cnSectionsHtml = cn.map(renderCompanySection).join('');
-  const intlSectionsHtml = intl.map(renderCompanySection).join('');
+  // Only render sections for the current region (others hidden via JS when region changes)
+  const visibleCompanySections = data.companies
+    .filter(c => c.region === defaultRegion)
+    .map(renderCompanySection).join('');
 
   const cnCount = cn.length;
   const intlCount = intl.length;
@@ -1064,22 +1045,9 @@ ${topBar(latestNews)}
 <main>
   <div class="container">
     <div class="heroes">${heroesHtml}</div>
-
-    <section class="region-row" id="region-cn">
-      <div class="region-row-header">
-        <h2 class="region-row-title cn">中国头部</h2>
-        <span class="region-row-meta">${cnCount} 家公司 · ${cnTotalNews} 条新闻</span>
-      </div>
-      <div class="region-row-sections">${cnSectionsHtml}</div>
-    </section>
-
-    <section class="region-row" id="region-intl">
-      <div class="region-row-header">
-        <h2 class="region-row-title intl">国际头部</h2>
-        <span class="region-row-meta">${intlCount} 家公司 · ${intlTotalNews} 条新闻</span>
-      </div>
-      <div class="region-row-sections">${intlSectionsHtml}</div>
-    </section>
+    <div class="content-area" id="content-area">
+      ${visibleCompanySections}
+    </div>
   </div>
 </main>
 <footer>
