@@ -1,18 +1,26 @@
 {
-  "date": "2026-06-26",
+  "date": "2026-06-27",
   "results": [
     {
       "slug": "carbon-fiber-industry",
       "prompt": "碳纤维 · 先进复合材料",
-      "news_count": 43,
+      "news_count": 45,
       "fallback_count": 0,
+      "total_companies": 6,
+      "ok": true
+    },
+    {
+      "slug": "thermal-materials-industry",
+      "prompt": "高导热材料",
+      "news_count": 42,
+      "fallback_count": 1,
       "total_companies": 6,
       "ok": true
     },
     {
       "slug": "new-energy-vehicles-industry",
       "prompt": "新能源汽车",
-      "news_count": 30,
+      "news_count": 59,
       "fallback_count": 0,
       "total_companies": 6,
       "ok": true
@@ -20,7 +28,7 @@
     {
       "slug": "semiconductor-industry",
       "prompt": "半导体",
-      "news_count": 64,
+      "news_count": 94,
       "fallback_count": 0,
       "total_companies": 11,
       "ok": true

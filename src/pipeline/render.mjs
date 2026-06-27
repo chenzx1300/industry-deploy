@@ -72,6 +72,7 @@ const STYLES = `
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
 html { background: var(--bg); }
 body {
   font-family: var(--font-sans);
@@ -756,6 +757,17 @@ function selectRegion(region) {
 
 // Company tab click: switch hero + show only that company's section.
 function selectCompany(co) {
+  // If the company belongs to a different region than the active one,
+  // switch the region first so its tab becomes clickable/visible.
+  const target = document.querySelector('.company-tab[data-co="' + co + '"]');
+  if (target) {
+    const targetRegion = target.dataset.region;
+    const activeRegion = document.querySelector('.tab-region.active');
+    if (activeRegion && activeRegion.dataset.region !== targetRegion) {
+      selectRegion(targetRegion);
+      return;
+    }
+  }
   document.querySelectorAll('.company-tab').forEach(t => {
     t.classList.toggle('active', t.dataset.co === co);
   });
@@ -763,7 +775,7 @@ function selectCompany(co) {
   document.querySelectorAll('.hero[data-co]').forEach(h => {
     h.hidden = h.dataset.co !== co;
   });
-  // Section: show only matching one (within current region)
+  // Section: show only matching one
   document.querySelectorAll('.company-section').forEach(s => {
     s.hidden = s.dataset.co !== co;
   });
@@ -1008,10 +1020,8 @@ export function renderIndustryPage(data) {
 </section>`;
   }
 
-  // Only render sections for the current region (others hidden via JS when region changes)
-  const visibleCompanySections = data.companies
-    .filter(c => c.region === defaultRegion)
-    .map(renderCompanySection).join('');
+  // Render ALL company sections; JS toggles visibility by region + selection
+  const visibleCompanySections = data.companies.map(renderCompanySection).join('');
 
   const cnCount = cn.length;
   const intlCount = intl.length;
