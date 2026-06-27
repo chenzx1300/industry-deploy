@@ -657,6 +657,10 @@ if (scraped.length < perCompany) {
       snippet,
       // Extract publication date from title when not provided
       published_at: extractDateFromTitle(scrapedArt.title) || null,
+      // When we ran out of date signals, use the scrape time as a fallback
+      // for sort/dedup. Same-source articles scraped in the same run share
+      // this value, which is fine — it's only used as a tie-breaker.
+      fetched_at: new Date().toISOString(),
       source: (() => { try { return new URL(scrapedArt.url).hostname.replace(/^www\./, ''); } catch { return ''; } })(),
     });
   }

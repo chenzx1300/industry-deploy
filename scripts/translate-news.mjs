@@ -46,10 +46,10 @@ const MAX_PARALLEL = 3;
 
 function isMostlyCjk(s) {
   if (!s) return true;
-  // Heuristic: Chinese-mixed-with-brand has ~ 30-40% ASCII letters.
-  // Pure English title has >= 60% letters.
-  const letters = (s.match(/[A-Za-z]/g) || []).length;
-  return letters / s.length < 0.6;
+  // Count distinct "English word" tokens (3+ ASCII letters, excluding pure digits).
+  // Chinese-mixed-with-brand has 1-2 brand names; pure English title has 3+.
+  const words = (s.match(/\b[A-Za-z]{3,}\b/g) || []);
+  return words.length < 3;
 }
 
 async function callModel(items) {
