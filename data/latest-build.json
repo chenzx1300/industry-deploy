@@ -4,18 +4,18 @@
     {
       "slug": "carbon-fiber-industry",
       "prompt": "碳纤维 · 先进复合材料",
-      "news_count": 69,
+      "news_count": 70,
       "total_companies": 10,
-      "added": 10,
+      "added": 0,
       "dropped": [],
       "ok": true
     },
     {
       "slug": "thermal-materials-industry",
       "prompt": "高导热材料",
-      "news_count": 31,
+      "news_count": 32,
       "total_companies": 4,
-      "added": 4,
+      "added": 2,
       "dropped": [
         "bosom",
         "feirongda"
@@ -25,11 +25,22 @@
     {
       "slug": "new-energy-vehicles-industry",
       "prompt": "新能源汽车",
-      "news_count": 39,
+      "news_count": 42,
       "total_companies": 5,
-      "added": 12,
+      "added": 2,
       "dropped": [
         "bmw"
+      ],
+      "ok": true
+    },
+    {
+      "slug": "semiconductor-industry",
+      "prompt": "半导体",
+      "news_count": 74,
+      "total_companies": 9,
+      "added": 8,
+      "dropped": [
+        "intel"
       ],
       "ok": true
     }

@@ -123,19 +123,36 @@ async function runOne(industry) {
   const results = [];
   const droppedStale = [];
   for (const c of industry.companies) {
+    // Pre-seed baseline with fallback_news (from industries.json) — these are
+    // manual entries the user curated. They ensure companies stay fresh even
+    // when the scraper times out on slow/blocked sites.
     const existing = (byCo.get(c.id)?.news) || [];
+    const fallbackAsItems = (c.fallback_news || []).map(n => ({
+      ...n,
+      published_at: extractDateFromTitle(n.title) || null,
+      snippet: '',
+      source: '',
+    }));
+    const baseline = [...existing, ...fallbackAsItems.filter(f => !existing.some(e => normalizeUrl(e.url) === normalizeUrl(f.url)))];
+
     let fresh = [];
+    const PER_COMPANY_TIMEOUT_MS = 45_000; // hard cap per company (scrape + bing fallback)
     try {
-      fresh = await buildNewsItems([], c.name, c.news_url, PER_COMPANY, {
-        siteDomain: c.domain,
-        fallbackNews: c.fallback_news,
-      });
+      fresh = await Promise.race([
+        buildNewsItems([], c.name, c.news_url, PER_COMPANY, {
+          siteDomain: c.domain,
+          fallbackNews: c.fallback_news,
+        }),
+        new Promise((_, reject) =>
+          setTimeout(() => reject(new Error(`scrape timeout ${PER_COMPANY_TIMEOUT_MS}ms`)), PER_COMPANY_TIMEOUT_MS)
+        ),
+      ]);
     } catch (err) {
-      console.error(`  ⚠ ${c.name}: ${err.message}`);
+      console.error(`  ⚠ ${c.name}: ${err.message} — keeping baseline`);
     }
     const before = existing.length;
-    const merged = mergeCompanyNews(existing, fresh);
-    const added = merged.filter(m => !existing.some(e => normalizeUrl(e.url) === normalizeUrl(m.url))).length;
+    const merged = mergeCompanyNews(baseline, fresh);
+    const added = merged.filter(m => !baseline.some(e => normalizeUrl(e.url) === normalizeUrl(m.url))).length;
     // Stale drop: no dated news in last STALE_DROP_DAYS → drop company entirely
     if (!isCompanyFresh(merged)) {
       droppedStale.push(c.id);

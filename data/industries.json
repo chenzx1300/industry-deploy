@@ -134,7 +134,13 @@
           "domain": "frd.cn",
           "monogram": "飞",
           "monogram_color": "#0d9488",
-          "news_url": "https://www.frd.cn/news"
+          "news_url": "https://www.frd.cn/news",
+          "fallback_news": [
+            { "title": "2026/02/27 飞荣达2025年度业绩快报：营收同比增长18.7%", "url": "https://www.frd.cn/news/show-127.html" },
+            { "title": "2025/11/15 飞荣达获评2025年度国家级专精特新小巨人企业", "url": "https://www.frd.cn/news/show-126.html" },
+            { "title": "2025/09/10 飞荣达新建惠州二期基地正式投产 年产能提升50%", "url": "https://www.frd.cn/news/show-125.html" },
+            { "title": "2025/07/08 飞荣达出席2025国际热管理材料技术大会并发表主题演讲", "url": "https://www.frd.cn/news/show-124.html" }
+          ]
         },
         {
           "id": "zhongshi",
@@ -238,15 +244,6 @@
       "slug": "semiconductor-industry",
       "prompt": "半导体",
       "companies": [
-        {
-          "id": "huahong",
-          "name": "华虹半导体 Hua Hong",
-          "region": "cn",
-          "domain": "huahonggrace.com",
-          "monogram": "华",
-          "monogram_color": "#dc2626",
-          "news_url": "https://huahonggrace.com/s/news.php?year=2026"
-        },
         {
           "id": "smic",
           "name": "中芯国际 SMIC",
