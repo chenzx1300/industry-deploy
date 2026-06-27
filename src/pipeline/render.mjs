@@ -871,10 +871,10 @@ function buildHero(news, promptName) {
   return `
 <div class="hero">
   <div class="hero-main">
-    <div class="hero-meta">
+    ${mainTime ? `<div class="hero-meta">
       <span class="time">${escapeHtml(mainTime)}</span>
       <span>头条</span>
-    </div>
+    </div>` : ''}
     <h2 class="hero-title"><a href="${escapeHtml(main.url)}" target="_blank" rel="noopener">${escapeHtml(main.title)}<span class="hero-arrow">↗</span></a></h2>
     ${mainSnippet ? `<p class="hero-snippet">${escapeHtml(mainSnippet)}</p>` : ''}
     <div class="hero-source">${escapeHtml(hostnameOf(main.url) || main.source || '')}</div>
@@ -882,7 +882,7 @@ function buildHero(news, promptName) {
   <div class="hero-side">
     ${sides.map(n => `
       <div class="hero-side-item">
-        <span class="time">${escapeHtml(formatTimeLabel(n.published_at))}</span>
+        ${formatTimeLabel(n.published_at) ? `<span class="time">${escapeHtml(formatTimeLabel(n.published_at))}</span>` : ''}
         <div class="title"><a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title)}</a></div>
       </div>
     `).join('')}
@@ -891,8 +891,9 @@ function buildHero(news, promptName) {
 }
 
 function formatTimeLabel(isoString) {
+  if (!isoString) return '';
   const d = new Date(isoString);
-  if (isNaN(d.getTime())) return '';
+  if (isNaN(d.getTime()) || d.getFullYear() < 2000) return '';
   const now = new Date();
   const diffMin = Math.floor((now - d) / 60000);
   if (diffMin < 60) return `${Math.max(1, diffMin)}分钟前`;

@@ -9,8 +9,9 @@ export function escapeHtml(str) {
 }
 
 export function formatDate(isoString) {
+  if (!isoString) return '';
   const d = new Date(isoString);
-  if (isNaN(d.getTime())) return '';
+  if (isNaN(d.getTime()) || d.getUTCFullYear() < 2000) return '';
   const yyyy = d.getUTCFullYear();
   const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
   const dd = String(d.getUTCDate()).padStart(2, '0');
