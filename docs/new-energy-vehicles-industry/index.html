@@ -27,8 +27,8 @@
   --intl-tint: #1a5490;
   --highlight: #fff8e6;
   --live: #e60012;
-  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-serif: 'PingFang SC', 'Songti SC', 'SF Pro Display', Georgia, serif;
+  --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-serif: 'PingFang SC', 'Source Han Serif SC', 'Noto Serif CJK SC', 'STSong', Georgia, serif;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
@@ -236,45 +236,38 @@ a { color: inherit; }
 }
 .masthead-stats .num { color: var(--accent); font-weight: 600; }
 
-/* Section tabs (region navigation) */
+/* Region tabs (clickable scroll anchors) */
 .section-tabs {
   display: flex;
   border-bottom: 1px solid var(--border);
 }
-.tab-region {
+button.tab-region {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 0 0 0;
-  margin-right: 32px;
-  position: relative;
-  padding-bottom: 12px;
-  padding-top: 8px;
+  gap: 10px;
+  padding: 10px 20px 12px;
+  margin-right: 8px;
+  color: var(--text-faint);
+  transition: all 0.2s;
 }
-.tab-region.cn { color: var(--accent); }
-.tab-region.intl { color: var(--intl); }
-.tab-region::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: -1px;
-  height: 2px;
-  background: currentColor;
-  opacity: 0.2;
-  transition: opacity 0.2s;
-}
-.tab-region:last-of-type { margin-right: 0; }
-.tab-region .label {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-.tab-region .count {
+button.tab-region:hover { color: var(--text); }
+button.tab-region.cn.active { color: var(--accent); border-bottom-color: var(--accent); }
+button.tab-region.intl.active { color: var(--intl); border-bottom-color: var(--intl); }
+button.tab-region .count {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 11px;
   color: var(--text-faint);
   font-weight: 500;
 }
+button.tab-region.active .count { color: inherit; }
 
 /* Company tab buttons */
 .company-tabs {
@@ -490,6 +483,22 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   border-bottom: 2px solid var(--accent);
   margin-bottom: 24px;
 }
+.company-section[data-region="intl"] .company-header {
+  border-bottom-color: var(--intl);
+}
+.company-section.is-active .company-header {
+  border-bottom-width: 3px;
+}
+.company-section.is-active {
+  background: var(--accent-tint);
+  padding: 16px 16px;
+  margin: 0 -16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.company-section[data-region="intl"].is-active {
+  background: var(--intl-soft);
+}
 .company-header .logo {
   flex-shrink: 0;
   width: 44px;
@@ -614,6 +623,61 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   font-size: 14px;
 }
 
+/* ============ HEROES (one per company, only one shown at a time) ============ */
+.heroes {
+  margin-bottom: 32px;
+}
+
+/* ============ REGION ROWS (CN row + INTL row, both visible) ============ */
+.region-row {
+  margin-bottom: 56px;
+  scroll-margin-top: 80px;
+}
+.region-row-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 24px 0 16px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--border);
+}
+.region-row-title {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.region-row-title.cn { color: var(--accent); }
+.region-row-title.intl { color: var(--intl); }
+.region-row-title::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 24px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.region-row-meta {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.region-row-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.company-section {
+  scroll-margin-top: 80px;
+  transition: background 0.3s, padding 0.3s;
+  padding: 12px 0;
+}
+
 /* ============ FOOTER ============ */
 footer {
   background: #1a1a1a;
@@ -731,25 +795,19 @@ footer .mono {
     </div>
     
 <nav class="section-tabs">
-  <div class="tab-region cn">
-    <span class="label">中国头部</span>
-    <span class="count">3 家公司</span>
-  </div>
-  <div class="tab-region intl">
-    <span class="label">国际头部</span>
-    <span class="count">3 家公司</span>
-  </div>
+  <button class="tab-region cn" data-region="cn">中国头部 <span class="count">3 家</span></button>
+  <button class="tab-region intl" data-region="intl">国际头部 <span class="count">3 家</span></button>
 </nav>
     
 <div class="company-tabs">
-  <button class="company-tab" data-co="byd">比亚迪 BYD<span class="mono-count">10</span></button><button class="company-tab" data-co="catl">宁德时代 CATL<span class="mono-count">10</span></button><button class="company-tab" data-co="nio">蔚来 NIO<span class="mono-count">10</span></button>
-  <button class="company-tab" data-co="bmw">BMW 宝马<span class="mono-count">10</span></button><button class="company-tab" data-co="vw">Volkswagen 大众<span class="mono-count">10</span></button><button class="company-tab" data-co="toyota">Toyota 丰田<span class="mono-count">9</span></button>
+  <button class="company-tab" data-co="byd" data-region="cn">比亚迪 BYD<span class="mono-count">10</span></button><button class="company-tab" data-co="catl" data-region="cn">宁德时代 CATL<span class="mono-count">10</span></button><button class="company-tab" data-co="nio" data-region="cn">蔚来 NIO<span class="mono-count">10</span></button>
+  <button class="company-tab" data-co="bmw" data-region="intl">BMW 宝马<span class="mono-count">10</span></button><button class="company-tab" data-co="vw" data-region="intl">Volkswagen 大众<span class="mono-count">10</span></button><button class="company-tab" data-co="toyota" data-region="intl">Toyota 丰田<span class="mono-count">9</span></button>
 </div>
   </div>
 </header>
 <main>
   <div class="container">
-    
+    <div class="heroes"><div class="hero" data-co="byd">
 <div class="hero">
   <div class="hero-main">
     <div class="hero-meta">
@@ -783,9 +841,185 @@ footer .mono {
       </div>
     
   </div>
-</div>
+</div></div><div class="hero" data-co="catl" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.catl.com/en/news/6861.html" target="_blank" rel="noopener">6/22/2026 CATL Debuts World&#39;s First Field-Validated Sodium-Ion BESS, Bringing Sodium Storage to Commercial Reality MORE<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">Munich, Germany | June 22, 2026 — CATL today officially unveiled the TENER Sodium Energy Storage System, the world&amp;#39;s first real-world validated sodium-ion energy storage solution in Munich, Germany.</p>
+    <div class="hero-source">catl.com</div>
+  </div>
+  <div class="hero-side">
     
-<section data-co="byd">
+      <div class="hero-side-item">
+        <span class="time">2026-05-21</span>
+        <div class="title"><a href="https://www.catl.com/en/news/6832.html" target="_blank" rel="noopener">6/05/2026 CATL Statement Regarding May 21, 2026 U.S. Congressional Report MORE</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.catl.com/en/news/6815.html" target="_blank" rel="noopener">6/01/2026 CATL Launches World’s Largest Energy Storage Testbed, Advancing Industry into Era of Real-World Validation MORE</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1858227.html" target="_blank" rel="noopener">DEKRA德凯授予CATL宁德时代测试验证中心CTF 2资质 共筑电池安全新标杆</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1773186.html" target="_blank" rel="noopener">学习分析一款CATL宁德时代设计的BMS电流采样产品</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="nio" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://ir.nio.com/news-releases/news-release-details/nio-inc-provides-may-2026-delivery-update" target="_blank" rel="noopener">NIO Inc. Provides May 2026 Delivery Update<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">37,705 vehicles were delivered in May 2026, increasing by 62.3% year-over-year 150,526 vehicles were delivered year-to-date in 2026, increasing by 68.7% year-over-year Cumulative deliveries reached 1,148,118 as of May 31, 2026 SHANGHAI, June 01, 2026 (GLOBE NEWSWIRE) -- NIO Inc.</p>
+    <div class="hero-source">ir.nio.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://ir.nio.com/news-releases/news-release-details/nio-hold-annual-general-meeting-june-24-2026" target="_blank" rel="noopener">NIO to Hold Annual General Meeting on June 24, 2026</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1785837.html" target="_blank" rel="noopener">从NIO Day 2024看蔚来汽车下一个十年发展</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/2000678.html" target="_blank" rel="noopener">安森美与蔚来扩大战略合作，加速向下一代900V电动汽车平台演进</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1968816.html" target="_blank" rel="noopener">蔚来首次季度盈利：从“资本故事”到“现金机器”的拐点？</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="bmw" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.bmwgroup.com/en/news/general/2026/highway-assistant.html" target="_blank" rel="noopener">Innovation 09.06.2026 7 MIN 200 million kilometres of hands-free driving with the BMW Highway Assistant.<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">Overview of hands-free assisted driving by the BMW Group: More about the BMW Highway Assistant, safety and the technology’s launch in Europe.</p>
+    <div class="hero-source">bmwgroup.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.bmwgroup.com/en/news/general/2026/agentic-AI.html" target="_blank" rel="noopener">Innovation 22.05.2026 How agentic AI is making life easier at the BMW Group.</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.bmwgroup.com/en/news/general/2026/battery-cell-production-with-ai.html" target="_blank" rel="noopener">Innovation 08.05.2026 5 MIN Advances in battery cell production: How the BMW Group uses AI.</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.bmwgroup.com/en/news/general/2026/four-million-motorcycles-made-in-berlin.html" target="_blank" rel="noopener">Company 14.04.2026 6 MIN 4,000,000 BMW Motorrd motorcycles: How Plant Berlin has helped shape the success of the BMW brand.</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.bmwgroup.com/en/news/general/2026/bmw-ix5-hydrogen-tank-system.html" target="_blank" rel="noopener">Innovation 09.04.2026 9 MIN Technology-open approach meets the art of engineering: New hydrogen tank system in the BMW iX5 Hydrogen.</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="vw" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.volkswagen-newsroom.com/en/press-releases/in-the-anniversary-year-volkswagen-r-to-enter-the-24h-nuerburgring-in-2027-20362" target="_blank" rel="noopener">In the anniversary year: Volkswagen R to enter the 24h Nürburgring in 2027<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">After three years with the Golf GTI Clubsport, Volkswagen is opening a new chapter in the 24h Nürburgring&amp;nbsp;with the Golf R 24H.</p>
+    <div class="hero-source">volkswagen-newsroom.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.volkswagen-newsroom.com/en/press-releases/brand-group-core-with-solid-results-special-items-impact-volkswagen-brand-20358" target="_blank" rel="noopener">Brand Group Core with solid results – special items impact Volkswagen Brand</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/2035960.html" target="_blank" rel="noopener">大众要开始按900万辆产能过日子了</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/2009952.html" target="_blank" rel="noopener">大众汽车的2026年Q1 — 巨人的蜕皮之痛</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/2009955.html" target="_blank" rel="noopener">大众汽车中国2026市场和战略更新</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="toyota" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">2026-05-28</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://global.toyota/en/newsroom/toyota/44397819.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Our Picks May 28, 2026 Toyota Launches New Hilux in Japan<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">Toyota Motor Corporation (Toyota) launched a completely redesigned Hilux in Japan.</p>
+    <div class="hero-source">global.toyota</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">2026-05-14</span>
+        <div class="title"><a href="https://global.toyota/en/newsroom/toyota/44331143.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Our Picks May 14, 2026 Toyota Launches All-New Land Cruiser &quot;FJ&quot; Series in Japan</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://global.toyota/en/company/profile/production-sales-figures/?padid=ag478_from_news_pickup2" target="_blank" rel="noopener">Sales, Production, and Export Results</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://toyotatimes.jp/en/newscast/193.html?padid=ag478_from_newsroom" target="_blank" rel="noopener">Rally Japan 2026 | Toyota Sweeps Top 4! First May Rally Deepens Community Ties</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://global.toyota/en/newsroom/corporate/44481016.html" target="_blank" rel="noopener">Toyota to participate in the &quot;1000 Miglia Gran Turismo Experience 2026,&quot; a special program of the historic Italian rally, the 1000 Miglia</a></div>
+      </div>
+    
+  </div>
+</div></div></div>
+
+    <section class="region-row" id="region-cn">
+      <div class="region-row-header">
+        <h2 class="region-row-title cn">中国头部</h2>
+        <span class="region-row-meta">3 家公司 · 30 条新闻</span>
+      </div>
+      <div class="region-row-sections">
+<section data-co="byd" data-region="cn" class="company-section is-active">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#dc2626"/>
@@ -889,7 +1123,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="catl" hidden>
+<section data-co="catl" data-region="cn" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#0ea5e9"/>
@@ -993,7 +1227,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="nio" hidden>
+<section data-co="nio" data-region="cn" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#059669"/>
@@ -1096,8 +1330,16 @@ footer .mono {
     <span>eefocus.com</span>
   </div>
 </article></div>
-</section>
-<section data-co="bmw" hidden>
+</section></div>
+    </section>
+
+    <section class="region-row" id="region-intl">
+      <div class="region-row-header">
+        <h2 class="region-row-title intl">国际头部</h2>
+        <span class="region-row-meta">3 家公司 · 29 条新闻</span>
+      </div>
+      <div class="region-row-sections">
+<section data-co="bmw" data-region="intl" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#0066b1"/>
@@ -1105,7 +1347,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>BMW 宝马</h2>
-      <span class="domain">bmwgroup.com · International</span>
+      <span class="domain">bmwgroup.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.bmwgroup.com/en/news/general/2026/highway-assistant.html" target="_blank" rel="noopener">Overview of hands-free assisted driving by the BMW Group: More about the BMW Highway Assistant, safety and the technology’s launch in Europe.</a></li><li><span class="num">02</span><a href="https://www.bmwgroup.com/en/news/general/2026/agentic-AI.html" target="_blank" rel="noopener">BMW Group: This article explores agentic AI and how it simplifies workflows, supports teams and makes processes even more intelligent.</a></li><li><span class="num">03</span><a href="https://www.bmwgroup.com/en/news/general/2026/battery-cell-production-with-ai.html" target="_blank" rel="noopener">How the BMW Group is leveraging AI to optimise battery cell production and dramatically reduce the time and effort involved in testing – read more here</a></li><li><span class="num">04</span><a href="https://www.bmwgroup.com/en/news/general/2026/four-million-motorcycles-made-in-berlin.html" target="_blank" rel="noopener">4,000,000 motorcycles made in Berlin: How Plant Berlin has shaped the BMW brand worldwide. A peek behind the factory gates.</a></li><li><span class="num">05</span><a href="https://www.bmwgroup.com/en/news/general/2026/bmw-ix5-hydrogen-tank-system.html" target="_blank" rel="noopener">BMW Group: Tank system reinvented – innovative BMW Hydrogen Flat Storage in the new BMW iX5 Hydrogen. Find out more here.</a></li></ol><div class="summary-stats"><span>10 条</span><span>BMW 宝马</span></div></div>
@@ -1201,7 +1443,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="vw" hidden>
+<section data-co="vw" data-region="intl" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#1e40af"/>
@@ -1209,7 +1451,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>Volkswagen 大众</h2>
-      <span class="domain">volkswagen.com · International</span>
+      <span class="domain">volkswagen.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.volkswagen-newsroom.com/en/press-releases/in-the-anniversary-year-volkswagen-r-to-enter-the-24h-nuerburgring-in-2027-20362" target="_blank" rel="noopener">After three years with the Golf GTI Clubsport, Volkswagen is opening a new chapter in the 24h Nürburgring&amp;nbsp;with the Golf R 24H.</a></li><li><span class="num">02</span><a href="https://www.volkswagen-newsroom.com/en/press-releases/brand-group-core-with-solid-results-special-items-impact-volkswagen-brand-20358" target="_blank" rel="noopener">Compared with the prior-year figure, there was moderate growth of 0.2% in unit sales.</a></li><li><span class="num">03</span><a href="https://www.eefocus.com/article/2035960.html" target="_blank" rel="noopener">大众在股东大会上宣布，预计2025年销售约900万辆车，收入3220亿欧元，营业利润仅89亿欧元，利润率仅为2.8%。为了应对挑战，大众决定裁员并减少产能，同时考虑将部分产能出口至新兴市场。此外，大众计划在未来几年内大幅削减成本，并设定2030年利润率目标为8%-10%。</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/2009952.html" target="_blank" rel="noopener">大众汽车集团发布2026年一季度财报，尽管营业利润下滑，但现金流显著改善。面对全球车市的挑战，大众提出了“目标图景2030”转型战略，涉及产品瘦身、技术平台收敛、产能调整等多个方面。在中国市场，大众强调深化“在中国，为中国”策略，推出本地化车型并加强技术研发。在美国市场，大众寄希望于Scout品牌缓解关税压力。整体来看，大众面临转型压力，需加快执行力度以应对市场竞争和技术变革。</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/2009955.html" target="_blank" rel="noopener">大众汽车集团（中国）董事长兼首席执行官贝瑞德在2026中国投资者演讲中分享了对中国市场的最新判断、战略执行成果以及未来财务与产品规划。他表示，新能源拐点已至，2025年中国新能源汽车渗透率达到53%，标志着电动化成为基本盘。尽管面临市场挑战，大众在2025年保持了中国市场第一名的国际OEM地位，并预计2026年NEV渗透率达到60%。此外，大众强调了本土研发和技术护城河的重要性，推出了VCTC和CEA技术，推动平台布局和降本增效。2026年将是大众的“交付之年”，预计将推出超过20款新能源车型。最后，大众计划将中国打造成技术中心，反哺和支持全球市场。</a></li></ol><div class="summary-stats"><span>10 条</span><span>Volkswagen 大众</span></div></div>
@@ -1305,7 +1547,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="toyota" hidden>
+<section data-co="toyota" data-region="intl" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#b91c1c"/>
@@ -1313,7 +1555,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>Toyota 丰田</h2>
-      <span class="domain">toyota.com · International</span>
+      <span class="domain">toyota.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://global.toyota/en/newsroom/toyota/44397819.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Toyota Motor Corporation (Toyota) launched a completely redesigned Hilux in Japan.</a></li><li><span class="num">02</span><a href="https://global.toyota/en/newsroom/toyota/44331143.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Toyota Motor Corporation (Toyota) announced the addition of the FJ series to the Land Cruiser lineup in Japan, with sales commencing on May 14.</a></li><li><span class="num">03</span><a href="https://global.toyota/en/company/profile/production-sales-figures/?padid=ag478_from_news_pickup2" target="_blank" rel="noopener">Toyota Motor Corporation Site introduces &quot;Sales, Production, and Export Results&quot;. Toyota strives to be a good corporate citizen trusted by all stakeholders and to contribute to the creation of an affluent society through all its business operations. We would like to introduce the Corporate Principles which form the basis of our initiatives, values that enable the execution, and our mindset.</a></li><li><span class="num">04</span><a href="https://toyotatimes.jp/en/newscast/193.html?padid=ag478_from_newsroom" target="_blank" rel="noopener">Rally Japan 2026 was held in May for the first time. Behind Toyota’s achievement of sweeping the top four spots was unified local community support.</a></li><li><span class="num">05</span><a href="https://global.toyota/en/newsroom/corporate/44481016.html" target="_blank" rel="noopener">Toyota Motor Corporation (Toyota) will participate in the 1000 Miglia Gran Turismo Experience 2026 (Miglia Gran Turismo), a special program for the 1000 Miglia 2026 to be held in Brescia, Italy, over five days from June 9 to 13, 2026 (Japan time). This marks the first time that a Japanese manufacturer has entered vehicles in a 1000 Miglia-related event.</a></li></ol><div class="summary-stats"><span>9 条</span><span>Toyota 丰田</span></div></div>
@@ -1399,7 +1641,8 @@ footer .mono {
     <span>toyota-automobile-museum.jp</span>
   </div>
 </article></div>
-</section>
+</section></div>
+    </section>
   </div>
 </main>
 <footer>
@@ -1407,21 +1650,53 @@ footer .mono {
   <span class="mono">构建于 2026-06-27 · GitHub Pages</span>
 </footer>
 <script>
+// Company tab click: switch hero + highlight active section + scroll to it.
+// All company sections remain visible at once (CN row and INTL row).
 document.querySelectorAll('.company-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     const target = tab.dataset.co;
+    // Toggle active class on tabs
     document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('section[data-co]').forEach(s => s.hidden = s.dataset.co !== target);
     tab.classList.add('active');
+    // Switch hero: show only the matching one
+    document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
+    // Highlight the matching company section
+    document.querySelectorAll('.company-section').forEach(s => {
+      s.classList.toggle('is-active', s.dataset.co === target);
+    });
+    // Scroll the company section into view
+    const section = document.querySelector('.company-section[data-co="' + target + '"]');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     history.replaceState(null, '', '#' + target);
   });
 });
+
+// Region tab click: scroll to that region row
+document.querySelectorAll('.tab-region').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const region = tab.dataset.region;
+    document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = document.getElementById('region-' + region);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
 window.addEventListener('DOMContentLoaded', () => {
+  // Click tab from URL hash
   const hash = location.hash.replace('#', '');
   if (hash) {
     const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
-    if (tab) tab.click();
+    if (tab) {
+      // Manually trigger to set hero + active state, without scroll animation
+      const target = hash;
+      document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
+      document.querySelectorAll('.company-section').forEach(s => s.classList.toggle('is-active', s.dataset.co === target));
+    }
   }
+  // Theme toggle
   const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.dataset.theme = theme;
   const btn = document.querySelector('.theme-toggle');

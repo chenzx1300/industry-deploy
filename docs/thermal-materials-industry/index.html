@@ -27,8 +27,8 @@
   --intl-tint: #1a5490;
   --highlight: #fff8e6;
   --live: #e60012;
-  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-serif: 'PingFang SC', 'Songti SC', 'SF Pro Display', Georgia, serif;
+  --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-serif: 'PingFang SC', 'Source Han Serif SC', 'Noto Serif CJK SC', 'STSong', Georgia, serif;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
@@ -236,45 +236,38 @@ a { color: inherit; }
 }
 .masthead-stats .num { color: var(--accent); font-weight: 600; }
 
-/* Section tabs (region navigation) */
+/* Region tabs (clickable scroll anchors) */
 .section-tabs {
   display: flex;
   border-bottom: 1px solid var(--border);
 }
-.tab-region {
+button.tab-region {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 0 0 0;
-  margin-right: 32px;
-  position: relative;
-  padding-bottom: 12px;
-  padding-top: 8px;
+  gap: 10px;
+  padding: 10px 20px 12px;
+  margin-right: 8px;
+  color: var(--text-faint);
+  transition: all 0.2s;
 }
-.tab-region.cn { color: var(--accent); }
-.tab-region.intl { color: var(--intl); }
-.tab-region::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: -1px;
-  height: 2px;
-  background: currentColor;
-  opacity: 0.2;
-  transition: opacity 0.2s;
-}
-.tab-region:last-of-type { margin-right: 0; }
-.tab-region .label {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-.tab-region .count {
+button.tab-region:hover { color: var(--text); }
+button.tab-region.cn.active { color: var(--accent); border-bottom-color: var(--accent); }
+button.tab-region.intl.active { color: var(--intl); border-bottom-color: var(--intl); }
+button.tab-region .count {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 11px;
   color: var(--text-faint);
   font-weight: 500;
 }
+button.tab-region.active .count { color: inherit; }
 
 /* Company tab buttons */
 .company-tabs {
@@ -490,6 +483,22 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   border-bottom: 2px solid var(--accent);
   margin-bottom: 24px;
 }
+.company-section[data-region="intl"] .company-header {
+  border-bottom-color: var(--intl);
+}
+.company-section.is-active .company-header {
+  border-bottom-width: 3px;
+}
+.company-section.is-active {
+  background: var(--accent-tint);
+  padding: 16px 16px;
+  margin: 0 -16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.company-section[data-region="intl"].is-active {
+  background: var(--intl-soft);
+}
 .company-header .logo {
   flex-shrink: 0;
   width: 44px;
@@ -614,6 +623,61 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   font-size: 14px;
 }
 
+/* ============ HEROES (one per company, only one shown at a time) ============ */
+.heroes {
+  margin-bottom: 32px;
+}
+
+/* ============ REGION ROWS (CN row + INTL row, both visible) ============ */
+.region-row {
+  margin-bottom: 56px;
+  scroll-margin-top: 80px;
+}
+.region-row-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 24px 0 16px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--border);
+}
+.region-row-title {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.region-row-title.cn { color: var(--accent); }
+.region-row-title.intl { color: var(--intl); }
+.region-row-title::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 24px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.region-row-meta {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.region-row-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.company-section {
+  scroll-margin-top: 80px;
+  transition: background 0.3s, padding 0.3s;
+  padding: 12px 0;
+}
+
 /* ============ FOOTER ============ */
 footer {
   background: #1a1a1a;
@@ -709,7 +773,7 @@ footer .mono {
       行业雷达
       <span class="live-pill"><span class="live-dot"></span>LIVE</span>
     </div>
-    <div class="ticker"><div class="ticker-track"><span>飞荣达控股具身智能子公司——果力智能乔迁新址 2026-02-27 2026年2月25日，飞荣达控股子公司——深圳果力智能科技有...</span><span>飞荣达携手果力智能参与灵巧手国家标准闭门起草研讨会 2026-02-11 2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用...</span><span>2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行 9月8日上午，浙江大学与本松新材联合培养的企业博士后开题审核会在我司顺利召开，标志着我司与浙江大学在高层次人才培养和产学研深度... READ MORE &gt;</span><span>2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径 8月17日，本松新材总经理周永松带领技术人员前往位于厦门的施耐德电气开关设备有限公司拜访，与工厂总经理及研发团队进行了深入交流... READ MORE &gt;</span><span>查看 中石科技 Sinopec 新闻中心</span></div></div>
+    <div class="ticker"><div class="ticker-track"><span>飞荣达控股具身智能子公司——果力智能乔迁新址 2026-02-27 2026年2月25日，飞荣达控股子公司——深圳果力智能科技有...</span><span>飞荣达携手果力智能参与灵巧手国家标准闭门起草研讨会 2026-02-11 2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用...</span><span>2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行</span><span>2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径</span><span>查看 中石科技 Sinopec 新闻中心</span></div></div>
     <div class="topbar-meta">
       <span>2026年06月27日 · 周六</span>
       <button class="theme-toggle" aria-label="切换主题">☾ 深色</button>
@@ -731,56 +795,206 @@ footer .mono {
     </div>
     
 <nav class="section-tabs">
-  <div class="tab-region cn">
-    <span class="label">中国头部</span>
-    <span class="count">3 家公司</span>
-  </div>
-  <div class="tab-region intl">
-    <span class="label">国际头部</span>
-    <span class="count">3 家公司</span>
-  </div>
+  <button class="tab-region cn" data-region="cn">中国头部 <span class="count">3 家</span></button>
+  <button class="tab-region intl" data-region="intl">国际头部 <span class="count">3 家</span></button>
 </nav>
     
 <div class="company-tabs">
-  <button class="company-tab" data-co="bosom">本松新材 Bosom<span class="mono-count">4</span></button><button class="company-tab" data-co="feirongda">飞荣达 Fenghuangda<span class="mono-count">7</span></button><button class="company-tab" data-co="zhongshi">中石科技 Sinopec<span class="mono-count">1</span></button>
-  <button class="company-tab" data-co="henkel">汉高 Henkel<span class="mono-count">10</span></button><button class="company-tab" data-co="mmm">3M<span class="mono-count">10</span></button><button class="company-tab" data-co="honeywell">霍尼韦尔 Honeywell<span class="mono-count">10</span></button>
+  <button class="company-tab" data-co="bosom" data-region="cn">本松新材 Bosom<span class="mono-count">4</span></button><button class="company-tab" data-co="feirongda" data-region="cn">飞荣达 Fenghuangda<span class="mono-count">7</span></button><button class="company-tab" data-co="zhongshi" data-region="cn">中石科技 Sinopec<span class="mono-count">1</span></button>
+  <button class="company-tab" data-co="henkel" data-region="intl">汉高 Henkel<span class="mono-count">10</span></button><button class="company-tab" data-co="mmm" data-region="intl">3M<span class="mono-count">10</span></button><button class="company-tab" data-co="honeywell" data-region="intl">霍尼韦尔 Honeywell<span class="mono-count">10</span></button>
 </div>
   </div>
 </header>
 <main>
   <div class="container">
-    
+    <div class="heroes"><div class="hero" data-co="bosom">
 <div class="hero">
   <div class="hero-main">
     <div class="hero-meta">
-      <span class="time">2025-09-08</span>
+      <span class="time"></span>
       <span>头条</span>
     </div>
-    <h2 class="hero-title"><a href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行 9月8日上午，浙江大学与本松新材联合培养的企业博士后开题审核会在我司顺利召开，标志着我司与浙江大学在高层次人才培养和产学研深度... READ MORE &gt;<span class="hero-arrow">↗</span></a></h2>
+    <h2 class="hero-title"><a href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行<span class="hero-arrow">↗</span></a></h2>
     
     <div class="hero-source">bosomchina.com</div>
   </div>
   <div class="hero-side">
     
       <div class="hero-side-item">
-        <span class="time">2025-08-20</span>
-        <div class="title"><a href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径 8月17日，本松新材总经理周永松带领技术人员前往位于厦门的施耐德电气开关设备有限公司拜访，与工厂总经理及研发团队进行了深入交流... READ MORE &gt;</a></div>
+        <span class="time"></span>
+        <div class="title"><a href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径</a></div>
       </div>
     
       <div class="hero-side-item">
-        <span class="time">2025-06-19</span>
-        <div class="title"><a href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动 2025年6月17日，杭州本松新材料技术股份有限公司（以下简称“本松新材”）与上海电驱动股份有限公司（以下简称“上海电驱动”）正式签署项... READ MORE &gt;</a></div>
+        <span class="time"></span>
+        <div class="title"><a href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动</a></div>
       </div>
     
       <div class="hero-side-item">
-        <span class="time">2024-06-24</span>
-        <div class="title"><a href="https://www.bosomchina.com/news_detail/id-175.html" target="_blank" rel="noopener">2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行 2024年6月26日-28日本松新材将以“以塑代铝”为主题再次来到ALE舞台为客户提供降碳、减重、降本创新产品及解决方案Chapter. 01放... READ MORE &gt;</a></div>
+        <span class="time"></span>
+        <div class="title"><a href="https://www.bosomchina.com/news_detail/id-175.html" target="_blank" rel="noopener">2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行</a></div>
       </div>
     
   </div>
-</div>
+</div></div><div class="hero" data-co="feirongda" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">2026-02-27</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=840&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达控股具身智能子公司——果力智能乔迁新址 2026-02-27 2026年2月25日，飞荣达控股子公司——深圳果力智能科技有...<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">2026年2月25日，飞荣达控股子公司——深圳果力智能科技有限公司正式迁入深圳光明飞荣达新材料产业园。新办公空间集办公、研发、展示于一体，并与制造产线及配套产线无缝协同，将全面提升运营效率与员工体验。关于果力智能深圳果力智能科技有限公司，成立于 2015 年，专注深度仿生的具身智能灵巧操作技术，是业内...</p>
+    <div class="hero-source">frd.cn</div>
+  </div>
+  <div class="hero-side">
     
-<section data-co="bosom">
+      <div class="hero-side-item">
+        <span class="time">2026-02-11</span>
+        <div class="title"><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=839&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达携手果力智能参与灵巧手国家标准闭门起草研讨会 2026-02-11 2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用...</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">2025-12-08</span>
+        <div class="title"><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=838&amp;Fid=t2:4:2" target="_blank" rel="noopener">全国电磁屏蔽材料标准化技术委员... 2025-12-08</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">2025-12-02</span>
+        <div class="title"><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=837&amp;Fid=t2:4:2" target="_blank" rel="noopener">京东工业与飞荣达等10家机器人... 2025-12-02</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">2025-05-13</span>
+        <div class="title"><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=836&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达出席 2025 中国电磁... 2025-05-13</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="zhongshi" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time"></span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.zsjituan.com" target="_blank" rel="noopener">查看 中石科技 Sinopec 新闻中心<span class="hero-arrow">↗</span></a></h2>
+    
+    <div class="hero-source">zsjituan.com</div>
+  </div>
+  <div class="hero-side">
+    
+  </div>
+</div></div><div class="hero" data-co="henkel" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">Moving Forward with Courage: How Companies Can Shape DEI At the Corporate Diversity Summit, Andrea Becher, Global Head of Talent Acquisition, Leadership, Learning and Culture, talks about how companies can strengthen a culture of belonging. influentialmag.co.uk<span class="hero-arrow">↗</span></a></h2>
+    
+    <div class="hero-source">influentialmag.co.uk</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">Download Center Find selected image and footage material for download! Learn more</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">Press Release E-mail Distribution List Interested in the latest press releases? Contact us to be included in our distribution list. Learn more</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1935805.html" target="_blank" rel="noopener">C Talk | 汉高：智创中国，新质领航</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1928865.html" target="_blank" rel="noopener">从材料创新到建模仿真，汉高驱动电动化“效率”革命</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="mmm" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://news.3m.com/The-National-Coalition-of-Certification-Centers-and-3M-award-national-scholarships-to-skilled-trades-students-nationwide" target="_blank" rel="noopener">The National Coalition of Certification Centers and 3M award national scholarships to skilled trades students nationwide<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">The National Coalition of Certification Centers (NC3), in partnership with 3M’s Safety and Industrial business, announced the 2026 recipients of the Skilled Trades – 3M Transformational...</p>
+    <div class="hero-source">news.3m.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://news.3m.com/Scottie-Scheffler-commits-to-2026-3M-Open" target="_blank" rel="noopener">Scottie Scheffler commits to 2026 3M Open</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.reuters.com/business/3m-raises-2025-profit-forecast-2025-10-21/" target="_blank" rel="noopener">3M raises annual profit forecast amid margin expansion drive</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://news.3m.com/2026-06-23-3M-and-Airbus-announce-agreement-to-advance-A220-passenger-comfort-and-aircraft-performance-through-advanced-insulation-technology" target="_blank" rel="noopener">3M and Airbus announce agreement to advance A220 passenger comfort and aircraft performance through advanced insulation technology</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://news.3m.com/2026-06-22-3M-launches-Ask-3M,-an-AI-powered-tool-for-faster-access-to-technical-expertise" target="_blank" rel="noopener">3M launches Ask 3M, an AI-powered tool for faster access to technical expertise</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="honeywell" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/exxonmobil-names-honeywell-its-2025-supplier-innovation-award-winner" target="_blank" rel="noopener">ExxonMobil Names Honeywell its 2025 Supplier Innovation Award Winner<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">The recognition underscores Honeywell’s commitment to process automation innovation at ExxonMobil facilities</p>
+    <div class="hero-source">honeywell.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">More Than Six Decades of Trusted Thermal Sensing: The Honeywell Ongoing Partnership with Boeing</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/05/honeywell-pss-modex-2026-recap-key-trends-shaping-the-future-of-supply-chains" target="_blank" rel="noopener">Honeywell Productivity Solutions and Services (PSS) MODEX 2026 Recap: Key Trends Shaping the Future of Supply Chains</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/03/honeywell-wins-2026-if-design-awards-for-mobile-computing-industrial-printing-technologies" target="_blank" rel="noopener">Honeywell Wins 2026 iF Design Awards for Mobile Computing, Industrial Printing Technologies</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/03/honeywell-transnorm-wins-2026-if-design-award-for-energy-efficient-sorter-solution" target="_blank" rel="noopener">Honeywell Transnorm Wins 2026 iF Design Award for Energy-Efficient Sorter Solution</a></div>
+      </div>
+    
+  </div>
+</div></div></div>
+
+    <section class="region-row" id="region-cn">
+      <div class="region-row-header">
+        <h2 class="region-row-title cn">中国头部</h2>
+        <span class="region-row-meta">3 家公司 · 12 条新闻</span>
+      </div>
+      <div class="region-row-sections">
+<section data-co="bosom" data-region="cn" class="company-section is-active">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#dc2626"/>
@@ -791,11 +1005,11 @@ footer .mono {
       <span class="domain">bosomchina.com · 中国</span>
     </div>
   </div>
-  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行 9月8日上午，浙江大学与本松新材联合培养的企业博士后开题审核会在我司顺利召开，标志着我司与浙江大学在高层次人才培养和产学研深度... READ MORE &gt;</a></li><li><span class="num">02</span><a href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径 8月17日，本松新材总经理周永松带领技术人员前往位于厦门的施耐德电气开关设备有限公司拜访，与工厂总经理及研发团队进行了深入交流... READ MORE &gt;</a></li><li><span class="num">03</span><a href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动 2025年6月17日，杭州本松新材料技术股份有限公司（以下简称“本松新材”）与上海电驱动股份有限公司（以下简称“上海电驱动”）正式签署项... READ MORE &gt;</a></li><li><span class="num">04</span><a href="https://www.bosomchina.com/news_detail/id-175.html" target="_blank" rel="noopener">2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行 2024年6月26日-28日本松新材将以“以塑代铝”为主题再次来到ALE舞台为客户提供降碳、减重、降本创新产品及解决方案Chapter. 01放... READ MORE &gt;</a></li></ol><div class="summary-stats"><span>4 条</span><span>本松新材 Bosom</span></div></div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行</a></li><li><span class="num">02</span><a href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径</a></li><li><span class="num">03</span><a href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动</a></li><li><span class="num">04</span><a href="https://www.bosomchina.com/news_detail/id-175.html" target="_blank" rel="noopener">2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行</a></li></ol><div class="summary-stats"><span>4 条</span><span>本松新材 Bosom</span></div></div>
   <div class="news-grid">
 <article class="news-card">
-  <div class="news-card-time">2025-09-08</div>
-  <h3 class="news-card-title"><a href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行 9月8日上午，浙江大学与本松新材联合培养的企业博士后开题审核会在我司顺利召开，标志着我司与浙江大学在高层次人才培养和产学研深度... READ MORE &gt;</a></h3>
+  
+  <h3 class="news-card-title"><a href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行</a></h3>
   
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
@@ -803,8 +1017,8 @@ footer .mono {
   </div>
 </article>
 <article class="news-card">
-  <div class="news-card-time">2025-08-20</div>
-  <h3 class="news-card-title"><a href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径 8月17日，本松新材总经理周永松带领技术人员前往位于厦门的施耐德电气开关设备有限公司拜访，与工厂总经理及研发团队进行了深入交流... READ MORE &gt;</a></h3>
+  
+  <h3 class="news-card-title"><a href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径</a></h3>
   
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
@@ -812,8 +1026,8 @@ footer .mono {
   </div>
 </article>
 <article class="news-card">
-  <div class="news-card-time">2025-06-19</div>
-  <h3 class="news-card-title"><a href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动 2025年6月17日，杭州本松新材料技术股份有限公司（以下简称“本松新材”）与上海电驱动股份有限公司（以下简称“上海电驱动”）正式签署项... READ MORE &gt;</a></h3>
+  
+  <h3 class="news-card-title"><a href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动</a></h3>
   
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
@@ -821,8 +1035,8 @@ footer .mono {
   </div>
 </article>
 <article class="news-card">
-  <div class="news-card-time">2024-06-24</div>
-  <h3 class="news-card-title"><a href="https://www.bosomchina.com/news_detail/id-175.html" target="_blank" rel="noopener">2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行 2024年6月26日-28日本松新材将以“以塑代铝”为主题再次来到ALE舞台为客户提供降碳、减重、降本创新产品及解决方案Chapter. 01放... READ MORE &gt;</a></h3>
+  
+  <h3 class="news-card-title"><a href="https://www.bosomchina.com/news_detail/id-175.html" target="_blank" rel="noopener">2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行</a></h3>
   
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
@@ -830,7 +1044,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="feirongda" hidden>
+<section data-co="feirongda" data-region="cn" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#0d9488"/>
@@ -907,7 +1121,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="zhongshi" hidden>
+<section data-co="zhongshi" data-region="cn" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#7c3aed"/>
@@ -929,8 +1143,16 @@ footer .mono {
     <span>zsjituan.com</span>
   </div>
 </article></div>
-</section>
-<section data-co="henkel" hidden>
+</section></div>
+    </section>
+
+    <section class="region-row" id="region-intl">
+      <div class="region-row-header">
+        <h2 class="region-row-title intl">国际头部</h2>
+        <span class="region-row-meta">3 家公司 · 30 条新闻</span>
+      </div>
+      <div class="region-row-sections">
+<section data-co="henkel" data-region="intl" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#0066b1"/>
@@ -938,7 +1160,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>汉高 Henkel</h2>
-      <span class="domain">henkel.com · International</span>
+      <span class="domain">henkel.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">Moving Forward with Courage: How Companies Can Shape DEI At the Corporate Diversity Summit, Andrea Becher, Global Head of Talent Acquisition, Leadership, Learning and Culture, talks about how companies can strengthen a culture of belonging. influentialmag.co.uk</a></li><li><span class="num">02</span><a href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">The Download Center offers journalists images and TV footage materials as well as Henkel’s latest publications for download.</a></li><li><span class="num">03</span><a href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">Subscription to the Press Distribution List</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/1935805.html" target="_blank" rel="noopener">汉高作为全球领先的粘合剂、密封剂及表面处理解决方案供应商，凭借其深厚的材料科学积淀与前瞻性的创新视野，积极拥抱中国汽车产业的变革。汉高在上海创新体验中心的启用，标志着其深化“立足中国，服务全球”战略的决心，并通过技术创新与中国主机厂紧密合作，推动电动化、智能化与全球化的汽车产业变革。</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/1928865.html" target="_blank" rel="noopener">近年来，全球电动汽车市场迎来了前所未有的增长浪潮，而中国更是成为全球电动车发展的领头羊。市场研究数据显示，中国新能源车销量在过去五年保持高速增长，占全球市场份额的六成以上。而随着电动车销量不断攀升，动力电池系统面临的挑战也随之增加：如何在提高能量密度、延长续航里程、降低成本和提升安全性的同时，实现快速开发和产品上市；又如何使区域电池技术创新适配复杂的全球市场准入标准，成为行业关注的核心问题。</a></li></ol><div class="summary-stats"><span>10 条</span><span>汉高 Henkel</span></div></div>
@@ -1034,7 +1256,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="mmm" hidden>
+<section data-co="mmm" data-region="intl" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#cc0000"/>
@@ -1042,7 +1264,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>3M</h2>
-      <span class="domain">3m.com · International</span>
+      <span class="domain">3m.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://news.3m.com/The-National-Coalition-of-Certification-Centers-and-3M-award-national-scholarships-to-skilled-trades-students-nationwide" target="_blank" rel="noopener">The National Coalition of Certification Centers (NC3), in partnership with 3M’s Safety and Industrial business, announced the 2026 recipients of the Skilled Trades – 3M Transformational...</a></li><li><span class="num">02</span><a href="https://news.3m.com/Scottie-Scheffler-commits-to-2026-3M-Open" target="_blank" rel="noopener">Scottie Scheffler, the world’s No. 1-ranked golfer, will compete in the 2026 3M Open. The event runs July 20-26 at TPC Twin Cities in Blaine, Minnesota. It will be Scheffler</a></li><li><span class="num">03</span><a href="https://www.reuters.com/business/3m-raises-2025-profit-forecast-2025-10-21/" target="_blank" rel="noopener">3M raises annual profit forecast amid margin expansion drive</a></li><li><span class="num">04</span><a href="https://news.3m.com/2026-06-23-3M-and-Airbus-announce-agreement-to-advance-A220-passenger-comfort-and-aircraft-performance-through-advanced-insulation-technology" target="_blank" rel="noopener">Expanded collaboration will support thermal and acoustic insulation solutions to enhance the A220 passenger experience ST. PAUL, Minn., June 23, 2026 /PRNewswire/ -- 3M and Airbus, a leading...</a></li><li><span class="num">05</span><a href="https://news.3m.com/2026-06-22-3M-launches-Ask-3M,-an-AI-powered-tool-for-faster-access-to-technical-expertise" target="_blank" rel="noopener">New digital assistant helps customers evaluate 3M materials, compare options and solve application challenges ST. PAUL, Minn., June 22, 2026 /PRNewswire/ -- 3M has launched Ask 3M, a new...</a></li></ol><div class="summary-stats"><span>10 条</span><span>3M</span></div></div>
@@ -1138,7 +1360,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="honeywell" hidden>
+<section data-co="honeywell" data-region="intl" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#0891b2"/>
@@ -1146,7 +1368,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>霍尼韦尔 Honeywell</h2>
-      <span class="domain">honeywell.com · International</span>
+      <span class="domain">honeywell.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/exxonmobil-names-honeywell-its-2025-supplier-innovation-award-winner" target="_blank" rel="noopener">The recognition underscores Honeywell’s commitment to process automation innovation at ExxonMobil facilities</a></li><li><span class="num">02</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">While advances in aviation technology continue to accelerate, one thing remains constant: the need for precise, dependable temperature control throughout an aircraft. For more than six decades, Honeywell has supplied bimetal thermostats and temperature sensing solutions that help monitor temperatures in critical systems.</a></li><li><span class="num">03</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/05/honeywell-pss-modex-2026-recap-key-trends-shaping-the-future-of-supply-chains" target="_blank" rel="noopener">At MODEX 2026, one of the industry’s largest supply chain and logistics events, it became clear that organizations are entering a new phase of transformation – where intelligence, automation, and adaptability converge to power the modern warehouse.</a></li><li><span class="num">04</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/03/honeywell-wins-2026-if-design-awards-for-mobile-computing-industrial-printing-technologies" target="_blank" rel="noopener">PSS handheld computer, mobile printer and desktop printer designs shine</a></li><li><span class="num">05</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/03/honeywell-transnorm-wins-2026-if-design-award-for-energy-efficient-sorter-solution" target="_blank" rel="noopener">Honeywell Transnorm has received a 2026 iF Design award for its Swivel Wheel Sorter Cartridge TS4810.</a></li></ol><div class="summary-stats"><span>10 条</span><span>霍尼韦尔 Honeywell</span></div></div>
@@ -1241,7 +1463,8 @@ footer .mono {
     <span>honeywell.com</span>
   </div>
 </article></div>
-</section>
+</section></div>
+    </section>
   </div>
 </main>
 <footer>
@@ -1249,21 +1472,53 @@ footer .mono {
   <span class="mono">构建于 2026-06-27 · GitHub Pages</span>
 </footer>
 <script>
+// Company tab click: switch hero + highlight active section + scroll to it.
+// All company sections remain visible at once (CN row and INTL row).
 document.querySelectorAll('.company-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     const target = tab.dataset.co;
+    // Toggle active class on tabs
     document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('section[data-co]').forEach(s => s.hidden = s.dataset.co !== target);
     tab.classList.add('active');
+    // Switch hero: show only the matching one
+    document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
+    // Highlight the matching company section
+    document.querySelectorAll('.company-section').forEach(s => {
+      s.classList.toggle('is-active', s.dataset.co === target);
+    });
+    // Scroll the company section into view
+    const section = document.querySelector('.company-section[data-co="' + target + '"]');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     history.replaceState(null, '', '#' + target);
   });
 });
+
+// Region tab click: scroll to that region row
+document.querySelectorAll('.tab-region').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const region = tab.dataset.region;
+    document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = document.getElementById('region-' + region);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
 window.addEventListener('DOMContentLoaded', () => {
+  // Click tab from URL hash
   const hash = location.hash.replace('#', '');
   if (hash) {
     const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
-    if (tab) tab.click();
+    if (tab) {
+      // Manually trigger to set hero + active state, without scroll animation
+      const target = hash;
+      document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
+      document.querySelectorAll('.company-section').forEach(s => s.classList.toggle('is-active', s.dataset.co === target));
+    }
   }
+  // Theme toggle
   const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.dataset.theme = theme;
   const btn = document.querySelector('.theme-toggle');

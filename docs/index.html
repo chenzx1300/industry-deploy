@@ -27,8 +27,8 @@
   --intl-tint: #1a5490;
   --highlight: #fff8e6;
   --live: #e60012;
-  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-serif: 'PingFang SC', 'Songti SC', 'SF Pro Display', Georgia, serif;
+  --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-serif: 'PingFang SC', 'Source Han Serif SC', 'Noto Serif CJK SC', 'STSong', Georgia, serif;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
@@ -236,45 +236,38 @@ a { color: inherit; }
 }
 .masthead-stats .num { color: var(--accent); font-weight: 600; }
 
-/* Section tabs (region navigation) */
+/* Region tabs (clickable scroll anchors) */
 .section-tabs {
   display: flex;
   border-bottom: 1px solid var(--border);
 }
-.tab-region {
+button.tab-region {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 0 0 0;
-  margin-right: 32px;
-  position: relative;
-  padding-bottom: 12px;
-  padding-top: 8px;
+  gap: 10px;
+  padding: 10px 20px 12px;
+  margin-right: 8px;
+  color: var(--text-faint);
+  transition: all 0.2s;
 }
-.tab-region.cn { color: var(--accent); }
-.tab-region.intl { color: var(--intl); }
-.tab-region::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: -1px;
-  height: 2px;
-  background: currentColor;
-  opacity: 0.2;
-  transition: opacity 0.2s;
-}
-.tab-region:last-of-type { margin-right: 0; }
-.tab-region .label {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-.tab-region .count {
+button.tab-region:hover { color: var(--text); }
+button.tab-region.cn.active { color: var(--accent); border-bottom-color: var(--accent); }
+button.tab-region.intl.active { color: var(--intl); border-bottom-color: var(--intl); }
+button.tab-region .count {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 11px;
   color: var(--text-faint);
   font-weight: 500;
 }
+button.tab-region.active .count { color: inherit; }
 
 /* Company tab buttons */
 .company-tabs {
@@ -490,6 +483,22 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   border-bottom: 2px solid var(--accent);
   margin-bottom: 24px;
 }
+.company-section[data-region="intl"] .company-header {
+  border-bottom-color: var(--intl);
+}
+.company-section.is-active .company-header {
+  border-bottom-width: 3px;
+}
+.company-section.is-active {
+  background: var(--accent-tint);
+  padding: 16px 16px;
+  margin: 0 -16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.company-section[data-region="intl"].is-active {
+  background: var(--intl-soft);
+}
 .company-header .logo {
   flex-shrink: 0;
   width: 44px;
@@ -612,6 +621,61 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   padding: 40px 0;
   text-align: center;
   font-size: 14px;
+}
+
+/* ============ HEROES (one per company, only one shown at a time) ============ */
+.heroes {
+  margin-bottom: 32px;
+}
+
+/* ============ REGION ROWS (CN row + INTL row, both visible) ============ */
+.region-row {
+  margin-bottom: 56px;
+  scroll-margin-top: 80px;
+}
+.region-row-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 24px 0 16px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--border);
+}
+.region-row-title {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.region-row-title.cn { color: var(--accent); }
+.region-row-title.intl { color: var(--intl); }
+.region-row-title::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 24px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.region-row-meta {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.region-row-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.company-section {
+  scroll-margin-top: 80px;
+  transition: background 0.3s, padding 0.3s;
+  padding: 12px 0;
 }
 
 /* ============ FOOTER ============ */
@@ -746,17 +810,6 @@ footer .mono {
       </a>
     </li>
     <li class="industry-card">
-      <a href="semiconductor-industry/">
-        <h3>半导体</h3>
-        <div class="stats">
-          <span><span class="num">11</span> 家公司</span>
-          <span>·</span>
-          <span><span class="num">94</span> 条新闻</span>
-        </div>
-        <time>更新于 2026-06-27</time>
-      </a>
-    </li>
-    <li class="industry-card">
       <a href="new-energy-vehicles-industry/">
         <h3>新能源汽车</h3>
         <div class="stats">
@@ -777,6 +830,17 @@ footer .mono {
         </div>
         <time>更新于 2026-06-27</time>
       </a>
+    </li>
+    <li class="industry-card">
+      <a href="semiconductor-industry/">
+        <h3>半导体</h3>
+        <div class="stats">
+          <span><span class="num">11</span> 家公司</span>
+          <span>·</span>
+          <span><span class="num">94</span> 条新闻</span>
+        </div>
+        <time>更新于 2026-06-27</time>
+      </a>
     </li></ul>
   </div>
 </main>
@@ -785,21 +849,53 @@ footer .mono {
   <span class="mono">GitHub Pages · 2026-06-27</span>
 </footer>
 <script>
+// Company tab click: switch hero + highlight active section + scroll to it.
+// All company sections remain visible at once (CN row and INTL row).
 document.querySelectorAll('.company-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     const target = tab.dataset.co;
+    // Toggle active class on tabs
     document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('section[data-co]').forEach(s => s.hidden = s.dataset.co !== target);
     tab.classList.add('active');
+    // Switch hero: show only the matching one
+    document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
+    // Highlight the matching company section
+    document.querySelectorAll('.company-section').forEach(s => {
+      s.classList.toggle('is-active', s.dataset.co === target);
+    });
+    // Scroll the company section into view
+    const section = document.querySelector('.company-section[data-co="' + target + '"]');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     history.replaceState(null, '', '#' + target);
   });
 });
+
+// Region tab click: scroll to that region row
+document.querySelectorAll('.tab-region').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const region = tab.dataset.region;
+    document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = document.getElementById('region-' + region);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
 window.addEventListener('DOMContentLoaded', () => {
+  // Click tab from URL hash
   const hash = location.hash.replace('#', '');
   if (hash) {
     const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
-    if (tab) tab.click();
+    if (tab) {
+      // Manually trigger to set hero + active state, without scroll animation
+      const target = hash;
+      document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
+      document.querySelectorAll('.company-section').forEach(s => s.classList.toggle('is-active', s.dataset.co === target));
+    }
   }
+  // Theme toggle
   const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.dataset.theme = theme;
   const btn = document.querySelector('.theme-toggle');

@@ -36,8 +36,8 @@ const STYLES = `
   --intl-tint: #1a5490;
   --highlight: #fff8e6;
   --live: #e60012;
-  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-serif: 'PingFang SC', 'Songti SC', 'SF Pro Display', Georgia, serif;
+  --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-serif: 'PingFang SC', 'Source Han Serif SC', 'Noto Serif CJK SC', 'STSong', Georgia, serif;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
@@ -245,45 +245,38 @@ a { color: inherit; }
 }
 .masthead-stats .num { color: var(--accent); font-weight: 600; }
 
-/* Section tabs (region navigation) */
+/* Region tabs (clickable scroll anchors) */
 .section-tabs {
   display: flex;
   border-bottom: 1px solid var(--border);
 }
-.tab-region {
+button.tab-region {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 0 0 0;
-  margin-right: 32px;
-  position: relative;
-  padding-bottom: 12px;
-  padding-top: 8px;
+  gap: 10px;
+  padding: 10px 20px 12px;
+  margin-right: 8px;
+  color: var(--text-faint);
+  transition: all 0.2s;
 }
-.tab-region.cn { color: var(--accent); }
-.tab-region.intl { color: var(--intl); }
-.tab-region::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: -1px;
-  height: 2px;
-  background: currentColor;
-  opacity: 0.2;
-  transition: opacity 0.2s;
-}
-.tab-region:last-of-type { margin-right: 0; }
-.tab-region .label {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-.tab-region .count {
+button.tab-region:hover { color: var(--text); }
+button.tab-region.cn.active { color: var(--accent); border-bottom-color: var(--accent); }
+button.tab-region.intl.active { color: var(--intl); border-bottom-color: var(--intl); }
+button.tab-region .count {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 11px;
   color: var(--text-faint);
   font-weight: 500;
 }
+button.tab-region.active .count { color: inherit; }
 
 /* Company tab buttons */
 .company-tabs {
@@ -499,6 +492,22 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   border-bottom: 2px solid var(--accent);
   margin-bottom: 24px;
 }
+.company-section[data-region="intl"] .company-header {
+  border-bottom-color: var(--intl);
+}
+.company-section.is-active .company-header {
+  border-bottom-width: 3px;
+}
+.company-section.is-active {
+  background: var(--accent-tint);
+  padding: 16px 16px;
+  margin: 0 -16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.company-section[data-region="intl"].is-active {
+  background: var(--intl-soft);
+}
 .company-header .logo {
   flex-shrink: 0;
   width: 44px;
@@ -623,6 +632,61 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   font-size: 14px;
 }
 
+/* ============ HEROES (one per company, only one shown at a time) ============ */
+.heroes {
+  margin-bottom: 32px;
+}
+
+/* ============ REGION ROWS (CN row + INTL row, both visible) ============ */
+.region-row {
+  margin-bottom: 56px;
+  scroll-margin-top: 80px;
+}
+.region-row-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 24px 0 16px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--border);
+}
+.region-row-title {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.region-row-title.cn { color: var(--accent); }
+.region-row-title.intl { color: var(--intl); }
+.region-row-title::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 24px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.region-row-meta {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.region-row-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.company-section {
+  scroll-margin-top: 80px;
+  transition: background 0.3s, padding 0.3s;
+  padding: 12px 0;
+}
+
 /* ============ FOOTER ============ */
 footer {
   background: #1a1a1a;
@@ -709,21 +773,53 @@ footer .mono {
 `;
 
 const SCRIPT = `
+// Company tab click: switch hero + highlight active section + scroll to it.
+// All company sections remain visible at once (CN row and INTL row).
 document.querySelectorAll('.company-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     const target = tab.dataset.co;
+    // Toggle active class on tabs
     document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('section[data-co]').forEach(s => s.hidden = s.dataset.co !== target);
     tab.classList.add('active');
+    // Switch hero: show only the matching one
+    document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
+    // Highlight the matching company section
+    document.querySelectorAll('.company-section').forEach(s => {
+      s.classList.toggle('is-active', s.dataset.co === target);
+    });
+    // Scroll the company section into view
+    const section = document.querySelector('.company-section[data-co="' + target + '"]');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     history.replaceState(null, '', '#' + target);
   });
 });
+
+// Region tab click: scroll to that region row
+document.querySelectorAll('.tab-region').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const region = tab.dataset.region;
+    document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = document.getElementById('region-' + region);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
 window.addEventListener('DOMContentLoaded', () => {
+  // Click tab from URL hash
   const hash = location.hash.replace('#', '');
   if (hash) {
     const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
-    if (tab) tab.click();
+    if (tab) {
+      // Manually trigger to set hero + active state, without scroll animation
+      const target = hash;
+      document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
+      document.querySelectorAll('.company-section').forEach(s => s.classList.toggle('is-active', s.dataset.co === target));
+    }
   }
+  // Theme toggle
   const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.dataset.theme = theme;
   const btn = document.querySelector('.theme-toggle');
@@ -861,33 +957,36 @@ export function renderIndustryPage(data) {
     return db - da;
   });
 
-  // Build hero — top 5 news from default company
+  // Build hero for EVERY company (hidden by default except first).
+  // JS shows the matching one when a company tab is clicked.
   const defaultCo = data.companies.find(c => c.id === data.default_id) || data.companies[0];
-  const heroHtml = buildHero(defaultCo.news, promptName);
+  const heroesHtml = data.companies.map(c =>
+    `<div class="hero" data-co="${escapeHtml(c.id)}"${c.id === defaultCo.id ? '' : ' hidden'}>${buildHero(c.news, c.name)}</div>`
+  ).join('');
 
-  // Section tabs (region-level)
+  // Two clear region rows: CN (中国头部) and INTL (国际头部).
+  // Each row contains its companies' news sections, all visible at once.
   const regionTabsHtml = `
 <nav class="section-tabs">
-  <div class="tab-region cn">
-    <span class="label">中国头部</span>
-    <span class="count">${cn.length} 家公司</span>
-  </div>
-  <div class="tab-region intl">
-    <span class="label">国际头部</span>
-    <span class="count">${intl.length} 家公司</span>
-  </div>
+  <button class="tab-region cn" data-region="cn">中国头部 <span class="count">${cn.length} 家</span></button>
+  <button class="tab-region intl" data-region="intl">国际头部 <span class="count">${intl.length} 家</span></button>
 </nav>`;
 
-  // Company tabs — separate cn and intl
+  // Company tabs (one for each company, all visible)
   const cnTabs = cn.map(c =>
-    `<button class="company-tab" data-co="${escapeHtml(c.id)}">${escapeHtml(c.name)}<span class="mono-count">${c.news.length}</span></button>`
+    `<button class="company-tab" data-co="${escapeHtml(c.id)}" data-region="cn">${escapeHtml(c.name)}<span class="mono-count">${c.news.length}</span></button>`
   ).join('');
   const intlTabs = intl.map(c =>
-    `<button class="company-tab" data-co="${escapeHtml(c.id)}">${escapeHtml(c.name)}<span class="mono-count">${c.news.length}</span></button>`
+    `<button class="company-tab" data-co="${escapeHtml(c.id)}" data-region="intl">${escapeHtml(c.name)}<span class="mono-count">${c.news.length}</span></button>`
   ).join('');
+  const companyTabsHtml = `
+<div class="company-tabs">
+  ${cnTabs}
+  ${intlTabs}
+</div>`;
 
-  // Per-company news sections (each renders its own grid)
-  const sectionsHtml = data.companies.map((c) => {
+  // Per-company news sections (all visible, grouped by region row)
+  function renderCompanySection(c) {
     const newsCards = c.news.length === 0
       ? '<p class="empty">暂无该公司的近期新闻。</p>'
       : `<div class="news-grid">${c.news.map(n => {
@@ -913,29 +1012,29 @@ export function renderIndustryPage(data) {
 
     const monoChar = (c.monogram || c.name.charAt(0)).slice(0, 2);
     const monoColor = c.monogram_color || (c.region === 'cn' ? '#c00' : '#1a5490');
-    const defaultId = data.default_id || data.companies[0]?.id;
-    const isVisible = c.id === defaultId;
     const isCn = c.region === 'cn';
+    const isActive = c.id === defaultCo.id ? ' is-active' : '';
     return `
-<section data-co="${escapeHtml(c.id)}"${isVisible ? '' : ' hidden'}>
+<section data-co="${escapeHtml(c.id)}" data-region="${c.region}" class="company-section${isActive}">
   <div class="company-header">
     ${monogramSvg(monoChar, monoColor)}
     <div class="name-block">
       <h2>${escapeHtml(c.name)}</h2>
-      <span class="domain">${escapeHtml(c.domain)}${isCn ? ' · 中国' : ' · International'}</span>
+      <span class="domain">${escapeHtml(c.domain)}${isCn ? ' · 中国' : ' · 国际'}</span>
     </div>
   </div>
   ${buildSummary(c)}
   ${newsCards}
 </section>`;
-  }).join('');
+  }
 
-  // Group company tabs by region (CN first, then INTL)
-  const companyTabsHtml = `
-<div class="company-tabs">
-  ${cnTabs}
-  ${intlTabs}
-</div>`;
+  const cnSectionsHtml = cn.map(renderCompanySection).join('');
+  const intlSectionsHtml = intl.map(renderCompanySection).join('');
+
+  const cnCount = cn.length;
+  const intlCount = intl.length;
+  const cnTotalNews = cn.reduce((s, c) => s + c.news.length, 0);
+  const intlTotalNews = intl.reduce((s, c) => s + c.news.length, 0);
 
   // Masthead title
   const titleParts = promptName.split(/[·・•]/);
@@ -953,8 +1052,8 @@ ${topBar(latestNews)}
         <div class="dateline">${escapeHtml(dateline)} · 第 ${data.companies.length} 期 · ${totalNews} 条新闻</div>
       </div>
       <div class="masthead-stats">
-        <span><span class="num">${cn.length}</span> 中国头部</span>
-        <span><span class="num">${intl.length}</span> 国际头部</span>
+        <span><span class="num">${cnCount}</span> 中国头部</span>
+        <span><span class="num">${intlCount}</span> 国际头部</span>
         <span><span class="num">${totalNews}</span> 总新闻</span>
       </div>
     </div>
@@ -964,8 +1063,23 @@ ${topBar(latestNews)}
 </header>
 <main>
   <div class="container">
-    ${heroHtml}
-    ${sectionsHtml}
+    <div class="heroes">${heroesHtml}</div>
+
+    <section class="region-row" id="region-cn">
+      <div class="region-row-header">
+        <h2 class="region-row-title cn">中国头部</h2>
+        <span class="region-row-meta">${cnCount} 家公司 · ${cnTotalNews} 条新闻</span>
+      </div>
+      <div class="region-row-sections">${cnSectionsHtml}</div>
+    </section>
+
+    <section class="region-row" id="region-intl">
+      <div class="region-row-header">
+        <h2 class="region-row-title intl">国际头部</h2>
+        <span class="region-row-meta">${intlCount} 家公司 · ${intlTotalNews} 条新闻</span>
+      </div>
+      <div class="region-row-sections">${intlSectionsHtml}</div>
+    </section>
   </div>
 </main>
 <footer>

@@ -27,8 +27,8 @@
   --intl-tint: #1a5490;
   --highlight: #fff8e6;
   --live: #e60012;
-  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-serif: 'PingFang SC', 'Songti SC', 'SF Pro Display', Georgia, serif;
+  --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-serif: 'PingFang SC', 'Source Han Serif SC', 'Noto Serif CJK SC', 'STSong', Georgia, serif;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
@@ -236,45 +236,38 @@ a { color: inherit; }
 }
 .masthead-stats .num { color: var(--accent); font-weight: 600; }
 
-/* Section tabs (region navigation) */
+/* Region tabs (clickable scroll anchors) */
 .section-tabs {
   display: flex;
   border-bottom: 1px solid var(--border);
 }
-.tab-region {
+button.tab-region {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 0 0 0;
-  margin-right: 32px;
-  position: relative;
-  padding-bottom: 12px;
-  padding-top: 8px;
+  gap: 10px;
+  padding: 10px 20px 12px;
+  margin-right: 8px;
+  color: var(--text-faint);
+  transition: all 0.2s;
 }
-.tab-region.cn { color: var(--accent); }
-.tab-region.intl { color: var(--intl); }
-.tab-region::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: -1px;
-  height: 2px;
-  background: currentColor;
-  opacity: 0.2;
-  transition: opacity 0.2s;
-}
-.tab-region:last-of-type { margin-right: 0; }
-.tab-region .label {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-.tab-region .count {
+button.tab-region:hover { color: var(--text); }
+button.tab-region.cn.active { color: var(--accent); border-bottom-color: var(--accent); }
+button.tab-region.intl.active { color: var(--intl); border-bottom-color: var(--intl); }
+button.tab-region .count {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 11px;
   color: var(--text-faint);
   font-weight: 500;
 }
+button.tab-region.active .count { color: inherit; }
 
 /* Company tab buttons */
 .company-tabs {
@@ -490,6 +483,22 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   border-bottom: 2px solid var(--accent);
   margin-bottom: 24px;
 }
+.company-section[data-region="intl"] .company-header {
+  border-bottom-color: var(--intl);
+}
+.company-section.is-active .company-header {
+  border-bottom-width: 3px;
+}
+.company-section.is-active {
+  background: var(--accent-tint);
+  padding: 16px 16px;
+  margin: 0 -16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.company-section[data-region="intl"].is-active {
+  background: var(--intl-soft);
+}
 .company-header .logo {
   flex-shrink: 0;
   width: 44px;
@@ -614,6 +623,61 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   font-size: 14px;
 }
 
+/* ============ HEROES (one per company, only one shown at a time) ============ */
+.heroes {
+  margin-bottom: 32px;
+}
+
+/* ============ REGION ROWS (CN row + INTL row, both visible) ============ */
+.region-row {
+  margin-bottom: 56px;
+  scroll-margin-top: 80px;
+}
+.region-row-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 24px 0 16px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--border);
+}
+.region-row-title {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.region-row-title.cn { color: var(--accent); }
+.region-row-title.intl { color: var(--intl); }
+.region-row-title::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 24px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.region-row-meta {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.region-row-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.company-section {
+  scroll-margin-top: 80px;
+  transition: background 0.3s, padding 0.3s;
+  padding: 12px 0;
+}
+
 /* ============ FOOTER ============ */
 footer {
   background: #1a1a1a;
@@ -731,25 +795,155 @@ footer .mono {
     </div>
     
 <nav class="section-tabs">
-  <div class="tab-region cn">
-    <span class="label">中国头部</span>
-    <span class="count">4 家公司</span>
-  </div>
-  <div class="tab-region intl">
-    <span class="label">国际头部</span>
-    <span class="count">7 家公司</span>
-  </div>
+  <button class="tab-region cn" data-region="cn">中国头部 <span class="count">4 家</span></button>
+  <button class="tab-region intl" data-region="intl">国际头部 <span class="count">7 家</span></button>
 </nav>
     
 <div class="company-tabs">
-  <button class="company-tab" data-co="huahong">华虹半导体 Hua Hong<span class="mono-count">8</span></button><button class="company-tab" data-co="smic">中芯国际 SMIC<span class="mono-count">10</span></button><button class="company-tab" data-co="ymtc">长江存储 YMTC<span class="mono-count">10</span></button><button class="company-tab" data-co="cxmt">长鑫存储 CXMT<span class="mono-count">10</span></button>
-  <button class="company-tab" data-co="tsmc">台积电 TSMC<span class="mono-count">5</span></button><button class="company-tab" data-co="samsung">三星电子 Samsung<span class="mono-count">10</span></button><button class="company-tab" data-co="intel">Intel<span class="mono-count">10</span></button><button class="company-tab" data-co="nvidia">NVIDIA 英伟达<span class="mono-count">1</span></button><button class="company-tab" data-co="amd">AMD<span class="mono-count">10</span></button><button class="company-tab" data-co="broadcom">Broadcom 博通<span class="mono-count">10</span></button><button class="company-tab" data-co="asml">ASML 阿斯麦<span class="mono-count">10</span></button>
+  <button class="company-tab" data-co="huahong" data-region="cn">华虹半导体 Hua Hong<span class="mono-count">8</span></button><button class="company-tab" data-co="smic" data-region="cn">中芯国际 SMIC<span class="mono-count">10</span></button><button class="company-tab" data-co="ymtc" data-region="cn">长江存储 YMTC<span class="mono-count">10</span></button><button class="company-tab" data-co="cxmt" data-region="cn">长鑫存储 CXMT<span class="mono-count">10</span></button>
+  <button class="company-tab" data-co="tsmc" data-region="intl">台积电 TSMC<span class="mono-count">5</span></button><button class="company-tab" data-co="samsung" data-region="intl">三星电子 Samsung<span class="mono-count">10</span></button><button class="company-tab" data-co="intel" data-region="intl">Intel<span class="mono-count">10</span></button><button class="company-tab" data-co="nvidia" data-region="intl">NVIDIA 英伟达<span class="mono-count">1</span></button><button class="company-tab" data-co="amd" data-region="intl">AMD<span class="mono-count">10</span></button><button class="company-tab" data-co="broadcom" data-region="intl">Broadcom 博通<span class="mono-count">10</span></button><button class="company-tab" data-co="asml" data-region="intl">ASML 阿斯麦<span class="mono-count">10</span></button>
 </div>
   </div>
 </header>
 <main>
   <div class="container">
+    <div class="heroes"><div class="hero" data-co="huahong" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://media-huahonggrace.todayir.com/202605141743401780952216_sc.pdf" target="_blank" rel="noopener">华虹半导体二零二六年第一季度业绩公布<span class="hero-arrow">↗</span></a></h2>
     
+    <div class="hero-source">media-huahonggrace.todayir.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://media-huahonggrace.todayir.com/20260212164001304412023118_tc.pdf" target="_blank" rel="noopener">华虹半导体二零二五年第四季度业绩公布</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1994898.html" target="_blank" rel="noopener">华虹半导体的关键一跃：从特色工艺龙头，到中国成熟制程平台</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/2016956.html" target="_blank" rel="noopener">华虹半导体：进军SiC/GaN领域</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1878881.html" target="_blank" rel="noopener">华虹半导体宣布收购华力微</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="smic" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.eefocus.com/article/1833332.html" target="_blank" rel="noopener">中芯国际（SMIC）的制程技术介绍<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">中芯国际是一家纯晶圆代工厂，向全球客户提供8英寸和12英寸芯片代工与技术服务。中芯国际除高端的制造能力之外，还为客户提供全方位的晶圆代工解决方案，包括光罩制造、IP研发及后段辅助设计服务等一站式服务(包含凸块加工服务、晶圆探测，以及最终的封装、测试等)。全面一体的晶圆代工解决方案,目标是更有效的帮助客户降低成本，以缩短产品上市时间。</p>
+    <div class="hero-source">eefocus.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1920624.html" target="_blank" rel="noopener">TSMC、UMC、SMIC财报数据对比整理（2025Q3）</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/2011082.html" target="_blank" rel="noopener">406亿收购尘埃落定！中芯国际全资控股中芯北方，国内成熟制程迎来整合拐点</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1877833.html" target="_blank" rel="noopener">中芯国际最新财务数据概览（2025Q2）</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1895426.html" target="_blank" rel="noopener">中芯国际十大fab厂介绍</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="ymtc" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.eefocus.com/article/2034465.html" target="_blank" rel="noopener">重磅！长江存储攻进三星SK海力士老巢！<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">随着中国两大存储半导体公司——长鑫存储（CXMT）和长江存储（YMTC）即将进行IPO，YMTC因其在韩国市场的迅速扩张和对三星电子和SK海力士的挑战而备受关注。YMTC通过推出自家固态硬盘品牌“智泰”和三款新SSD，成功打入韩国市场，显示出其在NAND闪存市场的竞争力。尽管DRAM市场竞争激烈，但NAND闪存市场因供需不平衡而价格上涨，YMTC借此机会扩展业务，目标是在未来几年内超越三星电子和SK海力士，成为中国存储行业的领军者。</p>
+    <div class="hero-source">eefocus.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/2018835.html" target="_blank" rel="noopener">估值超1600亿，长江存储“国替”背后的国产力量</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1956076.html" target="_blank" rel="noopener">长江存储进军LPDDR5市场</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/2015422.html" target="_blank" rel="noopener">芯片公司介绍·求职内参|第⑧期 长江存储</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/2020421.html" target="_blank" rel="noopener">长江存储的IPO能撑起万亿想象吗？</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="cxmt" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.eefocus.com/article/2036842.html" target="_blank" rel="noopener">长鑫存储目标市占20%，问鼎全球前三<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">长鑫存储（CXMT）历经十年发展，终于上市，标志着中国在存储半导体领域摆脱对韩国公司的依赖，实现自主。CXMT凭借内存市场的繁荣迅速扭转巨额亏损，计划通过IPO筹集资金，加速产能扩展和技术研发，目标是在2030年超越美光，成为全球第三大DRAM厂商。面对韩国存储半导体公司的挑战，CXMT得到国家全力支持，有望在未来几年内显著扩大市场份额，对中国国内存储市场产生重大影响。</p>
+    <div class="hero-source">eefocus.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/2026120.html" target="_blank" rel="noopener">芯片公司介绍·求职内参｜第10期｜长鑫存储</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1937829.html" target="_blank" rel="noopener">长鑫存储预计去年营收580亿，净利润35亿！</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1943738.html" target="_blank" rel="noopener">被三星垄断30年的行业，长鑫存储正在硬闯</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1918888.html" target="_blank" rel="noopener">IEDM见证中国创新路径，长鑫存储展现DRAM关键技术攻</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="tsmc">
 <div class="hero">
   <div class="hero-main">
     <div class="hero-meta">
@@ -783,9 +977,199 @@ footer .mono {
       </div>
     
   </div>
-</div>
+</div></div><div class="hero" data-co="samsung" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://news.samsung.com/global/interview-patterns-that-hold-memory-athene-galiciadis-x-samsung-art-store" target="_blank" rel="noopener">[Interview] Patterns That Hold Memory: Athene Galiciadis x Samsung Art Store Samsung Newsroom spoke with Galiciadis about form, color, the ideas behind the selected works and how digital presentation can bring art into the home.<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">“Instead of formulating thoughts through words, I compose with layered colors.” – Athene G</p>
+    <div class="hero-source">news.samsung.com</div>
+  </div>
+  <div class="hero-side">
     
-<section data-co="huahong" hidden>
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://news.samsung.com/global/samsung-partners-with-warner-bros-pictures-and-dc-studios-to-bring-supergirl-experiences-to-fans" target="_blank" rel="noopener">Samsung Partners With Warner Bros. Pictures and DC Studios To Bring ‘Supergirl’ Experiences to Fans Samsung Electronics today announced a global partnership with Warner Bros. Pictures and DC Studios to mark the theatrical release of this summer’s epic new superhero adventure “Supergirl” on June 24.</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://news.samsung.com/global/samsung-electronics-releases-2026-sustainability-report-expanding-water-replenishment-efforts" target="_blank" rel="noopener">Social Impact Samsung Electronics Releases 2026 Sustainability Report, Expanding Water Replenishment Efforts June 26, 2026</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://news.samsung.com/global/samsung-galaxy-a27-5g-brings-an-immersive-display-and-awesome-intelligence-to-more-users" target="_blank" rel="noopener">Press Resources Samsung Galaxy A27 5G Brings an Immersive Display and Awesome Intelligence to More Users June 25, 2026</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://news.samsung.com/global/finding-your-voice-anywhere-the-tech-behindgalaxy-buds4-pros-crystal-clear-calls" target="_blank" rel="noopener">Products Finding Your Voice Anywhere: The Tech Behind Galaxy Buds4 Pro’s Crystal-Clear Calls June 25, 2026</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="intel" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://newsroom.intel.com/corporate/ceo-letter-2025-26-intel-corporate-responsibility-report" target="_blank" rel="noopener">CorporateCEO Letter: 2025-26 Intel Corporate Responsibility Report CEO Lip-Bu Tan outlines progress to rebuild execution, strengthen core businesses, and advance responsible growth in the AI era. June 17, 2026<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">CEO Lip-Bu Tan outlines progress to rebuild execution, strengthen core businesses, and advance responsible growth in the AI era.</p>
+    <div class="hero-source">newsroom.intel.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://newsroom.intel.com/corporate/intel-advances-growth-in-ai-era-2025-2026-csr-report" target="_blank" rel="noopener">CorporateIntel Advances Responsible Business Practices and AI-Driven Growth in 2025–2026 Corporate Responsibility Report New report outlines progress and priorities as AI reshapes technology and global demand June 17, 2026</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://newsroom.intel.com/corporate/intel-announces-leadership-appointment-at-intel-foundry-to-accelerate-development-and-manufacturing" target="_blank" rel="noopener">Intel Announces Leadership Appointment at Intel Foundry to Accelerate Development and Manufacturing June 18, 2026</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://newsroom.intel.com/intel-foundry/intel-foundry-details-process-milestones-future-innovation-at-vlsi-symposium" target="_blank" rel="noopener">Intel Foundry Details Process Milestones and Future Innovation at VLSI Symposium Intel 18 A-P now in risk production with higher performance, enhanced thermal characteristics and design rule compatibility with Intel 18A June 16, 2026</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://newsroom.intel.com/5g-wireless/intel-5g-network-bridges-digital-divide" target="_blank" rel="noopener">New Smart City Pilot Network to Bridge Digital Divide for 50 U.S. Cities Powered by Intel edge infrastructure, a local California network demonstrates how micro-servers can deliver high-speed connectivity at a low cost. June 9, 2026</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="nvidia" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers" target="_blank" rel="noopener">Europe Unveils a Record 35 New NVIDIA AI Supercomputers<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">ISC High Performance 2026 -- NVIDIA today announced that a record 35 NVIDIA AI HPC supercomputers are in development across Europe — equipping more than 3 million researchers with next-generation infrastructure for continental AI, accelerated science and industrial innovation.</p>
+    <div class="hero-source">nvidianews.nvidia.com</div>
+  </div>
+  <div class="hero-side">
+    
+  </div>
+</div></div><div class="hero" data-co="amd" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.amd.com/en/newsroom/press-releases/2026-6-16-amd-and-rackspace-technology-sign-definitive.html" target="_blank" rel="noopener">AMD and Rackspace Technology Sign Definitive Agreement for Phased Deployment of 30 MW of AMD AI Compute<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">Collaboration establishes a new category of governed enterprise AI infrastructure purpose-built for regulated and sovereign environments</p>
+    <div class="hero-source">amd.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.amd.com/en/newsroom/press-releases/2026-6-8-amd-and-imperial-college-london-announce-strategic-coll.html" target="_blank" rel="noopener">AMD and Imperial College London Announce Strategic Collaboration to Advance AI-Enabled Scientific Discovery and Sovereign AI Infrastructure</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.amd.com/en/newsroom/press-releases/2026-6-3-oqc-jpmorganchase-and-amd-commence-research-collaborata.html" target="_blank" rel="noopener">OQC, JPMorganChase and AMD Commence Research Collaboration to Develop New Quantum-AI Platform in London</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1959723.html" target="_blank" rel="noopener">AMD技术干货｜基于AMD FPGA的HDMI2.1接口实现</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/2034855.html" target="_blank" rel="noopener">AMD Spartan FPGA 升级：更大、更智能、更可扩展、更安全</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="broadcom" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.broadcom.com/company/news/product-releases/64391" target="_blank" rel="noopener">Broadcom&#39;s Private Cloud Outlook 2026 Reveals an AI Tipping Point as Production Inference Shifts Decisively to Private Cloud<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">Broadcom&#39;s Private Cloud Outlook 2026 Reveals an AI Tipping Point as Production Inference Shifts Decisively to Private Cloud</p>
+    <div class="hero-source">broadcom.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.broadcom.com/company/news/product-releases/64351" target="_blank" rel="noopener">Broadcom Unveils World’s First Integrated 5G and Wi-Fi 8 FWA Platform in Collaboration with Samsung Electronics</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.broadcom.com/company/news/financial-releases/64476" target="_blank" rel="noopener">Broadcom Inc. Announces Results and Upsize of Offers to Purchase for Cash Certain of its Outstanding Debt Securities</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.broadcom.com/company/news/financial-releases/64371" target="_blank" rel="noopener">Broadcom Inc. Announces Second Quarter Fiscal Year 2026 Financial Results and Quarterly Dividend</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/2027822.html" target="_blank" rel="noopener">AI芯片营收暴涨143%，博通股价为何暴跌？</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="asml" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">2026-05-16</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.asml.com/en/news/press-releases/2026/tata-electronics-and-asml-announce-strategic-partnership" target="_blank" rel="noopener">May 16, 2026 Tata Electronics and ASML Announce Strategic Partnership to Advance the Semiconductor Manufacturing Ecosystem in India<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">Tata Electronics, a pioneering leader in India’s electronics and semiconductor manufacturing sector, and ASML, one of the world’s leading semiconductor equipment manufacturing companies, today, announced the signing of a Memorandum of…</p>
+    <div class="hero-source">asml.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">2026-05-05</span>
+        <div class="title"><a href="https://www.asml.com/en/news/press-releases/2026/asml-ceo-christophe-fouquet-co-signed-opinion-piece" target="_blank" rel="noopener">May 5, 2026 ASML CEO Christophe Fouquet co-signed opinion piece with European technology companies</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.asml.com/en/news/press-releases/2026/asml-discloses-2026-agm-results" target="_blank" rel="noopener">April 22, 2026 ASML discloses 2026 AGM results</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">2026-02-15</span>
+        <div class="title"><a href="https://www.asml.com/en/news/press-releases/2026/q1-2026-financial-results" target="_blank" rel="noopener">April 15, 2026ASML reports €8.8 billion total net sales and €2.8 billion net income in Q1 2026ASML now expects 2026 total net sales to be between €36 billion and €40 billion, with a gross margin between 51% and 53%</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.asml.com/en/news/press-releases/2026/asml-publishes-2025-annual-report" target="_blank" rel="noopener">February 25, 2026ASML publishes 2025 Annual Reports</a></div>
+      </div>
+    
+  </div>
+</div></div></div>
+
+    <section class="region-row" id="region-cn">
+      <div class="region-row-header">
+        <h2 class="region-row-title cn">中国头部</h2>
+        <span class="region-row-meta">4 家公司 · 38 条新闻</span>
+      </div>
+      <div class="region-row-sections">
+<section data-co="huahong" data-region="cn" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#dc2626"/>
@@ -871,7 +1255,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="smic" hidden>
+<section data-co="smic" data-region="cn" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#0d9488"/>
@@ -975,7 +1359,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="ymtc" hidden>
+<section data-co="ymtc" data-region="cn" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#7c3aed"/>
@@ -1079,7 +1463,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="cxmt" hidden>
+<section data-co="cxmt" data-region="cn" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#0891b2"/>
@@ -1182,8 +1566,16 @@ footer .mono {
     <span>eefocus.com</span>
   </div>
 </article></div>
-</section>
-<section data-co="tsmc">
+</section></div>
+    </section>
+
+    <section class="region-row" id="region-intl">
+      <div class="region-row-header">
+        <h2 class="region-row-title intl">国际头部</h2>
+        <span class="region-row-meta">7 家公司 · 56 条新闻</span>
+      </div>
+      <div class="region-row-sections">
+<section data-co="tsmc" data-region="intl" class="company-section is-active">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#cc0000"/>
@@ -1191,7 +1583,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>台积电 TSMC</h2>
-      <span class="domain">tsmc.com · International</span>
+      <span class="domain">tsmc.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://pr.tsmc.com/chinese/news/3320" target="_blank" rel="noopener">台灣積體電路製造股份有限公司今（10）日公佈2026年5月營收報告。2026年5月合併營收約為新台幣4,169億7,500萬元，較上月增加了1.5%，較去年同期增加了30.1%。累計2026年1至5月營收約為新台幣1兆9,618億400萬元，較去年同期增加了30.0%。</a></li><li><span class="num">02</span><a href="https://pr.tsmc.com/chinese/news/3317" target="_blank" rel="noopener">台灣積體電路製造股份有限公司今（4）日舉行股東常會，會中通過重要決議如下：一、承認2025年度營業報告書及財務報表，其中全年合併營收約為新台幣3兆8,090億5,000萬元，稅後淨利為新台幣1兆7,178億8,000萬元，每股盈餘為新台幣66.25元。二、核准修訂公司章程。</a></li><li><span class="num">03</span><a href="https://investor.tsmc.com/chinese/quarterly-results/2026/q1" target="_blank" rel="noopener">2026 Q1 營運報告，台積電營運報告公布資訊，包含每季財務報表、法人說明會簡報、營運績效報告、營收新聞稿 及，更多關於，請參閱投資人關係網站。</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/2038256.html" target="_blank" rel="noopener">台积电推出A16 1.6纳米级半导体制造工艺，采用背面供电架构与纳米片晶体管技术，计划2026年第四季量产。该技术结合超级电轨架构，供电网络移至晶圆背面，提升供电效率并释放正面布局空间，适用于高性能计算和人工智能芯片。相较于N2P制程，A16在相同工作电压下运算速度提升8-10%，功耗降低15-20%，逻辑密度提升约7%-10%。</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/1959302.html" target="_blank" rel="noopener">日本计划建设先进的半导体工厂以推动产业复兴，但实际盈利性和控制权存在疑问。尽管N3工艺具有巨大盈利潜力，但高昂的固定成本和有限的市场需求可能导致低利润率。JASM P2工厂的成功依赖于台积电的CoWoS封装产能分配，而这受制于全球竞争和技术瓶颈。日本若未能建立完善的封装基地，其半导体产业的长远发展将受限于外部因素。</a></li></ol><div class="summary-stats"><span>5 条</span><span>台积电 TSMC</span></div></div>
@@ -1242,7 +1634,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="samsung" hidden>
+<section data-co="samsung" data-region="intl" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#1428a0"/>
@@ -1250,7 +1642,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>三星电子 Samsung</h2>
-      <span class="domain">samsung.com · International</span>
+      <span class="domain">samsung.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://news.samsung.com/global/interview-patterns-that-hold-memory-athene-galiciadis-x-samsung-art-store" target="_blank" rel="noopener">“Instead of formulating thoughts through words, I compose with layered colors.” – Athene G</a></li><li><span class="num">02</span><a href="https://news.samsung.com/global/samsung-partners-with-warner-bros-pictures-and-dc-studios-to-bring-supergirl-experiences-to-fans" target="_blank" rel="noopener">Partnership brings the highly anticipated summer adventure to Samsung Art Store and select activations in support of the film’s global release</a></li><li><span class="num">03</span><a href="https://news.samsung.com/global/samsung-electronics-releases-2026-sustainability-report-expanding-water-replenishment-efforts" target="_blank" rel="noopener">On June 26, Samsung Electronics released the 2026 edition of its Sustainability Report. Th</a></li><li><span class="num">04</span><a href="https://news.samsung.com/global/samsung-galaxy-a27-5g-brings-an-immersive-display-and-awesome-intelligence-to-more-users" target="_blank" rel="noopener">Newest addition to the Galaxy A series features an Infinity-O display, combining a seamless viewing experience with reliable performance and intelligent tools for more users</a></li><li><span class="num">05</span><a href="https://news.samsung.com/global/finding-your-voice-anywhere-the-tech-behindgalaxy-buds4-pros-crystal-clear-calls" target="_blank" rel="noopener">For anyone who relies on wireless earbuds on a daily basis, struggling to be heard on a ph</a></li></ol><div class="summary-stats"><span>10 条</span><span>三星电子 Samsung</span></div></div>
@@ -1346,7 +1738,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="intel" hidden>
+<section data-co="intel" data-region="intl" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#0071c5"/>
@@ -1354,7 +1746,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>Intel</h2>
-      <span class="domain">intel.com · International</span>
+      <span class="domain">intel.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://newsroom.intel.com/corporate/ceo-letter-2025-26-intel-corporate-responsibility-report" target="_blank" rel="noopener">CEO Lip-Bu Tan outlines progress to rebuild execution, strengthen core businesses, and advance responsible growth in the AI era.</a></li><li><span class="num">02</span><a href="https://newsroom.intel.com/corporate/intel-advances-growth-in-ai-era-2025-2026-csr-report" target="_blank" rel="noopener">New report outlines progress and priorities as AI reshapes technology and global demand</a></li><li><span class="num">03</span><a href="https://newsroom.intel.com/corporate/intel-announces-leadership-appointment-at-intel-foundry-to-accelerate-development-and-manufacturing" target="_blank" rel="noopener">SANTA CLARA, Calif., June 18, 2026 &amp;mdash; Intel Corporation today announced the appointment of Seok-Hee Lee as executive vice president of Intel Foundry, reporting directly to CEO Lip-Bu Tan.</a></li><li><span class="num">04</span><a href="https://newsroom.intel.com/intel-foundry/intel-foundry-details-process-milestones-future-innovation-at-vlsi-symposium" target="_blank" rel="noopener">Intel 18 A-P now in risk production with higher performance, enhanced thermal characteristics and design rule compatibility with Intel 18A</a></li><li><span class="num">05</span><a href="https://newsroom.intel.com/5g-wireless/intel-5g-network-bridges-digital-divide" target="_blank" rel="noopener">Powered by Intel edge infrastructure, a local California network demonstrates how micro-servers can deliver high-speed connectivity at a low cost.</a></li></ol><div class="summary-stats"><span>10 条</span><span>Intel</span></div></div>
@@ -1450,7 +1842,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="nvidia" hidden>
+<section data-co="nvidia" data-region="intl" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#76b900"/>
@@ -1458,7 +1850,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>NVIDIA 英伟达</h2>
-      <span class="domain">nvidia.com · International</span>
+      <span class="domain">nvidia.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers" target="_blank" rel="noopener">ISC High Performance 2026 -- NVIDIA today announced that a record 35 NVIDIA AI HPC supercomputers are in development across Europe — equipping more than 3 million researchers with next-generation infrastructure for continental AI, accelerated science and industrial innovation.</a></li></ol><div class="summary-stats"><span>1 条</span><span>NVIDIA 英伟达</span></div></div>
@@ -1473,7 +1865,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="amd" hidden>
+<section data-co="amd" data-region="intl" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#ed1c24"/>
@@ -1481,7 +1873,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>AMD</h2>
-      <span class="domain">amd.com · International</span>
+      <span class="domain">amd.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.amd.com/en/newsroom/press-releases/2026-6-16-amd-and-rackspace-technology-sign-definitive.html" target="_blank" rel="noopener">Collaboration establishes a new category of governed enterprise AI infrastructure purpose-built for regulated and sovereign environments</a></li><li><span class="num">02</span><a href="https://www.amd.com/en/newsroom/press-releases/2026-6-8-amd-and-imperial-college-london-announce-strategic-coll.html" target="_blank" rel="noopener">AMD will collaborate with Imperial College London to advance AI-enabled scientific discovery, sovereign AI infrastructure and next-gen HPC systems.</a></li><li><span class="num">03</span><a href="https://www.amd.com/en/newsroom/press-releases/2026-6-3-oqc-jpmorganchase-and-amd-commence-research-collaborata.html" target="_blank" rel="noopener">LONDON, June 3, 2026 – OQC, JPMorganChase and AMD today announced a research collaboration leveraging a new and dedicated Quantum-AI Data Centre, built by OQC in London.</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/1959723.html" target="_blank" rel="noopener">本文介绍了如何利用AMD FPGA实现HDMI2.1接口，详细讲解了HDMI Phy Controller和HDMI2.1 subsystem的配置与使用方法。此外，文章还提供了常见的调试问题及其解决方案，帮助工程师顺利实现HDMI2.1接口的设计与调试。</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/2034855.html" target="_blank" rel="noopener">AMD Spartan UltraScale+ SU200P FPGA 量产在即专为数据中心、网络交换机以及工业系统打造我们很高兴宣布，AMD Spartan UltraScale+ SU200P FPGA 将于 2026 年 7 月正式投入量产。SU200P 是 Spartan UltraScale+ 系列中规模最大</a></li></ol><div class="summary-stats"><span>10 条</span><span>AMD</span></div></div>
@@ -1577,7 +1969,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="broadcom" hidden>
+<section data-co="broadcom" data-region="intl" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#cc092f"/>
@@ -1585,7 +1977,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>Broadcom 博通</h2>
-      <span class="domain">broadcom.com · International</span>
+      <span class="domain">broadcom.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.broadcom.com/company/news/product-releases/64391" target="_blank" rel="noopener">Broadcom&#39;s Private Cloud Outlook 2026 Reveals an AI Tipping Point as Production Inference Shifts Decisively to Private Cloud</a></li><li><span class="num">02</span><a href="https://www.broadcom.com/company/news/product-releases/64351" target="_blank" rel="noopener">Broadcom Unveils World’s First Integrated 5G and Wi-Fi 8 FWA Platform in Collaboration with Samsung Electronics</a></li><li><span class="num">03</span><a href="https://www.broadcom.com/company/news/financial-releases/64476" target="_blank" rel="noopener">Broadcom Inc. Announces Results and Upsize of Offers to Purchase for Cash Certain of its Outstanding Debt Securities</a></li><li><span class="num">04</span><a href="https://www.broadcom.com/company/news/financial-releases/64371" target="_blank" rel="noopener">Broadcom Inc. Announces Second Quarter Fiscal Year 2026 Financial Results and Quarterly Dividend</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/2027822.html" target="_blank" rel="noopener">博通发布亮眼财报，AI半导体营收暴涨143%，但股价因指引低于预期暴跌近16%。尽管博通AI半导体业务订单积压超过900亿美元，客户承诺算力部署超10GW，但市场担忧其长期指引未能上调。博通在晶圆代工产能保障上占据优势，但面临竞争对手的多供应商策略挑战。AI网络业务虽被忽视，但也展现出强劲增长潜力。博通计划通过AI XPV平台介入算力基础设施融资与部署，增强长期订单稳定性。</a></li></ol><div class="summary-stats"><span>10 条</span><span>Broadcom 博通</span></div></div>
@@ -1681,7 +2073,7 @@ footer .mono {
   </div>
 </article></div>
 </section>
-<section data-co="asml" hidden>
+<section data-co="asml" data-region="intl" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="44" height="44" rx="6" fill="#0067b1"/>
@@ -1689,7 +2081,7 @@ footer .mono {
   </svg>
     <div class="name-block">
       <h2>ASML 阿斯麦</h2>
-      <span class="domain">asml.com · International</span>
+      <span class="domain">asml.com · 国际</span>
     </div>
   </div>
   <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.asml.com/en/news/press-releases/2026/tata-electronics-and-asml-announce-strategic-partnership" target="_blank" rel="noopener">Tata Electronics, a pioneering leader in India’s electronics and semiconductor manufacturing sector, and ASML, one of the world’s leading semiconductor equipment manufacturing companies, today, announced the signing of a Memorandum of…</a></li><li><span class="num">02</span><a href="https://www.asml.com/en/news/press-releases/2026/asml-ceo-christophe-fouquet-co-signed-opinion-piece" target="_blank" rel="noopener">NewsPress releases &amp;amp; announcementsASML CEO Christophe Fouquet co-signed opinion piece with European technology companiesAnnouncement - Veldhoven, the Netherlands, May 5, 2026</a></li><li><span class="num">03</span><a href="https://www.asml.com/en/news/press-releases/2026/asml-discloses-2026-agm-results" target="_blank" rel="noopener">NewsPress releases &amp;amp; announcementsASML discloses 2026 AGM resultsPress release - Veldhoven, the Netherlands, April 22, 2026</a></li><li><span class="num">04</span><a href="https://www.asml.com/en/news/press-releases/2026/q1-2026-financial-results" target="_blank" rel="noopener">ASML now expects 2026 total net sales to be between €36 billion and €40 billion, with a gross margin between 51% and 53%</a></li><li><span class="num">05</span><a href="https://www.asml.com/en/news/press-releases/2026/asml-publishes-2025-annual-report" target="_blank" rel="noopener">NewsPress releases &amp;amp; announcementsASML publishes 2025 Annual ReportsPress release - Veldhoven, The Netherlands, February 25, 2026</a></li></ol><div class="summary-stats"><span>10 条</span><span>ASML 阿斯麦</span></div></div>
@@ -1784,7 +2176,8 @@ footer .mono {
     <span>asml.com</span>
   </div>
 </article></div>
-</section>
+</section></div>
+    </section>
   </div>
 </main>
 <footer>
@@ -1792,21 +2185,53 @@ footer .mono {
   <span class="mono">构建于 2026-06-27 · GitHub Pages</span>
 </footer>
 <script>
+// Company tab click: switch hero + highlight active section + scroll to it.
+// All company sections remain visible at once (CN row and INTL row).
 document.querySelectorAll('.company-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     const target = tab.dataset.co;
+    // Toggle active class on tabs
     document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('section[data-co]').forEach(s => s.hidden = s.dataset.co !== target);
     tab.classList.add('active');
+    // Switch hero: show only the matching one
+    document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
+    // Highlight the matching company section
+    document.querySelectorAll('.company-section').forEach(s => {
+      s.classList.toggle('is-active', s.dataset.co === target);
+    });
+    // Scroll the company section into view
+    const section = document.querySelector('.company-section[data-co="' + target + '"]');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     history.replaceState(null, '', '#' + target);
   });
 });
+
+// Region tab click: scroll to that region row
+document.querySelectorAll('.tab-region').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const region = tab.dataset.region;
+    document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = document.getElementById('region-' + region);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
 window.addEventListener('DOMContentLoaded', () => {
+  // Click tab from URL hash
   const hash = location.hash.replace('#', '');
   if (hash) {
     const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
-    if (tab) tab.click();
+    if (tab) {
+      // Manually trigger to set hero + active state, without scroll animation
+      const target = hash;
+      document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.hero[data-co]').forEach(h => { h.hidden = h.dataset.co !== target; });
+      document.querySelectorAll('.company-section').forEach(s => s.classList.toggle('is-active', s.dataset.co === target));
+    }
   }
+  // Theme toggle
   const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.dataset.theme = theme;
   const btn = document.querySelector('.theme-toggle');
