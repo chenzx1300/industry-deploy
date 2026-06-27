@@ -8,48 +8,56 @@
 :root {
   --bg: #ffffff;
   --surface: #ffffff;
-  --surface-soft: #f5f5f7;
+  --surface-soft: #fafafa;
   --surface-elevated: #ffffff;
-  --border: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.16);
-  --divider: rgba(0, 0, 0, 0.06);
-  --text: #1d1d1f;
-  --text-soft: #6e6e73;
-  --text-faint: #86868b;
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --accent-soft: rgba(0, 113, 227, 0.08);
-  --accent-tint: rgba(0, 113, 227, 0.04);
-  --cn-tint: #ff3b30;
-  --intl-tint: #0071e3;
+  --border: #e8e8e8;
+  --border-strong: #d0d0d0;
+  --divider: #f0f0f0;
+  --text: #1a1a1a;
+  --text-soft: #555;
+  --text-faint: #888;
+  --text-mute: #aaa;
+  --accent: #c00;
+  --accent-hover: #a00;
+  --accent-soft: #fef0f0;
+  --accent-tint: #fef5f5;
+  --intl: #1a5490;
+  --intl-soft: #f0f4f9;
+  --cn-tint: #c00;
+  --intl-tint: #1a5490;
   --highlight: #fff8e6;
+  --live: #e60012;
   --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-serif: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Songti SC', serif;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --font-serif: 'PingFang SC', 'Songti SC', 'SF Pro Display', Georgia, serif;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
-  --radius-sm: 8px;
-  --radius: 12px;
-  --radius-lg: 18px;
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
 }
 [data-theme="dark"] {
-  --bg: #000000;
-  --surface: #1c1c1e;
-  --surface-soft: #2c2c2e;
-  --surface-elevated: #2c2c2e;
+  --bg: #0e0e10;
+  --surface: #1a1a1c;
+  --surface-soft: #232325;
+  --surface-elevated: #252528;
   --border: rgba(255, 255, 255, 0.10);
   --border-strong: rgba(255, 255, 255, 0.18);
   --divider: rgba(255, 255, 255, 0.06);
   --text: #f5f5f7;
-  --text-soft: #98989d;
+  --text-soft: #a8a8ad;
   --text-faint: #6e6e73;
-  --accent: #0a84ff;
-  --accent-hover: #409cff;
-  --accent-soft: rgba(10, 132, 255, 0.16);
-  --accent-tint: rgba(10, 132, 255, 0.06);
-  --cn-tint: #ff453a;
-  --intl-tint: #0a84ff;
+  --text-mute: #555;
+  --accent: #ff3838;
+  --accent-hover: #ff5555;
+  --accent-soft: rgba(255, 56, 56, 0.12);
+  --accent-tint: rgba(255, 56, 56, 0.05);
+  --intl: #5b9dd9;
+  --intl-soft: rgba(91, 157, 217, 0.10);
+  --cn-tint: #ff3838;
+  --intl-tint: #5b9dd9;
   --highlight: #3a2e0a;
+  --live: #ff3838;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
@@ -60,221 +68,400 @@ body {
   font-family: var(--font-sans);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.5;
-  font-size: 17px;
-  letter-spacing: -0.01em;
+  line-height: 1.55;
+  font-size: 16px;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'kern' 1, 'liga' 1;
 }
-.container { max-width: 980px; margin: 0 auto; padding: 64px 32px; }
+a { color: inherit; }
 
-.theme-toggle {
-  position: fixed; top: 24px; right: 24px;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border: 1px solid var(--border);
-  padding: 8px 16px;
-  border-radius: 980px;
-  cursor: pointer;
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 500;
-  font-family: var(--font-sans);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s;
-  z-index: 10;
+/* ============ TOP BAR (live ticker) ============ */
+.topbar {
+  background: #1a1a1a;
+  color: #e5e5e5;
+  border-bottom: 1px solid #000;
 }
-[data-theme="dark"] .theme-toggle {
-  background: rgba(28, 28, 30, 0.72);
+[data-theme="dark"] .topbar { background: #050505; }
+.topbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
-.theme-toggle:hover {
-  border-color: var(--border-strong);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-.theme-toggle:active { transform: translateY(0); }
-
-header { margin-bottom: 56px; }
-.chip {
-  display: inline-block;
-  background: var(--accent-tint);
-  color: var(--accent);
-  padding: 5px 12px;
-  border-radius: 980px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  margin-bottom: 20px;
-}
-header h1 {
-  font-family: var(--font-sans);
-  font-size: 56px;
+.brand {
+  font-family: var(--font-serif);
+  font-size: 19px;
   font-weight: 700;
-  line-height: 1.05;
-  margin-bottom: 16px;
-  letter-spacing: -0.03em;
-}
-header .meta {
-  color: var(--text-soft);
-  font-size: 15px;
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-header .meta strong { color: var(--text); font-weight: 600; }
-header .meta .dot { color: var(--text-faint); }
-
-nav.tabs {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 40px 0 56px;
-}
-.region-block {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px 18px;
-  transition: border-color 0.2s;
-}
-.region-block:hover { border-color: var(--border-strong); }
-.region-block.cn { border-left: 3px solid var(--cn-tint); }
-.region-block.intl { border-left: 3px solid var(--intl-tint); }
-.region-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.region-label .flag { font-size: 14px; }
-.region-tabs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-nav.tabs button {
-  font-family: var(--font-sans);
-  background: transparent;
-  border: 1px solid transparent;
-  padding: 10px 14px;
-  cursor: pointer;
-  color: var(--text-soft);
-  font-size: 14.5px;
-  font-weight: 500;
-  border-radius: var(--radius-sm);
-  transition: all 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  text-align: left;
-  width: 100%;
-}
-nav.tabs button:hover {
-  color: var(--text);
-  background: var(--surface-soft);
-}
-nav.tabs button.active {
-  color: var(--accent);
-  background: var(--accent-tint);
-  font-weight: 600;
-}
-nav.tabs .name {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  letter-spacing: -0.02em;
+  color: #fff;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-nav.tabs .count {
+.brand-mark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--accent);
+  color: #fff;
   font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-faint);
-  background: var(--surface-soft);
-  padding: 1px 8px;
-  border-radius: 980px;
-  min-width: 24px;
-  flex-shrink: 0;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: -0.04em;
+  border-radius: 4px;
 }
-nav.tabs button.active .count {
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--live);
+  color: #fff;
+  padding: 4px 10px 4px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 1.4s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.ticker {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13.5px;
+  color: #ddd;
+  position: relative;
+  height: 24px;
+}
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 60s linear infinite;
+  padding-left: 100%;
+}
+.ticker-track span { padding: 0 24px; }
+.ticker-track span::before {
+  content: '●';
   color: var(--accent);
-  background: var(--surface);
+  margin-right: 8px;
+  font-size: 8px;
+  vertical-align: middle;
+}
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+.topbar-meta {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 4px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.theme-toggle:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
+
+/* ============ MASTHEAD (logo + main nav) ============ */
+.masthead {
+  background: var(--bg);
+  border-bottom: 2px solid var(--accent);
+}
+.masthead-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 32px 0;
+}
+.masthead-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+.masthead-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.masthead h1 {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+}
+.masthead h1 .accent { color: var(--accent); }
+.masthead .dateline {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.masthead-stats {
+  display: flex;
+  gap: 24px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+.masthead-stats .num { color: var(--accent); font-weight: 600; }
+
+/* Section tabs (region navigation) */
+.section-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+.tab-region {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 0 0;
+  margin-right: 32px;
+  position: relative;
+  padding-bottom: 12px;
+  padding-top: 8px;
+}
+.tab-region.cn { color: var(--accent); }
+.tab-region.intl { color: var(--intl); }
+.tab-region::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.2;
+  transition: opacity 0.2s;
+}
+.tab-region:last-of-type { margin-right: 0; }
+.tab-region .label {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.tab-region .count {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--text-faint);
+  font-weight: 500;
 }
 
-main section { margin-bottom: 56px; animation: fadeIn 0.3s ease; }
+/* Company tab buttons */
+.company-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 4px;
+  padding-bottom: 12px;
+  padding-top: 8px;
+}
+button.company-tab {
+  font-family: var(--font-sans);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: var(--text-soft);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+button.company-tab:hover { color: var(--text); }
+button.company-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+button.company-tab .mono-count {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 10px;
+  background: var(--surface-soft);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--text-faint);
+}
+button.company-tab.active .mono-count {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ============ MAIN CONTENT ============ */
+main { padding: 32px 0 64px; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+main section { animation: fadeIn 0.25s ease; }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
-main section h2 {
-  font-family: var(--font-sans);
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0 0 4px;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
 
-.summary {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 36px 40px 32px;
-  margin-bottom: 56px;
+/* ============ HERO (featured news) ============ */
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--divider);
 }
-.summary-label {
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  margin-bottom: 28px;
+.hero-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.hero-meta {
   display: flex;
   align-items: center;
   gap: 12px;
-}
-.summary-label::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--text-faint);
-}
-.summary-list {
-  list-style: none;
-  margin: 0;
-  counter-reset: summary;
-}
-.summary-list li {
-  padding: 16px 0;
-  border-top: 1px solid var(--divider);
-  display: flex;
-  gap: 20px;
-  align-items: baseline;
-  font-size: 17px;
-  line-height: 1.45;
-  color: var(--text);
-  letter-spacing: -0.01em;
-}
-.summary-list li:first-child { border-top: none; padding-top: 4px; }
-.summary-list .num {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 12px;
   color: var(--text-faint);
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+}
+.hero-meta .time { color: var(--accent); font-weight: 600; }
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.hero-title a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+.hero-title a:hover { color: var(--accent); }
+.hero-snippet {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-soft);
+  margin: 0;
+}
+.hero-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.hero-arrow {
+  font-size: 14px;
+  color: var(--text-mute);
+  margin-left: 6px;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-left: 24px;
+  border-left: 1px solid var(--divider);
+}
+.hero-side-item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--divider);
+}
+.hero-side-item:last-child { border-bottom: none; }
+.hero-side-item .time {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 6px;
+}
+.hero-side-item .title {
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--text);
+}
+.hero-side-item .title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.hero-side-item .title a:hover { color: var(--accent); }
+
+/* ============ SUMMARY (本周要点) ============ */
+.summary {
+  background: var(--surface-soft);
+  border-top: 3px solid var(--accent);
+  padding: 24px 28px 20px;
+  margin-bottom: 40px;
+}
+.summary-label {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.summary-label::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: var(--accent);
+}
+.summary-list {
+  list-style: none;
+  margin: 0 0 16px;
+}
+.summary-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--divider);
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.summary-list li:last-child { border-bottom: none; }
+.summary-list .num {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
   flex-shrink: 0;
   min-width: 18px;
 }
@@ -284,151 +471,126 @@ main section h2 {
   transition: color 0.2s;
 }
 .summary-list a:hover { color: var(--accent); }
-.summary .stats {
+.summary-stats {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 12px;
   color: var(--text-faint);
-  letter-spacing: 0.02em;
-  padding-top: 24px;
-  margin-top: 16px;
+  padding-top: 12px;
   border-top: 1px solid var(--divider);
+  display: flex;
+  gap: 16px;
 }
 
+/* ============ COMPANY HEADER ============ */
 .company-header {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--accent);
   margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--divider);
 }
 .company-header .logo {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: -0.02em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 .company-header .name-block { flex: 1; min-width: 0; }
 .company-header h2 {
-  font-family: var(--font-sans);
-  font-size: 32px;
+  font-family: var(--font-serif);
+  font-size: 26px;
   font-weight: 700;
-  margin: 0 0 4px;
-  letter-spacing: -0.02em;
+  margin: 0;
+  letter-spacing: -0.01em;
   line-height: 1.1;
 }
 .company-header .domain {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-faint);
+  letter-spacing: 0.02em;
 }
 
-ul.news-list { list-style: none; }
-li.news-item {
-  padding: 36px 0;
-  border-top: 1px solid var(--divider);
-  transition: background 0.2s, padding 0.2s;
+/* ============ NEWS GRID (3 columns) ============ */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 32px;
 }
-li.news-item:first-child { border-top: none; padding-top: 12px; }
-li.news-item:last-child { padding-bottom: 12px; }
-li.news-item:hover {
-  background: linear-gradient(90deg, var(--surface-soft) 0%, transparent 60%);
+.news-card {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--divider);
 }
-
-.news-date {
+.news-card-time {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  margin-bottom: 14px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
 }
-.news-date::before {
+.news-card-time::before {
   content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
   display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: var(--border-strong);
 }
-
-a.news-title {
+.news-card-title {
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.005em;
+}
+.news-card-title a {
   color: var(--text);
   text-decoration: none;
-  font-size: 26px;
-  font-weight: 600;
-  display: inline;
-  line-height: 1.25;
-  font-family: var(--font-sans);
-  letter-spacing: -0.02em;
-  transition: color 0.2s ease;
+  transition: color 0.2s;
 }
-li.news-item:hover a.news-title { color: var(--accent); }
-a.news-title .arrow {
+.news-card-title a:hover { color: var(--accent); }
+.news-card-snippet {
   font-size: 14px;
-  font-weight: 400;
-  color: var(--text-faint);
-  margin-left: 6px;
-  transition: color 0.2s ease, transform 0.2s ease;
-  display: inline-block;
-}
-li.news-item:hover a.news-title .arrow {
-  color: var(--accent);
-  transform: translate(2px, -2px);
-}
-
-p.news-snippet {
+  line-height: 1.55;
   color: var(--text-soft);
-  font-size: 16px;
-  margin: 14px 0 16px;
-  line-height: 1.6;
+  margin-bottom: 10px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  max-width: 68ch;
 }
-
-.news-meta {
+.news-card-footer {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
-  color: var(--text-faint);
-}
-.news-source {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 12px;
-  color: var(--text-soft);
-  letter-spacing: -0.005em;
-}
-
-.news-badges {
-  display: flex;
-  gap: 6px;
-  margin: 12px 0 0;
+  font-size: 11px;
+  color: var(--text-faint);
+  flex-wrap: wrap;
 }
 .news-badge {
   display: inline-flex;
   align-items: center;
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  padding: 3px 8px;
-  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 3px;
   border: 1px solid var(--border);
   background: var(--surface);
   text-transform: uppercase;
@@ -444,65 +606,77 @@ p.news-snippet {
   border-color: var(--accent-soft);
   background: var(--accent-tint);
 }
+
 .empty {
   color: var(--text-soft);
   padding: 40px 0;
   text-align: center;
-  font-size: 15px;
-}
-footer {
-  margin-top: 96px;
-  padding-top: 28px;
-  border-top: 1px solid var(--divider);
-  color: var(--text-faint);
-  font-size: 13px;
-  text-align: center;
+  font-size: 14px;
 }
 
+/* ============ FOOTER ============ */
+footer {
+  background: #1a1a1a;
+  color: #888;
+  margin-top: 64px;
+  padding: 32px;
+  font-size: 13px;
+  text-align: center;
+  border-top: 2px solid var(--accent);
+}
+[data-theme="dark"] footer { background: #050505; }
+footer .mono {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  color: #aaa;
+}
+
+/* ============ HOMEPAGE (industry cards) ============ */
 .industry-grid {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
-  margin-top: 40px;
+  margin-top: 32px;
 }
 .industry-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-top: 3px solid var(--accent);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
 }
 .industry-card:hover {
   border-color: var(--accent);
-  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
 .industry-card a {
   display: block;
-  padding: 32px;
+  padding: 28px;
   text-decoration: none;
   color: var(--text);
 }
 .industry-card h3 {
-  font-family: var(--font-sans);
-  font-size: 26px;
+  font-family: var(--font-serif);
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 10px;
-  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 .industry-card .stats {
   color: var(--text-soft);
-  font-size: 14px;
+  font-size: 13px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
+.industry-card .stats .num { color: var(--accent); font-weight: 600; }
 .industry-card time {
   display: block;
   color: var(--text-faint);
-  font-size: 12px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
   margin-top: 16px;
-  padding-top: 16px;
+  padding-top: 14px;
   border-top: 1px solid var(--divider);
 }
 .empty-state {
@@ -511,569 +685,732 @@ footer {
   color: var(--text-soft);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-}
-.empty-state code {
-  font-family: ui-monospace, 'SF Mono', 'Menlo', monospace;
-  background: var(--surface-soft);
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 13px;
+  border-top: 3px solid var(--accent);
 }
 
-@media (max-width: 640px) {
-  .container { padding: 48px 20px; }
-  header h1 { font-size: 36px; }
-  .region-tabs { grid-template-columns: 1fr; }
-  main section h2 { font-size: 28px; }
-  .theme-toggle { top: 16px; right: 16px; padding: 6px 12px; font-size: 12px; }
-  .industry-grid { grid-template-columns: 1fr; }
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 24px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .masthead h1 { font-size: 32px; }
+  .hero-title { font-size: 28px; }
+  .topbar-inner, .masthead-inner, .container { padding-left: 20px; padding-right: 20px; }
+  .ticker { display: none; }
 }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <header>
-    <span class="chip">行业雷达</span>
-    <h1>新能源汽车</h1>
-    <p class="meta">
-      <span><strong>6 家头部公司</strong></span>
-      <span>59 条新闻</span>
-      <span>生成于 2026-06-27</span>
-    </p>
-  </header>
-  <nav class="tabs">
-    <div class="region-block cn">
-      <div class="region-label">中国头部</div>
-      <div class="region-tabs">
-        <button class="tab" data-co="byd"><span class="name">比亚迪 BYD</span><span class="count">10</span></button><button class="tab" data-co="catl"><span class="name">宁德时代 CATL</span><span class="count">10</span></button><button class="tab" data-co="nio"><span class="name">蔚来 NIO</span><span class="count">10</span></button>
-      </div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">雷</span>
+      行业雷达
+      <span class="live-pill"><span class="live-dot"></span>LIVE</span>
     </div>
-    <div class="region-block intl">
-      <div class="region-label">国际头部</div>
-      <div class="region-tabs">
-        <button class="tab" data-co="bmw"><span class="name">BMW 宝马</span><span class="count">10</span></button><button class="tab" data-co="vw"><span class="name">Volkswagen 大众</span><span class="count">10</span></button><button class="tab" data-co="toyota"><span class="name">Toyota 丰田</span><span class="count">9</span></button>
-      </div>
+    <div class="ticker"><div class="ticker-track"><span>Our Picks May 28, 2026 Toyota Launches New Hilux in Japan</span><span>6/05/2026 CATL Statement Regarding May 21, 2026 U.S. Congressional Report MORE</span><span>Our Picks May 14, 2026 Toyota Launches All-New Land Cruiser &quot;FJ&quot; Series in Japan</span><span>2025年4月，哨兵模式装配率超20%，BYD单月拉升4.3个百分点</span><span>充电枪拆解报告：BYD比亚迪交流充电枪</span></div></div>
+    <div class="topbar-meta">
+      <span>2026年06月27日 · 周六</span>
+      <button class="theme-toggle" aria-label="切换主题">☾ 深色</button>
     </div>
-  </nav>
-  <main>
-    <section data-co="byd">
-      <div class="company-header">
-        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="#dc2626"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">比</text>
-  </svg>
-        <div class="name-block">
-          <h2>比亚迪 BYD</h2>
-          <span class="domain">byd.com</span>
-        </div>
-      </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.bydglobal.com/en/news/2025-08-27/BYD-to-build-on-European-momentum-at-IAA-Mobility-2025" target="_blank" rel="noopener">BYD to build on European momentum at IAA Mobility 202508/27/2025</a></li><li><span class="num">02</span><a href="https://www.bydglobal.com/en/news/2025-07-22/BYD-GROUP-IS-THE-GLOBAL-AUTOMOTIVE-PARTNER-OF-FC-INTERNAZIONALE-MILANO" target="_blank" rel="noopener">BYD GROUP IS THE GLOBAL AUTOMOTIVE PARTNER OF FC INTERNAZIONALE MILANO07/22/2025</a></li><li><span class="num">03</span><a href="https://www.bydglobal.com/en/news/2025-03-03/BYD-Priced-US%245.6bn-H-share-Accelerated-Bookbuild-Offering" target="_blank" rel="noopener">BYD Priced US$5.6bn H-share Accelerated Bookbuild Offering03/04/2025</a></li></ol><div class="stats">10 条新闻</div></div>
-      <ul class="news-list">
-        
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bydglobal.com/en/news/2025-08-27/BYD-to-build-on-European-momentum-at-IAA-Mobility-2025" target="_blank" rel="noopener">BYD to build on European momentum at IAA Mobility 202508/27/2025<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            
-            <div class="news-meta">bydglobal.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bydglobal.com/en/news/2025-07-22/BYD-GROUP-IS-THE-GLOBAL-AUTOMOTIVE-PARTNER-OF-FC-INTERNAZIONALE-MILANO" target="_blank" rel="noopener">BYD GROUP IS THE GLOBAL AUTOMOTIVE PARTNER OF FC INTERNAZIONALE MILANO07/22/2025<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            
-            <div class="news-meta">bydglobal.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bydglobal.com/en/news/2025-03-03/BYD-Priced-US%245.6bn-H-share-Accelerated-Bookbuild-Offering" target="_blank" rel="noopener">BYD Priced US$5.6bn H-share Accelerated Bookbuild Offering03/04/2025<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            
-            <div class="news-meta">bydglobal.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bydglobal.com/en/news/2025-02-17/BYD-Energy-Storage-Signed-World%E2%80%99s-Largest-Grid-scale-Battery-Storage-Projects-of-12.5GWh" target="_blank" rel="noopener">BYD Energy Storage Signed World’s Largest Grid-scale Battery Storage Projects of 12.5GWh02/17/2025<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            
-            <div class="news-meta">bydglobal.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/2035972.html" target="_blank" rel="noopener">充电枪拆解报告：BYD比亚迪交流充电枪<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">比亚迪推出了一款适用于家用固定充电场景的交流充电枪，具有3.5kW供电能力和IP55防护等级。充电枪设计紧凑，核心控制电路全收于充电枪头内部，减轻线缆重量并提高操作便利性。充电枪线缆粗壮耐用，能够承受16A电流长时间传输。充电枪内部采用高品质元件，包括艾华电解电容和芯茂微电源芯片，确保了产品的稳定性和安全性。总体来说，这款充电枪结构紧凑、用料扎实，适合日常家用充电需求。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1853111.html" target="_blank" rel="noopener">2025年4月，哨兵模式装配率超20%，BYD单月拉升4.3个百分点<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">2025年4月，哨兵模式装配率超20%，BYD单月拉升4.3个百分点</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1995672.html" target="_blank" rel="noopener">亚洲车市 | 韩国2026年3月：比亚迪销量1664台<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">芝能汽车出品2026年3月，韩国乘用车市场销量164,393辆，同比增长10.2%；2026年累计销量达407,713辆，同比增长5.2%。◎ 比亚迪以1,664辆（+16540%）、累计3,968辆（+39580%）强势进入前十，BYD Sealion 7单月807辆（新车）、累计2,084辆，已进入前五；BYD D</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1993603.html" target="_blank" rel="noopener">领汇不是扩张，是解绑：比亚迪品牌高端化的第一刀<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">比亚迪宣布推出领汇品牌，目标是冲击高端化并摆脱“网约车”标签。领汇整合原有对公事业部资源，拥有独立车标、渠道和销售体系，并计划在2026年起成为滴滴、高德、T3的主要供应商。领汇采用第二代刀片电池和闪充技术，但配置上进行了调整，强调营运场景的需求，而非单纯追求高端配置。此外，领汇还提供了独特的耐久性和营运便利性标准，以区别于主品牌。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1996355.html" target="_blank" rel="noopener">一文读懂比亚迪全新海狮05的8个款型<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">比亚迪全新海狮05EV与海狮05DM-i双车正式上市，性能提升且价格下调，尤其全新海狮05EV成为首款进入12万元以内的闪充车型，并具备激光雷达天神之眼5.0驾驶辅助系统。新车搭载第二代刀片电池与比亚迪全新闪充技术，提供多种续航版本并配备多项实用配置。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1967107.html" target="_blank" rel="noopener">比亚迪惊蛰发布会：主角为何是碳化硅？<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">比亚迪惊蛰技术发布会上，展示了全域1000V高压平台、第二代刀片电池、兆瓦闪充2.0、DM6.0超级混动和天神之眼5.0智能驾驶五大核心技术。这些技术的背后，碳化硅成为关键材料，推动了系统的整体升级和性能飞跃。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-      </ul>
-    </section>
-    <section data-co="catl" hidden>
-      <div class="company-header">
-        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="#0ea5e9"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">宁</text>
-  </svg>
-        <div class="name-block">
-          <h2>宁德时代 CATL</h2>
-          <span class="domain">catl.com</span>
-        </div>
-      </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.catl.com/en/news/6861.html" target="_blank" rel="noopener">6/22/2026 CATL Debuts World&#39;s First Field-Validated Sodium-Ion BESS, Bringing Sodium Storage to Commercial Reality MORE</a></li><li><span class="num">02</span><a href="https://www.catl.com/en/news/6832.html" target="_blank" rel="noopener">6/05/2026 CATL Statement Regarding May 21, 2026 U.S. Congressional Report MORE</a></li><li><span class="num">03</span><a href="https://www.catl.com/en/news/6815.html" target="_blank" rel="noopener">6/01/2026 CATL Launches World’s Largest Energy Storage Testbed, Advancing Industry into Era of Real-World Validation MORE</a></li></ol><div class="stats">10 条新闻</div></div>
-      <ul class="news-list">
-        
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.catl.com/en/news/6861.html" target="_blank" rel="noopener">6/22/2026 CATL Debuts World&#39;s First Field-Validated Sodium-Ion BESS, Bringing Sodium Storage to Commercial Reality MORE<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Munich, Germany | June 22, 2026 — CATL today officially unveiled the TENER Sodium Energy Storage System, the world&amp;#39;s first real-world validated sodium-ion energy storage solution in Munich, Germany.</p>
-            <div class="news-meta">catl.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.catl.com/en/news/6832.html" target="_blank" rel="noopener">6/05/2026 CATL Statement Regarding May 21, 2026 U.S. Congressional Report MORE<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">CATL is aware of the report from the Select Committee on the Strategic Competition between the United States and the Chinese Communist Party, issued on May 21, 2026, titled &amp;quot;Bankrolling Beijing: U.S.</p>
-            <div class="news-meta">catl.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.catl.com/en/news/6815.html" target="_blank" rel="noopener">6/01/2026 CATL Launches World’s Largest Energy Storage Testbed, Advancing Industry into Era of Real-World Validation MORE<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">CATL Launches World’s Largest Energy Storage Testbed, Advancing Industry into Era of Real-World ValidationContemporary Amperex Technology Co., Limited (CATL) is a global leader in new energy innovative technologies, committed to providing premier solutions and services for new energy applications worldwide.</p>
-            <div class="news-meta">catl.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1858227.html" target="_blank" rel="noopener">DEKRA德凯授予CATL宁德时代测试验证中心CTF 2资质 共筑电池安全新标杆<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">福建宁德 2025年6月30日 /美通社/ -- 近日，宁德时代新能源科技股份有限公司（以下简称&quot;宁德时代&quot;）正式获得DEKRA德凯颁发的CTF 2（Customer Testing Facility，客户测试实验室）实验室认可资质，颁证仪式在宁德时代总部举行。此次授权范围涵盖标准IEC 62619、IEC 63056</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1773186.html" target="_blank" rel="noopener">学习分析一款CATL宁德时代设计的BMS电流采样产品<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">前面学习问界M5的BMS硬件设计时，聊到其使用的电流采样方案（如下图），是一个单独的电流采样模块（CSU）；实际上CATL的这套BMS方案不仅用在问界上，其他很多主机厂也有使用，例如理想等，今天就单独把这个电流采样模块学习总结下。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1998154.html" target="_blank" rel="noopener">宁德时代2026超级科技日 - 演讲全文稿<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">2026年4月21日，宁德时代发布了神行第三代、麒麟第三代（含凝聚态版）、逍遥第二代、钠新四大产品线，并推出了超充换电技术一体的网络。宁德时代首席科学家吴凯院士阐述了宁德时代保持持续创新的三大基石：敢为人先、致力于多材料体系、说到做到。宁德时代CTO高焕介绍了宁德时代在2026年的四条核心产品线：神行超充电池、麒麟与凝聚态电池、骁遥超级增混电池、钠星电池。宁德时代换电业务总经理杨锦揭晓了宁德时代的“超充换电一体化”基建网络计划。宁德时代董事长兼CEO曾毓群博士分享了宁德时代的科学价值观：科学不是追逐噱头，而是不断证伪、拥抱复杂性并在严格约束下解决问题。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1981937.html" target="_blank" rel="noopener">宁德时代终于开始推进钠电生产<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">宁德时代的钠电产业化，正在从产品发布走向材料端落地。近日，成都金堂时代新材料科技有限公司钠离子电池正极材料项目进入环评二次公示。根据公示信息，该项目依托现有磷酸铁锂生产基地配套设施，对4、5号磷酸铁锂产线进行改造，改造后将形成年产2万吨磷酸焦磷酸铁钠产能。成都金堂时代新材料为宁德时代子公司，这也意味着，宁德时代已开始把</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1958383.html" target="_blank" rel="noopener">独家丨原宁德时代执行总裁朱威，出任地平线总裁<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">宁德时代执行总裁朱威将出任地平线总裁，原地平线总裁陈黎明转任副董事长。朱威有丰富智能驾驶和新能源行业经验，加入宁德时代后，他将在业务层面进一步加强宁德时代和地平线的合作，推动汽车“智能大脑”与新能源汽车“心脏”的深度融合。陈黎明则将继续聚焦公司重大战略决策，推进公司治理体系完善及重大战略落地。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1896561.html" target="_blank" rel="noopener">含2GWh订单！宁德时代等储能签约<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">宁德时代与米林市政府签署战略合作协议，扩展山东投资版图并签署多项储能项目；天能股份与非洲FreedomWon达成2GWh储能设备合作，同时与巴基斯坦ACM集团签署协议，共同拓展全球储能业务。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1958297.html" target="_blank" rel="noopener">地平线与宁德时代子公司时代智能达成战略合作，共赴智能化新征程<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">地平线与宁德时代旗下子公司——宁德时代（上海）智能科技有限公司（简称“时代智能”）签署战略合作协议。双方将聚焦新能源汽车智能化升级需求，以“高智能、高安全的智能出行体验”为目标，为全球整车企业与终端用户提供卓越的智能化出行体验。图注：地平线总裁朱威，时代智能董事总经理杨汉兵代表双方公司签约；宁德时代联合创始人、副董事长</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-      </ul>
-    </section>
-    <section data-co="nio" hidden>
-      <div class="company-header">
-        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="#059669"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">蔚</text>
-  </svg>
-        <div class="name-block">
-          <h2>蔚来 NIO</h2>
-          <span class="domain">nio.com</span>
-        </div>
-      </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://ir.nio.com/news-releases/news-release-details/nio-inc-provides-may-2026-delivery-update" target="_blank" rel="noopener">NIO Inc. Provides May 2026 Delivery Update</a></li><li><span class="num">02</span><a href="https://ir.nio.com/news-releases/news-release-details/nio-hold-annual-general-meeting-june-24-2026" target="_blank" rel="noopener">NIO to Hold Annual General Meeting on June 24, 2026</a></li><li><span class="num">03</span><a href="https://www.eefocus.com/article/1785837.html" target="_blank" rel="noopener">从NIO Day 2024看蔚来汽车下一个十年发展</a></li></ol><div class="stats">10 条新闻</div></div>
-      <ul class="news-list">
-        
-          <li class="news-item">
-            
-            <a class="news-title" href="https://ir.nio.com/news-releases/news-release-details/nio-inc-provides-may-2026-delivery-update" target="_blank" rel="noopener">NIO Inc. Provides May 2026 Delivery Update<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">37,705 vehicles were delivered in May 2026, increasing by 62.3% year-over-year 150,526 vehicles were delivered year-to-date in 2026, increasing by 68.7% year-over-year Cumulative deliveries reached 1,148,118 as of May 31, 2026 SHANGHAI, June 01, 2026 (GLOBE NEWSWIRE) -- NIO Inc.</p>
-            <div class="news-meta">ir.nio.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://ir.nio.com/news-releases/news-release-details/nio-hold-annual-general-meeting-june-24-2026" target="_blank" rel="noopener">NIO to Hold Annual General Meeting on June 24, 2026<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">SHANGHAI, May 22, 2026 (GLOBE NEWSWIRE) -- NIO Inc. (NYSE: NIO; HKEX: 9866; SGX: NIO) (“NIO” or the “Company”), a pioneer and a leading company in the global smart electric vehicle market, today published a notice to announce that it will hold an annual general meeting (the “AGM”) of shareholders</p>
-            <div class="news-meta">ir.nio.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1785837.html" target="_blank" rel="noopener">从NIO Day 2024看蔚来汽车下一个十年发展<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">蔚来在成立十周年之际，发布了ET9行政旗舰和高端小车品牌萤火虫（firefly），两款新产品展现了蔚来在技术、品牌和市场策略上的多元布局。● ET9 定位高端行政旗舰，承载着蔚来的NT3平台技术完全体的重任，提升品牌形象与技术实力展示的重任；</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/2000678.html" target="_blank" rel="noopener">安森美与蔚来扩大战略合作，加速向下一代900V电动汽车平台演进<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">安森美（onsemi，美国纳斯达克股票代号：ON）宣布，与蔚来汽车（纽约证券交易所代码：NIO）进一步扩大战略合作，共同推进下一代电动汽车（EV）平台发展。基于多年合作，双方将更紧密协同，安森美提供最新的EliteSiC M3e技术，加速蔚来从400V向900V架构的演进。带来续航、充电与性能方面的实质提升安森美Eli</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1968816.html" target="_blank" rel="noopener">蔚来首次季度盈利：从“资本故事”到“现金机器”的拐点？<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">*内容仅为呈现不同市场观点与研究视角，并不意味着本公众号对文中观点结论认可。当一家长期被质疑“烧钱换未来”的公司第一次在季度层面实现经营利润，资本市场往往会重新审视它的估值逻辑。对于新能源汽车行业而言，盈利一直是一道难以跨越的门槛。过去几年，无论是特斯拉的早期历程，还是中国造车新势力的集体亏损，市场似乎默认了一个规则：</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/2011523.html" target="_blank" rel="noopener">蔚来ES9搭载艾迈斯欧司朗新一代氛围灯解决方案<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">照明与传感创新的全球领导者艾迈斯欧司朗（SIX：AMS）宣布，其基于OSP开放系统协议（Open System Protocol）的OSIRE™ E3731i智能RGB LED已成功搭载于蔚来汽车旗下全新智能电动行政旗舰SUV——蔚来ES9。这是艾迈斯欧司朗OSIRE™ E3731i首次应用于蔚来品牌车型，打造座舱内沉</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1992277.html" target="_blank" rel="noopener">无线充拆解报告：Native Union二合一无线充<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">Native Union推出一款便携且质感的二合一磁吸无线充电器，适用于iPhone和Apple Watch。产品采用折叠设计，体积小巧，支持Qi2和MFW标准，提供15W无线快充和5W独立充电。内部采用劲芯微CV90367主控和南芯科技SC8329升压控制器，保证高效能。整体设计紧凑，适合苹果用户选购。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1887887.html" target="_blank" rel="noopener">蔚来技术输出迈凯伦，中国电动化技术授权潮起<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">摘要从学徒到师傅，授世界以渔。本周三（9月3日），蔚来汽车董事长李斌首次对外证实了与英国超跑品牌迈凯伦的技术合作，并透露第二季度技术服务收入已达数亿元。李斌表示：“公司的主要股东阿布扎比收购了迈凯伦，事实上我们向迈凯伦输出了一些技术，这部分业务构成了对外技术服务收入的主要来源。”据2024年6月的市场消息，在双方的合作</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1854103.html" target="_blank" rel="noopener">蔚来芯片终于要拆分独立了<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">2025年6月18日，媒体报道称，蔚来计划为自研芯片部门成立项目实体并引入战略投资者，股权结构可能为仅引入外部资金或设员工持股平台。该独立项目实体已完成工商登记，名为安徽神玑技术有限公司。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1989507.html" target="_blank" rel="noopener">不活在别人影子里的蔚来，迎来HALO时刻？<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">2026年，华尔街对“重资产”价值的认知受到挑战。亚马逊和蔚来分别通过AI基建和体系创新能力展示了重资产模式的新估值逻辑。亚马逊强调AI基建的高门槛和变现潜力，蔚来则通过ES9展示了其体系能力和基础设施资产的价值。随着电动车行业从制造业向科技行业转型，蔚来提供了新的估值视角，将其资产结构视为低淘汰率、高成长的基础设施组合。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-      </ul>
-    </section>
-    <section data-co="bmw" hidden>
-      <div class="company-header">
-        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="#0066b1"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">B</text>
-  </svg>
-        <div class="name-block">
-          <h2>BMW 宝马</h2>
-          <span class="domain">bmwgroup.com</span>
-        </div>
-      </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.bmwgroup.com/en/news/general/2026/highway-assistant.html" target="_blank" rel="noopener">Innovation 09.06.2026 7 MIN 200 million kilometres of hands-free driving with the BMW Highway Assistant.</a></li><li><span class="num">02</span><a href="https://www.bmwgroup.com/en/news/general/2026/agentic-AI.html" target="_blank" rel="noopener">Innovation 22.05.2026 How agentic AI is making life easier at the BMW Group.</a></li><li><span class="num">03</span><a href="https://www.bmwgroup.com/en/news/general/2026/battery-cell-production-with-ai.html" target="_blank" rel="noopener">Innovation 08.05.2026 5 MIN Advances in battery cell production: How the BMW Group uses AI.</a></li></ol><div class="stats">10 条新闻</div></div>
-      <ul class="news-list">
-        
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/highway-assistant.html" target="_blank" rel="noopener">Innovation 09.06.2026 7 MIN 200 million kilometres of hands-free driving with the BMW Highway Assistant.<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Overview of hands-free assisted driving by the BMW Group: More about the BMW Highway Assistant, safety and the technology’s launch in Europe.</p>
-            <div class="news-meta">bmwgroup.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/agentic-AI.html" target="_blank" rel="noopener">Innovation 22.05.2026 How agentic AI is making life easier at the BMW Group.<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">BMW Group: This article explores agentic AI and how it simplifies workflows, supports teams and makes processes even more intelligent.</p>
-            <div class="news-meta">bmwgroup.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/battery-cell-production-with-ai.html" target="_blank" rel="noopener">Innovation 08.05.2026 5 MIN Advances in battery cell production: How the BMW Group uses AI.<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">How the BMW Group is leveraging AI to optimise battery cell production and dramatically reduce the time and effort involved in testing – read more here</p>
-            <div class="news-meta">bmwgroup.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/four-million-motorcycles-made-in-berlin.html" target="_blank" rel="noopener">Company 14.04.2026 6 MIN 4,000,000 BMW Motorrd motorcycles: How Plant Berlin has helped shape the success of the BMW brand.<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">4,000,000 motorcycles made in Berlin: How Plant Berlin has shaped the BMW brand worldwide. A peek behind the factory gates.</p>
-            <div class="news-meta">bmwgroup.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/bmw-ix5-hydrogen-tank-system.html" target="_blank" rel="noopener">Innovation 09.04.2026 9 MIN Technology-open approach meets the art of engineering: New hydrogen tank system in the BMW iX5 Hydrogen.<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">BMW Group: Tank system reinvented – innovative BMW Hydrogen Flat Storage in the new BMW iX5 Hydrogen. Find out more here.</p>
-            <div class="news-meta">bmwgroup.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/sustainability-in-vehicle-interiors.html" target="_blank" rel="noopener">Sustainability 25.03.2026 5 MIN How the BMW Group brings sustainability into the vehicle interior.<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Inside the BMW Group scent laboratory: Advancing interior air quality, health and wellbeing – as exemplified by the new BMW i3.</p>
-            <div class="news-meta">bmwgroup.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/bmwi3.html" target="_blank" rel="noopener">Company 19.03.2026 5 MIN The new BMW i3: The second Neue Klasse model.<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">The new all-electric BMW i3 from the New Class: modern design, innovative technology, and a range of up to 900 km for a new driving experience.</p>
-            <div class="news-meta">bmwgroup.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/sustainability-approach-bmw-i3.html" target="_blank" rel="noopener">Sustainability 17.03.2026 8 MIN The new BMW i3: 360° approach to sustainability continues in the second Neue Klasse model.<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">How the BMW Group has reimagined the BMW i3 with a 360° approach to sustainability. Find out more here.</p>
-            <div class="news-meta">bmwgroup.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/bmw-group-annual-conference-2026.html" target="_blank" rel="noopener">Company 12.03.2026 6 MIN Stable Group earnings thanks to consistent strategy: BMW Group on track.<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Annual Conference 2026: BMW Group stays on course – stable results, focused investments and ramp‑up of the Neue Klasse.</p>
-            <div class="news-meta">bmwgroup.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/humanoid-robot-in-leipzig.html" target="_blank" rel="noopener">Company 09.03.2026 7 MIN Leipzig debut: BMW Group introduces humanoid robots – a first in Germany.<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">How BMW Group Plant Leipzig is piloting humanoid robots to bring physical AI to production. Read it all here.</p>
-            <div class="news-meta">bmwgroup.com</div>
-          </li>
-      </ul>
-    </section>
-    <section data-co="vw" hidden>
-      <div class="company-header">
-        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="#1e40af"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">V</text>
-  </svg>
-        <div class="name-block">
-          <h2>Volkswagen 大众</h2>
-          <span class="domain">volkswagen.com</span>
-        </div>
-      </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.volkswagen-newsroom.com/en/press-releases/in-the-anniversary-year-volkswagen-r-to-enter-the-24h-nuerburgring-in-2027-20362" target="_blank" rel="noopener">In the anniversary year: Volkswagen R to enter the 24h Nürburgring in 2027</a></li><li><span class="num">02</span><a href="https://www.volkswagen-newsroom.com/en/press-releases/brand-group-core-with-solid-results-special-items-impact-volkswagen-brand-20358" target="_blank" rel="noopener">Brand Group Core with solid results – special items impact Volkswagen Brand</a></li><li><span class="num">03</span><a href="https://www.eefocus.com/article/2035960.html" target="_blank" rel="noopener">大众要开始按900万辆产能过日子了</a></li></ol><div class="stats">10 条新闻</div></div>
-      <ul class="news-list">
-        
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.volkswagen-newsroom.com/en/press-releases/in-the-anniversary-year-volkswagen-r-to-enter-the-24h-nuerburgring-in-2027-20362" target="_blank" rel="noopener">In the anniversary year: Volkswagen R to enter the 24h Nürburgring in 2027<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">After three years with the Golf GTI Clubsport, Volkswagen is opening a new chapter in the 24h Nürburgring&amp;nbsp;with the Golf R 24H.</p>
-            <div class="news-meta">volkswagen-newsroom.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.volkswagen-newsroom.com/en/press-releases/brand-group-core-with-solid-results-special-items-impact-volkswagen-brand-20358" target="_blank" rel="noopener">Brand Group Core with solid results – special items impact Volkswagen Brand<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Compared with the prior-year figure, there was moderate growth of 0.2% in unit sales.</p>
-            <div class="news-meta">volkswagen-newsroom.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/2035960.html" target="_blank" rel="noopener">大众要开始按900万辆产能过日子了<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">大众在股东大会上宣布，预计2025年销售约900万辆车，收入3220亿欧元，营业利润仅89亿欧元，利润率仅为2.8%。为了应对挑战，大众决定裁员并减少产能，同时考虑将部分产能出口至新兴市场。此外，大众计划在未来几年内大幅削减成本，并设定2030年利润率目标为8%-10%。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/2009952.html" target="_blank" rel="noopener">大众汽车的2026年Q1 — 巨人的蜕皮之痛<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">大众汽车集团发布2026年一季度财报，尽管营业利润下滑，但现金流显著改善。面对全球车市的挑战，大众提出了“目标图景2030”转型战略，涉及产品瘦身、技术平台收敛、产能调整等多个方面。在中国市场，大众强调深化“在中国，为中国”策略，推出本地化车型并加强技术研发。在美国市场，大众寄希望于Scout品牌缓解关税压力。整体来看，大众面临转型压力，需加快执行力度以应对市场竞争和技术变革。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/2009955.html" target="_blank" rel="noopener">大众汽车中国2026市场和战略更新<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">大众汽车集团（中国）董事长兼首席执行官贝瑞德在2026中国投资者演讲中分享了对中国市场的最新判断、战略执行成果以及未来财务与产品规划。他表示，新能源拐点已至，2025年中国新能源汽车渗透率达到53%，标志着电动化成为基本盘。尽管面临市场挑战，大众在2025年保持了中国市场第一名的国际OEM地位，并预计2026年NEV渗透率达到60%。此外，大众强调了本土研发和技术护城河的重要性，推出了VCTC和CEA技术，推动平台布局和降本增效。2026年将是大众的“交付之年”，预计将推出超过20款新能源车型。最后，大众计划将中国打造成技术中心，反哺和支持全球市场。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/2001847.html" target="_blank" rel="noopener">大众VASS标准与西门子SICAR标准什么区别？<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">本文深入解析了汽车制造领域最具代表性的两大控制标准：大众VASS与西门子SICAR。VASS标准由大众集团主导，适用于其内部供应商，强调强制性和统一性，基于西门子硬件平台，采用S7-Graph编程，注重自动化程度高且符合大众MEB平台。SICAR标准由西门子推出，适用于无自有标准的汽车厂及集成商，推荐性采用，基于TIA Portal平台，支持多种编程语言，强调灵活性和普适性，并内置虚拟调试支持。两者在技术渊源上有密切联系，共同构成现代汽车智能制造的技术基础设施。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1968788.html" target="_blank" rel="noopener">大众汽车集团2025年经营状况及2026年战略展望分析<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">大众汽车2025年在全球市场表现出色，但在北美和中国市场遭遇下滑。尽管营收保持稳定，但营业利润大幅下降，主要原因是高额的特殊项目支出和关税成本。为了应对挑战，大众决定进一步削减工作岗位并调整产品和技术方向，特别是在电动化领域加大投入。2026年，大众计划通过降低成本和提高效率来改善财务状况，并继续推动电动化和智能化发展。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1988514.html" target="_blank" rel="noopener">TIA_Portal_Openness在大众VASS06标准中的应用与实践<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">VASS06标准基于TIA Portal Openness，通过API程序化操作实现自动化工程规范，提高项目效率和可靠性。主要内容包括：标准化：消除人工操作差异，确保统一代码结构。效率化：批量操作数百个数据块，将小时级工作压缩至分钟。可靠性：程序化操作消除人为失误，生成结果可重复验证。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/2007852.html" target="_blank" rel="noopener">大众拿下Rivian：这笔交易亏了吗？<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">大众集团于2026年5月增持Rivian股份至15.9%，成为其第一大股东。此举源于大众在软件领域的挫败，尤其是Cariad项目的失败。大众希望通过收购Rivian获得成熟的软件能力和区域控制架构，以增强其在美国市场的竞争力，并计划利用Rivian的架构加快新车型的推出速度。此外，大众重启了硬派越野品牌Scout，借助Rivian的技术优势为其量身定制。尽管Rivian当前仍处于亏损状态，但大众对其未来价值充满信心，认为这将有助于其在美国市场取得突破。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1976800.html" target="_blank" rel="noopener">跨界储能！大众、奇瑞接连出招<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">车企纷纷跨界布局储能市场，奇瑞发布离网型e-fuel长时储能技术，大众启动首个大型储能系统项目，彰显储能赛道竞争激烈。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-      </ul>
-    </section>
-    <section data-co="toyota" hidden>
-      <div class="company-header">
-        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="#b91c1c"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">T</text>
-  </svg>
-        <div class="name-block">
-          <h2>Toyota 丰田</h2>
-          <span class="domain">toyota.com</span>
-        </div>
-      </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://global.toyota/en/newsroom/toyota/44397819.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Our Picks May 28, 2026 Toyota Launches New Hilux in Japan</a></li><li><span class="num">02</span><a href="https://global.toyota/en/newsroom/toyota/44331143.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Our Picks May 14, 2026 Toyota Launches All-New Land Cruiser &quot;FJ&quot; Series in Japan</a></li><li><span class="num">03</span><a href="https://global.toyota/en/company/profile/production-sales-figures/?padid=ag478_from_news_pickup2" target="_blank" rel="noopener">Sales, Production, and Export Results</a></li></ol><div class="stats">9 条新闻</div></div>
-      <ul class="news-list">
-        
-          <li class="news-item">
-            
-            <a class="news-title" href="https://global.toyota/en/newsroom/toyota/44397819.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Our Picks May 28, 2026 Toyota Launches New Hilux in Japan<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Toyota Motor Corporation (Toyota) launched a completely redesigned Hilux in Japan.</p>
-            <div class="news-meta">global.toyota</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://global.toyota/en/newsroom/toyota/44331143.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Our Picks May 14, 2026 Toyota Launches All-New Land Cruiser &quot;FJ&quot; Series in Japan<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Toyota Motor Corporation (Toyota) announced the addition of the FJ series to the Land Cruiser lineup in Japan, with sales commencing on May 14.</p>
-            <div class="news-meta">global.toyota</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://global.toyota/en/company/profile/production-sales-figures/?padid=ag478_from_news_pickup2" target="_blank" rel="noopener">Sales, Production, and Export Results<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Toyota Motor Corporation Site introduces &quot;Sales, Production, and Export Results&quot;. Toyota strives to be a good corporate citizen trusted by all stakeholders and to contribute to the creation of an affluent society through all its business operations. We would like to introduce the Corporate Principles which form the basis of our initiatives, values that enable the execution, and our mindset.</p>
-            <div class="news-meta">global.toyota</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://toyotatimes.jp/en/newscast/193.html?padid=ag478_from_newsroom" target="_blank" rel="noopener">Rally Japan 2026 | Toyota Sweeps Top 4! First May Rally Deepens Community Ties<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Rally Japan 2026 was held in May for the first time. Behind Toyota’s achievement of sweeping the top four spots was unified local community support.</p>
-            <div class="news-meta">toyotatimes.jp</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://global.toyota/en/newsroom/corporate/44481016.html" target="_blank" rel="noopener">Toyota to participate in the &quot;1000 Miglia Gran Turismo Experience 2026,&quot; a special program of the historic Italian rally, the 1000 Miglia<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Toyota Motor Corporation (Toyota) will participate in the 1000 Miglia Gran Turismo Experience 2026 (Miglia Gran Turismo), a special program for the 1000 Miglia 2026 to be held in Brescia, Italy, over five days from June 9 to 13, 2026 (Japan time). This marks the first time that a Japanese manufacturer has entered vehicles in a 1000 Miglia-related event.</p>
-            <div class="news-meta">global.toyota</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://global.toyota/en/newsroom/corporate/44454144.html" target="_blank" rel="noopener">THE MOVEUM YOKOHAMA to Launch New Film Program This Fall<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Thank you very much for your continued patronage of THE MOVEUM YOKOHAMA.The facility has been temporarily closed as part of our efforts to ensure a safe and comfortable environment for all visitors. During this time, we have also decided to move forward with preparations for a renewal aimed at further enhancing the venue&#39;s appeal.</p>
-            <div class="news-meta">global.toyota</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://global.toyota/en/company/profile/production-sales-figures/202604.html" target="_blank" rel="noopener">Sales, Production, and Export Results for April 2026<span class="arrow">↗</span></a>
-            
-            <p class="news-snippet">Toyota Motor Corporation announces its sales, production, and export results for Aplil 2026, including those for subsidiaries Daihatsu Motor Co., Ltd.</p>
-            <div class="news-meta">global.toyota</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://global.toyota/en/newsroom/corporate/44286995.html" target="_blank" rel="noopener">Temporary Closure of THE MOVEUM YOKOHAMA (From April 22, 2026)<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Thank you very much for your continued patronage of THE MOVEUM YOKOHAMA.</p>
-            <div class="news-meta">global.toyota</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://toyota-automobile-museum.jp/en/event/detail/10304.html" target="_blank" rel="noopener">&quot;Driven by Passion: Engineers Igniting a Generation -Japanese Cars and Motorcycles of the 1980s-1990s-&quot; Opens on 10 April 2026 at the Toyota Automobile Museum<span class="arrow">↗</span></a>
-            
-            <p class="news-snippet">This is a page ofDriven by Passion: Engineers Igniting a Generation ―Japanese Cars and Motorcycles of the 1980s-1990s－</p>
-            <div class="news-meta">toyota-automobile-museum.jp</div>
-          </li>
-      </ul>
-    </section></main>
-  <footer>数据来源：Google News · 生成于 2026-06-27 · 仅供参考</footer>
+  </div>
 </div>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="masthead-title-block">
+        <h1>新能源汽车</h1>
+        <div class="dateline">2026年06月27日 · 周六 · 第 6 期 · 59 条新闻</div>
+      </div>
+      <div class="masthead-stats">
+        <span><span class="num">3</span> 中国头部</span>
+        <span><span class="num">3</span> 国际头部</span>
+        <span><span class="num">59</span> 总新闻</span>
+      </div>
+    </div>
+    
+<nav class="section-tabs">
+  <div class="tab-region cn">
+    <span class="label">中国头部</span>
+    <span class="count">3 家公司</span>
+  </div>
+  <div class="tab-region intl">
+    <span class="label">国际头部</span>
+    <span class="count">3 家公司</span>
+  </div>
+</nav>
+    
+<div class="company-tabs">
+  <button class="company-tab" data-co="byd">比亚迪 BYD<span class="mono-count">10</span></button><button class="company-tab" data-co="catl">宁德时代 CATL<span class="mono-count">10</span></button><button class="company-tab" data-co="nio">蔚来 NIO<span class="mono-count">10</span></button>
+  <button class="company-tab" data-co="bmw">BMW 宝马<span class="mono-count">10</span></button><button class="company-tab" data-co="vw">Volkswagen 大众<span class="mono-count">10</span></button><button class="company-tab" data-co="toyota">Toyota 丰田<span class="mono-count">9</span></button>
+</div>
+  </div>
+</header>
+<main>
+  <div class="container">
+    
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">1970-01-01</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.eefocus.com/article/2035972.html" target="_blank" rel="noopener">充电枪拆解报告：BYD比亚迪交流充电枪<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">比亚迪推出了一款适用于家用固定充电场景的交流充电枪，具有3.5kW供电能力和IP55防护等级。充电枪设计紧凑，核心控制电路全收于充电枪头内部，减轻线缆重量并提高操作便利性。充电枪线缆粗壮耐用，能够承受16A电流长时间传输。充电枪内部采用高品质元件，包括艾华电解电容和芯茂微电源芯片，确保了产品的稳定性和安全性。总体来说，这款充电枪结构紧凑、用料扎实，适合日常家用充电需求。</p>
+    <div class="hero-source">eefocus.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">2025-04-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1853111.html" target="_blank" rel="noopener">2025年4月，哨兵模式装配率超20%，BYD单月拉升4.3个百分点</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">2026-03-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1995672.html" target="_blank" rel="noopener">亚洲车市 | 韩国2026年3月：比亚迪销量1664台</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1993603.html" target="_blank" rel="noopener">领汇不是扩张，是解绑：比亚迪品牌高端化的第一刀</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">1970-01-01</span>
+        <div class="title"><a href="https://www.eefocus.com/article/1996355.html" target="_blank" rel="noopener">一文读懂比亚迪全新海狮05的8个款型</a></div>
+      </div>
+    
+  </div>
+</div>
+    
+<section data-co="byd">
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#dc2626"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">比</text>
+  </svg>
+    <div class="name-block">
+      <h2>比亚迪 BYD</h2>
+      <span class="domain">byd.com · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.eefocus.com/article/2035972.html" target="_blank" rel="noopener">比亚迪推出了一款适用于家用固定充电场景的交流充电枪，具有3.5kW供电能力和IP55防护等级。充电枪设计紧凑，核心控制电路全收于充电枪头内部，减轻线缆重量并提高操作便利性。充电枪线缆粗壮耐用，能够承受16A电流长时间传输。充电枪内部采用高品质元件，包括艾华电解电容和芯茂微电源芯片，确保了产品的稳定性和安全性。总体来说，这款充电枪结构紧凑、用料扎实，适合日常家用充电需求。</a></li><li><span class="num">02</span><a href="https://www.eefocus.com/article/1853111.html" target="_blank" rel="noopener">2025年4月，哨兵模式装配率超20%，BYD单月拉升4.3个百分点</a></li><li><span class="num">03</span><a href="https://www.eefocus.com/article/1995672.html" target="_blank" rel="noopener">芝能汽车出品2026年3月，韩国乘用车市场销量164,393辆，同比增长10.2%；2026年累计销量达407,713辆，同比增长5.2%。◎ 比亚迪以1,664辆（+16540%）、累计3,968辆（+39580%）强势进入前十，BYD Sealion 7单月807辆（新车）、累计2,084辆，已进入前五；BYD D</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/1993603.html" target="_blank" rel="noopener">比亚迪宣布推出领汇品牌，目标是冲击高端化并摆脱“网约车”标签。领汇整合原有对公事业部资源，拥有独立车标、渠道和销售体系，并计划在2026年起成为滴滴、高德、T3的主要供应商。领汇采用第二代刀片电池和闪充技术，但配置上进行了调整，强调营运场景的需求，而非单纯追求高端配置。此外，领汇还提供了独特的耐久性和营运便利性标准，以区别于主品牌。</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/1996355.html" target="_blank" rel="noopener">比亚迪全新海狮05EV与海狮05DM-i双车正式上市，性能提升且价格下调，尤其全新海狮05EV成为首款进入12万元以内的闪充车型，并具备激光雷达天神之眼5.0驾驶辅助系统。新车搭载第二代刀片电池与比亚迪全新闪充技术，提供多种续航版本并配备多项实用配置。</a></li></ol><div class="summary-stats"><span>10 条</span><span>比亚迪 BYD</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2035972.html" target="_blank" rel="noopener">充电枪拆解报告：BYD比亚迪交流充电枪</a></h3>
+  <p class="news-card-snippet">比亚迪推出了一款适用于家用固定充电场景的交流充电枪，具有3.5kW供电能力和IP55防护等级。充电枪设计紧凑，核心控制电路全收于充电枪头内部，减轻线缆重量并提高操作便利性。充电枪线缆粗壮耐用，能够承受16A电流长时间传输。充电枪内部采用高品质元件，包括艾华电解电容和芯茂微电源芯片，确保了产品的稳定性和安全性。总体来说，这款充电枪结构紧凑、用料扎实，适合日常家用充电需求。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-04-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1853111.html" target="_blank" rel="noopener">2025年4月，哨兵模式装配率超20%，BYD单月拉升4.3个百分点</a></h3>
+  <p class="news-card-snippet">2025年4月，哨兵模式装配率超20%，BYD单月拉升4.3个百分点</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-03-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1995672.html" target="_blank" rel="noopener">亚洲车市 | 韩国2026年3月：比亚迪销量1664台</a></h3>
+  <p class="news-card-snippet">芝能汽车出品2026年3月，韩国乘用车市场销量164,393辆，同比增长10.2%；2026年累计销量达407,713辆，同比增长5.2%。◎ 比亚迪以1,664辆（+16540%）、累计3,968辆（+39580%）强势进入前十，BYD Sealion 7单月807辆（新车）、累计2,084辆，已进入前五；BYD D</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1993603.html" target="_blank" rel="noopener">领汇不是扩张，是解绑：比亚迪品牌高端化的第一刀</a></h3>
+  <p class="news-card-snippet">比亚迪宣布推出领汇品牌，目标是冲击高端化并摆脱“网约车”标签。领汇整合原有对公事业部资源，拥有独立车标、渠道和销售体系，并计划在2026年起成为滴滴、高德、T3的主要供应商。领汇采用第二代刀片电池和闪充技术，但配置上进行了调整，强调营运场景的需求，而非单纯追求高端配置。此外，领汇还提供了独特的耐久性和营运便利性标准，以区别于主品牌。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1996355.html" target="_blank" rel="noopener">一文读懂比亚迪全新海狮05的8个款型</a></h3>
+  <p class="news-card-snippet">比亚迪全新海狮05EV与海狮05DM-i双车正式上市，性能提升且价格下调，尤其全新海狮05EV成为首款进入12万元以内的闪充车型，并具备激光雷达天神之眼5.0驾驶辅助系统。新车搭载第二代刀片电池与比亚迪全新闪充技术，提供多种续航版本并配备多项实用配置。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1967107.html" target="_blank" rel="noopener">比亚迪惊蛰发布会：主角为何是碳化硅？</a></h3>
+  <p class="news-card-snippet">比亚迪惊蛰技术发布会上，展示了全域1000V高压平台、第二代刀片电池、兆瓦闪充2.0、DM6.0超级混动和天神之眼5.0智能驾驶五大核心技术。这些技术的背后，碳化硅成为关键材料，推动了系统的整体升级和性能飞跃。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1967097.html" target="_blank" rel="noopener">掀桌者比亚迪，找活路的你和我</a></h3>
+  <p class="news-card-snippet">比亚迪发布1500V碳化硅模块，打破传统框架，重新定义下一代技术标准。这一突破不仅展现了技术创新的力量，更是中国企业在标准制定上首次拥有发言权。然而，真正的挑战在于如何在缺乏整车厂支持的情况下，通过系统级创新创造需求，拉动产业链发展，赢得话语权。比亚迪的成功启示其他企业，要重视客户需求导向的设计思维，而非仅仅追求技术突破。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1964061.html" target="_blank" rel="noopener">3月5号比亚迪开启全民新能源时代</a></h3>
+  <p class="news-card-snippet">比亚迪将于3月5日发布颠覆性技术，预计涉及兆瓦闪充和千公里续航纯电车型，有望推动全民新能源时代到来。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1994892.html" target="_blank" rel="noopener">5GWh储能大单花落比亚迪！这一赛道成新宠</a></h3>
+  <p class="news-card-snippet">澳洲铁矿石巨头福瑞斯特河宣布加快建设全球首个工业化的绿色能源电网，包含1.2GW光伏、超600MW风电及4-5GWh储能系统。光伏部分采用隆基太阳能电池板，风电设备为远景能源，储能系统由比亚迪提供。预计2028年开始商业运营，目标实现无化石燃料供电。矿业巨头纷纷投资可再生能源，推动储能技术发展，降低运营成本并助力脱碳。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2008158.html" target="_blank" rel="noopener">比亚迪入股华盛锂电湖北VC项目</a></h3>
+  <p class="news-card-snippet">湖北华盛祥和新能源材料有限公司宣布新增比亚迪为股东，持股比例为15%，并计划投资建设年产6万吨VC项目。该项目规模巨大，相当于2025年锂电行业VC需求的近九成。随着VC在电解液中的重要性增加，其价格从低谷迅速攀升，多家企业受益于此轮涨价潮。此轮融资反映了VC作为锂电关键原材料的战略价值不断提升。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="catl" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0ea5e9"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">宁</text>
+  </svg>
+    <div class="name-block">
+      <h2>宁德时代 CATL</h2>
+      <span class="domain">catl.com · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.catl.com/en/news/6861.html" target="_blank" rel="noopener">Munich, Germany | June 22, 2026 — CATL today officially unveiled the TENER Sodium Energy Storage System, the world&amp;#39;s first real-world validated sodium-ion energy storage solution in Munich, Germany.</a></li><li><span class="num">02</span><a href="https://www.catl.com/en/news/6832.html" target="_blank" rel="noopener">CATL is aware of the report from the Select Committee on the Strategic Competition between the United States and the Chinese Communist Party, issued on May 21, 2026, titled &amp;quot;Bankrolling Beijing: U.S.</a></li><li><span class="num">03</span><a href="https://www.catl.com/en/news/6815.html" target="_blank" rel="noopener">CATL Launches World’s Largest Energy Storage Testbed, Advancing Industry into Era of Real-World ValidationContemporary Amperex Technology Co., Limited (CATL) is a global leader in new energy innovative technologies, committed to providing premier solutions and services for new energy applications worldwide.</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/1858227.html" target="_blank" rel="noopener">福建宁德 2025年6月30日 /美通社/ -- 近日，宁德时代新能源科技股份有限公司（以下简称&quot;宁德时代&quot;）正式获得DEKRA德凯颁发的CTF 2（Customer Testing Facility，客户测试实验室）实验室认可资质，颁证仪式在宁德时代总部举行。此次授权范围涵盖标准IEC 62619、IEC 63056</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/1773186.html" target="_blank" rel="noopener">前面学习问界M5的BMS硬件设计时，聊到其使用的电流采样方案（如下图），是一个单独的电流采样模块（CSU）；实际上CATL的这套BMS方案不仅用在问界上，其他很多主机厂也有使用，例如理想等，今天就单独把这个电流采样模块学习总结下。</a></li></ol><div class="summary-stats"><span>10 条</span><span>宁德时代 CATL</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.catl.com/en/news/6861.html" target="_blank" rel="noopener">6/22/2026 CATL Debuts World&#39;s First Field-Validated Sodium-Ion BESS, Bringing Sodium Storage to Commercial Reality MORE</a></h3>
+  <p class="news-card-snippet">Munich, Germany | June 22, 2026 — CATL today officially unveiled the TENER Sodium Energy Storage System, the world&amp;#39;s first real-world validated sodium-ion energy storage solution in Munich, Germany.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>catl.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-21</div>
+  <h3 class="news-card-title"><a href="https://www.catl.com/en/news/6832.html" target="_blank" rel="noopener">6/05/2026 CATL Statement Regarding May 21, 2026 U.S. Congressional Report MORE</a></h3>
+  <p class="news-card-snippet">CATL is aware of the report from the Select Committee on the Strategic Competition between the United States and the Chinese Communist Party, issued on May 21, 2026, titled &amp;quot;Bankrolling Beijing: U.S.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>catl.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.catl.com/en/news/6815.html" target="_blank" rel="noopener">6/01/2026 CATL Launches World’s Largest Energy Storage Testbed, Advancing Industry into Era of Real-World Validation MORE</a></h3>
+  <p class="news-card-snippet">CATL Launches World’s Largest Energy Storage Testbed, Advancing Industry into Era of Real-World ValidationContemporary Amperex Technology Co., Limited (CATL) is a global leader in new energy innovative technologies, committed to providing premier solutions and services for new energy applications worldwide.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>catl.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1858227.html" target="_blank" rel="noopener">DEKRA德凯授予CATL宁德时代测试验证中心CTF 2资质 共筑电池安全新标杆</a></h3>
+  <p class="news-card-snippet">福建宁德 2025年6月30日 /美通社/ -- 近日，宁德时代新能源科技股份有限公司（以下简称&quot;宁德时代&quot;）正式获得DEKRA德凯颁发的CTF 2（Customer Testing Facility，客户测试实验室）实验室认可资质，颁证仪式在宁德时代总部举行。此次授权范围涵盖标准IEC 62619、IEC 63056</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1773186.html" target="_blank" rel="noopener">学习分析一款CATL宁德时代设计的BMS电流采样产品</a></h3>
+  <p class="news-card-snippet">前面学习问界M5的BMS硬件设计时，聊到其使用的电流采样方案（如下图），是一个单独的电流采样模块（CSU）；实际上CATL的这套BMS方案不仅用在问界上，其他很多主机厂也有使用，例如理想等，今天就单独把这个电流采样模块学习总结下。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1998154.html" target="_blank" rel="noopener">宁德时代2026超级科技日 - 演讲全文稿</a></h3>
+  <p class="news-card-snippet">2026年4月21日，宁德时代发布了神行第三代、麒麟第三代（含凝聚态版）、逍遥第二代、钠新四大产品线，并推出了超充换电技术一体的网络。宁德时代首席科学家吴凯院士阐述了宁德时代保持持续创新的三大基石：敢为人先、致力于多材料体系、说到做到。宁德时代CTO高焕介绍了宁德时代在2026年的四条核心产品线：神行超充电池、麒麟与凝聚态电池、骁遥超级增混电池、钠星电池。宁德时代换电业务总经理杨锦揭晓了宁德时代的“超充换电一体化”基建网络计划。宁德时代董事长兼CEO曾毓群博士分享了宁德时代的科学价值观：科学不是追逐噱头，而是不断证伪、拥抱复杂性并在严格约束下解决问题。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1981937.html" target="_blank" rel="noopener">宁德时代终于开始推进钠电生产</a></h3>
+  <p class="news-card-snippet">宁德时代的钠电产业化，正在从产品发布走向材料端落地。近日，成都金堂时代新材料科技有限公司钠离子电池正极材料项目进入环评二次公示。根据公示信息，该项目依托现有磷酸铁锂生产基地配套设施，对4、5号磷酸铁锂产线进行改造，改造后将形成年产2万吨磷酸焦磷酸铁钠产能。成都金堂时代新材料为宁德时代子公司，这也意味着，宁德时代已开始把</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1958383.html" target="_blank" rel="noopener">独家丨原宁德时代执行总裁朱威，出任地平线总裁</a></h3>
+  <p class="news-card-snippet">宁德时代执行总裁朱威将出任地平线总裁，原地平线总裁陈黎明转任副董事长。朱威有丰富智能驾驶和新能源行业经验，加入宁德时代后，他将在业务层面进一步加强宁德时代和地平线的合作，推动汽车“智能大脑”与新能源汽车“心脏”的深度融合。陈黎明则将继续聚焦公司重大战略决策，推进公司治理体系完善及重大战略落地。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1896561.html" target="_blank" rel="noopener">含2GWh订单！宁德时代等储能签约</a></h3>
+  <p class="news-card-snippet">宁德时代与米林市政府签署战略合作协议，扩展山东投资版图并签署多项储能项目；天能股份与非洲FreedomWon达成2GWh储能设备合作，同时与巴基斯坦ACM集团签署协议，共同拓展全球储能业务。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1958297.html" target="_blank" rel="noopener">地平线与宁德时代子公司时代智能达成战略合作，共赴智能化新征程</a></h3>
+  <p class="news-card-snippet">地平线与宁德时代旗下子公司——宁德时代（上海）智能科技有限公司（简称“时代智能”）签署战略合作协议。双方将聚焦新能源汽车智能化升级需求，以“高智能、高安全的智能出行体验”为目标，为全球整车企业与终端用户提供卓越的智能化出行体验。图注：地平线总裁朱威，时代智能董事总经理杨汉兵代表双方公司签约；宁德时代联合创始人、副董事长</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="nio" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#059669"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">蔚</text>
+  </svg>
+    <div class="name-block">
+      <h2>蔚来 NIO</h2>
+      <span class="domain">nio.com · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://ir.nio.com/news-releases/news-release-details/nio-inc-provides-may-2026-delivery-update" target="_blank" rel="noopener">37,705 vehicles were delivered in May 2026, increasing by 62.3% year-over-year 150,526 vehicles were delivered year-to-date in 2026, increasing by 68.7% year-over-year Cumulative deliveries reached 1,148,118 as of May 31, 2026 SHANGHAI, June 01, 2026 (GLOBE NEWSWIRE) -- NIO Inc.</a></li><li><span class="num">02</span><a href="https://ir.nio.com/news-releases/news-release-details/nio-hold-annual-general-meeting-june-24-2026" target="_blank" rel="noopener">SHANGHAI, May 22, 2026 (GLOBE NEWSWIRE) -- NIO Inc. (NYSE: NIO; HKEX: 9866; SGX: NIO) (“NIO” or the “Company”), a pioneer and a leading company in the global smart electric vehicle market, today published a notice to announce that it will hold an annual general meeting (the “AGM”) of shareholders</a></li><li><span class="num">03</span><a href="https://www.eefocus.com/article/1785837.html" target="_blank" rel="noopener">蔚来在成立十周年之际，发布了ET9行政旗舰和高端小车品牌萤火虫（firefly），两款新产品展现了蔚来在技术、品牌和市场策略上的多元布局。● ET9 定位高端行政旗舰，承载着蔚来的NT3平台技术完全体的重任，提升品牌形象与技术实力展示的重任；</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/2000678.html" target="_blank" rel="noopener">安森美（onsemi，美国纳斯达克股票代号：ON）宣布，与蔚来汽车（纽约证券交易所代码：NIO）进一步扩大战略合作，共同推进下一代电动汽车（EV）平台发展。基于多年合作，双方将更紧密协同，安森美提供最新的EliteSiC M3e技术，加速蔚来从400V向900V架构的演进。带来续航、充电与性能方面的实质提升安森美Eli</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/1968816.html" target="_blank" rel="noopener">*内容仅为呈现不同市场观点与研究视角，并不意味着本公众号对文中观点结论认可。当一家长期被质疑“烧钱换未来”的公司第一次在季度层面实现经营利润，资本市场往往会重新审视它的估值逻辑。对于新能源汽车行业而言，盈利一直是一道难以跨越的门槛。过去几年，无论是特斯拉的早期历程，还是中国造车新势力的集体亏损，市场似乎默认了一个规则：</a></li></ol><div class="summary-stats"><span>10 条</span><span>蔚来 NIO</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://ir.nio.com/news-releases/news-release-details/nio-inc-provides-may-2026-delivery-update" target="_blank" rel="noopener">NIO Inc. Provides May 2026 Delivery Update</a></h3>
+  <p class="news-card-snippet">37,705 vehicles were delivered in May 2026, increasing by 62.3% year-over-year 150,526 vehicles were delivered year-to-date in 2026, increasing by 68.7% year-over-year Cumulative deliveries reached 1,148,118 as of May 31, 2026 SHANGHAI, June 01, 2026 (GLOBE NEWSWIRE) -- NIO Inc.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>ir.nio.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://ir.nio.com/news-releases/news-release-details/nio-hold-annual-general-meeting-june-24-2026" target="_blank" rel="noopener">NIO to Hold Annual General Meeting on June 24, 2026</a></h3>
+  <p class="news-card-snippet">SHANGHAI, May 22, 2026 (GLOBE NEWSWIRE) -- NIO Inc. (NYSE: NIO; HKEX: 9866; SGX: NIO) (“NIO” or the “Company”), a pioneer and a leading company in the global smart electric vehicle market, today published a notice to announce that it will hold an annual general meeting (the “AGM”) of shareholders</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>ir.nio.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1785837.html" target="_blank" rel="noopener">从NIO Day 2024看蔚来汽车下一个十年发展</a></h3>
+  <p class="news-card-snippet">蔚来在成立十周年之际，发布了ET9行政旗舰和高端小车品牌萤火虫（firefly），两款新产品展现了蔚来在技术、品牌和市场策略上的多元布局。● ET9 定位高端行政旗舰，承载着蔚来的NT3平台技术完全体的重任，提升品牌形象与技术实力展示的重任；</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2000678.html" target="_blank" rel="noopener">安森美与蔚来扩大战略合作，加速向下一代900V电动汽车平台演进</a></h3>
+  <p class="news-card-snippet">安森美（onsemi，美国纳斯达克股票代号：ON）宣布，与蔚来汽车（纽约证券交易所代码：NIO）进一步扩大战略合作，共同推进下一代电动汽车（EV）平台发展。基于多年合作，双方将更紧密协同，安森美提供最新的EliteSiC M3e技术，加速蔚来从400V向900V架构的演进。带来续航、充电与性能方面的实质提升安森美Eli</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1968816.html" target="_blank" rel="noopener">蔚来首次季度盈利：从“资本故事”到“现金机器”的拐点？</a></h3>
+  <p class="news-card-snippet">*内容仅为呈现不同市场观点与研究视角，并不意味着本公众号对文中观点结论认可。当一家长期被质疑“烧钱换未来”的公司第一次在季度层面实现经营利润，资本市场往往会重新审视它的估值逻辑。对于新能源汽车行业而言，盈利一直是一道难以跨越的门槛。过去几年，无论是特斯拉的早期历程，还是中国造车新势力的集体亏损，市场似乎默认了一个规则：</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2011523.html" target="_blank" rel="noopener">蔚来ES9搭载艾迈斯欧司朗新一代氛围灯解决方案</a></h3>
+  <p class="news-card-snippet">照明与传感创新的全球领导者艾迈斯欧司朗（SIX：AMS）宣布，其基于OSP开放系统协议（Open System Protocol）的OSIRE™ E3731i智能RGB LED已成功搭载于蔚来汽车旗下全新智能电动行政旗舰SUV——蔚来ES9。这是艾迈斯欧司朗OSIRE™ E3731i首次应用于蔚来品牌车型，打造座舱内沉</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1992277.html" target="_blank" rel="noopener">无线充拆解报告：Native Union二合一无线充</a></h3>
+  <p class="news-card-snippet">Native Union推出一款便携且质感的二合一磁吸无线充电器，适用于iPhone和Apple Watch。产品采用折叠设计，体积小巧，支持Qi2和MFW标准，提供15W无线快充和5W独立充电。内部采用劲芯微CV90367主控和南芯科技SC8329升压控制器，保证高效能。整体设计紧凑，适合苹果用户选购。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1887887.html" target="_blank" rel="noopener">蔚来技术输出迈凯伦，中国电动化技术授权潮起</a></h3>
+  <p class="news-card-snippet">摘要从学徒到师傅，授世界以渔。本周三（9月3日），蔚来汽车董事长李斌首次对外证实了与英国超跑品牌迈凯伦的技术合作，并透露第二季度技术服务收入已达数亿元。李斌表示：“公司的主要股东阿布扎比收购了迈凯伦，事实上我们向迈凯伦输出了一些技术，这部分业务构成了对外技术服务收入的主要来源。”据2024年6月的市场消息，在双方的合作</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1854103.html" target="_blank" rel="noopener">蔚来芯片终于要拆分独立了</a></h3>
+  <p class="news-card-snippet">2025年6月18日，媒体报道称，蔚来计划为自研芯片部门成立项目实体并引入战略投资者，股权结构可能为仅引入外部资金或设员工持股平台。该独立项目实体已完成工商登记，名为安徽神玑技术有限公司。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1989507.html" target="_blank" rel="noopener">不活在别人影子里的蔚来，迎来HALO时刻？</a></h3>
+  <p class="news-card-snippet">2026年，华尔街对“重资产”价值的认知受到挑战。亚马逊和蔚来分别通过AI基建和体系创新能力展示了重资产模式的新估值逻辑。亚马逊强调AI基建的高门槛和变现潜力，蔚来则通过ES9展示了其体系能力和基础设施资产的价值。随着电动车行业从制造业向科技行业转型，蔚来提供了新的估值视角，将其资产结构视为低淘汰率、高成长的基础设施组合。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="bmw" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0066b1"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">B</text>
+  </svg>
+    <div class="name-block">
+      <h2>BMW 宝马</h2>
+      <span class="domain">bmwgroup.com · International</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.bmwgroup.com/en/news/general/2026/highway-assistant.html" target="_blank" rel="noopener">Overview of hands-free assisted driving by the BMW Group: More about the BMW Highway Assistant, safety and the technology’s launch in Europe.</a></li><li><span class="num">02</span><a href="https://www.bmwgroup.com/en/news/general/2026/agentic-AI.html" target="_blank" rel="noopener">BMW Group: This article explores agentic AI and how it simplifies workflows, supports teams and makes processes even more intelligent.</a></li><li><span class="num">03</span><a href="https://www.bmwgroup.com/en/news/general/2026/battery-cell-production-with-ai.html" target="_blank" rel="noopener">How the BMW Group is leveraging AI to optimise battery cell production and dramatically reduce the time and effort involved in testing – read more here</a></li><li><span class="num">04</span><a href="https://www.bmwgroup.com/en/news/general/2026/four-million-motorcycles-made-in-berlin.html" target="_blank" rel="noopener">4,000,000 motorcycles made in Berlin: How Plant Berlin has shaped the BMW brand worldwide. A peek behind the factory gates.</a></li><li><span class="num">05</span><a href="https://www.bmwgroup.com/en/news/general/2026/bmw-ix5-hydrogen-tank-system.html" target="_blank" rel="noopener">BMW Group: Tank system reinvented – innovative BMW Hydrogen Flat Storage in the new BMW iX5 Hydrogen. Find out more here.</a></li></ol><div class="summary-stats"><span>10 条</span><span>BMW 宝马</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.bmwgroup.com/en/news/general/2026/highway-assistant.html" target="_blank" rel="noopener">Innovation 09.06.2026 7 MIN 200 million kilometres of hands-free driving with the BMW Highway Assistant.</a></h3>
+  <p class="news-card-snippet">Overview of hands-free assisted driving by the BMW Group: More about the BMW Highway Assistant, safety and the technology’s launch in Europe.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bmwgroup.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.bmwgroup.com/en/news/general/2026/agentic-AI.html" target="_blank" rel="noopener">Innovation 22.05.2026 How agentic AI is making life easier at the BMW Group.</a></h3>
+  <p class="news-card-snippet">BMW Group: This article explores agentic AI and how it simplifies workflows, supports teams and makes processes even more intelligent.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bmwgroup.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.bmwgroup.com/en/news/general/2026/battery-cell-production-with-ai.html" target="_blank" rel="noopener">Innovation 08.05.2026 5 MIN Advances in battery cell production: How the BMW Group uses AI.</a></h3>
+  <p class="news-card-snippet">How the BMW Group is leveraging AI to optimise battery cell production and dramatically reduce the time and effort involved in testing – read more here</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bmwgroup.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.bmwgroup.com/en/news/general/2026/four-million-motorcycles-made-in-berlin.html" target="_blank" rel="noopener">Company 14.04.2026 6 MIN 4,000,000 BMW Motorrd motorcycles: How Plant Berlin has helped shape the success of the BMW brand.</a></h3>
+  <p class="news-card-snippet">4,000,000 motorcycles made in Berlin: How Plant Berlin has shaped the BMW brand worldwide. A peek behind the factory gates.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bmwgroup.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.bmwgroup.com/en/news/general/2026/bmw-ix5-hydrogen-tank-system.html" target="_blank" rel="noopener">Innovation 09.04.2026 9 MIN Technology-open approach meets the art of engineering: New hydrogen tank system in the BMW iX5 Hydrogen.</a></h3>
+  <p class="news-card-snippet">BMW Group: Tank system reinvented – innovative BMW Hydrogen Flat Storage in the new BMW iX5 Hydrogen. Find out more here.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bmwgroup.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.bmwgroup.com/en/news/general/2026/sustainability-in-vehicle-interiors.html" target="_blank" rel="noopener">Sustainability 25.03.2026 5 MIN How the BMW Group brings sustainability into the vehicle interior.</a></h3>
+  <p class="news-card-snippet">Inside the BMW Group scent laboratory: Advancing interior air quality, health and wellbeing – as exemplified by the new BMW i3.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bmwgroup.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.bmwgroup.com/en/news/general/2026/bmwi3.html" target="_blank" rel="noopener">Company 19.03.2026 5 MIN The new BMW i3: The second Neue Klasse model.</a></h3>
+  <p class="news-card-snippet">The new all-electric BMW i3 from the New Class: modern design, innovative technology, and a range of up to 900 km for a new driving experience.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bmwgroup.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.bmwgroup.com/en/news/general/2026/sustainability-approach-bmw-i3.html" target="_blank" rel="noopener">Sustainability 17.03.2026 8 MIN The new BMW i3: 360° approach to sustainability continues in the second Neue Klasse model.</a></h3>
+  <p class="news-card-snippet">How the BMW Group has reimagined the BMW i3 with a 360° approach to sustainability. Find out more here.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bmwgroup.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.bmwgroup.com/en/news/general/2026/bmw-group-annual-conference-2026.html" target="_blank" rel="noopener">Company 12.03.2026 6 MIN Stable Group earnings thanks to consistent strategy: BMW Group on track.</a></h3>
+  <p class="news-card-snippet">Annual Conference 2026: BMW Group stays on course – stable results, focused investments and ramp‑up of the Neue Klasse.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bmwgroup.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.bmwgroup.com/en/news/general/2026/humanoid-robot-in-leipzig.html" target="_blank" rel="noopener">Company 09.03.2026 7 MIN Leipzig debut: BMW Group introduces humanoid robots – a first in Germany.</a></h3>
+  <p class="news-card-snippet">How BMW Group Plant Leipzig is piloting humanoid robots to bring physical AI to production. Read it all here.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bmwgroup.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="vw" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#1e40af"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">V</text>
+  </svg>
+    <div class="name-block">
+      <h2>Volkswagen 大众</h2>
+      <span class="domain">volkswagen.com · International</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.volkswagen-newsroom.com/en/press-releases/in-the-anniversary-year-volkswagen-r-to-enter-the-24h-nuerburgring-in-2027-20362" target="_blank" rel="noopener">After three years with the Golf GTI Clubsport, Volkswagen is opening a new chapter in the 24h Nürburgring&amp;nbsp;with the Golf R 24H.</a></li><li><span class="num">02</span><a href="https://www.volkswagen-newsroom.com/en/press-releases/brand-group-core-with-solid-results-special-items-impact-volkswagen-brand-20358" target="_blank" rel="noopener">Compared with the prior-year figure, there was moderate growth of 0.2% in unit sales.</a></li><li><span class="num">03</span><a href="https://www.eefocus.com/article/2035960.html" target="_blank" rel="noopener">大众在股东大会上宣布，预计2025年销售约900万辆车，收入3220亿欧元，营业利润仅89亿欧元，利润率仅为2.8%。为了应对挑战，大众决定裁员并减少产能，同时考虑将部分产能出口至新兴市场。此外，大众计划在未来几年内大幅削减成本，并设定2030年利润率目标为8%-10%。</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/2009952.html" target="_blank" rel="noopener">大众汽车集团发布2026年一季度财报，尽管营业利润下滑，但现金流显著改善。面对全球车市的挑战，大众提出了“目标图景2030”转型战略，涉及产品瘦身、技术平台收敛、产能调整等多个方面。在中国市场，大众强调深化“在中国，为中国”策略，推出本地化车型并加强技术研发。在美国市场，大众寄希望于Scout品牌缓解关税压力。整体来看，大众面临转型压力，需加快执行力度以应对市场竞争和技术变革。</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/2009955.html" target="_blank" rel="noopener">大众汽车集团（中国）董事长兼首席执行官贝瑞德在2026中国投资者演讲中分享了对中国市场的最新判断、战略执行成果以及未来财务与产品规划。他表示，新能源拐点已至，2025年中国新能源汽车渗透率达到53%，标志着电动化成为基本盘。尽管面临市场挑战，大众在2025年保持了中国市场第一名的国际OEM地位，并预计2026年NEV渗透率达到60%。此外，大众强调了本土研发和技术护城河的重要性，推出了VCTC和CEA技术，推动平台布局和降本增效。2026年将是大众的“交付之年”，预计将推出超过20款新能源车型。最后，大众计划将中国打造成技术中心，反哺和支持全球市场。</a></li></ol><div class="summary-stats"><span>10 条</span><span>Volkswagen 大众</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.volkswagen-newsroom.com/en/press-releases/in-the-anniversary-year-volkswagen-r-to-enter-the-24h-nuerburgring-in-2027-20362" target="_blank" rel="noopener">In the anniversary year: Volkswagen R to enter the 24h Nürburgring in 2027</a></h3>
+  <p class="news-card-snippet">After three years with the Golf GTI Clubsport, Volkswagen is opening a new chapter in the 24h Nürburgring&amp;nbsp;with the Golf R 24H.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>volkswagen-newsroom.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.volkswagen-newsroom.com/en/press-releases/brand-group-core-with-solid-results-special-items-impact-volkswagen-brand-20358" target="_blank" rel="noopener">Brand Group Core with solid results – special items impact Volkswagen Brand</a></h3>
+  <p class="news-card-snippet">Compared with the prior-year figure, there was moderate growth of 0.2% in unit sales.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>volkswagen-newsroom.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2035960.html" target="_blank" rel="noopener">大众要开始按900万辆产能过日子了</a></h3>
+  <p class="news-card-snippet">大众在股东大会上宣布，预计2025年销售约900万辆车，收入3220亿欧元，营业利润仅89亿欧元，利润率仅为2.8%。为了应对挑战，大众决定裁员并减少产能，同时考虑将部分产能出口至新兴市场。此外，大众计划在未来几年内大幅削减成本，并设定2030年利润率目标为8%-10%。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2009952.html" target="_blank" rel="noopener">大众汽车的2026年Q1 — 巨人的蜕皮之痛</a></h3>
+  <p class="news-card-snippet">大众汽车集团发布2026年一季度财报，尽管营业利润下滑，但现金流显著改善。面对全球车市的挑战，大众提出了“目标图景2030”转型战略，涉及产品瘦身、技术平台收敛、产能调整等多个方面。在中国市场，大众强调深化“在中国，为中国”策略，推出本地化车型并加强技术研发。在美国市场，大众寄希望于Scout品牌缓解关税压力。整体来看，大众面临转型压力，需加快执行力度以应对市场竞争和技术变革。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2009955.html" target="_blank" rel="noopener">大众汽车中国2026市场和战略更新</a></h3>
+  <p class="news-card-snippet">大众汽车集团（中国）董事长兼首席执行官贝瑞德在2026中国投资者演讲中分享了对中国市场的最新判断、战略执行成果以及未来财务与产品规划。他表示，新能源拐点已至，2025年中国新能源汽车渗透率达到53%，标志着电动化成为基本盘。尽管面临市场挑战，大众在2025年保持了中国市场第一名的国际OEM地位，并预计2026年NEV渗透率达到60%。此外，大众强调了本土研发和技术护城河的重要性，推出了VCTC和CEA技术，推动平台布局和降本增效。2026年将是大众的“交付之年”，预计将推出超过20款新能源车型。最后，大众计划将中国打造成技术中心，反哺和支持全球市场。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2001847.html" target="_blank" rel="noopener">大众VASS标准与西门子SICAR标准什么区别？</a></h3>
+  <p class="news-card-snippet">本文深入解析了汽车制造领域最具代表性的两大控制标准：大众VASS与西门子SICAR。VASS标准由大众集团主导，适用于其内部供应商，强调强制性和统一性，基于西门子硬件平台，采用S7-Graph编程，注重自动化程度高且符合大众MEB平台。SICAR标准由西门子推出，适用于无自有标准的汽车厂及集成商，推荐性采用，基于TIA Portal平台，支持多种编程语言，强调灵活性和普适性，并内置虚拟调试支持。两者在技术渊源上有密切联系，共同构成现代汽车智能制造的技术基础设施。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1968788.html" target="_blank" rel="noopener">大众汽车集团2025年经营状况及2026年战略展望分析</a></h3>
+  <p class="news-card-snippet">大众汽车2025年在全球市场表现出色，但在北美和中国市场遭遇下滑。尽管营收保持稳定，但营业利润大幅下降，主要原因是高额的特殊项目支出和关税成本。为了应对挑战，大众决定进一步削减工作岗位并调整产品和技术方向，特别是在电动化领域加大投入。2026年，大众计划通过降低成本和提高效率来改善财务状况，并继续推动电动化和智能化发展。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1988514.html" target="_blank" rel="noopener">TIA_Portal_Openness在大众VASS06标准中的应用与实践</a></h3>
+  <p class="news-card-snippet">VASS06标准基于TIA Portal Openness，通过API程序化操作实现自动化工程规范，提高项目效率和可靠性。主要内容包括：标准化：消除人工操作差异，确保统一代码结构。效率化：批量操作数百个数据块，将小时级工作压缩至分钟。可靠性：程序化操作消除人为失误，生成结果可重复验证。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2007852.html" target="_blank" rel="noopener">大众拿下Rivian：这笔交易亏了吗？</a></h3>
+  <p class="news-card-snippet">大众集团于2026年5月增持Rivian股份至15.9%，成为其第一大股东。此举源于大众在软件领域的挫败，尤其是Cariad项目的失败。大众希望通过收购Rivian获得成熟的软件能力和区域控制架构，以增强其在美国市场的竞争力，并计划利用Rivian的架构加快新车型的推出速度。此外，大众重启了硬派越野品牌Scout，借助Rivian的技术优势为其量身定制。尽管Rivian当前仍处于亏损状态，但大众对其未来价值充满信心，认为这将有助于其在美国市场取得突破。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2036661.html" target="_blank" rel="noopener">大众集团削减300万产能，销量会进一步滑坡吗？</a></h3>
+  <p class="news-card-snippet">大众汽车集团在年度股东大会上宣布了裁员、关厂和砍产能的计划，以应对过剩产能和低效结构带来的挑战。预计到2026年，大众在全球范围内将拥有900万辆的产能，并在中国进一步削减约50万辆产能。同时，大众将继续加大电动化投入，尤其是电池领域的布局，以降低成本并提高竞争力。此外，大众还将通过与中国企业的合作，加快产品更新和技术升级，以适应全球市场需求的变化。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="toyota" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#b91c1c"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">T</text>
+  </svg>
+    <div class="name-block">
+      <h2>Toyota 丰田</h2>
+      <span class="domain">toyota.com · International</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://global.toyota/en/newsroom/toyota/44397819.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Toyota Motor Corporation (Toyota) launched a completely redesigned Hilux in Japan.</a></li><li><span class="num">02</span><a href="https://global.toyota/en/newsroom/toyota/44331143.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Toyota Motor Corporation (Toyota) announced the addition of the FJ series to the Land Cruiser lineup in Japan, with sales commencing on May 14.</a></li><li><span class="num">03</span><a href="https://global.toyota/en/company/profile/production-sales-figures/?padid=ag478_from_news_pickup2" target="_blank" rel="noopener">Toyota Motor Corporation Site introduces &quot;Sales, Production, and Export Results&quot;. Toyota strives to be a good corporate citizen trusted by all stakeholders and to contribute to the creation of an affluent society through all its business operations. We would like to introduce the Corporate Principles which form the basis of our initiatives, values that enable the execution, and our mindset.</a></li><li><span class="num">04</span><a href="https://toyotatimes.jp/en/newscast/193.html?padid=ag478_from_newsroom" target="_blank" rel="noopener">Rally Japan 2026 was held in May for the first time. Behind Toyota’s achievement of sweeping the top four spots was unified local community support.</a></li><li><span class="num">05</span><a href="https://global.toyota/en/newsroom/corporate/44481016.html" target="_blank" rel="noopener">Toyota Motor Corporation (Toyota) will participate in the 1000 Miglia Gran Turismo Experience 2026 (Miglia Gran Turismo), a special program for the 1000 Miglia 2026 to be held in Brescia, Italy, over five days from June 9 to 13, 2026 (Japan time). This marks the first time that a Japanese manufacturer has entered vehicles in a 1000 Miglia-related event.</a></li></ol><div class="summary-stats"><span>9 条</span><span>Toyota 丰田</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-05-28</div>
+  <h3 class="news-card-title"><a href="https://global.toyota/en/newsroom/toyota/44397819.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Our Picks May 28, 2026 Toyota Launches New Hilux in Japan</a></h3>
+  <p class="news-card-snippet">Toyota Motor Corporation (Toyota) launched a completely redesigned Hilux in Japan.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>global.toyota</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-14</div>
+  <h3 class="news-card-title"><a href="https://global.toyota/en/newsroom/toyota/44331143.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Our Picks May 14, 2026 Toyota Launches All-New Land Cruiser &quot;FJ&quot; Series in Japan</a></h3>
+  <p class="news-card-snippet">Toyota Motor Corporation (Toyota) announced the addition of the FJ series to the Land Cruiser lineup in Japan, with sales commencing on May 14.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>global.toyota</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://global.toyota/en/company/profile/production-sales-figures/?padid=ag478_from_news_pickup2" target="_blank" rel="noopener">Sales, Production, and Export Results</a></h3>
+  <p class="news-card-snippet">Toyota Motor Corporation Site introduces &quot;Sales, Production, and Export Results&quot;. Toyota strives to be a good corporate citizen trusted by all stakeholders and to contribute to the creation of an affluent society through all its business operations. We would like to introduce the Corporate Principles which form the basis of our initiatives, values that enable the execution, and our mindset.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>global.toyota</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://toyotatimes.jp/en/newscast/193.html?padid=ag478_from_newsroom" target="_blank" rel="noopener">Rally Japan 2026 | Toyota Sweeps Top 4! First May Rally Deepens Community Ties</a></h3>
+  <p class="news-card-snippet">Rally Japan 2026 was held in May for the first time. Behind Toyota’s achievement of sweeping the top four spots was unified local community support.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>toyotatimes.jp</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://global.toyota/en/newsroom/corporate/44481016.html" target="_blank" rel="noopener">Toyota to participate in the &quot;1000 Miglia Gran Turismo Experience 2026,&quot; a special program of the historic Italian rally, the 1000 Miglia</a></h3>
+  <p class="news-card-snippet">Toyota Motor Corporation (Toyota) will participate in the 1000 Miglia Gran Turismo Experience 2026 (Miglia Gran Turismo), a special program for the 1000 Miglia 2026 to be held in Brescia, Italy, over five days from June 9 to 13, 2026 (Japan time). This marks the first time that a Japanese manufacturer has entered vehicles in a 1000 Miglia-related event.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>global.toyota</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://global.toyota/en/newsroom/corporate/44454144.html" target="_blank" rel="noopener">THE MOVEUM YOKOHAMA to Launch New Film Program This Fall</a></h3>
+  <p class="news-card-snippet">Thank you very much for your continued patronage of THE MOVEUM YOKOHAMA.The facility has been temporarily closed as part of our efforts to ensure a safe and comfortable environment for all visitors. During this time, we have also decided to move forward with preparations for a renewal aimed at further enhancing the venue&#39;s appeal.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>global.toyota</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://global.toyota/en/company/profile/production-sales-figures/202604.html" target="_blank" rel="noopener">Sales, Production, and Export Results for April 2026</a></h3>
+  <p class="news-card-snippet">Toyota Motor Corporation announces its sales, production, and export results for Aplil 2026, including those for subsidiaries Daihatsu Motor Co., Ltd.</p>
+  <div class="news-card-footer">
+    
+    <span>global.toyota</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://global.toyota/en/newsroom/corporate/44286995.html" target="_blank" rel="noopener">Temporary Closure of THE MOVEUM YOKOHAMA (From April 22, 2026)</a></h3>
+  <p class="news-card-snippet">Thank you very much for your continued patronage of THE MOVEUM YOKOHAMA.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>global.toyota</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://toyota-automobile-museum.jp/en/event/detail/10304.html" target="_blank" rel="noopener">&quot;Driven by Passion: Engineers Igniting a Generation -Japanese Cars and Motorcycles of the 1980s-1990s-&quot; Opens on 10 April 2026 at the Toyota Automobile Museum</a></h3>
+  <p class="news-card-snippet">This is a page ofDriven by Passion: Engineers Igniting a Generation ―Japanese Cars and Motorcycles of the 1980s-1990s－</p>
+  <div class="news-card-footer">
+    
+    <span>toyota-automobile-museum.jp</span>
+  </div>
+</article></div>
+</section>
+  </div>
+</main>
+<footer>
+  行业雷达 · 头部公司新闻聚合 · 数据来自各公司新闻中心 · 仅供研究参考<br>
+  <span class="mono">构建于 2026-06-27 · GitHub Pages</span>
+</footer>
 <script>
-document.querySelectorAll('.tab').forEach(tab => {
+document.querySelectorAll('.company-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     const target = tab.dataset.co;
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('section[data-co]').forEach(s => s.hidden = s.dataset.co !== target);
     tab.classList.add('active');
     history.replaceState(null, '', '#' + target);
@@ -1082,19 +1419,19 @@ document.querySelectorAll('.tab').forEach(tab => {
 window.addEventListener('DOMContentLoaded', () => {
   const hash = location.hash.replace('#', '');
   if (hash) {
-    const tab = document.querySelector('.tab[data-co="' + hash + '"]');
+    const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
     if (tab) tab.click();
   }
   const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.dataset.theme = theme;
   const btn = document.querySelector('.theme-toggle');
   if (btn) {
-    btn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色';
+    btn.textContent = theme === 'dark' ? '☀ 浅色' : '☾ 深色';
     btn.addEventListener('click', () => {
       const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
       document.documentElement.dataset.theme = next;
       localStorage.setItem('theme', next);
-      btn.textContent = next === 'dark' ? '☀️ 浅色' : '🌙 深色';
+      btn.textContent = next === 'dark' ? '☀ 浅色' : '☾ 深色';
     });
   }
 });

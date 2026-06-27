@@ -140,7 +140,58 @@ function truncateSentence(text, maxLen) {
   return cut.trim() + '…';
 }
 
-// Detect the file type from a URL (used for badge in UI).
+// Extract a publication date from a news title (returns ISO string or null).
+// Handles common formats:
+//   "2025/09/08" / "2025-09-08" / "2025年09月08日"
+//   "Sep 8, 2025" / "8 Sep 2025"
+//   "Q1 2025" / "Q3 2026"
+//   "2025年9月"
+export function extractDateFromTitle(title) {
+  if (!title) return null;
+  const t = title;
+
+  // ISO-like: 2025/09/08 or 2025-09-08
+  let m = t.match(/(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+  if (m) {
+    return `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}T00:00:00Z`;
+  }
+
+  // Chinese: 2025年09月08日
+  m = t.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
+  if (m) {
+    return `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}T00:00:00Z`;
+  }
+
+  // Chinese: 2025年9月 (no day — use 1st)
+  m = t.match(/(\d{4})年(\d{1,2})月(?!(\d))?/);
+  if (m) {
+    return `${m[1]}-${m[2].padStart(2, '0')}-01T00:00:00Z`;
+  }
+
+  // "Sep 8, 2025" / "Sept. 8 2025" (English)
+  const monthMap = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
+  m = t.match(/(\bJan\b|\bFeb\b|\bMar\b|\bApr\b|\bMay\b|\bJun\b|\bJul\b|\bAug\b|\bSep\b|\bOct\b|\bNov\b|\bDec\b)\w*\s+(\d{1,2}),?\s+(\d{4})/i);
+  if (m) {
+    const month = monthMap[m[1].slice(0, 3).toLowerCase()];
+    if (month) return `${m[3]}-${String(month).padStart(2, '0')}-${m[2].padStart(2, '0')}T00:00:00Z`;
+  }
+
+  // "8 Sep 2025" (English)
+  m = t.match(/(\d{1,2})\s+(\bJan\b|\bFeb\b|\bMar\b|\bApr\b|\bMay\b|\bJun\b|\bJul\b|\bAug\b|\bSep\b|\bOct\b|\bNov\b|\bDec\b)\w*\s+(\d{4})/i);
+  if (m) {
+    const month = monthMap[m[2].slice(0, 3).toLowerCase()];
+    if (month) return `${m[3]}-${String(month).padStart(2, '0')}-${m[1].padStart(2, '0')}T00:00:00Z`;
+  }
+
+  // Q1 2025 / Q3 2026 — use middle of quarter
+  m = t.match(/Q([1-4])\s+(\d{4})/i);
+  if (m) {
+    const qMid = [+m[1]] * 3 - 1; // Q1->Feb, Q2->May, Q3->Aug, Q4->Nov
+    return `${m[2]}-${String(qMid).padStart(2, '0')}-15T00:00:00Z`;
+  }
+
+  return null;
+}
 export function fileTypeFromUrl(url) {
   if (!url) return '';
   const m = url.match(/\.([a-z0-9]+)(?:\?.*)?$/i);

@@ -16,7 +16,7 @@ import { JSDOM } from 'jsdom';
 import { fetchGoogleNewsRss, resolveGoogleNewsUrls } from './google-news.mjs';
 import { fetchEefocusNews } from './eefocus-news.mjs';
 import { fetchBingNews } from './bing-news.mjs';
-import { fetchMetaSummary } from './html-helpers.mjs';
+import { fetchMetaSummary, extractDateFromTitle } from './html-helpers.mjs';
 
 const FILE_URL_RE = /\.(pdf|docx?|xlsx?|zip|rar|jpg|jpeg|png|gif|webp|svg)$/i;
 
@@ -655,6 +655,9 @@ if (scraped.length < perCompany) {
       title: scrapedArt.title,
       url: scrapedArt.url,
       snippet,
+      // Extract publication date from title when not provided
+      published_at: extractDateFromTitle(scrapedArt.title) || null,
+      source: (() => { try { return new URL(scrapedArt.url).hostname.replace(/^www\./, ''); } catch { return ''; } })(),
     });
   }
 

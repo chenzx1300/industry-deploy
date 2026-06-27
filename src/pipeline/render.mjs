@@ -9,7 +9,6 @@ function safeMeta(value) {
   return value;
 }
 
-// Extract hostname from a URL (no scheme/path), used for source label.
 function hostnameOf(url) {
   try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return ''; }
 }
@@ -18,48 +17,56 @@ const STYLES = `
 :root {
   --bg: #ffffff;
   --surface: #ffffff;
-  --surface-soft: #f5f5f7;
+  --surface-soft: #fafafa;
   --surface-elevated: #ffffff;
-  --border: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.16);
-  --divider: rgba(0, 0, 0, 0.06);
-  --text: #1d1d1f;
-  --text-soft: #6e6e73;
-  --text-faint: #86868b;
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --accent-soft: rgba(0, 113, 227, 0.08);
-  --accent-tint: rgba(0, 113, 227, 0.04);
-  --cn-tint: #ff3b30;
-  --intl-tint: #0071e3;
+  --border: #e8e8e8;
+  --border-strong: #d0d0d0;
+  --divider: #f0f0f0;
+  --text: #1a1a1a;
+  --text-soft: #555;
+  --text-faint: #888;
+  --text-mute: #aaa;
+  --accent: #c00;
+  --accent-hover: #a00;
+  --accent-soft: #fef0f0;
+  --accent-tint: #fef5f5;
+  --intl: #1a5490;
+  --intl-soft: #f0f4f9;
+  --cn-tint: #c00;
+  --intl-tint: #1a5490;
   --highlight: #fff8e6;
+  --live: #e60012;
   --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-serif: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Songti SC', serif;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --font-serif: 'PingFang SC', 'Songti SC', 'SF Pro Display', Georgia, serif;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
-  --radius-sm: 8px;
-  --radius: 12px;
-  --radius-lg: 18px;
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
 }
 [data-theme="dark"] {
-  --bg: #000000;
-  --surface: #1c1c1e;
-  --surface-soft: #2c2c2e;
-  --surface-elevated: #2c2c2e;
+  --bg: #0e0e10;
+  --surface: #1a1a1c;
+  --surface-soft: #232325;
+  --surface-elevated: #252528;
   --border: rgba(255, 255, 255, 0.10);
   --border-strong: rgba(255, 255, 255, 0.18);
   --divider: rgba(255, 255, 255, 0.06);
   --text: #f5f5f7;
-  --text-soft: #98989d;
+  --text-soft: #a8a8ad;
   --text-faint: #6e6e73;
-  --accent: #0a84ff;
-  --accent-hover: #409cff;
-  --accent-soft: rgba(10, 132, 255, 0.16);
-  --accent-tint: rgba(10, 132, 255, 0.06);
-  --cn-tint: #ff453a;
-  --intl-tint: #0a84ff;
+  --text-mute: #555;
+  --accent: #ff3838;
+  --accent-hover: #ff5555;
+  --accent-soft: rgba(255, 56, 56, 0.12);
+  --accent-tint: rgba(255, 56, 56, 0.05);
+  --intl: #5b9dd9;
+  --intl-soft: rgba(91, 157, 217, 0.10);
+  --cn-tint: #ff3838;
+  --intl-tint: #5b9dd9;
   --highlight: #3a2e0a;
+  --live: #ff3838;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
@@ -70,221 +77,400 @@ body {
   font-family: var(--font-sans);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.5;
-  font-size: 17px;
-  letter-spacing: -0.01em;
+  line-height: 1.55;
+  font-size: 16px;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'kern' 1, 'liga' 1;
 }
-.container { max-width: 980px; margin: 0 auto; padding: 64px 32px; }
+a { color: inherit; }
 
-.theme-toggle {
-  position: fixed; top: 24px; right: 24px;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border: 1px solid var(--border);
-  padding: 8px 16px;
-  border-radius: 980px;
-  cursor: pointer;
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 500;
-  font-family: var(--font-sans);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s;
-  z-index: 10;
+/* ============ TOP BAR (live ticker) ============ */
+.topbar {
+  background: #1a1a1a;
+  color: #e5e5e5;
+  border-bottom: 1px solid #000;
 }
-[data-theme="dark"] .theme-toggle {
-  background: rgba(28, 28, 30, 0.72);
+[data-theme="dark"] .topbar { background: #050505; }
+.topbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
-.theme-toggle:hover {
-  border-color: var(--border-strong);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-.theme-toggle:active { transform: translateY(0); }
-
-header { margin-bottom: 56px; }
-.chip {
-  display: inline-block;
-  background: var(--accent-tint);
-  color: var(--accent);
-  padding: 5px 12px;
-  border-radius: 980px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  margin-bottom: 20px;
-}
-header h1 {
-  font-family: var(--font-sans);
-  font-size: 56px;
+.brand {
+  font-family: var(--font-serif);
+  font-size: 19px;
   font-weight: 700;
-  line-height: 1.05;
-  margin-bottom: 16px;
-  letter-spacing: -0.03em;
-}
-header .meta {
-  color: var(--text-soft);
-  font-size: 15px;
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-header .meta strong { color: var(--text); font-weight: 600; }
-header .meta .dot { color: var(--text-faint); }
-
-nav.tabs {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 40px 0 56px;
-}
-.region-block {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px 18px;
-  transition: border-color 0.2s;
-}
-.region-block:hover { border-color: var(--border-strong); }
-.region-block.cn { border-left: 3px solid var(--cn-tint); }
-.region-block.intl { border-left: 3px solid var(--intl-tint); }
-.region-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.region-label .flag { font-size: 14px; }
-.region-tabs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-nav.tabs button {
-  font-family: var(--font-sans);
-  background: transparent;
-  border: 1px solid transparent;
-  padding: 10px 14px;
-  cursor: pointer;
-  color: var(--text-soft);
-  font-size: 14.5px;
-  font-weight: 500;
-  border-radius: var(--radius-sm);
-  transition: all 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  text-align: left;
-  width: 100%;
-}
-nav.tabs button:hover {
-  color: var(--text);
-  background: var(--surface-soft);
-}
-nav.tabs button.active {
-  color: var(--accent);
-  background: var(--accent-tint);
-  font-weight: 600;
-}
-nav.tabs .name {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  letter-spacing: -0.02em;
+  color: #fff;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-nav.tabs .count {
+.brand-mark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--accent);
+  color: #fff;
   font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-faint);
-  background: var(--surface-soft);
-  padding: 1px 8px;
-  border-radius: 980px;
-  min-width: 24px;
-  flex-shrink: 0;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: -0.04em;
+  border-radius: 4px;
 }
-nav.tabs button.active .count {
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--live);
+  color: #fff;
+  padding: 4px 10px 4px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 1.4s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.ticker {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13.5px;
+  color: #ddd;
+  position: relative;
+  height: 24px;
+}
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 60s linear infinite;
+  padding-left: 100%;
+}
+.ticker-track span { padding: 0 24px; }
+.ticker-track span::before {
+  content: '●';
   color: var(--accent);
-  background: var(--surface);
+  margin-right: 8px;
+  font-size: 8px;
+  vertical-align: middle;
+}
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+.topbar-meta {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 4px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.theme-toggle:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
+
+/* ============ MASTHEAD (logo + main nav) ============ */
+.masthead {
+  background: var(--bg);
+  border-bottom: 2px solid var(--accent);
+}
+.masthead-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 32px 0;
+}
+.masthead-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+.masthead-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.masthead h1 {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+}
+.masthead h1 .accent { color: var(--accent); }
+.masthead .dateline {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.masthead-stats {
+  display: flex;
+  gap: 24px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+.masthead-stats .num { color: var(--accent); font-weight: 600; }
+
+/* Section tabs (region navigation) */
+.section-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+.tab-region {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 0 0;
+  margin-right: 32px;
+  position: relative;
+  padding-bottom: 12px;
+  padding-top: 8px;
+}
+.tab-region.cn { color: var(--accent); }
+.tab-region.intl { color: var(--intl); }
+.tab-region::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.2;
+  transition: opacity 0.2s;
+}
+.tab-region:last-of-type { margin-right: 0; }
+.tab-region .label {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.tab-region .count {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--text-faint);
+  font-weight: 500;
 }
 
-main section { margin-bottom: 56px; animation: fadeIn 0.3s ease; }
+/* Company tab buttons */
+.company-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 4px;
+  padding-bottom: 12px;
+  padding-top: 8px;
+}
+button.company-tab {
+  font-family: var(--font-sans);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: var(--text-soft);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+button.company-tab:hover { color: var(--text); }
+button.company-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+button.company-tab .mono-count {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 10px;
+  background: var(--surface-soft);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--text-faint);
+}
+button.company-tab.active .mono-count {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ============ MAIN CONTENT ============ */
+main { padding: 32px 0 64px; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+main section { animation: fadeIn 0.25s ease; }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
-main section h2 {
-  font-family: var(--font-sans);
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0 0 4px;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
 
-.summary {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 36px 40px 32px;
-  margin-bottom: 56px;
+/* ============ HERO (featured news) ============ */
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--divider);
 }
-.summary-label {
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  margin-bottom: 28px;
+.hero-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.hero-meta {
   display: flex;
   align-items: center;
   gap: 12px;
-}
-.summary-label::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--text-faint);
-}
-.summary-list {
-  list-style: none;
-  margin: 0;
-  counter-reset: summary;
-}
-.summary-list li {
-  padding: 16px 0;
-  border-top: 1px solid var(--divider);
-  display: flex;
-  gap: 20px;
-  align-items: baseline;
-  font-size: 17px;
-  line-height: 1.45;
-  color: var(--text);
-  letter-spacing: -0.01em;
-}
-.summary-list li:first-child { border-top: none; padding-top: 4px; }
-.summary-list .num {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 12px;
   color: var(--text-faint);
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+}
+.hero-meta .time { color: var(--accent); font-weight: 600; }
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.hero-title a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+.hero-title a:hover { color: var(--accent); }
+.hero-snippet {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-soft);
+  margin: 0;
+}
+.hero-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.hero-arrow {
+  font-size: 14px;
+  color: var(--text-mute);
+  margin-left: 6px;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-left: 24px;
+  border-left: 1px solid var(--divider);
+}
+.hero-side-item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--divider);
+}
+.hero-side-item:last-child { border-bottom: none; }
+.hero-side-item .time {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 6px;
+}
+.hero-side-item .title {
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--text);
+}
+.hero-side-item .title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.hero-side-item .title a:hover { color: var(--accent); }
+
+/* ============ SUMMARY (本周要点) ============ */
+.summary {
+  background: var(--surface-soft);
+  border-top: 3px solid var(--accent);
+  padding: 24px 28px 20px;
+  margin-bottom: 40px;
+}
+.summary-label {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.summary-label::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: var(--accent);
+}
+.summary-list {
+  list-style: none;
+  margin: 0 0 16px;
+}
+.summary-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--divider);
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.summary-list li:last-child { border-bottom: none; }
+.summary-list .num {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
   flex-shrink: 0;
   min-width: 18px;
 }
@@ -294,151 +480,126 @@ main section h2 {
   transition: color 0.2s;
 }
 .summary-list a:hover { color: var(--accent); }
-.summary .stats {
+.summary-stats {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 12px;
   color: var(--text-faint);
-  letter-spacing: 0.02em;
-  padding-top: 24px;
-  margin-top: 16px;
+  padding-top: 12px;
   border-top: 1px solid var(--divider);
+  display: flex;
+  gap: 16px;
 }
 
+/* ============ COMPANY HEADER ============ */
 .company-header {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--accent);
   margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--divider);
 }
 .company-header .logo {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: -0.02em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 .company-header .name-block { flex: 1; min-width: 0; }
 .company-header h2 {
-  font-family: var(--font-sans);
-  font-size: 32px;
+  font-family: var(--font-serif);
+  font-size: 26px;
   font-weight: 700;
-  margin: 0 0 4px;
-  letter-spacing: -0.02em;
+  margin: 0;
+  letter-spacing: -0.01em;
   line-height: 1.1;
 }
 .company-header .domain {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-faint);
+  letter-spacing: 0.02em;
 }
 
-ul.news-list { list-style: none; }
-li.news-item {
-  padding: 36px 0;
-  border-top: 1px solid var(--divider);
-  transition: background 0.2s, padding 0.2s;
+/* ============ NEWS GRID (3 columns) ============ */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 32px;
 }
-li.news-item:first-child { border-top: none; padding-top: 12px; }
-li.news-item:last-child { padding-bottom: 12px; }
-li.news-item:hover {
-  background: linear-gradient(90deg, var(--surface-soft) 0%, transparent 60%);
+.news-card {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--divider);
 }
-
-.news-date {
+.news-card-time {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  margin-bottom: 14px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
 }
-.news-date::before {
+.news-card-time::before {
   content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
   display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: var(--border-strong);
 }
-
-a.news-title {
+.news-card-title {
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.005em;
+}
+.news-card-title a {
   color: var(--text);
   text-decoration: none;
-  font-size: 26px;
-  font-weight: 600;
-  display: inline;
-  line-height: 1.25;
-  font-family: var(--font-sans);
-  letter-spacing: -0.02em;
-  transition: color 0.2s ease;
+  transition: color 0.2s;
 }
-li.news-item:hover a.news-title { color: var(--accent); }
-a.news-title .arrow {
+.news-card-title a:hover { color: var(--accent); }
+.news-card-snippet {
   font-size: 14px;
-  font-weight: 400;
-  color: var(--text-faint);
-  margin-left: 6px;
-  transition: color 0.2s ease, transform 0.2s ease;
-  display: inline-block;
-}
-li.news-item:hover a.news-title .arrow {
-  color: var(--accent);
-  transform: translate(2px, -2px);
-}
-
-p.news-snippet {
+  line-height: 1.55;
   color: var(--text-soft);
-  font-size: 16px;
-  margin: 14px 0 16px;
-  line-height: 1.6;
+  margin-bottom: 10px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  max-width: 68ch;
 }
-
-.news-meta {
+.news-card-footer {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
-  color: var(--text-faint);
-}
-.news-source {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 12px;
-  color: var(--text-soft);
-  letter-spacing: -0.005em;
-}
-
-.news-badges {
-  display: flex;
-  gap: 6px;
-  margin: 12px 0 0;
+  font-size: 11px;
+  color: var(--text-faint);
+  flex-wrap: wrap;
 }
 .news-badge {
   display: inline-flex;
   align-items: center;
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  padding: 3px 8px;
-  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 3px;
   border: 1px solid var(--border);
   background: var(--surface);
   text-transform: uppercase;
@@ -454,65 +615,77 @@ p.news-snippet {
   border-color: var(--accent-soft);
   background: var(--accent-tint);
 }
+
 .empty {
   color: var(--text-soft);
   padding: 40px 0;
   text-align: center;
-  font-size: 15px;
-}
-footer {
-  margin-top: 96px;
-  padding-top: 28px;
-  border-top: 1px solid var(--divider);
-  color: var(--text-faint);
-  font-size: 13px;
-  text-align: center;
+  font-size: 14px;
 }
 
+/* ============ FOOTER ============ */
+footer {
+  background: #1a1a1a;
+  color: #888;
+  margin-top: 64px;
+  padding: 32px;
+  font-size: 13px;
+  text-align: center;
+  border-top: 2px solid var(--accent);
+}
+[data-theme="dark"] footer { background: #050505; }
+footer .mono {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  color: #aaa;
+}
+
+/* ============ HOMEPAGE (industry cards) ============ */
 .industry-grid {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
-  margin-top: 40px;
+  margin-top: 32px;
 }
 .industry-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-top: 3px solid var(--accent);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
 }
 .industry-card:hover {
   border-color: var(--accent);
-  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
 .industry-card a {
   display: block;
-  padding: 32px;
+  padding: 28px;
   text-decoration: none;
   color: var(--text);
 }
 .industry-card h3 {
-  font-family: var(--font-sans);
-  font-size: 26px;
+  font-family: var(--font-serif);
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 10px;
-  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 .industry-card .stats {
   color: var(--text-soft);
-  font-size: 14px;
+  font-size: 13px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
+.industry-card .stats .num { color: var(--accent); font-weight: 600; }
 .industry-card time {
   display: block;
   color: var(--text-faint);
-  font-size: 12px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
   margin-top: 16px;
-  padding-top: 16px;
+  padding-top: 14px;
   border-top: 1px solid var(--divider);
 }
 .empty-state {
@@ -521,31 +694,25 @@ footer {
   color: var(--text-soft);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-}
-.empty-state code {
-  font-family: ui-monospace, 'SF Mono', 'Menlo', monospace;
-  background: var(--surface-soft);
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 13px;
+  border-top: 3px solid var(--accent);
 }
 
-@media (max-width: 640px) {
-  .container { padding: 48px 20px; }
-  header h1 { font-size: 36px; }
-  .region-tabs { grid-template-columns: 1fr; }
-  main section h2 { font-size: 28px; }
-  .theme-toggle { top: 16px; right: 16px; padding: 6px 12px; font-size: 12px; }
-  .industry-grid { grid-template-columns: 1fr; }
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 24px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .masthead h1 { font-size: 32px; }
+  .hero-title { font-size: 28px; }
+  .topbar-inner, .masthead-inner, .container { padding-left: 20px; padding-right: 20px; }
+  .ticker { display: none; }
 }
 `;
 
 const SCRIPT = `
-document.querySelectorAll('.tab').forEach(tab => {
+document.querySelectorAll('.company-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     const target = tab.dataset.co;
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('section[data-co]').forEach(s => s.hidden = s.dataset.co !== target);
     tab.classList.add('active');
     history.replaceState(null, '', '#' + target);
@@ -554,19 +721,19 @@ document.querySelectorAll('.tab').forEach(tab => {
 window.addEventListener('DOMContentLoaded', () => {
   const hash = location.hash.replace('#', '');
   if (hash) {
-    const tab = document.querySelector('.tab[data-co="' + hash + '"]');
+    const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
     if (tab) tab.click();
   }
   const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.dataset.theme = theme;
   const btn = document.querySelector('.theme-toggle');
   if (btn) {
-    btn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色';
+    btn.textContent = theme === 'dark' ? '☀ 浅色' : '☾ 深色';
     btn.addEventListener('click', () => {
       const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
       document.documentElement.dataset.theme = next;
       localStorage.setItem('theme', next);
-      btn.textContent = next === 'dark' ? '☀️ 浅色' : '🌙 深色';
+      btn.textContent = next === 'dark' ? '☀ 浅色' : '☾ 深色';
     });
   }
 });
@@ -588,30 +755,91 @@ ${body}
 </html>`;
 }
 
-// Render an SVG monogram (1-2 chars in a colored rounded square).
-// Use as a stand-in for the company logo when we can't fetch the real one.
 function monogramSvg(text, color) {
-  return `<svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="${escapeHtml(color)}"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">${escapeHtml(text)}</text>
+  return `<svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="${escapeHtml(color)}"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">${escapeHtml(text)}</text>
   </svg>`;
 }
 
-// Build a "this week's highlights" summary from the top 3 headlines.
+function topBar(latestNews) {
+  const tickerItems = latestNews.slice(0, 5).map(n =>
+    `<span>${escapeHtml(n.title)}</span>`
+  ).join('');
+  const now = new Date();
+  const dateline = `${now.getFullYear()}年${String(now.getMonth() + 1).padStart(2, '0')}月${String(now.getDate()).padStart(2, '0')}日 · 周${'日一二三四五六'[now.getDay()]}`;
+  return `
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">雷</span>
+      行业雷达
+      <span class="live-pill"><span class="live-dot"></span>LIVE</span>
+    </div>
+    <div class="ticker"><div class="ticker-track">${tickerItems}</div></div>
+    <div class="topbar-meta">
+      <span>${escapeHtml(dateline)}</span>
+      <button class="theme-toggle" aria-label="切换主题">☾ 深色</button>
+    </div>
+  </div>
+</div>`;
+}
+
+// Build a hero (featured news + 3-4 secondary on the right)
+function buildHero(news, promptName) {
+  if (!news || news.length === 0) return '';
+  const main = news[0];
+  const sides = news.slice(1, 5);
+  const isFile = isFileUrl(main.url);
+  const mainTime = formatTimeLabel(main.published_at);
+  const mainSnippet = (main.snippet && !isFile) ? main.snippet : '';
+
+  return `
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">${escapeHtml(mainTime)}</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="${escapeHtml(main.url)}" target="_blank" rel="noopener">${escapeHtml(main.title)}<span class="hero-arrow">↗</span></a></h2>
+    ${mainSnippet ? `<p class="hero-snippet">${escapeHtml(mainSnippet)}</p>` : ''}
+    <div class="hero-source">${escapeHtml(hostnameOf(main.url) || main.source || '')}</div>
+  </div>
+  <div class="hero-side">
+    ${sides.map(n => `
+      <div class="hero-side-item">
+        <span class="time">${escapeHtml(formatTimeLabel(n.published_at))}</span>
+        <div class="title"><a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title)}</a></div>
+      </div>
+    `).join('')}
+  </div>
+</div>`;
+}
+
+function formatTimeLabel(isoString) {
+  const d = new Date(isoString);
+  if (isNaN(d.getTime())) return '';
+  const now = new Date();
+  const diffMin = Math.floor((now - d) / 60000);
+  if (diffMin < 60) return `${Math.max(1, diffMin)}分钟前`;
+  if (diffMin < 1440) return `${Math.floor(diffMin / 60)}小时前`;
+  const diffDay = Math.floor(diffMin / 1440);
+  if (diffDay < 7) return `${diffDay}天前`;
+  return formatDate(isoString);
+}
+
 function buildSummary(company) {
   if (!company.news || company.news.length === 0) {
     return '<div class="empty">暂无该公司的近期新闻。</div>';
   }
-  const top = company.news.slice(0, 3);
+  const top = company.news.slice(0, 5);
   const items = top.map((n, i) => {
     const num = String(i + 1).padStart(2, '0');
-    return `<li><span class="num">${num}</span><a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title)}</a></li>`;
+    const t = (n.snippet && !isFileUrl(n.url)) ? n.snippet : n.title;
+    return `<li><span class="num">${num}</span><a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(t)}</a></li>`;
   }).join('');
-  const lastDate = formatDate(company.news[0].published_at);
-  const stats = lastDate
-    ? `${company.news.length} 条新闻 · 最近 ${lastDate}`
-    : `${company.news.length} 条新闻`;
-  return `<div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list">${items}</ol><div class="stats">${escapeHtml(stats)}</div></div>`;
+  const total = company.news.length;
+  return `<div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list">${items}</ol><div class="summary-stats"><span>${total} 条</span><span>${escapeHtml(company.name)}</span></div></div>`;
 }
 
 export function renderIndustryPage(data) {
@@ -619,125 +847,185 @@ export function renderIndustryPage(data) {
   const intl = data.companies.filter(c => c.region === 'intl');
   const totalNews = data.companies.reduce((sum, c) => sum + c.news.length, 0);
   const now = new Date(data.generated_at);
+  const promptName = data.prompt || '行业新闻';
 
-  const tabsHtml = (companies, region) =>
-    `<div class="region-block ${region}">
-      <div class="region-label">${region === 'cn' ? '中国头部' : '国际头部'}</div>
-      <div class="region-tabs">
-        ${companies.map(c =>
-          `<button class="tab" data-co="${escapeHtml(c.id)}"><span class="name">${escapeHtml(c.name)}</span><span class="count">${c.news.length}</span></button>`
-        ).join('')}
-      </div>
-    </div>`;
+  // Collect latest news across all companies for the ticker
+  const latestNews = [];
+  for (const c of data.companies) {
+    for (const n of c.news.slice(0, 2)) latestNews.push(n);
+  }
+  // Sort by date (most recent first) for ticker
+  latestNews.sort((a, b) => {
+    const da = new Date(a.published_at || 0);
+    const db = new Date(b.published_at || 0);
+    return db - da;
+  });
 
-  const sectionsHtml = data.companies.map((c, idx) => {
-    const newsList = c.news.length === 0
+  // Build hero — top 5 news from default company
+  const defaultCo = data.companies.find(c => c.id === data.default_id) || data.companies[0];
+  const heroHtml = buildHero(defaultCo.news, promptName);
+
+  // Section tabs (region-level)
+  const regionTabsHtml = `
+<nav class="section-tabs">
+  <div class="tab-region cn">
+    <span class="label">中国头部</span>
+    <span class="count">${cn.length} 家公司</span>
+  </div>
+  <div class="tab-region intl">
+    <span class="label">国际头部</span>
+    <span class="count">${intl.length} 家公司</span>
+  </div>
+</nav>`;
+
+  // Company tabs — separate cn and intl
+  const cnTabs = cn.map(c =>
+    `<button class="company-tab" data-co="${escapeHtml(c.id)}">${escapeHtml(c.name)}<span class="mono-count">${c.news.length}</span></button>`
+  ).join('');
+  const intlTabs = intl.map(c =>
+    `<button class="company-tab" data-co="${escapeHtml(c.id)}">${escapeHtml(c.name)}<span class="mono-count">${c.news.length}</span></button>`
+  ).join('');
+
+  // Per-company news sections (each renders its own grid)
+  const sectionsHtml = data.companies.map((c) => {
+    const newsCards = c.news.length === 0
       ? '<p class="empty">暂无该公司的近期新闻。</p>'
-      : `<ul class="news-list">
-        ${c.news.map(n => {
+      : `<div class="news-grid">${c.news.map(n => {
           const isFile = isFileUrl(n.url);
-          const snippet = (n.snippet && !isFile) ? escapeHtml(n.snippet) : '';
-          const source = safeMeta(n.source) || hostnameOf(n.url);
-          const date = formatDate(n.published_at);
-
-          // Build badge cluster: file type (PDF/DOC) + news type (新闻稿/文章/视频)
+          const snippet = (n.snippet && !isFile) ? n.snippet : '';
           const fileType = isFile ? fileTypeFromUrl(n.url) : '';
           const newsType = !isFile ? newsTypeFromUrl(n.url, n.title) : '';
           const badges = [];
           if (fileType) badges.push(`<span class="news-badge badge-file">${escapeHtml(fileType)}</span>`);
           if (newsType) badges.push(`<span class="news-badge badge-type">${escapeHtml(newsType)}</span>`);
-          const badgeHtml = badges.length
-            ? `<div class="news-badges">${badges.join('')}</div>`
-            : '';
-
-          // Date as small uppercase mono caption above the title (newspaper style)
-          const dateHtml = date
-            ? `<div class="news-date">${escapeHtml(date)}</div>`
-            : '';
-          // Source line with hostname + favicon
-          const sourceHtml = source
-            ? `<div class="news-meta">${escapeHtml(source)}</div>`
-            : '';
+          const timeLabel = formatTimeLabel(n.published_at);
           return `
-          <li class="news-item">
-            ${dateHtml}
-            <a class="news-title" href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title)}<span class="arrow">↗</span></a>
-            ${badgeHtml}
-            ${snippet ? `<p class="news-snippet">${snippet}</p>` : ''}
-            ${sourceHtml}
-          </li>`;
-        }).join('')}
-      </ul>`;
+<article class="news-card">
+  ${timeLabel ? `<div class="news-card-time">${escapeHtml(timeLabel)}</div>` : ''}
+  <h3 class="news-card-title"><a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title)}</a></h3>
+  ${snippet ? `<p class="news-card-snippet">${escapeHtml(snippet)}</p>` : ''}
+  <div class="news-card-footer">
+    ${badges.join('')}
+    <span>${escapeHtml(hostnameOf(n.url) || n.source || '')}</span>
+  </div>
+</article>`;
+        }).join('')}</div>`;
+
     const monoChar = (c.monogram || c.name.charAt(0)).slice(0, 2);
-    const monoColor = c.monogram_color || '#475569';
-    // Default visible section: data.default_id if set, else first company.
+    const monoColor = c.monogram_color || (c.region === 'cn' ? '#c00' : '#1a5490');
     const defaultId = data.default_id || data.companies[0]?.id;
     const isVisible = c.id === defaultId;
+    const isCn = c.region === 'cn';
     return `
-    <section data-co="${escapeHtml(c.id)}"${isVisible ? '' : ' hidden'}>
-      <div class="company-header">
-        ${monogramSvg(monoChar, monoColor)}
-        <div class="name-block">
-          <h2>${escapeHtml(c.name)}</h2>
-          <span class="domain">${escapeHtml(c.domain)}</span>
-        </div>
-      </div>
-      ${buildSummary(c)}
-      ${newsList}
-    </section>`;
+<section data-co="${escapeHtml(c.id)}"${isVisible ? '' : ' hidden'}>
+  <div class="company-header">
+    ${monogramSvg(monoChar, monoColor)}
+    <div class="name-block">
+      <h2>${escapeHtml(c.name)}</h2>
+      <span class="domain">${escapeHtml(c.domain)}${isCn ? ' · 中国' : ' · International'}</span>
+    </div>
+  </div>
+  ${buildSummary(c)}
+  ${newsCards}
+</section>`;
   }).join('');
 
-  const body = `
-<div class="container">
-  <header>
-    <span class="chip">行业雷达</span>
-    <h1>${escapeHtml(data.prompt)}</h1>
-    <p class="meta">
-      <span><strong>6 家头部公司</strong></span>
-      <span>${totalNews} 条新闻</span>
-      <span>生成于 ${formatDate(data.generated_at)}</span>
-    </p>
-  </header>
-  <nav class="tabs">
-    ${tabsHtml(cn, 'cn')}
-    ${tabsHtml(intl, 'intl')}
-  </nav>
-  <main>${sectionsHtml}</main>
-  <footer>数据来源：Google News · 生成于 ${formatDate(data.generated_at)} · 仅供参考</footer>
+  // Group company tabs by region (CN first, then INTL)
+  const companyTabsHtml = `
+<div class="company-tabs">
+  ${cnTabs}
+  ${intlTabs}
 </div>`;
 
-  return pageShell(data.prompt, body);
+  // Masthead title
+  const titleParts = promptName.split(/[·・•]/);
+  const mainTitle = titleParts[0].trim();
+  const subTitle = titleParts.slice(1).map(s => s.trim()).filter(Boolean).join(' · ');
+  const dateline = `${now.getFullYear()}年${String(now.getMonth() + 1).padStart(2, '0')}月${String(now.getDate()).padStart(2, '0')}日 · 周${'日一二三四五六'[now.getDay()]}`;
+
+  const body = `
+${topBar(latestNews)}
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="masthead-title-block">
+        <h1>${escapeHtml(mainTitle)}${subTitle ? `<span class="accent"> · ${escapeHtml(subTitle)}</span>` : ''}</h1>
+        <div class="dateline">${escapeHtml(dateline)} · 第 ${data.companies.length} 期 · ${totalNews} 条新闻</div>
+      </div>
+      <div class="masthead-stats">
+        <span><span class="num">${cn.length}</span> 中国头部</span>
+        <span><span class="num">${intl.length}</span> 国际头部</span>
+        <span><span class="num">${totalNews}</span> 总新闻</span>
+      </div>
+    </div>
+    ${regionTabsHtml}
+    ${companyTabsHtml}
+  </div>
+</header>
+<main>
+  <div class="container">
+    ${heroHtml}
+    ${sectionsHtml}
+  </div>
+</main>
+<footer>
+  行业雷达 · 头部公司新闻聚合 · 数据来自各公司新闻中心 · 仅供研究参考<br>
+  <span class="mono">构建于 ${escapeHtml(formatDate(data.generated_at))} · GitHub Pages</span>
+</footer>`;
+
+  return pageShell(promptName, body);
 }
 
 export function renderHomepage(manifest) {
-  const cards = manifest.industries.map(i => `
+  const cards = manifest.industries.map(i => {
+    const accentColor = '#c00';
+    return `
     <li class="industry-card">
       <a href="${escapeHtml(i.slug)}/">
         <h3>${escapeHtml(i.prompt)}</h3>
-        <span class="stats">
-          <span>${i.company_count} 家公司</span>
+        <div class="stats">
+          <span><span class="num">${i.company_count}</span> 家公司</span>
           <span>·</span>
-          <span>${i.news_count} 条新闻</span>
-        </span>
-        <time>生成于 ${formatDate(i.generated_at)}</time>
+          <span><span class="num">${i.news_count}</span> 条新闻</span>
+        </div>
+        <time>更新于 ${escapeHtml(formatDate(i.generated_at))}</time>
       </a>
-    </li>
-  `).join('');
+    </li>`;
+  }).join('');
 
   const inner = manifest.industries.length === 0
     ? `<div class="empty-state">暂无已生成的行业。<br><br>运行 <code>npm run build -- "&lt;行业&gt;"</code> 生成第一个。</div>`
     : `<ul class="industry-grid">${cards}</ul>`;
 
+  const latestNews = [];
+  // We can't aggregate across industries here, but show empty ticker for home
+
   const body = `
-<div class="container">
-  <header>
-    <span class="chip">行业雷达</span>
-    <h1>行业新闻雷达</h1>
-    <p class="meta"><span>头部公司的最新动态</span><span class="dot">·</span><span>本地生成</span></p>
-  </header>
-  <main>${inner}</main>
-  <footer>本地生成 · 数据来源：Google News</footer>
-</div>`;
+${topBar(latestNews)}
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="masthead-title-block">
+        <h1>行业新闻<span class="accent">雷达</span></h1>
+        <div class="dateline">头部公司最新动态 · 每日更新</div>
+      </div>
+      <div class="masthead-stats">
+        <span><span class="num">${manifest.industries.length}</span> 行业</span>
+        <span><span class="num">${manifest.industries.reduce((s,i)=>s+i.company_count,0)}</span> 公司</span>
+        <span><span class="num">${manifest.industries.reduce((s,i)=>s+i.news_count,0)}</span> 新闻</span>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <ul class="industry-grid">${cards}</ul>
+  </div>
+</main>
+<footer>
+  行业雷达 · 头部公司新闻聚合 · 数据来自各公司新闻中心 · 仅供研究参考<br>
+  <span class="mono">GitHub Pages · ${escapeHtml(formatDate(new Date().toISOString()))}</span>
+</footer>`;
 
   return pageShell('行业新闻雷达', body);
 }

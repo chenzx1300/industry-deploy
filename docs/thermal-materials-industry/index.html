@@ -8,48 +8,56 @@
 :root {
   --bg: #ffffff;
   --surface: #ffffff;
-  --surface-soft: #f5f5f7;
+  --surface-soft: #fafafa;
   --surface-elevated: #ffffff;
-  --border: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.16);
-  --divider: rgba(0, 0, 0, 0.06);
-  --text: #1d1d1f;
-  --text-soft: #6e6e73;
-  --text-faint: #86868b;
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --accent-soft: rgba(0, 113, 227, 0.08);
-  --accent-tint: rgba(0, 113, 227, 0.04);
-  --cn-tint: #ff3b30;
-  --intl-tint: #0071e3;
+  --border: #e8e8e8;
+  --border-strong: #d0d0d0;
+  --divider: #f0f0f0;
+  --text: #1a1a1a;
+  --text-soft: #555;
+  --text-faint: #888;
+  --text-mute: #aaa;
+  --accent: #c00;
+  --accent-hover: #a00;
+  --accent-soft: #fef0f0;
+  --accent-tint: #fef5f5;
+  --intl: #1a5490;
+  --intl-soft: #f0f4f9;
+  --cn-tint: #c00;
+  --intl-tint: #1a5490;
   --highlight: #fff8e6;
+  --live: #e60012;
   --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-serif: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Songti SC', serif;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --font-serif: 'PingFang SC', 'Songti SC', 'SF Pro Display', Georgia, serif;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
-  --radius-sm: 8px;
-  --radius: 12px;
-  --radius-lg: 18px;
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
 }
 [data-theme="dark"] {
-  --bg: #000000;
-  --surface: #1c1c1e;
-  --surface-soft: #2c2c2e;
-  --surface-elevated: #2c2c2e;
+  --bg: #0e0e10;
+  --surface: #1a1a1c;
+  --surface-soft: #232325;
+  --surface-elevated: #252528;
   --border: rgba(255, 255, 255, 0.10);
   --border-strong: rgba(255, 255, 255, 0.18);
   --divider: rgba(255, 255, 255, 0.06);
   --text: #f5f5f7;
-  --text-soft: #98989d;
+  --text-soft: #a8a8ad;
   --text-faint: #6e6e73;
-  --accent: #0a84ff;
-  --accent-hover: #409cff;
-  --accent-soft: rgba(10, 132, 255, 0.16);
-  --accent-tint: rgba(10, 132, 255, 0.06);
-  --cn-tint: #ff453a;
-  --intl-tint: #0a84ff;
+  --text-mute: #555;
+  --accent: #ff3838;
+  --accent-hover: #ff5555;
+  --accent-soft: rgba(255, 56, 56, 0.12);
+  --accent-tint: rgba(255, 56, 56, 0.05);
+  --intl: #5b9dd9;
+  --intl-soft: rgba(91, 157, 217, 0.10);
+  --cn-tint: #ff3838;
+  --intl-tint: #5b9dd9;
   --highlight: #3a2e0a;
+  --live: #ff3838;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
@@ -60,221 +68,400 @@ body {
   font-family: var(--font-sans);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.5;
-  font-size: 17px;
-  letter-spacing: -0.01em;
+  line-height: 1.55;
+  font-size: 16px;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'kern' 1, 'liga' 1;
 }
-.container { max-width: 980px; margin: 0 auto; padding: 64px 32px; }
+a { color: inherit; }
 
-.theme-toggle {
-  position: fixed; top: 24px; right: 24px;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border: 1px solid var(--border);
-  padding: 8px 16px;
-  border-radius: 980px;
-  cursor: pointer;
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 500;
-  font-family: var(--font-sans);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s;
-  z-index: 10;
+/* ============ TOP BAR (live ticker) ============ */
+.topbar {
+  background: #1a1a1a;
+  color: #e5e5e5;
+  border-bottom: 1px solid #000;
 }
-[data-theme="dark"] .theme-toggle {
-  background: rgba(28, 28, 30, 0.72);
+[data-theme="dark"] .topbar { background: #050505; }
+.topbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
-.theme-toggle:hover {
-  border-color: var(--border-strong);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-.theme-toggle:active { transform: translateY(0); }
-
-header { margin-bottom: 56px; }
-.chip {
-  display: inline-block;
-  background: var(--accent-tint);
-  color: var(--accent);
-  padding: 5px 12px;
-  border-radius: 980px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  margin-bottom: 20px;
-}
-header h1 {
-  font-family: var(--font-sans);
-  font-size: 56px;
+.brand {
+  font-family: var(--font-serif);
+  font-size: 19px;
   font-weight: 700;
-  line-height: 1.05;
-  margin-bottom: 16px;
-  letter-spacing: -0.03em;
-}
-header .meta {
-  color: var(--text-soft);
-  font-size: 15px;
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-header .meta strong { color: var(--text); font-weight: 600; }
-header .meta .dot { color: var(--text-faint); }
-
-nav.tabs {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 40px 0 56px;
-}
-.region-block {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px 18px;
-  transition: border-color 0.2s;
-}
-.region-block:hover { border-color: var(--border-strong); }
-.region-block.cn { border-left: 3px solid var(--cn-tint); }
-.region-block.intl { border-left: 3px solid var(--intl-tint); }
-.region-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.region-label .flag { font-size: 14px; }
-.region-tabs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-nav.tabs button {
-  font-family: var(--font-sans);
-  background: transparent;
-  border: 1px solid transparent;
-  padding: 10px 14px;
-  cursor: pointer;
-  color: var(--text-soft);
-  font-size: 14.5px;
-  font-weight: 500;
-  border-radius: var(--radius-sm);
-  transition: all 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  text-align: left;
-  width: 100%;
-}
-nav.tabs button:hover {
-  color: var(--text);
-  background: var(--surface-soft);
-}
-nav.tabs button.active {
-  color: var(--accent);
-  background: var(--accent-tint);
-  font-weight: 600;
-}
-nav.tabs .name {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  letter-spacing: -0.02em;
+  color: #fff;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-nav.tabs .count {
+.brand-mark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--accent);
+  color: #fff;
   font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-faint);
-  background: var(--surface-soft);
-  padding: 1px 8px;
-  border-radius: 980px;
-  min-width: 24px;
-  flex-shrink: 0;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: -0.04em;
+  border-radius: 4px;
 }
-nav.tabs button.active .count {
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--live);
+  color: #fff;
+  padding: 4px 10px 4px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 1.4s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.ticker {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13.5px;
+  color: #ddd;
+  position: relative;
+  height: 24px;
+}
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 60s linear infinite;
+  padding-left: 100%;
+}
+.ticker-track span { padding: 0 24px; }
+.ticker-track span::before {
+  content: '●';
   color: var(--accent);
-  background: var(--surface);
+  margin-right: 8px;
+  font-size: 8px;
+  vertical-align: middle;
+}
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+.topbar-meta {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 4px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.theme-toggle:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
+
+/* ============ MASTHEAD (logo + main nav) ============ */
+.masthead {
+  background: var(--bg);
+  border-bottom: 2px solid var(--accent);
+}
+.masthead-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 32px 0;
+}
+.masthead-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+.masthead-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.masthead h1 {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+}
+.masthead h1 .accent { color: var(--accent); }
+.masthead .dateline {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.masthead-stats {
+  display: flex;
+  gap: 24px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+.masthead-stats .num { color: var(--accent); font-weight: 600; }
+
+/* Section tabs (region navigation) */
+.section-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+.tab-region {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 0 0;
+  margin-right: 32px;
+  position: relative;
+  padding-bottom: 12px;
+  padding-top: 8px;
+}
+.tab-region.cn { color: var(--accent); }
+.tab-region.intl { color: var(--intl); }
+.tab-region::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.2;
+  transition: opacity 0.2s;
+}
+.tab-region:last-of-type { margin-right: 0; }
+.tab-region .label {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.tab-region .count {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--text-faint);
+  font-weight: 500;
 }
 
-main section { margin-bottom: 56px; animation: fadeIn 0.3s ease; }
+/* Company tab buttons */
+.company-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 4px;
+  padding-bottom: 12px;
+  padding-top: 8px;
+}
+button.company-tab {
+  font-family: var(--font-sans);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: var(--text-soft);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+button.company-tab:hover { color: var(--text); }
+button.company-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+button.company-tab .mono-count {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 10px;
+  background: var(--surface-soft);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--text-faint);
+}
+button.company-tab.active .mono-count {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ============ MAIN CONTENT ============ */
+main { padding: 32px 0 64px; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+main section { animation: fadeIn 0.25s ease; }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
-main section h2 {
-  font-family: var(--font-sans);
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0 0 4px;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
 
-.summary {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 36px 40px 32px;
-  margin-bottom: 56px;
+/* ============ HERO (featured news) ============ */
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--divider);
 }
-.summary-label {
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  margin-bottom: 28px;
+.hero-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.hero-meta {
   display: flex;
   align-items: center;
   gap: 12px;
-}
-.summary-label::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--text-faint);
-}
-.summary-list {
-  list-style: none;
-  margin: 0;
-  counter-reset: summary;
-}
-.summary-list li {
-  padding: 16px 0;
-  border-top: 1px solid var(--divider);
-  display: flex;
-  gap: 20px;
-  align-items: baseline;
-  font-size: 17px;
-  line-height: 1.45;
-  color: var(--text);
-  letter-spacing: -0.01em;
-}
-.summary-list li:first-child { border-top: none; padding-top: 4px; }
-.summary-list .num {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 12px;
   color: var(--text-faint);
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+}
+.hero-meta .time { color: var(--accent); font-weight: 600; }
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.hero-title a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+.hero-title a:hover { color: var(--accent); }
+.hero-snippet {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-soft);
+  margin: 0;
+}
+.hero-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.hero-arrow {
+  font-size: 14px;
+  color: var(--text-mute);
+  margin-left: 6px;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-left: 24px;
+  border-left: 1px solid var(--divider);
+}
+.hero-side-item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--divider);
+}
+.hero-side-item:last-child { border-bottom: none; }
+.hero-side-item .time {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 6px;
+}
+.hero-side-item .title {
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--text);
+}
+.hero-side-item .title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.hero-side-item .title a:hover { color: var(--accent); }
+
+/* ============ SUMMARY (本周要点) ============ */
+.summary {
+  background: var(--surface-soft);
+  border-top: 3px solid var(--accent);
+  padding: 24px 28px 20px;
+  margin-bottom: 40px;
+}
+.summary-label {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.summary-label::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: var(--accent);
+}
+.summary-list {
+  list-style: none;
+  margin: 0 0 16px;
+}
+.summary-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--divider);
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.summary-list li:last-child { border-bottom: none; }
+.summary-list .num {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
   flex-shrink: 0;
   min-width: 18px;
 }
@@ -284,151 +471,126 @@ main section h2 {
   transition: color 0.2s;
 }
 .summary-list a:hover { color: var(--accent); }
-.summary .stats {
+.summary-stats {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 12px;
   color: var(--text-faint);
-  letter-spacing: 0.02em;
-  padding-top: 24px;
-  margin-top: 16px;
+  padding-top: 12px;
   border-top: 1px solid var(--divider);
+  display: flex;
+  gap: 16px;
 }
 
+/* ============ COMPANY HEADER ============ */
 .company-header {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--accent);
   margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--divider);
 }
 .company-header .logo {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: -0.02em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 .company-header .name-block { flex: 1; min-width: 0; }
 .company-header h2 {
-  font-family: var(--font-sans);
-  font-size: 32px;
+  font-family: var(--font-serif);
+  font-size: 26px;
   font-weight: 700;
-  margin: 0 0 4px;
-  letter-spacing: -0.02em;
+  margin: 0;
+  letter-spacing: -0.01em;
   line-height: 1.1;
 }
 .company-header .domain {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-faint);
+  letter-spacing: 0.02em;
 }
 
-ul.news-list { list-style: none; }
-li.news-item {
-  padding: 36px 0;
-  border-top: 1px solid var(--divider);
-  transition: background 0.2s, padding 0.2s;
+/* ============ NEWS GRID (3 columns) ============ */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 32px;
 }
-li.news-item:first-child { border-top: none; padding-top: 12px; }
-li.news-item:last-child { padding-bottom: 12px; }
-li.news-item:hover {
-  background: linear-gradient(90deg, var(--surface-soft) 0%, transparent 60%);
+.news-card {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--divider);
 }
-
-.news-date {
+.news-card-time {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  margin-bottom: 14px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
 }
-.news-date::before {
+.news-card-time::before {
   content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
   display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: var(--border-strong);
 }
-
-a.news-title {
+.news-card-title {
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.005em;
+}
+.news-card-title a {
   color: var(--text);
   text-decoration: none;
-  font-size: 26px;
-  font-weight: 600;
-  display: inline;
-  line-height: 1.25;
-  font-family: var(--font-sans);
-  letter-spacing: -0.02em;
-  transition: color 0.2s ease;
+  transition: color 0.2s;
 }
-li.news-item:hover a.news-title { color: var(--accent); }
-a.news-title .arrow {
+.news-card-title a:hover { color: var(--accent); }
+.news-card-snippet {
   font-size: 14px;
-  font-weight: 400;
-  color: var(--text-faint);
-  margin-left: 6px;
-  transition: color 0.2s ease, transform 0.2s ease;
-  display: inline-block;
-}
-li.news-item:hover a.news-title .arrow {
-  color: var(--accent);
-  transform: translate(2px, -2px);
-}
-
-p.news-snippet {
+  line-height: 1.55;
   color: var(--text-soft);
-  font-size: 16px;
-  margin: 14px 0 16px;
-  line-height: 1.6;
+  margin-bottom: 10px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  max-width: 68ch;
 }
-
-.news-meta {
+.news-card-footer {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
-  color: var(--text-faint);
-}
-.news-source {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 12px;
-  color: var(--text-soft);
-  letter-spacing: -0.005em;
-}
-
-.news-badges {
-  display: flex;
-  gap: 6px;
-  margin: 12px 0 0;
+  font-size: 11px;
+  color: var(--text-faint);
+  flex-wrap: wrap;
 }
 .news-badge {
   display: inline-flex;
   align-items: center;
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  padding: 3px 8px;
-  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 3px;
   border: 1px solid var(--border);
   background: var(--surface);
   text-transform: uppercase;
@@ -444,65 +606,77 @@ p.news-snippet {
   border-color: var(--accent-soft);
   background: var(--accent-tint);
 }
+
 .empty {
   color: var(--text-soft);
   padding: 40px 0;
   text-align: center;
-  font-size: 15px;
-}
-footer {
-  margin-top: 96px;
-  padding-top: 28px;
-  border-top: 1px solid var(--divider);
-  color: var(--text-faint);
-  font-size: 13px;
-  text-align: center;
+  font-size: 14px;
 }
 
+/* ============ FOOTER ============ */
+footer {
+  background: #1a1a1a;
+  color: #888;
+  margin-top: 64px;
+  padding: 32px;
+  font-size: 13px;
+  text-align: center;
+  border-top: 2px solid var(--accent);
+}
+[data-theme="dark"] footer { background: #050505; }
+footer .mono {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  color: #aaa;
+}
+
+/* ============ HOMEPAGE (industry cards) ============ */
 .industry-grid {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
-  margin-top: 40px;
+  margin-top: 32px;
 }
 .industry-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-top: 3px solid var(--accent);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
 }
 .industry-card:hover {
   border-color: var(--accent);
-  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
 .industry-card a {
   display: block;
-  padding: 32px;
+  padding: 28px;
   text-decoration: none;
   color: var(--text);
 }
 .industry-card h3 {
-  font-family: var(--font-sans);
-  font-size: 26px;
+  font-family: var(--font-serif);
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 10px;
-  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 .industry-card .stats {
   color: var(--text-soft);
-  font-size: 14px;
+  font-size: 13px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
+.industry-card .stats .num { color: var(--accent); font-weight: 600; }
 .industry-card time {
   display: block;
   color: var(--text-faint);
-  font-size: 12px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
   margin-top: 16px;
-  padding-top: 16px;
+  padding-top: 14px;
   border-top: 1px solid var(--divider);
 }
 .empty-state {
@@ -511,450 +685,574 @@ footer {
   color: var(--text-soft);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-}
-.empty-state code {
-  font-family: ui-monospace, 'SF Mono', 'Menlo', monospace;
-  background: var(--surface-soft);
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 13px;
+  border-top: 3px solid var(--accent);
 }
 
-@media (max-width: 640px) {
-  .container { padding: 48px 20px; }
-  header h1 { font-size: 36px; }
-  .region-tabs { grid-template-columns: 1fr; }
-  main section h2 { font-size: 28px; }
-  .theme-toggle { top: 16px; right: 16px; padding: 6px 12px; font-size: 12px; }
-  .industry-grid { grid-template-columns: 1fr; }
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 24px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .masthead h1 { font-size: 32px; }
+  .hero-title { font-size: 28px; }
+  .topbar-inner, .masthead-inner, .container { padding-left: 20px; padding-right: 20px; }
+  .ticker { display: none; }
 }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <header>
-    <span class="chip">行业雷达</span>
-    <h1>高导热材料</h1>
-    <p class="meta">
-      <span><strong>6 家头部公司</strong></span>
-      <span>42 条新闻</span>
-      <span>生成于 2026-06-27</span>
-    </p>
-  </header>
-  <nav class="tabs">
-    <div class="region-block cn">
-      <div class="region-label">中国头部</div>
-      <div class="region-tabs">
-        <button class="tab" data-co="bosom"><span class="name">本松新材 Bosom</span><span class="count">4</span></button><button class="tab" data-co="feirongda"><span class="name">飞荣达 Fenghuangda</span><span class="count">7</span></button><button class="tab" data-co="zhongshi"><span class="name">中石科技 Sinopec</span><span class="count">1</span></button>
-      </div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">雷</span>
+      行业雷达
+      <span class="live-pill"><span class="live-dot"></span>LIVE</span>
     </div>
-    <div class="region-block intl">
-      <div class="region-label">国际头部</div>
-      <div class="region-tabs">
-        <button class="tab" data-co="henkel"><span class="name">汉高 Henkel</span><span class="count">10</span></button><button class="tab" data-co="mmm"><span class="name">3M</span><span class="count">10</span></button><button class="tab" data-co="honeywell"><span class="name">霍尼韦尔 Honeywell</span><span class="count">10</span></button>
-      </div>
+    <div class="ticker"><div class="ticker-track"><span>飞荣达控股具身智能子公司——果力智能乔迁新址 2026-02-27 2026年2月25日，飞荣达控股子公司——深圳果力智能科技有...</span><span>飞荣达携手果力智能参与灵巧手国家标准闭门起草研讨会 2026-02-11 2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用...</span><span>2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行 9月8日上午，浙江大学与本松新材联合培养的企业博士后开题审核会在我司顺利召开，标志着我司与浙江大学在高层次人才培养和产学研深度... READ MORE &gt;</span><span>2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径 8月17日，本松新材总经理周永松带领技术人员前往位于厦门的施耐德电气开关设备有限公司拜访，与工厂总经理及研发团队进行了深入交流... READ MORE &gt;</span><span>查看 中石科技 Sinopec 新闻中心</span></div></div>
+    <div class="topbar-meta">
+      <span>2026年06月27日 · 周六</span>
+      <button class="theme-toggle" aria-label="切换主题">☾ 深色</button>
     </div>
-  </nav>
-  <main>
-    <section data-co="bosom">
-      <div class="company-header">
-        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="#dc2626"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">本</text>
-  </svg>
-        <div class="name-block">
-          <h2>本松新材 Bosom</h2>
-          <span class="domain">bosomchina.com</span>
-        </div>
-      </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行 9月8日上午，浙江大学与本松新材联合培养的企业博士后开题审核会在我司顺利召开，标志着我司与浙江大学在高层次人才培养和产学研深度... READ MORE &gt;</a></li><li><span class="num">02</span><a href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径 8月17日，本松新材总经理周永松带领技术人员前往位于厦门的施耐德电气开关设备有限公司拜访，与工厂总经理及研发团队进行了深入交流... READ MORE &gt;</a></li><li><span class="num">03</span><a href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动 2025年6月17日，杭州本松新材料技术股份有限公司（以下简称“本松新材”）与上海电驱动股份有限公司（以下简称“上海电驱动”）正式签署项... READ MORE &gt;</a></li></ol><div class="stats">4 条新闻</div></div>
-      <ul class="news-list">
-        
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行 9月8日上午，浙江大学与本松新材联合培养的企业博士后开题审核会在我司顺利召开，标志着我司与浙江大学在高层次人才培养和产学研深度... READ MORE &gt;<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">9月8日上午，浙江大学与本松新材联合培养的企业博士后开题审核会在我司顺利召开，标志着我司与浙江大学在高层次人才培养和产学研深度融合方面迈出新的重要一步。</p>
-            <div class="news-meta">bosomchina.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径 8月17日，本松新材总经理周永松带领技术人员前往位于厦门的施耐德电气开关设备有限公司拜访，与工厂总经理及研发团队进行了深入交流... READ MORE &gt;<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">8月17日，本松新材总经理周永松带领技术人员前往位于厦门的施耐德电气开关设备有限公司拜访，与工厂总经理及研发团队进行了深入交流。</p>
-            <div class="news-meta">bosomchina.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动 2025年6月17日，杭州本松新材料技术股份有限公司（以下简称“本松新材”）与上海电驱动股份有限公司（以下简称“上海电驱动”）正式签署项... READ MORE &gt;<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">2025年6月17日，杭州本松新材料技术股份有限公司（以下简称“本松新材”）与上海电驱动股份有限公司（以下简称“上海电驱动”）正式签署项目合作协议。在上海电驱动股份有限公司董事长沈信、本松新材董事长周永松和双方核心骨干的见证下，启动新能源汽车电驱逆变器模块轻量化项目。这标志着双方在汽车核心部件轻量化、降本增效与绿色低碳发展道路上迈出了坚实一步，开启产业链上下游协同与技术合作新局！</p>
-            <div class="news-meta">bosomchina.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.bosomchina.com/news_detail/id-175.html" target="_blank" rel="noopener">2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行 2024年6月26日-28日本松新材将以“以塑代铝”为主题再次来到ALE舞台为客户提供降碳、减重、降本创新产品及解决方案Chapter. 01放... READ MORE &gt;<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">应市场与客户需求，通过反复了解和验证不同工况条件下的应用，在行业专家与本松材料工程师、结构工程师、热模拟工程师的共同钻研下，“塑代铝”车灯散热器已在行业内崭露头角。</p>
-            <div class="news-meta">bosomchina.com</div>
-          </li>
-      </ul>
-    </section>
-    <section data-co="feirongda" hidden>
-      <div class="company-header">
-        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="#0d9488"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">飞</text>
-  </svg>
-        <div class="name-block">
-          <h2>飞荣达 Fenghuangda</h2>
-          <span class="domain">frd.cn</span>
-        </div>
-      </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=840&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达控股具身智能子公司——果力智能乔迁新址 2026-02-27 2026年2月25日，飞荣达控股子公司——深圳果力智能科技有...</a></li><li><span class="num">02</span><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=839&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达携手果力智能参与灵巧手国家标准闭门起草研讨会 2026-02-11 2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用...</a></li><li><span class="num">03</span><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=838&amp;Fid=t2:4:2" target="_blank" rel="noopener">全国电磁屏蔽材料标准化技术委员... 2025-12-08</a></li></ol><div class="stats">7 条新闻</div></div>
-      <ul class="news-list">
-        
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=840&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达控股具身智能子公司——果力智能乔迁新址 2026-02-27 2026年2月25日，飞荣达控股子公司——深圳果力智能科技有...<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">2026年2月25日，飞荣达控股子公司——深圳果力智能科技有限公司正式迁入深圳光明飞荣达新材料产业园。新办公空间集办公、研发、展示于一体，并与制造产线及配套产线无缝协同，将全面提升运营效率与员工体验。关于果力智能深圳果力智能科技有限公司，成立于 2015 年，专注深度仿生的具身智能灵巧操作技术，是业内...</p>
-            <div class="news-meta">frd.cn</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=839&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达携手果力智能参与灵巧手国家标准闭门起草研讨会 2026-02-11 2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用...<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用技术规范》（计划号 ：20255586-T-604）闭门起草研讨会在北京顺利召开。依托在灵巧手领域的核心技术积淀，控股子公司果力智能 CEO 刘阳与飞荣达导电导热工程实验室总监施伟伟共同参会，深度参与国家标准的起草研讨工作，为行业规范化发展提...</p>
-            <div class="news-meta">frd.cn</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=838&amp;Fid=t2:4:2" target="_blank" rel="noopener">全国电磁屏蔽材料标准化技术委员... 2025-12-08<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">2025年11月25日至27日，全国电磁屏蔽材料标准化技术委员会（SAC/TC323）2025年年会在深圳隆重举办。本次年会由深圳市飞荣达科技股份有限公司承办，得到了深圳市市监督管理局及行业内外的高度关注与大力支持。深圳市飞荣达科技股份有限公司研发中心副总经理王美发、深圳市市场监督管理局标准处处长、一...</p>
-            <div class="news-meta">frd.cn</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=837&amp;Fid=t2:4:2" target="_blank" rel="noopener">京东工业与飞荣达等10家机器人... 2025-12-02<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">在2025世界智能制造大会期间，京东工业主题为“赋能生态 智造未来”的发布会成功举办，展示了对机器人制造产业的深度洞察和完整布局，为产业提供覆盖研发、量产等阶段各细分场景的BOM（生产原材料）供应链数智化服务。京东工业现场与德赛电池、翼菲智能、佰维存储、舍弗勒贸易、天通集团、飞荣达、南京天创智能科技、...</p>
-            <div class="news-meta">frd.cn</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=836&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达出席 2025 中国电磁... 2025-05-13<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">2025年4月23日至24日，由中国电工技术学会主办的第二十九届国际电磁兼容与微波暨测试测量技术交流展览会在北京国家会议中心隆重举行，2025中国电磁兼容大会也同期举办。我司实验室经理施伟伟女士受邀发表题为《平面型电磁屏蔽材料测试方法与标准》的专题报告。报告伊始，施经理系统介绍了飞荣达作为电磁兼容解决...</p>
-            <div class="news-meta">frd.cn</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=835&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达参与起草的两项国家标准正... 2024-11-15<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">近日，飞荣达深度参与起草的两项国家标准——《GB/T 44645-2024电磁屏蔽材料高功率微波屏蔽效能测量方法》与《GB/T 44648-2024平面型电磁屏蔽材料镀金属层附着性能的测定》已正式由国家标准化管理委员会发布。作为电磁屏蔽材料领域的龙头企业，飞荣达凭借在电磁屏蔽材料领域多年的深耕细作以及...</p>
-            <div class="news-meta">frd.cn</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=834&amp;Fid=t2:4:2" target="_blank" rel="noopener">第五届热管理大会成功举办，飞荣... 2024-11-14<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">近期，2024第五届热管理材料与技术大会在深圳会展中心盛大举行。本次大会不仅聚集了多位热管理行业的专家学者以及2000多位行业人士同台“论道”，还有300余家企业展出了自己的最新的热管理产品和创新技术解决方案，全面展现了热管理行业的前沿理论和技术产品。据了解，本次热管理大会邀请了欧洲科学院院士、南方科...</p>
-            <div class="news-meta">frd.cn</div>
-          </li>
-      </ul>
-    </section>
-    <section data-co="zhongshi" hidden>
-      <div class="company-header">
-        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="#7c3aed"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">中</text>
-  </svg>
-        <div class="name-block">
-          <h2>中石科技 Sinopec</h2>
-          <span class="domain">sinopec.com</span>
-        </div>
-      </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.zsjituan.com" target="_blank" rel="noopener">查看 中石科技 Sinopec 新闻中心</a></li></ol><div class="stats">1 条新闻</div></div>
-      <ul class="news-list">
-        
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.zsjituan.com" target="_blank" rel="noopener">查看 中石科技 Sinopec 新闻中心<span class="arrow">↗</span></a>
-            
-            
-            <div class="news-meta">zsjituan.com</div>
-          </li>
-      </ul>
-    </section>
-    <section data-co="henkel" hidden>
-      <div class="company-header">
-        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="#0066b1"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">H</text>
-  </svg>
-        <div class="name-block">
-          <h2>汉高 Henkel</h2>
-          <span class="domain">henkel.com</span>
-        </div>
-      </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">Moving Forward with Courage: How Companies Can Shape DEI At the Corporate Diversity Summit, Andrea Becher, Global Head of Talent Acquisition, Leadership, Learning and Culture, talks about how companies can strengthen a culture of belonging. influentialmag.co.uk</a></li><li><span class="num">02</span><a href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">Download Center Find selected image and footage material for download! Learn more</a></li><li><span class="num">03</span><a href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">Press Release E-mail Distribution List Interested in the latest press releases? Contact us to be included in our distribution list. Learn more</a></li></ol><div class="stats">10 条新闻</div></div>
-      <ul class="news-list">
-        
-          <li class="news-item">
-            
-            <a class="news-title" href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">Moving Forward with Courage: How Companies Can Shape DEI At the Corporate Diversity Summit, Andrea Becher, Global Head of Talent Acquisition, Leadership, Learning and Culture, talks about how companies can strengthen a culture of belonging. influentialmag.co.uk<span class="arrow">↗</span></a>
-            
-            
-            <div class="news-meta">influentialmag.co.uk</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">Download Center Find selected image and footage material for download! Learn more<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">The Download Center offers journalists images and TV footage materials as well as Henkel’s latest publications for download.</p>
-            <div class="news-meta">henkel.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">Press Release E-mail Distribution List Interested in the latest press releases? Contact us to be included in our distribution list. Learn more<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Subscription to the Press Distribution List</p>
-            <div class="news-meta">henkel.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1935805.html" target="_blank" rel="noopener">C Talk | 汉高：智创中国，新质领航<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">汉高作为全球领先的粘合剂、密封剂及表面处理解决方案供应商，凭借其深厚的材料科学积淀与前瞻性的创新视野，积极拥抱中国汽车产业的变革。汉高在上海创新体验中心的启用，标志着其深化“立足中国，服务全球”战略的决心，并通过技术创新与中国主机厂紧密合作，推动电动化、智能化与全球化的汽车产业变革。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1928865.html" target="_blank" rel="noopener">从材料创新到建模仿真，汉高驱动电动化“效率”革命<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">近年来，全球电动汽车市场迎来了前所未有的增长浪潮，而中国更是成为全球电动车发展的领头羊。市场研究数据显示，中国新能源车销量在过去五年保持高速增长，占全球市场份额的六成以上。而随着电动车销量不断攀升，动力电池系统面临的挑战也随之增加：如何在提高能量密度、延长续航里程、降低成本和提升安全性的同时，实现快速开发和产品上市；又如何使区域电池技术创新适配复杂的全球市场准入标准，成为行业关注的核心问题。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1977264.html" target="_blank" rel="noopener">以“芯科技”推动“智升级” 汉高携创新材料解决方案亮相Semicon China 2026<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">汉高粘合剂电子事业部携多款创新材料产品和解决方案亮相 SEMICON China 2026，聚焦车规级应用、先进封装及绿色可持续发展领域，以卓越的“芯科技”助力客户在 AI 时代提升生产力，实现业务升级。汉高半导体封装全球市场负责人Ram Trichur表示：“近年来，中国在人工智能领域取得了举世瞩目的成就，跻身世界前</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1008771.html" target="_blank" rel="noopener">Henkel ADAS视觉和雷达解决方案<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">汉高借鉴其领先的手持设备摄像头系统技术，将整体解决方案引入ADAS领域。从图像处理器内的芯片到 部件连接, 导热材料, 电路板保护直到镜头组件的结构粘接 汉高汽车摄像头材料全面提升安全性能。汉高所采用的汽车摄像头材料在极端温度、崎岖道路以及恶劣环境，能为驾驶员提供可靠的性能和清晰的视野，配方更绿色、环保，汉高汽车摄像头材料凭借以上特点脱颖而出。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1838003.html" target="_blank" rel="noopener">汉高电子：四重创新赋能，重塑智能终端“无界”视觉体验<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">在手持移动设备和可穿戴设备的设计革新浪潮中,全球领先的智能终端制造商不断探索如何实现更高屏占比,和更为沉浸的视觉效果,尝试将科技美学与用户体验完美融合。在此背景下,汉高开创性地推出了柔性显示屏FDP (Flexible Display Protection) 封装技术,通过设计、防护、工艺、服务四方面的创新赋能,推动技</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1850760.html" target="_blank" rel="noopener">汉高：荣获日月光2024年度最佳供应商奖，引领半导体行业可持续发展<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">在当今快速发展的半导体行业，构建高质量、有韧性且可持续的供应链是企业发展的关键。而在这条供应链中，材料供应商的角色至关重要。近日，汉高凭借其卓越的材料质量、强大的供应链韧性以及领先的可持续发展举措，荣获日月光投资控股股份有限公司（ASE）颁发的2024年度最佳供应商奖。此外，因积极参与日月光的碳盘查专案，汉高还获颁感谢</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1741311.html" target="_blank" rel="noopener">汉高电子粘合剂华南应用技术中心——创新解决方案，助力AI和5G发展<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">近日，在汉高电子粘合剂华南应用技术中心于广东省东莞市成立2周年之际，笔者有幸受邀对该中心进行了参观和采访。不仅见识到了各种先进的粘合剂试验测试设备，也学习到了各种关于粘合剂类材料的导电、导热、抗拉、抗压等各种实验方法。汉高电子粘合剂华南应用技术中心位于美丽的松山湖东莞高新区，毗邻华南电子产业集群，20多位资深技术专家为</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-      </ul>
-    </section>
-    <section data-co="mmm" hidden>
-      <div class="company-header">
-        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="#cc0000"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">3</text>
-  </svg>
-        <div class="name-block">
-          <h2>3M</h2>
-          <span class="domain">3m.com</span>
-        </div>
-      </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://news.3m.com/The-National-Coalition-of-Certification-Centers-and-3M-award-national-scholarships-to-skilled-trades-students-nationwide" target="_blank" rel="noopener">The National Coalition of Certification Centers and 3M award national scholarships to skilled trades students nationwide</a></li><li><span class="num">02</span><a href="https://news.3m.com/Scottie-Scheffler-commits-to-2026-3M-Open" target="_blank" rel="noopener">Scottie Scheffler commits to 2026 3M Open</a></li><li><span class="num">03</span><a href="https://www.reuters.com/business/3m-raises-2025-profit-forecast-2025-10-21/" target="_blank" rel="noopener">3M raises annual profit forecast amid margin expansion drive</a></li></ol><div class="stats">10 条新闻</div></div>
-      <ul class="news-list">
-        
-          <li class="news-item">
-            
-            <a class="news-title" href="https://news.3m.com/The-National-Coalition-of-Certification-Centers-and-3M-award-national-scholarships-to-skilled-trades-students-nationwide" target="_blank" rel="noopener">The National Coalition of Certification Centers and 3M award national scholarships to skilled trades students nationwide<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">The National Coalition of Certification Centers (NC3), in partnership with 3M’s Safety and Industrial business, announced the 2026 recipients of the Skilled Trades – 3M Transformational...</p>
-            <div class="news-meta">news.3m.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://news.3m.com/Scottie-Scheffler-commits-to-2026-3M-Open" target="_blank" rel="noopener">Scottie Scheffler commits to 2026 3M Open<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Scottie Scheffler, the world’s No. 1-ranked golfer, will compete in the 2026 3M Open. The event runs July 20-26 at TPC Twin Cities in Blaine, Minnesota. It will be Scheffler</p>
-            <div class="news-meta">news.3m.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.reuters.com/business/3m-raises-2025-profit-forecast-2025-10-21/" target="_blank" rel="noopener">3M raises annual profit forecast amid margin expansion drive<span class="arrow">↗</span></a>
-            
-            
-            <div class="news-meta">reuters.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://news.3m.com/2026-06-23-3M-and-Airbus-announce-agreement-to-advance-A220-passenger-comfort-and-aircraft-performance-through-advanced-insulation-technology" target="_blank" rel="noopener">3M and Airbus announce agreement to advance A220 passenger comfort and aircraft performance through advanced insulation technology<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Expanded collaboration will support thermal and acoustic insulation solutions to enhance the A220 passenger experience ST. PAUL, Minn., June 23, 2026 /PRNewswire/ -- 3M and Airbus, a leading...</p>
-            <div class="news-meta">news.3m.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://news.3m.com/2026-06-22-3M-launches-Ask-3M,-an-AI-powered-tool-for-faster-access-to-technical-expertise" target="_blank" rel="noopener">3M launches Ask 3M, an AI-powered tool for faster access to technical expertise<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">New digital assistant helps customers evaluate 3M materials, compare options and solve application challenges ST. PAUL, Minn., June 22, 2026 /PRNewswire/ -- 3M has launched Ask 3M, a new...</p>
-            <div class="news-meta">news.3m.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1978918.html" target="_blank" rel="noopener">433M频段天线模块选购指南与应用方案解析<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">一、433M频段天线模块市场概述433MHz频段属于全球通用的ISM（工业、科学、医疗）免授权频段，具备传输距离远、穿墙能力强、功耗低等显著优势，广泛应用于物联网、智能家居、工业自动化、智能农业等领域。根据《2025年中国433MHz通信收发天线市场调查研究报告》数据显示，2025年中国433MHz通信收发天线市场规模</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1997380.html" target="_blank" rel="noopener">做到3MW逆变器之后，对电流检测的一些重新理解<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">一开始做逆变器的时候，其实对电流检测这件事想得比较简单。无非就是精度、带宽这些指标，选型的时候对一对参数，大致就能确定方案。但项目功率慢慢往上走之后，这种理解就有点不太够用了。尤其是做到兆瓦级，再往上到几千安培输出的场景，会发现问题开始变得不太一样——有些并不是在设计阶段能直接看出来的，而是系统运行一段时间之后才逐渐暴</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/2024314.html" target="_blank" rel="noopener">0.3mm QFN零件生产工艺研究报告，值得SMT工艺工程师收藏！<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">在电子制造的微观世界里，0.3mm是一个什么概念？这大约是三根人类头发丝并排的宽度。在这个尺度上，传统的SMT（表面组装技术）经验正在面临前所未有的极限挑战。</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/2026205.html" target="_blank" rel="noopener">施耐德EOCR-I3M420-WRDUHZ 带 RS485+4~20mA 双输出智能马达保护器技术<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">一、产品概述EOCR-I3M420-WRDUHZ 为施耐德（原韩国三和 SAMWHA）原厂出品贯穿穿线型一体化智能综合马达保护器，型号释义：WR=0.5~80A 直测量程、D=1 常开 1 常闭独立触点、U=AC/DC100~240V 宽幅交直流通用电源、H = 贯穿式穿线结构、Z = 新一代升级款。产品集成全维度电机</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1966702.html" target="_blank" rel="noopener">半导体芯片检测行业适合用上银KK模组±0.003mm高精度产品吗？<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
-            <p class="news-snippet">半导体芯片检测是芯片制造流程中决定产品良率的关键环节之一。对于从事半导体设备开发的工程师来说，选择合适的传动部件直接影响检测设备的精度和稳定性。最近常有客户问：半导体芯片检测行业适合用上银KK模组±0.003mm高精度产品吗？今天我们就从技术需求和产品特性的匹配度来详细解答这个问题。首先，半导体芯片检测的核心技术需求是</p>
-            <div class="news-meta">eefocus.com</div>
-          </li>
-      </ul>
-    </section>
-    <section data-co="honeywell" hidden>
-      <div class="company-header">
-        <svg class="logo" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="48" height="48" rx="10" fill="#0891b2"/>
-    <text x="24" y="33" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#ffffff">H</text>
-  </svg>
-        <div class="name-block">
-          <h2>霍尼韦尔 Honeywell</h2>
-          <span class="domain">honeywell.com</span>
-        </div>
-      </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/exxonmobil-names-honeywell-its-2025-supplier-innovation-award-winner" target="_blank" rel="noopener">ExxonMobil Names Honeywell its 2025 Supplier Innovation Award Winner</a></li><li><span class="num">02</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">More Than Six Decades of Trusted Thermal Sensing: The Honeywell Ongoing Partnership with Boeing</a></li><li><span class="num">03</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/05/honeywell-pss-modex-2026-recap-key-trends-shaping-the-future-of-supply-chains" target="_blank" rel="noopener">Honeywell Productivity Solutions and Services (PSS) MODEX 2026 Recap: Key Trends Shaping the Future of Supply Chains</a></li></ol><div class="stats">10 条新闻</div></div>
-      <ul class="news-list">
-        
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/exxonmobil-names-honeywell-its-2025-supplier-innovation-award-winner" target="_blank" rel="noopener">ExxonMobil Names Honeywell its 2025 Supplier Innovation Award Winner<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">The recognition underscores Honeywell’s commitment to process automation innovation at ExxonMobil facilities</p>
-            <div class="news-meta">honeywell.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">More Than Six Decades of Trusted Thermal Sensing: The Honeywell Ongoing Partnership with Boeing<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">While advances in aviation technology continue to accelerate, one thing remains constant: the need for precise, dependable temperature control throughout an aircraft. For more than six decades, Honeywell has supplied bimetal thermostats and temperature sensing solutions that help monitor temperatures in critical systems.</p>
-            <div class="news-meta">honeywell.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/05/honeywell-pss-modex-2026-recap-key-trends-shaping-the-future-of-supply-chains" target="_blank" rel="noopener">Honeywell Productivity Solutions and Services (PSS) MODEX 2026 Recap: Key Trends Shaping the Future of Supply Chains<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">At MODEX 2026, one of the industry’s largest supply chain and logistics events, it became clear that organizations are entering a new phase of transformation – where intelligence, automation, and adaptability converge to power the modern warehouse.</p>
-            <div class="news-meta">honeywell.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/03/honeywell-wins-2026-if-design-awards-for-mobile-computing-industrial-printing-technologies" target="_blank" rel="noopener">Honeywell Wins 2026 iF Design Awards for Mobile Computing, Industrial Printing Technologies<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">PSS handheld computer, mobile printer and desktop printer designs shine</p>
-            <div class="news-meta">honeywell.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/03/honeywell-transnorm-wins-2026-if-design-award-for-energy-efficient-sorter-solution" target="_blank" rel="noopener">Honeywell Transnorm Wins 2026 iF Design Award for Energy-Efficient Sorter Solution<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Honeywell Transnorm has received a 2026 iF Design award for its Swivel Wheel Sorter Cartridge TS4810.</p>
-            <div class="news-meta">honeywell.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/02/honeywell-and-b2m-solutions-partner-to-expand-operational-insights-from-mobile-assets" target="_blank" rel="noopener">Honeywell and B2M Solutions Partner to Expand Operational Insights from Mobile Assets<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">The integration of B2M Elemez software with Honeywell Operational Intelligence broadens mobile device insights and analytics while also providing customer flexibility</p>
-            <div class="news-meta">honeywell.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/01/from-data-to-decisions-nrf-2026-recap-and-the-future-of-automated-retail" target="_blank" rel="noopener">From Data To Decisions: NRF 2026 Recap and the Future of Automated Retail<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">The National Retail Federation’s Big Show 2026 in New York City showcased how technology is redefining retail. With 1,000+ exhibitors and 40,000 visitors, Honeywell’s main message was “Unleash Dynamic Commerce,” urging retailers to leverage real-time data, automation, and AI to deliver seamless, personalised shopping and operational excellence.</p>
-            <div class="news-meta">honeywell.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2025/10/gitex-2025-insights-how-dubai-is-pioneering-innovation-in-global-trade-and-logistics" target="_blank" rel="noopener">GITEX 2025 Insights: How Dubai is Pioneering Innovation in Global Trade &amp; Logistics<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">As the GITEX event concludes, we share some of the megatrends influencing Dubai’s role in the future of transportation and logistics</p>
-            <div class="news-meta">honeywell.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2025/10/honeywell-at-gitex-2025-what-to-know" target="_blank" rel="noopener">Honeywell at GITEX 2025: What to Know<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Powering intelligent productivity for today’s retail and supply chain workforce</p>
-            <div class="news-meta">honeywell.com</div>
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2025/07/honeywell-battery-electrolyte-sensor-wins-2025-best-of-sensors-award" target="_blank" rel="noopener">Honeywell Battery Electrolyte Sensor Wins 2025 Best of Sensors Award<span class="arrow">↗</span></a>
-            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
-            <p class="news-snippet">Learn about Honeywell’s expertise in battery safety and the sensing space.</p>
-            <div class="news-meta">honeywell.com</div>
-          </li>
-      </ul>
-    </section></main>
-  <footer>数据来源：Google News · 生成于 2026-06-27 · 仅供参考</footer>
+  </div>
 </div>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="masthead-title-block">
+        <h1>高导热材料</h1>
+        <div class="dateline">2026年06月27日 · 周六 · 第 6 期 · 42 条新闻</div>
+      </div>
+      <div class="masthead-stats">
+        <span><span class="num">3</span> 中国头部</span>
+        <span><span class="num">3</span> 国际头部</span>
+        <span><span class="num">42</span> 总新闻</span>
+      </div>
+    </div>
+    
+<nav class="section-tabs">
+  <div class="tab-region cn">
+    <span class="label">中国头部</span>
+    <span class="count">3 家公司</span>
+  </div>
+  <div class="tab-region intl">
+    <span class="label">国际头部</span>
+    <span class="count">3 家公司</span>
+  </div>
+</nav>
+    
+<div class="company-tabs">
+  <button class="company-tab" data-co="bosom">本松新材 Bosom<span class="mono-count">4</span></button><button class="company-tab" data-co="feirongda">飞荣达 Fenghuangda<span class="mono-count">7</span></button><button class="company-tab" data-co="zhongshi">中石科技 Sinopec<span class="mono-count">1</span></button>
+  <button class="company-tab" data-co="henkel">汉高 Henkel<span class="mono-count">10</span></button><button class="company-tab" data-co="mmm">3M<span class="mono-count">10</span></button><button class="company-tab" data-co="honeywell">霍尼韦尔 Honeywell<span class="mono-count">10</span></button>
+</div>
+  </div>
+</header>
+<main>
+  <div class="container">
+    
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">2025-09-08</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行 9月8日上午，浙江大学与本松新材联合培养的企业博士后开题审核会在我司顺利召开，标志着我司与浙江大学在高层次人才培养和产学研深度... READ MORE &gt;<span class="hero-arrow">↗</span></a></h2>
+    
+    <div class="hero-source">bosomchina.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">2025-08-20</span>
+        <div class="title"><a href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径 8月17日，本松新材总经理周永松带领技术人员前往位于厦门的施耐德电气开关设备有限公司拜访，与工厂总经理及研发团队进行了深入交流... READ MORE &gt;</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">2025-06-19</span>
+        <div class="title"><a href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动 2025年6月17日，杭州本松新材料技术股份有限公司（以下简称“本松新材”）与上海电驱动股份有限公司（以下简称“上海电驱动”）正式签署项... READ MORE &gt;</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">2024-06-24</span>
+        <div class="title"><a href="https://www.bosomchina.com/news_detail/id-175.html" target="_blank" rel="noopener">2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行 2024年6月26日-28日本松新材将以“以塑代铝”为主题再次来到ALE舞台为客户提供降碳、减重、降本创新产品及解决方案Chapter. 01放... READ MORE &gt;</a></div>
+      </div>
+    
+  </div>
+</div>
+    
+<section data-co="bosom">
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#dc2626"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">本</text>
+  </svg>
+    <div class="name-block">
+      <h2>本松新材 Bosom</h2>
+      <span class="domain">bosomchina.com · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行 9月8日上午，浙江大学与本松新材联合培养的企业博士后开题审核会在我司顺利召开，标志着我司与浙江大学在高层次人才培养和产学研深度... READ MORE &gt;</a></li><li><span class="num">02</span><a href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径 8月17日，本松新材总经理周永松带领技术人员前往位于厦门的施耐德电气开关设备有限公司拜访，与工厂总经理及研发团队进行了深入交流... READ MORE &gt;</a></li><li><span class="num">03</span><a href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动 2025年6月17日，杭州本松新材料技术股份有限公司（以下简称“本松新材”）与上海电驱动股份有限公司（以下简称“上海电驱动”）正式签署项... READ MORE &gt;</a></li><li><span class="num">04</span><a href="https://www.bosomchina.com/news_detail/id-175.html" target="_blank" rel="noopener">2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行 2024年6月26日-28日本松新材将以“以塑代铝”为主题再次来到ALE舞台为客户提供降碳、减重、降本创新产品及解决方案Chapter. 01放... READ MORE &gt;</a></li></ol><div class="summary-stats"><span>4 条</span><span>本松新材 Bosom</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2025-09-08</div>
+  <h3 class="news-card-title"><a href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行 9月8日上午，浙江大学与本松新材联合培养的企业博士后开题审核会在我司顺利召开，标志着我司与浙江大学在高层次人才培养和产学研深度... READ MORE &gt;</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosomchina.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-08-20</div>
+  <h3 class="news-card-title"><a href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径 8月17日，本松新材总经理周永松带领技术人员前往位于厦门的施耐德电气开关设备有限公司拜访，与工厂总经理及研发团队进行了深入交流... READ MORE &gt;</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosomchina.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-06-19</div>
+  <h3 class="news-card-title"><a href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动 2025年6月17日，杭州本松新材料技术股份有限公司（以下简称“本松新材”）与上海电驱动股份有限公司（以下简称“上海电驱动”）正式签署项... READ MORE &gt;</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosomchina.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2024-06-24</div>
+  <h3 class="news-card-title"><a href="https://www.bosomchina.com/news_detail/id-175.html" target="_blank" rel="noopener">2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行 2024年6月26日-28日本松新材将以“以塑代铝”为主题再次来到ALE舞台为客户提供降碳、减重、降本创新产品及解决方案Chapter. 01放... READ MORE &gt;</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosomchina.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="feirongda" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0d9488"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">飞</text>
+  </svg>
+    <div class="name-block">
+      <h2>飞荣达 Fenghuangda</h2>
+      <span class="domain">frd.cn · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=840&amp;Fid=t2:4:2" target="_blank" rel="noopener">2026年2月25日，飞荣达控股子公司——深圳果力智能科技有限公司正式迁入深圳光明飞荣达新材料产业园。新办公空间集办公、研发、展示于一体，并与制造产线及配套产线无缝协同，将全面提升运营效率与员工体验。关于果力智能深圳果力智能科技有限公司，成立于 2015 年，专注深度仿生的具身智能灵巧操作技术，是业内...</a></li><li><span class="num">02</span><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=839&amp;Fid=t2:4:2" target="_blank" rel="noopener">2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用技术规范》（计划号 ：20255586-T-604）闭门起草研讨会在北京顺利召开。依托在灵巧手领域的核心技术积淀，控股子公司果力智能 CEO 刘阳与飞荣达导电导热工程实验室总监施伟伟共同参会，深度参与国家标准的起草研讨工作，为行业规范化发展提...</a></li><li><span class="num">03</span><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=838&amp;Fid=t2:4:2" target="_blank" rel="noopener">2025年11月25日至27日，全国电磁屏蔽材料标准化技术委员会（SAC/TC323）2025年年会在深圳隆重举办。本次年会由深圳市飞荣达科技股份有限公司承办，得到了深圳市市监督管理局及行业内外的高度关注与大力支持。深圳市飞荣达科技股份有限公司研发中心副总经理王美发、深圳市市场监督管理局标准处处长、一...</a></li><li><span class="num">04</span><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=837&amp;Fid=t2:4:2" target="_blank" rel="noopener">在2025世界智能制造大会期间，京东工业主题为“赋能生态 智造未来”的发布会成功举办，展示了对机器人制造产业的深度洞察和完整布局，为产业提供覆盖研发、量产等阶段各细分场景的BOM（生产原材料）供应链数智化服务。京东工业现场与德赛电池、翼菲智能、佰维存储、舍弗勒贸易、天通集团、飞荣达、南京天创智能科技、...</a></li><li><span class="num">05</span><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=836&amp;Fid=t2:4:2" target="_blank" rel="noopener">2025年4月23日至24日，由中国电工技术学会主办的第二十九届国际电磁兼容与微波暨测试测量技术交流展览会在北京国家会议中心隆重举行，2025中国电磁兼容大会也同期举办。我司实验室经理施伟伟女士受邀发表题为《平面型电磁屏蔽材料测试方法与标准》的专题报告。报告伊始，施经理系统介绍了飞荣达作为电磁兼容解决...</a></li></ol><div class="summary-stats"><span>7 条</span><span>飞荣达 Fenghuangda</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-02-27</div>
+  <h3 class="news-card-title"><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=840&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达控股具身智能子公司——果力智能乔迁新址 2026-02-27 2026年2月25日，飞荣达控股子公司——深圳果力智能科技有...</a></h3>
+  <p class="news-card-snippet">2026年2月25日，飞荣达控股子公司——深圳果力智能科技有限公司正式迁入深圳光明飞荣达新材料产业园。新办公空间集办公、研发、展示于一体，并与制造产线及配套产线无缝协同，将全面提升运营效率与员工体验。关于果力智能深圳果力智能科技有限公司，成立于 2015 年，专注深度仿生的具身智能灵巧操作技术，是业内...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>frd.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-02-11</div>
+  <h3 class="news-card-title"><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=839&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达携手果力智能参与灵巧手国家标准闭门起草研讨会 2026-02-11 2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用...</a></h3>
+  <p class="news-card-snippet">2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用技术规范》（计划号 ：20255586-T-604）闭门起草研讨会在北京顺利召开。依托在灵巧手领域的核心技术积淀，控股子公司果力智能 CEO 刘阳与飞荣达导电导热工程实验室总监施伟伟共同参会，深度参与国家标准的起草研讨工作，为行业规范化发展提...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>frd.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-12-08</div>
+  <h3 class="news-card-title"><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=838&amp;Fid=t2:4:2" target="_blank" rel="noopener">全国电磁屏蔽材料标准化技术委员... 2025-12-08</a></h3>
+  <p class="news-card-snippet">2025年11月25日至27日，全国电磁屏蔽材料标准化技术委员会（SAC/TC323）2025年年会在深圳隆重举办。本次年会由深圳市飞荣达科技股份有限公司承办，得到了深圳市市监督管理局及行业内外的高度关注与大力支持。深圳市飞荣达科技股份有限公司研发中心副总经理王美发、深圳市市场监督管理局标准处处长、一...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>frd.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-12-02</div>
+  <h3 class="news-card-title"><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=837&amp;Fid=t2:4:2" target="_blank" rel="noopener">京东工业与飞荣达等10家机器人... 2025-12-02</a></h3>
+  <p class="news-card-snippet">在2025世界智能制造大会期间，京东工业主题为“赋能生态 智造未来”的发布会成功举办，展示了对机器人制造产业的深度洞察和完整布局，为产业提供覆盖研发、量产等阶段各细分场景的BOM（生产原材料）供应链数智化服务。京东工业现场与德赛电池、翼菲智能、佰维存储、舍弗勒贸易、天通集团、飞荣达、南京天创智能科技、...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>frd.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-05-13</div>
+  <h3 class="news-card-title"><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=836&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达出席 2025 中国电磁... 2025-05-13</a></h3>
+  <p class="news-card-snippet">2025年4月23日至24日，由中国电工技术学会主办的第二十九届国际电磁兼容与微波暨测试测量技术交流展览会在北京国家会议中心隆重举行，2025中国电磁兼容大会也同期举办。我司实验室经理施伟伟女士受邀发表题为《平面型电磁屏蔽材料测试方法与标准》的专题报告。报告伊始，施经理系统介绍了飞荣达作为电磁兼容解决...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>frd.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2024-11-15</div>
+  <h3 class="news-card-title"><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=835&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达参与起草的两项国家标准正... 2024-11-15</a></h3>
+  <p class="news-card-snippet">近日，飞荣达深度参与起草的两项国家标准——《GB/T 44645-2024电磁屏蔽材料高功率微波屏蔽效能测量方法》与《GB/T 44648-2024平面型电磁屏蔽材料镀金属层附着性能的测定》已正式由国家标准化管理委员会发布。作为电磁屏蔽材料领域的龙头企业，飞荣达凭借在电磁屏蔽材料领域多年的深耕细作以及...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>frd.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2024-11-14</div>
+  <h3 class="news-card-title"><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=834&amp;Fid=t2:4:2" target="_blank" rel="noopener">第五届热管理大会成功举办，飞荣... 2024-11-14</a></h3>
+  <p class="news-card-snippet">近期，2024第五届热管理材料与技术大会在深圳会展中心盛大举行。本次大会不仅聚集了多位热管理行业的专家学者以及2000多位行业人士同台“论道”，还有300余家企业展出了自己的最新的热管理产品和创新技术解决方案，全面展现了热管理行业的前沿理论和技术产品。据了解，本次热管理大会邀请了欧洲科学院院士、南方科...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>frd.cn</span>
+  </div>
+</article></div>
+</section>
+<section data-co="zhongshi" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#7c3aed"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">中</text>
+  </svg>
+    <div class="name-block">
+      <h2>中石科技 Sinopec</h2>
+      <span class="domain">sinopec.com · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.zsjituan.com" target="_blank" rel="noopener">查看 中石科技 Sinopec 新闻中心</a></li></ol><div class="summary-stats"><span>1 条</span><span>中石科技 Sinopec</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.zsjituan.com" target="_blank" rel="noopener">查看 中石科技 Sinopec 新闻中心</a></h3>
+  
+  <div class="news-card-footer">
+    
+    <span>zsjituan.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="henkel" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0066b1"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">H</text>
+  </svg>
+    <div class="name-block">
+      <h2>汉高 Henkel</h2>
+      <span class="domain">henkel.com · International</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">Moving Forward with Courage: How Companies Can Shape DEI At the Corporate Diversity Summit, Andrea Becher, Global Head of Talent Acquisition, Leadership, Learning and Culture, talks about how companies can strengthen a culture of belonging. influentialmag.co.uk</a></li><li><span class="num">02</span><a href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">The Download Center offers journalists images and TV footage materials as well as Henkel’s latest publications for download.</a></li><li><span class="num">03</span><a href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">Subscription to the Press Distribution List</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/1935805.html" target="_blank" rel="noopener">汉高作为全球领先的粘合剂、密封剂及表面处理解决方案供应商，凭借其深厚的材料科学积淀与前瞻性的创新视野，积极拥抱中国汽车产业的变革。汉高在上海创新体验中心的启用，标志着其深化“立足中国，服务全球”战略的决心，并通过技术创新与中国主机厂紧密合作，推动电动化、智能化与全球化的汽车产业变革。</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/1928865.html" target="_blank" rel="noopener">近年来，全球电动汽车市场迎来了前所未有的增长浪潮，而中国更是成为全球电动车发展的领头羊。市场研究数据显示，中国新能源车销量在过去五年保持高速增长，占全球市场份额的六成以上。而随着电动车销量不断攀升，动力电池系统面临的挑战也随之增加：如何在提高能量密度、延长续航里程、降低成本和提升安全性的同时，实现快速开发和产品上市；又如何使区域电池技术创新适配复杂的全球市场准入标准，成为行业关注的核心问题。</a></li></ol><div class="summary-stats"><span>10 条</span><span>汉高 Henkel</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">Moving Forward with Courage: How Companies Can Shape DEI At the Corporate Diversity Summit, Andrea Becher, Global Head of Talent Acquisition, Leadership, Learning and Culture, talks about how companies can strengthen a culture of belonging. influentialmag.co.uk</a></h3>
+  
+  <div class="news-card-footer">
+    
+    <span>influentialmag.co.uk</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">Download Center Find selected image and footage material for download! Learn more</a></h3>
+  <p class="news-card-snippet">The Download Center offers journalists images and TV footage materials as well as Henkel’s latest publications for download.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>henkel.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">Press Release E-mail Distribution List Interested in the latest press releases? Contact us to be included in our distribution list. Learn more</a></h3>
+  <p class="news-card-snippet">Subscription to the Press Distribution List</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>henkel.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1935805.html" target="_blank" rel="noopener">C Talk | 汉高：智创中国，新质领航</a></h3>
+  <p class="news-card-snippet">汉高作为全球领先的粘合剂、密封剂及表面处理解决方案供应商，凭借其深厚的材料科学积淀与前瞻性的创新视野，积极拥抱中国汽车产业的变革。汉高在上海创新体验中心的启用，标志着其深化“立足中国，服务全球”战略的决心，并通过技术创新与中国主机厂紧密合作，推动电动化、智能化与全球化的汽车产业变革。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1928865.html" target="_blank" rel="noopener">从材料创新到建模仿真，汉高驱动电动化“效率”革命</a></h3>
+  <p class="news-card-snippet">近年来，全球电动汽车市场迎来了前所未有的增长浪潮，而中国更是成为全球电动车发展的领头羊。市场研究数据显示，中国新能源车销量在过去五年保持高速增长，占全球市场份额的六成以上。而随着电动车销量不断攀升，动力电池系统面临的挑战也随之增加：如何在提高能量密度、延长续航里程、降低成本和提升安全性的同时，实现快速开发和产品上市；又如何使区域电池技术创新适配复杂的全球市场准入标准，成为行业关注的核心问题。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1977264.html" target="_blank" rel="noopener">以“芯科技”推动“智升级” 汉高携创新材料解决方案亮相Semicon China 2026</a></h3>
+  <p class="news-card-snippet">汉高粘合剂电子事业部携多款创新材料产品和解决方案亮相 SEMICON China 2026，聚焦车规级应用、先进封装及绿色可持续发展领域，以卓越的“芯科技”助力客户在 AI 时代提升生产力，实现业务升级。汉高半导体封装全球市场负责人Ram Trichur表示：“近年来，中国在人工智能领域取得了举世瞩目的成就，跻身世界前</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1008771.html" target="_blank" rel="noopener">Henkel ADAS视觉和雷达解决方案</a></h3>
+  <p class="news-card-snippet">汉高借鉴其领先的手持设备摄像头系统技术，将整体解决方案引入ADAS领域。从图像处理器内的芯片到 部件连接, 导热材料, 电路板保护直到镜头组件的结构粘接 汉高汽车摄像头材料全面提升安全性能。汉高所采用的汽车摄像头材料在极端温度、崎岖道路以及恶劣环境，能为驾驶员提供可靠的性能和清晰的视野，配方更绿色、环保，汉高汽车摄像头材料凭借以上特点脱颖而出。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1838003.html" target="_blank" rel="noopener">汉高电子：四重创新赋能，重塑智能终端“无界”视觉体验</a></h3>
+  <p class="news-card-snippet">在手持移动设备和可穿戴设备的设计革新浪潮中,全球领先的智能终端制造商不断探索如何实现更高屏占比,和更为沉浸的视觉效果,尝试将科技美学与用户体验完美融合。在此背景下,汉高开创性地推出了柔性显示屏FDP (Flexible Display Protection) 封装技术,通过设计、防护、工艺、服务四方面的创新赋能,推动技</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1850760.html" target="_blank" rel="noopener">汉高：荣获日月光2024年度最佳供应商奖，引领半导体行业可持续发展</a></h3>
+  <p class="news-card-snippet">在当今快速发展的半导体行业，构建高质量、有韧性且可持续的供应链是企业发展的关键。而在这条供应链中，材料供应商的角色至关重要。近日，汉高凭借其卓越的材料质量、强大的供应链韧性以及领先的可持续发展举措，荣获日月光投资控股股份有限公司（ASE）颁发的2024年度最佳供应商奖。此外，因积极参与日月光的碳盘查专案，汉高还获颁感谢</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1741311.html" target="_blank" rel="noopener">汉高电子粘合剂华南应用技术中心——创新解决方案，助力AI和5G发展</a></h3>
+  <p class="news-card-snippet">近日，在汉高电子粘合剂华南应用技术中心于广东省东莞市成立2周年之际，笔者有幸受邀对该中心进行了参观和采访。不仅见识到了各种先进的粘合剂试验测试设备，也学习到了各种关于粘合剂类材料的导电、导热、抗拉、抗压等各种实验方法。汉高电子粘合剂华南应用技术中心位于美丽的松山湖东莞高新区，毗邻华南电子产业集群，20多位资深技术专家为</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="mmm" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#cc0000"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">3</text>
+  </svg>
+    <div class="name-block">
+      <h2>3M</h2>
+      <span class="domain">3m.com · International</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://news.3m.com/The-National-Coalition-of-Certification-Centers-and-3M-award-national-scholarships-to-skilled-trades-students-nationwide" target="_blank" rel="noopener">The National Coalition of Certification Centers (NC3), in partnership with 3M’s Safety and Industrial business, announced the 2026 recipients of the Skilled Trades – 3M Transformational...</a></li><li><span class="num">02</span><a href="https://news.3m.com/Scottie-Scheffler-commits-to-2026-3M-Open" target="_blank" rel="noopener">Scottie Scheffler, the world’s No. 1-ranked golfer, will compete in the 2026 3M Open. The event runs July 20-26 at TPC Twin Cities in Blaine, Minnesota. It will be Scheffler</a></li><li><span class="num">03</span><a href="https://www.reuters.com/business/3m-raises-2025-profit-forecast-2025-10-21/" target="_blank" rel="noopener">3M raises annual profit forecast amid margin expansion drive</a></li><li><span class="num">04</span><a href="https://news.3m.com/2026-06-23-3M-and-Airbus-announce-agreement-to-advance-A220-passenger-comfort-and-aircraft-performance-through-advanced-insulation-technology" target="_blank" rel="noopener">Expanded collaboration will support thermal and acoustic insulation solutions to enhance the A220 passenger experience ST. PAUL, Minn., June 23, 2026 /PRNewswire/ -- 3M and Airbus, a leading...</a></li><li><span class="num">05</span><a href="https://news.3m.com/2026-06-22-3M-launches-Ask-3M,-an-AI-powered-tool-for-faster-access-to-technical-expertise" target="_blank" rel="noopener">New digital assistant helps customers evaluate 3M materials, compare options and solve application challenges ST. PAUL, Minn., June 22, 2026 /PRNewswire/ -- 3M has launched Ask 3M, a new...</a></li></ol><div class="summary-stats"><span>10 条</span><span>3M</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://news.3m.com/The-National-Coalition-of-Certification-Centers-and-3M-award-national-scholarships-to-skilled-trades-students-nationwide" target="_blank" rel="noopener">The National Coalition of Certification Centers and 3M award national scholarships to skilled trades students nationwide</a></h3>
+  <p class="news-card-snippet">The National Coalition of Certification Centers (NC3), in partnership with 3M’s Safety and Industrial business, announced the 2026 recipients of the Skilled Trades – 3M Transformational...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>news.3m.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://news.3m.com/Scottie-Scheffler-commits-to-2026-3M-Open" target="_blank" rel="noopener">Scottie Scheffler commits to 2026 3M Open</a></h3>
+  <p class="news-card-snippet">Scottie Scheffler, the world’s No. 1-ranked golfer, will compete in the 2026 3M Open. The event runs July 20-26 at TPC Twin Cities in Blaine, Minnesota. It will be Scheffler</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>news.3m.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.reuters.com/business/3m-raises-2025-profit-forecast-2025-10-21/" target="_blank" rel="noopener">3M raises annual profit forecast amid margin expansion drive</a></h3>
+  
+  <div class="news-card-footer">
+    
+    <span>reuters.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://news.3m.com/2026-06-23-3M-and-Airbus-announce-agreement-to-advance-A220-passenger-comfort-and-aircraft-performance-through-advanced-insulation-technology" target="_blank" rel="noopener">3M and Airbus announce agreement to advance A220 passenger comfort and aircraft performance through advanced insulation technology</a></h3>
+  <p class="news-card-snippet">Expanded collaboration will support thermal and acoustic insulation solutions to enhance the A220 passenger experience ST. PAUL, Minn., June 23, 2026 /PRNewswire/ -- 3M and Airbus, a leading...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>news.3m.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://news.3m.com/2026-06-22-3M-launches-Ask-3M,-an-AI-powered-tool-for-faster-access-to-technical-expertise" target="_blank" rel="noopener">3M launches Ask 3M, an AI-powered tool for faster access to technical expertise</a></h3>
+  <p class="news-card-snippet">New digital assistant helps customers evaluate 3M materials, compare options and solve application challenges ST. PAUL, Minn., June 22, 2026 /PRNewswire/ -- 3M has launched Ask 3M, a new...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>news.3m.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1978918.html" target="_blank" rel="noopener">433M频段天线模块选购指南与应用方案解析</a></h3>
+  <p class="news-card-snippet">一、433M频段天线模块市场概述433MHz频段属于全球通用的ISM（工业、科学、医疗）免授权频段，具备传输距离远、穿墙能力强、功耗低等显著优势，广泛应用于物联网、智能家居、工业自动化、智能农业等领域。根据《2025年中国433MHz通信收发天线市场调查研究报告》数据显示，2025年中国433MHz通信收发天线市场规模</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1997380.html" target="_blank" rel="noopener">做到3MW逆变器之后，对电流检测的一些重新理解</a></h3>
+  <p class="news-card-snippet">一开始做逆变器的时候，其实对电流检测这件事想得比较简单。无非就是精度、带宽这些指标，选型的时候对一对参数，大致就能确定方案。但项目功率慢慢往上走之后，这种理解就有点不太够用了。尤其是做到兆瓦级，再往上到几千安培输出的场景，会发现问题开始变得不太一样——有些并不是在设计阶段能直接看出来的，而是系统运行一段时间之后才逐渐暴</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2024314.html" target="_blank" rel="noopener">0.3mm QFN零件生产工艺研究报告，值得SMT工艺工程师收藏！</a></h3>
+  <p class="news-card-snippet">在电子制造的微观世界里，0.3mm是一个什么概念？这大约是三根人类头发丝并排的宽度。在这个尺度上，传统的SMT（表面组装技术）经验正在面临前所未有的极限挑战。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2026205.html" target="_blank" rel="noopener">施耐德EOCR-I3M420-WRDUHZ 带 RS485+4~20mA 双输出智能马达保护器技术</a></h3>
+  <p class="news-card-snippet">一、产品概述EOCR-I3M420-WRDUHZ 为施耐德（原韩国三和 SAMWHA）原厂出品贯穿穿线型一体化智能综合马达保护器，型号释义：WR=0.5~80A 直测量程、D=1 常开 1 常闭独立触点、U=AC/DC100~240V 宽幅交直流通用电源、H = 贯穿式穿线结构、Z = 新一代升级款。产品集成全维度电机</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1966702.html" target="_blank" rel="noopener">半导体芯片检测行业适合用上银KK模组±0.003mm高精度产品吗？</a></h3>
+  <p class="news-card-snippet">半导体芯片检测是芯片制造流程中决定产品良率的关键环节之一。对于从事半导体设备开发的工程师来说，选择合适的传动部件直接影响检测设备的精度和稳定性。最近常有客户问：半导体芯片检测行业适合用上银KK模组±0.003mm高精度产品吗？今天我们就从技术需求和产品特性的匹配度来详细解答这个问题。首先，半导体芯片检测的核心技术需求是</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="honeywell" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0891b2"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">H</text>
+  </svg>
+    <div class="name-block">
+      <h2>霍尼韦尔 Honeywell</h2>
+      <span class="domain">honeywell.com · International</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/exxonmobil-names-honeywell-its-2025-supplier-innovation-award-winner" target="_blank" rel="noopener">The recognition underscores Honeywell’s commitment to process automation innovation at ExxonMobil facilities</a></li><li><span class="num">02</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">While advances in aviation technology continue to accelerate, one thing remains constant: the need for precise, dependable temperature control throughout an aircraft. For more than six decades, Honeywell has supplied bimetal thermostats and temperature sensing solutions that help monitor temperatures in critical systems.</a></li><li><span class="num">03</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/05/honeywell-pss-modex-2026-recap-key-trends-shaping-the-future-of-supply-chains" target="_blank" rel="noopener">At MODEX 2026, one of the industry’s largest supply chain and logistics events, it became clear that organizations are entering a new phase of transformation – where intelligence, automation, and adaptability converge to power the modern warehouse.</a></li><li><span class="num">04</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/03/honeywell-wins-2026-if-design-awards-for-mobile-computing-industrial-printing-technologies" target="_blank" rel="noopener">PSS handheld computer, mobile printer and desktop printer designs shine</a></li><li><span class="num">05</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/03/honeywell-transnorm-wins-2026-if-design-award-for-energy-efficient-sorter-solution" target="_blank" rel="noopener">Honeywell Transnorm has received a 2026 iF Design award for its Swivel Wheel Sorter Cartridge TS4810.</a></li></ol><div class="summary-stats"><span>10 条</span><span>霍尼韦尔 Honeywell</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/exxonmobil-names-honeywell-its-2025-supplier-innovation-award-winner" target="_blank" rel="noopener">ExxonMobil Names Honeywell its 2025 Supplier Innovation Award Winner</a></h3>
+  <p class="news-card-snippet">The recognition underscores Honeywell’s commitment to process automation innovation at ExxonMobil facilities</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>honeywell.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">More Than Six Decades of Trusted Thermal Sensing: The Honeywell Ongoing Partnership with Boeing</a></h3>
+  <p class="news-card-snippet">While advances in aviation technology continue to accelerate, one thing remains constant: the need for precise, dependable temperature control throughout an aircraft. For more than six decades, Honeywell has supplied bimetal thermostats and temperature sensing solutions that help monitor temperatures in critical systems.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>honeywell.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/05/honeywell-pss-modex-2026-recap-key-trends-shaping-the-future-of-supply-chains" target="_blank" rel="noopener">Honeywell Productivity Solutions and Services (PSS) MODEX 2026 Recap: Key Trends Shaping the Future of Supply Chains</a></h3>
+  <p class="news-card-snippet">At MODEX 2026, one of the industry’s largest supply chain and logistics events, it became clear that organizations are entering a new phase of transformation – where intelligence, automation, and adaptability converge to power the modern warehouse.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>honeywell.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/03/honeywell-wins-2026-if-design-awards-for-mobile-computing-industrial-printing-technologies" target="_blank" rel="noopener">Honeywell Wins 2026 iF Design Awards for Mobile Computing, Industrial Printing Technologies</a></h3>
+  <p class="news-card-snippet">PSS handheld computer, mobile printer and desktop printer designs shine</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>honeywell.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/03/honeywell-transnorm-wins-2026-if-design-award-for-energy-efficient-sorter-solution" target="_blank" rel="noopener">Honeywell Transnorm Wins 2026 iF Design Award for Energy-Efficient Sorter Solution</a></h3>
+  <p class="news-card-snippet">Honeywell Transnorm has received a 2026 iF Design award for its Swivel Wheel Sorter Cartridge TS4810.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>honeywell.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/02/honeywell-and-b2m-solutions-partner-to-expand-operational-insights-from-mobile-assets" target="_blank" rel="noopener">Honeywell and B2M Solutions Partner to Expand Operational Insights from Mobile Assets</a></h3>
+  <p class="news-card-snippet">The integration of B2M Elemez software with Honeywell Operational Intelligence broadens mobile device insights and analytics while also providing customer flexibility</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>honeywell.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/01/from-data-to-decisions-nrf-2026-recap-and-the-future-of-automated-retail" target="_blank" rel="noopener">From Data To Decisions: NRF 2026 Recap and the Future of Automated Retail</a></h3>
+  <p class="news-card-snippet">The National Retail Federation’s Big Show 2026 in New York City showcased how technology is redefining retail. With 1,000+ exhibitors and 40,000 visitors, Honeywell’s main message was “Unleash Dynamic Commerce,” urging retailers to leverage real-time data, automation, and AI to deliver seamless, personalised shopping and operational excellence.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>honeywell.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2025/10/gitex-2025-insights-how-dubai-is-pioneering-innovation-in-global-trade-and-logistics" target="_blank" rel="noopener">GITEX 2025 Insights: How Dubai is Pioneering Innovation in Global Trade &amp; Logistics</a></h3>
+  <p class="news-card-snippet">As the GITEX event concludes, we share some of the megatrends influencing Dubai’s role in the future of transportation and logistics</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>honeywell.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2025/10/honeywell-at-gitex-2025-what-to-know" target="_blank" rel="noopener">Honeywell at GITEX 2025: What to Know</a></h3>
+  <p class="news-card-snippet">Powering intelligent productivity for today’s retail and supply chain workforce</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>honeywell.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">1970-01-01</div>
+  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2025/07/honeywell-battery-electrolyte-sensor-wins-2025-best-of-sensors-award" target="_blank" rel="noopener">Honeywell Battery Electrolyte Sensor Wins 2025 Best of Sensors Award</a></h3>
+  <p class="news-card-snippet">Learn about Honeywell’s expertise in battery safety and the sensing space.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>honeywell.com</span>
+  </div>
+</article></div>
+</section>
+  </div>
+</main>
+<footer>
+  行业雷达 · 头部公司新闻聚合 · 数据来自各公司新闻中心 · 仅供研究参考<br>
+  <span class="mono">构建于 2026-06-27 · GitHub Pages</span>
+</footer>
 <script>
-document.querySelectorAll('.tab').forEach(tab => {
+document.querySelectorAll('.company-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     const target = tab.dataset.co;
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.company-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('section[data-co]').forEach(s => s.hidden = s.dataset.co !== target);
     tab.classList.add('active');
     history.replaceState(null, '', '#' + target);
@@ -963,19 +1261,19 @@ document.querySelectorAll('.tab').forEach(tab => {
 window.addEventListener('DOMContentLoaded', () => {
   const hash = location.hash.replace('#', '');
   if (hash) {
-    const tab = document.querySelector('.tab[data-co="' + hash + '"]');
+    const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
     if (tab) tab.click();
   }
   const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.dataset.theme = theme;
   const btn = document.querySelector('.theme-toggle');
   if (btn) {
-    btn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色';
+    btn.textContent = theme === 'dark' ? '☀ 浅色' : '☾ 深色';
     btn.addEventListener('click', () => {
       const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
       document.documentElement.dataset.theme = next;
       localStorage.setItem('theme', next);
-      btn.textContent = next === 'dark' ? '☀️ 浅色' : '🌙 深色';
+      btn.textContent = next === 'dark' ? '☀ 浅色' : '☾ 深色';
     });
   }
 });
