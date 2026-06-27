@@ -19,9 +19,10 @@ function run(label, cmd, args, opts = {}) {
   }
 }
 
-run('Step 1/3 — Build fresh news', 'node', ['scripts/daily-update.mjs']);
-run('Step 2/3 — Translate English to Chinese', 'node', ['scripts/translate-news.mjs']);
-// daily-update already rendered HTML; after translate we need to re-render
-run('Step 3/3 — Re-render HTML from translated JSON', 'node', ['scripts/render-from-json.mjs']);
+run('Step 1/4 — Build fresh news', 'node', ['scripts/daily-update.mjs']);
+run('Step 2/4 — Strip bot-block / placeholder snippets', 'node', ['scripts/clean-news.mjs']);
+run('Step 3/4 — Translate English to Chinese', 'node', ['scripts/translate-news.mjs']);
+// daily-update already rendered HTML; after translate+clean we need to re-render
+run('Step 4/4 — Re-render HTML from translated JSON', 'node', ['scripts/render-from-json.mjs']);
 
 console.log('\n✓ All done.');
