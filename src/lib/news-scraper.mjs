@@ -16,6 +16,23 @@ import { JSDOM } from 'jsdom';
 import { fetchGoogleNewsRss, resolveGoogleNewsUrls } from './google-news.mjs';
 import { fetchEefocusNews } from './eefocus-news.mjs';
 import { fetchBingNews } from './bing-news.mjs';
+import { fetchMetaSummary } from './html-helpers.mjs';
+
+const FILE_URL_RE = /\.(pdf|docx?|xlsx?|zip|rar|jpg|jpeg|png|gif|webp|svg)$/i;
+
+function isFileUrl(url) {
+  return FILE_URL_RE.test(url || '');
+}
+
+// Fetch meta summaries for a list of HTML pages (skips files, runs in parallel).
+async function fillSnippets(scraped) {
+  const htmlItems = scraped.filter(s => !isFileUrl(s.url));
+  const fetches = htmlItems.map(async item => {
+    const summary = await fetchMetaSummary(item.url);
+    if (summary) item.snippet = summary;
+  });
+  await Promise.all(fetches);
+}
 
 const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
@@ -517,5 +534,9 @@ if (scraped.length < perCompany) {
       snippet,
     });
   }
+
+  // Fetch meta description summaries for HTML pages (skips files automatically).
+  // Files (PDFs etc.) keep empty snippet — they'll just show the title in the UI.
+  await fillSnippets(itemsToShow);
   return itemsToShow;
 }

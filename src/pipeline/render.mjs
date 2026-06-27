@@ -1,5 +1,14 @@
 import { escapeHtml, formatDate, relativeTime } from '../lib/html-helpers.mjs';
 
+function isFileUrl(url) {
+  return /\.(pdf|docx?|xlsx?|zip|rar|jpg|jpeg|png|gif|webp|svg)$/i.test(url || '');
+}
+
+function safeMeta(value) {
+  if (!value || value === 'unknown') return '';
+  return value;
+}
+
 const STYLES = `
 :root {
   --bg: #ffffff;
@@ -508,8 +517,10 @@ function buildSummary(company) {
   }
   const top = company.news.slice(0, 3);
   const items = top.map(n => `<li>${escapeHtml(n.title)}</li>`).join('');
-  const now = new Date();
-  const stats = `${company.news.length} 条新闻 · 最近 ${formatDate(company.news[0].published_at)}`;
+  const lastDate = formatDate(company.news[0].published_at);
+  const stats = lastDate
+    ? `${company.news.length} 条新闻 · 最近 ${lastDate}`
+    : `${company.news.length} 条新闻`;
   return `<div class="summary"><div class="summary-label">本周要点</div><ul>${items}</ul><div class="stats">${escapeHtml(stats)}</div></div>`;
 }
 
@@ -533,17 +544,24 @@ export function renderIndustryPage(data) {
     const newsList = c.news.length === 0
       ? '<p class="empty">暂无该公司的近期新闻。</p>'
       : `<ul class="news-list">
-        ${c.news.map(n => `
+        ${c.news.map(n => {
+          // Show snippet only when present AND URL isn't a file (PDF etc.)
+          const snippet = (n.snippet && !isFileUrl(n.url)) ? escapeHtml(n.snippet) : '';
+          // Build meta line; skip empty fields
+          const source = safeMeta(n.source);
+          const date = formatDate(n.published_at);
+          const rel = relativeTime(n.published_at, now);
+          const metaBits = [source, date, rel].filter(Boolean);
+          const metaHtml = metaBits.length
+            ? `<span class="news-meta">${metaBits.map(b => `<span>${escapeHtml(b)}</span>`).join('<span class="dot">·</span>')}</span>`
+            : '';
+          return `
           <li class="news-item">
             <a class="news-title" href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title)}<span class="arrow">↗</span></a>
-            <p class="news-snippet">${escapeHtml(n.snippet)}</p>
-            <span class="news-meta">
-              <span>${escapeHtml(n.source)}</span>
-              <span>${formatDate(n.published_at)}</span>
-              <span>${relativeTime(n.published_at, now)}</span>
-            </span>
-          </li>
-        `).join('')}
+            ${snippet ? `<p class="news-snippet">${snippet}</p>` : ''}
+            ${metaHtml}
+          </li>`;
+        }).join('')}
       </ul>`;
     const monoChar = (c.monogram || c.name.charAt(0)).slice(0, 2);
     const monoColor = c.monogram_color || '#475569';
