@@ -231,51 +231,66 @@ main section h2 {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 28px 32px;
-  margin-bottom: 36px;
-  box-shadow: var(--shadow-sm);
+  padding: 36px 40px 32px;
+  margin-bottom: 56px;
 }
 .summary-label {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 16px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 28px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 .summary-label::before {
   content: '';
-  width: 18px;
+  width: 24px;
   height: 1px;
-  background: var(--accent);
+  background: var(--text-faint);
 }
-.summary ul { list-style: none; margin-bottom: 16px; }
-.summary li {
-  padding: 10px 0 10px 22px;
-  position: relative;
-  font-size: 16px;
-  line-height: 1.5;
+.summary-list {
+  list-style: none;
+  margin: 0;
+  counter-reset: summary;
+}
+.summary-list li {
+  padding: 16px 0;
+  border-top: 1px solid var(--divider);
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+  font-size: 17px;
+  line-height: 1.45;
   color: var(--text);
-  border-bottom: 1px solid var(--divider);
   letter-spacing: -0.01em;
 }
-.summary li:last-child { border-bottom: none; }
-.summary li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 18px;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
+.summary-list li:first-child { border-top: none; padding-top: 4px; }
+.summary-list .num {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+  min-width: 18px;
 }
+.summary-list a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.summary-list a:hover { color: var(--accent); }
 .summary .stats {
-  font-size: 13px;
-  color: var(--text-soft);
-  padding-top: 14px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+  padding-top: 24px;
+  margin-top: 16px;
   border-top: 1px solid var(--divider);
 }
 
@@ -319,49 +334,86 @@ main section h2 {
 
 ul.news-list { list-style: none; }
 li.news-item {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--divider);
-  transition: padding-left 0.2s;
+  padding: 36px 0;
+  border-top: 1px solid var(--divider);
+  transition: background 0.2s, padding 0.2s;
 }
-li.news-item:hover { padding-left: 8px; }
+li.news-item:first-child { border-top: none; padding-top: 12px; }
+li.news-item:last-child { padding-bottom: 12px; }
+li.news-item:hover {
+  background: linear-gradient(90deg, var(--surface-soft) 0%, transparent 60%);
+}
+
+.news-date {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.news-date::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
 a.news-title {
   color: var(--text);
   text-decoration: none;
-  font-size: 19px;
+  font-size: 26px;
   font-weight: 600;
   display: inline;
-  line-height: 1.4;
+  line-height: 1.25;
   font-family: var(--font-sans);
-  letter-spacing: -0.015em;
-  transition: color 0.15s;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
 }
 li.news-item:hover a.news-title { color: var(--accent); }
 a.news-title .arrow {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--text-faint);
-  margin-left: 4px;
-  transition: color 0.15s;
+  margin-left: 6px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
 }
-li.news-item:hover a.news-title .arrow { color: var(--accent); }
+li.news-item:hover a.news-title .arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
 p.news-snippet {
   color: var(--text-soft);
-  font-size: 15px;
-  margin: 8px 0 10px;
-  line-height: 1.55;
+  font-size: 16px;
+  margin: 14px 0 16px;
+  line-height: 1.6;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  max-width: 68ch;
 }
-span.news-meta {
-  color: var(--text-faint);
-  font-size: 13px;
-  display: inline-flex;
-  gap: 8px;
+
+.news-meta {
+  display: flex;
   align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-faint);
 }
-span.news-meta .dot { color: var(--border-strong); }
+.news-source {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-soft);
+  letter-spacing: -0.005em;
+}
 .empty {
   color: var(--text-soft);
   padding: 40px 0;
@@ -487,25 +539,29 @@ footer {
           <span class="domain">bosomchina.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">本周要点</div><ul><li>2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行</li><li>2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径</li><li>2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动</li></ul><div class="stats">4 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行</a></li><li><span class="num">02</span><a href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径</a></li><li><span class="num">03</span><a href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动</a></li></ol><div class="stats">4 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bosomchina.com/news_detail/id-178.html" target="_blank" rel="noopener">2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bosomchina.com/news_detail/id-177.html" target="_blank" rel="noopener">2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bosomchina.com/news_detail/id-176.html" target="_blank" rel="noopener">2025/06/19 本松新材新能源汽车电驱逆变器模块轻量化项目启动<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bosomchina.com/news_detail/id-175.html" target="_blank" rel="noopener">2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行<span class="arrow">↗</span></a>
             
             
@@ -523,40 +579,47 @@ footer {
           <span class="domain">frd.cn</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">本周要点</div><ul><li>飞荣达控股具身智能子公司——果力智能乔迁新址 2026-02-27 2026年2月25日，飞荣达控股子公司——深圳果力智能科技有...</li><li>飞荣达携手果力智能参与灵巧手国家标准闭门起草研讨会 2026-02-11 2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用...</li><li>全国电磁屏蔽材料标准化技术委员... 2025-12-08</li></ul><div class="stats">7 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=840&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达控股具身智能子公司——果力智能乔迁新址 2026-02-27 2026年2月25日，飞荣达控股子公司——深圳果力智能科技有...</a></li><li><span class="num">02</span><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=839&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达携手果力智能参与灵巧手国家标准闭门起草研讨会 2026-02-11 2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用...</a></li><li><span class="num">03</span><a href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=838&amp;Fid=t2:4:2" target="_blank" rel="noopener">全国电磁屏蔽材料标准化技术委员... 2025-12-08</a></li></ol><div class="stats">7 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
+            
             <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=840&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达控股具身智能子公司——果力智能乔迁新址 2026-02-27 2026年2月25日，飞荣达控股子公司——深圳果力智能科技有...<span class="arrow">↗</span></a>
             <p class="news-snippet">2026年2月25日，飞荣达控股子公司——深圳果力智能科技有限公司正式迁入深圳光明飞荣达新材料产业园。新办公空间集办公、研发、展示于一体，并与制造产线及配套产线无缝协同，将全面提升运营效率与员工体验。关于果力智能深圳果力智能科技有限公司，成立于 2015 年，专注深度仿生的具身智能灵巧操作技术，是业内...</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=839&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达携手果力智能参与灵巧手国家标准闭门起草研讨会 2026-02-11 2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用...<span class="arrow">↗</span></a>
             <p class="news-snippet">2026 年 1 月 28 日，国家标准《仿生多指灵巧手通用技术规范》（计划号 ：20255586-T-604）闭门起草研讨会在北京顺利召开。依托在灵巧手领域的核心技术积淀，控股子公司果力智能 CEO 刘阳与飞荣达导电导热工程实验室总监施伟伟共同参会，深度参与国家标准的起草研讨工作，为行业规范化发展提...</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=838&amp;Fid=t2:4:2" target="_blank" rel="noopener">全国电磁屏蔽材料标准化技术委员... 2025-12-08<span class="arrow">↗</span></a>
             <p class="news-snippet">2025年11月25日至27日，全国电磁屏蔽材料标准化技术委员会（SAC/TC323）2025年年会在深圳隆重举办。本次年会由深圳市飞荣达科技股份有限公司承办，得到了深圳市市监督管理局及行业内外的高度关注与大力支持。深圳市飞荣达科技股份有限公司研发中心副总经理王美发、深圳市市场监督管理局标准处处长、一...</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=837&amp;Fid=t2:4:2" target="_blank" rel="noopener">京东工业与飞荣达等10家机器人... 2025-12-02<span class="arrow">↗</span></a>
             <p class="news-snippet">在2025世界智能制造大会期间，京东工业主题为“赋能生态 智造未来”的发布会成功举办，展示了对机器人制造产业的深度洞察和完整布局，为产业提供覆盖研发、量产等阶段各细分场景的BOM（生产原材料）供应链数智化服务。京东工业现场与德赛电池、翼菲智能、佰维存储、舍弗勒贸易、天通集团、飞荣达、南京天创智能科技、...</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=836&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达出席 2025 中国电磁... 2025-05-13<span class="arrow">↗</span></a>
             <p class="news-snippet">2025年4月23日至24日，由中国电工技术学会主办的第二十九届国际电磁兼容与微波暨测试测量技术交流展览会在北京国家会议中心隆重举行，2025中国电磁兼容大会也同期举办。我司实验室经理施伟伟女士受邀发表题为《平面型电磁屏蔽材料测试方法与标准》的专题报告。报告伊始，施经理系统介绍了飞荣达作为电磁兼容解决...</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=835&amp;Fid=t2:4:2" target="_blank" rel="noopener">飞荣达参与起草的两项国家标准正... 2024-11-15<span class="arrow">↗</span></a>
             <p class="news-snippet">近日，飞荣达深度参与起草的两项国家标准——《GB/T 44645-2024电磁屏蔽材料高功率微波屏蔽效能测量方法》与《GB/T 44648-2024平面型电磁屏蔽材料镀金属层附着性能的测定》已正式由国家标准化管理委员会发布。作为电磁屏蔽材料领域的龙头企业，飞荣达凭借在电磁屏蔽材料领域多年的深耕细作以及...</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.frd.cn/news_view.aspx?TypeId=4&amp;Id=834&amp;Fid=t2:4:2" target="_blank" rel="noopener">第五届热管理大会成功举办，飞荣... 2024-11-14<span class="arrow">↗</span></a>
             <p class="news-snippet">近期，2024第五届热管理材料与技术大会在深圳会展中心盛大举行。本次大会不仅聚集了多位热管理行业的专家学者以及2000多位行业人士同台“论道”，还有300余家企业展出了自己的最新的热管理产品和创新技术解决方案，全面展现了热管理行业的前沿理论和技术产品。据了解，本次热管理大会邀请了欧洲科学院院士、南方科...</p>
             
@@ -574,50 +637,59 @@ footer {
           <span class="domain">sinopec.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">本周要点</div><ul><li>Allied Biofuels Signs FEED + Detailed Engineering Contract with Rollover to EPC with Sinopec Engineering Group for US$6.1 Billion SAF and e-SAF Project in Uzbe…</li><li>Sinopec awarded FEED contract for huge Uzbekistan e-fuels project</li><li>Sinopec sets up new entity to expand refinery investment abroad</li></ul><div class="stats">9 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://finance.yahoo.com/energy/articles/allied-biofuels-signs-feed-detailed-154700760.html" target="_blank" rel="noopener">Allied Biofuels Signs FEED + Detailed Engineering Contract with Rollover to EPC with Sinopec Engineering Group for US$6.1 Billion SAF and e-SAF Project in Uzbe…</a></li><li><span class="num">02</span><a href="https://www.gasworld.com/story/sinopec-awarded-feed-contract-for-huge-uzbekistan-e-fuels-project/2253037.article/" target="_blank" rel="noopener">Sinopec awarded FEED contract for huge Uzbekistan e-fuels project</a></li><li><span class="num">03</span><a href="https://www.theglobeandmail.com/investing/markets/stocks/SNPMF/pressreleases/1932075/sinopec-sets-final-2025-dividend-and-clarifies-h-share-tax-treatment/" target="_blank" rel="noopener">Sinopec Sets Final 2025 Dividend and Clarifies H-Share Tax Treatment</a></li></ol><div class="stats">9 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
+            
             <a class="news-title" href="https://finance.yahoo.com/energy/articles/allied-biofuels-signs-feed-detailed-154700760.html" target="_blank" rel="noopener">Allied Biofuels Signs FEED + Detailed Engineering Contract with Rollover to EPC with Sinopec Engineering Group for US$6.1 Billion SAF and e-SAF Project in Uzbe…<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.gasworld.com/story/sinopec-awarded-feed-contract-for-huge-uzbekistan-e-fuels-project/2253037.article/" target="_blank" rel="noopener">Sinopec awarded FEED contract for huge Uzbekistan e-fuels project<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://www.nasdaq.com/articles/sinopec-sets-up-new-entity-to-expand-refinery-investment-abroad" target="_blank" rel="noopener">Sinopec sets up new entity to expand refinery investment abroad<span class="arrow">↗</span></a>
             
-            
-          </li>
-          <li class="news-item">
             <a class="news-title" href="https://www.theglobeandmail.com/investing/markets/stocks/SNPMF/pressreleases/1932075/sinopec-sets-final-2025-dividend-and-clarifies-h-share-tax-treatment/" target="_blank" rel="noopener">Sinopec Sets Final 2025 Dividend and Clarifies H-Share Tax Treatment<span class="arrow">↗</span></a>
             <p class="news-snippet">Detailed price information for China Petroleum &amp;amp; Chemical Corp (SNPMF) from The Globe and Mail including charting and trades.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.cbc.ca/lite/story/1.1308928" target="_blank" rel="noopener">China&#39;s Sinopec buys stake in Egyptian oil field<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://global.chinadaily.com.cn/a/202504/10/WS67f7219da3104d9fd381e82f.html" target="_blank" rel="noopener">Sinopec expands partnership with Saudi Aramco<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://finance.yahoo.com/news/sinopecs-ziyang-dongfeng-shale-gas-104400547.html" target="_blank" rel="noopener">Sinopec&#39;s Ziyang Dongfeng Shale Gas Field Reports Proven Reserve of 235.687 Billion Cubic Meters<span class="arrow">↗</span></a>
+            
+            <a class="news-title" href="https://www.nasdaq.com/articles/sinopec-sets-up-new-entity-to-expand-refinery-investment-abroad" target="_blank" rel="noopener">Sinopec sets up new entity to expand refinery investment abroad<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
+            <a class="news-title" href="https://www.morningstar.com/company-reports/1121721-sinopecs-q3-results-see-weaker-downstream-contributions-upstream-earnings-remain-robust" target="_blank" rel="noopener">Sinopec’s Q3 Results See Weaker Downstream Contributions; Upstream Earnings Remain Robust<span class="arrow">↗</span></a>
+            
+            
+          </li>
+          <li class="news-item">
+            
             <a class="news-title" href="https://www.nasdaq.com/press-release/sinopec-puts-largest-gas-storage-cluster-in-north-china-into-operation-providing-10" target="_blank" rel="noopener">Sinopec Puts Largest Gas Storage Cluster in North China into Operation, Providing 10 Billion Cubic Meters of Gas Storage<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.reuters.com/article/markets/commodities/sinopec-to-pay-15-billion-for-parents-oil-gas-assets-idUSL3N0CH08H/" target="_blank" rel="noopener">Sinopec to pay $1.5 billion for parent&#39;s oil, gas assets<span class="arrow">↗</span></a>
             
             
@@ -635,55 +707,65 @@ footer {
           <span class="domain">henkel.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">本周要点</div><ul><li>Moving Forward with Courage: How Companies Can Shape DEI At the Corporate Diversity Summit, Andrea Becher, Global Head of Talent Acquisition, Leadership, Learning and Culture, talks about how companies can strengthen a culture of belonging. influentialmag.co.uk</li><li>Download Center Find selected image and footage material for download! Learn more</li><li>Press Release E-mail Distribution List Interested in the latest press releases? Contact us to be included in our distribution list. Learn more</li></ul><div class="stats">10 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">Moving Forward with Courage: How Companies Can Shape DEI At the Corporate Diversity Summit, Andrea Becher, Global Head of Talent Acquisition, Leadership, Learning and Culture, talks about how companies can strengthen a culture of belonging. influentialmag.co.uk</a></li><li><span class="num">02</span><a href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">Download Center Find selected image and footage material for download! Learn more</a></li><li><span class="num">03</span><a href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">Press Release E-mail Distribution List Interested in the latest press releases? Contact us to be included in our distribution list. Learn more</a></li></ol><div class="stats">10 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
+            
             <a class="news-title" href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">Moving Forward with Courage: How Companies Can Shape DEI At the Corporate Diversity Summit, Andrea Becher, Global Head of Talent Acquisition, Leadership, Learning and Culture, talks about how companies can strengthen a culture of belonging. influentialmag.co.uk<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">Download Center Find selected image and footage material for download! Learn more<span class="arrow">↗</span></a>
             <p class="news-snippet">The Download Center offers journalists images and TV footage materials as well as Henkel’s latest publications for download.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">Press Release E-mail Distribution List Interested in the latest press releases? Contact us to be included in our distribution list. Learn more<span class="arrow">↗</span></a>
             <p class="news-snippet">Subscription to the Press Distribution List</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://finance.yahoo.com/news/henkel-buys-laundry-care-firm-051115368.html" target="_blank" rel="noopener">Henkel buys laundry care firm Sun Products in $3.6 bln deal<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.yahoo.com/lifestyle/henkel-strategic-review-073059525.html" target="_blank" rel="noopener">Henkel: A Strategic Review<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.fortuneindia.com/business-news/henkel-names-pradhyumna-ingle-india-president-as-global-adhesives-major-sharpens-focus-on-high-growth-market/144944" target="_blank" rel="noopener">Henkel names Pradhyumna Ingle India president as global adhesives major sharpens focus on high-growth market<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://finance.yahoo.com/news/2-henkel-cut-2-000-062213999.html" target="_blank" rel="noopener">UPDATE 3-Henkel to cut 2,000 jobs in face of rising costs, slow demand<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.thehindubusinessline.com/companies/henkel-names-pradhyumna-ingleascountry-president-for-india/article71145340.ece" target="_blank" rel="noopener">Henkel names Pradhyumna Ingle as Country President for India<span class="arrow">↗</span></a>
             <p class="news-snippet">Henkel has named Pradhyumna Ingle as Country President for India, which it considers as strategically important markets.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.exchange4media.com/people-movement-news/henkel-appoints-pradhyumna-ingle-as-country-president-for-india-155770.html" target="_blank" rel="noopener">Pradhyumna Ingle takes charge as Henkel&#39;s Country President for India<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://seekingalpha.com/article/4617753-henkel-upside-potential-remains" target="_blank" rel="noopener">Henkel: Upside Potential Remains<span class="arrow">↗</span></a>
             
             
@@ -701,57 +783,67 @@ footer {
           <span class="domain">3m.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">本周要点</div><ul><li>The National Coalition of Certification Centers and 3M award national scholarships to skilled trades students nationwide</li><li>Scottie Scheffler commits to 2026 3M Open</li><li>3M raises annual profit forecast amid margin expansion drive</li></ul><div class="stats">10 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://news.3m.com/The-National-Coalition-of-Certification-Centers-and-3M-award-national-scholarships-to-skilled-trades-students-nationwide" target="_blank" rel="noopener">The National Coalition of Certification Centers and 3M award national scholarships to skilled trades students nationwide</a></li><li><span class="num">02</span><a href="https://news.3m.com/Scottie-Scheffler-commits-to-2026-3M-Open" target="_blank" rel="noopener">Scottie Scheffler commits to 2026 3M Open</a></li><li><span class="num">03</span><a href="https://www.reuters.com/business/3m-raises-2025-profit-forecast-2025-10-21/" target="_blank" rel="noopener">3M raises annual profit forecast amid margin expansion drive</a></li></ol><div class="stats">10 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
+            
             <a class="news-title" href="https://news.3m.com/The-National-Coalition-of-Certification-Centers-and-3M-award-national-scholarships-to-skilled-trades-students-nationwide" target="_blank" rel="noopener">The National Coalition of Certification Centers and 3M award national scholarships to skilled trades students nationwide<span class="arrow">↗</span></a>
             <p class="news-snippet">The National Coalition of Certification Centers (NC3), in partnership with 3M’s Safety and Industrial business, announced the 2026 recipients of the Skilled Trades – 3M Transformational...</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://news.3m.com/Scottie-Scheffler-commits-to-2026-3M-Open" target="_blank" rel="noopener">Scottie Scheffler commits to 2026 3M Open<span class="arrow">↗</span></a>
             <p class="news-snippet">Scottie Scheffler, the world’s No. 1-ranked golfer, will compete in the 2026 3M Open. The event runs July 20-26 at TPC Twin Cities in Blaine, Minnesota. It will be Scheffler</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.reuters.com/business/3m-raises-2025-profit-forecast-2025-10-21/" target="_blank" rel="noopener">3M raises annual profit forecast amid margin expansion drive<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://news.3m.com/2026-06-23-3M-and-Airbus-announce-agreement-to-advance-A220-passenger-comfort-and-aircraft-performance-through-advanced-insulation-technology" target="_blank" rel="noopener">3M and Airbus announce agreement to advance A220 passenger comfort and aircraft performance through advanced insulation technology<span class="arrow">↗</span></a>
             <p class="news-snippet">Expanded collaboration will support thermal and acoustic insulation solutions to enhance the A220 passenger experience ST. PAUL, Minn., June 23, 2026 /PRNewswire/ -- 3M and Airbus, a leading...</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://news.3m.com/2026-06-22-3M-launches-Ask-3M,-an-AI-powered-tool-for-faster-access-to-technical-expertise" target="_blank" rel="noopener">3M launches Ask 3M, an AI-powered tool for faster access to technical expertise<span class="arrow">↗</span></a>
             <p class="news-snippet">New digital assistant helps customers evaluate 3M materials, compare options and solve application challenges ST. PAUL, Minn., June 22, 2026 /PRNewswire/ -- 3M has launched Ask 3M, a new...</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.fool.com/investing/2024/03/23/3m-raises-guidance-and-changes-ceo-is-the-stock-a/" target="_blank" rel="noopener">3M Raises Guidance and Changes CEO: Is the Stock a Buy?<span class="arrow">↗</span></a>
             <p class="news-snippet">The industrial conglomerate&amp;#x27;s management recently delivered some excellent news to investors.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.fool.com/investing/2025/01/27/3ms-turnaround-is-off-to-a-good-start-heres-why-it/" target="_blank" rel="noopener">3M&amp;#39;s Turnaround Is Off to a Good Start. Here&amp;#39;s Why It&amp;#39;s a Buy for 2025 and Beyond.<span class="arrow">↗</span></a>
             <p class="news-snippet">3M&amp;#x27;s Turnaround Is Off to a Good Start. Here&amp;#x27;s Why It&amp;#x27;s a Buy for 2025 and Beyond.</p>
             
           </li>
           <li class="news-item">
+            
+            <a class="news-title" href="https://www.forbes.com/sites/greatspeculations/2024/09/10/whats-driving-the-rebound-in-3m-stock/" target="_blank" rel="noopener">What’s Driving The Rebound In 3M Stock?<span class="arrow">↗</span></a>
+            
+            
+          </li>
+          <li class="news-item">
+            
             <a class="news-title" href="https://www.cnn.com/2023/04/25/business/3m-layoffs" target="_blank" rel="noopener">3M announces mass layoffs as manufacturing slows<span class="arrow">↗</span></a>
             <p class="news-snippet">3M announced significant layoffs Tuesday as part of yet another major restructuring plan as the manufacturing sector prepares for a possible recession and slumping demand for goods.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.cnn.com/2023/09/25/business/3m-iran-apparent-sanctions-violations" target="_blank" rel="noopener">3M agrees to pay almost $10 million to settle apparent Iran sanctions violations<span class="arrow">↗</span></a>
             <p class="news-snippet">3M has agreed to pay almost $10 million to settle apparent violations of Iranian sanctions, the US Office of Foreign Assets Control said last week.</p>
-            
-          </li>
-          <li class="news-item">
-            <a class="news-title" href="https://www.nbcnews.com/business/corporations/3m-creating-1-billion-trust-service-members-say-earplugs-didnt-protect-rcna40032" target="_blank" rel="noopener">3M is creating a $1 billion trust for service members who say its earplugs didn’t protect them from hearing loss<span class="arrow">↗</span></a>
-            <p class="news-snippet">Facing almost 250,000 lawsuits from service members who said its earplugs failed to protect their hearing, 3M is committing $1 billion to resolve the suits.</p>
             
           </li>
       </ul>
@@ -767,55 +859,65 @@ footer {
           <span class="domain">honeywell.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">本周要点</div><ul><li>ExxonMobil Names Honeywell its 2025 Supplier Innovation Award Winner</li><li>More Than Six Decades of Trusted Thermal Sensing: The Honeywell Ongoing Partnership with Boeing</li><li>Honeywell Productivity Solutions and Services (PSS) MODEX 2026 Recap: Key Trends Shaping the Future of Supply Chains</li></ul><div class="stats">10 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/exxonmobil-names-honeywell-its-2025-supplier-innovation-award-winner" target="_blank" rel="noopener">ExxonMobil Names Honeywell its 2025 Supplier Innovation Award Winner</a></li><li><span class="num">02</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">More Than Six Decades of Trusted Thermal Sensing: The Honeywell Ongoing Partnership with Boeing</a></li><li><span class="num">03</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/05/honeywell-pss-modex-2026-recap-key-trends-shaping-the-future-of-supply-chains" target="_blank" rel="noopener">Honeywell Productivity Solutions and Services (PSS) MODEX 2026 Recap: Key Trends Shaping the Future of Supply Chains</a></li></ol><div class="stats">10 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
+            
             <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/exxonmobil-names-honeywell-its-2025-supplier-innovation-award-winner" target="_blank" rel="noopener">ExxonMobil Names Honeywell its 2025 Supplier Innovation Award Winner<span class="arrow">↗</span></a>
             <p class="news-snippet">The recognition underscores Honeywell’s commitment to process automation innovation at ExxonMobil facilities</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">More Than Six Decades of Trusted Thermal Sensing: The Honeywell Ongoing Partnership with Boeing<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/05/honeywell-pss-modex-2026-recap-key-trends-shaping-the-future-of-supply-chains" target="_blank" rel="noopener">Honeywell Productivity Solutions and Services (PSS) MODEX 2026 Recap: Key Trends Shaping the Future of Supply Chains<span class="arrow">↗</span></a>
             <p class="news-snippet">At MODEX 2026, one of the industry’s largest supply chain and logistics events, it became clear that organizations are entering a new phase of transformation – where intelligence, automation, and adaptability converge to power the modern warehouse.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/03/honeywell-wins-2026-if-design-awards-for-mobile-computing-industrial-printing-technologies" target="_blank" rel="noopener">Honeywell Wins 2026 iF Design Awards for Mobile Computing, Industrial Printing Technologies<span class="arrow">↗</span></a>
             <p class="news-snippet">PSS handheld computer, mobile printer and desktop printer designs shine</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/03/honeywell-transnorm-wins-2026-if-design-award-for-energy-efficient-sorter-solution" target="_blank" rel="noopener">Honeywell Transnorm Wins 2026 iF Design Award for Energy-Efficient Sorter Solution<span class="arrow">↗</span></a>
             <p class="news-snippet">Honeywell Transnorm has received a 2026 iF Design award for its Swivel Wheel Sorter Cartridge TS4810.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/02/honeywell-and-b2m-solutions-partner-to-expand-operational-insights-from-mobile-assets" target="_blank" rel="noopener">Honeywell and B2M Solutions Partner to Expand Operational Insights from Mobile Assets<span class="arrow">↗</span></a>
             <p class="news-snippet">The integration of B2M Elemez software with Honeywell Operational Intelligence broadens mobile device insights and analytics while also providing customer flexibility</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2026/01/from-data-to-decisions-nrf-2026-recap-and-the-future-of-automated-retail" target="_blank" rel="noopener">From Data To Decisions: NRF 2026 Recap and the Future of Automated Retail<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2025/10/gitex-2025-insights-how-dubai-is-pioneering-innovation-in-global-trade-and-logistics" target="_blank" rel="noopener">GITEX 2025 Insights: How Dubai is Pioneering Innovation in Global Trade &amp; Logistics<span class="arrow">↗</span></a>
             <p class="news-snippet">As the GITEX event concludes, we share some of the megatrends influencing Dubai’s role in the future of transportation and logistics</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2025/10/honeywell-at-gitex-2025-what-to-know" target="_blank" rel="noopener">Honeywell at GITEX 2025: What to Know<span class="arrow">↗</span></a>
             <p class="news-snippet">Powering intelligent productivity for today’s retail and supply chain workforce</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.honeywell.com/us/en/news/featured-stories/2025/07/honeywell-battery-electrolyte-sensor-wins-2025-best-of-sensors-award" target="_blank" rel="noopener">Honeywell Battery Electrolyte Sensor Wins 2025 Best of Sensors Award<span class="arrow">↗</span></a>
             <p class="news-snippet">Learn about Honeywell’s expertise in battery safety and the sensing space.</p>
             

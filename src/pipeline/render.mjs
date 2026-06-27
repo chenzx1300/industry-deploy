@@ -236,51 +236,66 @@ main section h2 {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 28px 32px;
-  margin-bottom: 36px;
-  box-shadow: var(--shadow-sm);
+  padding: 36px 40px 32px;
+  margin-bottom: 56px;
 }
 .summary-label {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 16px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 28px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 .summary-label::before {
   content: '';
-  width: 18px;
+  width: 24px;
   height: 1px;
-  background: var(--accent);
+  background: var(--text-faint);
 }
-.summary ul { list-style: none; margin-bottom: 16px; }
-.summary li {
-  padding: 10px 0 10px 22px;
-  position: relative;
-  font-size: 16px;
-  line-height: 1.5;
+.summary-list {
+  list-style: none;
+  margin: 0;
+  counter-reset: summary;
+}
+.summary-list li {
+  padding: 16px 0;
+  border-top: 1px solid var(--divider);
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+  font-size: 17px;
+  line-height: 1.45;
   color: var(--text);
-  border-bottom: 1px solid var(--divider);
   letter-spacing: -0.01em;
 }
-.summary li:last-child { border-bottom: none; }
-.summary li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 18px;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
+.summary-list li:first-child { border-top: none; padding-top: 4px; }
+.summary-list .num {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+  min-width: 18px;
 }
+.summary-list a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.summary-list a:hover { color: var(--accent); }
 .summary .stats {
-  font-size: 13px;
-  color: var(--text-soft);
-  padding-top: 14px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+  padding-top: 24px;
+  margin-top: 16px;
   border-top: 1px solid var(--divider);
 }
 
@@ -324,49 +339,86 @@ main section h2 {
 
 ul.news-list { list-style: none; }
 li.news-item {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--divider);
-  transition: padding-left 0.2s;
+  padding: 36px 0;
+  border-top: 1px solid var(--divider);
+  transition: background 0.2s, padding 0.2s;
 }
-li.news-item:hover { padding-left: 8px; }
+li.news-item:first-child { border-top: none; padding-top: 12px; }
+li.news-item:last-child { padding-bottom: 12px; }
+li.news-item:hover {
+  background: linear-gradient(90deg, var(--surface-soft) 0%, transparent 60%);
+}
+
+.news-date {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.news-date::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
 a.news-title {
   color: var(--text);
   text-decoration: none;
-  font-size: 19px;
+  font-size: 26px;
   font-weight: 600;
   display: inline;
-  line-height: 1.4;
+  line-height: 1.25;
   font-family: var(--font-sans);
-  letter-spacing: -0.015em;
-  transition: color 0.15s;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
 }
 li.news-item:hover a.news-title { color: var(--accent); }
 a.news-title .arrow {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--text-faint);
-  margin-left: 4px;
-  transition: color 0.15s;
+  margin-left: 6px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
 }
-li.news-item:hover a.news-title .arrow { color: var(--accent); }
+li.news-item:hover a.news-title .arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
 p.news-snippet {
   color: var(--text-soft);
-  font-size: 15px;
-  margin: 8px 0 10px;
-  line-height: 1.55;
+  font-size: 16px;
+  margin: 14px 0 16px;
+  line-height: 1.6;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  max-width: 68ch;
 }
-span.news-meta {
-  color: var(--text-faint);
-  font-size: 13px;
-  display: inline-flex;
-  gap: 8px;
+
+.news-meta {
+  display: flex;
   align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-faint);
 }
-span.news-meta .dot { color: var(--border-strong); }
+.news-source {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-soft);
+  letter-spacing: -0.005em;
+}
 .empty {
   color: var(--text-soft);
   padding: 40px 0;
@@ -516,12 +568,15 @@ function buildSummary(company) {
     return '<div class="empty">暂无该公司的近期新闻。</div>';
   }
   const top = company.news.slice(0, 3);
-  const items = top.map(n => `<li>${escapeHtml(n.title)}</li>`).join('');
+  const items = top.map((n, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    return `<li><span class="num">${num}</span><a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title)}</a></li>`;
+  }).join('');
   const lastDate = formatDate(company.news[0].published_at);
   const stats = lastDate
     ? `${company.news.length} 条新闻 · 最近 ${lastDate}`
     : `${company.news.length} 条新闻`;
-  return `<div class="summary"><div class="summary-label">本周要点</div><ul>${items}</ul><div class="stats">${escapeHtml(stats)}</div></div>`;
+  return `<div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list">${items}</ol><div class="stats">${escapeHtml(stats)}</div></div>`;
 }
 
 export function renderIndustryPage(data) {
@@ -547,16 +602,21 @@ export function renderIndustryPage(data) {
         ${c.news.map(n => {
           // Show snippet only when present AND URL isn't a file (PDF etc.)
           const snippet = (n.snippet && !isFileUrl(n.url)) ? escapeHtml(n.snippet) : '';
-          // Build meta line; skip empty fields
+          // Source domain (mono caption)
           const source = safeMeta(n.source);
+          // Date as a small uppercase mono caption above the title (newspaper style)
           const date = formatDate(n.published_at);
-          const rel = relativeTime(n.published_at, now);
-          const metaBits = [source, date, rel].filter(Boolean);
-          const metaHtml = metaBits.length
-            ? `<span class="news-meta">${metaBits.map(b => `<span>${escapeHtml(b)}</span>`).join('<span class="dot">·</span>')}</span>`
+          // Date caption shown only when valid (PDFs/files often have no date)
+          const dateHtml = date
+            ? `<div class="news-date">${escapeHtml(date)}</div>`
+            : '';
+          // Source line: shown only when valid
+          const metaHtml = source
+            ? `<div class="news-meta"><span class="news-source">${escapeHtml(source)}</span></div>`
             : '';
           return `
           <li class="news-item">
+            ${dateHtml}
             <a class="news-title" href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title)}<span class="arrow">↗</span></a>
             ${snippet ? `<p class="news-snippet">${snippet}</p>` : ''}
             ${metaHtml}

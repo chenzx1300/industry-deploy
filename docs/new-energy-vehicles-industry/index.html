@@ -231,51 +231,66 @@ main section h2 {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 28px 32px;
-  margin-bottom: 36px;
-  box-shadow: var(--shadow-sm);
+  padding: 36px 40px 32px;
+  margin-bottom: 56px;
 }
 .summary-label {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 16px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 28px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 .summary-label::before {
   content: '';
-  width: 18px;
+  width: 24px;
   height: 1px;
-  background: var(--accent);
+  background: var(--text-faint);
 }
-.summary ul { list-style: none; margin-bottom: 16px; }
-.summary li {
-  padding: 10px 0 10px 22px;
-  position: relative;
-  font-size: 16px;
-  line-height: 1.5;
+.summary-list {
+  list-style: none;
+  margin: 0;
+  counter-reset: summary;
+}
+.summary-list li {
+  padding: 16px 0;
+  border-top: 1px solid var(--divider);
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+  font-size: 17px;
+  line-height: 1.45;
   color: var(--text);
-  border-bottom: 1px solid var(--divider);
   letter-spacing: -0.01em;
 }
-.summary li:last-child { border-bottom: none; }
-.summary li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 18px;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
+.summary-list li:first-child { border-top: none; padding-top: 4px; }
+.summary-list .num {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+  min-width: 18px;
 }
+.summary-list a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.summary-list a:hover { color: var(--accent); }
 .summary .stats {
-  font-size: 13px;
-  color: var(--text-soft);
-  padding-top: 14px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+  padding-top: 24px;
+  margin-top: 16px;
   border-top: 1px solid var(--divider);
 }
 
@@ -319,49 +334,86 @@ main section h2 {
 
 ul.news-list { list-style: none; }
 li.news-item {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--divider);
-  transition: padding-left 0.2s;
+  padding: 36px 0;
+  border-top: 1px solid var(--divider);
+  transition: background 0.2s, padding 0.2s;
 }
-li.news-item:hover { padding-left: 8px; }
+li.news-item:first-child { border-top: none; padding-top: 12px; }
+li.news-item:last-child { padding-bottom: 12px; }
+li.news-item:hover {
+  background: linear-gradient(90deg, var(--surface-soft) 0%, transparent 60%);
+}
+
+.news-date {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.news-date::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
 a.news-title {
   color: var(--text);
   text-decoration: none;
-  font-size: 19px;
+  font-size: 26px;
   font-weight: 600;
   display: inline;
-  line-height: 1.4;
+  line-height: 1.25;
   font-family: var(--font-sans);
-  letter-spacing: -0.015em;
-  transition: color 0.15s;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
 }
 li.news-item:hover a.news-title { color: var(--accent); }
 a.news-title .arrow {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--text-faint);
-  margin-left: 4px;
-  transition: color 0.15s;
+  margin-left: 6px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
 }
-li.news-item:hover a.news-title .arrow { color: var(--accent); }
+li.news-item:hover a.news-title .arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
 p.news-snippet {
   color: var(--text-soft);
-  font-size: 15px;
-  margin: 8px 0 10px;
-  line-height: 1.55;
+  font-size: 16px;
+  margin: 14px 0 16px;
+  line-height: 1.6;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  max-width: 68ch;
 }
-span.news-meta {
-  color: var(--text-faint);
-  font-size: 13px;
-  display: inline-flex;
-  gap: 8px;
+
+.news-meta {
+  display: flex;
   align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-faint);
 }
-span.news-meta .dot { color: var(--border-strong); }
+.news-source {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-soft);
+  letter-spacing: -0.005em;
+}
 .empty {
   color: var(--text-soft);
   padding: 40px 0;
@@ -457,7 +509,7 @@ footer {
     <h1>新能源汽车</h1>
     <p class="meta">
       <span><strong>6 家头部公司</strong></span>
-      <span>59 条新闻</span>
+      <span>55 条新闻</span>
       <span>生成于 2026-06-27</span>
     </p>
   </header>
@@ -471,7 +523,7 @@ footer {
     <div class="region-block intl">
       <div class="region-label">国际头部</div>
       <div class="region-tabs">
-        <button class="tab" data-co="bmw"><span class="name">BMW 宝马</span><span class="count">10</span></button><button class="tab" data-co="vw"><span class="name">Volkswagen 大众</span><span class="count">10</span></button><button class="tab" data-co="toyota"><span class="name">Toyota 丰田</span><span class="count">9</span></button>
+        <button class="tab" data-co="bmw"><span class="name">BMW 宝马</span><span class="count">10</span></button><button class="tab" data-co="vw"><span class="name">Volkswagen 大众</span><span class="count">6</span></button><button class="tab" data-co="toyota"><span class="name">Toyota 丰田</span><span class="count">9</span></button>
       </div>
     </div>
   </nav>
@@ -487,57 +539,67 @@ footer {
           <span class="domain">byd.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">本周要点</div><ul><li>BYD&#39;s Stella Li tells BI she wants to put humanoid robots in every car showroom</li><li>BYD&#39;s $35,500 flagship SUV breaks major record ahead of export west</li><li>BYD&#39;s Stella Li talks expanding the business and home robots</li></ul><div class="stats">10 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.bydglobal.com/en/news/2025-08-27/BYD-to-build-on-European-momentum-at-IAA-Mobility-2025" target="_blank" rel="noopener">BYD to build on European momentum at IAA Mobility 202508/27/2025</a></li><li><span class="num">02</span><a href="https://www.bydglobal.com/en/news/2025-07-05/Blind-Booking-Now-Open-for-BYD-SEALION-7-%28100-kW-Version%29-in-Nepal-with-Exclusive-Early-Buyer-Benefits" target="_blank" rel="noopener">Blind Booking Now Open for BYD SEALION 7 (100 kW Version) in Nepal with Exclusive Early-Buyer Benefits07/05/2025</a></li><li><span class="num">03</span><a href="https://www.bydglobal.com/en/news/2025-07-04/BYD-SEALION-7-now-available-in-100-kW-Version" target="_blank" rel="noopener">BYD SEALION 7 now available in 100 kW Version07/04/2025</a></li></ol><div class="stats">10 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
+            
+            <a class="news-title" href="https://www.bydglobal.com/en/news/2025-08-27/BYD-to-build-on-European-momentum-at-IAA-Mobility-2025" target="_blank" rel="noopener">BYD to build on European momentum at IAA Mobility 202508/27/2025<span class="arrow">↗</span></a>
+            
+            
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.bydglobal.com/en/news/2025-07-05/Blind-Booking-Now-Open-for-BYD-SEALION-7-%28100-kW-Version%29-in-Nepal-with-Exclusive-Early-Buyer-Benefits" target="_blank" rel="noopener">Blind Booking Now Open for BYD SEALION 7 (100 kW Version) in Nepal with Exclusive Early-Buyer Benefits07/05/2025<span class="arrow">↗</span></a>
+            
+            
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.bydglobal.com/en/news/2025-07-04/BYD-SEALION-7-now-available-in-100-kW-Version" target="_blank" rel="noopener">BYD SEALION 7 now available in 100 kW Version07/04/2025<span class="arrow">↗</span></a>
+            
+            
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.bydglobal.com/en/news/2025-03-03/BYD-Priced-US%245.6bn-H-share-Accelerated-Bookbuild-Offering" target="_blank" rel="noopener">BYD Priced US$5.6bn H-share Accelerated Bookbuild Offering03/04/2025<span class="arrow">↗</span></a>
+            
+            
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.bydglobal.com/en/news/2025-02-17/BYD-Energy-Storage-Signed-World%E2%80%99s-Largest-Grid-scale-Battery-Storage-Projects-of-12.5GWh" target="_blank" rel="noopener">BYD Energy Storage Signed World’s Largest Grid-scale Battery Storage Projects of 12.5GWh02/17/2025<span class="arrow">↗</span></a>
+            
+            
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.bydglobal.com/en/news/2024-10-21/BYD-and-Black-Myth%3A-Wukong-Forge-Global-Strategic-Partnership" target="_blank" rel="noopener">BYD and Black Myth: Wukong Forge Global Strategic Partnership10/21/2024<span class="arrow">↗</span></a>
+            
+            
+          </li>
+          <li class="news-item">
+            
             <a class="news-title" href="https://www.businessinsider.com/byd-stella-li-humanoid-robots-car-showroom-sell-evs-2026-6" target="_blank" rel="noopener">BYD&#39;s Stella Li tells BI she wants to put humanoid robots in every car showroom<span class="arrow">↗</span></a>
             <p class="news-snippet">BYD executive vice president Stella Li said building humanoid robots for the home and service industry will be a &amp;quot;huge&amp;quot; market for the company.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://newatlas.com/automotive/byd-great-tang/" target="_blank" rel="noopener">BYD&#39;s $35,500 flagship SUV breaks major record ahead of export west<span class="arrow">↗</span></a>
             <p class="news-snippet">BYD&amp;#x27;s $35,500 flagship SUV, the Great Tang, has secured a record 150,000 preorders in China, featuring advanced tech and impressive range.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.businessinsider.com/byds-stella-li-talks-expanding-the-business-and-home-robots-2026-6" target="_blank" rel="noopener">BYD&#39;s Stella Li talks expanding the business and home robots<span class="arrow">↗</span></a>
             <p class="news-snippet">Business Insider Editor in Chief Jamie Heller sits down with BYD Executive Stella Li at the 2026 Cannes Lions International Festival of Creativity.</p>
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://electrek.co/2026/06/17/byd-launches-flagship-ev-suv-record-150000-preorders/" target="_blank" rel="noopener">BYD launches its flagship electric SUV for $35,500 with a record 150,000 preorders<span class="arrow">↗</span></a>
-            <p class="news-snippet">The full-size luxury SUV can drive nearly 600 miles (950 km) without stopping and can recharge in as little as...</p>
             
-          </li>
-          <li class="news-item">
             <a class="news-title" href="https://www.aol.com/lifestyle/byd-flash-charging-expansion-reaches-173037162.html" target="_blank" rel="noopener">BYD’s Flash Charging Expansion Reaches Canada, But The U.S. Remains On The Sidelines<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            <a class="news-title" href="https://electrek.co/2026/06/23/byd-unleashes-brand-power-overseas-luxury-evs-pickup/" target="_blank" rel="noopener">BYD is unleashing its full brand power overseas, from luxury EVs to a plug-in pickup<span class="arrow">↗</span></a>
-            <p class="news-snippet">BYD&amp;#8217;s sales are surging in overseas markets, including Europe and the UK, but with several new vehicles coming soon, this...</p>
-            
-          </li>
-          <li class="news-item">
-            <a class="news-title" href="https://www.bloomberg.com/news/articles/2026-06-20/byd-rejects-claims-it-violated-hungary-s-environmental-rules" target="_blank" rel="noopener">BYD Rejects Claims It Violated Hungary’s Environmental Rules<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            <a class="news-title" href="https://www.eefocus.com/article/2035972.html" target="_blank" rel="noopener">充电枪拆解报告：BYD比亚迪交流充电枪<span class="arrow">↗</span></a>
-            <p class="news-snippet">比亚迪推出了一款适用于家用固定充电场景的交流充电枪，具有3.5kW供电能力和IP55防护等级。充电枪设计紧凑，核心控制电路全收于充电枪头内部，减轻线缆重量并提高操作便利性。充电枪线缆粗壮耐用，能够承受16A电流长时间传输。充电枪内部采用高品质元件，包括艾华电解电容和芯茂微电源芯片，确保了产品的稳定性和安全性。总体来说，这款充电枪结构紧凑、用料扎实，适合日常家用充电需求。</p>
-            
-          </li>
-          <li class="news-item">
-            <a class="news-title" href="https://www.eefocus.com/article/1853111.html" target="_blank" rel="noopener">2025年4月，哨兵模式装配率超20%，BYD单月拉升4.3个百分点<span class="arrow">↗</span></a>
-            <p class="news-snippet">2025年4月，哨兵模式装配率超20%，BYD单月拉升4.3个百分点</p>
-            
-          </li>
-          <li class="news-item">
-            <a class="news-title" href="https://www.eefocus.com/article/1995672.html" target="_blank" rel="noopener">亚洲车市 | 韩国2026年3月：比亚迪销量1664台<span class="arrow">↗</span></a>
-            <p class="news-snippet">芝能汽车出品2026年3月，韩国乘用车市场销量164,393辆，同比增长10.2%；2026年累计销量达407,713辆，同比增长5.2%。◎ 比亚迪以1,664辆（+16540%）、累计3,968辆（+39580%）强势进入前十，BYD Sealion 7单月807辆（新车）、累计2,084辆，已进入前五；BYD D</p>
+            <p class="news-snippet">BYD’s ultra-fast charging technology is rapidly becoming one of the most talked-about developments in the electric vehicle industry. The Chinese automaker has spent the last year aggressively rolling out its Flash Charging network, promising charging ... Read more</p>
             
           </li>
       </ul>
@@ -553,56 +615,66 @@ footer {
           <span class="domain">catl.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">本周要点</div><ul><li>6/22/2026 CATL Debuts World&#39;s First Field-Validated Sodium-Ion BESS, Bringing Sodium Storage to Commercial Reality MORE</li><li>6/05/2026 CATL Statement Regarding May 21, 2026 U.S. Congressional Report MORE</li><li>6/01/2026 CATL Launches World’s Largest Energy Storage Testbed, Advancing Industry into Era of Real-World Validation MORE</li></ul><div class="stats">10 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.catl.com/en/news/6861.html" target="_blank" rel="noopener">6/22/2026 CATL Debuts World&#39;s First Field-Validated Sodium-Ion BESS, Bringing Sodium Storage to Commercial Reality MORE</a></li><li><span class="num">02</span><a href="https://www.catl.com/en/news/6832.html" target="_blank" rel="noopener">6/05/2026 CATL Statement Regarding May 21, 2026 U.S. Congressional Report MORE</a></li><li><span class="num">03</span><a href="https://www.catl.com/en/news/6815.html" target="_blank" rel="noopener">6/01/2026 CATL Launches World’s Largest Energy Storage Testbed, Advancing Industry into Era of Real-World Validation MORE</a></li></ol><div class="stats">10 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
+            
             <a class="news-title" href="https://www.catl.com/en/news/6861.html" target="_blank" rel="noopener">6/22/2026 CATL Debuts World&#39;s First Field-Validated Sodium-Ion BESS, Bringing Sodium Storage to Commercial Reality MORE<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.catl.com/en/news/6832.html" target="_blank" rel="noopener">6/05/2026 CATL Statement Regarding May 21, 2026 U.S. Congressional Report MORE<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.catl.com/en/news/6815.html" target="_blank" rel="noopener">6/01/2026 CATL Launches World’s Largest Energy Storage Testbed, Advancing Industry into Era of Real-World Validation MORE<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.forbes.com/sites/sarwantsingh/2026/06/24/catl-is-betting-on-battery-swapping-overseas-and-sodium-ion-batteries/" target="_blank" rel="noopener">CATL Is Betting On Battery Swapping Overseas And Sodium-Ion Batteries<span class="arrow">↗</span></a>
             <p class="news-snippet">Octopus and CATL have launched Swaptopus, a joint venture to establish Europe&amp;#x27;s first large-scale battery swapping network for etrucks.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.electrive.com/2026/06/26/catl-targets-up-to-20000-vehicles-with-sodium-ion-batteries/" target="_blank" rel="noopener">CATL targets up to 20,000 vehicles with sodium-ion batteries<span class="arrow">↗</span></a>
             <p class="news-snippet">CATL expects that up to 10,000 to 20,000 electric vehicles with its novel sodium-ion batteries will enter the market this year. Additionally, the Chinese</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://propakistani.pk/2026/06/26/catl-launches-worlds-first-battery-with-30-year-life/" target="_blank" rel="noopener">CATL Launches World’s First Battery With 30-Year Life<span class="arrow">↗</span></a>
             <p class="news-snippet">Chinese battery giant CATL has unveiled what it describes as the world’s first field-validated sodium-ion battery energy storage system, moving the</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bloomberg.com/news/articles/2026-06-23/catl-debuts-battery-storage-system-using-new-sodium-technology" target="_blank" rel="noopener">CATL Debuts Battery Storage System Using Sodium, Not Lithium<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://www.aol.com/articles/catl-world-largest-battery-maker-230049000.html" target="_blank" rel="noopener">CATL, The World’s Largest Battery Maker, Is Almost As Profitable As Toyota<span class="arrow">↗</span></a>
             
+            <a class="news-title" href="https://www.aol.com/articles/catl-world-largest-battery-maker-230049000.html" target="_blank" rel="noopener">CATL, The World’s Largest Battery Maker, Is Almost As Profitable As Toyota<span class="arrow">↗</span></a>
+            <p class="news-snippet">For decades, the automotive industry’s biggest profits flowed to the companies designing, building, and selling vehicles. Today, that balance is shifting rapidly as electrification transforms the industry’s value chain. A striking example emerged from China ... Read more</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://electrek.co/2026/06/22/octopus-and-catl-unveil-a-giant-ev-truck-battery-swapping-network/" target="_blank" rel="noopener">Octopus and CATL unveil a giant EV truck battery-swapping network<span class="arrow">↗</span></a>
             <p class="news-snippet">Octopus Energy and CATL plan to bring battery swapping to Europe&amp;#039;s electric trucks, cutting downtime to just minutes.</p>
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://www.bloomberg.com/news/articles/2026-06-24/catl-sees-its-sodium-batteries-in-at-least-10-000-evs-this-year" target="_blank" rel="noopener">CATL Sees Its Sodium Batteries in at Least 10,000 EVs This Year<span class="arrow">↗</span></a>
+            
+            <a class="news-title" href="https://finance.yahoo.com/markets/commodities/articles/lithium-prices-tumble-traders-brace-190000041.html" target="_blank" rel="noopener">Lithium Prices Tumble As Traders Brace For CATL Supply Surge<span class="arrow">↗</span></a>
             
             
           </li>
@@ -619,57 +691,67 @@ footer {
           <span class="domain">nio.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">本周要点</div><ul><li>NIO Inc. Provides May 2026 Delivery Update</li><li>NIO to Hold Annual General Meeting on June 24, 2026</li><li>NIO Inc. (NIO) Announces Vehicle Delivery Results for May 2026</li></ul><div class="stats">10 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://ir.nio.com/news-releases/news-release-details/nio-inc-provides-may-2026-delivery-update" target="_blank" rel="noopener">NIO Inc. Provides May 2026 Delivery Update</a></li><li><span class="num">02</span><a href="https://ir.nio.com/news-releases/news-release-details/nio-hold-annual-general-meeting-june-24-2026" target="_blank" rel="noopener">NIO to Hold Annual General Meeting on June 24, 2026</a></li><li><span class="num">03</span><a href="https://finance.yahoo.com/markets/stocks/articles/nio-inc-nio-announces-vehicle-152617334.html" target="_blank" rel="noopener">NIO Inc. (NIO) Announces Vehicle Delivery Results for May 2026</a></li></ol><div class="stats">10 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
+            
             <a class="news-title" href="https://ir.nio.com/news-releases/news-release-details/nio-inc-provides-may-2026-delivery-update" target="_blank" rel="noopener">NIO Inc. Provides May 2026 Delivery Update<span class="arrow">↗</span></a>
             <p class="news-snippet">37,705 vehicles were delivered in May 2026, increasing by 62.3% year-over-year 150,526 vehicles were delivered year-to-date in 2026, increasing by 68.7% year-over-year Cumulative deliveries reached 1,148,118 as of May 31, 2026 SHANGHAI, June 01, 2026 (GLOBE NEWSWIRE) -- NIO Inc.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://ir.nio.com/news-releases/news-release-details/nio-hold-annual-general-meeting-june-24-2026" target="_blank" rel="noopener">NIO to Hold Annual General Meeting on June 24, 2026<span class="arrow">↗</span></a>
             <p class="news-snippet">SHANGHAI, May 22, 2026 (GLOBE NEWSWIRE) -- NIO Inc. (NYSE: NIO; HKEX: 9866; SGX: NIO) (“NIO” or the “Company”), a pioneer and a leading company in the global smart electric vehicle market, today published a notice to announce that it will hold an annual general meeting (the “AGM”) of shareholders</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/nio-inc-nio-announces-vehicle-152617334.html" target="_blank" rel="noopener">NIO Inc. (NIO) Announces Vehicle Delivery Results for May 2026<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/nio-stock-rises-overnight-firefly-012137217.html" target="_blank" rel="noopener">NIO Stock Rises Overnight: Firefly Makes HK Debut As EV Maker Expands, Pushes Into Right-Hand-Drive Markets<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://www.forbes.com/sites/greatspeculations/2024/09/09/nio-stock-hits-accelerator-with-14-rise-post-q2-results-will-the-momentum-continue/" target="_blank" rel="noopener">Nio Stock Hits Accelerator With 14% Rise Post Q2 Results. Will The Momentum Continue?<span class="arrow">↗</span></a>
-            <p class="news-snippet">Chinese luxury electric vehicle maker Nio stock published a narrower-than-expected loss for Q2.</p>
             
-          </li>
-          <li class="news-item">
             <a class="news-title" href="https://www.aol.com/articles/nio-zigging-while-rivals-zag-072500423.html" target="_blank" rel="noopener">Nio Is Zigging While Rivals Zag, and Shockingly It&#39;s Winning<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://www.cnbc.com/2024/08/21/ev-company-nio-to-build-battery-chargers-swap-stations-across-china.html" target="_blank" rel="noopener">EV company Nio aims to build battery chargers and swap stations in every Chinese county<span class="arrow">↗</span></a>
-            <p class="news-snippet">Chinese electric car company Nio said Tuesday it plans to install battery charging stations in every one of China&amp;#x27;s 2,844 counties by the end of June 2025.</p>
             
-          </li>
-          <li class="news-item">
             <a class="news-title" href="https://markets.businessinsider.com/news/stocks/nio-inc-provides-may-2026-delivery-update-1036210307" target="_blank" rel="noopener">NIO Inc. Provides May 2026 Delivery Update<span class="arrow">↗</span></a>
             <p class="news-snippet">37,705 vehicles were delivered in May 2026, increasing by 62.3% year-over-year150,526 vehicles were delivered year-to-date in 2026, increasing by ...</p>
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://www.zacks.com/stock/news/2750174/nio-stock-falls-9-on-1b-equity-offering-plan-time-to-buy-the-dip" target="_blank" rel="noopener">NIO Stock Falls 9% on $1B Equity Offering Plan: Time to Buy the Dip?<span class="arrow">↗</span></a>
-            <p class="news-snippet">NIO shares tumbled nearly 9% yesterday after the company unveiled a $1B equity offering, sparking concerns over shareholder dilution.</p>
+            
+            <a class="news-title" href="https://www.cnbc.com/2024/08/21/ev-company-nio-to-build-battery-chargers-swap-stations-across-china.html" target="_blank" rel="noopener">EV company Nio aims to build battery chargers and swap stations in every Chinese county<span class="arrow">↗</span></a>
+            <p class="news-snippet">Chinese electric car company Nio said Tuesday it plans to install battery charging stations in every one of China&amp;#x27;s 2,844 counties by the end of June 2025.</p>
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://www.fool.com/investing/2026/02/15/nio-touts-first-adjusted-profit-heres-what-it-isnt/" target="_blank" rel="noopener">Nio Touts First Adjusted Profit -- Here&#39;s What It Isn&#39;t Saying<span class="arrow">↗</span></a>
-            <p class="news-snippet">Nio&amp;#x27;s preliminary data shows the company generated adjusted profit from operations during the fourth quarter -- but don&amp;#x27;t overlook the drawback to its operating margins.</p>
+            
+            <a class="news-title" href="https://www.marketwatch.com/data-news/nio-inc-adr-falls-wednesday-underperforms-market-af99e4fc-1129a5906c48" target="_blank" rel="noopener">NIO Inc. ADR falls Wednesday, underperforms market<span class="arrow">↗</span></a>
+            
+            
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.forbes.com/sites/greatspeculations/2024/09/09/nio-stock-hits-accelerator-with-14-rise-post-q2-results-will-the-momentum-continue/" target="_blank" rel="noopener">Nio Stock Hits Accelerator With 14% Rise Post Q2 Results. Will The Momentum Continue?<span class="arrow">↗</span></a>
+            <p class="news-snippet">Chinese luxury electric vehicle maker Nio stock published a narrower-than-expected loss for Q2.</p>
+            
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.fool.com/investing/2026/04/09/should-you-buy-nio-stock-before-june-2/" target="_blank" rel="noopener">Should You Buy Nio Stock Before June 2?<span class="arrow">↗</span></a>
+            <p class="news-snippet">Nio&amp;#x27;s comeback looks promising, but it may be too early to call it a sustained turnaround.</p>
             
           </li>
       </ul>
@@ -685,55 +767,65 @@ footer {
           <span class="domain">bmwgroup.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">本周要点</div><ul><li>Innovation 09.06.2026 7 MIN 200 million kilometres of hands-free driving with the BMW Highway Assistant.</li><li>Innovation 22.05.2026 How agentic AI is making life easier at the BMW Group.</li><li>Innovation 08.05.2026 5 MIN Advances in battery cell production: How the BMW Group uses AI.</li></ul><div class="stats">10 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.bmwgroup.com/en/news/general/2026/highway-assistant.html" target="_blank" rel="noopener">Innovation 09.06.2026 7 MIN 200 million kilometres of hands-free driving with the BMW Highway Assistant.</a></li><li><span class="num">02</span><a href="https://www.bmwgroup.com/en/news/general/2026/agentic-AI.html" target="_blank" rel="noopener">Innovation 22.05.2026 How agentic AI is making life easier at the BMW Group.</a></li><li><span class="num">03</span><a href="https://www.bmwgroup.com/en/news/general/2026/battery-cell-production-with-ai.html" target="_blank" rel="noopener">Innovation 08.05.2026 5 MIN Advances in battery cell production: How the BMW Group uses AI.</a></li></ol><div class="stats">10 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/highway-assistant.html" target="_blank" rel="noopener">Innovation 09.06.2026 7 MIN 200 million kilometres of hands-free driving with the BMW Highway Assistant.<span class="arrow">↗</span></a>
             <p class="news-snippet">Overview of hands-free assisted driving by the BMW Group: More about the BMW Highway Assistant, safety and the technology’s launch in Europe.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/agentic-AI.html" target="_blank" rel="noopener">Innovation 22.05.2026 How agentic AI is making life easier at the BMW Group.<span class="arrow">↗</span></a>
             <p class="news-snippet">BMW Group: This article explores agentic AI and how it simplifies workflows, supports teams and makes processes even more intelligent.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/battery-cell-production-with-ai.html" target="_blank" rel="noopener">Innovation 08.05.2026 5 MIN Advances in battery cell production: How the BMW Group uses AI.<span class="arrow">↗</span></a>
             <p class="news-snippet">How the BMW Group is leveraging AI to optimise battery cell production and dramatically reduce the time and effort involved in testing – read more here</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/four-million-motorcycles-made-in-berlin.html" target="_blank" rel="noopener">Company 14.04.2026 6 MIN 4,000,000 BMW Motorrd motorcycles: How Plant Berlin has helped shape the success of the BMW brand.<span class="arrow">↗</span></a>
             <p class="news-snippet">4,000,000 motorcycles made in Berlin: How Plant Berlin has shaped the BMW brand worldwide. A peek behind the factory gates.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/bmw-ix5-hydrogen-tank-system.html" target="_blank" rel="noopener">Innovation 09.04.2026 9 MIN Technology-open approach meets the art of engineering: New hydrogen tank system in the BMW iX5 Hydrogen.<span class="arrow">↗</span></a>
             <p class="news-snippet">BMW Group: Tank system reinvented – innovative BMW Hydrogen Flat Storage in the new BMW iX5 Hydrogen. Find out more here.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/sustainability-in-vehicle-interiors.html" target="_blank" rel="noopener">Sustainability 25.03.2026 5 MIN How the BMW Group brings sustainability into the vehicle interior.<span class="arrow">↗</span></a>
             <p class="news-snippet">Inside the BMW Group scent laboratory: Advancing interior air quality, health and wellbeing – as exemplified by the new BMW i3.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/bmwi3.html" target="_blank" rel="noopener">Company 19.03.2026 5 MIN The new BMW i3: The second Neue Klasse model.<span class="arrow">↗</span></a>
             <p class="news-snippet">The new all-electric BMW i3 from the New Class: modern design, innovative technology, and a range of up to 900 km for a new driving experience.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/sustainability-approach-bmw-i3.html" target="_blank" rel="noopener">Sustainability 17.03.2026 8 MIN The new BMW i3: 360° approach to sustainability continues in the second Neue Klasse model.<span class="arrow">↗</span></a>
             <p class="news-snippet">How the BMW Group has reimagined the BMW i3 with a 360° approach to sustainability. Find out more here.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/bmw-group-annual-conference-2026.html" target="_blank" rel="noopener">Company 12.03.2026 6 MIN Stable Group earnings thanks to consistent strategy: BMW Group on track.<span class="arrow">↗</span></a>
             <p class="news-snippet">Annual Conference 2026: BMW Group stays on course – stable results, focused investments and ramp‑up of the Neue Klasse.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.bmwgroup.com/en/news/general/2026/humanoid-robot-in-leipzig.html" target="_blank" rel="noopener">Company 09.03.2026 7 MIN Leipzig debut: BMW Group introduces humanoid robots – a first in Germany.<span class="arrow">↗</span></a>
             <p class="news-snippet">How BMW Group Plant Leipzig is piloting humanoid robots to bring physical AI to production. Read it all here.</p>
             
@@ -751,60 +843,42 @@ footer {
           <span class="domain">volkswagen.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">本周要点</div><ul><li>In the anniversary year: Volkswagen R to enter the 24h Nürburgring in 2027</li><li>Brand Group Core with solid results – special items impact Volkswagen Brand</li><li>· 11hVolkswagen reportedly plans to cut 100,000 jobs</li></ul><div class="stats">10 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.volkswagen-newsroom.com/en/press-releases/in-the-anniversary-year-volkswagen-r-to-enter-the-24h-nuerburgring-in-2027-20362" target="_blank" rel="noopener">In the anniversary year: Volkswagen R to enter the 24h Nürburgring in 2027</a></li><li><span class="num">02</span><a href="https://www.volkswagen-newsroom.com/en/press-releases/brand-group-core-with-solid-results-special-items-impact-volkswagen-brand-20358" target="_blank" rel="noopener">Brand Group Core with solid results – special items impact Volkswagen Brand</a></li><li><span class="num">03</span><a href="https://www.autoevolution.com/news/volkswagen-will-reportedly-fire-100000-people-and-shut-down-four-plants-272099.html" target="_blank" rel="noopener">Volkswagen Will Reportedly Fire 100,000 People and Shut Down Four Plants</a></li></ol><div class="stats">6 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
+            
             <a class="news-title" href="https://www.volkswagen-newsroom.com/en/press-releases/in-the-anniversary-year-volkswagen-r-to-enter-the-24h-nuerburgring-in-2027-20362" target="_blank" rel="noopener">In the anniversary year: Volkswagen R to enter the 24h Nürburgring in 2027<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://www.volkswagen-newsroom.com/en/press-releases/brand-group-core-with-solid-results-special-items-impact-volkswagen-brand-20358" target="_blank" rel="noopener">Brand Group Core with solid results – special items impact Volkswagen Brand<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://www.engadget.com/2202288/volkswagen-reportedly-plans-to-cut-100000-jobs/" target="_blank" rel="noopener">· 11hVolkswagen reportedly plans to cut 100,000 jobs<span class="arrow">↗</span></a>
-            <p class="news-snippet">Volkswagen reportedly plans to cut 100,000 jobs.</p>
             
-          </li>
-          <li class="news-item">
-            <a class="news-title" href="https://www.telegraph.co.uk/business/2026/06/26/volkswagen-to-cut-up-to-100000-jobs-globally/" target="_blank" rel="noopener">· 13hVolkswagen to cut up to 100,000 jobs globallyVolkswagen (VW) plans to cut up to 100,000 jobs around the world in the next few years as part of a dramatic overhaul.Continue reading<span class="arrow">↗</span></a>
+            <a class="news-title" href="https://www.autoevolution.com/news/volkswagen-will-reportedly-fire-100000-people-and-shut-down-four-plants-272099.html" target="_blank" rel="noopener">Volkswagen Will Reportedly Fire 100,000 People and Shut Down Four Plants<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://www.thesun.co.uk/money/39552210/volkswagen-slash-100000-jobs-worldwide/" target="_blank" rel="noopener">· 15hVolkswagen to slash up to 100,000 jobs worldwide over the next few years<span class="arrow">↗</span></a>
-            <p class="news-snippet">VOLKSWAGEN is aiming to cut up to 100,000 jobs and end production at four German ​plants in the biggest overhaul in the company&amp;#039;s history.
-
-
-
-The...</p>
             
-          </li>
-          <li class="news-item">
-            <a class="news-title" href="https://www.reuters.com/business/autos-transportation/volkswagen-ceo-aims-cut-up-100000-jobs-next-years-manager-magazin-reports-2026-06-26/" target="_blank" rel="noopener">· 4hVW weighs up to 100,000 job cuts, four plant closures in biggest overhaul yet, sources say<span class="arrow">↗</span></a>
+            <a class="news-title" href="https://www.ibtimes.com/volkswagen-reportedly-considering-100000-job-cuts-more-10-its-staff-sweeping-restructuring-3804603" target="_blank" rel="noopener">Volkswagen Reportedly Considering Up to 100,000 Job Cuts, More Than 10% Of Its Staff, in Sweeping Restructuring<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://www.express.co.uk/news/world/2222358/car-giant-announces-brutal-plan" target="_blank" rel="noopener">· 7hCar giant&#39;s brutal plan to axe 100,000 jobs exposed – EVs and trade unions blamed<span class="arrow">↗</span></a>
-            <p class="news-snippet">The giant car manufacturer is aiming to save up to £9.5bn by 2030.</p>
+            
+            <a class="news-title" href="https://www.livemint.com/companies/news/volkswagen-plans-up-to-100-000-job-cuts-and-possible-plant-closures-11782478463254.html" target="_blank" rel="noopener">Volkswagen plans up to 100,000 job cuts and possible plant closures<span class="arrow">↗</span></a>
+            <p class="news-snippet">Volkswagen AG plans to cut up to 100,000 jobs and close four German factories as part of CEO Oliver Blume&amp;#x27;s strategy to enhance competitiveness.</p>
             
           </li>
           <li class="news-item">
-            <a class="news-title" href="https://www.express.co.uk/life-style/cars/2222117/volkswagen-cut-100000-jobs-shut-plans" target="_blank" rel="noopener">· 15hVolkswagen to cut 100,000 jobs around world and shut 4 plants<span class="arrow">↗</span></a>
-            <p class="news-snippet">It will be the biggest overhaul in the car manufacturer</p>
             
-          </li>
-          <li class="news-item">
-            <a class="news-title" href="https://www.roadandtrack.com/news/a71744428/volkswagens-ceo-layoff-100000-employees-report/" target="_blank" rel="noopener">Volkswagen CEO Is Looking to Lay Off 100,000 Employees: Report<span class="arrow">↗</span></a>
-            <p class="news-snippet">The plan to help bring the German automaker</p>
-            
-          </li>
-          <li class="news-item">
-            <a class="news-title" href="https://www.yahoo.com/news/videos/volkswagen-passat-vs-opel-combo-182514545.html" target="_blank" rel="noopener">Volkswagen Passat vs Opel Combo-e Life, family car showdown<span class="arrow">↗</span></a>
+            <a class="news-title" href="https://www.aol.com/news/volkswagen-drawing-plans-cut-100-141422373.html" target="_blank" rel="noopener">Volkswagen drawing up plans to cut 100,000 jobs globally, reports say<span class="arrow">↗</span></a>
             
             
           </li>
@@ -821,50 +895,59 @@ The...</p>
           <span class="domain">toyota.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">本周要点</div><ul><li>Our Picks May 28, 2026 Toyota Launches New Hilux in Japan</li><li>Our Picks May 14, 2026 Toyota Launches All-New Land Cruiser &quot;FJ&quot; Series in Japan</li><li>Sales, Production, and Export Results</li></ul><div class="stats">9 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://global.toyota/en/newsroom/toyota/44397819.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Our Picks May 28, 2026 Toyota Launches New Hilux in Japan</a></li><li><span class="num">02</span><a href="https://global.toyota/en/newsroom/toyota/44331143.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Our Picks May 14, 2026 Toyota Launches All-New Land Cruiser &quot;FJ&quot; Series in Japan</a></li><li><span class="num">03</span><a href="https://global.toyota/en/company/profile/production-sales-figures/?padid=ag478_from_news_pickup2" target="_blank" rel="noopener">Sales, Production, and Export Results</a></li></ol><div class="stats">9 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
+            
             <a class="news-title" href="https://global.toyota/en/newsroom/toyota/44397819.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Our Picks May 28, 2026 Toyota Launches New Hilux in Japan<span class="arrow">↗</span></a>
             <p class="news-snippet">Toyota Motor Corporation (Toyota) launched a completely redesigned Hilux in Japan.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://global.toyota/en/newsroom/toyota/44331143.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">Our Picks May 14, 2026 Toyota Launches All-New Land Cruiser &quot;FJ&quot; Series in Japan<span class="arrow">↗</span></a>
             <p class="news-snippet">Toyota Motor Corporation (Toyota) announced the addition of the FJ series to the Land Cruiser lineup in Japan, with sales commencing on May 14.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://global.toyota/en/company/profile/production-sales-figures/?padid=ag478_from_news_pickup2" target="_blank" rel="noopener">Sales, Production, and Export Results<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://toyotatimes.jp/en/newscast/193.html?padid=ag478_from_newsroom" target="_blank" rel="noopener">Rally Japan 2026 | Toyota Sweeps Top 4! First May Rally Deepens Community Ties<span class="arrow">↗</span></a>
             <p class="news-snippet">Rally Japan 2026 was held in May for the first time. Behind Toyota’s achievement of sweeping the top four spots was unified local community support.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://global.toyota/en/newsroom/corporate/44481016.html" target="_blank" rel="noopener">Toyota to participate in the &quot;1000 Miglia Gran Turismo Experience 2026,&quot; a special program of the historic Italian rally, the 1000 Miglia<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://global.toyota/en/newsroom/corporate/44454144.html" target="_blank" rel="noopener">THE MOVEUM YOKOHAMA to Launch New Film Program This Fall<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://global.toyota/en/company/profile/production-sales-figures/202604.html" target="_blank" rel="noopener">Sales, Production, and Export Results for April 2026<span class="arrow">↗</span></a>
             <p class="news-snippet">Toyota Motor Corporation announces its sales, production, and export results for Aplil 2026, including those for subsidiaries Daihatsu Motor Co., Ltd.</p>
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://global.toyota/en/newsroom/corporate/44286995.html" target="_blank" rel="noopener">Temporary Closure of THE MOVEUM YOKOHAMA (From April 22, 2026)<span class="arrow">↗</span></a>
             
             
           </li>
           <li class="news-item">
+            
             <a class="news-title" href="https://toyota-automobile-museum.jp/en/event/detail/10304.html" target="_blank" rel="noopener">&quot;Driven by Passion: Engineers Igniting a Generation -Japanese Cars and Motorcycles of the 1980s-1990s-&quot; Opens on 10 April 2026 at the Toyota Automobile Museum<span class="arrow">↗</span></a>
             <p class="news-snippet">This is a page ofDriven by Passion: Engineers Igniting a Generation ―Japanese Cars and Motorcycles of the 1980s-1990s－</p>
             
