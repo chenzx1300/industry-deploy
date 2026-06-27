@@ -1,4 +1,4 @@
-import { escapeHtml, formatDate, relativeTime } from '../lib/html-helpers.mjs';
+import { escapeHtml, formatDate, relativeTime, fileTypeFromUrl, newsTypeFromUrl } from '../lib/html-helpers.mjs';
 
 function isFileUrl(url) {
   return /\.(pdf|docx?|xlsx?|zip|rar|jpg|jpeg|png|gif|webp|svg)$/i.test(url || '');
@@ -7,6 +7,11 @@ function isFileUrl(url) {
 function safeMeta(value) {
   if (!value || value === 'unknown') return '';
   return value;
+}
+
+// Extract hostname from a URL (no scheme/path), used for source label.
+function hostnameOf(url) {
+  try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return ''; }
 }
 
 const STYLES = `
@@ -419,6 +424,36 @@ p.news-snippet {
   color: var(--text-soft);
   letter-spacing: -0.005em;
 }
+
+.news-badges {
+  display: flex;
+  gap: 6px;
+  margin: 12px 0 0;
+}
+.news-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.badge-file {
+  color: var(--text-soft);
+  border-color: var(--border-strong);
+  background: var(--surface-soft);
+}
+.badge-type {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+  background: var(--accent-tint);
+}
 .empty {
   color: var(--text-soft);
   padding: 40px 0;
@@ -600,26 +635,36 @@ export function renderIndustryPage(data) {
       ? '<p class="empty">暂无该公司的近期新闻。</p>'
       : `<ul class="news-list">
         ${c.news.map(n => {
-          // Show snippet only when present AND URL isn't a file (PDF etc.)
-          const snippet = (n.snippet && !isFileUrl(n.url)) ? escapeHtml(n.snippet) : '';
-          // Source domain (mono caption)
-          const source = safeMeta(n.source);
-          // Date as a small uppercase mono caption above the title (newspaper style)
+          const isFile = isFileUrl(n.url);
+          const snippet = (n.snippet && !isFile) ? escapeHtml(n.snippet) : '';
+          const source = safeMeta(n.source) || hostnameOf(n.url);
           const date = formatDate(n.published_at);
-          // Date caption shown only when valid (PDFs/files often have no date)
+
+          // Build badge cluster: file type (PDF/DOC) + news type (新闻稿/文章/视频)
+          const fileType = isFile ? fileTypeFromUrl(n.url) : '';
+          const newsType = !isFile ? newsTypeFromUrl(n.url, n.title) : '';
+          const badges = [];
+          if (fileType) badges.push(`<span class="news-badge badge-file">${escapeHtml(fileType)}</span>`);
+          if (newsType) badges.push(`<span class="news-badge badge-type">${escapeHtml(newsType)}</span>`);
+          const badgeHtml = badges.length
+            ? `<div class="news-badges">${badges.join('')}</div>`
+            : '';
+
+          // Date as small uppercase mono caption above the title (newspaper style)
           const dateHtml = date
             ? `<div class="news-date">${escapeHtml(date)}</div>`
             : '';
-          // Source line: shown only when valid
-          const metaHtml = source
-            ? `<div class="news-meta"><span class="news-source">${escapeHtml(source)}</span></div>`
+          // Source line with hostname + favicon
+          const sourceHtml = source
+            ? `<div class="news-meta">${escapeHtml(source)}</div>`
             : '';
           return `
           <li class="news-item">
             ${dateHtml}
             <a class="news-title" href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title)}<span class="arrow">↗</span></a>
+            ${badgeHtml}
             ${snippet ? `<p class="news-snippet">${snippet}</p>` : ''}
-            ${metaHtml}
+            ${sourceHtml}
           </li>`;
         }).join('')}
       </ul>`;

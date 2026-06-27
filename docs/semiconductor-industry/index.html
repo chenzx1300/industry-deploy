@@ -414,6 +414,36 @@ p.news-snippet {
   color: var(--text-soft);
   letter-spacing: -0.005em;
 }
+
+.news-badges {
+  display: flex;
+  gap: 6px;
+  margin: 12px 0 0;
+}
+.news-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.badge-file {
+  color: var(--text-soft);
+  border-color: var(--border-strong);
+  background: var(--surface-soft);
+}
+.badge-type {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+  background: var(--accent-tint);
+}
 .empty {
   color: var(--text-soft);
   padding: 40px 0;
@@ -509,7 +539,7 @@ footer {
     <h1>半导体</h1>
     <p class="meta">
       <span><strong>6 家头部公司</strong></span>
-      <span>104 条新闻</span>
+      <span>105 条新闻</span>
       <span>生成于 2026-06-27</span>
     </p>
   </header>
@@ -523,7 +553,7 @@ footer {
     <div class="region-block intl">
       <div class="region-label">国际头部</div>
       <div class="region-tabs">
-        <button class="tab" data-co="tsmc"><span class="name">台积电 TSMC</span><span class="count">10</span></button><button class="tab" data-co="samsung"><span class="name">三星电子 Samsung</span><span class="count">10</span></button><button class="tab" data-co="intel"><span class="name">Intel</span><span class="count">10</span></button><button class="tab" data-co="nvidia"><span class="name">NVIDIA 英伟达</span><span class="count">6</span></button><button class="tab" data-co="amd"><span class="name">AMD</span><span class="count">10</span></button><button class="tab" data-co="broadcom"><span class="name">Broadcom 博通</span><span class="count">10</span></button><button class="tab" data-co="asml"><span class="name">ASML 阿斯麦</span><span class="count">10</span></button>
+        <button class="tab" data-co="tsmc"><span class="name">台积电 TSMC</span><span class="count">10</span></button><button class="tab" data-co="samsung"><span class="name">三星电子 Samsung</span><span class="count">10</span></button><button class="tab" data-co="intel"><span class="name">Intel</span><span class="count">10</span></button><button class="tab" data-co="nvidia"><span class="name">NVIDIA 英伟达</span><span class="count">7</span></button><button class="tab" data-co="amd"><span class="name">AMD</span><span class="count">10</span></button><button class="tab" data-co="broadcom"><span class="name">Broadcom 博通</span><span class="count">10</span></button><button class="tab" data-co="asml"><span class="name">ASML 阿斯麦</span><span class="count">10</span></button>
       </div>
     </div>
   </nav>
@@ -545,50 +575,58 @@ footer {
           <li class="news-item">
             
             <a class="news-title" href="https://media-huahonggrace.todayir.com/202605141743401780952216_sc.pdf" target="_blank" rel="noopener">华虹半导体二零二六年第一季度业绩公布<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">media-huahonggrace.todayir.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://media-huahonggrace.todayir.com/20260212164001304412023118_tc.pdf" target="_blank" rel="noopener">华虹半导体二零二五年第四季度业绩公布<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">media-huahonggrace.todayir.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.thecrimson.com/article/2024/4/25/hua-problem-solving-team-meeting/" target="_blank" rel="noopener">HUA Problem Solving Team Has Yet to Convene After 2 Weeks<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            <p class="news-snippet">On April 12, two HUA officers filed a motion to create a problem solving team to “solve a dispute” over referenda guidelines, after the HUA approved a petition from the Palestine Solidarity Committee for a referendum on whether Harvard…</p>
+            <div class="news-meta">thecrimson.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://finance.yahoo.com/news/xiao-unveils-hua-zang-universal-034000990.html" target="_blank" rel="noopener">Xiao-I Unveils Hua Zang Universal Large Language Model Ecosystem<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">finance.yahoo.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.thecrimson.com/article/2025/4/25/hua-finances-future-implications/" target="_blank" rel="noopener">How the HUA Spends Half a Million Dollars a Year<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            <p class="news-snippet">The HUA subsequently divides around half a million dollars — a portion of the Student Activities Fee, an optional annual $200 charge for undergraduates — among these groups, weighing the clubs’ proposed events and additional sources of…</p>
+            <div class="news-meta">thecrimson.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.digitimes.com/tag/hua_hong_semiconductor/0019011.html" target="_blank" rel="noopener">NEWS TAGGED HUA HONG SEMICONDUCTOR<span class="arrow">↗</span></a>
-            <p class="news-snippet">Read all Hua Hong Semiconductor tagged news at DIGITIMES</p>
             
+            <p class="news-snippet">Read all Hua Hong Semiconductor tagged news at DIGITIMES</p>
+            <div class="news-meta">digitimes.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://finance.yahoo.com/news/hua-medicine-leadership-diabetes-treatment-143000488.html" target="_blank" rel="noopener">Hua Medicine’s Leadership in Diabetes Treatment Recognized: CEO Dr. Li CHEN Awarded Prestigious C.C. Tan Life Science Industrialization Award<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">finance.yahoo.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://stanforddaily.com/2019/01/07/hua-chenyus-peerless-performances/" target="_blank" rel="noopener">Hua Chenyu’s peerless performances<span class="arrow">↗</span></a>
-            <p class="news-snippet">Hua Chenyu is one of the most influential young pop-rock singers in China today. His most recent solo concert was held at Beijing National Stadium —</p>
             
+            <p class="news-snippet">Hua Chenyu is one of the most influential young pop-rock singers in China today. His most recent solo concert was held at Beijing National Stadium —</p>
+            <div class="news-meta">stanforddaily.com</div>
           </li>
       </ul>
     </section>
@@ -603,68 +641,78 @@ footer {
           <span class="domain">smics.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.aol.com/news/chinese-chip-maker-smic-says-122903395.html" target="_blank" rel="noopener">Chinese chip maker SMIC books 20% surge in quarterly revenue but wary about future demand</a></li><li><span class="num">02</span><a href="https://www.cnbc.com/2023/08/10/smic-q2-2023-earnings-report.html" target="_blank" rel="noopener">SMIC posted a drop in second-quarter revenue on persisting weak chip demand</a></li><li><span class="num">03</span><a href="https://www.bloomberg.com/news/audio/2026-06-22/stock-movers-sk-hynix-smic-ongc-podcast" target="_blank" rel="noopener">Stock Movers: SK Hynix, SMIC, ONGC</a></li></ol><div class="stats">10 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.aol.com/news/chinese-chip-maker-smic-says-122903395.html" target="_blank" rel="noopener">Chinese chip maker SMIC books 20% surge in quarterly revenue but wary about future demand</a></li><li><span class="num">02</span><a href="https://www.bloomberg.com/news/audio/2026-06-22/stock-movers-sk-hynix-smic-ongc-podcast" target="_blank" rel="noopener">Stock Movers: SK Hynix, SMIC, ONGC</a></li><li><span class="num">03</span><a href="https://www.benzinga.com/news/24/05/39010105/taiwan-semi-leads-while-chinas-smic-climbs-to-third-in-global-chip-market" target="_blank" rel="noopener">Taiwan Semi Leads While China&#39;s SMIC Climbs to Third in Global Chip Market</a></li></ol><div class="stats">10 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
             
             <a class="news-title" href="https://www.aol.com/news/chinese-chip-maker-smic-says-122903395.html" target="_blank" rel="noopener">Chinese chip maker SMIC books 20% surge in quarterly revenue but wary about future demand<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.cnbc.com/2023/08/10/smic-q2-2023-earnings-report.html" target="_blank" rel="noopener">SMIC posted a drop in second-quarter revenue on persisting weak chip demand<span class="arrow">↗</span></a>
-            <p class="news-snippet">SMIC posted a drop in second-quarter revenue amid ongoing U.S. sanctions and a sluggish recovery in global chip demand.</p>
-            
+            <div class="news-meta">aol.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.bloomberg.com/news/audio/2026-06-22/stock-movers-sk-hynix-smic-ongc-podcast" target="_blank" rel="noopener">Stock Movers: SK Hynix, SMIC, ONGC<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">bloomberg.com</div>
+          </li>
+          <li class="news-item">
             
+            <a class="news-title" href="https://www.benzinga.com/news/24/05/39010105/taiwan-semi-leads-while-chinas-smic-climbs-to-third-in-global-chip-market" target="_blank" rel="noopener">Taiwan Semi Leads While China&#39;s SMIC Climbs to Third in Global Chip Market<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">Taiwan Semiconductor Manufacturing Co (TSMC) leads in Q1 revenue. China&#39;s SMIC ranks 3rd in market share, driven by demand recovery and Huawei partnership.</p>
+            <div class="news-meta">benzinga.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.cnbc.com/2023/08/10/smic-q2-2023-earnings-report.html" target="_blank" rel="noopener">SMIC posted a drop in second-quarter revenue on persisting weak chip demand<span class="arrow">↗</span></a>
+            
+            <p class="news-snippet">SMIC posted a drop in second-quarter revenue amid ongoing U.S. sanctions and a sluggish recovery in global chip demand.</p>
+            <div class="news-meta">cnbc.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://finance.yahoo.com/sectors/technology/articles/chinas-smic-says-foreign-clients-030806144.html" target="_blank" rel="noopener">China&#39;s SMIC says foreign clients shifting orders back to China<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            
+            <div class="news-meta">finance.yahoo.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://global.chinadaily.com.cn/a/202509/24/WS68d38dd5a3108622abca29c5.html" target="_blank" rel="noopener">SMIC trials homegrown lithography kit<span class="arrow">↗</span></a>
-            <p class="news-snippet">Chinese chipmaker, Semiconductor Manufacturing International Corp, is running trials on the country&amp;#39;s first domestically produced advanced chip making equipment in an effort to challenge western rivals in producing artificial intelligence processors, The Financial Times reported.</p>
             
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.androidheadlines.com/2025/03/smic-5nm-chips-2025.html" target="_blank" rel="noopener">SMIC to make its 5nm chips a reality in 2025, but things are not ideal<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://finance.yahoo.com/sectors/technology/articles/huaweis-ai-chip-strategy-sends-181609563.html" target="_blank" rel="noopener">Huawei&#39;s New AI Chip Strategy Sends SMIC Shares Up Nearly 6%<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.etnet.com.hk/www/eng/warrants/realtime/quote_news.php?code=56134" target="_blank" rel="noopener">HSI extends its drop to 500+ pts and is now at 22,576<span class="arrow">↗</span></a>
-            
-            
+            <p class="news-snippet">Chinese chipmaker, Semiconductor Manufacturing International Corp, is running trials on the country&#39;s first domestically produced advanced chip making equipment in an effort to challenge western rivals in producing artificial intelligence processors, The Financial Times reported.</p>
+            <div class="news-meta">global.chinadaily.com.cn</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.eefocus.com/article/1833332.html" target="_blank" rel="noopener">中芯国际（SMIC）的制程技术介绍<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
             <p class="news-snippet">中芯国际是一家纯晶圆代工厂，向全球客户提供8英寸和12英寸芯片代工与技术服务。中芯国际除高端的制造能力之外，还为客户提供全方位的晶圆代工解决方案，包括光罩制造、IP研发及后段辅助设计服务等一站式服务(包含凸块加工服务、晶圆探测，以及最终的封装、测试等)。全面一体的晶圆代工解决方案,目标是更有效的帮助客户降低成本，以缩短产品上市时间。</p>
-            
+            <div class="news-meta">eefocus.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.eefocus.com/article/1920624.html" target="_blank" rel="noopener">TSMC、UMC、SMIC财报数据对比整理（2025Q3）<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            <p class="news-snippet">台积电（TSMC）、联华电子（UMC）和中芯国际（SMIC）分别公布了2025年第三季度的财务数据。TSMC营收显著增长至283亿美元，同比增长39.1%，主要受益于AI算力芯片市场的强劲需求。UMC营收略有增长，达到18.7亿美元，同比增长2.2%，主要得益于28nm工艺的贡献。SMIC营收增长较为稳定，达到22.7亿美元，同比增长10.6%。从工艺节点分布来看，TSMC的营收增量主要来自5nm和3nm工艺，而UMC和SMIC的增长则主要来自成熟工艺和12吋晶圆。研发方面，TSMC投入惊人，尤其是在先进工艺研发上；UMC和SMIC的研发投入也在逐年增加。资本支出显示，TSMC和SMIC计划扩大产能，未来营收有望大幅增长，而UMC的增速预计将持续缓慢。总体而言，三家公司在不同领域表现出不同的发展趋势，反映了当前半导体市场对算力芯片的高度依赖。</p>
+            <div class="news-meta">eefocus.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.eefocus.com/article/2011082.html" target="_blank" rel="noopener">406亿收购尘埃落定！中芯国际全资控股中芯北方，国内成熟制程迎来整合拐点<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
             <p class="news-snippet">中芯国际406亿元收购中芯北方49%股权，获得上交所重组审核全票通过，标志着国内成熟制程晶圆制造进入集中攻坚新阶段。此举有助于解决产能瓶颈，增强中芯国际在全球半导体产业重构中的领先地位，并促进国内半导体产业的战略性资源整合。</p>
+            <div class="news-meta">eefocus.com</div>
+          </li>
+          <li class="news-item">
             
+            <a class="news-title" href="https://www.eefocus.com/article/1877833.html" target="_blank" rel="noopener">中芯国际最新财务数据概览（2025Q2）<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            <p class="news-snippet">本文分析了中芯国际（SMIC）在2025年第二季度的财务数据，对比了台积电（TSMC）和台联电（UMC）的表现。SMIC营收同比增长16.2%，但仍低于TSMC的增长幅度。研发投入持续增加，显示出其对先进工艺的重视。晶圆出货量快速增长，但单价有所下降。资本支出较高，表明SMIC有进一步扩产的计划。整体来看，SMIC在市场份额和技术创新方面表现出色，但在先进工艺上的差距仍较大。</p>
+            <div class="news-meta">eefocus.com</div>
           </li>
       </ul>
     </section>
@@ -679,68 +727,78 @@ footer {
           <span class="domain">ymtc.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://global.chinadaily.com.cn/a/202605/21/WS6a0e5bd2a310d6866eb49da5.html" target="_blank" rel="noopener">Chipmaker YMTC seeks Shanghai float</a></li><li><span class="num">02</span><a href="https://biz.heraldcorp.com/article/10789093" target="_blank" rel="noopener">China&#39;s CXMT, YMTC cement fourth-place positions in global DRAM, NAND markets</a></li><li><span class="num">03</span><a href="https://technode.com/2026/06/22/ymtc-nand-market-share-climbs-to-13-as-global-competition-intensifies/" target="_blank" rel="noopener">YMTC NAND market share climbs to 13% as global competition intensifies</a></li></ol><div class="stats">10 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://global.chinadaily.com.cn/a/202605/21/WS6a0e5bd2a310d6866eb49da5.html" target="_blank" rel="noopener">Chipmaker YMTC seeks Shanghai float</a></li><li><span class="num">02</span><a href="https://technode.com/2026/06/22/ymtc-nand-market-share-climbs-to-13-as-global-competition-intensifies/" target="_blank" rel="noopener">YMTC NAND market share climbs to 13% as global competition intensifies</a></li><li><span class="num">03</span><a href="https://www.digitimes.com/news/a20260622PD212/cxmt-ymtc-nand-ssd-expansion.html" target="_blank" rel="noopener">YMTC NAND share rises to 13%, alarming South Korean rivals</a></li></ol><div class="stats">10 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
             
             <a class="news-title" href="https://global.chinadaily.com.cn/a/202605/21/WS6a0e5bd2a310d6866eb49da5.html" target="_blank" rel="noopener">Chipmaker YMTC seeks Shanghai float<span class="arrow">↗</span></a>
-            <p class="news-snippet">China&amp;#39;s leading flash memory maker, Yangtze Memory Technologies Co (YMTC), has officially begun its initial public offering process with plans to list on Shanghai&amp;#39;s STAR Market, marking a major milestone for the country&amp;#39;s semiconductor industry.</p>
             
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://biz.heraldcorp.com/article/10789093" target="_blank" rel="noopener">China&#39;s CXMT, YMTC cement fourth-place positions in global DRAM, NAND markets<span class="arrow">↗</span></a>
-            <p class="news-snippet">Samsung Electronics held the top position in the global DRAM and NAND flash markets in the first quarter of this year, while SK Hynix led the HBM market. But as</p>
-            
+            <p class="news-snippet">China&#39;s leading flash memory maker, Yangtze Memory Technologies Co (YMTC), has officially begun its initial public offering process with plans to list on Shanghai&#39;s STAR Market, marking a major milestone for the country&#39;s semiconductor industry.</p>
+            <div class="news-meta">global.chinadaily.com.cn</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://technode.com/2026/06/22/ymtc-nand-market-share-climbs-to-13-as-global-competition-intensifies/" target="_blank" rel="noopener">YMTC NAND market share climbs to 13% as global competition intensifies<span class="arrow">↗</span></a>
-            <p class="news-snippet">Yangtze Memory Technologies Corporation (YMTC) has increased its global NAND flash memory market share from 8% in the same period in 2025 to 13%. Major</p>
             
+            <p class="news-snippet">Yangtze Memory Technologies Corporation (YMTC) has increased its global NAND flash memory market share from 8% in the same period in 2025 to 13%. Major</p>
+            <div class="news-meta">technode.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.digitimes.com/news/a20260622PD212/cxmt-ymtc-nand-ssd-expansion.html" target="_blank" rel="noopener">YMTC NAND share rises to 13%, alarming South Korean rivals<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">digitimes.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.aastocks.com/en/stocks/news/aafn-news/NOW.1525351/2" target="_blank" rel="noopener">YMTC Kicks off A-Share IPO Process<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">YMTC, which primarily engages in 3D NAND flash memory chips and solutions, launched its IPO process, with CITIC Securities and China Securities publis...</p>
-            
+            <div class="news-meta">aastocks.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.caixinglobal.com/2026-06-19/chipmaker-ymtc-cedes-control-of-foundry-unit-ahead-of-mega-ipo-102455661.html" target="_blank" rel="noopener">Chipmaker YMTC Cedes Control of Foundry Unit Ahead of Mega IPO<span class="arrow">↗</span></a>
+            
             <p class="news-snippet">Chipmaker YMTC Cedes Control of Foundry Unit Ahead of Mega IPO - The divestment of a 39% stake in Wuhan Xinxin Semiconductor Manufacturing to a state-backed investor coincides with YMTC’s initial public offering plans</p>
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.scmp.com/tech/tech-trends/article/3354374/inside-ymtcs-ipo-plans-how-chinas-3d-nand-champion-chasing-capital-markets" target="_blank" rel="noopener">Inside YMTC’s IPO plans: how is China’s 3D NAND champion chasing capital markets?<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://seekingalpha.com/article/4916008-china-leading-high-bandwidth-memory-physical-ai-companies-prepare-ipo-shanghai-star-market" target="_blank" rel="noopener">China&#39;s Leading High-Bandwidth Memory &amp; Physical AI Companies Prepare For IPO On Shanghai&#39;s STAR Market<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-meta">caixinglobal.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.digitimes.com/news/a20260623PD208/ymtc-xmc-memory-chips-china.html" target="_blank" rel="noopener">YMTC Holdings exits XMC as state-backed Optics Valley investor takes control<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">digitimes.com</div>
+          </li>
+          <li class="news-item">
             
+            <a class="news-title" href="https://www.scmp.com/tech/tech-trends/article/3354374/inside-ymtcs-ipo-plans-how-chinas-3d-nand-champion-chasing-capital-markets" target="_blank" rel="noopener">Inside YMTC’s IPO plans: how is China’s 3D NAND champion chasing capital markets?<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            <p class="news-snippet">As China’s memory-chip giants YMTC and CXMT progress towards IPOs, they shine a spotlight on Beijing’s tech self-sufficiency ambitions.</p>
+            <div class="news-meta">scmp.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.marketwatch.com/story/chinese-memory-chip-maker-ymtc-kicks-off-pre-ipo-guidance-talks-c3a067f2" target="_blank" rel="noopener">Chinese Memory-Chip Maker YMTC Kicks Off Pre-IPO Guidance Talks<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            
+            <div class="news-meta">marketwatch.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.eefocus.com/article/2034465.html" target="_blank" rel="noopener">重磅！长江存储攻进三星SK海力士老巢！<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
             <p class="news-snippet">随着中国两大存储半导体公司——长鑫存储（CXMT）和长江存储（YMTC）即将进行IPO，YMTC因其在韩国市场的迅速扩张和对三星电子和SK海力士的挑战而备受关注。YMTC通过推出自家固态硬盘品牌“智泰”和三款新SSD，成功打入韩国市场，显示出其在NAND闪存市场的竞争力。尽管DRAM市场竞争激烈，但NAND闪存市场因供需不平衡而价格上涨，YMTC借此机会扩展业务，目标是在未来几年内超越三星电子和SK海力士，成为中国存储行业的领军者。</p>
+            <div class="news-meta">eefocus.com</div>
+          </li>
+          <li class="news-item">
             
+            <a class="news-title" href="https://www.eefocus.com/article/2018835.html" target="_blank" rel="noopener">估值超1600亿，长江存储“国替”背后的国产力量<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            <p class="news-snippet">国产存储巨头长江存储曝光上市辅导计划，力争冲刺资本市场，推动国产存储产业进入资本化与规模化发展阶段。长江存储作为全球少数能量产200层以上3D NAND的厂商之一，拥有强大的技术和生产能力，并在一季度实现了显著的增长。随着AI浪潮的推动，存储市场需求激增，长江存储凭借自身实力和国产化替代策略，有望在未来几年内实现更高的市场份额和更大的价值。</p>
+            <div class="news-meta">eefocus.com</div>
           </li>
       </ul>
     </section>
@@ -755,68 +813,78 @@ footer {
           <span class="domain">cxmt.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.barrons.com/livecoverage/stock-market-news-today-062526/card/concerns-about-china-s-cxmt-disrupting-memory-supply-likely-overplayed-pi57kJKTvjOjuaSC69yu" target="_blank" rel="noopener">Concerns About China&#39;s CXMT Disrupting Memory Supply Likely Overplayed</a></li><li><span class="num">02</span><a href="https://www.nasdaq.com/articles/chinas-changxin-memory-appoints-cicc-china-securities-for-local-ipo-sources" target="_blank" rel="noopener">China&#39;s Changxin Memory appoints CICC, China Securities for local IPO -sources</a></li><li><span class="num">03</span><a href="https://biz.heraldcorp.com/article/10789093" target="_blank" rel="noopener">China&#39;s CXMT, YMTC cement fourth-place positions in global DRAM, NAND markets</a></li></ol><div class="stats">10 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.barrons.com/livecoverage/stock-market-news-today-062526/card/concerns-about-china-s-cxmt-disrupting-memory-supply-likely-overplayed-pi57kJKTvjOjuaSC69yu" target="_blank" rel="noopener">Concerns About China&#39;s CXMT Disrupting Memory Supply Likely Overplayed</a></li><li><span class="num">02</span><a href="https://biz.heraldcorp.com/article/10789093" target="_blank" rel="noopener">China&#39;s CXMT, YMTC cement fourth-place positions in global DRAM, NAND markets</a></li><li><span class="num">03</span><a href="https://www.globaltimes.cn/page/202606/1363816.shtml" target="_blank" rel="noopener">US reportedly pauses plan to blacklist DeepSeek, CXMT and more than 100 other firms, ‘a positive signal to help further stabilize ties’: expert</a></li></ol><div class="stats">10 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
             
             <a class="news-title" href="https://www.barrons.com/livecoverage/stock-market-news-today-062526/card/concerns-about-china-s-cxmt-disrupting-memory-supply-likely-overplayed-pi57kJKTvjOjuaSC69yu" target="_blank" rel="noopener">Concerns About China&#39;s CXMT Disrupting Memory Supply Likely Overplayed<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.nasdaq.com/articles/chinas-changxin-memory-appoints-cicc-china-securities-for-local-ipo-sources" target="_blank" rel="noopener">China&#39;s Changxin Memory appoints CICC, China Securities for local IPO -sources<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-meta">barrons.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://biz.heraldcorp.com/article/10789093" target="_blank" rel="noopener">China&#39;s CXMT, YMTC cement fourth-place positions in global DRAM, NAND markets<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
             <p class="news-snippet">Samsung Electronics held the top position in the global DRAM and NAND flash markets in the first quarter of this year, while SK Hynix led the HBM market. But as</p>
-            
+            <div class="news-meta">biz.heraldcorp.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.globaltimes.cn/page/202606/1363816.shtml" target="_blank" rel="noopener">US reportedly pauses plan to blacklist DeepSeek, CXMT and more than 100 other firms, ‘a positive signal to help further stabilize ties’: expert<span class="arrow">↗</span></a>
+            
             <p class="news-snippet">China has consistently opposed the US overstretching the concept of national security and abusing export control measures such as the Entity List to suppress and contain Chinese companies, Lin Jian, a spokesperson of China</p>
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.digitimes.com/news/a20260624VL210/cxmt-self-sufficiency-ipo-2026-semiconductor-industry.html" target="_blank" rel="noopener">CXMT listing signals acceleration of China&#39;s memory self-sufficiency strategy amid global tech decoupling<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://onmsft.com/news/cxmt-ddr5-memory-isnt-cheaper-than-samsung-sk-hynix-or-micron-vendors-say/" target="_blank" rel="noopener">CXMT DDR5 Memory Isn’t Cheaper Than Samsung, SK Hynix, or Micron, Vendors Say<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-meta">globaltimes.cn</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.digitaltrends.com/computing/corsair-is-putting-for-chinese-ram-in-mainstream-market-it-wont-quite-end-the-crisis-though/" target="_blank" rel="noopener">Corsair is putting Chinese RAM in mainstream market. It won’t quite end the crisis though<span class="arrow">↗</span></a>
             
             
+            <div class="news-meta">digitaltrends.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.nasdaq.com/articles/chinas-changxin-memory-appoints-cicc-china-securities-for-local-ipo-sources" target="_blank" rel="noopener">China&#39;s Changxin Memory appoints CICC, China Securities for local IPO -sources<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            
+            <div class="news-meta">nasdaq.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://onmsft.com/news/cxmt-ddr5-memory-isnt-cheaper-than-samsung-sk-hynix-or-micron-vendors-say/" target="_blank" rel="noopener">CXMT DDR5 Memory Isn’t Cheaper Than Samsung, SK Hynix, or Micron, Vendors Say<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            
+            <div class="news-meta">onmsft.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.yicaiglobal.com/news/memory-chip-giant-cxmt-gets-last-nod-for-chinese-mainlands-largest-ipo-in-four-years" target="_blank" rel="noopener">Memory Chip Giant CXMT Gets Final Nod for Chinese Mainland’s Largest IPO in Four Years<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">yicaiglobal.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.reuters.com/world/china/chinas-cxmt-expects-revenue-surge-memory-chip-demand-soars-2026-05-18/" target="_blank" rel="noopener">China&#39;s CXMT expects revenue to surge as memory chip demand soars<span class="arrow">↗</span></a>
             
             
+            <div class="news-meta">reuters.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.eefocus.com/article/2036842.html" target="_blank" rel="noopener">长鑫存储目标市占20%，问鼎全球前三<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
             <p class="news-snippet">长鑫存储（CXMT）历经十年发展，终于上市，标志着中国在存储半导体领域摆脱对韩国公司的依赖，实现自主。CXMT凭借内存市场的繁荣迅速扭转巨额亏损，计划通过IPO筹集资金，加速产能扩展和技术研发，目标是在2030年超越美光，成为全球第三大DRAM厂商。面对韩国存储半导体公司的挑战，CXMT得到国家全力支持，有望在未来几年内显著扩大市场份额，对中国国内存储市场产生重大影响。</p>
+            <div class="news-meta">eefocus.com</div>
+          </li>
+          <li class="news-item">
             
+            <a class="news-title" href="https://www.eefocus.com/article/2026120.html" target="_blank" rel="noopener">芯片公司介绍·求职内参｜第10期｜长鑫存储<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            <p class="news-snippet">长鑫存储的核心业务是DRAM存储芯片的设计、研发、制造和销售，是中国大陆唯一实现DRAM全产业链自主可控的IDM企业。公司在合肥、北京两地拥有三座12英寸晶圆厂，2025年底月产能达20万片，2026年末预计提升至30万片。</p>
+            <div class="news-meta">eefocus.com</div>
           </li>
       </ul>
     </section>
@@ -837,62 +905,72 @@ footer {
           <li class="news-item">
             
             <a class="news-title" href="https://pr.tsmc.com/chinese/news/3320" target="_blank" rel="noopener">台積公司2026年5月營收報告 (2026/06/10)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">pr.tsmc.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://pr.tsmc.com/chinese/news/3317" target="_blank" rel="noopener">台積公司股東常會決議 (2026/06/04)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">pr.tsmc.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://investor.tsmc.com/chinese/quarterly-results/2026/q1" target="_blank" rel="noopener">台積公司1Q’26法人說明會 (2026/04/16)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.dqindia.com/semiconductors/tsmc-preparing-for-full-scale-mass-production-of-plp-semiconductors-12062502" target="_blank" rel="noopener">TSMC preparing for full-scale mass production of PLP semiconductors<span class="arrow">↗</span></a>
-            <p class="news-snippet">TSMC is reported to be planning to begin the PLP mass production as early as next year, and this is read as a move in earnest toward that goal.</p>
-            
+            <div class="news-meta">investor.tsmc.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.usatoday.com/story/news/local/phoenix/2026/06/25/united-integrated-services-corp-to-buy-land-phoenix-az/90683956007/" target="_blank" rel="noopener">Another semiconductor company to buy land in north Phoenix near TSMC<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">usatoday.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.fox10phoenix.com/news/construction-worker-rescued-after-getting-trapped-phoenix-tsmc-plant" target="_blank" rel="noopener">Construction worker rescued after getting trapped at Phoenix TSMC plant<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://invezz.com/news/2026/06/18/intel-stock-is-being-valued-as-amd-or-tsmc-but-its-neither-yet/" target="_blank" rel="noopener">Intel stock is being valued as AMD or TSMC - but it&#39;s neither yet<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">PHOENIX - A multi-agency emergency response rushed to the massive TSMC semiconductor manufacturing complex in north Phoenix on Thursday afternoon after a construction worker was injured high up within the facility.</p>
+            <div class="news-meta">fox10phoenix.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.bloomberg.com/news/audio/2026-06-24/stock-movers-sk-hynix-tsmc-zhipu-podcast" target="_blank" rel="noopener">Stock Movers: SK Hynix, TSMC, Zhipu<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">bloomberg.com</div>
+          </li>
+          <li class="news-item">
             
+            <a class="news-title" href="https://invezz.com/news/2026/06/18/intel-stock-is-being-valued-as-amd-or-tsmc-but-its-neither-yet/" target="_blank" rel="noopener">Intel stock is being valued as AMD or TSMC - but it&#39;s neither yet<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            
+            <div class="news-meta">invezz.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://onmsft.com/news/tsmc-bets-on-glass-substrates-for-future-cowos-packaging-but-mass-production-remains-distant/" target="_blank" rel="noopener">TSMC Bets on Glass Substrates for Future CoWoS Packaging, but Mass Production Remains Distant<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">onmsft.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.techspot.com/news/112800-samsung-foundry-booming-tsmc-struggles-demand-bags-nvidia.html" target="_blank" rel="noopener">Samsung&#39;s foundry is booming as TSMC struggles with demand – bags Nvidia, Tesla, and Qualcomm as new clients<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">techspot.com</div>
+          </li>
+          <li class="news-item">
             
+            <a class="news-title" href="https://www.techtimes.com/articles/318385/20260615/tsmc-readies-panel-level-packaging-ai-chips-setting-showdown-samsung.htm" target="_blank" rel="noopener">TSMC Readies Panel-Level Packaging for AI Chips, Setting Up a Showdown With Samsung<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            <p class="news-snippet">TSMC is preparing to mass-produce panel-level packaging (PLP), a next-generation chip-packaging technology &amp;mdash; setting up a direct contest with Samsung Electronics, which entered the field earlier.</p>
+            <div class="news-meta">techtimes.com</div>
           </li>
       </ul>
     </section>
@@ -913,62 +991,72 @@ footer {
           <li class="news-item">
             
             <a class="news-title" href="https://news.samsung.com/global/interview-patterns-that-hold-memory-athene-galiciadis-x-samsung-art-store" target="_blank" rel="noopener">[Interview] Patterns That Hold Memory: Athene Galiciadis x Samsung Art Store Samsung Newsroom spoke with Galiciadis about form, color, the ideas behind the selected works and how digital presentation can bring art into the home.<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">“Instead of formulating thoughts through words, I compose with layered colors.” – Athene G</p>
-            
+            <div class="news-meta">news.samsung.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://news.samsung.com/global/samsung-partners-with-warner-bros-pictures-and-dc-studios-to-bring-supergirl-experiences-to-fans" target="_blank" rel="noopener">Samsung Partners With Warner Bros. Pictures and DC Studios To Bring ‘Supergirl’ Experiences to Fans Samsung Electronics today announced a global partnership with Warner Bros. Pictures and DC Studios to mark the theatrical release of this summer’s epic new superhero adventure “Supergirl” on June 24.<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Partnership brings the highly anticipated summer adventure to Samsung Art Store and select activations in support of the film’s global release</p>
-            
+            <div class="news-meta">news.samsung.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://news.samsung.com/global/samsung-electronics-releases-2026-sustainability-report-expanding-water-replenishment-efforts" target="_blank" rel="noopener">Social Impact Samsung Electronics Releases 2026 Sustainability Report, Expanding Water Replenishment Efforts June 26, 2026<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">On June 26, Samsung Electronics released the 2026 edition of its Sustainability Report. Th</p>
-            
+            <div class="news-meta">news.samsung.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://news.samsung.com/global/samsung-galaxy-a27-5g-brings-an-immersive-display-and-awesome-intelligence-to-more-users" target="_blank" rel="noopener">Press Resources Samsung Galaxy A27 5G Brings an Immersive Display and Awesome Intelligence to More Users June 25, 2026<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Newest addition to the Galaxy A series features an Infinity-O display, combining a seamless viewing experience with reliable performance and intelligent tools for more users</p>
-            
+            <div class="news-meta">news.samsung.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://news.samsung.com/global/finding-your-voice-anywhere-the-tech-behindgalaxy-buds4-pros-crystal-clear-calls" target="_blank" rel="noopener">Products Finding Your Voice Anywhere: The Tech Behind Galaxy Buds4 Pro’s Crystal-Clear Calls June 25, 2026<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">For anyone who relies on wireless earbuds on a daily basis, struggling to be heard on a ph</p>
-            
+            <div class="news-meta">news.samsung.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://news.samsung.com/global/meet-the-generation17-young-leaders-the-story-of-jose-francisco-ochoa" target="_blank" rel="noopener">Products Meet the Generation17 Young Leaders: The Story of José Francisco Ochoa June 24, 2026<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">José Francisco Ochoa is a member of Generation17, a Samsung and United Nations Development</p>
-            
+            <div class="news-meta">news.samsung.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://news.samsung.com/global/samsung-partners-with-alcedis-to-advance-clinical-research-using-wearable-based-endpoints" target="_blank" rel="noopener">Press Resources Samsung Partners With Alcedis To Advance Clinical Research Using Wearable-Based Endpoints June 24, 2026<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Combining the latest advancements in wearable technology and collected biometrics  to generate clinically meaningful evidence for research and drug development</p>
-            
+            <div class="news-meta">news.samsung.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://news.samsung.com/global/samsung-unveils-industrys-fastest-ufs-5-0-solution-for-next-gen-on-device-ai-applications" target="_blank" rel="noopener">Press Resources Samsung Unveils Industry’s Fastest UFS 5.0 Solution for Next-Gen On-Device AI Applications June 23, 2026<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Samsung’s UFS 5.0 solution achieves the industry</p>
-            
+            <div class="news-meta">news.samsung.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://news.samsung.com/global/interview-a-decade-of-windfree-innovation-taking-another-step-forward-through-design-integrated-into-living-spaces" target="_blank" rel="noopener">Products [Interview] A Decade of WindFree™ Innovation: Taking Another Step Forward Through Design Integrated Into Living Spaces June 23, 2026<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Ten years ago, Samsung changed the paradigm of the air solutions market with the introduct</p>
-            
+            <div class="news-meta">news.samsung.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://news.samsung.com/global/art-basel-in-basel-2026-samsung-art-tv-brings-personal-curation-to-the-center-of-the-art-world" target="_blank" rel="noopener">Products Art Basel in Basel 2026: Samsung Art TV Brings Personal Curation to the Center of the Art World June 22, 2026<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">▲ Visitors explore the Samsung Lounge at Art Basel in Basel 2026, where Samsung Art Store</p>
-            
+            <div class="news-meta">news.samsung.com</div>
           </li>
       </ul>
     </section>
@@ -989,62 +1077,72 @@ footer {
           <li class="news-item">
             
             <a class="news-title" href="https://newsroom.intel.com/corporate/ceo-letter-2025-26-intel-corporate-responsibility-report" target="_blank" rel="noopener">CorporateCEO Letter: 2025-26 Intel Corporate Responsibility Report CEO Lip-Bu Tan outlines progress to rebuild execution, strengthen core businesses, and advance responsible growth in the AI era. June 17, 2026<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">CEO Lip-Bu Tan outlines progress to rebuild execution, strengthen core businesses, and advance responsible growth in the AI era.</p>
-            
+            <div class="news-meta">newsroom.intel.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://newsroom.intel.com/corporate/intel-advances-growth-in-ai-era-2025-2026-csr-report" target="_blank" rel="noopener">CorporateIntel Advances Responsible Business Practices and AI-Driven Growth in 2025–2026 Corporate Responsibility Report New report outlines progress and priorities as AI reshapes technology and global demand June 17, 2026<span class="arrow">↗</span></a>
-            <p class="news-snippet">New report outlines progress and priorities as AI reshapes technology and global demand</p>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">newsroom.intel.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://newsroom.intel.com/corporate/intel-announces-leadership-appointment-at-intel-foundry-to-accelerate-development-and-manufacturing" target="_blank" rel="noopener">Intel Announces Leadership Appointment at Intel Foundry to Accelerate Development and Manufacturing June 18, 2026<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">SANTA CLARA, Calif., June 18, 2026 &amp;mdash; Intel Corporation today announced the appointment of Seok-Hee Lee as executive vice president of Intel Foundry, reporting directly to CEO Lip-Bu Tan.</p>
+            <div class="news-meta">newsroom.intel.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://newsroom.intel.com/intel-foundry/intel-foundry-details-process-milestones-future-innovation-at-vlsi-symposium" target="_blank" rel="noopener">Intel Foundry Details Process Milestones and Future Innovation at VLSI Symposium Intel 18 A-P now in risk production with higher performance, enhanced thermal characteristics and design rule compatibility with Intel 18A June 16, 2026<span class="arrow">↗</span></a>
-            <p class="news-snippet">Intel 18 A-P now in risk production with higher performance, enhanced thermal characteristics and design rule compatibility with Intel 18A</p>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">newsroom.intel.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://newsroom.intel.com/5g-wireless/intel-5g-network-bridges-digital-divide" target="_blank" rel="noopener">New Smart City Pilot Network to Bridge Digital Divide for 50 U.S. Cities Powered by Intel edge infrastructure, a local California network demonstrates how micro-servers can deliver high-speed connectivity at a low cost. June 9, 2026<span class="arrow">↗</span></a>
-            <p class="news-snippet">Powered by Intel edge infrastructure, a local California network demonstrates how micro-servers can deliver high-speed connectivity at a low cost.</p>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">newsroom.intel.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://newsroom.intel.com/client-computing/postcard-from-computex-2026-new-intel-core-series-3-laptops-for-creation-productivity" target="_blank" rel="noopener">Postcard from Computex 2026: New Intel® Core™ Series 3 laptops for Everyday Creation and All-day Productivity Up to 20 hours of battery life versus the previous generation June 5, 2026<span class="arrow">↗</span></a>
-            <p class="news-snippet">Up to 17 hours of battery life versus the previous generation</p>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">newsroom.intel.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://newsroom.intel.com/data-center/intel-introduces-ethernet-e835-controllers-network-adapters" target="_blank" rel="noopener">Intel Introduces Ethernet E835 Controllers and Network Adapters for Cloud, Edge and Enterprise Data Center Infrastructure Designed to meet the bandwidth and scalability demands of high-density environments across Data Center, Enterprise, AI and Telco Mobile Core applications. June 2, 2026<span class="arrow">↗</span></a>
-            <p class="news-snippet">Designed to meet the bandwidth and scalability demands of high-density environments across Data Center, Enterprise, AI and Telco Mobile Core applications.</p>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">newsroom.intel.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://newsroom.intel.com/artificial-intelligence/computex-2026-an-intelligent-world-built-on-silicon" target="_blank" rel="noopener">Computex 2026: An Intelligent World Built on Silicon Live from Lip-Bu Tan&#39;s Keynote at Computex 2026 June 2, 2026<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">newsroom.intel.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://newsroom.intel.com/artificial-intelligence/intel-announces-new-ai-innovations-at-computex" target="_blank" rel="noopener">Intel Announces New AI Innovations at Computex Chip to Rackscale AI Solutions Delivered to Customers with the Help of Strategic Industry Partners June 1, 2026<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">newsroom.intel.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://newsroom.intel.com/press-kit/press-kit-intel-at-computex-2026" target="_blank" rel="noopener">Press Kit: Intel at Computex 2026 At Computex 2026 in Taiwan, Intel unveiled new solutions tailored to meet customers’ demands from chip- to system-level innovations. June 1, 2026<span class="arrow">↗</span></a>
-            <p class="news-snippet">At Computex 2026 in Taiwan, Intel unveiled new solutions tailored to meet customers’ demands from chip- to system-level innovations.</p>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">newsroom.intel.com</div>
           </li>
       </ul>
     </section>
@@ -1059,44 +1157,57 @@ footer {
           <span class="domain">nvidia.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers" target="_blank" rel="noopener">Europe Unveils a Record 35 New NVIDIA AI Supercomputers</a></li><li><span class="num">02</span><a href="https://www.aol.com/finance/openai-building-own-ai-chip-231200936.html" target="_blank" rel="noopener">OpenAI Is Building Its Own AI Chip With Broadcom. Should Nvidia Investors Be Worried?</a></li><li><span class="num">03</span><a href="https://www.forbes.com/sites/greatspeculations/2026/06/26/the-hidden-metric-behind-nvidias-ambition/" target="_blank" rel="noopener">The Hidden Metric Behind NVIDIA’s Ambition</a></li></ol><div class="stats">6 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers" target="_blank" rel="noopener">Europe Unveils a Record 35 New NVIDIA AI Supercomputers</a></li><li><span class="num">02</span><a href="https://www.aol.com/finance/1-reason-buy-nvidia-stock-123600593.html" target="_blank" rel="noopener">1 Reason to Buy Nvidia Stock Right Now</a></li><li><span class="num">03</span><a href="https://www.aol.com/finance/openai-building-own-ai-chip-231200936.html" target="_blank" rel="noopener">OpenAI Is Building Its Own AI Chip With Broadcom. Should Nvidia Investors Be Worried?</a></li></ol><div class="stats">7 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
             
             <a class="news-title" href="https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers" target="_blank" rel="noopener">Europe Unveils a Record 35 New NVIDIA AI Supercomputers<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">ISC High Performance 2026 -- NVIDIA today announced that a record 35 NVIDIA AI HPC supercomputers are in development across Europe — equipping more than 3 million researchers with next-generation infrastructure for continental AI, accelerated science and industrial innovation.</p>
+            <div class="news-meta">nvidianews.nvidia.com</div>
+          </li>
+          <li class="news-item">
             
+            <a class="news-title" href="https://www.aol.com/finance/1-reason-buy-nvidia-stock-123600593.html" target="_blank" rel="noopener">1 Reason to Buy Nvidia Stock Right Now<span class="arrow">↗</span></a>
+            
+            
+            <div class="news-meta">aol.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.aol.com/finance/openai-building-own-ai-chip-231200936.html" target="_blank" rel="noopener">OpenAI Is Building Its Own AI Chip With Broadcom. Should Nvidia Investors Be Worried?<span class="arrow">↗</span></a>
             
             
+            <div class="news-meta">aol.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.forbes.com/sites/greatspeculations/2026/06/26/the-hidden-metric-behind-nvidias-ambition/" target="_blank" rel="noopener">The Hidden Metric Behind NVIDIA’s Ambition<span class="arrow">↗</span></a>
+            
             <p class="news-snippet">Following a remarkable ascent, NVIDIA shares have cooled. The stock price has dipped below recent peaks, and discussions have transitioned.</p>
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.aol.com/finance/nvidia-vs-micron-stock-market-151118760.html" target="_blank" rel="noopener">NVIDIA vs Micron: Which Stock Will The Market Reward<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-meta">forbes.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.cnbc.com/2026/06/26/friday-stocks-by-analyst-calls-like-spacex.html" target="_blank" rel="noopener">Here are Friday&#39;s biggest analyst calls: SpaceX, Nvidia, Apple, Tesla, Crocs, Microsoft, Robinhood &amp; more<span class="arrow">↗</span></a>
-            <p class="news-snippet">Here are Friday&amp;#x27;s biggest calls on Wall Street.</p>
             
+            <p class="news-snippet">Here are Friday&#39;s biggest calls on Wall Street.</p>
+            <div class="news-meta">cnbc.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://247wallst.com/investing/2026/06/25/nvidia-price-prediction-the-forecast-climbs-again-heres-where-the-ai-leader-heads-next/" target="_blank" rel="noopener">Nvidia Price Prediction: The Forecast Climbs Again. Here’s Where the AI Leader Heads Next<span class="arrow">↗</span></a>
+            
+            
+            <div class="news-meta">247wallst.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.fastcompany.com/91564497/you-know-openai-and-nvidia-these-are-the-ai-companies-building-everything-else" target="_blank" rel="noopener">You know OpenAI and Nvidia. These are the AI companies building everything else<span class="arrow">↗</span></a>
             
             
+            <div class="news-meta">fastcompany.com</div>
           </li>
       </ul>
     </section>
@@ -1117,62 +1228,72 @@ footer {
           <li class="news-item">
             
             <a class="news-title" href="https://www.amd.com/en/newsroom/press-releases/2026-6-16-amd-and-rackspace-technology-sign-definitive.html" target="_blank" rel="noopener">AMD and Rackspace Technology Sign Definitive Agreement for Phased Deployment of 30 MW of AMD AI Compute<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">Collaboration establishes a new category of governed enterprise AI infrastructure purpose-built for regulated and sovereign environments</p>
+            <div class="news-meta">amd.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.amd.com/en/newsroom/press-releases/2026-6-8-amd-and-imperial-college-london-announce-strategic-coll.html" target="_blank" rel="noopener">AMD and Imperial College London Announce Strategic Collaboration to Advance AI-Enabled Scientific Discovery and Sovereign AI Infrastructure<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">AMD will collaborate with Imperial College London to advance AI-enabled scientific discovery, sovereign AI infrastructure and next-gen HPC systems.</p>
-            
+            <div class="news-meta">amd.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.amd.com/en/newsroom/press-releases/2026-6-3-oqc-jpmorganchase-and-amd-commence-research-collaborata.html" target="_blank" rel="noopener">OQC, JPMorganChase and AMD Commence Research Collaboration to Develop New Quantum-AI Platform in London<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">LONDON, June 3, 2026 – OQC, JPMorganChase and AMD today announced a research collaboration leveraging a new and dedicated Quantum-AI Data Centre, built by OQC in London.</p>
+            <div class="news-meta">amd.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://invezz.com/news/2026/06/26/amd-stock-why-analysts-are-suddenly-raising-their-price-targets/" target="_blank" rel="noopener">AMD stock: why analysts are suddenly raising their price targets<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">invezz.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.pcmag.com/articles/beat-high-gpu-prices-with-the-gigabyte-amd-radeon-rx-9070-gre-gaming-oc" target="_blank" rel="noopener">Beat High GPU Prices With the GIGABYTE AMD Radeon RX 9070 GRE GAMING OC 12G<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
             
-            
+            <div class="news-meta">pcmag.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://gizmodo.com/amd-goes-nearly-zero-margin-on-ryzen-7-9800x3d-the-worlds-fastest-gaming-cpu-at-a-near-record-low-2000776538" target="_blank" rel="noopener">AMD Goes Nearly Zero Margin on Ryzen 7 9800X3D, the World’s Fastest Gaming CPU at a Near Record Low<span class="arrow">↗</span></a>
             
             
+            <div class="news-meta">gizmodo.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.fool.com/investing/2026/06/25/amd-vs-intel-which-stock-is-the-better-buy-right-n/" target="_blank" rel="noopener">AMD vs. Intel: Which Stock Is the Better Buy Right Now?<span class="arrow">↗</span></a>
             
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://247wallst.com/investing/2026/06/24/wall-street-just-supersized-its-price-target-on-amd-is-the-stock-still-too-cheap/" target="_blank" rel="noopener">Wall Street Just Supersized Its Price Target on AMD. Is the Stock Still Too Cheap?<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://arstechnica.com/security/2026/06/following-user-outcry-amd-reinstates-memory-encryption-in-consumer-cpus/" target="_blank" rel="noopener">Following user outcry, AMD reinstates memory encryption in consumer CPUs<span class="arrow">↗</span></a>
-            
-            
+            <p class="news-snippet">The red-hot stocks have seen their valuations soar in 2026.</p>
+            <div class="news-meta">fool.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.fool.com/investing/2026/06/25/why-i-continue-to-prioritize-amd-stock-over-nvidia/" target="_blank" rel="noopener">Why I Continue to Prioritize AMD Stock Over Nvidia<span class="arrow">↗</span></a>
             
             
+            <div class="news-meta">fool.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://arstechnica.com/security/2026/06/following-user-outcry-amd-reinstates-memory-encryption-in-consumer-cpus/" target="_blank" rel="noopener">Following user outcry, AMD reinstates memory encryption in consumer CPUs<span class="arrow">↗</span></a>
+            
+            
+            <div class="news-meta">arstechnica.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://247wallst.com/investing/2026/06/24/wall-street-just-supersized-its-price-target-on-amd-is-the-stock-still-too-cheap/" target="_blank" rel="noopener">Wall Street Just Supersized Its Price Target on AMD. Is the Stock Still Too Cheap?<span class="arrow">↗</span></a>
+            
+            
+            <div class="news-meta">247wallst.com</div>
           </li>
       </ul>
     </section>
@@ -1187,68 +1308,78 @@ footer {
           <span class="domain">broadcom.com</span>
         </div>
       </div>
-      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.forbes.com/sites/jonmarkman/2026/06/25/meet-jalapeo-openais-first-custom-ai-chip-built-with-broadcom/" target="_blank" rel="noopener">· 1dMeet Jalapeño: OpenAI’s First Custom AI Chip, Built With Broadcom</a></li><li><span class="num">02</span><a href="https://247wallst.com/investing/2026/06/26/the-quiet-gross-margin-reality-check-that-points-to-a-dangerous-valuation-gap-between-marvell-and-broadcom/" target="_blank" rel="noopener">The Quiet Gross Margin Reality Check That Points to a Dangerous Valuation Gap Between Marvell and Broadcom</a></li><li><span class="num">03</span><a href="https://www.networkworld.com/article/4190063/you-cant-build-sovereign-infrastructure-with-broadcom-says-cispe.html" target="_blank" rel="noopener">You can’t build sovereign infrastructure with Broadcom, says CISPE</a></li></ol><div class="stats">10 条新闻</div></div>
+      <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.broadcom.com/company/news/product-releases/64391" target="_blank" rel="noopener">Broadcom&#39;s Private Cloud Outlook 2026 Reveals an AI Tipping Point as Production Inference Shifts Decisively to Private Cloud</a></li><li><span class="num">02</span><a href="https://www.broadcom.com/company/news/product-releases/64351" target="_blank" rel="noopener">Broadcom Unveils World’s First Integrated 5G and Wi-Fi 8 FWA Platform in Collaboration with Samsung Electronics</a></li><li><span class="num">03</span><a href="https://www.broadcom.com/company/news/financial-releases/64476" target="_blank" rel="noopener">Broadcom Inc. Announces Results and Upsize of Offers to Purchase for Cash Certain of its Outstanding Debt Securities</a></li></ol><div class="stats">10 条新闻</div></div>
       <ul class="news-list">
         
           <li class="news-item">
             
+            <a class="news-title" href="https://www.broadcom.com/company/news/product-releases/64391" target="_blank" rel="noopener">Broadcom&#39;s Private Cloud Outlook 2026 Reveals an AI Tipping Point as Production Inference Shifts Decisively to Private Cloud<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">Broadcom&#39;s Private Cloud Outlook 2026 Reveals an AI Tipping Point as Production Inference Shifts Decisively to Private Cloud</p>
+            <div class="news-meta">broadcom.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.broadcom.com/company/news/product-releases/64351" target="_blank" rel="noopener">Broadcom Unveils World’s First Integrated 5G and Wi-Fi 8 FWA Platform in Collaboration with Samsung Electronics<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">Broadcom Unveils World’s First Integrated 5G and Wi-Fi 8 FWA Platform in Collaboration with Samsung Electronics</p>
+            <div class="news-meta">broadcom.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.broadcom.com/company/news/financial-releases/64476" target="_blank" rel="noopener">Broadcom Inc. Announces Results and Upsize of Offers to Purchase for Cash Certain of its Outstanding Debt Securities<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">Broadcom Inc. Announces Results and Upsize of Offers to Purchase for Cash Certain of its Outstanding Debt Securities</p>
+            <div class="news-meta">broadcom.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.broadcom.com/company/news/financial-releases/64371" target="_blank" rel="noopener">Broadcom Inc. Announces Second Quarter Fiscal Year 2026 Financial Results and Quarterly Dividend<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">Broadcom Inc. Announces Second Quarter Fiscal Year 2026 Financial Results and Quarterly Dividend</p>
+            <div class="news-meta">broadcom.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://www.aol.com/finance/openai-building-own-ai-chip-231200936.html" target="_blank" rel="noopener">· 1hOpenAI Is Building Its Own AI Chip With Broadcom. Should Nvidia Investors Be Worried?<span class="arrow">↗</span></a>
+            
+            
+            <div class="news-meta">aol.com</div>
+          </li>
+          <li class="news-item">
+            
             <a class="news-title" href="https://www.forbes.com/sites/jonmarkman/2026/06/25/meet-jalapeo-openais-first-custom-ai-chip-built-with-broadcom/" target="_blank" rel="noopener">· 1dMeet Jalapeño: OpenAI’s First Custom AI Chip, Built With Broadcom<span class="arrow">↗</span></a>
             
-            
+            <p class="news-snippet">Jalapeño marks OpenAI’s move into custom chips, while Broadcom strengthens its role as AI’s infrastructure provider.</p>
+            <div class="news-meta">forbes.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://247wallst.com/investing/2026/06/26/the-quiet-gross-margin-reality-check-that-points-to-a-dangerous-valuation-gap-between-marvell-and-broadcom/" target="_blank" rel="noopener">The Quiet Gross Margin Reality Check That Points to a Dangerous Valuation Gap Between Marvell and Broadcom<span class="arrow">↗</span></a>
             
             
+            <div class="news-meta">247wallst.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.networkworld.com/article/4190063/you-cant-build-sovereign-infrastructure-with-broadcom-says-cispe.html" target="_blank" rel="noopener">You can’t build sovereign infrastructure with Broadcom, says CISPE<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            <p class="news-snippet">The cloud service provider group is concerned about the company’s bullying tactics.</p>
+            <div class="news-meta">networkworld.com</div>
           </li>
           <li class="news-item">
             
-            <a class="news-title" href="https://247wallst.com/investing/2026/06/22/the-market-is-panicking-on-broadcom-this-is-why-i-keep-buying-the-stock/" target="_blank" rel="noopener">The Market Is Panicking on Broadcom. This Is Why I Keep Buying The Stock<span class="arrow">↗</span></a>
+            <a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/broadcom-raises-tender-offer-senior-181111524.html" target="_blank" rel="noopener">Broadcom Raises Tender Offer for Its Senior Notes to $3 Billion. What This Means for AVGO Stock.<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
             
-            
+            <div class="news-meta">finance.yahoo.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.eefocus.com/article/2027822.html" target="_blank" rel="noopener">AI芯片营收暴涨143%，博通股价为何暴跌？<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
             <p class="news-snippet">博通发布亮眼财报，AI半导体营收暴涨143%，但股价因指引低于预期暴跌近16%。尽管博通AI半导体业务订单积压超过900亿美元，客户承诺算力部署超10GW，但市场担忧其长期指引未能上调。博通在晶圆代工产能保障上占据优势，但面临竞争对手的多供应商策略挑战。AI网络业务虽被忽视，但也展现出强劲增长潜力。博通计划通过AI XPV平台介入算力基础设施融资与部署，增强长期订单稳定性。</p>
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/2026612.html" target="_blank" rel="noopener">博通业绩大涨却遭“用脚投票”<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1860020.html" target="_blank" rel="noopener">博通公司（Broadcom Inc.）产品线<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/2008137.html" target="_blank" rel="noopener">英伟达AMD英特尔博通联手，堵上GPU算力浪费的漏洞<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1913948.html" target="_blank" rel="noopener">博通做什么、靠什么赚钱、在AI时代扮演什么角色<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.eefocus.com/article/1902994.html" target="_blank" rel="noopener">刚刚，OpenAI官宣自研AI芯片！博通股价飙涨10%<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-meta">eefocus.com</div>
           </li>
       </ul>
     </section>
@@ -1269,62 +1400,72 @@ footer {
           <li class="news-item">
             
             <a class="news-title" href="https://www.asml.com/en/news/press-releases/2026/tata-electronics-and-asml-announce-strategic-partnership" target="_blank" rel="noopener">May 16, 2026 Tata Electronics and ASML Announce Strategic Partnership to Advance the Semiconductor Manufacturing Ecosystem in India<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">Tata Electronics, a pioneering leader in India’s electronics and semiconductor manufacturing sector, and ASML, one of the world’s leading semiconductor equipment manufacturing companies, today, announced the signing of a Memorandum of…</p>
+            <div class="news-meta">asml.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.asml.com/en/news/press-releases/2026/asml-ceo-christophe-fouquet-co-signed-opinion-piece" target="_blank" rel="noopener">May 5, 2026 ASML CEO Christophe Fouquet co-signed opinion piece with European technology companies<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">asml.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.asml.com/en/news/press-releases/2026/asml-discloses-2026-agm-results" target="_blank" rel="noopener">April 22, 2026 ASML discloses 2026 AGM results<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">asml.com</div>
           </li>
           <li class="news-item">
             
-            <a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/analysts-saying-asml-holding-asml-120941371.html" target="_blank" rel="noopener">Here is What Analysts Are Saying About ASML Holding (ASML)<span class="arrow">↗</span></a>
+            <a class="news-title" href="https://www.asml.com/en/news/press-releases/2026/q1-2026-financial-results" target="_blank" rel="noopener">April 15, 2026ASML reports €8.8 billion total net sales and €2.8 billion net income in Q1 2026ASML now expects 2026 total net sales to be between €36 billion and €40 billion, with a gross margin between 51% and 53%<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">asml.com</div>
           </li>
           <li class="news-item">
             
-            <a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/asml-enxtam-asml-faces-ai-001844482.html" target="_blank" rel="noopener">ASML (ENXTAM:ASML) Faces New AI Supply Chain Rules As Dutch Join Pax Silica<span class="arrow">↗</span></a>
+            <a class="news-title" href="https://www.asml.com/en/news/press-releases/2026/asml-publishes-2025-annual-report" target="_blank" rel="noopener">February 25, 2026ASML publishes 2025 Annual Reports<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">asml.com</div>
           </li>
           <li class="news-item">
             
-            <a class="news-title" href="https://247wallst.com/investing/2026/06/16/asml-could-soar-higher-in-12-months-and-heres-why-wed-buy-it/" target="_blank" rel="noopener">ASML Could Soar Higher in 12 Months and Here’s Why We’d Buy It<span class="arrow">↗</span></a>
+            <a class="news-title" href="https://www.asml.com/en/news/press-releases/2026/q4-2025-financial-results" target="_blank" rel="noopener">January 28, 2026ASML reports €32.7 billion total net sales and €9.6 billion net income in 2025ASML expects 2026 total net sales to be between €34 billion and €39 billion, with a gross margin between 51% and 53%<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">asml.com</div>
           </li>
           <li class="news-item">
             
-            <a class="news-title" href="https://www.wsj.com/business/asml-shares-slip-on-report-of-u-s-concern-that-china-has-its-tech-f6400c8f" target="_blank" rel="noopener">ASML Shares Slip on Report of U.S. Concern That China Has Its Tech<span class="arrow">↗</span></a>
+            <a class="news-title" href="https://www.asml.com/en/news/press-releases/2025/q3-2025-financial-results" target="_blank" rel="noopener">October 15, 2025ASML reports €7.5 billion total net sales and €2.1 billion net income in Q3 2025Full-year 2025 expected total net sales growth of around 15% with gross margin around 52%<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">asml.com</div>
           </li>
           <li class="news-item">
             
-            <a class="news-title" href="https://www.shacknews.com/article/149624/elon-musk-asml-chips-spacex-ipo" target="_blank" rel="noopener">Elon Musk speaks to ASML CEO and employees ahead of SpaceX IPO<span class="arrow">↗</span></a>
-            <p class="news-snippet">Elon Musk recently sung the praises of ASML, the semiconductor industry</p>
+            <a class="news-title" href="https://www.asml.com/en/news/press-releases/2025/asml-mistral-ai-enter-strategic-partnership" target="_blank" rel="noopener">September 9, 2025ASML, Mistral AI enter strategic partnership<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">asml.com</div>
           </li>
           <li class="news-item">
             
-            <a class="news-title" href="https://www.cnbc.com/2026/06/11/elon-musk-addresses-asml-employees-pushes-into-chip-manufacturing.html" target="_blank" rel="noopener">Ahead of SpaceX IPO, Elon Musk addresses ASML employees as part of push into chip manufacturing<span class="arrow">↗</span></a>
-            <p class="news-snippet">Elon Musk called ASML a great company in a fireside chat with CEO Christophe Fouquet, as the SpaceX CEO gears up to go big in chip manufacturing.</p>
+            <a class="news-title" href="https://www.asml.com/en/news/press-releases/2025/asml-semicon-india-2025" target="_blank" rel="noopener">September 2, 2025ASML showcases holistic lithography solutions at SEMICON India 2025Set to power India’s chipmaking growth<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">asml.com</div>
           </li>
           <li class="news-item">
             
-            <a class="news-title" href="https://seekingalpha.com/news/4604527-asml-ceo-says-need-to-make-sure-no-supply-constraints-for-new-projects-like-musks-terafab" target="_blank" rel="noopener">ASML CEO says need to make sure no supply constraints for new projects like Musk’s Terafab<span class="arrow">↗</span></a>
+            <a class="news-title" href="https://www.asml.com/en/news/press-releases/2025/q2-2025-financial-results" target="_blank" rel="noopener">July 16, 2025ASML reports €7.7 billion total net sales and €2.3 billion net income in Q2 2025Full-year 2025 expected total net sales growth of around 15% with gross margin around 52%<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">asml.com</div>
           </li>
       </ul>
     </section></main>

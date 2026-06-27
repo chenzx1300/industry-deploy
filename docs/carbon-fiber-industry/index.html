@@ -414,6 +414,36 @@ p.news-snippet {
   color: var(--text-soft);
   letter-spacing: -0.005em;
 }
+
+.news-badges {
+  display: flex;
+  gap: 6px;
+  margin: 12px 0 0;
+}
+.news-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.badge-file {
+  color: var(--text-soft);
+  border-color: var(--border-strong);
+  background: var(--surface-soft);
+}
+.badge-type {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+  background: var(--accent-tint);
+}
 .empty {
   color: var(--text-soft);
   padding: 40px 0;
@@ -545,62 +575,72 @@ footer {
           <li class="news-item">
             
             <a class="news-title" href="https://www.toray.com/ir/pdf/lib/lib_a566.pdf" target="_blank" rel="noopener">Consolidated Financial Statements and Independent Auditor’s Report for the Year Ended March 31, 2026 (PDF:2.0MB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">toray.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toray.com/news/article.html?contentId=qmn0u82u" target="_blank" rel="noopener">Toray Develops Breakthrough Hydrophilic Coating for Contact Lenses and Other Silicone-Based Medical Devices<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Contributing to society through the creation of new value with innovative ideas, technologies and products.Toray</p>
-            
+            <div class="news-meta">toray.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toray.com/news/article.html?contentId=jvkcoijc" target="_blank" rel="noopener">Toray to Launch Next-Generation Reverse Osmosis Membranes Offering Industry-Leading Salt Rejection for More Cost-Effective Seawater Desalination<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Contributing to society through the creation of new value with innovative ideas, technologies and products.Toray</p>
-            
+            <div class="news-meta">toray.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toray.com/news/article.html?contentId=jyst3a6t" target="_blank" rel="noopener">2025 Toray Science Foundation (TSF) Presentation Ceremony<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Contributing to society through the creation of new value with innovative ideas, technologies and products.Toray</p>
-            
+            <div class="news-meta">toray.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toray.com/news/article.html?contentId=v8li617j" target="_blank" rel="noopener">32nd Presentation Ceremony of the Indonesia Toray Science Foundation (ITSF)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Contributing to society through the creation of new value with innovative ideas, technologies and products.Toray</p>
-            
+            <div class="news-meta">toray.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toray.com/ir/pdf/fin/fin_a120.pdf" target="_blank" rel="noopener">Consolidated Results for the Fiscal Year Ended March 2026 (PDF:447KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">toray.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toray.com/news/article.html?contentId=qggvtmr8" target="_blank" rel="noopener">Toray to Launch Lower-Biofouling Ultrafiltration Membrane Module with One of the Industry’s Smallest Nominal Pore Sizes*, at Just 0.005 micrometers<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Contributing to society through the creation of new value with innovative ideas, technologies and products.Toray</p>
-            
+            <div class="news-meta">toray.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toray.com/news/article.html?contentId=w0mk4byi" target="_blank" rel="noopener">Toray Develops Fabric Adhesive Films with Eco-Friendly Release Liner-Free Design<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Contributing to society through the creation of new value with innovative ideas, technologies and products.Toray</p>
-            
+            <div class="news-meta">toray.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://finance.yahoo.com/news/bolt-biotherapeutics-inc-provides-global-210500827.html" target="_blank" rel="noopener">Bolt Biotherapeutics, Inc. Provides Update on Global Cancer Immunotherapy Co-Development with Toray Industries, Inc.<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">finance.yahoo.com</div>
           </li>
           <li class="news-item">
             
-            <a class="news-title" href="https://finance.yahoo.com/news/zoltek-announces-agreement-plan-merger-003004257.html" target="_blank" rel="noopener">Zoltek Announces Agreement And Plan Of Merger With Toray Industries, Inc.<span class="arrow">↗</span></a>
+            <a class="news-title" href="https://www.aol.com/sports/spartanburgs-toray-industries-plans-big-145421642.html" target="_blank" rel="noopener">Spartanburg&#39;s Toray Industries plans big comeback with $600M investment, 350 jobs<span class="arrow">↗</span></a>
             
             
+            <div class="news-meta">aol.com</div>
           </li>
       </ul>
     </section>
@@ -621,62 +661,72 @@ footer {
           <li class="news-item">
             
             <a class="news-title" href="https://www.teijin.com/news/2026/06/26/20260626_01.pdf" target="_blank" rel="noopener">June 26, 2026IR Notice Regarding Dividend Received from a Consolidated Subsidiary[Teijin] (PDF: 103.1 KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">teijin.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.teijin.com/news/2026/05/21/20260521_01.pdf" target="_blank" rel="noopener">May 21, 2026Materials FINCANTIERI AND TEIJIN AUTOMOTIVE TECHNOLOGIES SIGN AGREEMENT TO DEVELOP ADVANCED COMPOSITE BULKHEADS FOR MARITIME VESSELS[Teijin Automotive Technologies] (PDF: 229.4 KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">teijin.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.teijin.com/news/2026/05/18/20260518_01.pdf" target="_blank" rel="noopener">May 18, 2026MaterialsSustainability Teijin Frontier to Expand Production Capacity for OCTAIR Insulation Fiber at Matsuyama Plant[Teijin Frontier] (PDF: 236.2 KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">teijin.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.teijin.com/news/2026/05/11/20260511_01.pdf" target="_blank" rel="noopener">May 11, 2026IR Notice regarding Recording of Impairment Loss, Gain on Sale of Shares of Affiliates (Consolidated) and Extraordinary Income and Loss (Non-consolidated)[Teijin] (PDF: 134.8 KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">teijin.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.teijin.com/news/2026/05/11/20260511_02.pdf" target="_blank" rel="noopener">May 11, 2026Materials Teijin Frontier and Asahi Kasei Advance Announce New Company Name Ahead of Planned Business Integration[Teijin Frontier] (PDF: 153.2 KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">teijin.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.teijin.com/news/2026/03/31/20260331_01.pdf" target="_blank" rel="noopener">March 31, 2026IR Notice regarding Revision of Full-Year Earnings Forecasts[Teijin] (PDF: 147.6 KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">teijin.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.teijin.com/news/2026/03/17/20260317_01.pdf" target="_blank" rel="noopener">March 17, 2026IR Notice Regarding Dividend Received from a Consolidated Subsidiary[Teijin] (PDF: 99.0 KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">teijin.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.teijin.com/news/2026/02/04/20260204_01.pdf" target="_blank" rel="noopener">February 4, 2026Corporate Teijin Limited has made the following personnel changes effective as of February 3, 2026[Teijin] (PDF: 107.6 KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">teijin.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.teijin.com/news/2026/02/04/20260204_02.pdf" target="_blank" rel="noopener">February 4, 2026Corporate Teijin Limited has made the following personnel changes effective as of April 1, 2026[Teijin] (PDF: 134.1 KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">teijin.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.teijin.com/news/2026/02/04/20260204_03.pdf" target="_blank" rel="noopener">February 4, 2026Corporate Teijin Limited has made the following personnel changes effective as of June 19, 2026[Teijin] (PDF: 106.4 KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">teijin.com</div>
           </li>
       </ul>
     </section>
@@ -697,62 +747,72 @@ footer {
           <li class="news-item">
             
             <a class="news-title" href="https://www.mcgc.com/english/news_release/pdf/02677/02922.pdf" target="_blank" rel="noopener">Jun. 17, 2026 Business New Heat Dissipation Device Design Achieves a 47% Weight Reduction in an NTN Planar Antenna [Open in a new window]<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">mcgc.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.mcgc.com/english/news_release/pdf/02675/02920.pdf" target="_blank" rel="noopener">Jun. 16, 2026 Business Audi Selects Mitsubishi Chemical’s DURABIO for New Q3 Door Switch Inserts[Open in a new window]<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">mcgc.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.mcgc.com/english/news_release/pdf/02668/02910.pdf" target="_blank" rel="noopener">Jun. 01, 2026 Business Unleashing the Future: Japan’s First Verification of Advanced Industrial Complex Inspections Using Physical AI, IOWN® APN, and 60 GHz Wireless LAN[Open in a new window]<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">mcgc.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.mcgc.com/english/news_release/pdf/02666/02908.pdf" target="_blank" rel="noopener">May 28, 2026 Business Mitsubishi Chemical and Accenture Establish Joint Venture to Drive AI-Enabled Business Reinvention and Operational Transformation[Open in a new window]<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">mcgc.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.mcgc.com/english/news_release/02662.html" target="_blank" rel="noopener">May 27, 2026 Business Discontinuance of Production and Sales of Some Grades of Epoxy Resins at the Tokai Plant Kawajiri Site[Open in a new window]<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Discontinuance of Production and Sales of Some Grades of Epoxy Resins at the Tokai Plant Kawajiri Site</p>
-            
+            <div class="news-meta">mcgc.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.mcgc.com/english/news_release/pdf/02639/02889.pdf" target="_blank" rel="noopener">May 13, 2026 HR Announcement of Personnel Changes of Mitsubishi Chemical Corporation, Effective June 1, 2026 [Open in a new window]<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">mcgc.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.mcgc.com/english/news_release/02637.html" target="_blank" rel="noopener">May 12, 2026 Business Notice Regarding Withdrawal from the Polybutylene Succinate (PBS) Business[Open in a new window]<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Notice Regarding Withdrawal from the Polybutylene Succinate (PBS) Business</p>
-            
+            <div class="news-meta">mcgc.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.mcgc.com/english/news_release/pdf/02635/02887.pdf" target="_blank" rel="noopener">May 12, 2026 Business Asahi Kasei, Mitsui Chemicals and Mitsubishi Chemical Agree Equity Ratio for the Joint Operating Entity to Integrate Ethylene Production Facilities in Western Japan[Open in a new window]<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">mcgc.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.mcgc.com/english/news_release/02617.html" target="_blank" rel="noopener">Apr. 23, 2026 Business SANPLATEC Adopts Mitsubishi Chemical’s Zelas™ TPS for Cell Culture Tubes[Open in a new window]<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">SANPLATEC Adopts Mitsubishi Chemical’s Zelas™ TPS for Cell Culture Tubes</p>
-            
+            <div class="news-meta">mcgc.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.mcgc.com/english/news_release/pdf/02612/02861.pdf" target="_blank" rel="noopener">Apr. 16, 2026 Other PsiQuantum, the University of Tokyo, and Mitsubishi Chemical Corporation Announce Partnership to Bolster Quantum Workforce Development in Japan [Open in a new window]<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">mcgc.com</div>
           </li>
       </ul>
     </section>
@@ -773,62 +833,72 @@ footer {
           <li class="news-item">
             
             <a class="news-title" href="https://www.solvay.com/en/press-release/outcome-solvays-2026-shareholders-meeting" target="_blank" rel="noopener">Outcome of Solvay’s 2026 shareholders’ meeting<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Shareholders expressed strong support for all resolutions, with an approval rate of over 90%.</p>
-            
+            <div class="news-meta">solvay.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.solvay.com/en/press-release/solvay-first-quarter-2026-results" target="_blank" rel="noopener">Solvay first quarter 2026 results<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">Solvay first quarter 2026 results continues to demonstrate resilience.</p>
-            
+            <div class="news-meta">solvay.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://uk.finance.yahoo.com/news/solvay-releases-2024-annual-integrated-160000597.html" target="_blank" rel="noopener">Solvay releases its 2024 annual integrated report<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">uk.finance.yahoo.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://finance.yahoo.com/news/solvay-essentialco-unveils-strategy-2028-060000616.html" target="_blank" rel="noopener">Solvay (EssentialCo) unveils its new strategy and 2028 financial targets<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">finance.yahoo.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://finance.yahoo.com/news/solvay-announces-publication-supplement-information-073000659.html" target="_blank" rel="noopener">Solvay announces the publication of a supplement to its information document<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">finance.yahoo.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.taiwannews.com.tw/en/news/6383802" target="_blank" rel="noopener">European Patent Office upholds Solvay’s Soda Ash recycling patent<span class="arrow">↗</span></a>
-            <p class="news-snippet">| Jun. 16, 2026 14:30</p>
-            
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">Taiwan to offer returning foreign tourists up to NT$8,000 in incentives</p>
+            <div class="news-meta">taiwannews.com.tw</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://money.usnews.com/investing/news/articles/2025-11-06/solvay-open-to-building-rare-earths-plant-in-us-where-support-is-stronger" target="_blank" rel="noopener">Solvay Open to Building Rare Earths Plant in US, Where Support Is Stronger<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">money.usnews.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://uk.finance.yahoo.com/news/solvay-rare-earth-deal-viridis-191315315.html" target="_blank" rel="noopener">Solvay Rare Earth Deal With Viridis Highlights European Supply Chain Ambitions<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">uk.finance.yahoo.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.aol.com/articles/burglary-auto-shop-solvay-ends-114016000.html" target="_blank" rel="noopener">Burglary at Solvay auto shop ends with fiery crash<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
             
-            
+            <div class="news-meta">aol.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.bloomberg.com/graphics/2022-italian-beach-tuscany-coast-solvay-dumping/" target="_blank" rel="noopener">Decades of Dumping Plagued an Italian Beach Paradise. Then Officials Detected Mercury<span class="arrow">↗</span></a>
             
             
+            <div class="news-meta">bloomberg.com</div>
           </li>
       </ul>
     </section>
@@ -849,62 +919,72 @@ footer {
           <li class="news-item">
             
             <a class="news-title" href="https://www.jushi.com/news/news1-1033.html" target="_blank" rel="noopener">突破！中国巨石荣登2026年《财富》中国ESG影响力榜<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">5月12日，2026年《财富》中国ESG影响力榜单揭晓。中国巨石凭借在环境、社会、公司治理领域（ESG）方面的卓越表现和行业可持续发展领域的积极影响力，首次入选榜单。《财富》中国ESG影响力榜由《财富》（中文版）主办、财富中文网编制发布，目前已连续发布5年，是国内最权威、最具影响力的ESG榜单之一，依托《财富》全球500强百年商业媒体的公信力，其评审体系成熟、市场认可度高，今年全国共计100家企业</p>
-            
+            <div class="news-meta">jushi.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.jushi.com/news/news1-1031.html" target="_blank" rel="noopener">突破·攻坚 | 奏响创新超越最强音<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">2026年为公司“十五五”开局之年，也是创新超越年。5月9日，中国巨石开展以“我为创新超越年作贡献”为主题的“巨能强音”主题宣讲“突破·攻坚”专场，围绕创新有广度、有深度、有高度、有速度的“四度”要求，吹响了创新超越集结号。中国巨石党委书记、总经理杨国明，党委副书记邵晓阳，党委委员、副总经理曹国荣、丁成车、沈林，总经理助理张志坚、廖信林出席活动，相关单位干部员工代表，共70余人参加活动。曹国荣副总</p>
-            
+            <div class="news-meta">jushi.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.jushi.com/news/news1-1026.html" target="_blank" rel="noopener">中国巨石召开2026年一季度工作情况通报分析会<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">4月18日，中国巨石召开2026年一季度工作情况通报分析会。中国巨石党委书记、总经理杨国明部署二季度工作并作总结讲话，党委副书记邵晓阳主持会议。公司党委委员、纪委书记、高管、总经理助理和全体厂部级以上干部现场和线上参加会议。会上，杨国明总经理充分肯定了今年一季度的工作业绩，分析了主要存在的问题、困难和不足。他指出，一季度公司以目标为导向，层层压实责任、真抓实干、成效显著，主要指标表现亮眼，呈现了首</p>
-            
+            <div class="news-meta">jushi.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://markets.businessinsider.com/news/stocks/jushi-holdings-inc-announces-voting-results-of-annual-general-and-special-shareholders-meeting-1036273691" target="_blank" rel="noopener">Jushi Holdings Inc. Announces Voting Results of Annual General and Special Shareholders’ Meeting<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">BOCA RATON, Fla., June  24, 2026  (GLOBE NEWSWIRE) -- Jushi Holdings Inc.  (“Jushi” or the “Company”) (CSE:  JUSH ) (OTCQX:  JUSHF ) , a verticall...</p>
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://finance.yahoo.com/news/jushi-holdings-inc-reports-first-200000313.html" target="_blank" rel="noopener">Jushi Holdings Inc. Reports First Quarter 2025 Financial Results<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-meta">markets.businessinsider.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.morningstar.com/stocks/otcm/jushf/quote" target="_blank" rel="noopener">Jushi Holdings Inc JUSHF<span class="arrow">↗</span></a>
             
-            
+            <p class="news-snippet">View History JUSHF is trading within a range we consider fairly valued. Price $0.48 Jun 25, 2026 Fair Value LOCK|KhG!Qp$ Jun 20, 2026 Uncertainty LOCK|&amp;lt;&amp;amp;! 1-Star Price LOCK|^hS&amp;gt;&amp;gt;BT5-Star Price LOCK|knm#?KEconomic Moat…</p>
+            <div class="news-meta">morningstar.com</div>
           </li>
           <li class="news-item">
             
-            <a class="news-title" href="https://markets.businessinsider.com/news/stocks/jushi-announces-second-closing-of-debt-financing-with-an-additional-3m-of-proceeds-for-a-total-of-72m-1031967161" target="_blank" rel="noopener">Jushi Announces Second Closing Of Debt Financing With An Additional $3M Of Proceeds For A Total Of $72M<span class="arrow">↗</span></a>
+            <a class="news-title" href="https://finance.yahoo.com/news/jushi-holdings-inc-reports-first-200000313.html" target="_blank" rel="noopener">Jushi Holdings Inc. Reports First Quarter 2025 Financial Results<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">finance.yahoo.com</div>
           </li>
           <li class="news-item">
             
-            <a class="news-title" href="https://finance.yahoo.com/news/jushi-real-housewives-star-stacey-203700589.html" target="_blank" rel="noopener">Jushi and Real Housewives Star Stacey Rusch Celebrate Successful Launch of Lifestyle Cannabis Brand ‘Shayo’<span class="arrow">↗</span></a>
-            
-            
-          </li>
-          <li class="news-item">
-            
-            <a class="news-title" href="https://www.morningstar.com/stocks/xcnq/jush/quote" target="_blank" rel="noopener">Jushi Holdings Inc JUSH<span class="arrow">↗</span></a>
-            
-            
+            <a class="news-title" href="https://www.nasdaq.com/articles/is-jushi-holdings-stock-a-buy" target="_blank" rel="noopener">Is Jushi Holdings Stock a Buy?<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">文章</span></div>
+            <p class="news-snippet">It&#39;s been a tough year for marijuana investors, especially those who own Jushi Holdings (OTC: JUSHF). The multistate operator&#39;s (MSO) stock has lost 41% of its value over the last 12 months, and shares are down more than 60% from the all-time high hit back in March.</p>
+            <div class="news-meta">nasdaq.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://uk.finance.yahoo.com/news/jushi-holdings-inc-announces-applications-120000589.html" target="_blank" rel="noopener">Jushi Holdings Inc. Announces Applications Submitted for DEA Registration of State-Licensed Medical Cannabis Operations<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
+            <div class="news-meta">uk.finance.yahoo.com</div>
+          </li>
+          <li class="news-item">
             
+            <a class="news-title" href="https://markets.businessinsider.com/news/stocks/jushi-announces-second-closing-of-debt-financing-with-an-additional-3m-of-proceeds-for-a-total-of-72m-1031967161" target="_blank" rel="noopener">Jushi Announces Second Closing Of Debt Financing With An Additional $3M Of Proceeds For A Total Of $72M<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            
+            <div class="news-meta">markets.businessinsider.com</div>
+          </li>
+          <li class="news-item">
+            
+            <a class="news-title" href="https://finance.yahoo.com/news/jushi-holdings-inc-xcnq-jush-123256870.html" target="_blank" rel="noopener">Jushi Holdings Inc (XCNQ:JUSH) Q4 2024 Earnings Report Preview: What To Look For<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            
+            <div class="news-meta">finance.yahoo.com</div>
           </li>
       </ul>
     </section>
@@ -925,62 +1005,72 @@ footer {
           <li class="news-item">
             
             <a class="news-title" href="https://ir.toyobo.co.jp/en/ir/stock/shareholder.html" target="_blank" rel="noopener">Jun 26, 2026 IR Extraordinary Report is posted<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             <p class="news-snippet">ToyoboのGeneral meeting of shareholdersをご覧いただけます。</p>
-            
+            <div class="news-meta">ir.toyobo.co.jp</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toyobo-global.com/system/files/202606/node_826/20260624_RS_en.pdf" target="_blank" rel="noopener">Jun 24, 2026 IR Notice regarding disposal of treasury shares as restricted share compensation (198KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">toyobo-global.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toyobo-global.com/system/files/202605/node_821/press_20260512_E3.pdf" target="_blank" rel="noopener">May 12, 2026 IR Notice of Difference between Consolidated Earnings Forecasts and Actual Results for the Fiscal Year Ended March 2026 (108KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">toyobo-global.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toyobo-global.com/system/files/202605/node_820/press_20260512_E2.pdf" target="_blank" rel="noopener">May 12, 2026 IR Presentation to Investorsfor Year Ended March 31, 2026 (239KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">toyobo-global.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toyobo-global.com/system/files/202605/node_819/press_20260512_E1.pdf" target="_blank" rel="noopener">May 12, 2026 IR Consolidated Financial Report for Year Ended March 31, 2026 (388KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">toyobo-global.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toyobo-global.com/news/2026/release_816.html" target="_blank" rel="noopener">Apr 14, 2026 Products Toyobo develops industry-first*1 100% plant-based Polyethylene Furanoate (PEF) Film; Samples Available from June With greater rigidity and better gas barrier properties than PET, the product contributes to the advanced performance of electronic devices<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
             
-            
+            <div class="news-meta">toyobo-global.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toyobo-global.com/news/2026/release_818.html" target="_blank" rel="noopener">Apr 13, 2026 Company “Toyobo Aya-no-Mori” Forest certified as Nationally Certified Sustainably Managed Natural Site under new legal framework<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">In 2023, MOEJ launched a system to certify sites preserving biodiversity as Natural Sites, aiming to achieve nature positive*3 and “30by30”*4 by 2030.</p>
+            <div class="news-meta">toyobo-global.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toyobo-global.com/system/files/202604/node_817/press_20260406_1E.pdf" target="_blank" rel="noopener">Apr 06, 2026 Company Regarding the Preparation of the 2030 Medium-Term Management Plan (FY 3/27 – FY 3/31) (916KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">toyobo-global.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toyobo-global.com/news/2026/release_812.html" target="_blank" rel="noopener">Feb 18, 2026 Products Exosome recovery kit for research debuts on February 24 Product enables rapid, efficient exosome recovery without equipment, significantly advancing research capabilities<span class="arrow">↗</span></a>
-            
-            
+            <div class="news-badges"><span class="news-badge badge-type">新闻稿</span></div>
+            <p class="news-snippet">Toyobo Co., Ltd. will begin selling CATAROSEVTM, a kit designed to efficiently recover exosomes—extracellular vesicles that mediate intercellular communication and are increasingly important in fields such as regenerative medicine—on…</p>
+            <div class="news-meta">toyobo-global.com</div>
           </li>
           <li class="news-item">
             
             <a class="news-title" href="https://www.toyobo-global.com/system/files/202602/node_805/press_20260209_1E.pdf" target="_blank" rel="noopener">Feb 09, 2026 IR Notice of Revision of Consolidated Earnings Forecasts (106KB)<span class="arrow">↗</span></a>
+            <div class="news-badges"><span class="news-badge badge-file">PDF</span></div>
             
-            
+            <div class="news-meta">toyobo-global.com</div>
           </li>
       </ul>
     </section></main>
