@@ -23,10 +23,15 @@ const SLUGS = ['semiconductor-industry','new-energy-vehicles-industry','carbon-f
 const SNIPPET_BLOCKED_FULL = [
   /该网站正在使用安全服务/,                          // thenextweb CF challenge (CN)
   /触发(?:了)?\s*安全(?:解决方案|检查|验证)/,
-  /Yahoo.*?中国大陆(无法|不能|暂停).*?使用/s,         // Yahoo CN geo block
-  /2021\s*年\s*11\s*月\s*1\s*日.*?Yahoo.*?无法.*?使用/s,
+  // Yahoo CN geo-block (flexible word order: "Yahoo 无法...中国大陆使用" OR "无法从中国大陆使用 Yahoo")
+  /Yahoo[\s\S]{0,30}中国大陆[\s\S]{0,30}(?:无法|不能|暂停)[\s\S]{0,30}使用/s,
+  /(?:无法|不能|暂停)[\s\S]{0,30}中国大陆[\s\S]{0,30}Yahoo[\s\S]{0,30}使用/s,
+  /2021\s*年\s*11\s*月\s*1\s*日[\s\S]{0,30}Yahoo[\s\S]{0,80}使用/s,  // 2021/11/1 Yahoo block message
   /请禁用\s*Google Translate/s,
   /(?:please )?(?:click|tap).{0,20}(?:box|button).{0,30}(?:verify|robot|human)/i,
+  // Stock-quote page indicators — usually Bing-misclassified finance pages
+  /哪位股东持有最多\s+\w+.*?(?:Limited|Inc|Corp|LLC)/,
+  /(?:Which|Who)\s+shareholders?\s+own(?:s)?\s+the?\s+most/i,
 ];
 
 // "Soft" block-page indicators — could appear in a real news article about
@@ -61,9 +66,36 @@ const TITLE_BAD_PATTERNS = [
   /^(?:View|Read) (?:All |latest )?[A-Z][a-z]+\s+news/i,
 ];
 
+// URL hostnames that always indicate wrong-company / stock analysis pages.
+// These are dropped wholesale (URL or title or snippet matches).
+const BAD_URL_HOSTNAMES = [
+  'finance.yahoo.com',  // Yahoo Finance — stock analysis, often blocked in CN
+  'uk.finance.yahoo.com',
+  'au.finance.yahoo.com',
+  'ca.finance.yahoo.com',
+  'markets.businessinsider.com',  // often stock-quote pages
+  'seekingalpha.com',  // stock analysis site
+  'morningstar.com',  // stock data
+  'www.tipranks.com',
+  'simplywall.st',
+  'stockanalysis.com',
+];
+
+function isBadUrlHost(url) {
+  if (!url) return false;
+  try {
+    const h = new URL(url).hostname.toLowerCase();
+    for (const bad of BAD_URL_HOSTNAMES) {
+      if (h === bad || h.endsWith('.' + bad)) return true;
+    }
+  } catch {}
+  return false;
+}
+
 function isHardBlocked(n) {
   const blob = (n.title || '') + '\n' + (n.snippet || '');
   for (const p of SNIPPET_BLOCKED_FULL) if (p.test(blob)) return true;
+  if (isBadUrlHost(n.url)) return true;  // bad hostname → drop whole item
   return false;
 }
 function isSoftBlocked(snippet) {
