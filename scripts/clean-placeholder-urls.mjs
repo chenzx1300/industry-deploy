@@ -4,9 +4,13 @@
 // (press release listing page) so users at least land on a real page.
 //
 // This is a STOP-GAP until the user manually verifies real article URLs.
+//
+// Hosts whose URL pattern legitimately uses /id-N.html (e.g. bosomchina.com)
+// are exempt — their URLs are real, not placeholder.
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { URL } from 'node:url';
 
 const SLUGS = ['semiconductor-industry','new-energy-vehicles-industry','carbon-fiber-industry','thermal-materials-industry','composite-insulator-industry','datacenter-cooling-industry'];
 
@@ -18,6 +22,12 @@ const PLACEHOLDER_PATTERNS = [
   /\/news_detail\/id-\d+\.html?$/i,
 ];
 
+// Hosts that legitimately use the ID-style URL pattern.
+const ID_PATTERN_TRUSTED_HOSTS = new Set([
+  'www.bosomchina.com',
+  'bosomchina.com',
+]);
+
 let totalReplaced = 0;
 for (const slug of SLUGS) {
   const fp = join('data', `${slug}.json`);
@@ -27,7 +37,10 @@ for (const slug of SLUGS) {
     if (!newsUrl.startsWith('http')) continue;
     for (const n of c.news || []) {
       const u = n.url || '';
-      const isPlaceholder = PLACEHOLDER_PATTERNS.some(p => p.test(u));
+      let h = '';
+      try { h = new URL(u).hostname.replace(/^www\./, '').toLowerCase(); } catch {}
+      const trusted = h && ID_PATTERN_TRUSTED_HOSTS.has(h);
+      const isPlaceholder = !trusted && PLACEHOLDER_PATTERNS.some(p => p.test(u));
       if (isPlaceholder) {
         n.url = newsUrl + '/press-releases/';
         n._needs_user_verification = true;

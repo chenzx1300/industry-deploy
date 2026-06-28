@@ -25,6 +25,13 @@ const PLACEHOLDER_PATTERNS = [
   /\/press\/\d+\.html?$/i,
 ];
 
+// Some companies legitimately use `/news_detail/id-N.html` style URLs
+// on their official site. Don't flag those as placeholder.
+const ID_PATTERN_TRUSTED_HOSTS = new Set([
+  'www.bosomchina.com',
+  'bosomchina.com',
+]);
+
 // 1. Static analysis
 // "Likely real news" hostnames — secondary coverage is legitimate news.
 // Placeholder IDs (show-126.html) are NOT.
@@ -65,11 +72,17 @@ for (const slug of SLUGS) {
       const flags = [];
       if (!u) flags.push('empty-url');
       else {
-        // Placeholder ID
-        for (const p of PLACEHOLDER_PATTERNS) if (p.test(u)) flags.push('placeholder-id');
-        // Invalid URL syntax
+        // Hostname extraction (used by trust check below)
         let h = '';
-        try { h = new URL(u).hostname.replace(/^www\./, '').toLowerCase(); } catch (e) { flags.push('invalid-url'); }
+        try { h = new URL(u).hostname.replace(/^www\./, '').toLowerCase(); } catch (e) { /* flagged below */ }
+        // Placeholder ID — skip for trusted hosts whose URL pattern
+        // legitimately uses /id-N.html (e.g. bosomchina.com)
+        const trusted = ID_PATTERN_TRUSTED_HOSTS.has(h) || ID_PATTERN_TRUSTED_HOSTS.has('www.' + h);
+        if (!trusted) {
+          for (const p of PLACEHOLDER_PATTERNS) if (p.test(u)) flags.push('placeholder-id');
+        }
+        // Invalid URL syntax (h already extracted above)
+        if (!h) flags.push('invalid-url');
         // Stock-analysis / parked / link shortener (always bad)
         const alwaysBad = ['seekingalpha.com','stockanalysis.com','morningstar.com','tipranks.com','simplywall.st','markets.businessinsider.com','bit.ly','tinyurl.com','t.co','goo.gl','ow.ly','sedoparking.com','afternic.com','hugedomains.com','dan.com','parkingcrew.net','sedohq.com','cookiewall.com','gdpr-banner.com'];
         if (alwaysBad.some(b => h === b || h.endsWith('.' + b))) flags.push(`bad-host:${h}`);
