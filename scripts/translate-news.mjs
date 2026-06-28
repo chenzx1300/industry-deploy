@@ -133,15 +133,32 @@ Confidence rubric:
 }
 
 async function processBatch(batch) {
-  const tries = batch.length;
+  // First try the whole batch
   for (let attempt = 1; attempt <= 2; attempt++) {
     try {
       const arr = await callModel(batch);
-      if (arr.length !== tries) throw new Error(`expected ${tries} translations, got ${arr.length}`);
+      if (arr.length !== batch.length) throw new Error(`expected ${batch.length} translations, got ${arr.length}`);
       return arr;
     } catch (err) {
-      console.error(`  ⚠ attempt ${attempt} failed: ${err.message}`);
-      if (attempt === 2) throw err;
+      console.error(`  ⚠ batch attempt ${attempt} failed: ${err.message}`);
+      if (attempt === 2) {
+        // Per-item retry: split into individual calls so a single
+        // bad item doesn't poison the whole batch. Items that fail
+        // even individually are skipped (logged via return shape).
+        console.log(`  → falling back to per-item translation for ${batch.length} items`);
+        const out = [];
+        for (const item of batch) {
+          try {
+            const arr = await callModel([item]);
+            if (arr.length === 1) out.push(arr[0]);
+            else throw new Error('per-item length mismatch');
+          } catch (e2) {
+            console.error(`    ⚠ skip item (title: ${(item.title || '').slice(0, 50)}...): ${e2.message.slice(0, 100)}`);
+            out.push({ title: item.title, snippet: item.snippet, confidence: 0 });  // skip marker
+          }
+        }
+        return out;
+      }
       await new Promise(r => setTimeout(r, 1500));
     }
   }

@@ -74,7 +74,21 @@
           "domain": "jlhx.com.cn",
           "monogram": "吉",
           "monogram_color": "#0ea5e9",
-          "news_url": "https://www.jlhx.com.cn/news/"
+          "news_url": "https://www.jlhx.com.cn/news/",
+          "fallback_news": [
+            {
+              "title": "2026/02/12 吉林化纤年产5万吨碳纤维原丝项目正式投产",
+              "url": "https://www.jlhx.com.cn/news/show-126.html"
+            },
+            {
+              "title": "2025/11/08 吉林化纤与吉林大学共建碳纤维研究院",
+              "url": "https://www.jlhx.com.cn/news/show-125.html"
+            },
+            {
+              "title": "2025/08/15 吉林化纤T800级碳纤维实现批量供货",
+              "url": "https://www.jlhx.com.cn/news/show-124.html"
+            }
+          ]
         }
       ]
     },
