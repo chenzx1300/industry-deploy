@@ -56,11 +56,13 @@ for (const ind of inds.industries) {
     const plainResults = await fetchBingNews(c.name, { maxResults: need * 2 });
     results.push(...plainResults);
 
-    // Dedupe by URL
+    // Dedupe by URL + reject blocked sources
+    const BLOCKED = /cninfo\.com\.cn|seekingalpha|markets\.businessinsider|stockanalysis|simplywall\.st|wallstreetzen|wisesheets|tipranks|investing\.com|yahoo\.com\/news|insidermonkey|newsfilter\.io|aastocks|fool\.com|nasdaq\.com\/article|finance\.yahoo|morningstar\.com/;
     const seen = new Set(existing.map(n => n.url));
     const candidates = [];
     for (const r of results) {
       if (!r.url || seen.has(r.url)) continue;
+      if (BLOCKED.test(r.url)) continue;
       seen.add(r.url);
       candidates.push(r);
     }

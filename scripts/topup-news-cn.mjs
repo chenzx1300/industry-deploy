@@ -70,11 +70,13 @@ for (const ind of inds.industries) {
       results.push(...r.map(x => ({ title: x.title, url: x.url, source: 'eefocus.com' })));
     } catch {}
 
-    // Dedupe by URL
+    // Dedupe by URL + reject cninfo (announcements) and other blocked hosts
+    const BLOCKED = /cninfo\.com\.cn|seekingalpha|markets\.businessinsider|stockanalysis|simplywall\.st|wallstreetzen|wisesheets|tipranks|investing\.com|yahoo\.com\/news|insidermonkey|newsfilter\.io|aastocks|fool\.com|nasdaq\.com\/article|finance\.yahoo|morningstar\.com/;
     const seen = new Set(existing.map(n => n.url));
     const candidates = [];
     for (const r of results) {
       if (!r.url || seen.has(r.url)) continue;
+      if (BLOCKED.test(r.url)) continue;
       seen.add(r.url);
       candidates.push(r);
     }
