@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>翻译审核报告 · 行业雷达</title>
+<style>
+:root { --bg:#fff; --text:#1a1a1a; --muted:#666; --accent:#c00; --hi-bg:#f0fdf4; --mid-bg:#fefce8; --lo-bg:#fef2f2; --border:#e8e8e8; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 24px; }
+h1 { font-size: 24px; margin: 0 0 8px; }
+h2 { font-size: 16px; margin: 24px 0 12px; padding-top: 16px; border-top: 1px solid var(--border); }
+p.lead { color: var(--muted); margin: 0 0 24px; }
+table.summary { border-collapse: collapse; margin: 16px 0; }
+table.summary th, table.summary td { padding: 8px 16px; border: 1px solid var(--border); text-align: left; font-size: 13px; }
+table.summary th { background: #fafafa; }
+table.review { border-collapse: collapse; width: 100%; font-size: 13px; }
+table.review th { padding: 12px 8px; border-bottom: 2px solid var(--accent); text-align: left; font-weight: 600; background: #fafafa; position: sticky; top: 0; }
+table.review td { padding: 12px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+table.review tr.low { background: var(--lo-bg); }
+table.review tr:hover { background: var(--mid-bg); }
+td.meta { width: 180px; }
+td.text { width: 38%; }
+td.url { width: 200px; word-break: break-all; }
+td.url a { color: var(--accent); text-decoration: none; }
+.meta .slug { font-size: 11px; color: var(--muted); }
+.meta .co { font-weight: 600; margin: 4px 0; }
+.conf { display: inline-block; padding: 2px 8px; border-radius: 3px; font-family: monospace; font-size: 11px; margin: 4px 0; }
+.conf-hi { background: var(--hi-bg); color: #166534; }
+.conf-mid { background: var(--mid-bg); color: #854d0e; }
+.conf-lo { background: var(--lo-bg); color: #991b1b; }
+.applied { color: #166534; font-size: 11px; }
+.skipped { color: #991b1b; font-size: 11px; }
+.text .label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+.text .title { font-weight: 600; margin-bottom: 6px; line-height: 1.4; }
+.text .snippet { color: var(--muted); font-size: 12px; line-height: 1.5; }
+.empty { color: var(--muted); font-style: italic; }
+.filters { margin: 16px 0; }
+.filters button { padding: 6px 12px; margin-right: 6px; border: 1px solid var(--border); background: #fff; cursor: pointer; border-radius: 4px; font-size: 13px; }
+.filters button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+</style>
+</head>
+<body>
+<h1>翻译审核报告</h1>
+<p class="lead">生成于 2026-06-28T00:51:51 · 共 64 条翻译 · 9 条低置信度（&lt;80% 被跳过）</p>
+
+<h2>按行业汇总</h2>
+<table class="summary">
+  <thead><tr><th>行业 / Industry</th><th>总翻译数</th><th>已应用</th><th>低置信跳过</th></tr></thead>
+  <tbody><tr><td>semiconductor-industry</td><td>27</td><td>21</td><td>6</td></tr><tr><td>new-energy-vehicles-industry</td><td>8</td><td>7</td><td>1</td></tr><tr><td>carbon-fiber-industry</td><td>20</td><td>18</td><td>2</td></tr><tr><td>thermal-materials-industry</td><td>9</td><td>9</td><td>0</td></tr></tbody>
+</table>
+
+<h2>所有翻译（按行业 / 公司排序）</h2>
+<p style="color:var(--muted); font-size:12px;">低置信度（&lt;80%）的行被标红、未写入 JSON。如有错误可手动编辑 data/&lt;slug&gt;.json。</p>
+<div class="filters">
+  <button onclick="filterRows('all')" class="active" data-f="all">全部</button>
+  <button onclick="filterRows('applied')" data-f="applied">已应用</button>
+  <button onclick="filterRows('skipped')" data-f="skipped">已跳过</button>
+  <button onclick="filterRows('low')" data-f="low">仅低置信 (9)</button>
+</div>
+
+<table class="review">
+  <thead><tr><th>行业 / 公司 / 置信度</th><th>原文 (英文)</th><th>译文 (中文)</th><th>链接</th></tr></thead>
+  <tbody>
+    
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">smic</div>
+      <div class="conf conf-hi">98%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">麒麟9030 Pro拆解显示华为SMIC芯片击败Intel 18A</div>
+      <div class="snippet">SemiAnalysis的拆解报告显示，SMIC的N+3工艺在金属间距上击败了Intel 18A，但Intel在密度和实际芯片性能方面仍保持领先。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">麒麟9030 Pro拆解显示华为SMIC芯片击败Intel 18A</div>
+      <div class="snippet">SemiAnalysis的拆解报告显示，SMIC的N+3工艺在金属间距上击败了Intel 18A，但Intel在密度和实际芯片性能方面仍保持领先。</div>
+    </td>
+    <td class="url"><a href="https://memeburn.com/kirin-9030-pro-teardown-shows-huaweis-smic-chip-beating-intel-18a/" target="_blank" rel="noopener">memeburn.com/kirin-9030-pro-teardown-shows-huaweis</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">ymtc</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">长鑫存储、长江存储在全球DRAM和NAND市场稳居第四</div>
+      <div class="snippet">三星电子在今年第一季度保持全球DRAM和NAND闪存市场领先地位，SK海力士则在HBM市场领跑。但随着</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">长鑫存储、长江存储在全球DRAM和NAND市场稳居第四</div>
+      <div class="snippet">三星电子在今年第一季度保持全球DRAM和NAND闪存市场领先地位，SK海力士则在HBM市场领跑。但随着</div>
+    </td>
+    <td class="url"><a href="https://biz.heraldcorp.com/article/10789093" target="_blank" rel="noopener">biz.heraldcorp.com/article/10789093</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">ymtc</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">YMTC启动A股IPO进程</div>
+      <div class="snippet">YMTC主要从事3D NAND闪存芯片及解决方案业务，已启动IPO进程，由中信证券和中金公司担任承销商公开发售……</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">YMTC启动A股IPO进程</div>
+      <div class="snippet">YMTC主要从事3D NAND闪存芯片及解决方案业务，已启动IPO进程，由中信证券和中金公司担任承销商公开发售……</div>
+    </td>
+    <td class="url"><a href="https://www.aastocks.com/en/stocks/news/aafn-news/NOW.1525351/2" target="_blank" rel="noopener">www.aastocks.com/en/stocks/news/aafn-news/NOW.1525</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">ymtc</div>
+      <div class="conf conf-hi">97%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">深度解读YMTC的IPO计划：中国3D NAND领军者如何追逐资本市场？</div>
+      <div class="snippet">随着中国存储芯片巨头YMTC和长鑫存储(CXMT)推进IPO进程，北京在科技自主可控方面的雄心也随之曝光。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">深度解读YMTC的IPO计划：中国3D NAND领军者如何追逐资本市场？</div>
+      <div class="snippet">随着中国存储芯片巨头YMTC和长鑫存储(CXMT)推进IPO进程，北京在科技自主可控方面的雄心也随之曝光。</div>
+    </td>
+    <td class="url"><a href="https://www.scmp.com/tech/tech-trends/article/3354374/inside-ymtcs-ipo-plans-how-chinas-3d-nand-champion-chasing-capital-markets" target="_blank" rel="noopener">www.scmp.com/tech/tech-trends/article/3354374/insi</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">ymtc</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">YMTC控股退出XMC，国资背景的光谷投资者接手控制权</div>
+      <div class="snippet">中国存储产业正在进行又一轮股权重组。根据中国国家市场监督管理总局(SAMR)近期披露的一起并购审查案，长江存储(YMTC)母公司YMTC控股将出售其持有的武汉新芯半导体制造(XMC) 39%股份给武汉光谷半导体产业投资。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">YMTC控股退出XMC，国资背景的光谷投资者接手控制权</div>
+      <div class="snippet">中国存储产业正在进行又一轮股权重组。根据中国国家市场监督管理总局(SAMR)近期披露的一起并购审查案，长江存储(YMTC)母公司YMTC控股将出售其持有的武汉新芯半导体制造(XMC) 39%股份给武汉光谷半导体产业投资。</div>
+    </td>
+    <td class="url"><a href="https://www.digitimes.com/news/a20260623PD208/ymtc-xmc-memory-chips-china.html" target="_blank" rel="noopener">www.digitimes.com/news/a20260623PD208/ymtc-xmc-mem</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">ymtc</div>
+      <div class="conf conf-hi">97%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">YMTC NAND份额攀升至13%，引发韩国竞争对手警觉</div>
+      <div class="snippet">中国存储厂商正从技术追赶迈向资本市场扩张，长鑫存储(CXMT)母公司与长江存储(YMTC)均准备通过首次公开募股(IPO)为未来产能扩张和技术升级筹集资金。韩国业界对聚焦NAND Flash的YMTC尤为关注，因其在市场份额、3D NAND层数堆叠、产能扩张以及消费级固态硬盘(SSD)渠道建设方面正逼近韩国供应商。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">长江存储YMTC NAND份额攀升至13%，引发韩国竞争对手警觉</div>
+      <div class="snippet">中国存储厂商正从技术追赶迈向资本市场扩张，长鑫存储(CXMT)母公司与长江存储(YMTC)均准备通过首次公开募股(IPO)为未来产能扩张和技术升级筹集资金。韩国业界对聚焦NAND Flash的YMTC尤为关注，因其在市场份额、3D NAND层数堆叠、产能扩张以及消费级固态硬盘(SSD)渠道建设方面正逼近韩国供应商。</div>
+    </td>
+    <td class="url"><a href="https://www.digitimes.com/news/a20260622PD212/cxmt-ymtc-nand-ssd-expansion.html" target="_blank" rel="noopener">www.digitimes.com/news/a20260622PD212/cxmt-ymtc-na</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">ymtc</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">重磅！长江存储攻进三星SK海力士老巢！</div>
+      <div class="snippet">随着中国两大存储半导体公司——长鑫存储（CXMT）和长江存储（YMTC）即将进行IPO，YMTC因其在韩国市场的迅速扩张和对三星电子和SK海力士的挑战而备受关注。YMTC通过推出自家固态硬盘品牌“智泰”和三款新SSD，成功打入韩国市场，显示出其在NAND闪存市场的竞争力。尽管DRAM市场竞争激烈，但NAND闪存市场因供需不平衡而价格上涨，YMTC借此机会扩展业务，目标是在未来几年内超越三星电子和SK海力士，成为中国存储行业的领军者。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">重磅！长江存储攻进三星SK海力士老巢！</div>
+      <div class="snippet">随着中国两大存储半导体公司——长鑫存储（CXMT）和长江存储（YMTC）即将进行IPO，YMTC因其在韩国市场的迅速扩张和对三星电子和SK海力士的挑战而备受关注。YMTC通过推出自家固态硬盘品牌&quot;智泰&quot;和三款新SSD，成功打入韩国市场，显示出其在NAND闪存市场的竞争力。尽管DRAM市场竞争激烈，但NAND闪存市场因供需不平衡而价格上涨，YMTC借此机会扩展业务，目标是在未来几年内超越三星电子和SK海力士，成为中国存储行业的领军者。</div>
+    </td>
+    <td class="url"><a href="https://www.eefocus.com/article/2034465.html" target="_blank" rel="noopener">www.eefocus.com/article/2034465.html</a></td>
+  </tr>
+  <tr class="low">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">cxmt</div>
+      <div class="conf conf-lo">30%</div>
+      <div class="skipped">⚠ skipped</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">苹果大幅调涨iPad和Mac价格后股价下跌</div>
+      <div class="snippet">To continue, please click the box below to let us know you&#39;re not a robot.</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">苹果大幅调涨iPad和Mac价格后股价下跌</div>
+      <div class="snippet">To continue, please click the box below to let us know you&#39;re not a robot.</div>
+    </td>
+    <td class="url"><a href="https://www.bloomberg.com/news/articles/2026-06-25/apple-raises-mac-and-ipad-prices-to-counter-memory-shortages" target="_blank" rel="noopener">www.bloomberg.com/news/articles/2026-06-25/apple-r</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">cxmt</div>
+      <div class="conf conf-hi">98%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">苹果请求美国批准从被列入黑名单的中国长鑫存储采购芯片</div>
+      <div class="snippet">苹果正试图获得特朗普政府的批准，从长鑫存储科技（ChangXin Memory Technologies）采购DRAM存储芯片。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">苹果请求美国批准从被列入黑名单的中国长鑫存储采购芯片</div>
+      <div class="snippet">苹果正试图获得特朗普政府的批准，从长鑫存储科技（ChangXin Memory Technologies）采购DRAM存储芯片。</div>
+    </td>
+    <td class="url"><a href="https://thetechportal.com/2026/06/27/apple-requests-us-clearance-to-source-chips-from-chinas-blacklisted-cxmt/" target="_blank" rel="noopener">thetechportal.com/2026/06/27/apple-requests-us-cle</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">tsmc</div>
+      <div class="conf conf-hi">97%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Intel stock is being valued as AMD or TSMC - but it&#39;s neither yet</div>
+      <div class="snippet">Intel stock is being valued as AMD or TSMC - but it&#39;s neither yet</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Intel 股票正被按 AMD 或 TSMC 的估值定价——但它两者都不是</div>
+      <div class="snippet">Intel 股票正被按 AMD 或 TSMC 的估值定价——但它两者都不是</div>
+    </td>
+    <td class="url"><a href="https://invezz.com/news/2026/06/18/intel-stock-is-being-valued-as-amd-or-tsmc-but-its-neither-yet/" target="_blank" rel="noopener">invezz.com/news/2026/06/18/intel-stock-is-being-va</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">tsmc</div>
+      <div class="conf conf-hi">97%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">三星晶圆代工业务蓬勃发展，TSMC 需求承压——成功拿下 Nvidia、Tesla 和 Qualcomm 等新客户</div>
+      <div class="snippet">据《日经亚洲》报道，三星晶圆代工已收到或正与 Google、Nvidia、Tesla、AMD 和 BYD 洽谈代工订单……</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">三星晶圆代工业务蓬勃发展，TSMC 需求承压——成功拿下 Nvidia、Tesla 和 Qualcomm 等新客户</div>
+      <div class="snippet">据《日经亚洲》报道，三星晶圆代工已收到或正与 Google、Nvidia、Tesla、AMD 和 BYD 洽谈代工订单……</div>
+    </td>
+    <td class="url"><a href="https://www.techspot.com/news/112800-samsung-foundry-booming-tsmc-struggles-demand-bags-nvidia.html" target="_blank" rel="noopener">www.techspot.com/news/112800-samsung-foundry-boomi</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">samsung</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">【专访】承载记忆的图案：Athene Galiciadis × Samsung Art Store</div>
+      <div class="snippet">&quot;我不是通过文字来构建思想，而是用层层叠叠的色彩进行创作。&quot;——Athene G</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">【专访】承载记忆的图案：Athene Galiciadis × Samsung Art Store</div>
+      <div class="snippet">&quot;我不是通过文字来构建思想，而是用层层叠叠的色彩进行创作。&quot;——Athene G</div>
+    </td>
+    <td class="url"><a href="https://news.samsung.com/global/interview-patterns-that-hold-memory-athene-galiciadis-x-samsung-art-store" target="_blank" rel="noopener">news.samsung.com/global/interview-patterns-that-ho</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">samsung</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">三星携手 Warner Bros. Pictures 和 DC Studios 为粉丝带来《Supergirl》体验</div>
+      <div class="snippet">三星电子今日宣布与 Warner Bros. Pictures 和 DC Studios 建立全球合作伙伴关系,纪念这部今夏史诗级超级英雄冒险大片《Supergirl》于6月24日上映。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">三星携手 Warner Bros. Pictures 和 DC Studios 为粉丝带来《Supergirl》体验</div>
+      <div class="snippet">三星电子今日宣布与 Warner Bros. Pictures 和 DC Studios 建立全球合作伙伴关系,纪念这部今夏史诗级超级英雄冒险大片《Supergirl》于6月24日上映。</div>
+    </td>
+    <td class="url"><a href="https://news.samsung.com/global/samsung-partners-with-warner-bros-pictures-and-dc-studios-to-bring-supergirl-experiences-to-fans" target="_blank" rel="noopener">news.samsung.com/global/samsung-partners-with-warn</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">nvidia</div>
+      <div class="conf conf-hi">97%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">欧洲推出创纪录的35台全新NVIDIA AI超级计算机</div>
+      <div class="snippet">ISC高性能大会2026——NVIDIA今日宣布，欧洲正在开发创纪录的35台NVIDIA AI HPC超级计算机，为超过300万名研究人员配备下一代基础设施，用于欧洲大陆的AI、加速科学和工业创新。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">欧洲推出创纪录的35台全新NVIDIA AI超级计算机</div>
+      <div class="snippet">ISC高性能大会2026——NVIDIA今日宣布，欧洲正在开发创纪录的35台NVIDIA AI HPC超级计算机，为超过300万名研究人员配备下一代基础设施，用于欧洲大陆的AI、加速科学和工业创新。</div>
+    </td>
+    <td class="url"><a href="https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers" target="_blank" rel="noopener">nvidianews.nvidia.com/news/europe-unveils-a-record</a></td>
+  </tr>
+  <tr class="low">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">nvidia</div>
+      <div class="conf conf-lo">40%</div>
+      <div class="skipped">⚠ skipped</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Nvidia曾承诺向OpenAI投资高达$100B。如今OpenAI已开发出一款旨在减少对Nvidia硬件依赖的芯片。投资者是否应该感到担忧？</div>
+      <div class="snippet">2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以來的支持。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Nvidia曾承诺向OpenAI投资高达$100B。如今OpenAI已开发出一款旨在减少对Nvidia硬件依赖的芯片。投资者是否应该感到担忧？</div>
+      <div class="snippet">2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以來的支持。</div>
+    </td>
+    <td class="url"><a href="https://www.aol.com/finance/nvidia-once-pledged-100b-openai-100000928.html" target="_blank" rel="noopener">www.aol.com/finance/nvidia-once-pledged-100b-opena</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">nvidia</div>
+      <div class="conf conf-hi">85%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">OpenAI正与Broadcom合作开发自研AI芯片，Nvidia投资者是否该担忧？</div>
+      <div class="snippet">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以来的支持。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">OpenAI正与Broadcom合作开发自研AI芯片，Nvidia投资者是否该担忧？</div>
+      <div class="snippet">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以来的支持。</div>
+    </td>
+    <td class="url"><a href="https://www.aol.com/finance/openai-building-own-ai-chip-231200936.html" target="_blank" rel="noopener">www.aol.com/finance/openai-building-own-ai-chip-23</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">amd</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">AMUU：AMD两倍看多ETF正处于最强动量阶段</div>
+      <div class="snippet">Direxion Daily AMD Bull 2X ETF（AMUU）分析：提供AMD两倍杠杆敞口，回报巨大，但存在衰减和交易对手风险。详情请查看此处。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">AMUU：AMD两倍看多ETF正处于最强动量阶段</div>
+      <div class="snippet">Direxion Daily AMD Bull 2X ETF（AMUU）分析：提供AMD两倍杠杆敞口，回报巨大，但存在衰减和交易对手风险。详情请查看此处。</div>
+    </td>
+    <td class="url"><a href="https://seekingalpha.com/article/4918242-amuu-bull-2x-of-amd-in-the-phase-of-most-extreme-momentum" target="_blank" rel="noopener">seekingalpha.com/article/4918242-amuu-bull-2x-of-a</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">amd</div>
+      <div class="conf conf-hi">97%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">AMD工程师用3D打印机制造Steam Machine竞品，内置RTX 5060</div>
+      <div class="snippet">认识由AMD工程师Jacob Terkelsen打造的Terk Box v1.1，这是一款3D打印的Mini-ITX PC，内置RTX 5060，以相近的价格对标Steam Machine。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">AMD工程师用3D打印机制造Steam Machine竞品，内置RTX 5060</div>
+      <div class="snippet">认识由AMD工程师Jacob Terkelsen打造的Terk Box v1.1，这是一款3D打印的Mini-ITX PC，内置RTX 5060，以相近的价格对标Steam Machine。</div>
+    </td>
+    <td class="url"><a href="https://www.tweaktown.com/news/112373/amd-engineer-builds-a-steam-machine-competitor-with-a-3d-printer-has-an-rtx-5060-inside/index.html" target="_blank" rel="noopener">www.tweaktown.com/news/112373/amd-engineer-builds-</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">amd</div>
+      <div class="conf conf-hi">98%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">技嘉 AMD Radeon RX 9070 GRE GAMING OC 12G 帮你避开高昂的 GPU 价格</div>
+      <div class="snippet">技嘉 AMD Radeon RX 9070 GRE GAMING OC 12G 帮你避开高昂的 GPU 价格</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">技嘉 AMD Radeon RX 9070 GRE GAMING OC 12G 帮你避开高昂的 GPU 价格</div>
+      <div class="snippet">技嘉 AMD Radeon RX 9070 GRE GAMING OC 12G 帮你避开高昂的 GPU 价格</div>
+    </td>
+    <td class="url"><a href="https://www.pcmag.com/articles/beat-high-gpu-prices-with-the-gigabyte-amd-radeon-rx-9070-gre-gaming-oc" target="_blank" rel="noopener">www.pcmag.com/articles/beat-high-gpu-prices-with-t</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">amd</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">AMD FSR 超采样技术 4.1 登陆老款 GPU，Steam Machine 及 Xbox ROG Ally 支持即将到来</div>
+      <div class="snippet">PSSR 背后的 AI 驱动超采样技术现已面向更多 PC 玩家开放。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">AMD FSR 超采样技术 4.1 登陆老款 GPU，Steam Machine 及 Xbox ROG Ally 支持即将到来</div>
+      <div class="snippet">PSSR 背后的 AI 驱动超采样技术现已面向更多 PC 玩家开放。</div>
+    </td>
+    <td class="url"><a href="https://www.gamespot.com/articles/amds-fsr-upscaling-4-1-comes-to-older-gpus-steam-machine-and-xbox-rog-ally-support-on-the-way/" target="_blank" rel="noopener">www.gamespot.com/articles/amds-fsr-upscaling-4-1-c</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">amd</div>
+      <div class="conf conf-hi">97%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">AMD与Rackspace Technology签署最终协议，分阶段部署30 MW AMD AI算力</div>
+      <div class="snippet">双方合作开创了一种新型受监管的企业级AI基础设施，专为受监管和主权环境而构建</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">AMD与Rackspace Technology签署最终协议，分阶段部署30 MW AMD AI算力</div>
+      <div class="snippet">双方合作开创了一种新型受监管的企业级AI基础设施，专为受监管和主权环境而构建</div>
+    </td>
+    <td class="url"><a href="https://www.amd.com/en/newsroom/press-releases/2026-6-16-amd-and-rackspace-technology-sign-definitive.html" target="_blank" rel="noopener">www.amd.com/en/newsroom/press-releases/2026-6-16-a</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">broadcom</div>
+      <div class="conf conf-hi">98%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Broadcom携手Samsung Electronics推出全球首款集成5G与Wi-Fi 8的FWA平台</div>
+      <div class="snippet">Broadcom携手Samsung Electronics推出全球首款集成5G与Wi-Fi 8的FWA平台</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Broadcom携手Samsung Electronics推出全球首款集成5G与Wi-Fi 8的FWA平台</div>
+      <div class="snippet">Broadcom携手Samsung Electronics推出全球首款集成5G与Wi-Fi 8的FWA平台</div>
+    </td>
+    <td class="url"><a href="https://www.broadcom.com/company/news/product-releases/64351" target="_blank" rel="noopener">www.broadcom.com/company/news/product-releases/643</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">broadcom</div>
+      <div class="conf conf-hi">97%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">·1天前｜认识Jalapeño：OpenAI首款与Broadcom联合打造的自研AI芯片</div>
+      <div class="snippet">Jalapeño标志着OpenAI进军自研芯片领域，而Broadcom则进一步巩固其作为AI基础设施提供商的角色。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">·1天前｜认识Jalapeño:OpenAI首款与Broadcom联合打造的自研AI芯片</div>
+      <div class="snippet">Jalapeño标志着OpenAI进军自研芯片领域,而Broadcom则进一步巩固其作为AI基础设施提供商的角色。</div>
+    </td>
+    <td class="url"><a href="https://www.forbes.com/sites/jonmarkman/2026/06/25/meet-jalapeo-openais-first-custom-ai-chip-built-with-broadcom/" target="_blank" rel="noopener">www.forbes.com/sites/jonmarkman/2026/06/25/meet-ja</a></td>
+  </tr>
+  <tr class="low">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">broadcom</div>
+      <div class="conf conf-lo">30%</div>
+      <div class="skipped">⚠ skipped</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Nvidia和Broadcom都提供AI敞口和股息。Barchart数据助你挑选当下最佳买入股票</div>
+      <div class="snippet">2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以來的支持。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Nvidia和Broadcom都提供AI敞口和股息。Barchart数据助你挑选当下最佳买入股票</div>
+      <div class="snippet">2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以來的支持。</div>
+    </td>
+    <td class="url"><a href="https://finance.yahoo.com/markets/stocks/articles/nvidia-broadcom-both-offer-ai-230002190.html" target="_blank" rel="noopener">finance.yahoo.com/markets/stocks/articles/nvidia-b</a></td>
+  </tr>
+  <tr class="low">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">broadcom</div>
+      <div class="conf conf-lo">30%</div>
+      <div class="skipped">⚠ skipped</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">OpenAI正与Broadcom合作研发自有AI芯片,Nvidia投资者该担忧吗?</div>
+      <div class="snippet">来自ChatGPT制造商的定制芯片瞄准了AI芯片领导者的定价能力——但可能无法撼动其王者地位。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">OpenAI正与Broadcom合作研发自有AI芯片,Nvidia投资者该担忧吗?</div>
+      <div class="snippet">来自ChatGPT制造商的定制芯片瞄准了AI芯片领导者的定价能力——但可能无法撼动其王者地位。</div>
+    </td>
+    <td class="url"><a href="https://www.fool.com/investing/2026/06/26/openai-is-building-its-own-ai-chip-with-broadcom-s/" target="_blank" rel="noopener">www.fool.com/investing/2026/06/26/openai-is-buildi</a></td>
+  </tr>
+  <tr class="low">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">asml</div>
+      <div class="conf conf-lo">30%</div>
+      <div class="skipped">⚠ skipped</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">2026年5月16日 Tata Electronics与ASML宣布建立战略合作伙伴关系,推动印度半导体制造生态系统发展</div>
+      <div class="snippet">印度电子与半导体制造行业的先驱领导者Tata Electronics与世界领先的半导体设备制造商之一ASML今日宣布签署谅解备忘录……</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">2026年5月16日 Tata Electronics与ASML宣布建立战略合作伙伴关系,推动印度半导体制造生态系统发展</div>
+      <div class="snippet">印度电子与半导体制造行业的先驱领导者Tata Electronics与世界领先的半导体设备制造商之一ASML今日宣布签署谅解备忘录……</div>
+    </td>
+    <td class="url"><a href="https://www.asml.com/en/news/press-releases/2026/tata-electronics-and-asml-announce-strategic-partnership" target="_blank" rel="noopener">www.asml.com/en/news/press-releases/2026/tata-elec</a></td>
+  </tr>
+  <tr class="low">
+    <td class="meta">
+      <div class="slug">semiconductor-industry</div>
+      <div class="co">asml</div>
+      <div class="conf conf-lo">30%</div>
+      <div class="skipped">⚠ skipped</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">2026年5月5日 ASML首席执行官Christophe Fouquet与欧洲科技公司联名签署评论文章</div>
+      <div class="snippet">新闻稿及公告：ASML首席执行官Christophe Fouquet与欧洲科技公司联名签署评论文章。公告——荷兰费尔德霍芬，2026年5月5日。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">2026年5月5日 ASML首席执行官Christophe Fouquet与欧洲科技公司联名签署评论文章</div>
+      <div class="snippet">新闻稿及公告：ASML首席执行官Christophe Fouquet与欧洲科技公司联名签署评论文章。公告——荷兰费尔德霍芬，2026年5月5日。</div>
+    </td>
+    <td class="url"><a href="https://www.asml.com/en/news/press-releases/2026/asml-ceo-christophe-fouquet-co-signed-opinion-piece" target="_blank" rel="noopener">www.asml.com/en/news/press-releases/2026/asml-ceo-</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">new-energy-vehicles-industry</div>
+      <div class="co">byd</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">比亚迪高管Stella Li畅谈业务扩张与家用机器人</div>
+      <div class="snippet">《Business Insider》主编Jamie Heller在2026年戛纳国际创意节上对话比亚迪高管Stella Li。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">比亚迪高管Stella Li畅谈业务扩张与家用机器人</div>
+      <div class="snippet">《Business Insider》主编Jamie Heller在2026年戛纳国际创意节上对话比亚迪高管Stella Li。</div>
+    </td>
+    <td class="url"><a href="https://www.businessinsider.com/byds-stella-li-talks-expanding-the-business-and-home-robots-2026-6" target="_blank" rel="noopener">www.businessinsider.com/byds-stella-li-talks-expan</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">new-energy-vehicles-industry</div>
+      <div class="co">catl</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">CATL押注海外换电业务与钠离子电池</div>
+      <div class="snippet">Octopus与CATL已推出合资企业Swaptopus，旨在建立欧洲首个大规模电动卡车换电网络。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">CATL押注海外换电业务与钠离子电池</div>
+      <div class="snippet">Octopus与CATL已推出合资企业Swaptopus，旨在建立欧洲首个大规模电动卡车换电网络。</div>
+    </td>
+    <td class="url"><a href="https://www.forbes.com/sites/sarwantsingh/2026/06/24/catl-is-betting-on-battery-swapping-overseas-and-sodium-ion-batteries/" target="_blank" rel="noopener">www.forbes.com/sites/sarwantsingh/2026/06/24/catl-</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">new-energy-vehicles-industry</div>
+      <div class="co">nio</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">NIO与TSLA迎来新利好，但只有一只股票值得持有</div>
+      <div class="snippet">《环球邮报》提供的Tesla Inc（TSLA-Q）详细价格信息，包括图表和交易数据。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">NIO与TSLA迎来新利好，但只有一只股票值得持有</div>
+      <div class="snippet">《环球邮报》提供的Tesla Inc（TSLA-Q）详细价格信息，包括图表和交易数据。</div>
+    </td>
+    <td class="url"><a href="https://www.theglobeandmail.com/investing/markets/stocks/TSLA/pressreleases/2475200/nio-tsla-see-fresh-tailwinds-but-only-one-stock-is-worth-owning/" target="_blank" rel="noopener">www.theglobeandmail.com/investing/markets/stocks/T</a></td>
+  </tr>
+  <tr class="low">
+    <td class="meta">
+      <div class="slug">new-energy-vehicles-industry</div>
+      <div class="co">nio</div>
+      <div class="conf conf-mid">50%</div>
+      <div class="skipped">⚠ skipped</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Nio Is Zigging While Rivals Zag, and Shockingly It&#39;s Winning</div>
+      <div class="snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">蔚来在对手反向而行时坚持自己的路线,令人惊讶的是它正在赢得市场</div>
+      <div class="snippet">2021 年 11 月 1 日起,用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</div>
+    </td>
+    <td class="url"><a href="https://www.aol.com/articles/nio-zigging-while-rivals-zag-072500423.html" target="_blank" rel="noopener">www.aol.com/articles/nio-zigging-while-rivals-zag-</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">new-energy-vehicles-industry</div>
+      <div class="co">nio</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">豪华进化：全新NIO ES9如何树立新标杆</div>
+      <div class="snippet">探索NIO ES9为何不仅仅是一款电动SUV。凭借革命性的自然气流技术和改变游戏规则的生态系统，NIO正在打造终极驾驶体验。了解这款豪华车为何能树立新标杆。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">豪华进化：全新NIO ES9如何树立新标杆</div>
+      <div class="snippet">探索NIO ES9为何不仅仅是一款电动SUV。凭借革命性的自然气流技术和改变游戏规则的生态系统，NIO正在打造终极驾驶体验。了解这款豪华车为何能树立新标杆。</div>
+    </td>
+    <td class="url"><a href="https://www.torquenews.com/18007/luxury-evolved-how-new-nio-es9-sets-new-standards" target="_blank" rel="noopener">www.torquenews.com/18007/luxury-evolved-how-new-ni</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">new-energy-vehicles-industry</div>
+      <div class="co">vw</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">周年纪念年：大众R将于2027年出征纽博格林24小时耐力赛</div>
+      <div class="snippet">在连续三年使用Golf GTI Clubsport之后，大众将携Golf R 24H开启纽博格林24小时耐力赛的新篇章。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">周年纪念年：大众R将于2027年出征纽博格林24小时耐力赛</div>
+      <div class="snippet">在连续三年使用Golf GTI Clubsport之后，大众将携Golf R 24H开启纽博格林24小时耐力赛的新篇章。</div>
+    </td>
+    <td class="url"><a href="https://www.volkswagen-newsroom.com/en/press-releases/in-the-anniversary-year-volkswagen-r-to-enter-the-24h-nuerburgring-in-2027-20362" target="_blank" rel="noopener">www.volkswagen-newsroom.com/en/press-releases/in-t</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">new-energy-vehicles-industry</div>
+      <div class="co">toyota</div>
+      <div class="conf conf-hi">93%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Our Picks May 28, 2026 Toyota Launches New Hilux in Japan</div>
+      <div class="snippet">Toyota Motor Corporation (Toyota) launched a completely redesigned Hilux in Japan.</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">我们的精选 2026年5月28日 丰田在日本推出全新Hilux</div>
+      <div class="snippet">丰田汽车公司(Toyota)在日本推出了全面重新设计的Hilux。</div>
+    </td>
+    <td class="url"><a href="https://global.toyota/en/newsroom/toyota/44397819.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">global.toyota/en/newsroom/toyota/44397819.html?pad</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">new-energy-vehicles-industry</div>
+      <div class="co">toyota</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Our Picks May 14, 2026 Toyota Launches All-New Land Cruiser &quot;FJ&quot; Series in Japan</div>
+      <div class="snippet">Toyota Motor Corporation (Toyota) announced the addition of the FJ series to the Land Cruiser lineup in Japan, with sales commencing on May 14.</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">我们的精选 2026年5月14日 丰田在日本推出全新 Land Cruiser &quot;FJ&quot; 系列</div>
+      <div class="snippet">Toyota Motor Corporation（丰田）宣布在日本 Land Cruiser 系列中新增 FJ 系列,于5月14日开始销售。</div>
+    </td>
+    <td class="url"><a href="https://global.toyota/en/newsroom/toyota/44331143.html?padid=ag478_from_news_pickup" target="_blank" rel="noopener">global.toyota/en/newsroom/toyota/44331143.html?pad</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">toray</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Bolt Biotherapeutics, Inc. 提供与 Toray Industries, Inc. 全球癌症免疫疗法联合开发的最新进展</div>
+      <div class="snippet">--致力于满足实体瘤治疗的未满足需求-- 加利福尼亚州雷德伍德城，2025年2月11日（环球新闻社）-- Bolt Biotherapeutics, Inc. 今日宣布，其与 Toray Industries, Inc. 全球联合开发合作的目标靶点为 Caprin-1，这是一个由 Toray 发现的全新癌症靶点。合作双方正在开发一款靶向 Caprin-1 的 Boltbody™ 免疫刺激抗体偶联物（ISAC），适用于多种实体瘤类型。根据现有的联合开发协议</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Bolt Biotherapeutics, Inc. 提供与 Toray Industries, Inc. 全球癌症免疫疗法联合开发的最新进展</div>
+      <div class="snippet">--致力于满足实体瘤治疗的未满足需求-- 加利福尼亚州雷德伍德城，2025年2月11日（环球新闻社）-- Bolt Biotherapeutics, Inc. 今日宣布，其与 Toray Industries, Inc. 全球联合开发合作的目标靶点为 Caprin-1，这是一个由 Toray 发现的全新癌症靶点。合作双方正在开发一款靶向 Caprin-1 的 Boltbody™ 免疫刺激抗体偶联物（ISAC），适用于多种实体瘤类型。根据现有的联合开发协议</div>
+    </td>
+    <td class="url"><a href="https://finance.yahoo.com/news/bolt-biotherapeutics-inc-provides-global-210500827.html" target="_blank" rel="noopener">finance.yahoo.com/news/bolt-biotherapeutics-inc-pr</a></td>
+  </tr>
+  <tr class="low">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">toray</div>
+      <div class="conf conf-lo">0%</div>
+      <div class="skipped">⚠ skipped</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Zoltek宣布与Toray Industries, Inc.的合并协议与计划</div>
+      <div class="snippet">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以来的支持。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Zoltek announces merger agreement and plan with Toray Industries, Inc.</div>
+      <div class="snippet">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以来的支持。</div>
+    </td>
+    <td class="url"><a href="https://finance.yahoo.com/news/zoltek-announces-agreement-plan-merger-003004257.html" target="_blank" rel="noopener">finance.yahoo.com/news/zoltek-announces-agreement-</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">teijin</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">2026年5月18日 材料 可持续性 Teijin Frontier将扩大松山工厂OCTAIR保温纤维产能</div>
+      
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">2026年5月18日 材料 可持续性 Teijin Frontier将扩大松山工厂OCTAIR保温纤维产能</div>
+      <em class="empty">(empty)</em>
+    </td>
+    <td class="url"><a href="https://www.teijin.com/news/2026/05/18/20260518_01.pdf" target="_blank" rel="noopener">www.teijin.com/news/2026/05/18/20260518_01.pdf</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">teijin</div>
+      <div class="conf conf-hi">92%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">2026年5月11日 材料 Teijin Frontier与Asahi Kasei Advance公布计划业务整合前的新公司名称</div>
+      
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Teijin Frontier与Asahi Kasei Advance公布计划业务整合前的新公司名称</div>
+      <em class="empty">(empty)</em>
+    </td>
+    <td class="url"><a href="https://www.teijin.com/news/2026/05/11/20260511_02.pdf" target="_blank" rel="noopener">www.teijin.com/news/2026/05/11/20260511_02.pdf</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">solvay</div>
+      <div class="conf conf-hi">97%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Solvay借助Esker加强客户关系并降低碳足迹</div>
+      <div class="snippet">Esker宣布，全球领先的跨国化工公司Solvay已选择Esker订单管理系统来自动化处理客户订单。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Solvay借助Esker加强客户关系并降低碳足迹</div>
+      <div class="snippet">Esker宣布,全球领先的跨国化工公司Solvay已选择Esker订单管理系统来自动化处理客户订单。</div>
+    </td>
+    <td class="url"><a href="https://www.businesswire.com/news/home/20240326324806/en/Solvay-Strengthens-Its-Customer-Relationships-and-Reduces-Its-Carbon-Footprint-with-Esker" target="_blank" rel="noopener">www.businesswire.com/news/home/20240326324806/en/S</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">solvay</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Solvay Open to Building Rare Earths Plant in US, Where Support Is Stronger</div>
+      
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Solvay Open to Building Rare Earths Plant in US, Where Support Is Stronger</div>
+      <em class="empty">(empty)</em>
+    </td>
+    <td class="url"><a href="https://money.usnews.com/investing/news/articles/2025-11-06/solvay-open-to-building-rare-earths-plant-in-us-where-support-is-stronger" target="_blank" rel="noopener">money.usnews.com/investing/news/articles/2025-11-0</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">solvay</div>
+      <div class="conf conf-hi">90%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Solvay Rare Earth Deal With Viridis Highlights European Supply Chain Ambitions</div>
+      <div class="snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Solvay与Viridis的稀土交易凸显欧洲供应链雄心</div>
+      <div class="snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</div>
+    </td>
+    <td class="url"><a href="https://uk.finance.yahoo.com/news/solvay-rare-earth-deal-viridis-191315315.html" target="_blank" rel="noopener">uk.finance.yahoo.com/news/solvay-rare-earth-deal-v</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">jushi</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Jushi Holdings Inc. 公布年度股东大会及特别股东大会投票结果</div>
+      <div class="snippet">佛罗里达州博卡拉顿，2026年6月24日（环球新闻社）——Jushi Holdings Inc.（&quot;Jushi&quot;或&quot;公司&quot;）（CSE: JUSH）（OTCQX: JUSHF），一家垂直整合的……</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Jushi Holdings Inc. 公布年度股东大会及特别股东大会投票结果</div>
+      <div class="snippet">佛罗里达州博卡拉顿，2026年6月24日（环球新闻社）——Jushi Holdings Inc.（&quot;Jushi&quot;或&quot;公司&quot;）（CSE: JUSH）（OTCQX: JUSHF），一家垂直整合的……</div>
+    </td>
+    <td class="url"><a href="https://markets.businessinsider.com/news/stocks/jushi-holdings-inc-announces-voting-results-of-annual-general-and-special-shareholders-meeting-1036273691" target="_blank" rel="noopener">markets.businessinsider.com/news/stocks/jushi-hold</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">jushi</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Jushi Holdings股票值得买入吗？</div>
+      <div class="snippet">对于大麻投资者来说，这是艰难的一年，尤其是那些持有Jushi Holdings（OTC: JUSHF）股票的投资者。这家多州运营商（MSO）的股票在过去12个月内已下跌41%，较3月份创下的历史高点累计跌幅超过60%。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Jushi Holdings股票值得买入吗？</div>
+      <div class="snippet">对于大麻投资者来说，这是艰难的一年，尤其是那些持有Jushi Holdings（OTC: JUSHF）股票的投资者。这家多州运营商（MSO）的股票在过去12个月内已下跌41%，较3月份创下的历史高点累计跌幅超过60%。</div>
+    </td>
+    <td class="url"><a href="https://www.nasdaq.com/articles/is-jushi-holdings-stock-a-buy" target="_blank" rel="noopener">www.nasdaq.com/articles/is-jushi-holdings-stock-a-</a></td>
+  </tr>
+  <tr class="low">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">jushi</div>
+      <div class="conf conf-mid">70%</div>
+      <div class="skipped">⚠ skipped</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Jushi Holdings Inc. 宣布已提交州许可医用大麻业务的DEA注册申请</div>
+      <div class="snippet">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品和服务。这不影响Yahoo在全球其他地区的产品和服务。感谢您一直以来的支持。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Jushi Holdings Inc. 宣布已提交州许可医用大麻业务的DEA注册申请</div>
+      <div class="snippet">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品和服务。这不影响Yahoo在全球其他地区的产品和服务。感谢您一直以来的支持。</div>
+    </td>
+    <td class="url"><a href="https://uk.finance.yahoo.com/news/jushi-holdings-inc-announces-applications-120000589.html" target="_blank" rel="noopener">uk.finance.yahoo.com/news/jushi-holdings-inc-annou</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">jushi</div>
+      <div class="conf conf-hi">90%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Jushi携手真人秀明星Stacey Rusch庆祝生活方式大麻品牌&quot;Shayo&quot;成功发布</div>
+      <div class="snippet">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品和服务。这不影响Yahoo在全球其他地区的产品和服务。感谢您一直以来的支持。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Jushi携手真人秀明星Stacey Rusch庆祝生活方式大麻品牌&quot;Shayo&quot;成功发布</div>
+      <div class="snippet">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品和服务。这不影响Yahoo在全球其他地区的产品和服务。感谢您一直以来的支持。</div>
+    </td>
+    <td class="url"><a href="https://finance.yahoo.com/news/jushi-real-housewives-star-stacey-203700589.html" target="_blank" rel="noopener">finance.yahoo.com/news/jushi-real-housewives-star-</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">jlhx</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">JL J-Long Group Limited 股票概览</div>
+      <div class="snippet">J-Long Group Limited (JL) 股票的高层次概览。查看 (JL) 实时股价、走势图、新闻、分析、分析师评论等。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">JL J-Long Group Limited 股票概览</div>
+      <div class="snippet">J-Long Group Limited (JL) 股票的高层次概览。查看 (JL) 实时股价、走势图、新闻、分析、分析师评论等。</div>
+    </td>
+    <td class="url"><a href="https://seekingalpha.com/symbol/JL" target="_blank" rel="noopener">seekingalpha.com/symbol/JL</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">jlhx</div>
+      <div class="conf conf-hi">98%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">VOOHU 沃虎电子 景略PHY芯片 JL2201B-NC 适用于交换机与工业通信</div>
+      <div class="snippet">苏州沃虎电子科技有限公司（品牌：VOOHU）代理供应的 JL2201B-NC 是一款高性能千兆以太网PHY芯片，由景略半导体（JLSemi）设计，专为企业级交换机、路由器和工业通信设备应用开发。该芯片支持RGMII和SGMII MAC接口，可同时连接铜缆（1000Base-T/100Base-TX/10Base-T）和</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">VOOHU 沃虎电子 景略PHY芯片 JL2201B-NC 适用于交换机与工业通信</div>
+      <div class="snippet">苏州沃虎电子科技有限公司（品牌：VOOHU）代理供应的 JL2201B-NC 是一款高性能千兆以太网PHY芯片，由景略半导体（JLSemi）设计，专为企业级交换机、路由器和工业通信设备应用开发。该芯片支持RGMII和SGMII MAC接口，可同时连接铜缆（1000Base-T/100Base-TX/10Base-T）和</div>
+    </td>
+    <td class="url"><a href="https://www.eefocus.com/article/1992040.html" target="_blank" rel="noopener">www.eefocus.com/article/1992040.html</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">jlhx</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">VOOHU沃虎携手JLSemi景略：智造时代的通信基石——以太网接口PHY芯片</div>
+      <div class="snippet">随着智能制造和工业物联网的高速发展，工业通信正朝着高速化、智能化的方向迈进。工业自动化设备需要实时、高效地传输大量数据，以实现精准控制和协同作业。工业以太网现场总线凭借其高速率、高可靠性、兼容性强等优势成为工业通信的主流选择，广泛应用于智能制造、智能工厂、工业自动化等多个领域。工业以太网通信的关键组件——以太网PHY芯片</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">VOOHU沃虎携手JLSemi景略：智造时代的通信基石——以太网接口PHY芯片</div>
+      <div class="snippet">随着智能制造和工业物联网的高速发展，工业通信正朝着高速化、智能化的方向迈进。工业自动化设备需要实时、高效地传输大量数据，以实现精准控制和协同作业。工业以太网现场总线凭借其高速率、高可靠性、兼容性强等优势成为工业通信的主流选择，广泛应用于智能制造、智能工厂、工业自动化等多个领域。工业以太网通信的关键组件——以太网PHY芯片</div>
+    </td>
+    <td class="url"><a href="https://www.eefocus.com/article/1977830.html" target="_blank" rel="noopener">www.eefocus.com/article/1977830.html</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">jlhx</div>
+      <div class="conf conf-hi">98%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">RT595 JLink RTT 移植实操：无需串口的高速日志输出方案</div>
+      <div class="snippet">在嵌入式开发中，串口打印是常用的调试手段，但串口资源紧张或被占用时，调试效率会大幅下降。Segger JLink 的 RTT（Real Time Terminal）功能可完美解决这一问题 —— 通过 SWD 调试口实现双向高速数据传输，不占用额外外设资源，且不影响系统实时性。本文以 RT595-EVK 开发板为例，详解基于 MCUXpresso IDE 的 RTT 移植全流程，从文件导入到日志输出一步到位，适用于各类无串口或串口紧张的调试场景。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">RT595 JLink RTT 移植实操：无需串口的高速日志输出方案</div>
+      <div class="snippet">在嵌入式开发中，串口打印是常用的调试手段，但串口资源紧张或被占用时，调试效率会大幅下降。Segger JLink 的 RTT（Real Time Terminal）功能可完美解决这一问题 —— 通过 SWD 调试口实现双向高速数据传输，不占用额外外设资源，且不影响系统实时性。本文以 RT595-EVK 开发板为例，详解基于 MCUXpresso IDE 的 RTT 移植全流程，从文件导入到日志输出一步到位，适用于各类无串口或串口紧张的调试场景。</div>
+    </td>
+    <td class="url"><a href="https://www.eefocus.com/article/1960760.html" target="_blank" rel="noopener">www.eefocus.com/article/1960760.html</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">jlhx</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">RT1050 MCUXpresso IDE下JLINK切换QSPI Flash实操：烧录算法配置方案</div>
+      <div class="snippet">NXP MIMXRT1050-EVKB 开发板默认搭载 HyperFlash，Segger JLINK 官方驱动也默认适配该闪存的烧录算法，而实际开发中若需切换为 QSPI Flash 作为程序存储介质，无需修改老旧的 JLinkDevices.xml 配置，仅需在 MCUXpresso IDE 中通过定制化设备名称参数指定 QSPI 烧录算法即可实现快速切换。本文详解基于新版 JLINK 驱动（以 V796b 为例）的烧录算法配置、工程适配及硬件注意事项，实现 RT1050 在 QSPI Flash 上的 JLINK 调试与烧录。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">RT1050 MCUXpresso IDE下JLINK切换QSPI Flash实操：烧录算法配置方案</div>
+      <div class="snippet">NXP MIMXRT1050-EVKB 开发板默认搭载 HyperFlash，Segger JLINK 官方驱动也默认适配该闪存的烧录算法，而实际开发中若需切换为 QSPI Flash 作为程序存储介质，无需修改老旧的 JLinkDevices.xml 配置，仅需在 MCUXpresso IDE 中通过定制化设备名称参数指定 QSPI 烧录算法即可实现快速切换。本文详解基于新版 JLINK 驱动（以 V796b 为例）的烧录算法配置、工程适配及硬件注意事项，实现 RT1050 在 QSPI Flash 上的 JLINK 调试与烧录。</div>
+    </td>
+    <td class="url"><a href="https://www.eefocus.com/article/1960908.html" target="_blank" rel="noopener">www.eefocus.com/article/1960908.html</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">zoomlion</div>
+      <div class="conf conf-hi">88%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Zoomlion Highlights AI, Green Technology and Global R&amp;D Priorities at Seventh Technology Innovation Conference</div>
+      <div class="snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">中联重科在第七届技术创新大会上重点展示人工智能、绿色技术及全球研发布局</div>
+      <div class="snippet">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢您一直以来的支持。</div>
+    </td>
+    <td class="url"><a href="https://finance.yahoo.com/technology/ai/articles/zoomlion-highlights-ai-green-technology-105300019.html" target="_blank" rel="noopener">finance.yahoo.com/technology/ai/articles/zoomlion-</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">zoomlion</div>
+      <div class="conf conf-hi">88%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Zoomlion Kicks Off Second Employee Football League as Global Football Fever Builds</div>
+      <div class="snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">全球足球热情高涨，中联重科启动第二届员工足球联赛</div>
+      <div class="snippet">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢您一直以来的支持。</div>
+    </td>
+    <td class="url"><a href="https://finance.yahoo.com/small-business/articles/zoomlion-kicks-off-second-employee-080800853.html" target="_blank" rel="noopener">finance.yahoo.com/small-business/articles/zoomlion</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">zoomlion</div>
+      <div class="conf conf-hi">92%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Zoomlion launches emergency fumigation after floods hit Accra</div>
+      <div class="snippet">Zoomlion Ghana Limited has launched a nationwide emergency fumigation and disinfection exercise as part of a coordinated response to the aftermath of recent flooding, according to the Head of Emergency Management at the Jospong Group, Dr. Gideon Sogbey.</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Zoomlion在阿克拉遭遇洪水后启动应急熏蒸消毒行动</div>
+      <div class="snippet">据Jospong集团应急管理负责人Gideon Sogbey博士介绍,Zoomlion Ghana Limited已启动全国性应急熏蒸和消毒行动,作为对近期洪水灾后果协调应对的一部分。</div>
+    </td>
+    <td class="url"><a href="https://www.myjoyonline.com/zoomlion-launches-emergency-fumigation-after-floods-hit-accra/" target="_blank" rel="noopener">www.myjoyonline.com/zoomlion-launches-emergency-fu</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">carbon-fiber-industry</div>
+      <div class="co">zoomlion</div>
+      <div class="conf conf-hi">98%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">中联重科的电池电动技术</div>
+      <div class="snippet">Julian Buckley在Intermat 2024上拜访了中国机械制造商中联重科，深入了解其电池电动技术。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">中联重科的电池电动技术</div>
+      <div class="snippet">Julian Buckley在Intermat 2024上拜访了中国机械制造商中联重科,深入了解其电池电动技术。</div>
+    </td>
+    <td class="url"><a href="https://www.khl.com/events/news/zoomlion-on-its-battery-electric-technology/8038732.article" target="_blank" rel="noopener">www.khl.com/events/news/zoomlion-on-its-battery-el</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">thermal-materials-industry</div>
+      <div class="co">zhongshi</div>
+      <div class="conf conf-hi">90%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Allied Biofuels与Sinopec Engineering Group签署FEED+详细工程合同,并可转为EPC合同,在乌兹别克斯坦建设价值61亿美元的SAF和e-SAF项目</div>
+      <div class="snippet">2021年11月1日起,用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以來的支持。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Allied Biofuels与Sinopec Engineering Group签署FEED+详细工程合同,并可转为EPC合同,在乌兹别克斯坦建设价值61亿美元的SAF和e-SAF项目</div>
+      <div class="snippet">2021年11月1日起,用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以來的支持。</div>
+    </td>
+    <td class="url"><a href="https://finance.yahoo.com/energy/articles/allied-biofuels-signs-feed-detailed-154700760.html" target="_blank" rel="noopener">finance.yahoo.com/energy/articles/allied-biofuels-</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">thermal-materials-industry</div>
+      <div class="co">zhongshi</div>
+      <div class="conf conf-hi">97%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Sinopec扩大与Saudi Aramco的合作伙伴关系</div>
+      <div class="snippet">为应对全球对高质量石化产品不断增长的需求,中国石油化工股份有限公司(Sinopec)与Saudi Aramco签署了一份合资框架协议,将在沙特阿拉伯的合资企业中开发一个完全一体化的石化综合体。Sinopec周三表示。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">Sinopec扩大与Saudi Aramco的合作伙伴关系</div>
+      <div class="snippet">为应对全球对高质量石化产品不断增长的需求,中国石油化工股份有限公司(Sinopec)与Saudi Aramco签署了一份合资框架协议,将在沙特阿拉伯的合资企业中开发一个完全一体化的石化综合体。Sinopec周三表示。</div>
+    </td>
+    <td class="url"><a href="https://global.chinadaily.com.cn/a/202504/10/WS67f7219da3104d9fd381e82f.html" target="_blank" rel="noopener">global.chinadaily.com.cn/a/202504/10/WS67f7219da31</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">thermal-materials-industry</div>
+      <div class="co">henkel</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">汉高任命Pradhyumna Ingle为印度区总裁，全球胶粘剂巨头加大高增长市场布局</div>
+      <div class="snippet">汉高任命Pradhyumna Ingle为印度国家总裁，标志着公司将更加聚焦于增长最快的市场之一。Ingle常驻印度新孟买（Navi Mumbai），将在印度基础设施、制造业和消费品行业加速发展的背景下，推动胶粘剂及工业技术业务的增长、创新和可持续扩张。</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">汉高任命Pradhyumna Ingle为印度区总裁，全球胶粘剂巨头加大高增长市场布局</div>
+      <div class="snippet">汉高任命Pradhyumna Ingle为印度国家总裁，标志着公司将更加聚焦于增长最快的市场之一。Ingle常驻印度新孟买（Navi Mumbai），将在印度基础设施、制造业和消费品行业加速发展的背景下，推动胶粘剂及工业技术业务的增长、创新和可持续扩张。</div>
+    </td>
+    <td class="url"><a href="https://www.fortuneindia.com/business-news/henkel-names-pradhyumna-ingle-india-president-as-global-adhesives-major-sharpens-focus-on-high-growth-market/144944" target="_blank" rel="noopener">www.fortuneindia.com/business-news/henkel-names-pr</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">thermal-materials-industry</div>
+      <div class="co">mmm</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">3M is creating a $1 billion trust for service members who say its earplugs didn’t protect them from hearing loss</div>
+      <div class="snippet">Facing almost 250,000 lawsuits from service members who said its earplugs failed to protect their hearing, 3M is committing $1 billion to resolve the suits.</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">3M将设立10亿美元信托基金,用于赔偿声称其耳塞未能保护听力的军人</div>
+      <div class="snippet">面对近25万起军人诉讼,这些军人称其耳塞未能保护听力,3M承诺投入10亿美元以解决这些诉讼。</div>
+    </td>
+    <td class="url"><a href="https://www.nbcnews.com/business/corporations/3m-creating-1-billion-trust-service-members-say-earplugs-didnt-protect-rcna40032" target="_blank" rel="noopener">www.nbcnews.com/business/corporations/3m-creating-</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">thermal-materials-industry</div>
+      <div class="co">mmm</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">3M Company Investing $470M In East Tennessee Expansion</div>
+      
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">3M公司向东田纳西扩张投资4.7亿美元</div>
+      <em class="empty">(empty)</em>
+    </td>
+    <td class="url"><a href="https://businessfacilities.com/3m-company-investing-470m-in-east-tennessee-expansion/" target="_blank" rel="noopener">businessfacilities.com/3m-company-investing-470m-i</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">thermal-materials-industry</div>
+      <div class="co">mmm</div>
+      <div class="conf conf-hi">90%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">3M Company: AI Infrastructure Buildout Demand Remains Wait-And-See</div>
+      <div class="snippet">I last covered 3M (MMM) in July of 2025 in an article titled “3M Company: Still Adjusting To Spinoff Of Solventum.” I gave it a Hold rating, citing growth uncertainty and</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">3M公司：AI基础设施建设需求仍持观望态度</div>
+      <div class="snippet">我上次报道3M(MMM)是在2025年7月,文章标题为&quot;3M公司：仍在适应Solventum的分拆&quot;。我给予其持有评级,理由是增长不确定性以及</div>
+    </td>
+    <td class="url"><a href="https://seekingalpha.com/article/4916512-3m-company-ai-infrastructure-buildout-demand-remains-wait-and-see" target="_blank" rel="noopener">seekingalpha.com/article/4916512-3m-company-ai-inf</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">thermal-materials-industry</div>
+      <div class="co">mmm</div>
+      <div class="conf conf-hi">85%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">3M: The Turnaround Is Working, But I Would Not Chase It Here</div>
+      <div class="snippet">Industrial 3M: The Turnaround Is Working, But I Would Not Chase It HereJun 16, 2026, 10:27 AM ET3M Company (MMM) Stock, MMMM:CA StockGT Research72 FollowersFollow5ShareSavePlay(10min)Comments(3)SummaryQ1 showed a mixed setup, with reported…</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">3M：转型正在奏效,但我不会在此追高</div>
+      <div class="snippet">工业板块3M：转型正在奏效,但我不会在此追高 2026年6月16日 上午10:27 ET 3M Company (MMM) Stock, MMMM:CA Stock GT Research 72 Followers Follow 5 Share Save Play (10min) Comments (3) 摘要 第一季度表现喜忧参半,报告显示……</div>
+    </td>
+    <td class="url"><a href="https://seekingalpha.com/article/4915332-3m-the-turnaround-is-working-but-i-would-not-chase-it-here" target="_blank" rel="noopener">seekingalpha.com/article/4915332-3m-the-turnaround</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">thermal-materials-industry</div>
+      <div class="co">honeywell</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">More Than Six Decades of Trusted Thermal Sensing: The Honeywell Ongoing Partnership with Boeing</div>
+      <div class="snippet">While advances in aviation technology continue to accelerate, one thing remains constant: the need for precise, dependable temperature control throughout an aircraft. For more than six decades, Honeywell has supplied bimetal thermostats and temperature sensing solutions that help monitor temperatures in critical systems.</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">六十余载值得信赖的热感测：霍尼韦尔与波音的持续合作</div>
+      <div class="snippet">尽管航空技术不断加速进步,有一件事始终不变：整个飞机对精确、可靠温度控制的需求。六十多年来,霍尼韦尔一直供应双金属恒温器和温度感测解决方案,帮助监测关键系统中的温度。</div>
+    </td>
+    <td class="url"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">www.honeywell.com/us/en/news/featured-stories/2026</a></td>
+  </tr>
+  <tr class="">
+    <td class="meta">
+      <div class="slug">thermal-materials-industry</div>
+      <div class="co">honeywell</div>
+      <div class="conf conf-hi">95%</div>
+      <div class="applied">✓ applied</div>
+    </td>
+    <td class="text">
+      <div class="label">原文 / Source</div>
+      <div class="title">Honeywell and B2M Solutions Partner to Expand Operational Insights from Mobile Assets</div>
+      <div class="snippet">The integration of B2M Elemez software with Honeywell Operational Intelligence broadens mobile device insights and analytics while also providing customer flexibility</div>
+    </td>
+    <td class="text">
+      <div class="label">译文 / Translation</div>
+      <div class="title">霍尼韦尔与B2M Solutions合作拓展移动资产运营洞察</div>
+      <div class="snippet">将B2M Elemez软件与霍尼韦尔Operational Intelligence集成,可拓展移动设备洞察与分析能力,同时为客户提供灵活性</div>
+    </td>
+    <td class="url"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/02/honeywell-and-b2m-solutions-partner-to-expand-operational-insights-from-mobile-assets" target="_blank" rel="noopener">www.honeywell.com/us/en/news/featured-stories/2026</a></td>
+  </tr>
+  </tbody>
+</table>
+
+<script>
+function filterRows(filter) {
+  document.querySelectorAll('button[data-f]').forEach(b => b.classList.toggle('active', b.dataset.f === filter));
+  document.querySelectorAll('table.review tbody tr').forEach(r => {
+    const applied = r.querySelector('.applied') !== null;
+    const low = r.classList.contains('low');
+    r.style.display = (
+      filter === 'all' ? '' :
+      filter === 'applied' ? (applied ? '' : 'none') :
+      filter === 'skipped' ? (!applied ? '' : 'none') :
+      filter === 'low' ? (low ? '' : 'none') :
+      ''
+    );
+  });
+}
+</script>
+</body>
+</html>

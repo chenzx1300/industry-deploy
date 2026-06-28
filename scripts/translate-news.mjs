@@ -40,13 +40,13 @@ if (!KEY) {
 
 const DATA_DIR = 'data';
 const SLUGS = ['semiconductor-industry', 'new-energy-vehicles-industry', 'carbon-fiber-industry', 'thermal-materials-industry'];
-const BATCH_SIZE = 6;
-const CONFIDENCE_FLOOR = 0.6;
+const BATCH_SIZE = 5;
+const CONFIDENCE_FLOOR = 0.8;       // stricter threshold — items < 0.8 are NOT applied
 const MAX_PARALLEL = 3;
 
 function isMostlyCjk(s) {
   if (!s) return true;
-  // Count distinct "English word" tokens (3+ ASCII letters, excluding pure digits).
+  // Count distinct "English word" tokens (3+ ASCII letters).
   // Chinese-mixed-with-brand has 1-2 brand names; pure English title has 3+.
   const words = (s.match(/\b[A-Za-z]{3,}\b/g) || []);
   return words.length < 3;
@@ -54,16 +54,25 @@ function isMostlyCjk(s) {
 
 async function callModel(items) {
   const numbered = items.map((it, i) => `${i + 1}. [TITLE] ${it.title}\n   [SNIPPET] ${it.snippet || '(empty)'}`).join('\n\n');
-  const sys = `You are a Chinese translator. Output ONLY a valid JSON array of objects (no prose, no markdown fences, no surrounding text). Each object has exactly three string fields: "title", "snippet", "confidence" (a number 0.0-1.0 as a string).
+  const sys = `You are a literal English→Simplified-Chinese translator for news. Output ONLY a valid JSON array of objects (no prose, no markdown fences). Each object has exactly THREE string fields: "title", "snippet", "confidence" (number 0.0-1.0 as a string).
 
 Example of correct output:
 [{"title":"翻译1","snippet":"摘要1","confidence":"0.9"},{"title":"翻译2","snippet":"","confidence":"0.85"}]
 
-Translate English news titles and snippets to Simplified Chinese.
-- Preserve English brand names (BYD, Samsung, Intel, TSMC), stock tickers (SEHK:1347), model numbers (Atto 2), units ($35,500, 20%), and proper nouns.
-- Titles: news-headline style — concise, complete sentence ok.
-- Snippet: 1-2 sentences. If empty, return empty string.
-- confidence: 0.9+ high, 0.7-0.9 good, 0.5-0.7 uncertain, <0.5 very uncertain.`;
+STRICT RULES — violating any of these lowers confidence:
+1. **Literal translation only** — translate the words that are there, do NOT add context the source doesn't have. No inventing facts, no filling gaps.
+2. **Preserve ALL English tokens** that appear in the source: brand names (BYD, Samsung, Intel, TSMC, Solvay, Jushi, etc.), tickers (SEHK:1347, NASDAQ:TSLA, OTCQX:JUSHF, CSE:JUSH), units ($35,500, 20%, €6.15, 235.687 BCM), model numbers (Atto 2, JE20), proper nouns (Lithium-ion, ROE), company suffixes (Inc., Holdings, GmbH), stock qualifiers ("premium", "fair value", "1-Star"), and parenthetical markers like "(PDF: 153.2 KB)".
+3. **Numbers, percentages, dates** — keep them verbatim.
+4. **Chinese titles should read like news** — concise, complete, "的"/"了"/"在" allowed where natural.
+5. **If source is mostly gibberish / URL / placeholder / bot page** — return empty string for both title and snippet, confidence 0.0.
+6. **If you are unsure about ANY term** — keep it English and lower confidence.
+
+Confidence rubric:
+- 0.95+ : clean literal translation, all proper nouns preserved
+- 0.85-0.95 : minor stylistic choices, semantically equivalent
+- 0.70-0.85 : some interpretation but source is clear
+- 0.50-0.70 : ambiguous or you paraphrased; reviewer should check
+- < 0.50 : likely misread; review required`;
   const user = `Translate these ${items.length} English news items to Simplified Chinese. Return ONLY the JSON array, no prose, no markdown fences.\n\n${numbered}`;
   const res = await fetch(`${BASE_URL}/v1/messages`, {
     method: 'POST',
@@ -206,8 +215,17 @@ async function runOnSlug(slug, report) {
     if (!r) continue;
     if (r.error) { errors++; continue; }
     const conf = r.out.confidence ?? 0;
+    // Always log every translation for audit — the report includes ALL items
+    const auditEntry = {
+      slug, company: r.co, url: r.news.url,
+      orig: { title: r.title, snippet: r.snippet },
+      translated: { title: r.out.title || '', snippet: r.out.snippet || '' },
+      confidence: conf,
+      applied: conf >= CONFIDENCE_FLOOR,
+    };
+    report.all_translations.push(auditEntry);
     if (conf < CONFIDENCE_FLOOR) {
-      report.low_confidence.push({ slug, company: r.co, url: r.news.url, orig: { title: r.title, snippet: r.snippet }, translated: r.out, confidence: conf });
+      report.low_confidence.push(auditEntry);
       skipped++;
       continue;
     }
@@ -222,13 +240,16 @@ async function runOnSlug(slug, report) {
 }
 
 async function main() {
-  const report = { low_confidence: [], summary: {} };
+  const report = { low_confidence: [], all_translations: [], summary: {} };
   for (const slug of SLUGS) {
     const n = await runOnSlug(slug, report);
     report.summary[slug] = n;
   }
   writeFileSync(join(DATA_DIR, 'translate-report.json'), JSON.stringify(report, null, 2));
-  console.log(`\n✓ Done. Low-confidence items: ${report.low_confidence.length} → data/translate-report.json`);
+  console.log(`\n✓ Done.`);
+  console.log(`  Applied:           ${Object.values(report.summary).reduce((a,b)=>a+b, 0)}`);
+  console.log(`  Low-confidence:    ${report.low_confidence.length} → see data/translate-report.json`);
+  console.log(`  Total translations logged: ${report.all_translations.length}`);
   console.log(JSON.stringify(report.summary, null, 2));
 }
 
