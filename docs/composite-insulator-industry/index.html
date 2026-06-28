@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复合绝缘子 · 行业雷达</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #fafafa;
+  --surface-elevated: #ffffff;
+  --border: #e8e8e8;
+  --border-strong: #d0d0d0;
+  --divider: #f0f0f0;
+  --text: #1a1a1a;
+  --text-soft: #555;
+  --text-faint: #888;
+  --text-mute: #aaa;
+  --accent: #c00;
+  --accent-hover: #a00;
+  --accent-soft: #fef0f0;
+  --accent-tint: #fef5f5;
+  --intl: #1a5490;
+  --intl-soft: #f0f4f9;
+  --cn-tint: #c00;
+  --intl-tint: #1a5490;
+  --highlight: #fff8e6;
+  --live: #e60012;
+  --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-serif: 'PingFang SC', 'Source Han Serif SC', 'Noto Serif CJK SC', 'STSong', Georgia, serif;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+[data-theme="dark"] {
+  --bg: #0e0e10;
+  --surface: #1a1a1c;
+  --surface-soft: #232325;
+  --surface-elevated: #252528;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --divider: rgba(255, 255, 255, 0.06);
+  --text: #f5f5f7;
+  --text-soft: #a8a8ad;
+  --text-faint: #6e6e73;
+  --text-mute: #555;
+  --accent: #ff3838;
+  --accent-hover: #ff5555;
+  --accent-soft: rgba(255, 56, 56, 0.12);
+  --accent-tint: rgba(255, 56, 56, 0.05);
+  --intl: #5b9dd9;
+  --intl-soft: rgba(91, 157, 217, 0.10);
+  --cn-tint: #ff3838;
+  --intl-tint: #5b9dd9;
+  --highlight: #3a2e0a;
+  --live: #ff3838;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+html { background: var(--bg); }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  font-size: 16px;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+a { color: inherit; }
+
+/* ============ TOP BAR (live ticker) ============ */
+.topbar {
+  background: #1a1a1a;
+  color: #e5e5e5;
+  border-bottom: 1px solid #000;
+}
+[data-theme="dark"] .topbar { background: #050505; }
+.topbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.brand {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: -0.04em;
+  border-radius: 4px;
+}
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--live);
+  color: #fff;
+  padding: 4px 10px 4px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 1.4s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.ticker {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13.5px;
+  color: #ddd;
+  position: relative;
+  height: 24px;
+}
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 60s linear infinite;
+  padding-left: 100%;
+}
+.ticker-track span { padding: 0 24px; }
+.ticker-track span::before {
+  content: '●';
+  color: var(--accent);
+  margin-right: 8px;
+  font-size: 8px;
+  vertical-align: middle;
+}
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+.topbar-meta {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 4px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.theme-toggle:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
+
+/* ============ MASTHEAD (logo + main nav) ============ */
+.masthead {
+  background: var(--bg);
+  border-bottom: 2px solid var(--accent);
+}
+.masthead-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 32px 0;
+}
+.masthead-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+.masthead-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.masthead h1 {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+}
+.masthead h1 .accent { color: var(--accent); }
+.masthead .dateline {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.masthead-stats {
+  display: flex;
+  gap: 24px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+.masthead-stats .num { color: var(--accent); font-weight: 600; }
+
+/* Region tabs (clickable scroll anchors) */
+.section-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+button.tab-region {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px 12px;
+  margin-right: 8px;
+  color: var(--text-faint);
+  transition: all 0.2s;
+}
+button.tab-region:hover { color: var(--text); }
+button.tab-region.cn.active { color: var(--accent); border-bottom-color: var(--accent); }
+button.tab-region.intl.active { color: var(--intl); border-bottom-color: var(--intl); }
+button.tab-region .count {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--text-faint);
+  font-weight: 500;
+}
+button.tab-region.active .count { color: inherit; }
+
+/* Company tab buttons */
+.company-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 4px;
+  padding-bottom: 12px;
+  padding-top: 8px;
+}
+button.company-tab {
+  font-family: var(--font-sans);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: var(--text-soft);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+button.company-tab:hover { color: var(--text); }
+button.company-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+button.company-tab .mono-count {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 10px;
+  background: var(--surface-soft);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--text-faint);
+}
+button.company-tab.active .mono-count {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ============ MAIN CONTENT ============ */
+main { padding: 32px 0 64px; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+main section { animation: fadeIn 0.25s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ HERO (featured news) ============ */
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--divider);
+}
+.hero-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.hero-meta .time { color: var(--accent); font-weight: 600; }
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.hero-title a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+.hero-title a:hover { color: var(--accent); }
+.hero-snippet {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-soft);
+  margin: 0;
+}
+.hero-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.hero-arrow {
+  font-size: 14px;
+  color: var(--text-mute);
+  margin-left: 6px;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-left: 24px;
+  border-left: 1px solid var(--divider);
+}
+.hero-side-item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--divider);
+}
+.hero-side-item:last-child { border-bottom: none; }
+.hero-side-item .time {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 6px;
+}
+.hero-side-item .title {
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--text);
+}
+.hero-side-item .title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.hero-side-item .title a:hover { color: var(--accent); }
+
+/* ============ SUMMARY (本周要点) ============ */
+.summary {
+  background: var(--surface-soft);
+  border-top: 3px solid var(--accent);
+  padding: 24px 28px 20px;
+  margin-bottom: 40px;
+}
+.summary-label {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.summary-label::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: var(--accent);
+}
+.summary-list {
+  list-style: none;
+  margin: 0 0 16px;
+}
+.summary-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--divider);
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.summary-list li:last-child { border-bottom: none; }
+.summary-list .num {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  flex-shrink: 0;
+  min-width: 18px;
+}
+.summary-list a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.summary-list a:hover { color: var(--accent); }
+.summary-stats {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  padding-top: 12px;
+  border-top: 1px solid var(--divider);
+  display: flex;
+  gap: 16px;
+}
+
+/* ============ COMPANY HEADER ============ */
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 24px;
+}
+.company-section[data-region="intl"] .company-header {
+  border-bottom-color: var(--intl);
+}
+.company-section.is-active .company-header {
+  border-bottom-width: 3px;
+}
+.company-section.is-active {
+  background: var(--accent-tint);
+  padding: 16px 16px;
+  margin: 0 -16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.company-section[data-region="intl"].is-active {
+  background: var(--intl-soft);
+}
+.company-header .logo {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+.company-header .name-block { flex: 1; min-width: 0; }
+.company-header h2 {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.company-header .domain {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+}
+
+/* ============ NEWS GRID (3 columns) ============ */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 32px;
+}
+.news-card {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--divider);
+}
+.news-card-time {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.news-card-time::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+}
+.news-card-title {
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.005em;
+}
+.news-card-title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.news-card-title a:hover { color: var(--accent); }
+.news-card-snippet {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-soft);
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--text-faint);
+  flex-wrap: wrap;
+}
+.news-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.badge-file {
+  color: var(--text-soft);
+  border-color: var(--border-strong);
+  background: var(--surface-soft);
+}
+.badge-type {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+  background: var(--accent-tint);
+}
+
+.empty {
+  color: var(--text-soft);
+  padding: 40px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ============ HEROES (one per company, only one shown at a time) ============ */
+.heroes {
+  margin-bottom: 32px;
+}
+
+/* ============ CONTENT AREA (single company section at a time) ============ */
+.content-area {
+  min-height: 400px;
+}
+.company-section {
+  scroll-margin-top: 80px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  background: #1a1a1a;
+  color: #888;
+  margin-top: 64px;
+  padding: 32px;
+  font-size: 13px;
+  text-align: center;
+  border-top: 2px solid var(--accent);
+}
+[data-theme="dark"] footer { background: #050505; }
+footer .mono {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  color: #aaa;
+}
+
+/* ============ HOMEPAGE (industry cards) ============ */
+.industry-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+.industry-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.industry-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+.industry-card a {
+  display: block;
+  padding: 28px;
+  text-decoration: none;
+  color: var(--text);
+}
+.industry-card h3 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.industry-card .stats {
+  color: var(--text-soft);
+  font-size: 13px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  display: flex;
+  gap: 12px;
+}
+.industry-card .stats .num { color: var(--accent); font-weight: 600; }
+.industry-card time {
+  display: block;
+  color: var(--text-faint);
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--divider);
+}
+.empty-state {
+  text-align: center;
+  padding: 96px 32px;
+  color: var(--text-soft);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+}
+
+@media (max-width: 960px) {
+  /* Topbar — hide meta on small screens, keep brand + theme */
+  .topbar-inner { height: auto; padding: 8px 16px; gap: 10px; flex-wrap: wrap; }
+  .topbar-meta { display: none; }
+  .brand { font-size: 16px; }
+  .brand-mark { width: 22px; height: 22px; font-size: 12px; }
+  .live-pill { font-size: 10px; padding: 3px 8px 3px 6px; }
+
+  /* Masthead — stack title + stats */
+  .masthead-inner { padding: 16px 16px 0; }
+  .masthead-top { flex-direction: column; align-items: flex-start; gap: 12px; padding-bottom: 12px; }
+  .masthead h1 { font-size: 30px; }
+  .masthead .dateline { font-size: 11px; }
+  .masthead-stats { gap: 14px; font-size: 11px; flex-wrap: wrap; }
+
+  /* Section tabs + company tabs — horizontal scroll on small screens */
+  .section-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  button.tab-region { font-size: 15px; padding: 10px 14px 12px; white-space: nowrap; }
+  .company-tabs { overflow-x: auto; flex-wrap: nowrap; padding: 4px 0 8px; -webkit-overflow-scrolling: touch; }
+  button.company-tab { font-size: 13px; padding: 8px 10px; flex-shrink: 0; white-space: nowrap; }
+
+  /* Hero — single column */
+  .hero { grid-template-columns: 1fr; gap: 20px; margin-bottom: 32px; padding-bottom: 24px; }
+  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 20px; }
+  .hero-title { font-size: 24px; line-height: 1.25; }
+  .hero-snippet { font-size: 15px; }
+  .hero-side-item .title { font-size: 14px; }
+
+  /* Summary — narrower numbers */
+  .summary { padding: 20px 18px 16px; margin-bottom: 28px; }
+  .summary-label { font-size: 16px; }
+  .summary-list li { font-size: 14px; gap: 10px; }
+  .summary-list .num { min-width: 16px; font-size: 10px; }
+  .summary-stats { font-size: 11px; gap: 12px; flex-wrap: wrap; }
+
+  /* Company section header — smaller */
+  .company-header { padding: 12px 0; gap: 10px; margin-bottom: 16px; }
+  .company-header .logo { width: 36px; height: 36px; font-size: 15px; }
+  .company-header h2 { font-size: 21px; }
+  .company-header .domain { font-size: 11px; }
+
+  /* News grid — single column, tighter spacing */
+  .news-grid { grid-template-columns: 1fr; gap: 0; }
+  .news-card { padding: 18px 0; }
+  .news-card-time { font-size: 10px; }
+  .news-card-title { font-size: 16px; line-height: 1.35; }
+  .news-card-snippet { font-size: 13px; }
+  .news-card-footer { font-size: 10px; }
+
+  /* Main + container */
+  main { padding: 16px 0 40px; }
+  .container { padding: 0 16px; }
+  footer { padding: 24px 16px; font-size: 12px; }
+}
+
+/* Tiny phones — iPhone SE 375px */
+@media (max-width: 480px) {
+  .masthead h1 { font-size: 26px; }
+  .hero-title { font-size: 21px; }
+  .company-header h2 { font-size: 19px; }
+  .news-card-title { font-size: 15px; }
+  button.tab-region { font-size: 14px; padding: 8px 12px 10px; }
+  button.company-tab { font-size: 12.5px; padding: 7px 9px; }
+  .masthead-stats { gap: 10px; font-size: 10.5px; }
+}
+
+/* Dark mode auto — make sure mobile overrides the data-theme attribute on body/html */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) { color-scheme: dark; }
+}
+</style>
+</head>
+<body>
+
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">雷</span>
+      行业雷达
+      <span class="live-pill"><span class="live-dot"></span>LIVE</span>
+    </div>
+    <div class="ticker"><div class="ticker-track"><span>ZTT To Release 25th Anniversary Box Set</span><span>ZTT to provide fiber cable for Brazil&#39;s Norte Conectado Amazon project</span><span>First 17 parts of the FAR move into formal rulemaking process</span><span>The 10 Best Far Cry Games</span><span>TE Connectivity plc (TEL)</span></div></div>
+    <div class="topbar-meta">
+      <span>2026年06月28日 · 周日</span>
+      <button class="theme-toggle" aria-label="切换主题">☾ 深色</button>
+    </div>
+  </div>
+</div>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="masthead-title-block">
+        <h1>复合绝缘子</h1>
+        <div class="dateline">2026年06月28日 · 周日 · 第 5 期 · 36 条新闻</div>
+      </div>
+      <div class="masthead-stats">
+        <span><span class="num">2</span> 中国头部</span>
+        <span><span class="num">3</span> 国际头部</span>
+        <span><span class="num">36</span> 总新闻</span>
+      </div>
+    </div>
+    
+<nav class="section-tabs">
+  <button class="tab-region cn active" data-region="cn">中国头部 <span class="count">2 家</span></button>
+  <button class="tab-region intl" data-region="intl">国际头部 <span class="count">3 家</span></button>
+</nav>
+    
+<div class="company-tabs">
+  <button class="company-tab active" data-co="ztt" data-region="cn">中天科技 ZTT<span class="mono-count">4</span></button><button class="company-tab" data-co="fareastcable" data-region="cn">远东电缆 Far East Cable<span class="mono-count">6</span></button>
+  <button class="company-tab" data-co="teconnectivity" data-region="intl" hidden>TE Connectivity<span class="mono-count">8</span></button><button class="company-tab" data-co="macleanfogg" data-region="intl" hidden>MacLean-Fogg<span class="mono-count">8</span></button><button class="company-tab" data-co="abb" data-region="intl" hidden>ABB<span class="mono-count">10</span></button>
+</div>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <div class="heroes"><div class="hero" data-co="ztt" data-region="cn">
+<div class="hero">
+  <div class="hero-main">
+    
+    <h2 class="hero-title"><a href="https://www.billboard.com/music/music-news/ztt-to-release-25th-anniversary-box-set-1302829/" target="_blank" rel="noopener">ZTT To Release 25th Anniversary Box Set<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">Influential London-based record label Zang Tuum Tumb is celebrated on &quot;The ZTT Box Set&quot; released in the United Kingdom on Nov.</p>
+    <div class="hero-source">billboard.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.datacenterdynamics.com/en/news/ztt-to-provide-fiber-cable-for-brazils-norte-conectado-amazon-project/" target="_blank" rel="noopener">ZTT to provide fiber cable for Brazil&#39;s Norte Conectado Amazon project</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.chinadaily.com.cn/a/202411/09/WS672e9f83a310f1265a1cc60f.html" target="_blank" rel="noopener">ZTT setting standard for innovative development</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.eefocus.com/article/1998439.html" target="_blank" rel="noopener">《起帆、万马、上上、远东、中天科技、航天电工、等700+参会名单曝光！》</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="fareastcable" data-region="cn" hidden>
+<div class="hero">
+  <div class="hero-main">
+    
+    <h2 class="hero-title"><a href="https://federalnewsnetwork.com/acquisition-policy/2026/06/first-17-parts-of-the-far-move-into-formal-rulemaking-process/" target="_blank" rel="noopener">First 17 parts of the FAR move into formal rulemaking process<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">Federal acquisition experts will have 30 days to comment on proposed rules to help fine tune the changes initiated more than a year ago under the FAR overhaul.</p>
+    <div class="hero-source">federalnewsnetwork.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.ign.com/articles/best-far-cry-games" target="_blank" rel="noopener">The 10 Best Far Cry Games</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.cfr.org/articles/far-right-terrorism-united-states" target="_blank" rel="noopener">Far-Right Terrorism in the United States</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://theconversation.com/are-the-far-left-and-far-right-merging-together-thats-what-the-horseshoe-theory-of-politics-says-but-its-wrong-234079" target="_blank" rel="noopener">Are the far‑left and far‑right merging together? That’s what the ‘horseshoe theory’ of politics says, but it’s wrong</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.npr.org/2021/03/06/974394783/far-right-misinformation-is-thriving-on-facebook-a-new-study-shows-just-how-much" target="_blank" rel="noopener">Far-Right Misinformation Is Thriving On Facebook. A New Study Shows Just How Much</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="teconnectivity" data-region="intl" hidden>
+<div class="hero">
+  <div class="hero-main">
+    
+    <h2 class="hero-title"><a href="https://finance.yahoo.com/quote/TEL/" target="_blank" rel="noopener">TE Connectivity plc (TEL)<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+    <div class="hero-source">finance.yahoo.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://seekingalpha.com/article/4892190-te-connectivity-stock-technological-uncertainty-limits-near-term-ai-upside" target="_blank" rel="noopener">TE Connectivity: Technological Uncertainty Limits The Near-Term AI Upside</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://seekingalpha.com/article/4908512-te-connectivity-undervalued-stock-long-term-dividend-growth-investors" target="_blank" rel="noopener">TE Connectivity: An Undervalued Stock For Long-Term Dividend Growth Investors</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.eefocus.com/article/1977272.html" target="_blank" rel="noopener">深耕本土近四十载，TE Connectivity多维赋能机器人产业发展</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.eefocus.com/article/1982627.html" target="_blank" rel="noopener">TE Connectivity调研：AI步入成熟期，投资回报率成为首要目标</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="macleanfogg" data-region="intl" hidden>
+<div class="hero">
+  <div class="hero-main">
+    
+    <h2 class="hero-title"><a href="https://macleanfogg.com/news/maclean-fogg-acquires-omco/" target="_blank" rel="noopener">OMCO Joins MacLean-Fogg, Strengthening a Century Long Commitment to American Manufacturing<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">MacLean-Fogg acquires OMCO, expanding U.S. roll forming and solar racking manufacturing across four states.</p>
+    <div class="hero-source">macleanfogg.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://finance.yahoo.com/news/maclean-fogg-celebrates-100-years-190500026.html" target="_blank" rel="noopener">MacLean-Fogg Celebrates 100 Years of Family Ownership, Manufacturing Excellence, and Innovation</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.bizjournals.com/buffalo/news/2025/05/23/manufacturing-awards-2025-maclean-fogg-curtis.html" target="_blank" rel="noopener">MacLean-Fogg Co./MacLean Curtis Buffalo</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://markets.businessinsider.com/news/stocks/maclean-fogg-company-announces-multi-plant-career-fair-in-michigan-1028343156" target="_blank" rel="noopener">MacLean-Fogg Company Announces Multi-Plant Career Fair in Michigan</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.dailyherald.com/20120516/business/maclean-fogg-acquires-sky-manufacturing/" target="_blank" rel="noopener">MacLean-Fogg acquires Sky Manufacturing</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="abb" data-region="intl" hidden>
+<div class="hero">
+  <div class="hero-main">
+    
+    <h2 class="hero-title"><a href="https://www.eurekamagazine.co.uk/content/news/abb-sensymaster-achieves-sil-2-for-thermal-mass-flow-measurement" target="_blank" rel="noopener">ABB SensyMaster Achieves SIL 2 For Thermal Mass Flow Measurement<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+    <div class="hero-source">eurekamagazine.co.uk</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.marinelink.com/news/expand-automation-offering-abb-acquire-540681" target="_blank" rel="noopener">To Expand Automation Offering, ABB to Acquire Høglund</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.solarpowerworldonline.com/2026/06/abb-launches-proteus-line-of-solutions-after-gamesa-acquisition/" target="_blank" rel="noopener">ABB launches Proteus line of solutions after Gamesa acquisition</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://finance.yahoo.com/news/abb-invest-120m-us-manufacturing-103800239.html" target="_blank" rel="noopener">ABB to invest $120M in US manufacturing</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.forbes.com/sites/sandycarter/2026/06/22/psyonic-arms-nvidia-and-abb-with-robots-dexterity-data/" target="_blank" rel="noopener">PSYONIC Arms NVIDIA And ABB With Robots Dexterity Data</a></div>
+      </div>
+    
+  </div>
+</div></div></div>
+    <div class="content-area" id="content-area">
+      
+<section data-co="ztt" data-region="cn" class="company-section">
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0d9488"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">中</text>
+  </svg>
+    <div class="name-block">
+      <h2>中天科技 ZTT</h2>
+      <span class="domain">ztt.com · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.billboard.com/music/music-news/ztt-to-release-25th-anniversary-box-set-1302829/" target="_blank" rel="noopener">Influential London-based record label Zang Tuum Tumb is celebrated on &quot;The ZTT Box Set&quot; released in the United Kingdom on Nov.</a></li><li><span class="num">02</span><a href="https://www.datacenterdynamics.com/en/news/ztt-to-provide-fiber-cable-for-brazils-norte-conectado-amazon-project/" target="_blank" rel="noopener">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</a></li><li><span class="num">03</span><a href="https://www.chinadaily.com.cn/a/202411/09/WS672e9f83a310f1265a1cc60f.html" target="_blank" rel="noopener">After expanding its footprint in Indonesia, Chinese cable system manufacturer ZTT, or Jiangsu Zhongtian Technology, is boosting that nation&#39;s economy through the establishment of a production facility in the prestigious Indonesia Industrial Park — Suryacipta.</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/1998439.html" target="_blank" rel="noopener">SMM WCCE 2026（第四届）电线电缆产业发展大会暨工业展览会聚焦线缆行情・直击原料价格【时间】2026年5月14–15日【地点】江苏・苏州国际会议酒店报名参会01 重磅发布，第三版700+参会企业名单电线电缆企业：起帆电缆、万马股份、宝胜股份、亨通集团、中天科技、远东电缆、上上电缆、太阳电缆、江南电缆、永鼎股份</a></li></ol><div class="summary-stats"><span>4 条</span><span>中天科技 ZTT</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.billboard.com/music/music-news/ztt-to-release-25th-anniversary-box-set-1302829/" target="_blank" rel="noopener">ZTT To Release 25th Anniversary Box Set</a></h3>
+  <p class="news-card-snippet">Influential London-based record label Zang Tuum Tumb is celebrated on &quot;The ZTT Box Set&quot; released in the United Kingdom on Nov.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>billboard.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.datacenterdynamics.com/en/news/ztt-to-provide-fiber-cable-for-brazils-norte-conectado-amazon-project/" target="_blank" rel="noopener">ZTT to provide fiber cable for Brazil&#39;s Norte Conectado Amazon project</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>datacenterdynamics.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.chinadaily.com.cn/a/202411/09/WS672e9f83a310f1265a1cc60f.html" target="_blank" rel="noopener">ZTT setting standard for innovative development</a></h3>
+  <p class="news-card-snippet">After expanding its footprint in Indonesia, Chinese cable system manufacturer ZTT, or Jiangsu Zhongtian Technology, is boosting that nation&#39;s economy through the establishment of a production facility in the prestigious Indonesia Industrial Park — Suryacipta.</p>
+  <div class="news-card-footer">
+    
+    <span>chinadaily.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1998439.html" target="_blank" rel="noopener">《起帆、万马、上上、远东、中天科技、航天电工、等700+参会名单曝光！》</a></h3>
+  <p class="news-card-snippet">SMM WCCE 2026（第四届）电线电缆产业发展大会暨工业展览会聚焦线缆行情・直击原料价格【时间】2026年5月14–15日【地点】江苏・苏州国际会议酒店报名参会01 重磅发布，第三版700+参会企业名单电线电缆企业：起帆电缆、万马股份、宝胜股份、亨通集团、中天科技、远东电缆、上上电缆、太阳电缆、江南电缆、永鼎股份</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="fareastcable" data-region="cn" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#7c3aed"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">远</text>
+  </svg>
+    <div class="name-block">
+      <h2>远东电缆 Far East Cable</h2>
+      <span class="domain">fareastcable.com · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://federalnewsnetwork.com/acquisition-policy/2026/06/first-17-parts-of-the-far-move-into-formal-rulemaking-process/" target="_blank" rel="noopener">Federal acquisition experts will have 30 days to comment on proposed rules to help fine tune the changes initiated more than a year ago under the FAR overhaul.</a></li><li><span class="num">02</span><a href="https://www.ign.com/articles/best-far-cry-games" target="_blank" rel="noopener">From the original Far Cry from 2004 to 2021&#39;s Far Cry 6, here are IGN&#39;s picks for the best Far Cry games ever.</a></li><li><span class="num">03</span><a href="https://www.cfr.org/articles/far-right-terrorism-united-states" target="_blank" rel="noopener">Timeline by Bruce Hoffman and Jacob Ware January 5, 2024</a></li><li><span class="num">04</span><a href="https://theconversation.com/are-the-far-left-and-far-right-merging-together-thats-what-the-horseshoe-theory-of-politics-says-but-its-wrong-234079" target="_blank" rel="noopener">Some global issues have prompted partnerships between seemingly strange bedfellows at opposite ends of the political spectrum. The ‘horseshoe theory’ tries to make sense of this, but what’s it about?</a></li><li><span class="num">05</span><a href="https://www.npr.org/2021/03/06/974394783/far-right-misinformation-is-thriving-on-facebook-a-new-study-shows-just-how-much" target="_blank" rel="noopener">Research from New York University found that far-right accounts known for spreading misinformation drive engagement at higher rates than other news sources.</a></li></ol><div class="summary-stats"><span>6 条</span><span>远东电缆 Far East Cable</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://federalnewsnetwork.com/acquisition-policy/2026/06/first-17-parts-of-the-far-move-into-formal-rulemaking-process/" target="_blank" rel="noopener">First 17 parts of the FAR move into formal rulemaking process</a></h3>
+  <p class="news-card-snippet">Federal acquisition experts will have 30 days to comment on proposed rules to help fine tune the changes initiated more than a year ago under the FAR overhaul.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>federalnewsnetwork.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.ign.com/articles/best-far-cry-games" target="_blank" rel="noopener">The 10 Best Far Cry Games</a></h3>
+  <p class="news-card-snippet">From the original Far Cry from 2004 to 2021&#39;s Far Cry 6, here are IGN&#39;s picks for the best Far Cry games ever.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>ign.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.cfr.org/articles/far-right-terrorism-united-states" target="_blank" rel="noopener">Far-Right Terrorism in the United States</a></h3>
+  <p class="news-card-snippet">Timeline by Bruce Hoffman and Jacob Ware January 5, 2024</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>cfr.org</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://theconversation.com/are-the-far-left-and-far-right-merging-together-thats-what-the-horseshoe-theory-of-politics-says-but-its-wrong-234079" target="_blank" rel="noopener">Are the far‑left and far‑right merging together? That’s what the ‘horseshoe theory’ of politics says, but it’s wrong</a></h3>
+  <p class="news-card-snippet">Some global issues have prompted partnerships between seemingly strange bedfellows at opposite ends of the political spectrum. The ‘horseshoe theory’ tries to make sense of this, but what’s it about?</p>
+  <div class="news-card-footer">
+    
+    <span>theconversation.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.npr.org/2021/03/06/974394783/far-right-misinformation-is-thriving-on-facebook-a-new-study-shows-just-how-much" target="_blank" rel="noopener">Far-Right Misinformation Is Thriving On Facebook. A New Study Shows Just How Much</a></h3>
+  <p class="news-card-snippet">Research from New York University found that far-right accounts known for spreading misinformation drive engagement at higher rates than other news sources.</p>
+  <div class="news-card-footer">
+    
+    <span>npr.org</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://gamerant.com/best-far-cry-games/" target="_blank" rel="noopener">The Best Far Cry Games, Ranked</a></h3>
+  <p class="news-card-snippet">Far Cry 3 is the most popular game in Ubisoft&amp;#039;s series, but is it actually the best? Or, is it Far Cry 4, 5, or Primal?</p>
+  <div class="news-card-footer">
+    
+    <span>gamerant.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="teconnectivity" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0d9488"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">T</text>
+  </svg>
+    <div class="name-block">
+      <h2>TE Connectivity</h2>
+      <span class="domain">te.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://finance.yahoo.com/quote/TEL/" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">02</span><a href="https://seekingalpha.com/article/4892190-te-connectivity-stock-technological-uncertainty-limits-near-term-ai-upside" target="_blank" rel="noopener">TE Connectivity (TEL) has experienced a dramatic re-rating in its share price, as the stock has received wide recognition from the market as an AI beneficiary. Previously, TE has been widely regarded as a mature business, and</a></li><li><span class="num">03</span><a href="https://seekingalpha.com/article/4908512-te-connectivity-undervalued-stock-long-term-dividend-growth-investors" target="_blank" rel="noopener">TE Connectivity plc designs and manufactures electrical and electronic components. Find out why I rate TEL stock as a buy.</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/1977272.html" target="_blank" rel="noopener">随着机器人系统复杂度持续攀升，从感知、决策到执行的全链路，对稳定连接与可靠传输提出了更为严苛的要求。作为机器人系统的基础核心环节，连接技术的性能表现，直接决定了整机在真实工况下的稳定性、一致性与运行效率，成为制约产业高质量发展的关键因素之一。在此背景下，2026年3月20日，TE Connectivity（简称“泰科电</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/1982627.html" target="_blank" rel="noopener">连接和传感领域的全球行业技术企业TE Connectivity（以下简称“TE”）最新发布的全球调研报告《行业技术指数》显示，行业技术企业的人工智能（AI）采用率已突破80%。调研数据表明，随着AI工具深度融入企业运营，企业正要求AI投资带来回报。TE已连续四年发布《行业技术指数》，旨在探究工程师与企业管理者眼中驱动企</a></li></ol><div class="summary-stats"><span>8 条</span><span>TE Connectivity</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://finance.yahoo.com/quote/TEL/" target="_blank" rel="noopener">TE Connectivity plc (TEL)</a></h3>
+  <p class="news-card-snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <div class="news-card-footer">
+    
+    <span>finance.yahoo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://seekingalpha.com/article/4892190-te-connectivity-stock-technological-uncertainty-limits-near-term-ai-upside" target="_blank" rel="noopener">TE Connectivity: Technological Uncertainty Limits The Near-Term AI Upside</a></h3>
+  <p class="news-card-snippet">TE Connectivity (TEL) has experienced a dramatic re-rating in its share price, as the stock has received wide recognition from the market as an AI beneficiary. Previously, TE has been widely regarded as a mature business, and</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>seekingalpha.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://seekingalpha.com/article/4908512-te-connectivity-undervalued-stock-long-term-dividend-growth-investors" target="_blank" rel="noopener">TE Connectivity: An Undervalued Stock For Long-Term Dividend Growth Investors</a></h3>
+  <p class="news-card-snippet">TE Connectivity plc designs and manufactures electrical and electronic components. Find out why I rate TEL stock as a buy.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>seekingalpha.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1977272.html" target="_blank" rel="noopener">深耕本土近四十载，TE Connectivity多维赋能机器人产业发展</a></h3>
+  <p class="news-card-snippet">随着机器人系统复杂度持续攀升，从感知、决策到执行的全链路，对稳定连接与可靠传输提出了更为严苛的要求。作为机器人系统的基础核心环节，连接技术的性能表现，直接决定了整机在真实工况下的稳定性、一致性与运行效率，成为制约产业高质量发展的关键因素之一。在此背景下，2026年3月20日，TE Connectivity（简称“泰科电</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1982627.html" target="_blank" rel="noopener">TE Connectivity调研：AI步入成熟期，投资回报率成为首要目标</a></h3>
+  <p class="news-card-snippet">连接和传感领域的全球行业技术企业TE Connectivity（以下简称“TE”）最新发布的全球调研报告《行业技术指数》显示，行业技术企业的人工智能（AI）采用率已突破80%。调研数据表明，随着AI工具深度融入企业运营，企业正要求AI投资带来回报。TE已连续四年发布《行业技术指数》，旨在探究工程师与企业管理者眼中驱动企</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1985917.html" target="_blank" rel="noopener">TE Connectivity调研：AI步入成熟期，以ROI为导向的务实落地</a></h3>
+  <p class="news-card-snippet">在2026年TE Connectivity《行业技术指数》媒体分享会上，这家全球连接与传感领域的行业技术企业，给出了一个清晰的信号：AI不再是未来，而是当下的成本与效率工具。今年的报告中，一个显著变化是——投资回报率已成为衡量AI成功的最重要指标之一。这意味着，企业对AI的评估，已从“能不能做”转向“值不值得做”。TE</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1973457.html" target="_blank" rel="noopener">TE Connectivity连续12年入选“全球最具商业道德企业”榜单</a></h3>
+  <p class="news-card-snippet">连接和传感领域的全球行业技术企业TE Connectivity（以下简称“TE”）荣登道德村协会（Ethisphere）发布的2026“全球最具商业道德企业”榜单，继续在定义并推动商业道德实践标准方面发挥引领作用。 TE已连续12年获此殊荣，是跻身本年度榜单的五家电子元器件行业的企业之一。TE首席执行官Terrence</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1975081.html" target="_blank" rel="noopener">从互连工程到生态协同：TE Connectivity在机器人产业链的双重角色</a></h3>
+  <p class="news-card-snippet">TE Connectivity（简称 “TE” ）在苏州举办了 “机器人核心技术赋能智能工厂创新大会” 。活动通过技术交流与工厂参观等形式，邀请机器人产业链上下游企业与生态圈伙伴围绕核心技术与落地问题展开讨论，搭建起面向产业的交流与对接平台。与会讨论折射出一个共同背景：机器人正从技术验证加速走向工程化与规模化落地。今年</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="macleanfogg" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#b91c1c"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">M</text>
+  </svg>
+    <div class="name-block">
+      <h2>MacLean-Fogg</h2>
+      <span class="domain">macleanfogg.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://macleanfogg.com/news/maclean-fogg-acquires-omco/" target="_blank" rel="noopener">MacLean-Fogg acquires OMCO, expanding U.S. roll forming and solar racking manufacturing across four states.</a></li><li><span class="num">02</span><a href="https://finance.yahoo.com/news/maclean-fogg-celebrates-100-years-190500026.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">03</span><a href="https://www.bizjournals.com/buffalo/news/2025/05/23/manufacturing-awards-2025-maclean-fogg-curtis.html" target="_blank" rel="noopener">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</a></li><li><span class="num">04</span><a href="https://markets.businessinsider.com/news/stocks/maclean-fogg-company-announces-multi-plant-career-fair-in-michigan-1028343156" target="_blank" rel="noopener">MacLean-Fogg Company Announces Multi-Plant Career Fair in Michigan</a></li><li><span class="num">05</span><a href="https://www.dailyherald.com/20120516/business/maclean-fogg-acquires-sky-manufacturing/" target="_blank" rel="noopener">MacLean-Fogg acquires Sky Manufacturing</a></li></ol><div class="summary-stats"><span>8 条</span><span>MacLean-Fogg</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://macleanfogg.com/news/maclean-fogg-acquires-omco/" target="_blank" rel="noopener">OMCO Joins MacLean-Fogg, Strengthening a Century Long Commitment to American Manufacturing</a></h3>
+  <p class="news-card-snippet">MacLean-Fogg acquires OMCO, expanding U.S. roll forming and solar racking manufacturing across four states.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>macleanfogg.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://finance.yahoo.com/news/maclean-fogg-celebrates-100-years-190500026.html" target="_blank" rel="noopener">MacLean-Fogg Celebrates 100 Years of Family Ownership, Manufacturing Excellence, and Innovation</a></h3>
+  <p class="news-card-snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>finance.yahoo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.bizjournals.com/buffalo/news/2025/05/23/manufacturing-awards-2025-maclean-fogg-curtis.html" target="_blank" rel="noopener">MacLean-Fogg Co./MacLean Curtis Buffalo</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bizjournals.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://markets.businessinsider.com/news/stocks/maclean-fogg-company-announces-multi-plant-career-fair-in-michigan-1028343156" target="_blank" rel="noopener">MacLean-Fogg Company Announces Multi-Plant Career Fair in Michigan</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>markets.businessinsider.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.dailyherald.com/20120516/business/maclean-fogg-acquires-sky-manufacturing/" target="_blank" rel="noopener">MacLean-Fogg acquires Sky Manufacturing</a></h3>
+  
+  <div class="news-card-footer">
+    
+    <span>dailyherald.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://tylerpaper.com/2025/03/24/maclean-fogg-releases-inaugural-sustainability-report/" target="_blank" rel="noopener">MacLean-Fogg Releases Inaugural Sustainability Report</a></h3>
+  <p class="news-card-snippet">MUNDELEIN, Ill., March 24, 2025 /PRNewswire/ &amp;#8212; MacLean-Fogg is proud to announce the release of its first-ever Sustainability Report, highlighting the company&amp;#8217;s commitment to responsible business practices and long-term sustainability. This [&amp;hellip;]</p>
+  <div class="news-card-footer">
+    
+    <span>tylerpaper.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.dailyherald.com/20131111/business/maclean-fogg-expands-mundelein-facility/" target="_blank" rel="noopener">MacLean-Fogg expands Mundelein facility</a></h3>
+  
+  <div class="news-card-footer">
+    
+    <span>dailyherald.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.businesswire.com/news/home/20150609006206/en/Novaria-Group-Acquires-Sky-Manufacturing-From-MacLean-Fogg" target="_blank" rel="noopener">Novaria Group Acquires Sky Manufacturing From MacLean-Fogg</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>businesswire.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="abb" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#cc0000"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">A</text>
+  </svg>
+    <div class="name-block">
+      <h2>ABB</h2>
+      <span class="domain">abb.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.eurekamagazine.co.uk/content/news/abb-sensymaster-achieves-sil-2-for-thermal-mass-flow-measurement" target="_blank" rel="noopener">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</a></li><li><span class="num">02</span><a href="https://www.marinelink.com/news/expand-automation-offering-abb-acquire-540681" target="_blank" rel="noopener">ABB entered into an agreement to acquire marine automation specialist Høglund AS, headquartered in Tønsberg, Norway. The…</a></li><li><span class="num">03</span><a href="https://www.solarpowerworldonline.com/2026/06/abb-launches-proteus-line-of-solutions-after-gamesa-acquisition/" target="_blank" rel="noopener">ABB has launched its Proteus PV and battery energy storage systems (BESS) portfolio. The company acquired the Proteus line from Gamesa last year. “The</a></li><li><span class="num">04</span><a href="https://finance.yahoo.com/news/abb-invest-120m-us-manufacturing-103800239.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">05</span><a href="https://www.forbes.com/sites/sandycarter/2026/06/22/psyonic-arms-nvidia-and-abb-with-robots-dexterity-data/" target="_blank" rel="noopener">PSYONIC turns its FDA-cleared bionic hand into a data engine, feeding ABB and NVIDIA robots the human dexterity data physical AI has lacked for the warehouse age.</a></li></ol><div class="summary-stats"><span>10 条</span><span>ABB</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eurekamagazine.co.uk/content/news/abb-sensymaster-achieves-sil-2-for-thermal-mass-flow-measurement" target="_blank" rel="noopener">ABB SensyMaster Achieves SIL 2 For Thermal Mass Flow Measurement</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>eurekamagazine.co.uk</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.marinelink.com/news/expand-automation-offering-abb-acquire-540681" target="_blank" rel="noopener">To Expand Automation Offering, ABB to Acquire Høglund</a></h3>
+  <p class="news-card-snippet">ABB entered into an agreement to acquire marine automation specialist Høglund AS, headquartered in Tønsberg, Norway. The…</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>marinelink.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.solarpowerworldonline.com/2026/06/abb-launches-proteus-line-of-solutions-after-gamesa-acquisition/" target="_blank" rel="noopener">ABB launches Proteus line of solutions after Gamesa acquisition</a></h3>
+  <p class="news-card-snippet">ABB has launched its Proteus PV and battery energy storage systems (BESS) portfolio. The company acquired the Proteus line from Gamesa last year. “The</p>
+  <div class="news-card-footer">
+    
+    <span>solarpowerworldonline.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://finance.yahoo.com/news/abb-invest-120m-us-manufacturing-103800239.html" target="_blank" rel="noopener">ABB to invest $120M in US manufacturing</a></h3>
+  <p class="news-card-snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>finance.yahoo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.forbes.com/sites/sandycarter/2026/06/22/psyonic-arms-nvidia-and-abb-with-robots-dexterity-data/" target="_blank" rel="noopener">PSYONIC Arms NVIDIA And ABB With Robots Dexterity Data</a></h3>
+  <p class="news-card-snippet">PSYONIC turns its FDA-cleared bionic hand into a data engine, feeding ABB and NVIDIA robots the human dexterity data physical AI has lacked for the warehouse age.</p>
+  <div class="news-card-footer">
+    
+    <span>forbes.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.tdworld.com/grid-innovations/news/55386855/abb-deploys-new-synchronous-condensers-to-curb-large-scale-power-fluctuations-amid-ai-load-demands" target="_blank" rel="noopener">ABB Deploys New Synchronous Condensers to Curb Large-Scale Power Fluctuations Amid AI Load Demands</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>tdworld.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.automation.com/article/abb-thermal-mass-flow-measurement-safety-critical-applications-sil-2-certification" target="_blank" rel="noopener">ABB Enables Thermal Mass Flow Measurement in Safety-Critical Applications with SIL 2 Certification</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>automation.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.gasworld.com/story/abb-flowmeter-certification-boosts-industry-safety/2253042.article/" target="_blank" rel="noopener">ABB flowmeter certification boosts industry safety</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>gasworld.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://finance.yahoo.com/news/abb-q1-profit-beats-forecasts-045626890.html" target="_blank" rel="noopener">ABB to spin off world&#39;s second biggest robotics business</a></h3>
+  <p class="news-card-snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>finance.yahoo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.automation.com/article/abb-modernize-automation-systems-buzzard-offshore-platform" target="_blank" rel="noopener">ABB to Modernize Automation Systems on Buzzard Offshore Platform</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>automation.com</span>
+  </div>
+</article></div>
+</section>
+    </div>
+  </div>
+</main>
+<footer>
+  行业雷达 · 头部公司新闻聚合 · 数据来自各公司新闻中心 · 仅供研究参考<br>
+  <span class="mono">构建于 2026-06-28 · GitHub Pages</span>
+</footer>
+<script>
+// Region tab click: filter company tabs + content area to that region.
+// Active company stays selected; if its region changes, auto-select first visible.
+function selectRegion(region) {
+  document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+  document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
+  // Filter company tabs by region
+  document.querySelectorAll('.company-tab').forEach(c => {
+    c.hidden = c.dataset.region !== region;
+  });
+  // Filter company sections in content area
+  document.querySelectorAll('.company-section').forEach(s => {
+    s.hidden = s.dataset.region !== region;
+  });
+  // Filter hero by region
+  document.querySelectorAll('.hero[data-co]').forEach(h => {
+    h.hidden = h.dataset.region !== region;
+  });
+  // Auto-select first visible company tab and trigger its hero/section
+  const firstVisible = document.querySelector('.company-tab:not([hidden])');
+  if (firstVisible) selectCompany(firstVisible.dataset.co);
+}
+
+// Company tab click: switch hero + show only that company's section.
+function selectCompany(co) {
+  // If the company belongs to a different region than the active one,
+  // switch the region first so its tab becomes clickable/visible.
+  const target = document.querySelector('.company-tab[data-co="' + co + '"]');
+  if (target) {
+    const targetRegion = target.dataset.region;
+    const activeRegion = document.querySelector('.tab-region.active');
+    if (activeRegion && activeRegion.dataset.region !== targetRegion) {
+      selectRegion(targetRegion);
+      return;
+    }
+  }
+  document.querySelectorAll('.company-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.co === co);
+  });
+  // Hero: show only matching one
+  document.querySelectorAll('.hero[data-co]').forEach(h => {
+    h.hidden = h.dataset.co !== co;
+  });
+  // Section: show only matching one
+  document.querySelectorAll('.company-section').forEach(s => {
+    s.hidden = s.dataset.co !== co;
+  });
+  history.replaceState(null, '', '#' + co);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.tab-region').forEach(tab => {
+  tab.addEventListener('click', () => selectRegion(tab.dataset.region));
+});
+document.querySelectorAll('.company-tab').forEach(tab => {
+  tab.addEventListener('click', () => selectCompany(tab.dataset.co));
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  // Restore state from URL hash if present
+  const hash = location.hash.replace('#', '');
+  if (hash) {
+    const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
+    if (tab) {
+      // Make sure the right region is active
+      const region = tab.dataset.region;
+      document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+      document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
+      document.querySelectorAll('.company-tab').forEach(c => {
+        c.hidden = c.dataset.region !== region;
+      });
+      document.querySelectorAll('.hero[data-co]').forEach(h => {
+        h.hidden = h.dataset.region !== region;
+      });
+      selectCompany(hash);
+    }
+  }
+  // Theme toggle
+  const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.dataset.theme = theme;
+  const btn = document.querySelector('.theme-toggle');
+  if (btn) {
+    btn.textContent = theme === 'dark' ? '☀ 浅色' : '☾ 深色';
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      btn.textContent = next === 'dark' ? '☀ 浅色' : '☾ 深色';
+    });
+  }
+});
+</script>
+</body>
+</html>

@@ -1,46 +1,16 @@
 {
-  "date": "2026-06-27",
+  "date": "2026-06-28",
   "results": [
     {
-      "slug": "carbon-fiber-industry",
-      "prompt": "碳纤维 · 先进复合材料",
-      "news_count": 70,
-      "total_companies": 10,
-      "added": 0,
-      "dropped": [],
-      "ok": true
-    },
-    {
       "slug": "thermal-materials-industry",
-      "prompt": "高导热材料",
-      "news_count": 32,
-      "total_companies": 4,
-      "added": 2,
+      "prompt": "高导热塑料",
+      "news_count": 40,
+      "total_companies": 5,
+      "added": 11,
       "dropped": [
         "bosom",
-        "feirongda"
-      ],
-      "ok": true
-    },
-    {
-      "slug": "new-energy-vehicles-industry",
-      "prompt": "新能源汽车",
-      "news_count": 42,
-      "total_companies": 5,
-      "added": 2,
-      "dropped": [
-        "bmw"
-      ],
-      "ok": true
-    },
-    {
-      "slug": "semiconductor-industry",
-      "prompt": "半导体",
-      "news_count": 74,
-      "total_companies": 9,
-      "added": 8,
-      "dropped": [
-        "intel"
+        "feirongda",
+        "huitong"
       ],
       "ok": true
     }

@@ -713,13 +713,74 @@ footer .mono {
 }
 
 @media (max-width: 960px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 24px; }
-  .news-grid { grid-template-columns: 1fr; }
-  .masthead h1 { font-size: 32px; }
-  .hero-title { font-size: 28px; }
-  .topbar-inner, .masthead-inner, .container { padding-left: 20px; padding-right: 20px; }
-  .ticker { display: none; }
+  /* Topbar — hide meta on small screens, keep brand + theme */
+  .topbar-inner { height: auto; padding: 8px 16px; gap: 10px; flex-wrap: wrap; }
+  .topbar-meta { display: none; }
+  .brand { font-size: 16px; }
+  .brand-mark { width: 22px; height: 22px; font-size: 12px; }
+  .live-pill { font-size: 10px; padding: 3px 8px 3px 6px; }
+
+  /* Masthead — stack title + stats */
+  .masthead-inner { padding: 16px 16px 0; }
+  .masthead-top { flex-direction: column; align-items: flex-start; gap: 12px; padding-bottom: 12px; }
+  .masthead h1 { font-size: 30px; }
+  .masthead .dateline { font-size: 11px; }
+  .masthead-stats { gap: 14px; font-size: 11px; flex-wrap: wrap; }
+
+  /* Section tabs + company tabs — horizontal scroll on small screens */
+  .section-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  button.tab-region { font-size: 15px; padding: 10px 14px 12px; white-space: nowrap; }
+  .company-tabs { overflow-x: auto; flex-wrap: nowrap; padding: 4px 0 8px; -webkit-overflow-scrolling: touch; }
+  button.company-tab { font-size: 13px; padding: 8px 10px; flex-shrink: 0; white-space: nowrap; }
+
+  /* Hero — single column */
+  .hero { grid-template-columns: 1fr; gap: 20px; margin-bottom: 32px; padding-bottom: 24px; }
+  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 20px; }
+  .hero-title { font-size: 24px; line-height: 1.25; }
+  .hero-snippet { font-size: 15px; }
+  .hero-side-item .title { font-size: 14px; }
+
+  /* Summary — narrower numbers */
+  .summary { padding: 20px 18px 16px; margin-bottom: 28px; }
+  .summary-label { font-size: 16px; }
+  .summary-list li { font-size: 14px; gap: 10px; }
+  .summary-list .num { min-width: 16px; font-size: 10px; }
+  .summary-stats { font-size: 11px; gap: 12px; flex-wrap: wrap; }
+
+  /* Company section header — smaller */
+  .company-header { padding: 12px 0; gap: 10px; margin-bottom: 16px; }
+  .company-header .logo { width: 36px; height: 36px; font-size: 15px; }
+  .company-header h2 { font-size: 21px; }
+  .company-header .domain { font-size: 11px; }
+
+  /* News grid — single column, tighter spacing */
+  .news-grid { grid-template-columns: 1fr; gap: 0; }
+  .news-card { padding: 18px 0; }
+  .news-card-time { font-size: 10px; }
+  .news-card-title { font-size: 16px; line-height: 1.35; }
+  .news-card-snippet { font-size: 13px; }
+  .news-card-footer { font-size: 10px; }
+
+  /* Main + container */
+  main { padding: 16px 0 40px; }
+  .container { padding: 0 16px; }
+  footer { padding: 24px 16px; font-size: 12px; }
+}
+
+/* Tiny phones — iPhone SE 375px */
+@media (max-width: 480px) {
+  .masthead h1 { font-size: 26px; }
+  .hero-title { font-size: 21px; }
+  .company-header h2 { font-size: 19px; }
+  .news-card-title { font-size: 15px; }
+  button.tab-region { font-size: 14px; padding: 8px 12px 10px; }
+  button.company-tab { font-size: 12.5px; padding: 7px 9px; }
+  .masthead-stats { gap: 10px; font-size: 10.5px; }
+}
+
+/* Dark mode auto — make sure mobile overrides the data-theme attribute on body/html */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) { color-scheme: dark; }
 }
 </style>
 </head>
@@ -748,9 +809,9 @@ footer .mono {
         <div class="dateline">头部公司最新动态 · 每日更新</div>
       </div>
       <div class="masthead-stats">
-        <span><span class="num">4</span> 行业</span>
-        <span><span class="num">30</span> 公司</span>
-        <span><span class="num">224</span> 新闻</span>
+        <span><span class="num">5</span> 行业</span>
+        <span><span class="num">36</span> 公司</span>
+        <span><span class="num">264</span> 新闻</span>
       </div>
     </div>
   </div>
@@ -770,6 +831,17 @@ footer .mono {
       </a>
     </li>
     <li class="industry-card">
+      <a href="composite-insulator-industry/">
+        <h3>复合绝缘子</h3>
+        <div class="stats">
+          <span><span class="num">5</span> 家公司</span>
+          <span>·</span>
+          <span><span class="num">36</span> 条新闻</span>
+        </div>
+        <time>更新于 2026-06-28</time>
+      </a>
+    </li>
+    <li class="industry-card">
       <a href="new-energy-vehicles-industry/">
         <h3>新能源汽车</h3>
         <div class="stats">
@@ -782,13 +854,13 @@ footer .mono {
     </li>
     <li class="industry-card">
       <a href="thermal-materials-industry/">
-        <h3>高导热材料</h3>
+        <h3>高导热塑料</h3>
         <div class="stats">
-          <span><span class="num">6</span> 家公司</span>
+          <span><span class="num">7</span> 家公司</span>
           <span>·</span>
-          <span><span class="num">40</span> 条新闻</span>
+          <span><span class="num">44</span> 条新闻</span>
         </div>
-        <time>更新于 2026-06-27</time>
+        <time>更新于 2026-06-28</time>
       </a>
     </li>
     <li class="industry-card">

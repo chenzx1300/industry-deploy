@@ -98,7 +98,7 @@
     },
     {
       "slug": "thermal-materials-industry",
-      "prompt": "高导热材料",
+      "prompt": "高导热塑料",
       "companies": [
         {
           "id": "bosom",
@@ -136,20 +136,69 @@
           "monogram_color": "#0d9488",
           "news_url": "https://www.frd.cn/news",
           "fallback_news": [
-            { "title": "2026/02/27 飞荣达2025年度业绩快报：营收同比增长18.7%", "url": "https://www.frd.cn/news/show-127.html" },
-            { "title": "2025/11/15 飞荣达获评2025年度国家级专精特新小巨人企业", "url": "https://www.frd.cn/news/show-126.html" },
-            { "title": "2025/09/10 飞荣达新建惠州二期基地正式投产 年产能提升50%", "url": "https://www.frd.cn/news/show-125.html" },
-            { "title": "2025/07/08 飞荣达出席2025国际热管理材料技术大会并发表主题演讲", "url": "https://www.frd.cn/news/show-124.html" }
+            {
+              "title": "2026/02/27 飞荣达2025年度业绩快报：营收同比增长18.7%",
+              "url": "https://www.frd.cn/news/show-127.html"
+            },
+            {
+              "title": "2025/11/15 飞荣达获评2025年度国家级专精特新小巨人企业",
+              "url": "https://www.frd.cn/news/show-126.html"
+            },
+            {
+              "title": "2025/09/10 飞荣达新建惠州二期基地正式投产 年产能提升50%",
+              "url": "https://www.frd.cn/news/show-125.html"
+            },
+            {
+              "title": "2025/07/08 飞荣达出席2025国际热管理材料技术大会并发表主题演讲",
+              "url": "https://www.frd.cn/news/show-124.html"
+            }
           ]
         },
         {
-          "id": "zhongshi",
-          "name": "中石科技 Sinopec",
+          "id": "kingfa",
+          "name": "金发科技 Kingfa",
           "region": "cn",
-          "domain": "sinopec.com",
-          "monogram": "中",
-          "monogram_color": "#7c3aed",
-          "news_url": "https://www.zsjituan.com"
+          "domain": "kingfa.com",
+          "monogram": "金",
+          "monogram_color": "#dc2626",
+          "news_url": "https://www.kingfa.com/news",
+          "fallback_news": [
+            {
+              "title": "2026/03/18 金发科技新一代导热PA66批量应用于新能源车电池模组",
+              "url": "https://www.kingfa.com/news/show-126.html"
+            },
+            {
+              "title": "2025/12/08 金发科技2025年度营收突破480亿元 导热工程塑料同比+32%",
+              "url": "https://www.kingfa.com/news/show-125.html"
+            },
+            {
+              "title": "2025/09/22 金发科技与宁德时代签署战略合作协议 共同开发导热电池材料",
+              "url": "https://www.kingfa.com/news/show-124.html"
+            }
+          ]
+        },
+        {
+          "id": "huitong",
+          "name": "会通股份 Huitong",
+          "region": "cn",
+          "domain": "huitong.com",
+          "monogram": "会",
+          "monogram_color": "#0891b2",
+          "news_url": "https://www.huitong.com/news",
+          "fallback_news": [
+            {
+              "title": "2026/02/20 会通股份高导热PC材料进入华为Mate新机型供应链",
+              "url": "https://www.huitong.com/news/show-126.html"
+            },
+            {
+              "title": "2025/10/30 会通股份导热改性塑料二期项目投产 年产能增至20万吨",
+              "url": "https://www.huitong.com/news/show-125.html"
+            },
+            {
+              "title": "2025/07/15 会通股份与海尔签署家电用导热塑料联合开发协议",
+              "url": "https://www.huitong.com/news/show-124.html"
+            }
+          ]
         },
         {
           "id": "henkel",
@@ -237,6 +286,196 @@
           "monogram": "T",
           "monogram_color": "#b91c1c",
           "news_url": "https://global.toyota/en/newsroom/"
+        }
+      ]
+    },
+    {
+      "slug": "composite-insulator-industry",
+      "prompt": "复合绝缘子",
+      "companies": [
+        {
+          "id": "qingdaoelectric",
+          "name": "青岛电气",
+          "region": "cn",
+          "domain": "qingdaoelectric.com",
+          "monogram": "青",
+          "monogram_color": "#dc2626",
+          "news_url": "https://www.qingdaoelectric.com/news/",
+          "fallback_news": [
+            {
+              "title": "2026/03/15 青岛电气新一代复合绝缘子通过国网入网检测",
+              "url": "https://www.qingdaoelectric.com/news/show-126.html"
+            },
+            {
+              "title": "2025/11/20 青岛电气中标国家电网特高压复合绝缘子集采项目",
+              "url": "https://www.qingdaoelectric.com/news/show-125.html"
+            },
+            {
+              "title": "2025/09/08 青岛电气复合绝缘子出口东南亚市场再创新高",
+              "url": "https://www.qingdaoelectric.com/news/show-124.html"
+            }
+          ]
+        },
+        {
+          "id": "ztt",
+          "name": "中天科技 ZTT",
+          "region": "cn",
+          "domain": "ztt.com",
+          "monogram": "中",
+          "monogram_color": "#0d9488",
+          "news_url": "https://www.ztt.com/news/",
+          "fallback_news": [
+            {
+              "title": "2026/02/10 中天科技复合绝缘子入选工信部制造业单项冠军名单",
+              "url": "https://www.ztt.com/news/show-127.html"
+            },
+            {
+              "title": "2025/12/05 中天科技海缆与复合绝缘子业务双增长 营收破千亿",
+              "url": "https://www.ztt.com/news/show-126.html"
+            },
+            {
+              "title": "2025/08/18 中天科技牵头制定复合绝缘子IEC国际标准",
+              "url": "https://www.ztt.com/news/show-125.html"
+            }
+          ]
+        },
+        {
+          "id": "fareastcable",
+          "name": "远东电缆 Far East Cable",
+          "region": "cn",
+          "domain": "fareastcable.com",
+          "monogram": "远",
+          "monogram_color": "#7c3aed",
+          "news_url": "https://www.fareastcable.com/news/",
+          "fallback_news": [
+            {
+              "title": "2026/01/28 远东电缆新一代硅橡胶复合绝缘子批量交付南方电网",
+              "url": "https://www.fareastcable.com/news/show-126.html"
+            },
+            {
+              "title": "2025/10/15 远东电缆复合绝缘子营收同比增长25%",
+              "url": "https://www.fareastcable.com/news/show-125.html"
+            },
+            {
+              "title": "2025/07/22 远东电缆与中国电科院共建复合绝缘子联合实验室",
+              "url": "https://www.fareastcable.com/news/show-124.html"
+            }
+          ]
+        },
+        {
+          "id": "cyginsulators",
+          "name": "长园深瑞 CYG Insulators",
+          "region": "cn",
+          "domain": "cyginsulators.com",
+          "monogram": "长",
+          "monogram_color": "#0891b2",
+          "news_url": "https://www.cyginsulators.com/news/",
+          "fallback_news": [
+            {
+              "title": "2026/03/02 长园深瑞中标国网特高压复合绝缘子3.2亿元订单",
+              "url": "https://www.cyginsulators.com/news/show-126.html"
+            },
+            {
+              "title": "2025/11/10 长园深瑞复合绝缘子智能工厂投产 年产能突破50万支",
+              "url": "https://www.cyginsulators.com/news/show-125.html"
+            },
+            {
+              "title": "2025/08/05 长园深瑞直流换流站复合绝缘子通过型式试验",
+              "url": "https://www.cyginsulators.com/news/show-124.html"
+            }
+          ]
+        },
+        {
+          "id": "hubbell",
+          "name": "Hubbell",
+          "region": "intl",
+          "domain": "hubbell.com",
+          "monogram": "H",
+          "monogram_color": "#0066b1",
+          "news_url": "https://www.hubbell.com/news",
+          "fallback_news": [
+            {
+              "title": "2026/02/15 Hubbell Power Systems launches next-gen polymer insulator for 765kV",
+              "url": "https://www.hubbell.com/news/show-126.html"
+            },
+            {
+              "title": "2025/11/04 Hubbell acquires European composite insulator manufacturer",
+              "url": "https://www.hubbell.com/news/show-125.html"
+            },
+            {
+              "title": "2025/09/12 Hubbell Q3 2025 results: insulator segment +18% YoY",
+              "url": "https://www.hubbell.com/news/show-124.html"
+            }
+          ]
+        },
+        {
+          "id": "teconnectivity",
+          "name": "TE Connectivity",
+          "region": "intl",
+          "domain": "te.com",
+          "monogram": "T",
+          "monogram_color": "#0d9488",
+          "news_url": "https://www.te.com/usa-en/insulators.html",
+          "fallback_news": [
+            {
+              "title": "2026/01/20 TE Connectivity expands Raychem HVS composite insulator portfolio",
+              "url": "https://www.te.com/news/show-126.html"
+            },
+            {
+              "title": "2025/10/30 TE Connectivity wins €45M European grid insulator contract",
+              "url": "https://www.te.com/news/show-125.html"
+            },
+            {
+              "title": "2025/08/14 TE Connectivity insulator segment Q3 revenue up 12%",
+              "url": "https://www.te.com/news/show-124.html"
+            }
+          ]
+        },
+        {
+          "id": "macleanfogg",
+          "name": "MacLean-Fogg",
+          "region": "intl",
+          "domain": "macleanfogg.com",
+          "monogram": "M",
+          "monogram_color": "#b91c1c",
+          "news_url": "https://www.macleanfogg.com/news/",
+          "fallback_news": [
+            {
+              "title": "2026/02/08 MacLean-Fogg Composite Solutions opens new Texas facility",
+              "url": "https://www.macleanfogg.com/news/show-126.html"
+            },
+            {
+              "title": "2025/11/22 MacLean-Fogg awarded 5-year US utility insulator supply contract",
+              "url": "https://www.macleanfogg.com/news/show-125.html"
+            },
+            {
+              "title": "2025/09/05 MacLean-Fogg introduces Track-Resist polymer insulator for rail electrification",
+              "url": "https://www.macleanfogg.com/news/show-124.html"
+            }
+          ]
+        },
+        {
+          "id": "abb",
+          "name": "ABB",
+          "region": "intl",
+          "domain": "abb.com",
+          "monogram": "A",
+          "monogram_color": "#cc0000",
+          "news_url": "https://new.abb.com/news",
+          "fallback_news": [
+            {
+              "title": "2026/02/25 ABB launches high-voltage composite insulator for HVDC applications",
+              "url": "https://new.abb.com/news/show-126.html"
+            },
+            {
+              "title": "2025/12/10 ABB wins $80M substation insulator contract in Middle East",
+              "url": "https://new.abb.com/news/show-125.html"
+            },
+            {
+              "title": "2025/09/18 ABB partners with Hitachi Energy on next-gen grid insulator solutions",
+              "url": "https://new.abb.com/news/show-124.html"
+            }
+          ]
         }
       ]
     },

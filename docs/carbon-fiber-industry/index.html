@@ -713,13 +713,74 @@ footer .mono {
 }
 
 @media (max-width: 960px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 24px; }
-  .news-grid { grid-template-columns: 1fr; }
-  .masthead h1 { font-size: 32px; }
-  .hero-title { font-size: 28px; }
-  .topbar-inner, .masthead-inner, .container { padding-left: 20px; padding-right: 20px; }
-  .ticker { display: none; }
+  /* Topbar — hide meta on small screens, keep brand + theme */
+  .topbar-inner { height: auto; padding: 8px 16px; gap: 10px; flex-wrap: wrap; }
+  .topbar-meta { display: none; }
+  .brand { font-size: 16px; }
+  .brand-mark { width: 22px; height: 22px; font-size: 12px; }
+  .live-pill { font-size: 10px; padding: 3px 8px 3px 6px; }
+
+  /* Masthead — stack title + stats */
+  .masthead-inner { padding: 16px 16px 0; }
+  .masthead-top { flex-direction: column; align-items: flex-start; gap: 12px; padding-bottom: 12px; }
+  .masthead h1 { font-size: 30px; }
+  .masthead .dateline { font-size: 11px; }
+  .masthead-stats { gap: 14px; font-size: 11px; flex-wrap: wrap; }
+
+  /* Section tabs + company tabs — horizontal scroll on small screens */
+  .section-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  button.tab-region { font-size: 15px; padding: 10px 14px 12px; white-space: nowrap; }
+  .company-tabs { overflow-x: auto; flex-wrap: nowrap; padding: 4px 0 8px; -webkit-overflow-scrolling: touch; }
+  button.company-tab { font-size: 13px; padding: 8px 10px; flex-shrink: 0; white-space: nowrap; }
+
+  /* Hero — single column */
+  .hero { grid-template-columns: 1fr; gap: 20px; margin-bottom: 32px; padding-bottom: 24px; }
+  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 20px; }
+  .hero-title { font-size: 24px; line-height: 1.25; }
+  .hero-snippet { font-size: 15px; }
+  .hero-side-item .title { font-size: 14px; }
+
+  /* Summary — narrower numbers */
+  .summary { padding: 20px 18px 16px; margin-bottom: 28px; }
+  .summary-label { font-size: 16px; }
+  .summary-list li { font-size: 14px; gap: 10px; }
+  .summary-list .num { min-width: 16px; font-size: 10px; }
+  .summary-stats { font-size: 11px; gap: 12px; flex-wrap: wrap; }
+
+  /* Company section header — smaller */
+  .company-header { padding: 12px 0; gap: 10px; margin-bottom: 16px; }
+  .company-header .logo { width: 36px; height: 36px; font-size: 15px; }
+  .company-header h2 { font-size: 21px; }
+  .company-header .domain { font-size: 11px; }
+
+  /* News grid — single column, tighter spacing */
+  .news-grid { grid-template-columns: 1fr; gap: 0; }
+  .news-card { padding: 18px 0; }
+  .news-card-time { font-size: 10px; }
+  .news-card-title { font-size: 16px; line-height: 1.35; }
+  .news-card-snippet { font-size: 13px; }
+  .news-card-footer { font-size: 10px; }
+
+  /* Main + container */
+  main { padding: 16px 0 40px; }
+  .container { padding: 0 16px; }
+  footer { padding: 24px 16px; font-size: 12px; }
+}
+
+/* Tiny phones — iPhone SE 375px */
+@media (max-width: 480px) {
+  .masthead h1 { font-size: 26px; }
+  .hero-title { font-size: 21px; }
+  .company-header h2 { font-size: 19px; }
+  .news-card-title { font-size: 15px; }
+  button.tab-region { font-size: 14px; padding: 8px 12px 10px; }
+  button.company-tab { font-size: 12.5px; padding: 7px 9px; }
+  .masthead-stats { gap: 10px; font-size: 10.5px; }
+}
+
+/* Dark mode auto — make sure mobile overrides the data-theme attribute on body/html */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) { color-scheme: dark; }
 }
 </style>
 </head>
@@ -888,7 +949,7 @@ footer .mono {
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://money.usnews.com/investing/news/articles/2025-11-06/solvay-open-to-building-rare-earths-plant-in-us-where-support-is-stronger" target="_blank" rel="noopener">Solvay Open to Building Rare Earths Plant in US, Where Support Is Stronger</a></div>
+        <div class="title"><a href="https://money.usnews.com/investing/news/articles/2025-11-06/solvay-open-to-building-rare-earths-plant-in-us-where-support-is-stronger" target="_blank" rel="noopener">Solvay愿在美国建设稀土工厂，该地区支持力度更强</a></div>
       </div>
     
   </div>
@@ -1075,7 +1136,7 @@ footer .mono {
       <span class="domain">toray.com · 国际</span>
     </div>
   </div>
-  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.toray.com/news/article.html?contentId=qggvtmr8" target="_blank" rel="noopener">通过创新理念、技术和产品创造新价值，为社会做出贡献。——东丽</a></li><li><span class="num">02</span><a href="https://www.toray.com/news/article.html?contentId=w0mk4byi" target="_blank" rel="noopener">通过创新理念、技术和产品创造新价值，为社会做出贡献。——东丽</a></li><li><span class="num">03</span><a href="https://finance.yahoo.com/news/bolt-biotherapeutics-inc-provides-global-210500827.html" target="_blank" rel="noopener">--致力于满足实体瘤治疗的未满足需求-- 加利福尼亚州雷德伍德城，2025年2月11日（环球新闻社）-- Bolt Biotherapeutics, Inc. 今日宣布，其与 Toray Industries, Inc. 全球联合开发合作的目标靶点为 Caprin-1，这是一个由 Toray 发现的全新癌症靶点。合作双方正在开发一款靶向 Caprin-1 的 Boltbody™ 免疫刺激抗体偶联物（ISAC），适用于多种实体瘤类型。根据现有的联合开发协议</a></li><li><span class="num">04</span><a href="https://www.asiae.co.kr/en/article/2026062515332665348" target="_blank" rel="noopener">东丽工业欧洲集团子公司东丽纺织品中欧公司（TTCE）宣布在展会上展出了高性能吸音垫材料。</a></li><li><span class="num">05</span><a href="https://www.toray.com/news/article.html?contentId=qmn0u82u" target="_blank" rel="noopener">通过创新理念、技术和产品创造新价值，为社会作出贡献。Toray</a></li></ol><div class="summary-stats"><span>8 条</span><span>Toray 东丽</span></div></div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.toray.com/news/article.html?contentId=qggvtmr8" target="_blank" rel="noopener">通过创新理念、技术和产品创造新价值，为社会做出贡献。——东丽</a></li><li><span class="num">02</span><a href="https://www.toray.com/news/article.html?contentId=w0mk4byi" target="_blank" rel="noopener">通过创新理念、技术和产品创造新价值，为社会做出贡献。——东丽</a></li><li><span class="num">03</span><a href="https://finance.yahoo.com/news/bolt-biotherapeutics-inc-provides-global-210500827.html" target="_blank" rel="noopener">--致力于满足实体瘤治疗的未满足需求-- 加利福尼亚州雷德伍德城,2025年2月11日(环球新闻社)-- Bolt Biotherapeutics, Inc. 今日宣布,其与 Toray Industries, Inc. 全球联合开发合作的目标靶点为 Caprin-1,这是一个由 Toray 发现的全新癌症靶点。合作双方正在开发一款靶向 Caprin-1 的 Boltbody™ 免疫刺激抗体偶联物(ISAC),适用于多种实体瘤类型。根据现有的联合开发协议</a></li><li><span class="num">04</span><a href="https://www.asiae.co.kr/en/article/2026062515332665348" target="_blank" rel="noopener">东丽工业欧洲集团子公司东丽纺织品中欧公司（TTCE）宣布在展会上展出了高性能吸音垫材料。</a></li><li><span class="num">05</span><a href="https://www.toray.com/news/article.html?contentId=qmn0u82u" target="_blank" rel="noopener">通过创新理念、技术和产品创造新价值，为社会作出贡献。Toray</a></li></ol><div class="summary-stats"><span>8 条</span><span>Toray 东丽</span></div></div>
   <div class="news-grid">
 <article class="news-card">
   
@@ -1098,7 +1159,7 @@ footer .mono {
 <article class="news-card">
   
   <h3 class="news-card-title"><a href="https://finance.yahoo.com/news/bolt-biotherapeutics-inc-provides-global-210500827.html" target="_blank" rel="noopener">Bolt Biotherapeutics, Inc. 提供与 Toray Industries, Inc. 全球癌症免疫疗法联合开发的最新进展</a></h3>
-  <p class="news-card-snippet">--致力于满足实体瘤治疗的未满足需求-- 加利福尼亚州雷德伍德城，2025年2月11日（环球新闻社）-- Bolt Biotherapeutics, Inc. 今日宣布，其与 Toray Industries, Inc. 全球联合开发合作的目标靶点为 Caprin-1，这是一个由 Toray 发现的全新癌症靶点。合作双方正在开发一款靶向 Caprin-1 的 Boltbody™ 免疫刺激抗体偶联物（ISAC），适用于多种实体瘤类型。根据现有的联合开发协议</p>
+  <p class="news-card-snippet">--致力于满足实体瘤治疗的未满足需求-- 加利福尼亚州雷德伍德城,2025年2月11日(环球新闻社)-- Bolt Biotherapeutics, Inc. 今日宣布,其与 Toray Industries, Inc. 全球联合开发合作的目标靶点为 Caprin-1,这是一个由 Toray 发现的全新癌症靶点。合作双方正在开发一款靶向 Caprin-1 的 Boltbody™ 免疫刺激抗体偶联物(ISAC),适用于多种实体瘤类型。根据现有的联合开发协议</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>finance.yahoo.com</span>
@@ -1143,7 +1204,7 @@ footer .mono {
 <article class="news-card">
   
   <h3 class="news-card-title"><a href="https://finance.yahoo.com/news/zoltek-announces-agreement-plan-merger-003004257.html" target="_blank" rel="noopener">Zoltek宣布与Toray Industries, Inc.的合并协议与计划</a></h3>
-  <p class="news-card-snippet">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以来的支持。</p>
+  <p class="news-card-snippet">自2021年11月1日起,用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以来的支持。</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>finance.yahoo.com</span>
@@ -1270,7 +1331,7 @@ footer .mono {
       <span class="domain">solvay.com · 国际</span>
     </div>
   </div>
-  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://finance.yahoo.com/news/solvay-essentialco-unveils-strategy-2028-060000616.html" target="_blank" rel="noopener">2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以来的支持。</a></li><li><span class="num">02</span><a href="https://finance.yahoo.com/news/solvay-announces-publication-supplement-information-073000659.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">03</span><a href="https://www.taiwannews.com.tw/en/news/6383802" target="_blank" rel="noopener">欧洲专利局维持Solvay苏打灰回收专利有效</a></li><li><span class="num">04</span><a href="https://www.businesswire.com/news/home/20240326324806/en/Solvay-Strengthens-Its-Customer-Relationships-and-Reduces-Its-Carbon-Footprint-with-Esker" target="_blank" rel="noopener">Esker宣布,全球领先的跨国化工公司Solvay已选择Esker订单管理系统来自动化处理客户订单。</a></li><li><span class="num">05</span><a href="https://money.usnews.com/investing/news/articles/2025-11-06/solvay-open-to-building-rare-earths-plant-in-us-where-support-is-stronger" target="_blank" rel="noopener">Solvay Open to Building Rare Earths Plant in US, Where Support Is Stronger</a></li></ol><div class="summary-stats"><span>8 条</span><span>Solvay 苏威</span></div></div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://finance.yahoo.com/news/solvay-essentialco-unveils-strategy-2028-060000616.html" target="_blank" rel="noopener">2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以来的支持。</a></li><li><span class="num">02</span><a href="https://finance.yahoo.com/news/solvay-announces-publication-supplement-information-073000659.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">03</span><a href="https://www.taiwannews.com.tw/en/news/6383802" target="_blank" rel="noopener">欧洲专利局维持Solvay苏打灰回收专利有效</a></li><li><span class="num">04</span><a href="https://www.businesswire.com/news/home/20240326324806/en/Solvay-Strengthens-Its-Customer-Relationships-and-Reduces-Its-Carbon-Footprint-with-Esker" target="_blank" rel="noopener">Esker宣布，全球领先的跨国化工公司Solvay已选择Esker订单管理系统来自动化处理客户订单。</a></li><li><span class="num">05</span><a href="https://money.usnews.com/investing/news/articles/2025-11-06/solvay-open-to-building-rare-earths-plant-in-us-where-support-is-stronger" target="_blank" rel="noopener">Solvay愿在美国建设稀土工厂，该地区支持力度更强</a></li></ol><div class="summary-stats"><span>8 条</span><span>Solvay 苏威</span></div></div>
   <div class="news-grid">
 <article class="news-card">
   
@@ -1302,7 +1363,7 @@ footer .mono {
 <article class="news-card">
   
   <h3 class="news-card-title"><a href="https://www.businesswire.com/news/home/20240326324806/en/Solvay-Strengthens-Its-Customer-Relationships-and-Reduces-Its-Carbon-Footprint-with-Esker" target="_blank" rel="noopener">Solvay借助Esker加强客户关系并降低碳足迹</a></h3>
-  <p class="news-card-snippet">Esker宣布,全球领先的跨国化工公司Solvay已选择Esker订单管理系统来自动化处理客户订单。</p>
+  <p class="news-card-snippet">Esker宣布，全球领先的跨国化工公司Solvay已选择Esker订单管理系统来自动化处理客户订单。</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>businesswire.com</span>
@@ -1310,7 +1371,7 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://money.usnews.com/investing/news/articles/2025-11-06/solvay-open-to-building-rare-earths-plant-in-us-where-support-is-stronger" target="_blank" rel="noopener">Solvay Open to Building Rare Earths Plant in US, Where Support Is Stronger</a></h3>
+  <h3 class="news-card-title"><a href="https://money.usnews.com/investing/news/articles/2025-11-06/solvay-open-to-building-rare-earths-plant-in-us-where-support-is-stronger" target="_blank" rel="noopener">Solvay愿在美国建设稀土工厂，该地区支持力度更强</a></h3>
   
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
@@ -1542,7 +1603,7 @@ footer .mono {
       <span class="domain">jlhx.com.cn · 中国</span>
     </div>
   </div>
-  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://finance.yahoo.com/news/local-remodeling-business-jl-remodeling-230000245.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">02</span><a href="https://www.motortrend.com/news/jeep-wrangler-jl-vs-jk-whats-different-between-new-and-old" target="_blank" rel="noopener">最新的Jeep Wrangler JL于2018年问世，给所有试驾过它的人留下了深刻印象。但你是否应该从已经表现出色的JK升级而来？一起来看看吧！</a></li><li><span class="num">03</span><a href="https://www.motortrend.com/how-to/jeep-wrangler-jl-problems-and-positives" target="_blank" rel="noopener">由一位拥有41台Jeep Wrangler JL的车主深入分析其问题与优点。</a></li><li><span class="num">04</span><a href="https://seekingalpha.com/symbol/JL" target="_blank" rel="noopener">J-Long Group Limited (JL) 股票的高层次概览。查看 (JL) 实时股价、走势图、新闻、分析、分析师评论等。</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/1992040.html" target="_blank" rel="noopener">苏州沃虎电子科技有限公司（品牌：VOOHU）代理供应的 JL2201B-NC 是一款高性能千兆以太网 PHY 芯片,由景略半导体(JLSemi)设计,专为企业级交换机、路由器和工业通信设备应用开发。该芯片支持 RGMII 和 SGMII MAC 接口,可同时连接铜缆(1000Base-T/100Base-TX/10Base-T)和</a></li></ol><div class="summary-stats"><span>10 条</span><span>吉林化纤 JL Fiber</span></div></div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://finance.yahoo.com/news/local-remodeling-business-jl-remodeling-230000245.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">02</span><a href="https://www.motortrend.com/news/jeep-wrangler-jl-vs-jk-whats-different-between-new-and-old" target="_blank" rel="noopener">最新的Jeep Wrangler JL于2018年问世，给所有试驾过它的人留下了深刻印象。但你是否应该从已经表现出色的JK升级而来？一起来看看吧！</a></li><li><span class="num">03</span><a href="https://www.motortrend.com/how-to/jeep-wrangler-jl-problems-and-positives" target="_blank" rel="noopener">由一位拥有41台Jeep Wrangler JL的车主深入分析其问题与优点。</a></li><li><span class="num">04</span><a href="https://seekingalpha.com/symbol/JL" target="_blank" rel="noopener">J-Long Group Limited (JL) 股票的高层次概览。查看 (JL) 实时股价、走势图、新闻、分析、分析师评论等。</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/1992040.html" target="_blank" rel="noopener">苏州沃虎电子科技有限公司(品牌:VOOHU)代理供应的 JL2201B-NC 是一款高性能千兆以太网 PHY 芯片,由景略半导体(JLSemi)设计,专为企业级交换机、路由器和工业通信设备应用开发。该芯片支持 RGMII 和 SGMII MAC 接口,可同时连接铜缆(1000Base-T/100Base-TX/10Base-T)和</a></li></ol><div class="summary-stats"><span>10 条</span><span>吉林化纤 JL Fiber</span></div></div>
   <div class="news-grid">
 <article class="news-card">
   
@@ -1583,7 +1644,7 @@ footer .mono {
 <article class="news-card">
   
   <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1992040.html" target="_blank" rel="noopener">VOOHU 沃虎电子 景略 PHY 芯片 JL2201B-NC 适用于交换机与工业通信</a></h3>
-  <p class="news-card-snippet">苏州沃虎电子科技有限公司（品牌：VOOHU）代理供应的 JL2201B-NC 是一款高性能千兆以太网 PHY 芯片,由景略半导体(JLSemi)设计,专为企业级交换机、路由器和工业通信设备应用开发。该芯片支持 RGMII 和 SGMII MAC 接口,可同时连接铜缆(1000Base-T/100Base-TX/10Base-T)和</p>
+  <p class="news-card-snippet">苏州沃虎电子科技有限公司(品牌:VOOHU)代理供应的 JL2201B-NC 是一款高性能千兆以太网 PHY 芯片,由景略半导体(JLSemi)设计,专为企业级交换机、路由器和工业通信设备应用开发。该芯片支持 RGMII 和 SGMII MAC 接口,可同时连接铜缆(1000Base-T/100Base-TX/10Base-T)和</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">文章</span>
     <span>eefocus.com</span>
@@ -1627,7 +1688,7 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1960908.html" target="_blank" rel="noopener">RT1050 MCUXpresso IDE下JLINK切换QSPI Flash实操：烧录算法配置方案</a></h3>
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1960908.html" target="_blank" rel="noopener">RT1050 在 MCUXpresso IDE 下通过 JLINK 切换 QSPI Flash 实操：烧录算法配置方案</a></h3>
   <p class="news-card-snippet">NXP MIMXRT1050-EVKB 开发板默认搭载 HyperFlash，Segger JLINK 官方驱动也默认适配该闪存的烧录算法，而实际开发中若需切换为 QSPI Flash 作为程序存储介质，无需修改老旧的 JLinkDevices.xml 配置，仅需在 MCUXpresso IDE 中通过定制化设备名称参数指定 QSPI 烧录算法即可实现快速切换。本文详解基于新版 JLINK 驱动（以 V796b 为例）的烧录算法配置、工程适配及硬件注意事项，实现 RT1050 在 QSPI Flash 上的 JLINK 调试与烧录。</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">文章</span>
@@ -1705,7 +1766,7 @@ footer .mono {
 <article class="news-card">
   
   <h3 class="news-card-title"><a href="https://www.khl.com/events/news/zoomlion-on-its-battery-electric-technology/8038732.article" target="_blank" rel="noopener">中联重科的电池电动技术</a></h3>
-  <p class="news-card-snippet">Julian Buckley在Intermat 2024上拜访了中国机械制造商中联重科，深入了解其电池电动技术。</p>
+  <p class="news-card-snippet">Julian Buckley在Intermat 2024上拜访了中国机械制造商中联重科,深入了解其电池电动技术。</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>khl.com</span>

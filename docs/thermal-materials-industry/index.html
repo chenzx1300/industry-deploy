@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>高导热材料 · 行业雷达</title>
+<title>高导热塑料 · 行业雷达</title>
 <style>
 :root {
   --bg: #ffffff;
@@ -713,13 +713,74 @@ footer .mono {
 }
 
 @media (max-width: 960px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 24px; }
-  .news-grid { grid-template-columns: 1fr; }
-  .masthead h1 { font-size: 32px; }
-  .hero-title { font-size: 28px; }
-  .topbar-inner, .masthead-inner, .container { padding-left: 20px; padding-right: 20px; }
-  .ticker { display: none; }
+  /* Topbar — hide meta on small screens, keep brand + theme */
+  .topbar-inner { height: auto; padding: 8px 16px; gap: 10px; flex-wrap: wrap; }
+  .topbar-meta { display: none; }
+  .brand { font-size: 16px; }
+  .brand-mark { width: 22px; height: 22px; font-size: 12px; }
+  .live-pill { font-size: 10px; padding: 3px 8px 3px 6px; }
+
+  /* Masthead — stack title + stats */
+  .masthead-inner { padding: 16px 16px 0; }
+  .masthead-top { flex-direction: column; align-items: flex-start; gap: 12px; padding-bottom: 12px; }
+  .masthead h1 { font-size: 30px; }
+  .masthead .dateline { font-size: 11px; }
+  .masthead-stats { gap: 14px; font-size: 11px; flex-wrap: wrap; }
+
+  /* Section tabs + company tabs — horizontal scroll on small screens */
+  .section-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  button.tab-region { font-size: 15px; padding: 10px 14px 12px; white-space: nowrap; }
+  .company-tabs { overflow-x: auto; flex-wrap: nowrap; padding: 4px 0 8px; -webkit-overflow-scrolling: touch; }
+  button.company-tab { font-size: 13px; padding: 8px 10px; flex-shrink: 0; white-space: nowrap; }
+
+  /* Hero — single column */
+  .hero { grid-template-columns: 1fr; gap: 20px; margin-bottom: 32px; padding-bottom: 24px; }
+  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 20px; }
+  .hero-title { font-size: 24px; line-height: 1.25; }
+  .hero-snippet { font-size: 15px; }
+  .hero-side-item .title { font-size: 14px; }
+
+  /* Summary — narrower numbers */
+  .summary { padding: 20px 18px 16px; margin-bottom: 28px; }
+  .summary-label { font-size: 16px; }
+  .summary-list li { font-size: 14px; gap: 10px; }
+  .summary-list .num { min-width: 16px; font-size: 10px; }
+  .summary-stats { font-size: 11px; gap: 12px; flex-wrap: wrap; }
+
+  /* Company section header — smaller */
+  .company-header { padding: 12px 0; gap: 10px; margin-bottom: 16px; }
+  .company-header .logo { width: 36px; height: 36px; font-size: 15px; }
+  .company-header h2 { font-size: 21px; }
+  .company-header .domain { font-size: 11px; }
+
+  /* News grid — single column, tighter spacing */
+  .news-grid { grid-template-columns: 1fr; gap: 0; }
+  .news-card { padding: 18px 0; }
+  .news-card-time { font-size: 10px; }
+  .news-card-title { font-size: 16px; line-height: 1.35; }
+  .news-card-snippet { font-size: 13px; }
+  .news-card-footer { font-size: 10px; }
+
+  /* Main + container */
+  main { padding: 16px 0 40px; }
+  .container { padding: 0 16px; }
+  footer { padding: 24px 16px; font-size: 12px; }
+}
+
+/* Tiny phones — iPhone SE 375px */
+@media (max-width: 480px) {
+  .masthead h1 { font-size: 26px; }
+  .hero-title { font-size: 21px; }
+  .company-header h2 { font-size: 19px; }
+  .news-card-title { font-size: 15px; }
+  button.tab-region { font-size: 14px; padding: 8px 12px 10px; }
+  button.company-tab { font-size: 12.5px; padding: 7px 9px; }
+  .masthead-stats { gap: 10px; font-size: 10.5px; }
+}
+
+/* Dark mode auto — make sure mobile overrides the data-theme attribute on body/html */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) { color-scheme: dark; }
 }
 </style>
 </head>
@@ -733,7 +794,7 @@ footer .mono {
       行业雷达
       <span class="live-pill"><span class="live-dot"></span>LIVE</span>
     </div>
-    <div class="ticker"><div class="ticker-track"><span>2026/02/27 飞荣达2025年度业绩快报：营收同比增长18.7%</span><span>2025/11/15 飞荣达获评2025年度国家级专精特新小巨人企业</span><span>2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行</span><span>2025/08/20 企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径</span><span>Allied Biofuels与Sinopec Engineering Group签署FEED+详细工程合同,并可转为EPC合同,在乌兹别克斯坦建设价值61亿美元的SAF和e-SAF项目</span></div></div>
+    <div class="ticker"><div class="ticker-track"><span>2026/02/27 飞荣达2025年度业绩快报：营收同比增长18.7%</span><span>2026/02/20 会通股份高导热PC材料进入华为Mate新机型供应链</span><span>2025/11/15 飞荣达获评2025年度国家级专精特新小巨人企业</span><span>2025/10/30 会通股份导热改性塑料二期项目投产 年产能增至20万吨</span><span>2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行</span></div></div>
     <div class="topbar-meta">
       <span>2026年06月28日 · 周日</span>
       <button class="theme-toggle" aria-label="切换主题">☾ 深色</button>
@@ -744,57 +805,57 @@ footer .mono {
   <div class="masthead-inner">
     <div class="masthead-top">
       <div class="masthead-title-block">
-        <h1>高导热材料</h1>
-        <div class="dateline">2026年06月27日 · 周六 · 第 6 期 · 40 条新闻</div>
+        <h1>高导热塑料</h1>
+        <div class="dateline">2026年06月28日 · 周日 · 第 7 期 · 44 条新闻</div>
       </div>
       <div class="masthead-stats">
-        <span><span class="num">3</span> 中国头部</span>
+        <span><span class="num">4</span> 中国头部</span>
         <span><span class="num">3</span> 国际头部</span>
-        <span><span class="num">40</span> 总新闻</span>
+        <span><span class="num">44</span> 总新闻</span>
       </div>
     </div>
     
 <nav class="section-tabs">
-  <button class="tab-region cn active" data-region="cn">中国头部 <span class="count">3 家</span></button>
+  <button class="tab-region cn active" data-region="cn">中国头部 <span class="count">4 家</span></button>
   <button class="tab-region intl" data-region="intl">国际头部 <span class="count">3 家</span></button>
 </nav>
     
 <div class="company-tabs">
-  <button class="company-tab active" data-co="zhongshi" data-region="cn">中石科技 Sinopec<span class="mono-count">10</span></button><button class="company-tab" data-co="bosom" data-region="cn">本松新材 Bosom<span class="mono-count">4</span></button><button class="company-tab" data-co="feirongda" data-region="cn">飞荣达 Fenghuangda<span class="mono-count">4</span></button>
+  <button class="company-tab active" data-co="kingfa" data-region="cn">金发科技 Kingfa<span class="mono-count">11</span></button><button class="company-tab" data-co="bosom" data-region="cn">本松新材 Bosom<span class="mono-count">4</span></button><button class="company-tab" data-co="feirongda" data-region="cn">飞荣达 Fenghuangda<span class="mono-count">4</span></button><button class="company-tab" data-co="huitong" data-region="cn">会通股份 Huitong<span class="mono-count">3</span></button>
   <button class="company-tab" data-co="henkel" data-region="intl" hidden>汉高 Henkel<span class="mono-count">10</span></button><button class="company-tab" data-co="mmm" data-region="intl" hidden>3M<span class="mono-count">10</span></button><button class="company-tab" data-co="honeywell" data-region="intl" hidden>霍尼韦尔 Honeywell<span class="mono-count">2</span></button>
 </div>
   </div>
 </header>
 <main>
   <div class="container">
-    <div class="heroes"><div class="hero" data-co="zhongshi" data-region="cn">
+    <div class="heroes"><div class="hero" data-co="kingfa" data-region="cn">
 <div class="hero">
   <div class="hero-main">
     
-    <h2 class="hero-title"><a href="https://finance.yahoo.com/energy/articles/allied-biofuels-signs-feed-detailed-154700760.html" target="_blank" rel="noopener">Allied Biofuels与Sinopec Engineering Group签署FEED+详细工程合同,并可转为EPC合同,在乌兹别克斯坦建设价值61亿美元的SAF和e-SAF项目<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">2021年11月1日起,用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
-    <div class="hero-source">finance.yahoo.com</div>
+    <h2 class="hero-title"><a href="https://news.chemnet.com/news-6836.html" target="_blank" rel="noopener">打破垄断：金发科技千吨级PEI（聚醚酰亚胺） pilot 线投产<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">6月24日，金发科技披露，公司千吨级……</p>
+    <div class="hero-source">news.chemnet.com</div>
   </div>
   <div class="hero-side">
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://www.gasworld.com/story/sinopec-awarded-feed-contract-for-huge-uzbekistan-e-fuels-project/2253037.article/" target="_blank" rel="noopener">Sinopec获得乌兹别克斯坦大型电子燃料项目FEED合同</a></div>
+        <div class="title"><a href="https://www.plasticsnews.com/article/20120507/NEWS/305079948/kingfa-expanding-capacity-in-asia" target="_blank" rel="noopener">Kingfa在亚洲扩张产能</a></div>
       </div>
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://www.nasdaq.com/articles/sinopec-sets-up-new-entity-to-expand-refinery-investment-abroad" target="_blank" rel="noopener">Sinopec成立新实体以扩大海外炼油投资</a></div>
+        <div class="title"><a href="https://finance.yahoo.com/news/kind-shareholder-owns-most-kingfa-020333335.html" target="_blank" rel="noopener">哪种股东持有最多 Kingfa Science &amp; Technology (India) Limited (NSE:KINGFA) 股票？</a></div>
       </div>
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://global.chinadaily.com.cn/a/202504/10/WS67f7219da3104d9fd381e82f.html" target="_blank" rel="noopener">Sinopec扩大与Saudi Aramco的合作伙伴关系</a></div>
+        <div class="title"><a href="https://www.livemint.com/market/market-stats/stocks-kingfa-science-and-technolgy-india-share-price-nse-bse-s0003856" target="_blank" rel="noopener">Kingfa Science &amp; Technology (India) Ltd 股价</a></div>
       </div>
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://www.cbc.ca/lite/story/1.1308928" target="_blank" rel="noopener">中国Sinopec收购埃及油田股权</a></div>
+        <div class="title"><a href="https://www.plasticstoday.com/automotive-mobility/kingfa-expanding-in-step-with-new-energy-vehicle-growth-in-china" target="_blank" rel="noopener">金发科技与中国新能源汽车增长同步扩张</a></div>
       </div>
     
   </div>
@@ -810,17 +871,17 @@ footer .mono {
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">以勇气前行：企业如何在企业多元化峰会上塑造多元、公平与包容文化</a></div>
+        <div class="title"><a href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">以勇气前行：企业如何在企业多元化峰会上塑造 DEI 在企业多元化峰会上，全球人才招聘、领导力、学习与文化负责人 Andrea Becher 谈论了企业如何强化归属感文化。influentialmag.co.uk</a></div>
       </div>
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">下载中心 查找可供下载的精选图片和视频素材！了解更多</a></div>
+        <div class="title"><a href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">下载中心 查找可供下载的图片和影像素材！了解更多</a></div>
       </div>
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">新闻稿电子邮件分发列表</a></div>
+        <div class="title"><a href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">新闻稿电子邮件分发列表 想获取最新新闻稿？联系我们以加入我们的分发列表。了解更多</a></div>
       </div>
     
       <div class="hero-side-item">
@@ -833,30 +894,30 @@ footer .mono {
 <div class="hero">
   <div class="hero-main">
     
-    <h2 class="hero-title"><a href="https://www.reuters.com/business/3m-raises-2025-profit-forecast-2025-10-21/" target="_blank" rel="noopener">3M在利润率扩张推动下上调年度利润预期<span class="hero-arrow">↗</span></a></h2>
-    
-    <div class="hero-source">reuters.com</div>
+    <h2 class="hero-title"><a href="https://www.insidermonkey.com/blog/heres-why-3m-mmm-is-among-the-12-most-profitable-sp-500-stocks-to-invest-in-1790663/" target="_blank" rel="noopener">以下是3M(MMM)跻身标普500最赚钱12只股票之列的原因<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">2026年6月23日,3M Company(NYSE:MMM)与Airbus签署了一项关于Airbus A220的长期供应协议。</p>
+    <div class="hero-source">insidermonkey.com</div>
   </div>
   <div class="hero-side">
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://news.3m.com/2026-06-23-3M-and-Airbus-announce-agreement-to-advance-A220-passenger-comfort-and-aircraft-performance-through-advanced-insulation-technology" target="_blank" rel="noopener">3M与空客宣布达成协议，通过先进隔热技术提升A220乘客舒适度与飞机性能</a></div>
+        <div class="title"><a href="https://seekingalpha.com/article/4916512-3m-company-ai-infrastructure-buildout-demand-remains-wait-and-see" target="_blank" rel="noopener">3M Company:AI基础设施建设的需求仍待观望</a></div>
       </div>
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://news.3m.com/2026-06-22-3M-launches-Ask-3M,-an-AI-powered-tool-for-faster-access-to-technical-expertise" target="_blank" rel="noopener">3M推出Ask 3M，一款基于AI的工具，可更快获取专业技术知识</a></div>
+        <div class="title"><a href="https://seekingalpha.com/article/4915332-3m-the-turnaround-is-working-but-i-would-not-chase-it-here" target="_blank" rel="noopener">3M:转型正在起效,但我不会在此追高</a></div>
       </div>
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://www.fool.com/investing/2024/03/23/3m-raises-guidance-and-changes-ceo-is-the-stock-a/" target="_blank" rel="noopener">3M上调业绩指引并更换CEO：股票值得买入吗？</a></div>
+        <div class="title"><a href="https://www.fool.com/investing/2024/03/23/3m-raises-guidance-and-changes-ceo-is-the-stock-a/" target="_blank" rel="noopener">3M上调业绩指引并更换CEO：该股是否值得买入？</a></div>
       </div>
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://www.forbes.com/sites/greatspeculations/2024/09/10/whats-driving-the-rebound-in-3m-stock/" target="_blank" rel="noopener">什么在推动3M股价反弹？</a></div>
+        <div class="title"><a href="https://news.3m.com/The-National-Coalition-of-Certification-Centers-and-3M-award-national-scholarships-to-skilled-trades-students-nationwide" target="_blank" rel="noopener">国家认证中心联盟与3M向全国技术行业学生颁发国家奖学金</a></div>
       </div>
     
   </div>
@@ -864,15 +925,15 @@ footer .mono {
 <div class="hero">
   <div class="hero-main">
     
-    <h2 class="hero-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">六十余载值得信赖的热感测：霍尼韦尔与波音的持续合作<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">尽管航空技术不断加速进步,有一件事始终不变：整个飞机对精确、可靠温度控制的需求。六十多年来,霍尼韦尔一直供应双金属恒温器和温度感测解决方案,帮助监测关键系统中的温度。</p>
+    <h2 class="hero-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">六十余载值得信赖的热感测:Honeywell与波音的持续合作伙伴关系<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">尽管航空技术的进步持续加速,有一件事始终不变:在整个飞机中对精确、可靠温度控制的需求。六十多年来,Honeywell一直提供双金属恒温器和温度感测解决方案,用于监测关键系统中的温度。</p>
     <div class="hero-source">honeywell.com</div>
   </div>
   <div class="hero-side">
     
       <div class="hero-side-item">
         
-        <div class="title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/02/honeywell-and-b2m-solutions-partner-to-expand-operational-insights-from-mobile-assets" target="_blank" rel="noopener">霍尼韦尔与B2M Solutions合作拓展移动资产运营洞察</a></div>
+        <div class="title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/02/honeywell-and-b2m-solutions-partner-to-expand-operational-insights-from-mobile-assets" target="_blank" rel="noopener">霍尼韦尔与 B2M Solutions 合作扩展移动资产生运营洞察</a></div>
       </div>
     
   </div>
@@ -934,110 +995,143 @@ footer .mono {
       </div>
     
   </div>
+</div></div><div class="hero" data-co="huitong" data-region="cn" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">2026-02-20</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.huitong.com/news/show-126.html" target="_blank" rel="noopener">2026/02/20 会通股份高导热PC材料进入华为Mate新机型供应链<span class="hero-arrow">↗</span></a></h2>
+    
+    <div class="hero-source">huitong.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">2025-10-30</span>
+        <div class="title"><a href="https://www.huitong.com/news/show-125.html" target="_blank" rel="noopener">2025/10/30 会通股份导热改性塑料二期项目投产 年产能增至20万吨</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">2025-07-15</span>
+        <div class="title"><a href="https://www.huitong.com/news/show-124.html" target="_blank" rel="noopener">2025/07/15 会通股份与海尔签署家电用导热塑料联合开发协议</a></div>
+      </div>
+    
+  </div>
 </div></div></div>
     <div class="content-area" id="content-area">
       
-<section data-co="zhongshi" data-region="cn" class="company-section">
+<section data-co="kingfa" data-region="cn" class="company-section">
   <div class="company-header">
     <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="44" height="44" rx="6" fill="#7c3aed"/>
-    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">中</text>
+    <rect width="44" height="44" rx="6" fill="#dc2626"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">金</text>
   </svg>
     <div class="name-block">
-      <h2>中石科技 Sinopec</h2>
-      <span class="domain">sinopec.com · 中国</span>
+      <h2>金发科技 Kingfa</h2>
+      <span class="domain">kingfa.com · 中国</span>
     </div>
   </div>
-  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://finance.yahoo.com/energy/articles/allied-biofuels-signs-feed-detailed-154700760.html" target="_blank" rel="noopener">2021年11月1日起,用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">02</span><a href="https://www.gasworld.com/story/sinopec-awarded-feed-contract-for-huge-uzbekistan-e-fuels-project/2253037.article/" target="_blank" rel="noopener">Sinopec获得乌兹别克斯坦大型电子燃料项目FEED合同</a></li><li><span class="num">03</span><a href="https://www.nasdaq.com/articles/sinopec-sets-up-new-entity-to-expand-refinery-investment-abroad" target="_blank" rel="noopener">Sinopec成立新实体以扩大海外炼油投资</a></li><li><span class="num">04</span><a href="https://global.chinadaily.com.cn/a/202504/10/WS67f7219da3104d9fd381e82f.html" target="_blank" rel="noopener">为应对全球对高质量石化产品不断增长的需求,中国石油化工股份有限公司(Sinopec)与Saudi Aramco签署了一份合资框架协议,将在沙特阿拉伯的合资企业中开发一个完全一体化的石化综合体。Sinopec周三表示。</a></li><li><span class="num">05</span><a href="https://www.cbc.ca/lite/story/1.1308928" target="_blank" rel="noopener">中国Sinopec收购埃及油田股权</a></li></ol><div class="summary-stats"><span>10 条</span><span>中石科技 Sinopec</span></div></div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://news.chemnet.com/news-6836.html" target="_blank" rel="noopener">6月24日，金发科技披露，公司千吨级……</a></li><li><span class="num">02</span><a href="https://www.plasticsnews.com/article/20120507/NEWS/305079948/kingfa-expanding-capacity-in-asia" target="_blank" rel="noopener">Kingfa在亚洲扩张产能</a></li><li><span class="num">03</span><a href="https://finance.yahoo.com/news/kind-shareholder-owns-most-kingfa-020333335.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">04</span><a href="https://www.livemint.com/market/market-stats/stocks-kingfa-science-and-technolgy-india-share-price-nse-bse-s0003856" target="_blank" rel="noopener">Kingfa Science &amp; Technology (India) Ltd 今日股价 2026年6月25日：在 NSE/BSE 上实时追踪 Kingfa Science &amp; Technology (India) Ltd 今日股价。查看股票表现、基本面、市值、持股情况、财务报告、年度及季度业绩，以及损益表。</a></li><li><span class="num">05</span><a href="https://www.plasticstoday.com/automotive-mobility/kingfa-expanding-in-step-with-new-energy-vehicle-growth-in-china" target="_blank" rel="noopener">这家中国大型混配料企业还计划在2025年前将中国及海外的塑料回收能力扩大至每年一百万吨。</a></li></ol><div class="summary-stats"><span>11 条</span><span>金发科技 Kingfa</span></div></div>
   <div class="news-grid">
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://finance.yahoo.com/energy/articles/allied-biofuels-signs-feed-detailed-154700760.html" target="_blank" rel="noopener">Allied Biofuels与Sinopec Engineering Group签署FEED+详细工程合同,并可转为EPC合同,在乌兹别克斯坦建设价值61亿美元的SAF和e-SAF项目</a></h3>
-  <p class="news-card-snippet">2021年11月1日起,用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <h3 class="news-card-title"><a href="https://news.chemnet.com/news-6836.html" target="_blank" rel="noopener">打破垄断：金发科技千吨级PEI（聚醚酰亚胺） pilot 线投产</a></h3>
+  <p class="news-card-snippet">6月24日，金发科技披露，公司千吨级……</p>
   <div class="news-card-footer">
-    <span class="news-badge badge-type">文章</span>
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>news.chemnet.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.plasticsnews.com/article/20120507/NEWS/305079948/kingfa-expanding-capacity-in-asia" target="_blank" rel="noopener">Kingfa在亚洲扩张产能</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>plasticsnews.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://finance.yahoo.com/news/kind-shareholder-owns-most-kingfa-020333335.html" target="_blank" rel="noopener">哪种股东持有最多 Kingfa Science &amp; Technology (India) Limited (NSE:KINGFA) 股票？</a></h3>
+  <p class="news-card-snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
     <span>finance.yahoo.com</span>
   </div>
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.gasworld.com/story/sinopec-awarded-feed-contract-for-huge-uzbekistan-e-fuels-project/2253037.article/" target="_blank" rel="noopener">Sinopec获得乌兹别克斯坦大型电子燃料项目FEED合同</a></h3>
-  
-  <div class="news-card-footer">
-    <span class="news-badge badge-type">文章</span>
-    <span>gasworld.com</span>
-  </div>
-</article>
-<article class="news-card">
-  
-  <h3 class="news-card-title"><a href="https://www.nasdaq.com/articles/sinopec-sets-up-new-entity-to-expand-refinery-investment-abroad" target="_blank" rel="noopener">Sinopec成立新实体以扩大海外炼油投资</a></h3>
-  
-  <div class="news-card-footer">
-    <span class="news-badge badge-type">文章</span>
-    <span>nasdaq.com</span>
-  </div>
-</article>
-<article class="news-card">
-  
-  <h3 class="news-card-title"><a href="https://global.chinadaily.com.cn/a/202504/10/WS67f7219da3104d9fd381e82f.html" target="_blank" rel="noopener">Sinopec扩大与Saudi Aramco的合作伙伴关系</a></h3>
-  <p class="news-card-snippet">为应对全球对高质量石化产品不断增长的需求,中国石油化工股份有限公司(Sinopec)与Saudi Aramco签署了一份合资框架协议,将在沙特阿拉伯的合资企业中开发一个完全一体化的石化综合体。Sinopec周三表示。</p>
+  <h3 class="news-card-title"><a href="https://www.livemint.com/market/market-stats/stocks-kingfa-science-and-technolgy-india-share-price-nse-bse-s0003856" target="_blank" rel="noopener">Kingfa Science &amp; Technology (India) Ltd 股价</a></h3>
+  <p class="news-card-snippet">Kingfa Science &amp; Technology (India) Ltd 今日股价 2026年6月25日：在 NSE/BSE 上实时追踪 Kingfa Science &amp; Technology (India) Ltd 今日股价。查看股票表现、基本面、市值、持股情况、财务报告、年度及季度业绩，以及损益表。</p>
   <div class="news-card-footer">
     
-    <span>global.chinadaily.com.cn</span>
+    <span>livemint.com</span>
   </div>
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.cbc.ca/lite/story/1.1308928" target="_blank" rel="noopener">中国Sinopec收购埃及油田股权</a></h3>
-  
+  <h3 class="news-card-title"><a href="https://www.plasticstoday.com/automotive-mobility/kingfa-expanding-in-step-with-new-energy-vehicle-growth-in-china" target="_blank" rel="noopener">金发科技与中国新能源汽车增长同步扩张</a></h3>
+  <p class="news-card-snippet">这家中国大型混配料企业还计划在2025年前将中国及海外的塑料回收能力扩大至每年一百万吨。</p>
   <div class="news-card-footer">
-    <span class="news-badge badge-type">文章</span>
-    <span>cbc.ca</span>
+    
+    <span>plasticstoday.com</span>
   </div>
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.nasdaq.com/press-release/sinopec-puts-largest-gas-storage-cluster-in-north-china-into-operation-providing-10" target="_blank" rel="noopener">Sinopec华北最大天然气储气库群投入运行,提供100亿立方米天然气储存能力</a></h3>
-  <p class="news-card-snippet">--由中国石油化工股份有限公司在中原油田区域建设的卫11储气库于10月18日成功完成首次注气,标志着中国北方最大的地下天然气储气库群正式投入运行。该储气库容量为100.3亿立方米……</p>
-  <div class="news-card-footer">
-    <span class="news-badge badge-type">新闻稿</span>
-    <span>nasdaq.com</span>
-  </div>
-</article>
-<article class="news-card">
-  
-  <h3 class="news-card-title"><a href="https://www.reuters.com/article/markets/commodities/sinopec-to-pay-15-billion-for-parents-oil-gas-assets-idUSL3N0CH08H/" target="_blank" rel="noopener">中石化将以15亿美元收购母公司石油和天然气资产</a></h3>
-  
-  <div class="news-card-footer">
-    <span class="news-badge badge-type">文章</span>
-    <span>reuters.com</span>
-  </div>
-</article>
-<article class="news-card">
-  
-  <h3 class="news-card-title"><a href="https://finance.yahoo.com/news/sinopecs-ziyang-dongfeng-shale-gas-104400547.html" target="_blank" rel="noopener">中石化资阳东风页岩气田探明储量达2356.87亿立方米</a></h3>
-  <p class="news-card-snippet">2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <h3 class="news-card-title"><a href="https://www.plasticsnews.com/article/20140605/NEWS/140609928/kingfa-sees-major-boost-of-pbsa-film-usage" target="_blank" rel="noopener">Kingfa PBSA薄膜用量大幅增长</a></h3>
+  <p class="news-card-snippet">中国数百万英亩农田正在为Kingfa Sci. &amp;amp;&amp;amp; Tech. Co. Ltd.（金发科技）的可降解塑料业务创造机遇。</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
-    <span>finance.yahoo.com</span>
+    <span>plasticsnews.com</span>
   </div>
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://oilprice.com/Latest-Energy-News/World-News/Sinopecs-Earnings-Plunge-amid-Low-Oil-Prices-Weaker-Fuel-Demand.html" target="_blank" rel="noopener">中石化盈利因油价低迷和燃料需求疲软而大幅下滑</a></h3>
-  <p class="news-card-snippet">中国及亚洲最大的炼油商中石化周四公布，受油价和炼油利润率下降以及国内燃料需求疲软影响，其上半年利润下滑36%。</p>
+  <h3 class="news-card-title"><a href="https://www.marketwatch.com/investing/stock/kingfa/financials?countrycode=in" target="_blank" rel="noopener">Kingfa Science &amp; Technology (India) Ltd.</a></h3>
+  
   <div class="news-card-footer">
-    <span class="news-badge badge-type">新闻稿</span>
-    <span>oilprice.com</span>
+    
+    <span>marketwatch.com</span>
   </div>
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.yahoo.com/news/former-sinopec-gas-executive-gets-084652595.html" target="_blank" rel="noopener">中国媒体报道：中石化前燃气高管因受贿被判刑</a></h3>
-  <p class="news-card-snippet">2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这并不影响Yahoo在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <h3 class="news-card-title"><a href="https://www.morningstar.com/stocks/xnse/kingfa/quote" target="_blank" rel="noopener">Kingfa Science and Technology (India) Ltd KINGFA</a></h3>
+  <p class="news-card-snippet">查看最新的 Kingfa Science and Technology (India) Ltd 股票价格（KINGFA:XNSE）、相关新闻、估值、分红等，帮助您做出投资决策。</p>
+  <div class="news-card-footer">
+    
+    <span>morningstar.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-03-18</div>
+  <h3 class="news-card-title"><a href="https://www.kingfa.com/news/show-126.html" target="_blank" rel="noopener">2026/03/18 金发科技新一代导热PA66批量应用于新能源车电池模组</a></h3>
+  
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
-    <span>yahoo.com</span>
+    <span>kingfa.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-12-08</div>
+  <h3 class="news-card-title"><a href="https://www.kingfa.com/news/show-125.html" target="_blank" rel="noopener">2025/12/08 金发科技2025年度营收突破480亿元 导热工程塑料同比+32%</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>kingfa.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-09-22</div>
+  <h3 class="news-card-title"><a href="https://www.kingfa.com/news/show-124.html" target="_blank" rel="noopener">2025/09/22 金发科技与宁德时代签署战略合作协议 共同开发导热电池材料</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>kingfa.com</span>
   </div>
 </article></div>
 </section>
@@ -1052,7 +1146,7 @@ footer .mono {
       <span class="domain">henkel.com · 国际</span>
     </div>
   </div>
-  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://finance.yahoo.com/sectors/technology/articles/henkel-announces-2030-sustainability-targets-120000557.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">02</span><a href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">以勇气前行：企业如何在企业多元化峰会上塑造多元、公平与包容文化</a></li><li><span class="num">03</span><a href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">下载中心为记者提供 Henkel 最新图片、电视视频素材以及最新出版物的下载服务。</a></li><li><span class="num">04</span><a href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">订阅新闻稿分发列表</a></li><li><span class="num">05</span><a href="https://finance.yahoo.com/news/henkel-buys-laundry-care-firm-051115368.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li></ol><div class="summary-stats"><span>10 条</span><span>汉高 Henkel</span></div></div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://finance.yahoo.com/sectors/technology/articles/henkel-announces-2030-sustainability-targets-120000557.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">02</span><a href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">以勇气前行：企业如何在企业多元化峰会上塑造 DEI 在企业多元化峰会上，全球人才招聘、领导力、学习与文化负责人 Andrea Becher 谈论了企业如何强化归属感文化。influentialmag.co.uk</a></li><li><span class="num">03</span><a href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">下载中心为记者提供图片和电视影像素材，以及汉高（Henkel）的最新出版物供下载。</a></li><li><span class="num">04</span><a href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">订阅新闻分发列表</a></li><li><span class="num">05</span><a href="https://finance.yahoo.com/news/henkel-buys-laundry-care-firm-051115368.html" target="_blank" rel="noopener">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这不影响Yahoo在全球其他地方的产品及服务。感谢您一直以来的支持。</a></li></ol><div class="summary-stats"><span>10 条</span><span>汉高 Henkel</span></div></div>
   <div class="news-grid">
 <article class="news-card">
   
@@ -1065,7 +1159,7 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">以勇气前行：企业如何在企业多元化峰会上塑造多元、公平与包容文化</a></h3>
+  <h3 class="news-card-title"><a href="https://influentialmag.co.uk/dei-now-personal-responsibility-is-required/" target="_blank" rel="noopener">以勇气前行：企业如何在企业多元化峰会上塑造 DEI 在企业多元化峰会上，全球人才招聘、领导力、学习与文化负责人 Andrea Becher 谈论了企业如何强化归属感文化。influentialmag.co.uk</a></h3>
   
   <div class="news-card-footer">
     
@@ -1074,8 +1168,8 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">下载中心 查找可供下载的精选图片和视频素材！了解更多</a></h3>
-  <p class="news-card-snippet">下载中心为记者提供 Henkel 最新图片、电视视频素材以及最新出版物的下载服务。</p>
+  <h3 class="news-card-title"><a href="https://www.henkel.com/press-and-media/download-center" target="_blank" rel="noopener">下载中心 查找可供下载的图片和影像素材！了解更多</a></h3>
+  <p class="news-card-snippet">下载中心为记者提供图片和电视影像素材，以及汉高（Henkel）的最新出版物供下载。</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>henkel.com</span>
@@ -1083,8 +1177,8 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">新闻稿电子邮件分发列表</a></h3>
-  <p class="news-card-snippet">订阅新闻稿分发列表</p>
+  <h3 class="news-card-title"><a href="https://www.henkel.com/press-and-media/press-distribution-list-form" target="_blank" rel="noopener">新闻稿电子邮件分发列表 想获取最新新闻稿？联系我们以加入我们的分发列表。了解更多</a></h3>
+  <p class="news-card-snippet">订阅新闻分发列表</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>henkel.com</span>
@@ -1093,7 +1187,7 @@ footer .mono {
 <article class="news-card">
   
   <h3 class="news-card-title"><a href="https://finance.yahoo.com/news/henkel-buys-laundry-care-firm-051115368.html" target="_blank" rel="noopener">汉高以36亿美元收购洗衣护理公司Sun Products</a></h3>
-  <p class="news-card-snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <p class="news-card-snippet">自2021年11月1日起，用户将无法从中国大陆使用Yahoo的产品与服务。这不影响Yahoo在全球其他地方的产品及服务。感谢您一直以来的支持。</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>finance.yahoo.com</span>
@@ -1101,8 +1195,8 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.thehindubusinessline.com/companies/henkel-names-pradhyumna-ingleascountry-president-for-india/article71145340.ece" target="_blank" rel="noopener">汉高任命 Pradhyumna Ingle 为印度区总裁</a></h3>
-  <p class="news-card-snippet">汉高已任命 Pradhyumna Ingle 为印度区总裁，将印度视为其具有重要战略意义的市场。</p>
+  <h3 class="news-card-title"><a href="https://www.thehindubusinessline.com/companies/henkel-names-pradhyumna-ingleascountry-president-for-india/article71145340.ece" target="_blank" rel="noopener">汉高任命 Pradhyumna Ingle 为印度国家总裁</a></h3>
+  <p class="news-card-snippet">汉高已任命 Pradhyumna Ingle 为印度国家总裁,印度被视为其战略重要市场之一。</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">文章</span>
     <span>thehindubusinessline.com</span>
@@ -1110,7 +1204,7 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.yahoo.com/lifestyle/henkel-strategic-review-073059525.html" target="_blank" rel="noopener">汉高：战略回顾</a></h3>
+  <h3 class="news-card-title"><a href="https://www.yahoo.com/lifestyle/henkel-strategic-review-073059525.html" target="_blank" rel="noopener">Henkel: A Strategic Review</a></h3>
   <p class="news-card-snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
   <div class="news-card-footer">
     
@@ -1119,8 +1213,17 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.fortuneindia.com/business-news/henkel-names-pradhyumna-ingle-india-president-as-global-adhesives-major-sharpens-focus-on-high-growth-market/144944" target="_blank" rel="noopener">汉高任命Pradhyumna Ingle为印度区总裁,全球胶粘剂巨头加大高增长市场布局</a></h3>
-  <p class="news-card-snippet">汉高任命Pradhyumna Ingle为印度国家总裁,标志着公司将更加聚焦于增长最快的市场之一。Ingle常驻印度新孟买(Navi Mumbai),将在印度基础设施、制造业和消费品行业加速发展的背景下,推动胶粘剂及工业技术业务的增长、创新和可持续扩张。</p>
+  <h3 class="news-card-title"><a href="https://finance.yahoo.com/news/2-henkel-cut-2-000-062213999.html" target="_blank" rel="noopener">UPDATE 3-Henkel to cut 2,000 jobs in face of rising costs, slow demand</a></h3>
+  <p class="news-card-snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>finance.yahoo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.fortuneindia.com/business-news/henkel-names-pradhyumna-ingle-india-president-as-global-adhesives-major-sharpens-focus-on-high-growth-market/144944" target="_blank" rel="noopener">汉高任命 Pradhyumna Ingle 为印度总裁，全球胶粘剂巨头聚焦高增长市场</a></h3>
+  <p class="news-card-snippet">汉高任命 Pradhyumna Ingle 为印度国家总裁，彰显其对增长最快市场之一的进一步聚焦。Ingle 总部位于 Navi Mumbai，将随着印度基础设施、制造业和消费行业的加速发展，推动胶粘剂及工业技术业务的增长、创新和可持续扩张。</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>fortuneindia.com</span>
@@ -1128,20 +1231,11 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.exchange4media.com/people-movement-news/henkel-appoints-pradhyumna-ingle-as-country-president-for-india-155770.html" target="_blank" rel="noopener">Pradhyumna Ingle就任汉高印度区总裁</a></h3>
+  <h3 class="news-card-title"><a href="https://www.exchange4media.com/people-movement-news/henkel-appoints-pradhyumna-ingle-as-country-president-for-india-155770.html" target="_blank" rel="noopener">Pradhyumna Ingle就任汉高印度区国家总裁</a></h3>
   
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>exchange4media.com</span>
-  </div>
-</article>
-<article class="news-card">
-  
-  <h3 class="news-card-title"><a href="https://seekingalpha.com/article/4886093-wall-street-breakfast-podcast-henkel-adds-shine-with-olaplex" target="_blank" rel="noopener">华尔街早餐播客：汉高收购Olaplex，增添亮色</a></h3>
-  <p class="news-card-snippet">Olaplex将被汉高以14亿美元收购；盘前股价飙升。捷蓝航空因相关报道而上涨</p>
-  <div class="news-card-footer">
-    <span class="news-badge badge-type">文章</span>
-    <span>seekingalpha.com</span>
   </div>
 </article></div>
 </section>
@@ -1156,8 +1250,53 @@ footer .mono {
       <span class="domain">3m.com · 国际</span>
     </div>
   </div>
-  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.reuters.com/business/3m-raises-2025-profit-forecast-2025-10-21/" target="_blank" rel="noopener">3M在利润率扩张推动下上调年度利润预期</a></li><li><span class="num">02</span><a href="https://news.3m.com/2026-06-23-3M-and-Airbus-announce-agreement-to-advance-A220-passenger-comfort-and-aircraft-performance-through-advanced-insulation-technology" target="_blank" rel="noopener">扩大合作将为热学与声学隔热解决方案提供支持，提升A220乘客体验。明尼苏达州圣保罗，2026年6月23日/PRNewswire/——3M与空客（全球领先的……）</a></li><li><span class="num">03</span><a href="https://news.3m.com/2026-06-22-3M-launches-Ask-3M,-an-AI-powered-tool-for-faster-access-to-technical-expertise" target="_blank" rel="noopener">新数字助手可帮助客户评估3M材料、比较选择并解决应用挑战。明尼苏达州圣保罗，2026年6月22日/PRNewswire/ -- 3M推出了Ask 3M，一款全新的……</a></li><li><span class="num">04</span><a href="https://www.fool.com/investing/2024/03/23/3m-raises-guidance-and-changes-ceo-is-the-stock-a/" target="_blank" rel="noopener">这家工业集团管理层近期向投资者传递了一些利好消息。</a></li><li><span class="num">05</span><a href="https://www.forbes.com/sites/greatspeculations/2024/09/10/whats-driving-the-rebound-in-3m-stock/" target="_blank" rel="noopener">3M股价在2022年6月美联储开始加息前约为97美元，目前已从此水平反弹32%。</a></li></ol><div class="summary-stats"><span>10 条</span><span>3M</span></div></div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.insidermonkey.com/blog/heres-why-3m-mmm-is-among-the-12-most-profitable-sp-500-stocks-to-invest-in-1790663/" target="_blank" rel="noopener">2026年6月23日,3M Company(NYSE:MMM)与Airbus签署了一项关于Airbus A220的长期供应协议。</a></li><li><span class="num">02</span><a href="https://seekingalpha.com/article/4916512-3m-company-ai-infrastructure-buildout-demand-remains-wait-and-see" target="_blank" rel="noopener">我上次报道3M(MMM)是在2025年7月的一篇文章中,文章标题为《3M Company:仍在调整Solventum的分拆》。我给予其Hold评级,理由是增长存在不确定性以及</a></li><li><span class="num">03</span><a href="https://seekingalpha.com/article/4915332-3m-the-turnaround-is-working-but-i-would-not-chase-it-here" target="_blank" rel="noopener">工业股3M:转型正在起效,但我不会在此追高 2026年6月16日 上午10:27 ET 3M Company (MMM) 股票,MMMM:CA 股票 GT Research 72 关注者 关注 5 分享 保存 播放 (10分钟) 评论 (3) 摘要 第一季度表现喜忧参半,报告显示……</a></li><li><span class="num">04</span><a href="https://www.fool.com/investing/2024/03/23/3m-raises-guidance-and-changes-ceo-is-the-stock-a/" target="_blank" rel="noopener">这家工业集团管理层近日为投资者带来了利好消息。</a></li><li><span class="num">05</span><a href="https://news.3m.com/The-National-Coalition-of-Certification-Centers-and-3M-award-national-scholarships-to-skilled-trades-students-nationwide" target="_blank" rel="noopener">国家认证中心联盟（NC3）与3M安全和工业业务部门合作，宣布了2026年技术行业——3M变革性……</a></li></ol><div class="summary-stats"><span>10 条</span><span>3M</span></div></div>
   <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.insidermonkey.com/blog/heres-why-3m-mmm-is-among-the-12-most-profitable-sp-500-stocks-to-invest-in-1790663/" target="_blank" rel="noopener">以下是3M(MMM)跻身标普500最赚钱12只股票之列的原因</a></h3>
+  <p class="news-card-snippet">2026年6月23日,3M Company(NYSE:MMM)与Airbus签署了一项关于Airbus A220的长期供应协议。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>insidermonkey.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://seekingalpha.com/article/4916512-3m-company-ai-infrastructure-buildout-demand-remains-wait-and-see" target="_blank" rel="noopener">3M Company:AI基础设施建设的需求仍待观望</a></h3>
+  <p class="news-card-snippet">我上次报道3M(MMM)是在2025年7月的一篇文章中,文章标题为《3M Company:仍在调整Solventum的分拆》。我给予其Hold评级,理由是增长存在不确定性以及</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>seekingalpha.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://seekingalpha.com/article/4915332-3m-the-turnaround-is-working-but-i-would-not-chase-it-here" target="_blank" rel="noopener">3M:转型正在起效,但我不会在此追高</a></h3>
+  <p class="news-card-snippet">工业股3M:转型正在起效,但我不会在此追高 2026年6月16日 上午10:27 ET 3M Company (MMM) 股票,MMMM:CA 股票 GT Research 72 关注者 关注 5 分享 保存 播放 (10分钟) 评论 (3) 摘要 第一季度表现喜忧参半,报告显示……</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>seekingalpha.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.fool.com/investing/2024/03/23/3m-raises-guidance-and-changes-ceo-is-the-stock-a/" target="_blank" rel="noopener">3M上调业绩指引并更换CEO：该股是否值得买入？</a></h3>
+  <p class="news-card-snippet">这家工业集团管理层近日为投资者带来了利好消息。</p>
+  <div class="news-card-footer">
+    
+    <span>fool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://news.3m.com/The-National-Coalition-of-Certification-Centers-and-3M-award-national-scholarships-to-skilled-trades-students-nationwide" target="_blank" rel="noopener">国家认证中心联盟与3M向全国技术行业学生颁发国家奖学金</a></h3>
+  <p class="news-card-snippet">国家认证中心联盟（NC3）与3M安全和工业业务部门合作，宣布了2026年技术行业——3M变革性……</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>news.3m.com</span>
+  </div>
+</article>
 <article class="news-card">
   
   <h3 class="news-card-title"><a href="https://www.reuters.com/business/3m-raises-2025-profit-forecast-2025-10-21/" target="_blank" rel="noopener">3M在利润率扩张推动下上调年度利润预期</a></h3>
@@ -1169,8 +1308,8 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://news.3m.com/2026-06-23-3M-and-Airbus-announce-agreement-to-advance-A220-passenger-comfort-and-aircraft-performance-through-advanced-insulation-technology" target="_blank" rel="noopener">3M与空客宣布达成协议，通过先进隔热技术提升A220乘客舒适度与飞机性能</a></h3>
-  <p class="news-card-snippet">扩大合作将为热学与声学隔热解决方案提供支持，提升A220乘客体验。明尼苏达州圣保罗，2026年6月23日/PRNewswire/——3M与空客（全球领先的……）</p>
+  <h3 class="news-card-title"><a href="https://news.3m.com/2026-06-23-3M-and-Airbus-announce-agreement-to-advance-A220-passenger-comfort-and-aircraft-performance-through-advanced-insulation-technology" target="_blank" rel="noopener">3M与Airbus宣布达成协议,通过先进隔热技术提升A220乘客舒适度与飞机性能</a></h3>
+  <p class="news-card-snippet">扩大合作将为热学与声学隔热解决方案提供支持,以提升A220乘客体验。明尼苏达州圣保罗,2026年6月23日/PRNewswire/ -- 3M与Airbus(全球领先的……)达成协议</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>news.3m.com</span>
@@ -1178,20 +1317,11 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://news.3m.com/2026-06-22-3M-launches-Ask-3M,-an-AI-powered-tool-for-faster-access-to-technical-expertise" target="_blank" rel="noopener">3M推出Ask 3M，一款基于AI的工具，可更快获取专业技术知识</a></h3>
-  <p class="news-card-snippet">新数字助手可帮助客户评估3M材料、比较选择并解决应用挑战。明尼苏达州圣保罗，2026年6月22日/PRNewswire/ -- 3M推出了Ask 3M，一款全新的……</p>
+  <h3 class="news-card-title"><a href="https://news.3m.com/2026-06-22-3M-launches-Ask-3M,-an-AI-powered-tool-for-faster-access-to-technical-expertise" target="_blank" rel="noopener">3M推出Ask 3M，一款由AI驱动的工具，可更快获取技术专长</a></h3>
+  <p class="news-card-snippet">全新数字助手帮助客户评估3M材料、比较方案并解决应用挑战 明尼苏达州圣保罗,2026年6月22日/PRNewswire/ -- 3M推出了Ask 3M,一款全新……</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>news.3m.com</span>
-  </div>
-</article>
-<article class="news-card">
-  
-  <h3 class="news-card-title"><a href="https://www.fool.com/investing/2024/03/23/3m-raises-guidance-and-changes-ceo-is-the-stock-a/" target="_blank" rel="noopener">3M上调业绩指引并更换CEO：股票值得买入吗？</a></h3>
-  <p class="news-card-snippet">这家工业集团管理层近期向投资者传递了一些利好消息。</p>
-  <div class="news-card-footer">
-    
-    <span>fool.com</span>
   </div>
 </article>
 <article class="news-card">
@@ -1211,42 +1341,6 @@ footer .mono {
     <span class="news-badge badge-type">新闻稿</span>
     <span>nbcnews.com</span>
   </div>
-</article>
-<article class="news-card">
-  
-  <h3 class="news-card-title"><a href="https://businessfacilities.com/3m-company-investing-470m-in-east-tennessee-expansion/" target="_blank" rel="noopener">3M公司向东田纳西扩张投资4.7亿美元</a></h3>
-  
-  <div class="news-card-footer">
-    
-    <span>businessfacilities.com</span>
-  </div>
-</article>
-<article class="news-card">
-  
-  <h3 class="news-card-title"><a href="https://news.3m.com/The-National-Coalition-of-Certification-Centers-and-3M-award-national-scholarships-to-skilled-trades-students-nationwide" target="_blank" rel="noopener">全国认证中心联盟与3M向全美技术行业学生颁发全国奖学金</a></h3>
-  <p class="news-card-snippet">全国认证中心联盟（NC3）携手3M安全与工业业务部门，公布了2026年技术行业——3M变革性奖学金的获奖名单……</p>
-  <div class="news-card-footer">
-    <span class="news-badge badge-type">新闻稿</span>
-    <span>news.3m.com</span>
-  </div>
-</article>
-<article class="news-card">
-  
-  <h3 class="news-card-title"><a href="https://seekingalpha.com/article/4916512-3m-company-ai-infrastructure-buildout-demand-remains-wait-and-see" target="_blank" rel="noopener">3M公司：AI基础设施建设需求仍持观望态度</a></h3>
-  <p class="news-card-snippet">我上次报道3M(MMM)是在2025年7月,文章标题为&quot;3M公司：仍在适应Solventum的分拆&quot;。我给予其持有评级,理由是增长不确定性以及</p>
-  <div class="news-card-footer">
-    <span class="news-badge badge-type">文章</span>
-    <span>seekingalpha.com</span>
-  </div>
-</article>
-<article class="news-card">
-  
-  <h3 class="news-card-title"><a href="https://seekingalpha.com/article/4915332-3m-the-turnaround-is-working-but-i-would-not-chase-it-here" target="_blank" rel="noopener">3M：转型正在奏效，但我不会在此追高</a></h3>
-  <p class="news-card-snippet">工业板块3M：转型正在奏效，但我不会在此追高 2026年6月16日 上午10:27 ET 3M Company (MMM) Stock, MMMM:CA Stock GT Research 72 Followers Follow 5 Share Save Play (10min) Comments (3) 摘要 第一季度表现喜忧参半，报告显示……</p>
-  <div class="news-card-footer">
-    <span class="news-badge badge-type">文章</span>
-    <span>seekingalpha.com</span>
-  </div>
 </article></div>
 </section>
 <section data-co="honeywell" data-region="intl" class="company-section" hidden>
@@ -1260,12 +1354,12 @@ footer .mono {
       <span class="domain">honeywell.com · 国际</span>
     </div>
   </div>
-  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">尽管航空技术不断加速进步,有一件事始终不变：整个飞机对精确、可靠温度控制的需求。六十多年来,霍尼韦尔一直供应双金属恒温器和温度感测解决方案,帮助监测关键系统中的温度。</a></li><li><span class="num">02</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/02/honeywell-and-b2m-solutions-partner-to-expand-operational-insights-from-mobile-assets" target="_blank" rel="noopener">将B2M Elemez软件与霍尼韦尔Operational Intelligence集成，可拓展移动设备洞察与分析能力，同时为客户提供灵活性</a></li></ol><div class="summary-stats"><span>2 条</span><span>霍尼韦尔 Honeywell</span></div></div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">尽管航空技术的进步持续加速,有一件事始终不变:在整个飞机中对精确、可靠温度控制的需求。六十多年来,Honeywell一直提供双金属恒温器和温度感测解决方案,用于监测关键系统中的温度。</a></li><li><span class="num">02</span><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/02/honeywell-and-b2m-solutions-partner-to-expand-operational-insights-from-mobile-assets" target="_blank" rel="noopener">B2M Elemez 软件与 Honeywell Operational Intelligence 的集成拓展了移动设备洞察与分析能力,同时也为客户提供了灵活性</a></li></ol><div class="summary-stats"><span>2 条</span><span>霍尼韦尔 Honeywell</span></div></div>
   <div class="news-grid">
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">六十余载值得信赖的热感测：霍尼韦尔与波音的持续合作</a></h3>
-  <p class="news-card-snippet">尽管航空技术不断加速进步,有一件事始终不变：整个飞机对精确、可靠温度控制的需求。六十多年来,霍尼韦尔一直供应双金属恒温器和温度感测解决方案,帮助监测关键系统中的温度。</p>
+  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/06/more-than-six-decades-of-trusted-thermal-sensing" target="_blank" rel="noopener">六十余载值得信赖的热感测:Honeywell与波音的持续合作伙伴关系</a></h3>
+  <p class="news-card-snippet">尽管航空技术的进步持续加速,有一件事始终不变:在整个飞机中对精确、可靠温度控制的需求。六十多年来,Honeywell一直提供双金属恒温器和温度感测解决方案,用于监测关键系统中的温度。</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>honeywell.com</span>
@@ -1273,8 +1367,8 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/02/honeywell-and-b2m-solutions-partner-to-expand-operational-insights-from-mobile-assets" target="_blank" rel="noopener">霍尼韦尔与B2M Solutions合作拓展移动资产运营洞察</a></h3>
-  <p class="news-card-snippet">将B2M Elemez软件与霍尼韦尔Operational Intelligence集成，可拓展移动设备洞察与分析能力，同时为客户提供灵活性</p>
+  <h3 class="news-card-title"><a href="https://www.honeywell.com/us/en/news/featured-stories/2026/02/honeywell-and-b2m-solutions-partner-to-expand-operational-insights-from-mobile-assets" target="_blank" rel="noopener">霍尼韦尔与 B2M Solutions 合作扩展移动资产生运营洞察</a></h3>
+  <p class="news-card-snippet">B2M Elemez 软件与 Honeywell Operational Intelligence 的集成拓展了移动设备洞察与分析能力,同时也为客户提供了灵活性</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>honeywell.com</span>
@@ -1381,12 +1475,53 @@ footer .mono {
   </div>
 </article></div>
 </section>
+<section data-co="huitong" data-region="cn" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0891b2"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">会</text>
+  </svg>
+    <div class="name-block">
+      <h2>会通股份 Huitong</h2>
+      <span class="domain">huitong.com · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.huitong.com/news/show-126.html" target="_blank" rel="noopener">2026/02/20 会通股份高导热PC材料进入华为Mate新机型供应链</a></li><li><span class="num">02</span><a href="https://www.huitong.com/news/show-125.html" target="_blank" rel="noopener">2025/10/30 会通股份导热改性塑料二期项目投产 年产能增至20万吨</a></li><li><span class="num">03</span><a href="https://www.huitong.com/news/show-124.html" target="_blank" rel="noopener">2025/07/15 会通股份与海尔签署家电用导热塑料联合开发协议</a></li></ol><div class="summary-stats"><span>3 条</span><span>会通股份 Huitong</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-02-20</div>
+  <h3 class="news-card-title"><a href="https://www.huitong.com/news/show-126.html" target="_blank" rel="noopener">2026/02/20 会通股份高导热PC材料进入华为Mate新机型供应链</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>huitong.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-10-30</div>
+  <h3 class="news-card-title"><a href="https://www.huitong.com/news/show-125.html" target="_blank" rel="noopener">2025/10/30 会通股份导热改性塑料二期项目投产 年产能增至20万吨</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>huitong.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-07-15</div>
+  <h3 class="news-card-title"><a href="https://www.huitong.com/news/show-124.html" target="_blank" rel="noopener">2025/07/15 会通股份与海尔签署家电用导热塑料联合开发协议</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>huitong.com</span>
+  </div>
+</article></div>
+</section>
     </div>
   </div>
 </main>
 <footer>
   行业雷达 · 头部公司新闻聚合 · 数据来自各公司新闻中心 · 仅供研究参考<br>
-  <span class="mono">构建于 2026-06-27 · GitHub Pages</span>
+  <span class="mono">构建于 2026-06-28 · GitHub Pages</span>
 </footer>
 <script>
 // Region tab click: filter company tabs + content area to that region.
