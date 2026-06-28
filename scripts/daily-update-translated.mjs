@@ -31,9 +31,11 @@ function run(label, cmd, args) {
 run('Step 1/5 — Incremental fetch + dedup + stale-drop', 'node', ['scripts/incremental-update.mjs']);
 run('Step 1/5 — Incremental fetch + dedup + stale-drop', 'node', ['scripts/incremental-update.mjs']);
 run('Step 2/5 — Re-seed fallback_news (drop Bing misclassified)', 'node', ['scripts/seed-fallbacks.mjs']);
-run('Step 3/5 — Strip bot-block / placeholder snippets', 'node', ['scripts/clean-news.mjs']);
+run('Step 3/5 — Strip bot-block / placeholder URLs', 'node', ['scripts/clean-news.mjs']);
+run('Step 3b/5 — Replace placeholder URLs with company press release page', 'node', ['scripts/clean-placeholder-urls.mjs']);
 run('Step 4/5 — Translate English to Chinese', 'node', ['scripts/translate-news.mjs']);
-run('Step 5/5 — Re-render HTML from translated JSON', 'node', ['scripts/render-from-json.mjs']);
+run('Step 5/5 — Validate links + Re-render HTML from translated JSON', 'node', ['scripts/validate-links.mjs']);
+run('Step 5b/5 — Re-render HTML', 'node', ['scripts/render-from-json.mjs']);
 
 console.log(`
 ╔═══════════════════════════════════════════════════════════════════════╗

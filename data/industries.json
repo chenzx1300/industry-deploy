@@ -38,7 +38,7 @@
           "domain": "solvay.com",
           "monogram": "S",
           "monogram_color": "#0ea5e9",
-          "news_url": "https://www.solvay.com/en/"
+          "news_url": "https://www.solvay.com/en/press-releases"
         },
         {
           "id": "jushi",
@@ -103,7 +103,7 @@
           "domain": "bosomchina.com",
           "monogram": "本",
           "monogram_color": "#dc2626",
-          "news_url": "https://www.bosomchina.com/news.html",
+          "news_url": "https://www.bosomchina.com/",
           "fallback_news": [
             {
               "title": "2025/09/08 本松新材与浙江大学联合培养博士后开题审核顺利举行",
@@ -180,7 +180,7 @@
           "domain": "huitong.com",
           "monogram": "会",
           "monogram_color": "#0891b2",
-          "news_url": "https://www.huitong.com/news",
+          "news_url": "https://www.huitongtech.com/news",
           "fallback_news": [
             {
               "title": "2026/02/20 会通股份高导热PC材料进入华为Mate新机型供应链",
@@ -226,7 +226,7 @@
           "domain": "3m.com",
           "monogram": "3",
           "monogram_color": "#cc0000",
-          "news_url": "https://news.3m.com",
+          "news_url": "https://news.3m.com/",
           "fallback_news": [
             {
               "title": "2026/03/05 3M 2025年Q4业绩超预期 上调全年指引",
@@ -287,7 +287,7 @@
           "domain": "catl.com",
           "monogram": "宁",
           "monogram_color": "#0ea5e9",
-          "news_url": "https://www.catl.com/en/"
+          "news_url": "https://www.catl.com/en/news/"
         },
         {
           "id": "nio",
@@ -296,7 +296,7 @@
           "domain": "nio.com",
           "monogram": "蔚",
           "monogram_color": "#059669",
-          "news_url": "https://ir.nio.com/"
+          "news_url": "https://ir.nio.com/news-releases"
         },
         {
           "id": "bmw",
@@ -332,7 +332,7 @@
           "domain": "lixiang.com",
           "monogram": "理",
           "monogram_color": "#0d9488",
-          "news_url": "https://www.lixiang.com/news/",
+          "news_url": "https://www.lixiang.com/news",
           "fallback_news": [
             {
               "title": "2026/03/12 理想汽车2025年全年交付50万辆 同比增长33%",
@@ -355,7 +355,7 @@
           "domain": "xiaopeng.com",
           "monogram": "鹏",
           "monogram_color": "#0891b2",
-          "news_url": "https://www.xiaopeng.com/news/",
+          "news_url": "https://www.xiaopeng.com/news",
           "fallback_news": [
             {
               "title": "2026/02/25 小鹏汽车MONA M03 Max上市 搭载端到端智驾",
@@ -514,7 +514,7 @@
           "domain": "ztt.com",
           "monogram": "中",
           "monogram_color": "#0d9488",
-          "news_url": "https://www.ztt.com/news/",
+          "news_url": "https://www.zttgroup.com/news/",
           "fallback_news": [
             {
               "title": "2026/02/10 中天科技复合绝缘子入选工信部制造业单项冠军名单",
@@ -788,7 +788,7 @@
           "domain": "ymtc.com",
           "monogram": "江",
           "monogram_color": "#7c3aed",
-          "news_url": "https://www.ymtc.com"
+          "news_url": "https://www.ymtc.com/cn/index.html"
         },
         {
           "id": "cxmt",
@@ -824,7 +824,7 @@
           "domain": "intel.com",
           "monogram": "I",
           "monogram_color": "#0071c5",
-          "news_url": "https://www.intel.com/content/www/us/en/newsroom/news-release.html"
+          "news_url": "https://www.intel.com/content/www/us/en/newsroom/news.html"
         },
         {
           "id": "nvidia",
