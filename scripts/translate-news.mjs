@@ -39,7 +39,11 @@ if (!KEY) {
 }
 
 const DATA_DIR = 'data';
-const SLUGS = ['semiconductor-industry', 'new-energy-vehicles-industry', 'carbon-fiber-industry', 'thermal-materials-industry'];
+const CONFIG_FILE = join(DATA_DIR, 'industries.json');
+// Slugs are now derived from industries.json — never hard-code. New
+// industries (datacenter-cooling, composite-insulator) used to be missed
+// because the old hardcoded list only had 4 slugs.
+const SLUGS = (JSON.parse(readFileSync(CONFIG_FILE, 'utf-8')).industries || []).map(i => i.slug);
 const BATCH_SIZE = 5;
 const CONFIDENCE_FLOOR = 0.8;       // stricter threshold — items < 0.8 are NOT applied
 const MAX_PARALLEL = 3;
