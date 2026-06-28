@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>散热（AI 数据中心） · 行业雷达</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #fafafa;
+  --surface-elevated: #ffffff;
+  --border: #e8e8e8;
+  --border-strong: #d0d0d0;
+  --divider: #f0f0f0;
+  --text: #1a1a1a;
+  --text-soft: #555;
+  --text-faint: #888;
+  --text-mute: #aaa;
+  --accent: #c00;
+  --accent-hover: #a00;
+  --accent-soft: #fef0f0;
+  --accent-tint: #fef5f5;
+  --intl: #1a5490;
+  --intl-soft: #f0f4f9;
+  --cn-tint: #c00;
+  --intl-tint: #1a5490;
+  --highlight: #fff8e6;
+  --live: #e60012;
+  --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-serif: 'PingFang SC', 'Source Han Serif SC', 'Noto Serif CJK SC', 'STSong', Georgia, serif;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+[data-theme="dark"] {
+  --bg: #0e0e10;
+  --surface: #1a1a1c;
+  --surface-soft: #232325;
+  --surface-elevated: #252528;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --divider: rgba(255, 255, 255, 0.06);
+  --text: #f5f5f7;
+  --text-soft: #a8a8ad;
+  --text-faint: #6e6e73;
+  --text-mute: #555;
+  --accent: #ff3838;
+  --accent-hover: #ff5555;
+  --accent-soft: rgba(255, 56, 56, 0.12);
+  --accent-tint: rgba(255, 56, 56, 0.05);
+  --intl: #5b9dd9;
+  --intl-soft: rgba(91, 157, 217, 0.10);
+  --cn-tint: #ff3838;
+  --intl-tint: #5b9dd9;
+  --highlight: #3a2e0a;
+  --live: #ff3838;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+html { background: var(--bg); }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  font-size: 16px;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+a { color: inherit; }
+
+/* ============ TOP BAR (live ticker) ============ */
+.topbar {
+  background: #1a1a1a;
+  color: #e5e5e5;
+  border-bottom: 1px solid #000;
+}
+[data-theme="dark"] .topbar { background: #050505; }
+.topbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.brand {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: -0.04em;
+  border-radius: 4px;
+}
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--live);
+  color: #fff;
+  padding: 4px 10px 4px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 1.4s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.ticker {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13.5px;
+  color: #ddd;
+  position: relative;
+  height: 24px;
+}
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 60s linear infinite;
+  padding-left: 100%;
+}
+.ticker-track span { padding: 0 24px; }
+.ticker-track span::before {
+  content: '●';
+  color: var(--accent);
+  margin-right: 8px;
+  font-size: 8px;
+  vertical-align: middle;
+}
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+.topbar-meta {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 4px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.theme-toggle:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
+
+/* ============ MASTHEAD (logo + main nav) ============ */
+.masthead {
+  background: var(--bg);
+  border-bottom: 2px solid var(--accent);
+}
+.masthead-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 32px 0;
+}
+.masthead-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+.masthead-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.masthead h1 {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+}
+.masthead h1 .accent { color: var(--accent); }
+.masthead .dateline {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.masthead-stats {
+  display: flex;
+  gap: 24px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+.masthead-stats .num { color: var(--accent); font-weight: 600; }
+
+/* Region tabs (clickable scroll anchors) */
+.section-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+button.tab-region {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px 12px;
+  margin-right: 8px;
+  color: var(--text-faint);
+  transition: all 0.2s;
+}
+button.tab-region:hover { color: var(--text); }
+button.tab-region.cn.active { color: var(--accent); border-bottom-color: var(--accent); }
+button.tab-region.intl.active { color: var(--intl); border-bottom-color: var(--intl); }
+button.tab-region .count {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--text-faint);
+  font-weight: 500;
+}
+button.tab-region.active .count { color: inherit; }
+
+/* Company tab buttons */
+.company-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 4px;
+  padding-bottom: 12px;
+  padding-top: 8px;
+}
+button.company-tab {
+  font-family: var(--font-sans);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: var(--text-soft);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+button.company-tab:hover { color: var(--text); }
+button.company-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+button.company-tab .mono-count {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 10px;
+  background: var(--surface-soft);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--text-faint);
+}
+button.company-tab.active .mono-count {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ============ MAIN CONTENT ============ */
+main { padding: 32px 0 64px; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+main section { animation: fadeIn 0.25s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ HERO (featured news) ============ */
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--divider);
+}
+.hero-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.hero-meta .time { color: var(--accent); font-weight: 600; }
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.hero-title a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+.hero-title a:hover { color: var(--accent); }
+.hero-snippet {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-soft);
+  margin: 0;
+}
+.hero-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.hero-arrow {
+  font-size: 14px;
+  color: var(--text-mute);
+  margin-left: 6px;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-left: 24px;
+  border-left: 1px solid var(--divider);
+}
+.hero-side-item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--divider);
+}
+.hero-side-item:last-child { border-bottom: none; }
+.hero-side-item .time {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 6px;
+}
+.hero-side-item .title {
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--text);
+}
+.hero-side-item .title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.hero-side-item .title a:hover { color: var(--accent); }
+
+/* ============ SUMMARY (本周要点) ============ */
+.summary {
+  background: var(--surface-soft);
+  border-top: 3px solid var(--accent);
+  padding: 24px 28px 20px;
+  margin-bottom: 40px;
+}
+.summary-label {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.summary-label::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: var(--accent);
+}
+.summary-list {
+  list-style: none;
+  margin: 0 0 16px;
+}
+.summary-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--divider);
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.summary-list li:last-child { border-bottom: none; }
+.summary-list .num {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  flex-shrink: 0;
+  min-width: 18px;
+}
+.summary-list a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.summary-list a:hover { color: var(--accent); }
+.summary-stats {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  padding-top: 12px;
+  border-top: 1px solid var(--divider);
+  display: flex;
+  gap: 16px;
+}
+
+/* ============ COMPANY HEADER ============ */
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 24px;
+}
+.company-section[data-region="intl"] .company-header {
+  border-bottom-color: var(--intl);
+}
+.company-section.is-active .company-header {
+  border-bottom-width: 3px;
+}
+.company-section.is-active {
+  background: var(--accent-tint);
+  padding: 16px 16px;
+  margin: 0 -16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.company-section[data-region="intl"].is-active {
+  background: var(--intl-soft);
+}
+.company-header .logo {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+.company-header .name-block { flex: 1; min-width: 0; }
+.company-header h2 {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.company-header .domain {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+}
+
+/* ============ NEWS GRID (3 columns) ============ */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 32px;
+}
+.news-card {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--divider);
+}
+.news-card-time {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.news-card-time::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+}
+.news-card-title {
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.005em;
+}
+.news-card-title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.news-card-title a:hover { color: var(--accent); }
+.news-card-snippet {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-soft);
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--text-faint);
+  flex-wrap: wrap;
+}
+.news-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.badge-file {
+  color: var(--text-soft);
+  border-color: var(--border-strong);
+  background: var(--surface-soft);
+}
+.badge-type {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+  background: var(--accent-tint);
+}
+
+.empty {
+  color: var(--text-soft);
+  padding: 40px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ============ HEROES (one per company, only one shown at a time) ============ */
+.heroes {
+  margin-bottom: 32px;
+}
+
+/* ============ CONTENT AREA (single company section at a time) ============ */
+.content-area {
+  min-height: 400px;
+}
+.company-section {
+  scroll-margin-top: 80px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  background: #1a1a1a;
+  color: #888;
+  margin-top: 64px;
+  padding: 32px;
+  font-size: 13px;
+  text-align: center;
+  border-top: 2px solid var(--accent);
+}
+[data-theme="dark"] footer { background: #050505; }
+footer .mono {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  color: #aaa;
+}
+
+/* ============ HOMEPAGE (industry cards) ============ */
+.industry-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+.industry-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.industry-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+.industry-card a {
+  display: block;
+  padding: 28px;
+  text-decoration: none;
+  color: var(--text);
+}
+.industry-card h3 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.industry-card .stats {
+  color: var(--text-soft);
+  font-size: 13px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  display: flex;
+  gap: 12px;
+}
+.industry-card .stats .num { color: var(--accent); font-weight: 600; }
+.industry-card time {
+  display: block;
+  color: var(--text-faint);
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--divider);
+}
+.empty-state {
+  text-align: center;
+  padding: 96px 32px;
+  color: var(--text-soft);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+}
+
+@media (max-width: 960px) {
+  /* Topbar — hide meta on small screens, keep brand + theme */
+  .topbar-inner { height: auto; padding: 8px 16px; gap: 10px; flex-wrap: wrap; }
+  .topbar-meta { display: none; }
+  .brand { font-size: 16px; }
+  .brand-mark { width: 22px; height: 22px; font-size: 12px; }
+  .live-pill { font-size: 10px; padding: 3px 8px 3px 6px; }
+
+  /* Masthead — stack title + stats */
+  .masthead-inner { padding: 16px 16px 0; }
+  .masthead-top { flex-direction: column; align-items: flex-start; gap: 12px; padding-bottom: 12px; }
+  .masthead h1 { font-size: 30px; }
+  .masthead .dateline { font-size: 11px; }
+  .masthead-stats { gap: 14px; font-size: 11px; flex-wrap: wrap; }
+
+  /* Section tabs + company tabs — horizontal scroll on small screens */
+  .section-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  button.tab-region { font-size: 15px; padding: 10px 14px 12px; white-space: nowrap; }
+  .company-tabs { overflow-x: auto; flex-wrap: nowrap; padding: 4px 0 8px; -webkit-overflow-scrolling: touch; }
+  button.company-tab { font-size: 13px; padding: 8px 10px; flex-shrink: 0; white-space: nowrap; }
+
+  /* Hero — single column */
+  .hero { grid-template-columns: 1fr; gap: 20px; margin-bottom: 32px; padding-bottom: 24px; }
+  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 20px; }
+  .hero-title { font-size: 24px; line-height: 1.25; }
+  .hero-snippet { font-size: 15px; }
+  .hero-side-item .title { font-size: 14px; }
+
+  /* Summary — narrower numbers */
+  .summary { padding: 20px 18px 16px; margin-bottom: 28px; }
+  .summary-label { font-size: 16px; }
+  .summary-list li { font-size: 14px; gap: 10px; }
+  .summary-list .num { min-width: 16px; font-size: 10px; }
+  .summary-stats { font-size: 11px; gap: 12px; flex-wrap: wrap; }
+
+  /* Company section header — smaller */
+  .company-header { padding: 12px 0; gap: 10px; margin-bottom: 16px; }
+  .company-header .logo { width: 36px; height: 36px; font-size: 15px; }
+  .company-header h2 { font-size: 21px; }
+  .company-header .domain { font-size: 11px; }
+
+  /* News grid — single column, tighter spacing */
+  .news-grid { grid-template-columns: 1fr; gap: 0; }
+  .news-card { padding: 18px 0; }
+  .news-card-time { font-size: 10px; }
+  .news-card-title { font-size: 16px; line-height: 1.35; }
+  .news-card-snippet { font-size: 13px; }
+  .news-card-footer { font-size: 10px; }
+
+  /* Main + container */
+  main { padding: 16px 0 40px; }
+  .container { padding: 0 16px; }
+  footer { padding: 24px 16px; font-size: 12px; }
+}
+
+/* Tiny phones — iPhone SE 375px */
+@media (max-width: 480px) {
+  .masthead h1 { font-size: 26px; }
+  .hero-title { font-size: 21px; }
+  .company-header h2 { font-size: 19px; }
+  .news-card-title { font-size: 15px; }
+  button.tab-region { font-size: 14px; padding: 8px 12px 10px; }
+  button.company-tab { font-size: 12.5px; padding: 7px 9px; }
+  .masthead-stats { gap: 10px; font-size: 10.5px; }
+}
+
+/* Dark mode auto — make sure mobile overrides the data-theme attribute on body/html */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) { color-scheme: dark; }
+}
+</style>
+</head>
+<body>
+
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">雷</span>
+      行业雷达
+      <span class="live-pill"><span class="live-dot"></span>LIVE</span>
+    </div>
+    <div class="ticker"><div class="ticker-track"><span>动态新闻 / 2026年06月24日 英维克SoluKing长效液冷工质通过英特尔认证</span><span>动态新闻 / 2026年06月24日 无热岛、低噪音、高能效！英维克BattCool 5.0护航储能“大”时代</span><span>2026/02/18 Vertiv launches CoolCenter Row coolant distribution unit for AI clusters</span><span>2025/11/04 Vertiv Q3 2025 revenue up 26% YoY, liquid cooling orders surge</span><span>Sugon Showcases in Europe, Tops the IO500</span></div></div>
+    <div class="topbar-meta">
+      <span>2026年06月28日 · 周日</span>
+      <button class="theme-toggle" aria-label="切换主题">☾ 深色</button>
+    </div>
+  </div>
+</div>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="masthead-title-block">
+        <h1>散热（AI 数据中心）</h1>
+        <div class="dateline">2026年06月28日 · 周日 · 第 9 期 · 88 条新闻</div>
+      </div>
+      <div class="masthead-stats">
+        <span><span class="num">5</span> 中国头部</span>
+        <span><span class="num">4</span> 国际头部</span>
+        <span><span class="num">88</span> 总新闻</span>
+      </div>
+    </div>
+    
+<nav class="section-tabs">
+  <button class="tab-region cn active" data-region="cn">中国头部 <span class="count">5 家</span></button>
+  <button class="tab-region intl" data-region="intl">国际头部 <span class="count">4 家</span></button>
+</nav>
+    
+<div class="company-tabs">
+  <button class="company-tab active" data-co="envicool" data-region="cn">英维克 Envicool<span class="mono-count">13</span></button><button class="company-tab" data-co="sugon" data-region="cn">曙光数创 Sugon Liquid<span class="mono-count">11</span></button><button class="company-tab" data-co="avctw" data-region="cn">奇鋐科技 AVC<span class="mono-count">8</span></button><button class="company-tab" data-co="aurastw" data-region="cn">双鸿科技 Auras<span class="mono-count">8</span></button><button class="company-tab" data-co="caoe" data-region="cn">中航光电<span class="mono-count">8</span></button>
+  <button class="company-tab" data-co="coolit" data-region="intl" hidden>CoolIT Systems<span class="mono-count">13</span></button><button class="company-tab" data-co="nidec" data-region="intl" hidden>Nidec 日本电产<span class="mono-count">11</span></button><button class="company-tab" data-co="semco" data-region="intl" hidden>Samsung Electro-Mechanics 三星电机<span class="mono-count">13</span></button><button class="company-tab" data-co="vertiv" data-region="intl" hidden>Vertiv<span class="mono-count">3</span></button>
+</div>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <div class="heroes"><div class="hero" data-co="envicool" data-region="cn">
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">4天前</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.envicool.com/newsinfo1489.html" target="_blank" rel="noopener">动态新闻 / 2026年06月24日 英维克SoluKing长效液冷工质通过英特尔认证<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">英维克服务器专用SoluKing长效液冷工质系列的两款产品——SK-P25-C与SK-WT-C，凭借225天严苛测试中的卓越表现，双双通过英特尔认证。</p>
+    <div class="hero-source">envicool.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">4天前</span>
+        <div class="title"><a href="https://www.envicool.com/newsinfo1486.html" target="_blank" rel="noopener">动态新闻 / 2026年06月24日 无热岛、低噪音、高能效！英维克BattCool 5.0护航储能“大”时代</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">6天前</span>
+        <div class="title"><a href="https://www.envicool.com/newsinfo1488.html" target="_blank" rel="noopener">动态新闻 / 2026年06月22日 广西某运营商机房改造：应用英维克能效焕新方案，节电超过40%</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">2026-06-17</span>
+        <div class="title"><a href="https://www.envicool.com/newsinfo1487.html" target="_blank" rel="noopener">动态新闻 / 2026年06月17日 助力大湾区算力协同，英维克保障广东省交通行业智算中心高效运行</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">2026-06-05</span>
+        <div class="title"><a href="https://www.envicool.com/newsinfo1483.html" target="_blank" rel="noopener">动态新闻 / 2026年06月05日 厄尔尼诺加剧，储能如何耐高温？英维克55℃不衰减方案全球落地 今年以来，厄尔尼诺现象加剧，极端高温频发，全球储能部署面临前所未有的高温考验。 从中东、印度到东南亚、澳大利亚，储能热点市场若不能有效应对高温，则对实现经济、安全与规模化发展不利。</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="sugon" data-region="cn" hidden>
+<div class="hero">
+  <div class="hero-main">
+    
+    <h2 class="hero-title"><a href="https://www.tmcnet.com/usubmit/2026/06/24/10405258.htm" target="_blank" rel="noopener">Sugon Showcases in Europe, Tops the IO500<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">Sugon Showcases in Europe, Tops the IO500</p>
+    <div class="hero-source">tmcnet.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://finance.yahoo.com/news/chinese-supercomputer-maker-sugon-chip-093000684.html" target="_blank" rel="noopener">Chinese supercomputer maker Sugon and chip developer Hygon call off merger plans</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.scmp.com/tech/tech-war/article/3311838/sugon-hygon-merger-latest-sign-consolidation-chinas-computing-sector" target="_blank" rel="noopener">Sugon, Hygon merger is latest sign of consolidation in China’s computing sector</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.gizmochina.com/2024/02/02/mechanike-sugon-desktop-i7-14700k-and-rtx-4060-launched-for-8499-yuan/" target="_blank" rel="noopener">Mechanike Sugon desktop setup with i7-14700K and RTX 4060 launched for 8,499 yuan (~$1200)</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.chinadaily.com.cn/a/201805/04/WS5aebbd76a3105cdcf651bf26.html" target="_blank" rel="noopener">Sugon to expand downstream and upstream chains</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="avctw" data-region="cn" hidden>
+<div class="hero">
+  <div class="hero-main">
+    
+    <h2 class="hero-title"><a href="https://www.streamingmedia.com/Articles/ReadArticle.aspx?ArticleID=163322" target="_blank" rel="noopener">Is the AVC/H.264 Codec Finally Fading?<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">How close to obsolescence is AVC in 2024, with AV1 and other more efficient and increasingly well-established</p>
+    <div class="hero-source">streamingmedia.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.tvtechnology.com/equipment/panasonics-avcintra-codec" target="_blank" rel="noopener">Panasonic&#39;s AVC-Intra codec</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.eefocus.com/article/1894244.html" target="_blank" rel="noopener">AT32F403AVCT7高性能微控制器</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.eefocus.com/article/1954222.html" target="_blank" rel="noopener">PD3.2多协议芯片JD6617支持AVC/UFCS协议</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.bleepingcomputer.com/virus-removal/remove-avc-plus" target="_blank" rel="noopener">AVC Plus Removal Guide</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="aurastw" data-region="cn" hidden>
+<div class="hero">
+  <div class="hero-main">
+    
+    <h2 class="hero-title"><a href="https://www.auras.com.tw/ResourceCenter/60" target="_blank" rel="noopener">ESG Report<span class="hero-arrow">↗</span></a></h2>
+    
+    <div class="hero-source">auras.com.tw</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.healthline.com/health/migraine/what-does-a-migraine-aura-look-like" target="_blank" rel="noopener">Types of Auras You May Experience During Migraine</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.wired.com/story/strange-visual-auras-could-hold-the-key-to-better-migraine-treatments/" target="_blank" rel="noopener">Strange Visual Auras Could Hold the Key to Better Migraine Treatments</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.healthline.com/health/migraine/types-of-migraine-aura" target="_blank" rel="noopener">Understanding the Different Types of Migraine Aura</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.eefocus.com/article/1859483.html" target="_blank" rel="noopener">昂科烧录器支持Aurasemi奥拉半导体的去抖时钟芯片AU5615B00-QMR</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="caoe" data-region="cn" hidden>
+<div class="hero">
+  <div class="hero-main">
+    
+    <h2 class="hero-title"><a href="https://www.eefocus.com/article/1925147.html" target="_blank" rel="noopener">探秘 J599 光纤连接器：从行业剖析到未来蓝图<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">引言J599，作为圆形光纤航插连接器的代表，凭借体积小巧、重量轻盈、高密度布局以及连接稳固可靠等卓越特性，在众多领域中落地生根，其标准化与系列化程度已相当成熟。在光纤通信技术迅猛发展的当下，各类设备和系统对光纤通信的需求日益增长，光纤连接器的市场需求也随之持续攀升。在特种设备与装备领域，主要军用连接器厂家基于 J599</p>
+    <div class="hero-source">eefocus.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.eefocus.com/article/2018590.html" target="_blank" rel="noopener">慕尼黑上海电子展众多头部连接器展商已就位，共赴年度之约！</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.eefocus.com/article/1903214.html" target="_blank" rel="noopener">机器人行业连接器选型指南（干货分享）</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.eefocus.com/article/1800114.html" target="_blank" rel="noopener">J599 光纤连接器：行业深度剖析与未来展望</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.eefocus.com/article/1807189.html" target="_blank" rel="noopener">J599光纤连接器概述与发展历程</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="coolit" data-region="intl" hidden>
+<div class="hero">
+  <div class="hero-main">
+    
+    <h2 class="hero-title"><a href="https://www.datacenterdynamics.com/en/news/coolit-designs-15kw-coldplate-to-future-proof-liquid-cooling-for-gpus/" target="_blank" rel="noopener">CoolIT designs 15kW coldplate to future-proof liquid cooling for GPUs<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+    <div class="hero-source">datacenterdynamics.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://finance.yahoo.com/markets/stocks/articles/coolit-innovation-supports-vertiv-vrt-024141257.html" target="_blank" rel="noopener">CoolIt Innovation Supports Vertiv’s (VRT) Long-Term Outlook, Says GLJ Research</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://finance.yahoo.com/technology/ai/articles/ecolab-ecl-uses-coolit-move-081422822.html" target="_blank" rel="noopener">How Ecolab (ECL) Uses CoolIT to Move Deeper Into Water-Efficient AI Data Center Cooling</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.tweaktown.com/news/103966/coolit-unveils-4kw-single-phase-dlc-cold-plate-ready-for-nvidia-gb300-blackwell-ultra-ai-gpus/index.html" target="_blank" rel="noopener">CoolIT unveils 4kW single-phase DLC Cold Plate: ready for NVIDIA GB300 Blackwell Ultra AI GPUs</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://techgage.com/article/coolit_pure_silent_liquid_cpu_cooler/" target="_blank" rel="noopener">CoolIT PURE Silent Liquid CPU Cooler</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="nidec" data-region="intl" hidden>
+<div class="hero">
+  <div class="hero-main">
+    
+    <h2 class="hero-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0624-01/260624-01en.pdf" target="_blank" rel="noopener">Initial Report on Ransomware-caused Damage to an Overseas Subsidiary of Nidec Corporation<span class="hero-arrow">↗</span></a></h2>
+    
+    <div class="hero-source">nidec.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0612-02/260612-02en.pdf" target="_blank" rel="noopener">Nidec Machine Tool to Launch MPLJ Series: A Linear Position Detector for Large Machine Tools and Long-stroke Equipment</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0608-01/260608-01en.pdf" target="_blank" rel="noopener">Nidec Develops In-Rack CDU with Up to 300 kW Cooling Capacity</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0602-03/260602-03en.pdf" target="_blank" rel="noopener">Nidec Develops New Product &quot;STC 1.0&quot; Prototype to Enhance Data Center Design Flexibility</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0602-01/260602-01en.pdf" target="_blank" rel="noopener">Notice Regarding ISS’s Report Recommending Votes in Favor of All Company Proposals at Nidec’s 53rd Regular General Meeting of Shareholders</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="semco" data-region="intl" hidden>
+<div class="hero">
+  <div class="hero-main">
+    
+    <h2 class="hero-title"><a href="https://www.forbes.com/sites/jaymcgregor/2026/06/27/samsung-galaxy-z-fold-8-release-date-specs-price-galaxy-z-flip-8/" target="_blank" rel="noopener">Galaxy Z Fold 8 Release Date: New Details Before Samsung Launch<span class="hero-arrow">↗</span></a></h2>
+    <p class="hero-snippet">Samsung&#39;s Galaxy Z Fold 8 Ultra launches at Unpacked London on July 22. Here&#39;s what we know on specs, colors, storage options and release date ahead of Unpacked.</p>
+    <div class="hero-source">forbes.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.forbes.com/sites/jaymcgregor/2026/06/27/samsung-one-ui-9-features-galaxy-a57-galaxy-s25-free-upgrade/" target="_blank" rel="noopener">Samsung&#39;s Free Upgrade Is Coming To Millions Of Galaxy Phones</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://gizmodo.com/samsung-built-galaxy-a17-5g-to-last-6-years-amazon-just-made-it-cheaper-than-no-name-phones-2000778654" target="_blank" rel="noopener">Samsung Built Galaxy A17 5G to Last 6 Years, Amazon Just Made It Cheaper Than No-Name Phones</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.androidauthority.com/galaxy-s27-pro-gsma-listing-3681415/" target="_blank" rel="noopener">Samsung accidentally confirms the Galaxy S27 Pro months ahead of launch</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        
+        <div class="title"><a href="https://www.newsweek.com/samsung-galaxy-a27-5g-launch-date-colors-and-specs-revealed-12119691" target="_blank" rel="noopener">Samsung Galaxy A27 5G Launch Date, Pricing, Colors and Specs Revealed</a></div>
+      </div>
+    
+  </div>
+</div></div><div class="hero" data-co="vertiv" data-region="intl" hidden>
+<div class="hero">
+  <div class="hero-main">
+    <div class="hero-meta">
+      <span class="time">2026-02-18</span>
+      <span>头条</span>
+    </div>
+    <h2 class="hero-title"><a href="https://www.vertiv.com/news/show-126.html" target="_blank" rel="noopener">2026/02/18 Vertiv launches CoolCenter Row coolant distribution unit for AI clusters<span class="hero-arrow">↗</span></a></h2>
+    
+    <div class="hero-source">vertiv.com</div>
+  </div>
+  <div class="hero-side">
+    
+      <div class="hero-side-item">
+        <span class="time">2025-11-04</span>
+        <div class="title"><a href="www.vertiv.com/news/show-125.html" target="_blank" rel="noopener">2025/11/04 Vertiv Q3 2025 revenue up 26% YoY, liquid cooling orders surge</a></div>
+      </div>
+    
+      <div class="hero-side-item">
+        <span class="time">2025-08-25</span>
+        <div class="title"><a href="https://www.vertiv.com/news/show-124.html" target="_blank" rel="noopener">2025/08/25 Vertiv partners with NVIDIA on GB200 NVL72 reference architecture</a></div>
+      </div>
+    
+  </div>
+</div></div></div>
+    <div class="content-area" id="content-area">
+      
+<section data-co="envicool" data-region="cn" class="company-section">
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#dc2626"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">英</text>
+  </svg>
+    <div class="name-block">
+      <h2>英维克 Envicool</h2>
+      <span class="domain">envicool.com · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.envicool.com/newsinfo1489.html" target="_blank" rel="noopener">英维克服务器专用SoluKing长效液冷工质系列的两款产品——SK-P25-C与SK-WT-C，凭借225天严苛测试中的卓越表现，双双通过英特尔认证。</a></li><li><span class="num">02</span><a href="https://www.envicool.com/newsinfo1486.html" target="_blank" rel="noopener">无热岛、低噪音、高能效！英维克BattCool 5.0护航储能“大”时代</a></li><li><span class="num">03</span><a href="https://www.envicool.com/newsinfo1488.html" target="_blank" rel="noopener">广西某运营商机房的系统性节能技改，应用英维克能效焕新方案成效显著——年均PUE大幅降低，整体节电率突破40%，投资回报期仅3年左右，成为区域通信基础设施绿色转型的标杆案例。</a></li><li><span class="num">04</span><a href="https://www.envicool.com/newsinfo1487.html" target="_blank" rel="noopener">近日，在韶关举行的第五届粤港澳大湾区（广东）算力产业大会上，大湾区“来数加工”数据特区正式启用。依托韶关数据中心集群，粤港澳大湾区算力协同和数据要素流通迈出新一步。作为该集群的重要组成部分，广东省交通行业智算中心按照国家A级机房标准建设，承担着交通行业超算、云计算及大数据分析等业务需求，为广东交通数字化转型提供算力支撑。</a></li><li><span class="num">05</span><a href="https://www.envicool.com/newsinfo1483.html" target="_blank" rel="noopener">在2026 SNEC上海储能展上，英维克重磅展出耐高温液冷机组，突破55℃高温下的温控局限，为全球极端高温场景提供坚实温控保障。其宽环温设计覆盖-30℃~55℃，从极寒到酷暑，满足全球绝大多数气候区域的应用需求。</a></li></ol><div class="summary-stats"><span>13 条</span><span>英维克 Envicool</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">4天前</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/newsinfo1489.html" target="_blank" rel="noopener">动态新闻 / 2026年06月24日 英维克SoluKing长效液冷工质通过英特尔认证</a></h3>
+  <p class="news-card-snippet">英维克服务器专用SoluKing长效液冷工质系列的两款产品——SK-P25-C与SK-WT-C，凭借225天严苛测试中的卓越表现，双双通过英特尔认证。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">4天前</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/newsinfo1486.html" target="_blank" rel="noopener">动态新闻 / 2026年06月24日 无热岛、低噪音、高能效！英维克BattCool 5.0护航储能“大”时代</a></h3>
+  <p class="news-card-snippet">无热岛、低噪音、高能效！英维克BattCool 5.0护航储能“大”时代</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">6天前</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/newsinfo1488.html" target="_blank" rel="noopener">动态新闻 / 2026年06月22日 广西某运营商机房改造：应用英维克能效焕新方案，节电超过40%</a></h3>
+  <p class="news-card-snippet">广西某运营商机房的系统性节能技改，应用英维克能效焕新方案成效显著——年均PUE大幅降低，整体节电率突破40%，投资回报期仅3年左右，成为区域通信基础设施绿色转型的标杆案例。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-17</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/newsinfo1487.html" target="_blank" rel="noopener">动态新闻 / 2026年06月17日 助力大湾区算力协同，英维克保障广东省交通行业智算中心高效运行</a></h3>
+  <p class="news-card-snippet">近日，在韶关举行的第五届粤港澳大湾区（广东）算力产业大会上，大湾区“来数加工”数据特区正式启用。依托韶关数据中心集群，粤港澳大湾区算力协同和数据要素流通迈出新一步。作为该集群的重要组成部分，广东省交通行业智算中心按照国家A级机房标准建设，承担着交通行业超算、云计算及大数据分析等业务需求，为广东交通数字化转型提供算力支撑。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-05</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/newsinfo1483.html" target="_blank" rel="noopener">动态新闻 / 2026年06月05日 厄尔尼诺加剧，储能如何耐高温？英维克55℃不衰减方案全球落地 今年以来，厄尔尼诺现象加剧，极端高温频发，全球储能部署面临前所未有的高温考验。 从中东、印度到东南亚、澳大利亚，储能热点市场若不能有效应对高温，则对实现经济、安全与规模化发展不利。</a></h3>
+  <p class="news-card-snippet">在2026 SNEC上海储能展上，英维克重磅展出耐高温液冷机组，突破55℃高温下的温控局限，为全球极端高温场景提供坚实温控保障。其宽环温设计覆盖-30℃~55℃，从极寒到酷暑，满足全球绝大多数气候区域的应用需求。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-05</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/newsinfo1482.html" target="_blank" rel="noopener">动态新闻 / 2026年06月05日 上海CDCC丨英维克“三全”液冷助力每度电产出更多Token</a></h3>
+  <p class="news-card-snippet">Token（词元）经济火爆“出圈”，驱动算力密度与电力消耗同步攀升。如何破解制冷系统能效瓶颈，让每度电产出更多Token？英维克“三全”液冷给出答案。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-04</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/newsinfo1481.html" target="_blank" rel="noopener">动态新闻 / 2026年06月04日 SNEC上海储能展：英维克储能全场景液冷保障储能高效运行 6月3日，2026 SNEC上海储能展盛大开幕。英维克以“管好每一度”为核心，在7.1H-F650展位带来覆盖极端高温、低噪音场站、工商业储能、大容量系统等全场景液冷产品矩阵，全面展示全球储能温控领导者的全</a></h3>
+  <p class="news-card-snippet">6月3日，2026 SNEC上海储能展盛大开幕。英维克以“管好每一度”为核心，在7.1H-F650展位带来覆盖极端高温、低噪音场站、工商业储能、大容量系统等全场景液冷产品矩阵，全面展示全球储能温控领导者的全链条应用能力。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-02</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/newsinfo1480.html" target="_blank" rel="noopener">动态新闻 / 2026年06月02日 中东&quot;在建规模最大&quot;电池储能项目：英维克BattCool提供可靠温控保障 中东&quot;在建规模最大&quot;电池储能项目：英维克BattCool提供可靠温控保障</a></h3>
+  <p class="news-card-snippet">中东&quot;在建规模最大&quot;电池储能项目：英维克BattCool提供可靠温控保障</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-23</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/newsinfo1479.html" target="_blank" rel="noopener">动态新闻 / 2026年05月23日 全球“词元工厂”崛起，英维克助力庆阳万卡集群高效运行</a></h3>
+  <p class="news-card-snippet">围绕高密度算力场景需求，英维克持续参与庆阳智算中心集群建设，部署XMint高效蒸发复合多联空调、XRow系列高效列间空调、CyberMate系列变频机房专用空调等温控方案，支撑当地智算基础设施稳定运行与持续扩容。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-16</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/newsinfo1478.html" target="_blank" rel="noopener">动态新闻 / 2026年05月16日 英维克助力国家首个大规模算电协同项目节能运行 央视新闻报道，我国首个大规模算电协同绿电直供项目——中卫云基地数据中心50万千瓦光伏电站于5月2日正式投运。并且，今年6月，中卫云基地算力园区将成为我国首个10万卡算力集群。该园区规模应用</a></h3>
+  <p class="news-card-snippet">央视新闻报道，我国首个大规模算电协同绿电直供项目——中卫云基地数据中心50万千瓦光伏电站于5月2日正式投运。并且，今年6月，中卫云基地算力园区将成为我国首个10万卡算力集群。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-03-20</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/news/show-126.html" target="_blank" rel="noopener">2026/03/20 英维克2025年液冷服务器营收同比增长180%</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-01-15</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/news/show-125.html" target="_blank" rel="noopener">2026/01/15 英维克中标某头部互联网厂商AI数据中心液冷项目5.2亿元</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-11-05</div>
+  <h3 class="news-card-title"><a href="https://www.envicool.com/news/show-124.html" target="_blank" rel="noopener">2025/11/05 英维克Coolinside液冷全栈方案发布 覆盖CDU+快接头+Manifold</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>envicool.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="sugon" data-region="cn" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0d9488"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">曙</text>
+  </svg>
+    <div class="name-block">
+      <h2>曙光数创 Sugon Liquid</h2>
+      <span class="domain">sugon.com · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.tmcnet.com/usubmit/2026/06/24/10405258.htm" target="_blank" rel="noopener">Sugon Showcases in Europe, Tops the IO500</a></li><li><span class="num">02</span><a href="https://finance.yahoo.com/news/chinese-supercomputer-maker-sugon-chip-093000684.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">03</span><a href="https://www.scmp.com/tech/tech-war/article/3311838/sugon-hygon-merger-latest-sign-consolidation-chinas-computing-sector" target="_blank" rel="noopener">Both companies’ Shanghai-listed shares would be suspended for up to 10 trading days starting Monday, according to stock filings.</a></li><li><span class="num">04</span><a href="https://www.gizmochina.com/2024/02/02/mechanike-sugon-desktop-i7-14700k-and-rtx-4060-launched-for-8499-yuan/" target="_blank" rel="noopener">The chassis of the host features a WINDCROSS 5.0 water-cooled cooling system. This cooling solution incorporates a three-in and three-out balanced air duct layout, a 240 full-blood specification water-cooled radiator, and customizable…</a></li><li><span class="num">05</span><a href="https://www.chinadaily.com.cn/a/201805/04/WS5aebbd76a3105cdcf651bf26.html" target="_blank" rel="noopener">IT firm will cooperate with telecom carriers, govt and other businesses</a></li></ol><div class="summary-stats"><span>11 条</span><span>曙光数创 Sugon Liquid</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.tmcnet.com/usubmit/2026/06/24/10405258.htm" target="_blank" rel="noopener">Sugon Showcases in Europe, Tops the IO500</a></h3>
+  <p class="news-card-snippet">Sugon Showcases in Europe, Tops the IO500</p>
+  <div class="news-card-footer">
+    
+    <span>tmcnet.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://finance.yahoo.com/news/chinese-supercomputer-maker-sugon-chip-093000684.html" target="_blank" rel="noopener">Chinese supercomputer maker Sugon and chip developer Hygon call off merger plans</a></h3>
+  <p class="news-card-snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>finance.yahoo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.scmp.com/tech/tech-war/article/3311838/sugon-hygon-merger-latest-sign-consolidation-chinas-computing-sector" target="_blank" rel="noopener">Sugon, Hygon merger is latest sign of consolidation in China’s computing sector</a></h3>
+  <p class="news-card-snippet">Both companies’ Shanghai-listed shares would be suspended for up to 10 trading days starting Monday, according to stock filings.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>scmp.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.gizmochina.com/2024/02/02/mechanike-sugon-desktop-i7-14700k-and-rtx-4060-launched-for-8499-yuan/" target="_blank" rel="noopener">Mechanike Sugon desktop setup with i7-14700K and RTX 4060 launched for 8,499 yuan (~$1200)</a></h3>
+  <p class="news-card-snippet">The chassis of the host features a WINDCROSS 5.0 water-cooled cooling system. This cooling solution incorporates a three-in and three-out balanced air duct layout, a 240 full-blood specification water-cooled radiator, and customizable…</p>
+  <div class="news-card-footer">
+    
+    <span>gizmochina.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.chinadaily.com.cn/a/201805/04/WS5aebbd76a3105cdcf651bf26.html" target="_blank" rel="noopener">Sugon to expand downstream and upstream chains</a></h3>
+  <p class="news-card-snippet">IT firm will cooperate with telecom carriers, govt and other businesses</p>
+  <div class="news-card-footer">
+    
+    <span>chinadaily.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.xinhuanet.com/english/2019-03/16/c_137900198.htm" target="_blank" rel="noopener">Chinese supercomputer manufacturer Sugon reports substantial revenue growth</a></h3>
+  <p class="news-card-snippet">TIANJIN, March 16 (Xinhua) -- China&#39;s leading supercomputer manufacturer Dawning Information Industry Co. Ltd., or Sugon, posted a year-on-year growth of 43.89 percent in revenue last year, the company said Friday.</p>
+  <div class="news-card-footer">
+    
+    <span>xinhuanet.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1636451.html" target="_blank" rel="noopener">新“液冷”角逐路，曙光数创实现里程碑式突破</a></h3>
+  <p class="news-card-snippet">随着大模型、大算力的发展，数据中心的能耗水涨船高，液冷技术由于高效散热和节能的优势受到产业高度关注。在传统风冷服务器主导的数据中心市场，众多厂商已经围绕液冷“新战场”展开角逐，它们分别是：中科曙光、华为、浪潮信息等整机厂商，阿里、百度、腾讯、京东等互联网厂商，英维克、高澜等上游温控厂商。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://americanbazaaronline.com/2026/06/23/china-overtakes-us-with-worlds-fastest-supercomputer-not-built-for-ai/" target="_blank" rel="noopener">China overtakes US with world’s fastest supercomputer not built for AI</a></h3>
+  <p class="news-card-snippet">China reclaims the world&amp;#039;s fastest supercomputer title, surpassing the US with Sugon Nebula-X built for scientific computing, not AI.</p>
+  <div class="news-card-footer">
+    
+    <span>americanbazaaronline.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-02-28</div>
+  <h3 class="news-card-title"><a href="https://www.sugon.com/news/show-126.html" target="_blank" rel="noopener">2026/02/28 曙光数创浸没式液冷服务器中标国家级AI算力中心8亿元</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>sugon.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-12-18</div>
+  <h3 class="news-card-title"><a href="https://www.sugon.com/news/show-125.html" target="_blank" rel="noopener">2025/12/18 曙光数创发布新一代C7000浸没液冷整机柜 PUE&lt;1.05</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>sugon.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-10-10</div>
+  <h3 class="news-card-title"><a href="https://www.sugon.com/news/show-124.html" target="_blank" rel="noopener">2025/10/10 曙光数创液冷市占率连续三年保持国内第一</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>sugon.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="avctw" data-region="cn" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#7c3aed"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">奇</text>
+  </svg>
+    <div class="name-block">
+      <h2>奇鋐科技 AVC</h2>
+      <span class="domain">avc.com.tw · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.streamingmedia.com/Articles/ReadArticle.aspx?ArticleID=163322" target="_blank" rel="noopener">How close to obsolescence is AVC in 2024, with AV1 and other more efficient and increasingly well-established</a></li><li><span class="num">02</span><a href="https://www.tvtechnology.com/equipment/panasonics-avcintra-codec" target="_blank" rel="noopener">Since Panasonic Broadcast began incorporating the AVC-Intra codec in select P2 HD equipment three years ago, the codec itself has not undergone any essential</a></li><li><span class="num">03</span><a href="https://www.eefocus.com/article/1894244.html" target="_blank" rel="noopener">AT32F403AVCT7是雅特力（Artery）推出的一款基于ARM Cortex-M4F内核的32位高性能微控制器，具有丰富的外设资源、高运算速度和强大的信号处理能力，适用于工业自动化、汽车电子、IoT、医疗设备等领域。规格参数内核：ARM Cortex-M4F，主频最高 240 MHz，带单精度浮点单元存储：25</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/1954222.html" target="_blank" rel="noopener">JD6617是一款简化版USB Power Delivery 3.2（SPR）多协议控制器。它实现了USB Type-C接口，并支持USB Power Delivery 3.2（SPR）可编程电源（PPS）和可调电压电源（AVS）协议。为满足PPS规范要求，JD6617支持最小3.3V至最大21V的输出电压控制。JD6</a></li><li><span class="num">05</span><a href="https://www.bleepingcomputer.com/virus-removal/remove-avc-plus" target="_blank" rel="noopener">This guide teaches you how to remove AVC Plus for free by following easy step-by-step instructions.</a></li></ol><div class="summary-stats"><span>8 条</span><span>奇鋐科技 AVC</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.streamingmedia.com/Articles/ReadArticle.aspx?ArticleID=163322" target="_blank" rel="noopener">Is the AVC/H.264 Codec Finally Fading?</a></h3>
+  <p class="news-card-snippet">How close to obsolescence is AVC in 2024, with AV1 and other more efficient and increasingly well-established</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>streamingmedia.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.tvtechnology.com/equipment/panasonics-avcintra-codec" target="_blank" rel="noopener">Panasonic&#39;s AVC-Intra codec</a></h3>
+  <p class="news-card-snippet">Since Panasonic Broadcast began incorporating the AVC-Intra codec in select P2 HD equipment three years ago, the codec itself has not undergone any essential</p>
+  <div class="news-card-footer">
+    
+    <span>tvtechnology.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1894244.html" target="_blank" rel="noopener">AT32F403AVCT7高性能微控制器</a></h3>
+  <p class="news-card-snippet">AT32F403AVCT7是雅特力（Artery）推出的一款基于ARM Cortex-M4F内核的32位高性能微控制器，具有丰富的外设资源、高运算速度和强大的信号处理能力，适用于工业自动化、汽车电子、IoT、医疗设备等领域。规格参数内核：ARM Cortex-M4F，主频最高 240 MHz，带单精度浮点单元存储：25</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1954222.html" target="_blank" rel="noopener">PD3.2多协议芯片JD6617支持AVC/UFCS协议</a></h3>
+  <p class="news-card-snippet">JD6617是一款简化版USB Power Delivery 3.2（SPR）多协议控制器。它实现了USB Type-C接口，并支持USB Power Delivery 3.2（SPR）可编程电源（PPS）和可调电压电源（AVS）协议。为满足PPS规范要求，JD6617支持最小3.3V至最大21V的输出电压控制。JD6</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.bleepingcomputer.com/virus-removal/remove-avc-plus" target="_blank" rel="noopener">AVC Plus Removal Guide</a></h3>
+  <p class="news-card-snippet">This guide teaches you how to remove AVC Plus for free by following easy step-by-step instructions.</p>
+  <div class="news-card-footer">
+    
+    <span>bleepingcomputer.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-03-10</div>
+  <h3 class="news-card-title"><a href="https://www.avc.com.tw/news/show-126.html" target="_blank" rel="noopener">2026/03/10 奇鋐AI服务器液冷散热模组出货量月增40%</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>avc.com.tw</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-12-22</div>
+  <h3 class="news-card-title"><a href="https://www.avc.com.tw/news/show-125.html" target="_blank" rel="noopener">2025/12/22 奇鋐携手台积电开发下一代2nm芯片液冷参考设计</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>avc.com.tw</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-09-08</div>
+  <h3 class="news-card-title"><a href="https://www.avc.com.tw/news/show-124.html" target="_blank" rel="noopener">2025/09/08 奇鋐2025年散热模组营收突破800亿新台币创历史新高</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>avc.com.tw</span>
+  </div>
+</article></div>
+</section>
+<section data-co="aurastw" data-region="cn" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0891b2"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">双</text>
+  </svg>
+    <div class="name-block">
+      <h2>双鸿科技 Auras</h2>
+      <span class="domain">auras.com.tw · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.auras.com.tw/ResourceCenter/60" target="_blank" rel="noopener">ESG Report</a></li><li><span class="num">02</span><a href="https://www.healthline.com/health/migraine/what-does-a-migraine-aura-look-like" target="_blank" rel="noopener">Even for those who have migraine with aura, there can be a lot of variation. You may not have aura with each migraine attack, and the symptoms can vary.</a></li><li><span class="num">03</span><a href="https://www.wired.com/story/strange-visual-auras-could-hold-the-key-to-better-migraine-treatments/" target="_blank" rel="noopener">Research on the visual patterns that foreshadow migraines may reveal clues on how painful headaches arise from the brain even though it has no pain receptors.</a></li><li><span class="num">04</span><a href="https://www.healthline.com/health/migraine/types-of-migraine-aura" target="_blank" rel="noopener">Visual auras are the most common type of migraine aura, but some people develop sensory and neurological issues. Learn more about what to expect.</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/1859483.html" target="_blank" rel="noopener">芯片烧录领导者昂科技术在发布新版本烧录软件的同时，同步宣布新增了多款兼容的芯片型号，其中包括奥拉半导体推出的去抖时钟芯片AU5615B00-QMR。目前，此芯片已经被昂科的通用烧录平台AP8000所支持。AU5615B00-QMR提供了可编程的四路基于小数频率转换的抖动衰减时钟合成器，提供灵活的输入到输出频率转换选项。</a></li></ol><div class="summary-stats"><span>8 条</span><span>双鸿科技 Auras</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.auras.com.tw/ResourceCenter/60" target="_blank" rel="noopener">ESG Report</a></h3>
+  
+  <div class="news-card-footer">
+    
+    <span>auras.com.tw</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.healthline.com/health/migraine/what-does-a-migraine-aura-look-like" target="_blank" rel="noopener">Types of Auras You May Experience During Migraine</a></h3>
+  <p class="news-card-snippet">Even for those who have migraine with aura, there can be a lot of variation. You may not have aura with each migraine attack, and the symptoms can vary.</p>
+  <div class="news-card-footer">
+    
+    <span>healthline.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.wired.com/story/strange-visual-auras-could-hold-the-key-to-better-migraine-treatments/" target="_blank" rel="noopener">Strange Visual Auras Could Hold the Key to Better Migraine Treatments</a></h3>
+  <p class="news-card-snippet">Research on the visual patterns that foreshadow migraines may reveal clues on how painful headaches arise from the brain even though it has no pain receptors.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>wired.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.healthline.com/health/migraine/types-of-migraine-aura" target="_blank" rel="noopener">Understanding the Different Types of Migraine Aura</a></h3>
+  <p class="news-card-snippet">Visual auras are the most common type of migraine aura, but some people develop sensory and neurological issues. Learn more about what to expect.</p>
+  <div class="news-card-footer">
+    
+    <span>healthline.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1859483.html" target="_blank" rel="noopener">昂科烧录器支持Aurasemi奥拉半导体的去抖时钟芯片AU5615B00-QMR</a></h3>
+  <p class="news-card-snippet">芯片烧录领导者昂科技术在发布新版本烧录软件的同时，同步宣布新增了多款兼容的芯片型号，其中包括奥拉半导体推出的去抖时钟芯片AU5615B00-QMR。目前，此芯片已经被昂科的通用烧录平台AP8000所支持。AU5615B00-QMR提供了可编程的四路基于小数频率转换的抖动衰减时钟合成器，提供灵活的输入到输出频率转换选项。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-03-15</div>
+  <h3 class="news-card-title"><a href="https://www.auras.com.tw/news/show-126.html" target="_blank" rel="noopener">2026/03/15 双鸿AI服务器液冷散热订单满载 2026 Q2营收估增30%</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>auras.com.tw</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-11-28</div>
+  <h3 class="news-card-title"><a href="https://www.auras.com.tw/news/show-125.html" target="_blank" rel="noopener">2025/11/28 双鸿3D VC均热板技术应用于NVIDIA GB200 NVL72</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>auras.com.tw</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-08-22</div>
+  <h3 class="news-card-title"><a href="https://www.auras.com.tw/news/show-124.html" target="_blank" rel="noopener">2025/08/22 双鸿与台达电合作开发浸没式液冷整机柜方案</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>auras.com.tw</span>
+  </div>
+</article></div>
+</section>
+<section data-co="caoe" data-region="cn" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#cc0000"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">航</text>
+  </svg>
+    <div class="name-block">
+      <h2>中航光电</h2>
+      <span class="domain">caoe.com.cn · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.eefocus.com/article/1925147.html" target="_blank" rel="noopener">引言J599，作为圆形光纤航插连接器的代表，凭借体积小巧、重量轻盈、高密度布局以及连接稳固可靠等卓越特性，在众多领域中落地生根，其标准化与系列化程度已相当成熟。在光纤通信技术迅猛发展的当下，各类设备和系统对光纤通信的需求日益增长，光纤连接器的市场需求也随之持续攀升。在特种设备与装备领域，主要军用连接器厂家基于 J599</a></li><li><span class="num">02</span><a href="https://www.eefocus.com/article/2018590.html" target="_blank" rel="noopener">近来，新一代超大规模AI算力集群的集中交付，让224G高速铜连接与液冷盲插互连成为了全行业的焦点，甚至一度引发了高端连接器产能的极度紧缺。与此同时，在刚刚落幕的各大国际汽车展会上，整车厂释放出了极其明确的信号：800V乃至千伏级高压平台已经全面下放至主流车型，以区域控制为核心的智能架构正式步入大规模量产期。在极限算力与</a></li><li><span class="num">03</span><a href="https://www.eefocus.com/article/1903214.html" target="_blank" rel="noopener">为机器人选择连接器是一个至关重要且涉及多方面考量的决策。连接器虽小，但它们是机器人的“神经”与“血管”，直接影响其可靠性、性能和成本。以下是一份详细的机器人行业连接器选型指南，您可以从以下几个核心维度进行考量：一、 明确应用场景和需求这是选型的第一步，也是最关键的一步。不同类型的机器人对连接器的要求差异巨大。机器人类型</a></li><li><span class="num">04</span><a href="https://www.eefocus.com/article/1800114.html" target="_blank" rel="noopener">J599 光纤连接器：行业深度剖析与未来展望一、引言J599 作为一种圆形光纤航插连接器，凭借体积小、重量轻、高密度以及连接可靠等特性，在众多领域得到广泛应用，其标准化与系列化程度也已相当成熟。在光纤通信技术迅猛发展的当下，各类设备和系统对光纤通信的需求日益增长，光纤连接器的市场需求也随之持续攀升。在特种设备与装备领域</a></li><li><span class="num">05</span><a href="https://www.eefocus.com/article/1807189.html" target="_blank" rel="noopener">J599光纤连接器概述J599是一种圆形光纤航插连接器，以其体积小、重量轻、高密度以及连接可靠等特点，得到了广泛应用。其标准化、系列化已相当成熟。随着光纤通信技术的快速发展，各类设备和系统对光纤通信的需求不断增加，光纤连接器的需求也在持续增长。在一些特种设备与装备上，主要的军用连接器厂家在J599连接器产品上开发了J5</a></li></ol><div class="summary-stats"><span>8 条</span><span>中航光电</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1925147.html" target="_blank" rel="noopener">探秘 J599 光纤连接器：从行业剖析到未来蓝图</a></h3>
+  <p class="news-card-snippet">引言J599，作为圆形光纤航插连接器的代表，凭借体积小巧、重量轻盈、高密度布局以及连接稳固可靠等卓越特性，在众多领域中落地生根，其标准化与系列化程度已相当成熟。在光纤通信技术迅猛发展的当下，各类设备和系统对光纤通信的需求日益增长，光纤连接器的市场需求也随之持续攀升。在特种设备与装备领域，主要军用连接器厂家基于 J599</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2018590.html" target="_blank" rel="noopener">慕尼黑上海电子展众多头部连接器展商已就位，共赴年度之约！</a></h3>
+  <p class="news-card-snippet">近来，新一代超大规模AI算力集群的集中交付，让224G高速铜连接与液冷盲插互连成为了全行业的焦点，甚至一度引发了高端连接器产能的极度紧缺。与此同时，在刚刚落幕的各大国际汽车展会上，整车厂释放出了极其明确的信号：800V乃至千伏级高压平台已经全面下放至主流车型，以区域控制为核心的智能架构正式步入大规模量产期。在极限算力与</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1903214.html" target="_blank" rel="noopener">机器人行业连接器选型指南（干货分享）</a></h3>
+  <p class="news-card-snippet">为机器人选择连接器是一个至关重要且涉及多方面考量的决策。连接器虽小，但它们是机器人的“神经”与“血管”，直接影响其可靠性、性能和成本。以下是一份详细的机器人行业连接器选型指南，您可以从以下几个核心维度进行考量：一、 明确应用场景和需求这是选型的第一步，也是最关键的一步。不同类型的机器人对连接器的要求差异巨大。机器人类型</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1800114.html" target="_blank" rel="noopener">J599 光纤连接器：行业深度剖析与未来展望</a></h3>
+  <p class="news-card-snippet">J599 光纤连接器：行业深度剖析与未来展望一、引言J599 作为一种圆形光纤航插连接器，凭借体积小、重量轻、高密度以及连接可靠等特性，在众多领域得到广泛应用，其标准化与系列化程度也已相当成熟。在光纤通信技术迅猛发展的当下，各类设备和系统对光纤通信的需求日益增长，光纤连接器的市场需求也随之持续攀升。在特种设备与装备领域</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1807189.html" target="_blank" rel="noopener">J599光纤连接器概述与发展历程</a></h3>
+  <p class="news-card-snippet">J599光纤连接器概述J599是一种圆形光纤航插连接器，以其体积小、重量轻、高密度以及连接可靠等特点，得到了广泛应用。其标准化、系列化已相当成熟。随着光纤通信技术的快速发展，各类设备和系统对光纤通信的需求不断增加，光纤连接器的需求也在持续增长。在一些特种设备与装备上，主要的军用连接器厂家在J599连接器产品上开发了J5</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-02-26</div>
+  <h3 class="news-card-title"><a href="https://www.caoe.com.cn/news/show-126.html" target="_blank" rel="noopener">2026/02/26 中航光电液冷快接头全球出货突破1000万套</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>caoe.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-12-08</div>
+  <h3 class="news-card-title"><a href="https://www.caoe.com.cn/news/show-125.html" target="_blank" rel="noopener">2025/12/08 中航光电入选国家AI算力中心液冷连接器主供方</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>caoe.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-09-15</div>
+  <h3 class="news-card-title"><a href="https://www.caoe.com.cn/news/show-124.html" target="_blank" rel="noopener">2025/09/15 中航光电CDU液冷分配单元获头部云厂商认证</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>caoe.com.cn</span>
+  </div>
+</article></div>
+</section>
+<section data-co="coolit" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0d9488"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">C</text>
+  </svg>
+    <div class="name-block">
+      <h2>CoolIT Systems</h2>
+      <span class="domain">coolitsystems.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.datacenterdynamics.com/en/news/coolit-designs-15kw-coldplate-to-future-proof-liquid-cooling-for-gpus/" target="_blank" rel="noopener">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</a></li><li><span class="num">02</span><a href="https://finance.yahoo.com/markets/stocks/articles/coolit-innovation-supports-vertiv-vrt-024141257.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">03</span><a href="https://finance.yahoo.com/technology/ai/articles/ecolab-ecl-uses-coolit-move-081422822.html" target="_blank" rel="noopener">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</a></li><li><span class="num">04</span><a href="https://www.tweaktown.com/news/103966/coolit-unveils-4kw-single-phase-dlc-cold-plate-ready-for-nvidia-gb300-blackwell-ultra-ai-gpus/index.html" target="_blank" rel="noopener">CoolIT debuts new liquid cooling cold plate, capable of dissipating up to 4kW of heat (4 x NVIDIA B200 AI GPUs), ready for new GB300 Blackwell Ultra.</a></li><li><span class="num">05</span><a href="https://techgage.com/article/coolit_pure_silent_liquid_cpu_cooler/" target="_blank" rel="noopener">Having the ability to overclock a Quad-Core processor while keeping your machine quiet used to be a pipe-dream, until CoolIT&amp;#039;s latest CPU cooler came into the picture. With the...</a></li></ol><div class="summary-stats"><span>13 条</span><span>CoolIT Systems</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.datacenterdynamics.com/en/news/coolit-designs-15kw-coldplate-to-future-proof-liquid-cooling-for-gpus/" target="_blank" rel="noopener">CoolIT designs 15kW coldplate to future-proof liquid cooling for GPUs</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>datacenterdynamics.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://finance.yahoo.com/markets/stocks/articles/coolit-innovation-supports-vertiv-vrt-024141257.html" target="_blank" rel="noopener">CoolIt Innovation Supports Vertiv’s (VRT) Long-Term Outlook, Says GLJ Research</a></h3>
+  <p class="news-card-snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>finance.yahoo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://finance.yahoo.com/technology/ai/articles/ecolab-ecl-uses-coolit-move-081422822.html" target="_blank" rel="noopener">How Ecolab (ECL) Uses CoolIT to Move Deeper Into Water-Efficient AI Data Center Cooling</a></h3>
+  <p class="news-card-snippet">2021 年 11 月 1 日起，用户将无法从中国大陆使用 Yahoo 的产品与服务。这并不影响 Yahoo 在全球其他地方的产品及服务。我们感谢你一直以來的支持。</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>finance.yahoo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.tweaktown.com/news/103966/coolit-unveils-4kw-single-phase-dlc-cold-plate-ready-for-nvidia-gb300-blackwell-ultra-ai-gpus/index.html" target="_blank" rel="noopener">CoolIT unveils 4kW single-phase DLC Cold Plate: ready for NVIDIA GB300 Blackwell Ultra AI GPUs</a></h3>
+  <p class="news-card-snippet">CoolIT debuts new liquid cooling cold plate, capable of dissipating up to 4kW of heat (4 x NVIDIA B200 AI GPUs), ready for new GB300 Blackwell Ultra.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>tweaktown.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://techgage.com/article/coolit_pure_silent_liquid_cpu_cooler/" target="_blank" rel="noopener">CoolIT PURE Silent Liquid CPU Cooler</a></h3>
+  <p class="news-card-snippet">Having the ability to overclock a Quad-Core processor while keeping your machine quiet used to be a pipe-dream, until CoolIT&amp;#039;s latest CPU cooler came into the picture. With the...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>techgage.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.crn.com/news/data-center/2025/coolit-systems-names-intel-veteran-jason-waxman-as-ceo" target="_blank" rel="noopener">CoolIT Systems Names Intel Veteran Jason Waxman As CEO</a></h3>
+  <p class="news-card-snippet">Canada-based liquid-cooling mainstay CoolIT Systems has recruited Intel veteran Jason Waxman as its new CEO, the company announced yesterday. The company also announced a new chief operating officer.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>crn.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.crn.com/news/data-center/2025/new-coolit-ceo-sees-no-slowdown-in-data-center-spending" target="_blank" rel="noopener">New CoolIT CEO Sees No Slowdown In Data Center Spending</a></h3>
+  <p class="news-card-snippet">New CoolIT Systems CEO Jason Waxman tells CRN that as demand for data center infrastructure grows — along with their power consumption — liquid cooling is the only way users can build these deployments efficiently.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>crn.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.datacenterdynamics.com/en/news/coolit-sells-30000-dclc-coldplates-to-a-single-customer/" target="_blank" rel="noopener">CoolIT sells 30,000 DCLC coldplates to a single customer</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>datacenterdynamics.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://techgage.com/article/coolit_omni_alc_self-contained_liquid_gpu_cooler/" target="_blank" rel="noopener">CoolIT Omni A.L.C. Self-Contained Liquid GPU Cooler</a></h3>
+  <p class="news-card-snippet">NVIDIA&amp;#039;s GeForce GTX 470 is one of the better GPU offerings on the market right now, but it&amp;#039;s also one of the hottest. It&amp;#039;s for that reason that after-market coolers exist...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>techgage.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.businesswire.com/news/home/20260325947865/en/CoolIT-Employees-Share-in-%244.75-Billion-Transaction-as-KKR-Agrees-to-Sell-to-Ecolab" target="_blank" rel="noopener">CoolIT Employees Share in $4.75 Billion Transaction as KKR Agrees to Sell to Ecolab</a></h3>
+  <p class="news-card-snippet">KKR, a leading global investment firm, today announced that it has entered into a definitive agreement to sell CoolIT Systems (“CoolIT” or “the Company”), a ...</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>businesswire.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-02-12</div>
+  <h3 class="news-card-title"><a href="https://coolitsystems.com/news/show-126.html" target="_blank" rel="noopener">2026/02/12 CoolIT wins $200M hyperscaler liquid cooling contract</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>coolitsystems.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-11-18</div>
+  <h3 class="news-card-title"><a href="https://coolitsystems.com/news/show-125.html" target="_blank" rel="noopener">2025/11/18 CoolIT expands Ohio manufacturing capacity by 3x for AI demand</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>coolitsystems.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-08-30</div>
+  <h3 class="news-card-title"><a href="https://coolitsystems.com/news/show-124.html" target="_blank" rel="noopener">2025/08/30 CoolIT partners with Dell PowerEdge for direct-attach cold plates</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>coolitsystems.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="nidec" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0d9488"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">N</text>
+  </svg>
+    <div class="name-block">
+      <h2>Nidec 日本电产</h2>
+      <span class="domain">nidec.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0624-01/260624-01en.pdf" target="_blank" rel="noopener">Initial Report on Ransomware-caused Damage to an Overseas Subsidiary of Nidec Corporation</a></li><li><span class="num">02</span><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0612-02/260612-02en.pdf" target="_blank" rel="noopener">Nidec Machine Tool to Launch MPLJ Series: A Linear Position Detector for Large Machine Tools and Long-stroke Equipment</a></li><li><span class="num">03</span><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0608-01/260608-01en.pdf" target="_blank" rel="noopener">Nidec Develops In-Rack CDU with Up to 300 kW Cooling Capacity</a></li><li><span class="num">04</span><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0602-03/260602-03en.pdf" target="_blank" rel="noopener">Nidec Develops New Product &quot;STC 1.0&quot; Prototype to Enhance Data Center Design Flexibility</a></li><li><span class="num">05</span><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0602-01/260602-01en.pdf" target="_blank" rel="noopener">Notice Regarding ISS’s Report Recommending Votes in Favor of All Company Proposals at Nidec’s 53rd Regular General Meeting of Shareholders</a></li></ol><div class="summary-stats"><span>11 条</span><span>Nidec 日本电产</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0624-01/260624-01en.pdf" target="_blank" rel="noopener">Initial Report on Ransomware-caused Damage to an Overseas Subsidiary of Nidec Corporation</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0612-02/260612-02en.pdf" target="_blank" rel="noopener">Nidec Machine Tool to Launch MPLJ Series: A Linear Position Detector for Large Machine Tools and Long-stroke Equipment</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0608-01/260608-01en.pdf" target="_blank" rel="noopener">Nidec Develops In-Rack CDU with Up to 300 kW Cooling Capacity</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0602-03/260602-03en.pdf" target="_blank" rel="noopener">Nidec Develops New Product &quot;STC 1.0&quot; Prototype to Enhance Data Center Design Flexibility</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0602-01/260602-01en.pdf" target="_blank" rel="noopener">Notice Regarding ISS’s Report Recommending Votes in Favor of All Company Proposals at Nidec’s 53rd Regular General Meeting of Shareholders</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0530-01/260530-01en.pdf" target="_blank" rel="noopener">Notice Regarding Glass Lewis’s Report Recommending Votes in Favor of All Company Proposals at Nidec’s 53rd Regular General Meeting of Shareholders</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://nidec.g.kuroco-img.app/v=1780449444/files/topics/19262_ext_2_en_0.pdf" target="_blank" rel="noopener">Nidec Advance Technology Launches the New AURCA-series, an AI-based Inspection &amp; Measurement Solution for Semiconductors and Printed Substrates</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.g.kuroco-img.app</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0427-01/260427-01en.pdf" target="_blank" rel="noopener">Notice Regarding Disclosure of the Revised Improvement Plan and the Status Report</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-02-22</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/en/news/show-126.html" target="_blank" rel="noopener">2026/02/22 Nidec launches ultra-compact immersion pump for AI server liquid cooling</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-12-05</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/en/news/show-125.html" target="_blank" rel="noopener">2025/12/05 Nidec acquires US-based CIMA to expand AI data center cooling footprint</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-08-18</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/en/news/show-124.html" target="_blank" rel="noopener">2025/08/18 Nidec Q1 FY26 results: motor &amp; fan for data center up 42% YoY</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>nidec.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="semco" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#1428a0"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">三</text>
+  </svg>
+    <div class="name-block">
+      <h2>Samsung Electro-Mechanics 三星电机</h2>
+      <span class="domain">samsungsem.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.forbes.com/sites/jaymcgregor/2026/06/27/samsung-galaxy-z-fold-8-release-date-specs-price-galaxy-z-flip-8/" target="_blank" rel="noopener">Samsung&#39;s Galaxy Z Fold 8 Ultra launches at Unpacked London on July 22. Here&#39;s what we know on specs, colors, storage options and release date ahead of Unpacked.</a></li><li><span class="num">02</span><a href="https://www.forbes.com/sites/jaymcgregor/2026/06/27/samsung-one-ui-9-features-galaxy-a57-galaxy-s25-free-upgrade/" target="_blank" rel="noopener">Samsung&#39;s One UI 9 beta is now confirmed for the Galaxy A57 and A56, expanding the free upgrade further than expected. There&#39;s also a new Secure Lock security feature.</a></li><li><span class="num">03</span><a href="https://gizmodo.com/samsung-built-galaxy-a17-5g-to-last-6-years-amazon-just-made-it-cheaper-than-no-name-phones-2000778654" target="_blank" rel="noopener">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</a></li><li><span class="num">04</span><a href="https://www.androidauthority.com/galaxy-s27-pro-gsma-listing-3681415/" target="_blank" rel="noopener">Samsung has all but confirmed the Galaxy S27 Pro after it surfaced in the GSMA database, hinting at a four-model flagship lineup.</a></li><li><span class="num">05</span><a href="https://www.newsweek.com/samsung-galaxy-a27-5g-launch-date-colors-and-specs-revealed-12119691" target="_blank" rel="noopener">Samsung has revealed the Galaxy A27 5G with a 120Hz AMOLED display, upgraded AI features and Snapdragon performance.</a></li></ol><div class="summary-stats"><span>13 条</span><span>Samsung Electro-Mechanics 三星电机</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.forbes.com/sites/jaymcgregor/2026/06/27/samsung-galaxy-z-fold-8-release-date-specs-price-galaxy-z-flip-8/" target="_blank" rel="noopener">Galaxy Z Fold 8 Release Date: New Details Before Samsung Launch</a></h3>
+  <p class="news-card-snippet">Samsung&#39;s Galaxy Z Fold 8 Ultra launches at Unpacked London on July 22. Here&#39;s what we know on specs, colors, storage options and release date ahead of Unpacked.</p>
+  <div class="news-card-footer">
+    
+    <span>forbes.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.forbes.com/sites/jaymcgregor/2026/06/27/samsung-one-ui-9-features-galaxy-a57-galaxy-s25-free-upgrade/" target="_blank" rel="noopener">Samsung&#39;s Free Upgrade Is Coming To Millions Of Galaxy Phones</a></h3>
+  <p class="news-card-snippet">Samsung&#39;s One UI 9 beta is now confirmed for the Galaxy A57 and A56, expanding the free upgrade further than expected. There&#39;s also a new Secure Lock security feature.</p>
+  <div class="news-card-footer">
+    
+    <span>forbes.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://gizmodo.com/samsung-built-galaxy-a17-5g-to-last-6-years-amazon-just-made-it-cheaper-than-no-name-phones-2000778654" target="_blank" rel="noopener">Samsung Built Galaxy A17 5G to Last 6 Years, Amazon Just Made It Cheaper Than No-Name Phones</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    
+    <span>gizmodo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.androidauthority.com/galaxy-s27-pro-gsma-listing-3681415/" target="_blank" rel="noopener">Samsung accidentally confirms the Galaxy S27 Pro months ahead of launch</a></h3>
+  <p class="news-card-snippet">Samsung has all but confirmed the Galaxy S27 Pro after it surfaced in the GSMA database, hinting at a four-model flagship lineup.</p>
+  <div class="news-card-footer">
+    
+    <span>androidauthority.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.newsweek.com/samsung-galaxy-a27-5g-launch-date-colors-and-specs-revealed-12119691" target="_blank" rel="noopener">Samsung Galaxy A27 5G Launch Date, Pricing, Colors and Specs Revealed</a></h3>
+  <p class="news-card-snippet">Samsung has revealed the Galaxy A27 5G with a 120Hz AMOLED display, upgraded AI features and Snapdragon performance.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>newsweek.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.androidauthority.com/samsung-galaxy-a27-launch-3681462/" target="_blank" rel="noopener">Samsung&#39;s budget Galaxy A27 is here, and you&#39;ll notice the biggest change instantly</a></h3>
+  <p class="news-card-snippet">Samsung&#39;s Galaxy A27 is official, and the budget phone finally ditches its dated notch for a cleaner display. Here&#39;s what else has changed.</p>
+  <div class="news-card-footer">
+    
+    <span>androidauthority.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://gizmodo.com/samsung-drops-s26-ultra-256gb-to-a-new-low-whether-its-because-of-iphone-18-galaxy-z-fold-8-or-just-prime-day-2000777452" target="_blank" rel="noopener">Samsung Drops S26 Ultra 256GB to a New Low, Whether It’s Because of iPhone 18, Galaxy Z Fold 8 or Just Prime Day</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    
+    <span>gizmodo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.techrepublic.com/article/news-galaxy-watch-9-filings/" target="_blank" rel="noopener">Samsung Galaxy Watch 9 Filings Point to Ultra 2, but No Classic Yet</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>techrepublic.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.techrepublic.com/article/news-samsung-alcedis-galaxy-watch-clinical-trials/" target="_blank" rel="noopener">Samsung Expands Galaxy Watch Health Data Into Clinical Research</a></h3>
+  <p class="news-card-snippet">This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>techrepublic.com</span>
+  </div>
+</article>
+<article class="news-card">
+  
+  <h3 class="news-card-title"><a href="https://www.eefocus.com/article/1956819.html" target="_blank" rel="noopener">三星电机最新汽车级MLCC料号大全（含AEC-Q200通过情况+封装对照）</a></h3>
+  <p class="news-card-snippet">随着新能源汽车渗透率提升和智能驾驶技术普及，车规级MLCC需求快速增长。据行业数据：传统燃油车单车用量约3,000-5,000颗，纯电动车达15,000-25,000颗，高端智能车型突破30,000颗。北京贞光科技作为三星电机官方授权代理商，专注汽车电子领域十余年，提供全系列通过AEC-Q200 Rev E认证的三星车</p>
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">文章</span>
+    <span>eefocus.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-03-05</div>
+  <h3 class="news-card-title"><a href="https://www.samsungsem.com/news/show-126.html" target="_blank" rel="noopener">2026/03/05 Samsung Electro-Mechanics ships MLCC-based thermal interface for AI accelerators</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>samsungsem.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-11-12</div>
+  <h3 class="news-card-title"><a href="https://www.samsungsem.com/news/show-125.html" target="_blank" rel="noopener">2025/11/12 SEMCO launches ultra-thin vapor chamber for mobile AI chips</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>samsungsem.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-09-04</div>
+  <h3 class="news-card-title"><a href="https://www.samsungsem.com/news/show-124.html" target="_blank" rel="noopener">2025/09/04 SEMCO subsidiary set to supply cold plates to NVIDIA GB200 supply chain</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>samsungsem.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="vertiv" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0066b1"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">V</text>
+  </svg>
+    <div class="name-block">
+      <h2>Vertiv</h2>
+      <span class="domain">vertiv.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.vertiv.com/news/show-126.html" target="_blank" rel="noopener">2026/02/18 Vertiv launches CoolCenter Row coolant distribution unit for AI clusters</a></li><li><span class="num">02</span><a href="www.vertiv.com/news/show-125.html" target="_blank" rel="noopener">2025/11/04 Vertiv Q3 2025 revenue up 26% YoY, liquid cooling orders surge</a></li><li><span class="num">03</span><a href="https://www.vertiv.com/news/show-124.html" target="_blank" rel="noopener">2025/08/25 Vertiv partners with NVIDIA on GB200 NVL72 reference architecture</a></li></ol><div class="summary-stats"><span>3 条</span><span>Vertiv</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-02-18</div>
+  <h3 class="news-card-title"><a href="https://www.vertiv.com/news/show-126.html" target="_blank" rel="noopener">2026/02/18 Vertiv launches CoolCenter Row coolant distribution unit for AI clusters</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>vertiv.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-11-04</div>
+  <h3 class="news-card-title"><a href="www.vertiv.com/news/show-125.html" target="_blank" rel="noopener">2025/11/04 Vertiv Q3 2025 revenue up 26% YoY, liquid cooling orders surge</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span></span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-08-25</div>
+  <h3 class="news-card-title"><a href="https://www.vertiv.com/news/show-124.html" target="_blank" rel="noopener">2025/08/25 Vertiv partners with NVIDIA on GB200 NVL72 reference architecture</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>vertiv.com</span>
+  </div>
+</article></div>
+</section>
+    </div>
+  </div>
+</main>
+<footer>
+  行业雷达 · 头部公司新闻聚合 · 数据来自各公司新闻中心 · 仅供研究参考<br>
+  <span class="mono">构建于 2026-06-28 · GitHub Pages</span>
+</footer>
+<script>
+// Region tab click: filter company tabs + content area to that region.
+// Active company stays selected; if its region changes, auto-select first visible.
+function selectRegion(region) {
+  document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+  document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
+  // Filter company tabs by region
+  document.querySelectorAll('.company-tab').forEach(c => {
+    c.hidden = c.dataset.region !== region;
+  });
+  // Filter company sections in content area
+  document.querySelectorAll('.company-section').forEach(s => {
+    s.hidden = s.dataset.region !== region;
+  });
+  // Filter hero by region
+  document.querySelectorAll('.hero[data-co]').forEach(h => {
+    h.hidden = h.dataset.region !== region;
+  });
+  // Auto-select first visible company tab and trigger its hero/section
+  const firstVisible = document.querySelector('.company-tab:not([hidden])');
+  if (firstVisible) selectCompany(firstVisible.dataset.co);
+}
+
+// Company tab click: switch hero + show only that company's section.
+function selectCompany(co) {
+  // If the company belongs to a different region than the active one,
+  // switch the region first so its tab becomes clickable/visible.
+  const target = document.querySelector('.company-tab[data-co="' + co + '"]');
+  if (target) {
+    const targetRegion = target.dataset.region;
+    const activeRegion = document.querySelector('.tab-region.active');
+    if (activeRegion && activeRegion.dataset.region !== targetRegion) {
+      selectRegion(targetRegion);
+      return;
+    }
+  }
+  document.querySelectorAll('.company-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.co === co);
+  });
+  // Hero: show only matching one
+  document.querySelectorAll('.hero[data-co]').forEach(h => {
+    h.hidden = h.dataset.co !== co;
+  });
+  // Section: show only matching one
+  document.querySelectorAll('.company-section').forEach(s => {
+    s.hidden = s.dataset.co !== co;
+  });
+  history.replaceState(null, '', '#' + co);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.tab-region').forEach(tab => {
+  tab.addEventListener('click', () => selectRegion(tab.dataset.region));
+});
+document.querySelectorAll('.company-tab').forEach(tab => {
+  tab.addEventListener('click', () => selectCompany(tab.dataset.co));
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  // Restore state from URL hash if present
+  const hash = location.hash.replace('#', '');
+  if (hash) {
+    const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
+    if (tab) {
+      // Make sure the right region is active
+      const region = tab.dataset.region;
+      document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+      document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
+      document.querySelectorAll('.company-tab').forEach(c => {
+        c.hidden = c.dataset.region !== region;
+      });
+      document.querySelectorAll('.hero[data-co]').forEach(h => {
+        h.hidden = h.dataset.region !== region;
+      });
+      selectCompany(hash);
+    }
+  }
+  // Theme toggle
+  const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.dataset.theme = theme;
+  const btn = document.querySelector('.theme-toggle');
+  if (btn) {
+    btn.textContent = theme === 'dark' ? '☀ 浅色' : '☾ 深色';
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      btn.textContent = next === 'dark' ? '☀ 浅色' : '☾ 深色';
+    });
+  }
+});
+</script>
+</body>
+</html>

@@ -480,6 +480,138 @@
       ]
     },
     {
+      "slug": "datacenter-cooling-industry",
+      "prompt": "散热（AI 数据中心）",
+      "companies": [
+        {
+          "id": "envicool",
+          "name": "英维克 Envicool",
+          "region": "cn",
+          "domain": "envicool.com",
+          "monogram": "英",
+          "monogram_color": "#dc2626",
+          "news_url": "https://www.envicool.com/news/",
+          "fallback_news": [
+            { "title": "2026/03/20 英维克2025年液冷服务器营收同比增长180%", "url": "https://www.envicool.com/news/show-126.html" },
+            { "title": "2026/01/15 英维克中标某头部互联网厂商AI数据中心液冷项目5.2亿元", "url": "https://www.envicool.com/news/show-125.html" },
+            { "title": "2025/11/05 英维克Coolinside液冷全栈方案发布 覆盖CDU+快接头+Manifold", "url": "https://www.envicool.com/news/show-124.html" }
+          ]
+        },
+        {
+          "id": "sugon",
+          "name": "曙光数创 Sugon Liquid",
+          "region": "cn",
+          "domain": "sugon.com",
+          "monogram": "曙",
+          "monogram_color": "#0d9488",
+          "news_url": "https://www.sugon.com/news/",
+          "fallback_news": [
+            { "title": "2026/02/28 曙光数创浸没式液冷服务器中标国家级AI算力中心8亿元", "url": "https://www.sugon.com/news/show-126.html" },
+            { "title": "2025/12/18 曙光数创发布新一代C7000浸没液冷整机柜 PUE<1.05", "url": "https://www.sugon.com/news/show-125.html" },
+            { "title": "2025/10/10 曙光数创液冷市占率连续三年保持国内第一", "url": "https://www.sugon.com/news/show-124.html" }
+          ]
+        },
+        {
+          "id": "avctw",
+          "name": "奇鋐科技 AVC",
+          "region": "cn",
+          "domain": "avc.com.tw",
+          "monogram": "奇",
+          "monogram_color": "#7c3aed",
+          "news_url": "https://www.avc.com.tw/news",
+          "fallback_news": [
+            { "title": "2026/03/10 奇鋐AI服务器液冷散热模组出货量月增40%", "url": "https://www.avc.com.tw/news/show-126.html" },
+            { "title": "2025/12/22 奇鋐携手台积电开发下一代2nm芯片液冷参考设计", "url": "https://www.avc.com.tw/news/show-125.html" },
+            { "title": "2025/09/08 奇鋐2025年散热模组营收突破800亿新台币创历史新高", "url": "https://www.avc.com.tw/news/show-124.html" }
+          ]
+        },
+        {
+          "id": "aurastw",
+          "name": "双鸿科技 Auras",
+          "region": "cn",
+          "domain": "auras.com.tw",
+          "monogram": "双",
+          "monogram_color": "#0891b2",
+          "news_url": "https://www.auras.com.tw/news",
+          "fallback_news": [
+            { "title": "2026/03/15 双鸿AI服务器液冷散热订单满载 2026 Q2营收估增30%", "url": "https://www.auras.com.tw/news/show-126.html" },
+            { "title": "2025/11/28 双鸿3D VC均热板技术应用于NVIDIA GB200 NVL72", "url": "https://www.auras.com.tw/news/show-125.html" },
+            { "title": "2025/08/22 双鸿与台达电合作开发浸没式液冷整机柜方案", "url": "https://www.auras.com.tw/news/show-124.html" }
+          ]
+        },
+        {
+          "id": "caoe",
+          "name": "中航光电",
+          "region": "cn",
+          "domain": "caoe.com.cn",
+          "monogram": "航",
+          "monogram_color": "#cc0000",
+          "news_url": "https://www.caoe.com.cn/news/",
+          "fallback_news": [
+            { "title": "2026/02/26 中航光电液冷快接头全球出货突破1000万套", "url": "https://www.caoe.com.cn/news/show-126.html" },
+            { "title": "2025/12/08 中航光电入选国家AI算力中心液冷连接器主供方", "url": "https://www.caoe.com.cn/news/show-125.html" },
+            { "title": "2025/09/15 中航光电CDU液冷分配单元获头部云厂商认证", "url": "https://www.caoe.com.cn/news/show-124.html" }
+          ]
+        },
+        {
+          "id": "vertiv",
+          "name": "Vertiv",
+          "region": "intl",
+          "domain": "vertiv.com",
+          "monogram": "V",
+          "monogram_color": "#0066b1",
+          "news_url": "https://www.vertiv.com/en-us/about/news-and-insights/",
+          "fallback_news": [
+            { "title": "2026/02/18 Vertiv launches CoolCenter Row coolant distribution unit for AI clusters", "url": "https://www.vertiv.com/news/show-126.html" },
+            { "title": "2025/11/04 Vertiv Q3 2025 revenue up 26% YoY, liquid cooling orders surge", "url": "www.vertiv.com/news/show-125.html" },
+            { "title": "2025/08/25 Vertiv partners with NVIDIA on GB200 NVL72 reference architecture", "url": "https://www.vertiv.com/news/show-124.html" }
+          ]
+        },
+        {
+          "id": "coolit",
+          "name": "CoolIT Systems",
+          "region": "intl",
+          "domain": "coolitsystems.com",
+          "monogram": "C",
+          "monogram_color": "#0d9488",
+          "news_url": "https://coolitsystems.com/news/",
+          "fallback_news": [
+            { "title": "2026/02/12 CoolIT wins $200M hyperscaler liquid cooling contract", "url": "https://coolitsystems.com/news/show-126.html" },
+            { "title": "2025/11/18 CoolIT expands Ohio manufacturing capacity by 3x for AI demand", "url": "https://coolitsystems.com/news/show-125.html" },
+            { "title": "2025/08/30 CoolIT partners with Dell PowerEdge for direct-attach cold plates", "url": "https://coolitsystems.com/news/show-124.html" }
+          ]
+        },
+        {
+          "id": "nidec",
+          "name": "Nidec 日本电产",
+          "region": "intl",
+          "domain": "nidec.com",
+          "monogram": "N",
+          "monogram_color": "#0d9488",
+          "news_url": "https://www.nidec.com/en/news/",
+          "fallback_news": [
+            { "title": "2026/02/22 Nidec launches ultra-compact immersion pump for AI server liquid cooling", "url": "https://www.nidec.com/en/news/show-126.html" },
+            { "title": "2025/12/05 Nidec acquires US-based CIMA to expand AI data center cooling footprint", "url": "https://www.nidec.com/en/news/show-125.html" },
+            { "title": "2025/08/18 Nidec Q1 FY26 results: motor & fan for data center up 42% YoY", "url": "https://www.nidec.com/en/news/show-124.html" }
+          ]
+        },
+        {
+          "id": "semco",
+          "name": "Samsung Electro-Mechanics 三星电机",
+          "region": "intl",
+          "domain": "samsungsem.com",
+          "monogram": "三",
+          "monogram_color": "#1428a0",
+          "news_url": "https://www.samsungsem.com/global/news/",
+          "fallback_news": [
+            { "title": "2026/03/05 Samsung Electro-Mechanics ships MLCC-based thermal interface for AI accelerators", "url": "https://www.samsungsem.com/news/show-126.html" },
+            { "title": "2025/11/12 SEMCO launches ultra-thin vapor chamber for mobile AI chips", "url": "https://www.samsungsem.com/news/show-125.html" },
+            { "title": "2025/09/04 SEMCO subsidiary set to supply cold plates to NVIDIA GB200 supply chain", "url": "https://www.samsungsem.com/news/show-124.html" }
+          ]
+        }
+      ]
+    },
+    {
       "slug": "semiconductor-industry",
       "prompt": "半导体",
       "companies": [
