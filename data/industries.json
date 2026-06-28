@@ -331,15 +331,15 @@
           "news_url": "https://www.hubbell.com/news",
           "fallback_news": [
             {
-              "title": "2026/02/15 Hubbell Power Systems launches next-gen polymer insulator for 765kV",
+              "title": "2026/02/15 Hubbell 电力系统推出面向765kV的下一代聚合物绝缘子",
               "url": "https://www.hubbell.com/news/show-126.html"
             },
             {
-              "title": "2025/11/04 Hubbell acquires European composite insulator manufacturer",
+              "title": "2025/11/04 Hubbell 收购欧洲复合绝缘子制造商",
               "url": "https://www.hubbell.com/news/show-125.html"
             },
             {
-              "title": "2025/09/12 Hubbell Q3 2025 results: insulator segment +18% YoY",
+              "title": "2025/09/12 Hubbell 2025年Q3业绩：绝缘子业务同比增长18%",
               "url": "https://www.hubbell.com/news/show-124.html"
             }
           ]
@@ -354,15 +354,7 @@
           "news_url": "https://www.macleanfogg.com/news/",
           "fallback_news": [
             {
-              "title": "2026/02/08 MacLean-Fogg Composite Solutions opens new Texas facility",
-              "url": "https://www.macleanfogg.com/news/show-126.html"
-            },
-            {
-              "title": "2025/11/22 MacLean-Fogg awarded 5-year US utility insulator supply contract",
-              "url": "https://www.macleanfogg.com/news/show-125.html"
-            },
-            {
-              "title": "2025/09/05 MacLean-Fogg introduces Track-Resist polymer insulator for rail electrification",
+              "title": "2025/09/05 MacLean-Fogg 推出用于铁路电气化的 Track-Resist 聚合物绝缘子",
               "url": "https://www.macleanfogg.com/news/show-124.html"
             }
           ]
@@ -377,15 +369,15 @@
           "news_url": "https://new.abb.com/news",
           "fallback_news": [
             {
-              "title": "2026/02/25 ABB launches high-voltage composite insulator for HVDC applications",
+              "title": "2026/02/25 ABB 推出面向HVDC应用的高压复合绝缘子",
               "url": "https://new.abb.com/news/show-126.html"
             },
             {
-              "title": "2025/12/10 ABB wins $80M substation insulator contract in Middle East",
+              "title": "2025/12/10 ABB 赢得中东8000万美元变电站绝缘子合同",
               "url": "https://new.abb.com/news/show-125.html"
             },
             {
-              "title": "2025/09/18 ABB partners with Hitachi Energy on next-gen grid insulator solutions",
+              "title": "2025/09/18 ABB 与日立能源合作开发新一代电网绝缘子方案",
               "url": "https://new.abb.com/news/show-124.html"
             }
           ]
@@ -492,15 +484,15 @@
           "news_url": "https://www.te.com/usa-en/insulators.html",
           "fallback_news": [
             {
-              "title": "2026/01/20 TE Connectivity expands Raychem HVS composite insulator portfolio",
+              "title": "2026/01/20 TE Connectivity 扩展 Raychem HVS 复合绝缘子产品线",
               "url": "https://www.te.com/news/show-126.html"
             },
             {
-              "title": "2025/10/30 TE Connectivity wins €45M European grid insulator contract",
+              "title": "2025/10/30 TE Connectivity 赢得欧洲电网绝缘子4500万欧元合同",
               "url": "https://www.te.com/news/show-125.html"
             },
             {
-              "title": "2025/08/14 TE Connectivity insulator segment Q3 revenue up 12%",
+              "title": "2025/08/14 TE Connectivity 绝缘子业务Q3营收同比增长12%",
               "url": "https://www.te.com/news/show-124.html"
             }
           ]
@@ -636,15 +628,15 @@
           "news_url": "https://www.vertiv.com/en-us/about/news-and-insights/",
           "fallback_news": [
             {
-              "title": "2026/02/18 Vertiv launches CoolCenter Row coolant distribution unit for AI clusters",
+              "title": "2026/02/18 Vertiv 推出面向 AI 集群的 CoolCenter Row 液冷分配单元",
               "url": "https://www.vertiv.com/news/show-126.html"
             },
             {
-              "title": "2025/11/04 Vertiv Q3 2025 revenue up 26% YoY, liquid cooling orders surge",
+              "title": "2025/11/04 Vertiv 2025年Q3营收同比增长26%，液冷订单激增",
               "url": "www.vertiv.com/news/show-125.html"
             },
             {
-              "title": "2025/08/25 Vertiv partners with NVIDIA on GB200 NVL72 reference architecture",
+              "title": "2025/08/25 Vertiv 与 NVIDIA 合作开发 GB200 NVL72 参考架构",
               "url": "https://www.vertiv.com/news/show-124.html"
             }
           ]
@@ -659,15 +651,15 @@
           "news_url": "https://coolitsystems.com/news/",
           "fallback_news": [
             {
-              "title": "2026/02/12 CoolIT wins $200M hyperscaler liquid cooling contract",
+              "title": "2026/02/12 CoolIT 赢得超大规模云厂商2亿美元液冷合同",
               "url": "https://coolitsystems.com/news/show-126.html"
             },
             {
-              "title": "2025/11/18 CoolIT expands Ohio manufacturing capacity by 3x for AI demand",
+              "title": "2025/11/18 CoolIT 俄亥俄州产能扩大3倍应对AI需求",
               "url": "https://coolitsystems.com/news/show-125.html"
             },
             {
-              "title": "2025/08/30 CoolIT partners with Dell PowerEdge for direct-attach cold plates",
+              "title": "2025/08/30 CoolIT 与 Dell PowerEdge 合作开发直触式冷板",
               "url": "https://coolitsystems.com/news/show-124.html"
             }
           ]
@@ -682,15 +674,15 @@
           "news_url": "https://www.nidec.com/en/news/",
           "fallback_news": [
             {
-              "title": "2026/02/22 Nidec launches ultra-compact immersion pump for AI server liquid cooling",
+              "title": "2026/02/22 Nidec 推出面向 AI 服务器液冷的超紧凑浸没式泵",
               "url": "https://www.nidec.com/en/news/show-126.html"
             },
             {
-              "title": "2025/12/05 Nidec acquires US-based CIMA to expand AI data center cooling footprint",
+              "title": "2025/12/05 Nidec 收购美国 CIMA 拓展 AI 数据中心液冷业务",
               "url": "https://www.nidec.com/en/news/show-125.html"
             },
             {
-              "title": "2025/08/18 Nidec Q1 FY26 results: motor & fan for data center up 42% YoY",
+              "title": "2025/08/18 Nidec 2026财年Q1业绩：数据中心电机与风扇业务同比增长42%",
               "url": "https://www.nidec.com/en/news/show-124.html"
             }
           ]
@@ -705,15 +697,15 @@
           "news_url": "https://www.samsungsem.com/global/news/",
           "fallback_news": [
             {
-              "title": "2026/03/05 Samsung Electro-Mechanics ships MLCC-based thermal interface for AI accelerators",
+              "title": "2026/03/05 三星电机推出基于MLCC的AI加速器热界面材料",
               "url": "https://www.samsungsem.com/news/show-126.html"
             },
             {
-              "title": "2025/11/12 SEMCO launches ultra-thin vapor chamber for mobile AI chips",
+              "title": "2025/11/12 三星电机推出面向移动AI芯片的超薄均热板",
               "url": "https://www.samsungsem.com/news/show-125.html"
             },
             {
-              "title": "2025/09/04 SEMCO subsidiary set to supply cold plates to NVIDIA GB200 supply chain",
+              "title": "2025/09/04 三星电机子公司将向 NVIDIA GB200 供应链供应冷板",
               "url": "https://www.samsungsem.com/news/show-124.html"
             }
           ]
