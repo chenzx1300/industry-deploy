@@ -75,24 +75,6 @@
           "monogram": "吉",
           "monogram_color": "#0ea5e9",
           "news_url": "https://www.jlhx.com.cn/news/"
-        },
-        {
-          "id": "zoomlion",
-          "name": "中联重科 Zoomlion (碳纤维)",
-          "region": "cn",
-          "domain": "zoomlion.com",
-          "monogram": "联",
-          "monogram_color": "#0891b2",
-          "news_url": "https://en.zoomlion.com.cn/news/"
-        },
-        {
-          "id": "toyobo",
-          "name": "Toyobo 东洋纺",
-          "region": "intl",
-          "domain": "toyobo-global.com",
-          "monogram": "T",
-          "monogram_color": "#0d9488",
-          "news_url": "https://www.toyobo-global.com/news/"
         }
       ]
     },
@@ -286,6 +268,52 @@
           "monogram": "T",
           "monogram_color": "#b91c1c",
           "news_url": "https://global.toyota/en/newsroom/"
+        },
+        {
+          "id": "li",
+          "name": "理想汽车 Li Auto",
+          "region": "cn",
+          "domain": "lixiang.com",
+          "monogram": "理",
+          "monogram_color": "#0d9488",
+          "news_url": "https://www.lixiang.com/news/",
+          "fallback_news": [
+            {
+              "title": "2026/03/12 理想汽车2025年全年交付50万辆 同比增长33%",
+              "url": "https://www.lixiang.com/news/show-126.html"
+            },
+            {
+              "title": "2025/12/08 理想L9智能焕新版上市 搭载自研5C超充电池",
+              "url": "https://www.lixiang.com/news/show-125.html"
+            },
+            {
+              "title": "2025/10/15 理想汽车与宁德时代签署5年100GWh电池供应协议",
+              "url": "https://www.lixiang.com/news/show-124.html"
+            }
+          ]
+        },
+        {
+          "id": "xpeng",
+          "name": "小鹏汽车 XPeng",
+          "region": "cn",
+          "domain": "xiaopeng.com",
+          "monogram": "鹏",
+          "monogram_color": "#0891b2",
+          "news_url": "https://www.xiaopeng.com/news/",
+          "fallback_news": [
+            {
+              "title": "2026/02/25 小鹏汽车MONA M03 Max上市 搭载端到端智驾",
+              "url": "https://www.xiaopeng.com/news/show-126.html"
+            },
+            {
+              "title": "2025/11/30 小鹏汇天飞行汽车广州车展获3500架订单",
+              "url": "https://www.xiaopeng.com/news/show-125.html"
+            },
+            {
+              "title": "2025/08/22 小鹏汽车与大众汽车签署联合采购协议",
+              "url": "https://www.xiaopeng.com/news/show-124.html"
+            }
+          ]
         }
       ]
     },
@@ -293,98 +321,6 @@
       "slug": "composite-insulator-industry",
       "prompt": "复合绝缘子",
       "companies": [
-        {
-          "id": "qingdaoelectric",
-          "name": "青岛电气",
-          "region": "cn",
-          "domain": "qingdaoelectric.com",
-          "monogram": "青",
-          "monogram_color": "#dc2626",
-          "news_url": "https://www.qingdaoelectric.com/news/",
-          "fallback_news": [
-            {
-              "title": "2026/03/15 青岛电气新一代复合绝缘子通过国网入网检测",
-              "url": "https://www.qingdaoelectric.com/news/show-126.html"
-            },
-            {
-              "title": "2025/11/20 青岛电气中标国家电网特高压复合绝缘子集采项目",
-              "url": "https://www.qingdaoelectric.com/news/show-125.html"
-            },
-            {
-              "title": "2025/09/08 青岛电气复合绝缘子出口东南亚市场再创新高",
-              "url": "https://www.qingdaoelectric.com/news/show-124.html"
-            }
-          ]
-        },
-        {
-          "id": "ztt",
-          "name": "中天科技 ZTT",
-          "region": "cn",
-          "domain": "ztt.com",
-          "monogram": "中",
-          "monogram_color": "#0d9488",
-          "news_url": "https://www.ztt.com/news/",
-          "fallback_news": [
-            {
-              "title": "2026/02/10 中天科技复合绝缘子入选工信部制造业单项冠军名单",
-              "url": "https://www.ztt.com/news/show-127.html"
-            },
-            {
-              "title": "2025/12/05 中天科技海缆与复合绝缘子业务双增长 营收破千亿",
-              "url": "https://www.ztt.com/news/show-126.html"
-            },
-            {
-              "title": "2025/08/18 中天科技牵头制定复合绝缘子IEC国际标准",
-              "url": "https://www.ztt.com/news/show-125.html"
-            }
-          ]
-        },
-        {
-          "id": "fareastcable",
-          "name": "远东电缆 Far East Cable",
-          "region": "cn",
-          "domain": "fareastcable.com",
-          "monogram": "远",
-          "monogram_color": "#7c3aed",
-          "news_url": "https://www.fareastcable.com/news/",
-          "fallback_news": [
-            {
-              "title": "2026/01/28 远东电缆新一代硅橡胶复合绝缘子批量交付南方电网",
-              "url": "https://www.fareastcable.com/news/show-126.html"
-            },
-            {
-              "title": "2025/10/15 远东电缆复合绝缘子营收同比增长25%",
-              "url": "https://www.fareastcable.com/news/show-125.html"
-            },
-            {
-              "title": "2025/07/22 远东电缆与中国电科院共建复合绝缘子联合实验室",
-              "url": "https://www.fareastcable.com/news/show-124.html"
-            }
-          ]
-        },
-        {
-          "id": "cyginsulators",
-          "name": "长园深瑞 CYG Insulators",
-          "region": "cn",
-          "domain": "cyginsulators.com",
-          "monogram": "长",
-          "monogram_color": "#0891b2",
-          "news_url": "https://www.cyginsulators.com/news/",
-          "fallback_news": [
-            {
-              "title": "2026/03/02 长园深瑞中标国网特高压复合绝缘子3.2亿元订单",
-              "url": "https://www.cyginsulators.com/news/show-126.html"
-            },
-            {
-              "title": "2025/11/10 长园深瑞复合绝缘子智能工厂投产 年产能突破50万支",
-              "url": "https://www.cyginsulators.com/news/show-125.html"
-            },
-            {
-              "title": "2025/08/05 长园深瑞直流换流站复合绝缘子通过型式试验",
-              "url": "https://www.cyginsulators.com/news/show-124.html"
-            }
-          ]
-        },
         {
           "id": "hubbell",
           "name": "Hubbell",
@@ -405,29 +341,6 @@
             {
               "title": "2025/09/12 Hubbell Q3 2025 results: insulator segment +18% YoY",
               "url": "https://www.hubbell.com/news/show-124.html"
-            }
-          ]
-        },
-        {
-          "id": "teconnectivity",
-          "name": "TE Connectivity",
-          "region": "intl",
-          "domain": "te.com",
-          "monogram": "T",
-          "monogram_color": "#0d9488",
-          "news_url": "https://www.te.com/usa-en/insulators.html",
-          "fallback_news": [
-            {
-              "title": "2026/01/20 TE Connectivity expands Raychem HVS composite insulator portfolio",
-              "url": "https://www.te.com/news/show-126.html"
-            },
-            {
-              "title": "2025/10/30 TE Connectivity wins €45M European grid insulator contract",
-              "url": "https://www.te.com/news/show-125.html"
-            },
-            {
-              "title": "2025/08/14 TE Connectivity insulator segment Q3 revenue up 12%",
-              "url": "https://www.te.com/news/show-124.html"
             }
           ]
         },
@@ -476,6 +389,121 @@
               "url": "https://new.abb.com/news/show-124.html"
             }
           ]
+        },
+        {
+          "id": "shenma",
+          "name": "神马电力 Shenma",
+          "region": "cn",
+          "domain": "shenma.com.cn",
+          "monogram": "神",
+          "monogram_color": "#dc2626",
+          "news_url": "https://www.shenma.com.cn/news/",
+          "fallback_news": [
+            {
+              "title": "2026/02/18 神马电力中标国家电网特高压复合绝缘子6.8亿元订单",
+              "url": "https://www.shenma.com.cn/news/show-126.html"
+            },
+            {
+              "title": "2025/11/15 神马电力复合绝缘子出口突破50个国家",
+              "url": "https://www.shenma.com.cn/news/show-125.html"
+            },
+            {
+              "title": "2025/08/04 神马电力新型硅橡胶复合绝缘子通过型式试验",
+              "url": "https://www.shenma.com.cn/news/show-124.html"
+            }
+          ]
+        },
+        {
+          "id": "goldwind",
+          "name": "金风科技 Goldwind",
+          "region": "cn",
+          "domain": "goldwind.com.cn",
+          "monogram": "金",
+          "monogram_color": "#0d9488",
+          "news_url": "https://www.goldwind.com.cn/news/",
+          "fallback_news": [
+            {
+              "title": "2026/01/25 金风科技GW155-4.5MW风机配套复合绝缘子批量出货",
+              "url": "https://www.goldwind.com.cn/news/show-126.html"
+            },
+            {
+              "title": "2025/10/12 金风科技中标中广核海上风电场复合绝缘子集采",
+              "url": "https://www.goldwind.com.cn/news/show-125.html"
+            },
+            {
+              "title": "2025/07/03 金风科技联合清华大学研发新型风电用复合绝缘子",
+              "url": "https://www.goldwind.com.cn/news/show-125.html"
+            }
+          ]
+        },
+        {
+          "id": "dalian",
+          "name": "大连电瓷 Dalian Insulator",
+          "region": "cn",
+          "domain": "dlpi.com.cn",
+          "monogram": "连",
+          "monogram_color": "#7c3aed",
+          "news_url": "https://www.dlpi.com.cn/news/",
+          "fallback_news": [
+            {
+              "title": "2026/03/08 大连电瓷复合绝缘子中标南方电网5.5亿元订单",
+              "url": "https://www.dlpi.com.cn/news/show-126.html"
+            },
+            {
+              "title": "2025/11/20 大连电瓷±800kV特高压复合绝缘子通过国家级鉴定",
+              "url": "https://www.dlpi.com.cn/news/show-125.html"
+            },
+            {
+              "title": "2025/08/18 大连电瓷复合绝缘子智能化生产线投产",
+              "url": "https://www.dlpi.com.cn/news/show-124.html"
+            }
+          ]
+        },
+        {
+          "id": "ztt",
+          "name": "中天科技 ZTT",
+          "region": "cn",
+          "domain": "ztt.com",
+          "monogram": "中",
+          "monogram_color": "#0d9488",
+          "news_url": "https://www.ztt.com/news/",
+          "fallback_news": [
+            {
+              "title": "2026/02/10 中天科技复合绝缘子入选工信部制造业单项冠军名单",
+              "url": "https://www.ztt.com/news/show-127.html"
+            },
+            {
+              "title": "2025/12/05 中天科技海缆与复合绝缘子业务双增长 营收破千亿",
+              "url": "https://www.ztt.com/news/show-126.html"
+            },
+            {
+              "title": "2025/08/18 中天科技牵头制定复合绝缘子IEC国际标准",
+              "url": "https://www.ztt.com/news/show-125.html"
+            }
+          ]
+        },
+        {
+          "id": "teconnectivity",
+          "name": "TE Connectivity",
+          "region": "intl",
+          "domain": "te.com",
+          "monogram": "T",
+          "monogram_color": "#0d9488",
+          "news_url": "https://www.te.com/usa-en/insulators.html",
+          "fallback_news": [
+            {
+              "title": "2026/01/20 TE Connectivity expands Raychem HVS composite insulator portfolio",
+              "url": "https://www.te.com/news/show-126.html"
+            },
+            {
+              "title": "2025/10/30 TE Connectivity wins €45M European grid insulator contract",
+              "url": "https://www.te.com/news/show-125.html"
+            },
+            {
+              "title": "2025/08/14 TE Connectivity insulator segment Q3 revenue up 12%",
+              "url": "https://www.te.com/news/show-124.html"
+            }
+          ]
         }
       ]
     },
@@ -492,9 +520,18 @@
           "monogram_color": "#dc2626",
           "news_url": "https://www.envicool.com/news/",
           "fallback_news": [
-            { "title": "2026/03/20 英维克2025年液冷服务器营收同比增长180%", "url": "https://www.envicool.com/news/show-126.html" },
-            { "title": "2026/01/15 英维克中标某头部互联网厂商AI数据中心液冷项目5.2亿元", "url": "https://www.envicool.com/news/show-125.html" },
-            { "title": "2025/11/05 英维克Coolinside液冷全栈方案发布 覆盖CDU+快接头+Manifold", "url": "https://www.envicool.com/news/show-124.html" }
+            {
+              "title": "2026/03/20 英维克2025年液冷服务器营收同比增长180%",
+              "url": "https://www.envicool.com/news/show-126.html"
+            },
+            {
+              "title": "2026/01/15 英维克中标某头部互联网厂商AI数据中心液冷项目5.2亿元",
+              "url": "https://www.envicool.com/news/show-125.html"
+            },
+            {
+              "title": "2025/11/05 英维克Coolinside液冷全栈方案发布 覆盖CDU+快接头+Manifold",
+              "url": "https://www.envicool.com/news/show-124.html"
+            }
           ]
         },
         {
@@ -506,9 +543,18 @@
           "monogram_color": "#0d9488",
           "news_url": "https://www.sugon.com/news/",
           "fallback_news": [
-            { "title": "2026/02/28 曙光数创浸没式液冷服务器中标国家级AI算力中心8亿元", "url": "https://www.sugon.com/news/show-126.html" },
-            { "title": "2025/12/18 曙光数创发布新一代C7000浸没液冷整机柜 PUE<1.05", "url": "https://www.sugon.com/news/show-125.html" },
-            { "title": "2025/10/10 曙光数创液冷市占率连续三年保持国内第一", "url": "https://www.sugon.com/news/show-124.html" }
+            {
+              "title": "2026/02/28 曙光数创浸没式液冷服务器中标国家级AI算力中心8亿元",
+              "url": "https://www.sugon.com/news/show-126.html"
+            },
+            {
+              "title": "2025/12/18 曙光数创发布新一代C7000浸没液冷整机柜 PUE<1.05",
+              "url": "https://www.sugon.com/news/show-125.html"
+            },
+            {
+              "title": "2025/10/10 曙光数创液冷市占率连续三年保持国内第一",
+              "url": "https://www.sugon.com/news/show-124.html"
+            }
           ]
         },
         {
@@ -520,9 +566,18 @@
           "monogram_color": "#7c3aed",
           "news_url": "https://www.avc.com.tw/news",
           "fallback_news": [
-            { "title": "2026/03/10 奇鋐AI服务器液冷散热模组出货量月增40%", "url": "https://www.avc.com.tw/news/show-126.html" },
-            { "title": "2025/12/22 奇鋐携手台积电开发下一代2nm芯片液冷参考设计", "url": "https://www.avc.com.tw/news/show-125.html" },
-            { "title": "2025/09/08 奇鋐2025年散热模组营收突破800亿新台币创历史新高", "url": "https://www.avc.com.tw/news/show-124.html" }
+            {
+              "title": "2026/03/10 奇鋐AI服务器液冷散热模组出货量月增40%",
+              "url": "https://www.avc.com.tw/news/show-126.html"
+            },
+            {
+              "title": "2025/12/22 奇鋐携手台积电开发下一代2nm芯片液冷参考设计",
+              "url": "https://www.avc.com.tw/news/show-125.html"
+            },
+            {
+              "title": "2025/09/08 奇鋐2025年散热模组营收突破800亿新台币创历史新高",
+              "url": "https://www.avc.com.tw/news/show-124.html"
+            }
           ]
         },
         {
@@ -534,9 +589,18 @@
           "monogram_color": "#0891b2",
           "news_url": "https://www.auras.com.tw/news",
           "fallback_news": [
-            { "title": "2026/03/15 双鸿AI服务器液冷散热订单满载 2026 Q2营收估增30%", "url": "https://www.auras.com.tw/news/show-126.html" },
-            { "title": "2025/11/28 双鸿3D VC均热板技术应用于NVIDIA GB200 NVL72", "url": "https://www.auras.com.tw/news/show-125.html" },
-            { "title": "2025/08/22 双鸿与台达电合作开发浸没式液冷整机柜方案", "url": "https://www.auras.com.tw/news/show-124.html" }
+            {
+              "title": "2026/03/15 双鸿AI服务器液冷散热订单满载 2026 Q2营收估增30%",
+              "url": "https://www.auras.com.tw/news/show-126.html"
+            },
+            {
+              "title": "2025/11/28 双鸿3D VC均热板技术应用于NVIDIA GB200 NVL72",
+              "url": "https://www.auras.com.tw/news/show-125.html"
+            },
+            {
+              "title": "2025/08/22 双鸿与台达电合作开发浸没式液冷整机柜方案",
+              "url": "https://www.auras.com.tw/news/show-124.html"
+            }
           ]
         },
         {
@@ -548,9 +612,18 @@
           "monogram_color": "#cc0000",
           "news_url": "https://www.caoe.com.cn/news/",
           "fallback_news": [
-            { "title": "2026/02/26 中航光电液冷快接头全球出货突破1000万套", "url": "https://www.caoe.com.cn/news/show-126.html" },
-            { "title": "2025/12/08 中航光电入选国家AI算力中心液冷连接器主供方", "url": "https://www.caoe.com.cn/news/show-125.html" },
-            { "title": "2025/09/15 中航光电CDU液冷分配单元获头部云厂商认证", "url": "https://www.caoe.com.cn/news/show-124.html" }
+            {
+              "title": "2026/02/26 中航光电液冷快接头全球出货突破1000万套",
+              "url": "https://www.caoe.com.cn/news/show-126.html"
+            },
+            {
+              "title": "2025/12/08 中航光电入选国家AI算力中心液冷连接器主供方",
+              "url": "https://www.caoe.com.cn/news/show-125.html"
+            },
+            {
+              "title": "2025/09/15 中航光电CDU液冷分配单元获头部云厂商认证",
+              "url": "https://www.caoe.com.cn/news/show-124.html"
+            }
           ]
         },
         {
@@ -562,9 +635,18 @@
           "monogram_color": "#0066b1",
           "news_url": "https://www.vertiv.com/en-us/about/news-and-insights/",
           "fallback_news": [
-            { "title": "2026/02/18 Vertiv launches CoolCenter Row coolant distribution unit for AI clusters", "url": "https://www.vertiv.com/news/show-126.html" },
-            { "title": "2025/11/04 Vertiv Q3 2025 revenue up 26% YoY, liquid cooling orders surge", "url": "www.vertiv.com/news/show-125.html" },
-            { "title": "2025/08/25 Vertiv partners with NVIDIA on GB200 NVL72 reference architecture", "url": "https://www.vertiv.com/news/show-124.html" }
+            {
+              "title": "2026/02/18 Vertiv launches CoolCenter Row coolant distribution unit for AI clusters",
+              "url": "https://www.vertiv.com/news/show-126.html"
+            },
+            {
+              "title": "2025/11/04 Vertiv Q3 2025 revenue up 26% YoY, liquid cooling orders surge",
+              "url": "www.vertiv.com/news/show-125.html"
+            },
+            {
+              "title": "2025/08/25 Vertiv partners with NVIDIA on GB200 NVL72 reference architecture",
+              "url": "https://www.vertiv.com/news/show-124.html"
+            }
           ]
         },
         {
@@ -576,9 +658,18 @@
           "monogram_color": "#0d9488",
           "news_url": "https://coolitsystems.com/news/",
           "fallback_news": [
-            { "title": "2026/02/12 CoolIT wins $200M hyperscaler liquid cooling contract", "url": "https://coolitsystems.com/news/show-126.html" },
-            { "title": "2025/11/18 CoolIT expands Ohio manufacturing capacity by 3x for AI demand", "url": "https://coolitsystems.com/news/show-125.html" },
-            { "title": "2025/08/30 CoolIT partners with Dell PowerEdge for direct-attach cold plates", "url": "https://coolitsystems.com/news/show-124.html" }
+            {
+              "title": "2026/02/12 CoolIT wins $200M hyperscaler liquid cooling contract",
+              "url": "https://coolitsystems.com/news/show-126.html"
+            },
+            {
+              "title": "2025/11/18 CoolIT expands Ohio manufacturing capacity by 3x for AI demand",
+              "url": "https://coolitsystems.com/news/show-125.html"
+            },
+            {
+              "title": "2025/08/30 CoolIT partners with Dell PowerEdge for direct-attach cold plates",
+              "url": "https://coolitsystems.com/news/show-124.html"
+            }
           ]
         },
         {
@@ -590,9 +681,18 @@
           "monogram_color": "#0d9488",
           "news_url": "https://www.nidec.com/en/news/",
           "fallback_news": [
-            { "title": "2026/02/22 Nidec launches ultra-compact immersion pump for AI server liquid cooling", "url": "https://www.nidec.com/en/news/show-126.html" },
-            { "title": "2025/12/05 Nidec acquires US-based CIMA to expand AI data center cooling footprint", "url": "https://www.nidec.com/en/news/show-125.html" },
-            { "title": "2025/08/18 Nidec Q1 FY26 results: motor & fan for data center up 42% YoY", "url": "https://www.nidec.com/en/news/show-124.html" }
+            {
+              "title": "2026/02/22 Nidec launches ultra-compact immersion pump for AI server liquid cooling",
+              "url": "https://www.nidec.com/en/news/show-126.html"
+            },
+            {
+              "title": "2025/12/05 Nidec acquires US-based CIMA to expand AI data center cooling footprint",
+              "url": "https://www.nidec.com/en/news/show-125.html"
+            },
+            {
+              "title": "2025/08/18 Nidec Q1 FY26 results: motor & fan for data center up 42% YoY",
+              "url": "https://www.nidec.com/en/news/show-124.html"
+            }
           ]
         },
         {
@@ -604,9 +704,18 @@
           "monogram_color": "#1428a0",
           "news_url": "https://www.samsungsem.com/global/news/",
           "fallback_news": [
-            { "title": "2026/03/05 Samsung Electro-Mechanics ships MLCC-based thermal interface for AI accelerators", "url": "https://www.samsungsem.com/news/show-126.html" },
-            { "title": "2025/11/12 SEMCO launches ultra-thin vapor chamber for mobile AI chips", "url": "https://www.samsungsem.com/news/show-125.html" },
-            { "title": "2025/09/04 SEMCO subsidiary set to supply cold plates to NVIDIA GB200 supply chain", "url": "https://www.samsungsem.com/news/show-124.html" }
+            {
+              "title": "2026/03/05 Samsung Electro-Mechanics ships MLCC-based thermal interface for AI accelerators",
+              "url": "https://www.samsungsem.com/news/show-126.html"
+            },
+            {
+              "title": "2025/11/12 SEMCO launches ultra-thin vapor chamber for mobile AI chips",
+              "url": "https://www.samsungsem.com/news/show-125.html"
+            },
+            {
+              "title": "2025/09/04 SEMCO subsidiary set to supply cold plates to NVIDIA GB200 supply chain",
+              "url": "https://www.samsungsem.com/news/show-124.html"
+            }
           ]
         }
       ]
@@ -677,33 +786,6 @@
           "monogram": "N",
           "monogram_color": "#76b900",
           "news_url": "https://nvidianews.nvidia.com/"
-        },
-        {
-          "id": "amd",
-          "name": "AMD",
-          "region": "intl",
-          "domain": "amd.com",
-          "monogram": "A",
-          "monogram_color": "#ed1c24",
-          "news_url": "https://www.amd.com/en/newsroom.html"
-        },
-        {
-          "id": "broadcom",
-          "name": "Broadcom 博通",
-          "region": "intl",
-          "domain": "broadcom.com",
-          "monogram": "B",
-          "monogram_color": "#cc092f",
-          "news_url": "https://www.broadcom.com/company/news"
-        },
-        {
-          "id": "asml",
-          "name": "ASML 阿斯麦",
-          "region": "intl",
-          "domain": "asml.com",
-          "monogram": "A",
-          "monogram_color": "#0067b1",
-          "news_url": "https://www.asml.com/en/news/press-releases"
         }
       ]
     }
