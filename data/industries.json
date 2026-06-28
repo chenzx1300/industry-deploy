@@ -130,7 +130,7 @@
           "domain": "frd.cn",
           "monogram": "飞",
           "monogram_color": "#0d9488",
-          "news_url": "https://www.frd.cn/news",
+          "news_url": "https://www.frd.cn/news.aspx?TypeId=4&FId=t2:4:2",
           "fallback_news": [
             {
               "title": "2026/02/27 飞荣达2025年度业绩快报：营收同比增长18.7%",
@@ -157,7 +157,7 @@
           "domain": "kingfa.com",
           "monogram": "金",
           "monogram_color": "#dc2626",
-          "news_url": "https://www.kingfa.com/news",
+          "news_url": "https://www.kingfa.com/portal/list/index/id/5.html",
           "fallback_news": [
             {
               "title": "2026/03/18 金发科技新一代导热PA66批量应用于新能源车电池模组",
@@ -175,12 +175,12 @@
         },
         {
           "id": "huitong",
-          "name": "会通股份 Huitong",
+          "name": "会通新材料 Orinko",
           "region": "cn",
-          "domain": "huitong.com",
+          "domain": "orinko.com.cn",
           "monogram": "会",
           "monogram_color": "#0891b2",
-          "news_url": "https://www.huitongtech.com/news",
+          "news_url": "https://www.orinko.com.cn/news_index.html",
           "fallback_news": [
             {
               "title": "2026/02/20 会通股份高导热PC材料进入华为Mate新机型供应链",
@@ -203,7 +203,7 @@
           "domain": "henkel.com",
           "monogram": "H",
           "monogram_color": "#0066b1",
-          "news_url": "https://www.henkel.com/press",
+          "news_url": "https://www.henkel.com/press-and-media",
           "fallback_news": [
             {
               "title": "2026/03/10 汉高任命Pradhyumna Ingle为印度区总裁 推动新兴市场增长",
