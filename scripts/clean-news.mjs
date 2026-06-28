@@ -32,6 +32,14 @@ const SNIPPET_BLOCKED_FULL = [
   // Stock-quote page indicators — usually Bing-misclassified finance pages
   /哪位股东持有最多\s+\w+.*?(?:Limited|Inc|Corp|LLC)/,
   /(?:Which|Who)\s+shareholders?\s+own(?:s)?\s+the?\s+most/i,
+  // Service permanently discontinued / domain seized / account suspended
+  /(?:service|account|domain|site|page)\s+(?:has\s+been\s+)?(?:discontinued|terminated|seized|suspended|banned|shutdown)/i,
+  /本(?:站|网站|服务|账号)(?:已)?(?:终止|关停|关闭|暂停|封禁)/,
+  /This\s+(?:domain|site|page)\s+has\s+been\s+seized/i,
+  /Account\s+(?:Suspended|has\s+been\s+suspended)/i,
+  /We'?re\s+(?:currently\s+)?updating\s+(?:our\s+)?(?:site|website|page|services?)/i,
+  /我们正在更新/i,
+  /网站(?:正在)?(?:改版|升级)/,
 ];
 
 // "Soft" block-page indicators — could appear in a real news article about
@@ -79,6 +87,23 @@ const BAD_URL_HOSTNAMES = [
   'www.tipranks.com',
   'simplywall.st',
   'stockanalysis.com',
+  // Parked / suspended / seized domains
+  'sedoparking.com',
+  'afternic.com',
+  'godaddy.com',
+  'hugedomains.com',
+  'dan.com',
+  'parkingcrew.net',
+  'sedohq.com',
+  // Cookie / privacy walls that often mean "site is down or blocked"
+  'cookiewall.com',
+  'gdpr-banner.com',
+  // Link shorteners — never real news
+  'bit.ly',
+  'tinyurl.com',
+  't.co',
+  'goo.gl',
+  'ow.ly',
 ];
 
 function isBadUrlHost(url) {
