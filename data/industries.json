@@ -366,6 +366,15 @@
               "url": "https://www.xiaopeng.com/news/show-124.html"
             }
           ]
+        },
+        {
+          "id": "tesla",
+          "name": "Tesla 特斯拉",
+          "region": "intl",
+          "domain": "tesla.com",
+          "monogram": "T",
+          "monogram_color": "#cc0000",
+          "news_url": "https://www.tesla.com/blog"
         }
       ]
     },
