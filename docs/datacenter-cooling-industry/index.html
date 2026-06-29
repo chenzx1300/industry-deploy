@@ -323,97 +323,6 @@ main section { animation: fadeIn 0.25s ease; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ============ HERO (featured news) ============ */
-.hero {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 32px;
-  margin-bottom: 48px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--divider);
-}
-.hero-main {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.hero-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 12px;
-  color: var(--text-faint);
-  letter-spacing: 0.04em;
-}
-.hero-meta .time { color: var(--accent); font-weight: 600; }
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-.hero-title a { color: var(--text); text-decoration: none; transition: color 0.2s; }
-.hero-title a:hover { color: var(--accent); }
-.hero-snippet {
-  font-size: 16px;
-  line-height: 1.65;
-  color: var(--text-soft);
-  margin: 0;
-}
-.hero-source {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 12px;
-  color: var(--text-faint);
-}
-.hero-arrow {
-  font-size: 14px;
-  color: var(--text-mute);
-  margin-left: 6px;
-  display: inline-block;
-  transition: transform 0.2s;
-}
-a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
-
-.hero-side {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding-left: 24px;
-  border-left: 1px solid var(--divider);
-}
-.hero-side-item {
-  padding: 8px 0;
-  border-bottom: 1px solid var(--divider);
-}
-.hero-side-item:last-child { border-bottom: none; }
-.hero-side-item .time {
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 11px;
-  color: var(--accent);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  display: block;
-  margin-bottom: 6px;
-}
-.hero-side-item .title {
-  font-size: 15px;
-  line-height: 1.45;
-  font-weight: 500;
-  color: var(--text);
-}
-.hero-side-item .title a {
-  color: var(--text);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.hero-side-item .title a:hover { color: var(--accent); }
-
 /* ============ SUMMARY (本周要点) ============ */
 .summary {
   background: var(--surface-soft);
@@ -624,11 +533,6 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   font-size: 14px;
 }
 
-/* ============ HEROES (one per company, only one shown at a time) ============ */
-.heroes {
-  margin-bottom: 32px;
-}
-
 /* ============ CONTENT AREA (single company section at a time) ============ */
 .content-area {
   min-height: 400px;
@@ -733,13 +637,6 @@ footer .mono {
   .company-tabs { overflow-x: auto; flex-wrap: nowrap; padding: 4px 0 8px; -webkit-overflow-scrolling: touch; }
   button.company-tab { font-size: 13px; padding: 8px 10px; flex-shrink: 0; white-space: nowrap; }
 
-  /* Hero — single column */
-  .hero { grid-template-columns: 1fr; gap: 20px; margin-bottom: 32px; padding-bottom: 24px; }
-  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 20px; }
-  .hero-title { font-size: 24px; line-height: 1.25; }
-  .hero-snippet { font-size: 15px; }
-  .hero-side-item .title { font-size: 14px; }
-
   /* Summary — narrower numbers */
   .summary { padding: 20px 18px 16px; margin-bottom: 28px; }
   .summary-label { font-size: 16px; }
@@ -770,7 +667,6 @@ footer .mono {
 /* Tiny phones — iPhone SE 375px */
 @media (max-width: 480px) {
   .masthead h1 { font-size: 26px; }
-  .hero-title { font-size: 21px; }
   .company-header h2 { font-size: 19px; }
   .news-card-title { font-size: 15px; }
   button.tab-region { font-size: 14px; padding: 8px 12px 10px; }
@@ -828,304 +724,6 @@ footer .mono {
 </header>
 <main>
   <div class="container">
-    <div class="heroes"><div class="hero" data-co="envicool" data-region="cn">
-<div class="hero">
-  <div class="hero-main">
-    <div class="hero-meta">
-      <span class="time">5天前</span>
-      <span>头条</span>
-    </div>
-    <h2 class="hero-title"><a href="https://www.envicool.com/newsinfo1489.html" target="_blank" rel="noopener">英维克SoluKing长效液冷工质通过英特尔认证<span class="hero-arrow">↗</span></a></h2>
-    
-    <div class="hero-source">envicool.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        <span class="time">2026-06-22</span>
-        <div class="title"><a href="https://www.envicool.com/newsinfo1488.html" target="_blank" rel="noopener">广西某运营商机房改造：应用英维克能效焕新方案，节电超过40%</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-06-17</span>
-        <div class="title"><a href="https://www.envicool.com/newsinfo1487.html" target="_blank" rel="noopener">助力大湾区算力协同，英维克保障广东省交通行业智算中心高效运行</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">5天前</span>
-        <div class="title"><a href="https://www.envicool.com/newsinfo1486.html" target="_blank" rel="noopener">无热岛、低噪音、高能效！英维克BattCool 5.0护航储能“大”时代</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-06-05</span>
-        <div class="title"><a href="https://www.envicool.com/newsinfo1483.html" target="_blank" rel="noopener">厄尔尼诺加剧，储能如何耐高温？英维克55℃不衰减方案全球落地</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="sugon" data-region="cn" hidden>
-<div class="hero">
-  <div class="hero-main">
-    
-    <h2 class="hero-title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpBFH1Tz7jiHJ1-xLTtGRmwVqXa8Fplpd9VJULvT8UQuuqavPQVnJXW8nikOXC5Sxu5zVAk2w-u0BPi2CZJfRselFItoy8CVNlPuY4KFXDLiptNM1xrj8wuXawtJMsviKnFAG1lL0gyYfMICg3mSzX6o5WRMQHNrmpJgJntWGJfGh2zpwhDjs4IviqpAHe3TMgmqzU3PNMonkYJSSFPgfogQ..&amp;type=2&amp;query=%E6%9B%99%E5%85%89%E6%95%B0%E5%88%9B %E6%B5%B8%E6%B2%A1%E5%BC%8F%E6%B6%B2%E5%86%B7&amp;token=EBA5E74D4A562EF05255070A9884C60253C334856A41AFBD" target="_blank" rel="noopener">那曙光数创就是浸没式液冷的王者,他的浸没式相变液冷,国内市占率超过 60%,是国内唯一主导制定 10 项液冷国家行业标准的企业...<span class="hero-arrow">↗</span></a></h2>
-    
-    <div class="hero-source">weixin.sogou.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpBFH1Tz7jiHJ1-xLTtGRmwVqXa8Fplpd948dpA-6WPJSzaMfvhW48AisQhu8YEV4XYa-s18wzFU2VXHOVqjpNMsuM2w5uMVT9BoyGCpqpYS3zC9Fh5YlU97asowSfrq1qfb1Dq-8ZIPYNJnRvx1k5QF2QTyLrvhFaGR3KJa8SqLpQxo62gt2-g1sQOq1JaGn21pZdGp33sr089kyxDwoXvg..&amp;type=2&amp;query=%E6%9B%99%E5%85%89%E6%95%B0%E5%88%9B %E6%B5%B8%E6%B2%A1%E5%BC%8F%E6%B6%B2%E5%86%B7&amp;token=EBA5E74D4A562EF05255070A9884C60253C334856A41AFBD" target="_blank" rel="noopener">第三名:中科曙光(603019)|浸没式液冷国家队龙头 核心逻辑国内算力全产业链布局最完整企业,控股子公司曙光数创为浸没式液冷...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpBFH1Tz7jiHJ1-xLTtGRmwVqXa8Fplpd9SDnEKicg7I9D39sH-COBHjrrjs05a0LRu9DzjaJVFb-weF7J3s83JwyG6gt6bVn6FMus4eEcv66J8zr_Egb6gywAzYlX-VWAEr0SWvcVcW9J1CxbqxJ7nbyq5CfC7aTfeGKGchJvtiLCzy5MY0y_c-zE-bUckXVh8mgtlpwpD-zS-e4Yz84xMA..&amp;type=2&amp;query=%E6%9B%99%E5%85%89%E6%95%B0%E5%88%9B %E6%B5%B8%E6%B2%A1%E5%BC%8F%E6%B6%B2%E5%86%B7&amp;token=EBA5E74D4A562EF05255070A9884C60253C334856A41AFBD" target="_blank" rel="noopener">旗下控股子公司曙光数创为浸没式液冷细分龙头,协同形成全链条服务能力.增长亮点:国内浸没式液冷整体市占率超60%,超算中心...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpBFH1Tz7jiHJ1-xLTtGRmwVqXa8Fplpd9iht0wH4h0UYh9RQvFs2GEatRMHpPo4y-V_nT0BHniGIrvvAZ63EClpZtXSvzN3pCLKBZnliRpTWub1KLVutn4NDcMiA1nw28OKBbSICgNsKvp-GJdEFm2069j9EgWEjOZHSVKnszRC000yT6yA-ZdG5eUGiwvOQ2KPsB8cHlSAdr1dbZWbKUeQ..&amp;type=2&amp;query=%E6%9B%99%E5%85%89%E6%95%B0%E5%88%9B %E6%B5%B8%E6%B2%A1%E5%BC%8F%E6%B6%B2%E5%86%B7&amp;token=EBA5E74D4A562EF05255070A9884C60253C334856A41AFBD" target="_blank" rel="noopener">其子公司曙光数创在浸没式液冷市场占有率超过60%.公司自2015年即推出国内首款规模化量产的液冷服务器,第三代C8000浸没液冷...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpBFH1Tz7jiHJ1-xLTtGRmwVqXa8Fplpd9R53B_8H0XsyNOka2wavTVk_Cp-zrdui4hYQVZgLaW_IGX8XHlmR5GsFg-B9ZF3f9bNY0_GFPChZQZjK7d5A-4_KYvkzUx2lgjSNzajX0b7lZPGpg3dM3bMhKqiWzomUjBtXK3YPkiG9vCFlDAQuRO54hbEGNgFhfKWh22BbJcEJAe0f8bRARvQ..&amp;type=2&amp;query=%E6%9B%99%E5%85%89%E6%95%B0%E5%88%9B %E6%B5%B8%E6%B2%A1%E5%BC%8F%E6%B6%B2%E5%86%B7&amp;token=EBA5E74D4A562EF05255070A9884C60253C334856A41AFBD" target="_blank" rel="noopener">来源 | 曙光数创[洞见热管理]获悉,近日,曙光数创中国科学院信息化大厦相变浸没式液冷数据中心项目成功入选《京津冀绿色低碳...</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="avctw" data-region="cn" hidden>
-<div class="hero">
-  <div class="hero-main">
-    <div class="hero-meta">
-      <span class="time">2026-06-22</span>
-      <span>头条</span>
-    </div>
-    <h2 class="hero-title"><a href="https://www.avc.co/zh-tw/About-AVC/CompanyProfile/Investor-Relations" target="_blank" rel="noopener">奇鋐科技纳入台湾永续指数成分股<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">奇鋐科技以优异经营绩效及 ESG 永续发展成果,自 2026 年 6 月起纳入「台湾永续指数」成分股并获授权使用专属标章。</p>
-    <div class="hero-source">avc.co</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        <span class="time">2026-05-21</span>
-        <div class="title"><a href="https://www.avc.co/zh-tw/About-AVC/CompanyProfile/Investor-Relations" target="_blank" rel="noopener">奇鋐科技荣获 CDP 2025 供应商合作评估(SEA)顶级 A 评分</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpw_tx_ptqDL51-xLTtGRmwVqXa8Fplpd95ovs7ZNWLPubl04MmPNRZ_zGc-7T26DJ5TMF4Bk5mYooTgAAma-5UFGvwvQAjUgU31iWFLo7hvT2z-8mjFGeIUcoLDc9SzaYd_h1V2ByftxmZZbVNmsV7g903ehBEOgDIYp60J43Sng5GuU6-7RXObM859736wZYGqZTQyOqeKBS6t2rFt2rnA..&amp;type=2&amp;query=%E5%A5%87%E9%8B%90%E7%A7%91%E6%8A%80 %E6%95%A3%E7%83%AD&amp;token=EBAD76C0534F36E84A4D1F12AA2E5E824BCFF4B06A41B127" target="_blank" rel="noopener">中国台湾奇鋐科技股份有限公司(AVC Group)旗下AVC科技越南...主要生产服务器散热风扇、散热器、冷却板、水冷散热系统,以及...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpw_tx_ptqDL51-xLTtGRmwVqXa8Fplpd9BUNQpgNri109KGKj7e6uowfYP-CicrcY8EU0yg9AQUN_XdxxIsxwz2KZFotHI-GRDe3h9YQ8FFnI-6KDgiHyZGTgOBW2gn8FUPpjzyf9DjNdLl342RCzVFV9SDH6bpb9uP9CCcFz4KumZ5e3KU0Q4wu4L_5sfeKpBJurbdf48Vn2CsG6-xMgzQ..&amp;type=2&amp;query=%E5%A5%87%E9%8B%90%E7%A7%91%E6%8A%80 %E6%95%A3%E7%83%AD&amp;token=EBAD76C0534F36E84A4D1F12AA2E5E824BCFF4B06A41B127" target="_blank" rel="noopener">免费体验「高时效」国际投行研报「T+0至T+1」「原研报」可至底部下载高盛——奇鋐科技 (3017.TW):液冷渗透率提升与智能手...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpw_tx_ptqDL51-xLTtGRmwVqXa8Fplpd95bhW7xCd4yvFgMOfB43nlVAdrsVxh81ADqtWuzYQOktm0mfbXEg34MMokox3BY7WBjdQGN1ejBSIMclIPtROLKXjzbZY1isNwJPQLb2Q5MOxzXhyU7XbP6dlCv1R39Fgfs7X-tgqJfjbTFsLFGnuDndFTn76TTaJQtrZhGEgLEcYJSSFPgfogQ..&amp;type=2&amp;query=%E5%A5%87%E9%8B%90%E7%A7%91%E6%8A%80 %E6%95%A3%E7%83%AD&amp;token=EBAD76C0534F36E84A4D1F12AA2E5E824BCFF4B06A41B127" target="_blank" rel="noopener">比利时奇鋐科技散热组件上海、江苏、深圳奥地利科技与系统技术印刷电路板和IC基板重庆、上海伯恩光学玻璃盖板惠州京东方面板合...</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="aurastw" data-region="cn" hidden>
-<div class="hero">
-  <div class="hero-main">
-    
-    <h2 class="hero-title"><a href="https://www.eefocus.com/article/1859483.html" target="_blank" rel="noopener">昂科烧录器支持Aurasemi奥拉半导体的去抖时钟芯片AU5615B00-QMR<span class="hero-arrow">↗</span></a></h2>
-    
-    <div class="hero-source">eefocus.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiAxZadIF9dXkqL_gfAi85E1qXa8Fplpd9R2AnA7YQaSc4pg_nf8PTHycivOdBonaP0AHZycLLwZKnrOdj4QaWiAGSnpNbHy08tVcxJMAAvRspa8bmD8tr49i0uS6MdoFwPLMiO8DOeNJeRINvvw8j_4Zjj6jclKAGsbTkpvASgWGZHhCSVxeYBtgp5GLEnve4qvfaVjVWDh0Y-UZGbO56rA..&amp;type=2&amp;query=%E5%8F%8C%E9%B8%BF%E7%A7%91%E6%8A%80&amp;token=EF99E9D8001C65B417114273DD69F7601877E02D6A4278F9" target="_blank" rel="noopener">江苏双鸿新能源装备科技有限公司经营范围:一般项目:技术服务、技术开发、技术咨询、技术交流、技术转让、技术推广,通用设备...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiAxZadIF9dXkqL_gfAi85E1qXa8Fplpd9ga2z_m0fY0habX_JTBqSjT4tJaMB_Khe4_7gMWKuOAR45mwDml3NJTnvbmQ670uRTUJyL54HblL92hhjwY5bieqju83muzzmSgwoOUM9bzggLYpj6ZFXcrhx6ItmkMD6fU6OnSVkO9Zs54gvKcHakY8SbxV7NTu1HRn4RGognsE89kyxDwoXvg..&amp;type=2&amp;query=%E5%8F%8C%E9%B8%BF%E7%A7%91%E6%8A%80&amp;token=EF99E9D8001C65B417114273DD69F7601877E02D6A4278F9" target="_blank" rel="noopener">公司介绍双鸿电子科技工业(昆山)有限公司隶属于台湾双鸿上市公司双鸿科技集团之子公司,于2002年09月16日成立,注册资本500...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiAxZadIF9dXkqL_gfAi85E1qXa8Fplpd9FAMIrFXI1xdKxiMfUqGhwW4n5eD6RiaUJuvurjv7glHNtWcnNIHYwSGXLpxiMqRPl6sr44YGumswpEszU1xzvfd3itmmcvQepCaWo7C9orDTPMzRJcAe7DxuttZP2UqyRYekI53FgcEbjFXOcEr7f6bucYHHEmVggIOH4VSgHz5FH6In5Ei3zg..&amp;type=2&amp;query=%E5%8F%8C%E9%B8%BF%E7%A7%91%E6%8A%80&amp;token=EF99E9D8001C65B417114273DD69F7601877E02D6A4278F9" target="_blank" rel="noopener">昆山厂名称为双鸿电子科技工业(昆山)有限公司,成立于 2002年,位于昆山综合保税区.合肥厂名称为安徽维鸿电子科技有限公司...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.digitimes.com/news/a20260521PD231/2026-auras-avc-demand-liquid-cooling-revenue.html" target="_blank" rel="noopener">Auras Technology上调2026年营收展望，因AI驱动的液冷需求增长</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="caoe" data-region="cn" hidden>
-<div class="hero">
-  <div class="hero-main">
-    
-    <h2 class="hero-title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtphPB5XfPlGbt1-xLTtGRmwVqXa8Fplpd9mQa79H_P4tHIHlSlNDZ9Pjdp7eUlcllzMpI_yb5Lu9SidfcuY0jysoy4QE6NMaa4Y7f-GqyfCHKqAznj5L9iTEkHQQTq7LnGRVM9ELaygF6JHNXstAStDorvqrC1f7bjRWe3FzmOb34sQntl-pQTx50vOBD1fo30S3KxPzeLZdHP28temKTOwg..&amp;type=2&amp;query=%E4%B8%AD%E8%88%AA%E5%85%89%E7%94%B5 %E8%BF%9E%E6%8E%A5%E5%99%A8&amp;token=EBA604318E93EA359790C2CE5BBFDAF697CF6A5E6A41AFC2" target="_blank" rel="noopener">中航光电全球排名第五军用连接器是构成完整的武器装备系统所必需的基础组件,与商用连接器相比,它是一类特殊、敏感的连接器,...<span class="hero-arrow">↗</span></a></h2>
-    
-    <div class="hero-source">weixin.sogou.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtphPB5XfPlGbt1-xLTtGRmwVqXa8Fplpd9CtPU9Lf2o481FMaMhAkYHLuHPHLEfLy1KxhN8_YHfm_uLFCcQ8jnBkKh-rfntuvyWWsbScfIzB4U4XeTyAVGB2Id7cJRYRVHmhCYudTtw_9t2DtSfX4nkL3WBoR5ubQNk6v88OLsHo19r5pMcyKApV7DEvdQ4AbOGdCp0WHaqKdflztgI7RZ1g..&amp;type=2&amp;query=%E4%B8%AD%E8%88%AA%E5%85%89%E7%94%B5 %E8%BF%9E%E6%8E%A5%E5%99%A8&amp;token=EBA604318E93EA359790C2CE5BBFDAF697CF6A5E6A41AFC2" target="_blank" rel="noopener">导 读中航光电研发的充电模块系列连接器能够满足不同功率充电模块的需求.3/27/2023,光纤在线讯,随着新能源汽车行业进入高速...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtphPB5XfPlGbt1-xLTtGRmwVqXa8Fplpd9R4hI8ibZNXFBelXTXOuDsglTLGKRT3E-7rAbDm0lJsU5ziChTcU3zaFqBO9_TTiBnADHL0RYc55V_Y6cUPKXCuu3QSYNWecpX3uBcANDm2BzlSi_PruhRHC0CyFGqPc64Ci8br9K0qqc5E98hT9hKFMqKdgWLZ5vfyuEGfPvf3L6zvkPgoArRQ..&amp;type=2&amp;query=%E4%B8%AD%E8%88%AA%E5%85%89%E7%94%B5 %E8%BF%9E%E6%8E%A5%E5%99%A8&amp;token=EBA604318E93EA359790C2CE5BBFDAF697CF6A5E6A41AFC2" target="_blank" rel="noopener">中航光电主动跟进电连接器发展趋势,研发J599系列国产军用1394总线连接器.该系列电连接器主要应用于飞机飞控、机电、航电、...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiHUBat-bVAAkqL_gfAi85E1qXa8Fplpd9QF6BA7DvfQ8z6uaRm1UXFYGP5O8ZNCfxQgcL3PE52D-b-8x9WCpfE86k84TSwkfvzkT5L8L9KZLof-bWg4GZX75N0gmb28441GQlgx3JZtB4C13Di8nCbl1ulBy6PqT-Rf9IlP9V71fYT8nypE8LVTWyTAoCU8v6bsUdWOu4IqkCn9lOoZLP2Q..&amp;type=2&amp;query=%E4%B8%AD%E8%88%AA%E5%85%89%E7%94%B5&amp;token=EF99FCF62C30489734336050FE8FA40D357426186A4278FE" target="_blank" rel="noopener">中航光电 JONHON中航光电领导班子获航空工业2022年度“优秀领导班子”表彰1月10日,在中国航空工业集团有限公司2023年工作...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiHUBat-bVAAkqL_gfAi85E1qXa8Fplpd9QF6BA7DvfQ8z6uaRm1UXFYGP5O8ZNCfxQgcL3PE52D-b-8x9WCpfEwBCN5wGeeEAwJfRG-ypMi5gSLtN-yJUd2EXv3uONeDaroj9Xa4Q-xn6gcnLexOiL0efuFpxus9XRCc5zAg90hZFmf7rMOUkLriGYWGpAu4I0yiBeOCHVx5Cy6umSSPEsg..&amp;type=2&amp;query=%E4%B8%AD%E8%88%AA%E5%85%89%E7%94%B5&amp;token=EF99FCF62C30489734336050FE8FA40D357426186A4278FE" target="_blank" rel="noopener">在中航光电,遇见更好的自己未来,他们与中航光电一起,踏上航空报国的新征程,遇见更好的自己……穿上这抹航空蓝,挺拔的身姿...</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="nidec" data-region="intl" hidden>
-<div class="hero">
-  <div class="hero-main">
-    <div class="hero-meta">
-      <span class="time">5天前</span>
-      <span>头条</span>
-    </div>
-    <h2 class="hero-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0624-01/260624-01en.pdf" target="_blank" rel="noopener">Nidec发布关于海外子公司遭受勒索软件攻击损害的初步报告<span class="hero-arrow">↗</span></a></h2>
-    
-    <div class="hero-source">nidec.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        <span class="time">2026-06-12</span>
-        <div class="title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0612-02/260612-02en.pdf" target="_blank" rel="noopener">Nidec开发面向大型机床与长行程设备的MPLJ系列线性位置检测器</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-06-08</span>
-        <div class="title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0608-01/260608-01en.pdf" target="_blank" rel="noopener">Nidec开发冷却能力高达300 kW的机架式CDU(液冷分配单元)</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-06-02</span>
-        <div class="title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0602-03/260602-03en.pdf" target="_blank" rel="noopener">Nidec开发新产品&quot;STC 1.0&quot;原型以提升数据中心设计灵活性</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-04-07</span>
-        <div class="title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0407-01/260407-01en.pdf" target="_blank" rel="noopener">Nidec推出支持AI时代数据中心的创新液冷解决方案专题网站</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="semco" data-region="intl" hidden>
-<div class="hero">
-  <div class="hero-main">
-    <div class="hero-meta">
-      <span class="time">2026-06-17</span>
-      <span>头条</span>
-    </div>
-    <h2 class="hero-title"><a href="https://product.samsungsem.com/product-news/view.do?idx=3906&amp;language=en" target="_blank" rel="noopener">三星电机推出车规级超高电容MLCC(1206英寸,100uF,4V)<span class="hero-arrow">↗</span></a></h2>
-    
-    <div class="hero-source">product.samsungsem.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        <span class="time">2026-06-17</span>
-        <div class="title"><a href="https://product.samsungsem.com/product-news/view.do?idx=3902&amp;language=en" target="_blank" rel="noopener">三星电机推出硅电容器(Silicon Capacitor)系列</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-06-01</span>
-        <div class="title"><a href="https://www.samsungsem.com/global/newsroom/newsletter/view.do?id=1622" target="_blank" rel="noopener">三星电机发布6月新闻通讯(June Newsletter)</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-05-20</span>
-        <div class="title"><a href="https://product.samsungsem.com/product-news/view.do?idx=3882&amp;language=en" target="_blank" rel="noopener">三星电机推出超紧凑型008004英寸High Q MLCC</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-04-15</span>
-        <div class="title"><a href="https://product.samsungsem.com/product-news/view.do?idx=3866&amp;language=en" target="_blank" rel="noopener">三星电机推出面向xEV高电压应用的车规超高电压MLCC</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="vertiv" data-region="intl" hidden>
-<div class="hero">
-  <div class="hero-main">
-    <div class="hero-meta">
-      <span class="time">2026-06-01</span>
-      <span>头条</span>
-    </div>
-    <h2 class="hero-title"><a href="https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-introduces-first-converged-physical-infrastructure-digital-twin-for-nvidia-omniverse-dsx/" target="_blank" rel="noopener">Vertiv推出基于NVIDIA Omniverse DSX的首个融合物理基础设施的数字孪生<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">Vertiv (NYSE: VRT)宣布在Vertiv SmartRun中构建可投产的数字孪生能力,并集成至NVIDIA Omniverse DSX Blueprint,使AI工厂基础设施更具可配置性、可复用性和可仿真性。</p>
-    <div class="hero-source">vertiv.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        <span class="time">2026-05-06</span>
-        <div class="title"><a href="https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-expands-power-portfolio-with-new-compact-desktop-ups-for-personal-computing-gaming-and-networking-devices/" target="_blank" rel="noopener">Vertiv扩展电源产品组合推出紧凑型桌面UPS</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-04-27</span>
-        <div class="title"><a href="https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-strengthens-liquid-cooling-system-capability-with-acquisition-of-strategic-thermal-labs/" target="_blank" rel="noopener">Vertiv收购Strategic Thermal Labs以强化液冷能力</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.fool.com/coverage/better-buy/2026/06/26/eaton-vs-vertiv-which-industrials-stock-is-a-better-buy-in-2026/" target="_blank" rel="noopener">Eaton对比Vertiv：2026年哪只工业股更值得买入？</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://business-review.eu/tech/it/vertiv-completes-aquisition-of-thermokey-297358" target="_blank" rel="noopener">Vertiv完成对ThermoKey的收购</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="coolit" data-region="intl" hidden>
-<div class="hero">
-  <div class="hero-main">
-    <div class="hero-meta">
-      <span class="time">2026-06-01</span>
-      <span>头条</span>
-    </div>
-    <h2 class="hero-title"><a href="https://www.coolitsystems.com/resources/news/15kw_press_release/" target="_blank" rel="noopener">CoolIT Systems展示15kW冷板技术<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">CoolIT Systems在台北电脑展现场展示15kW单冷板液冷方案,这是面向下一代AI/HPC服务器的最高功率单冷板方案之一。</p>
-    <div class="hero-source">coolitsystems.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        <span class="time">2026-03-20</span>
-        <div class="title"><a href="https://www.coolitsystems.com/resources/news/ecolab-to-acquire-coolit-systems/" target="_blank" rel="noopener">Ecolab 宣布收购 CoolIT Systems</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-04-27</span>
-        <div class="title"><a href="https://www.coolitsystems.com/resources/news/calgary-herald-crazy-cool-adventure-the-inside-story-of-a-calgary-startups-improbable-6-6b-journey/" target="_blank" rel="noopener">Calgary Herald 报道 CoolIT 从 Calgary 创业公司走向 66 亿美元收购</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://menafn.com/1111196132/Coolit-Systems-Demonstrates-15Kw-Coldplate-Extending-Single-Phase-DLC-Roadmap-Far-Beyond-2030" target="_blank" rel="noopener">Coolit Systems 展示 15Kw 冷板,将单相 DLC 技术路线图延展至 2030 年之后</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.cbc.ca/news/canada/calgary/coolit-sale-tech-deal-calgary-9.6941841" target="_blank" rel="noopener">美国公司以 66 亿美元收购卡尔加里 CoolIT，为该市迄今“最大”科技交易之一</a></div>
-      </div>
-    
-  </div>
-</div></div></div>
     <div class="content-area" id="content-area">
       
 <section data-co="envicool" data-region="cn" class="company-section">
@@ -1925,7 +1523,7 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.theglobeandmail.com/investing/markets/stocks/VRT/pressreleases/2387882/nlight-vertiv-and-aerovironment-shares-are-falling-what-you-need-to-know/" target="_blank" rel="noopener">nLight、Vertiv 和 AeroVironment 股价下跌,你需要了解的信息</a></h3>
+  <h3 class="news-card-title"><a href="https://www.theglobeandmail.com/investing/markets/stocks/VRT/pressreleases/2387882/nlight-vertiv-and-aerovironment-shares-are-falling-what-you-need-to-know/" target="_blank" rel="noopener">nLight、Vertiv 和 AeroVironment 股价下跌，你需要了解的信息</a></h3>
   
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
@@ -1971,7 +1569,7 @@ footer .mono {
       <span class="domain">coolitsystems.com · 国际</span>
     </div>
   </div>
-  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.coolitsystems.com/resources/news/15kw_press_release/" target="_blank" rel="noopener">CoolIT Systems在台北电脑展现场展示15kW单冷板液冷方案,这是面向下一代AI/HPC服务器的最高功率单冷板方案之一。</a></li><li><span class="num">02</span><a href="https://www.coolitsystems.com/resources/news/ecolab-to-acquire-coolit-systems/" target="_blank" rel="noopener">全球水、卫生和感染预防解决方案领导者 Ecolab 宣布将以约 66 亿美元收购 CoolIT Systems,加速布局 AI 数据中心液冷市场。</a></li><li><span class="num">03</span><a href="https://www.coolitsystems.com/resources/news/calgary-herald-crazy-cool-adventure-the-inside-story-of-a-calgary-startups-improbable-6-6b-journey/" target="_blank" rel="noopener">Calgary Herald 长篇报道 CoolIT Systems 从车库创业到被 Ecolab 收购的历程,聚焦液冷在 AI 时代的关键角色。</a></li><li><span class="num">04</span><a href="https://menafn.com/1111196132/Coolit-Systems-Demonstrates-15Kw-Coldplate-Extending-Single-Phase-DLC-Roadmap-Far-Beyond-2030" target="_blank" rel="noopener">Coolit Systems 展示 15Kw 冷板,将单相 DLC 技术路线图延展至 2030 年之后</a></li><li><span class="num">05</span><a href="https://www.cbc.ca/news/canada/calgary/coolit-sale-tech-deal-calgary-9.6941841" target="_blank" rel="noopener">美国公司以 66 亿美元收购卡尔加里 CoolIT，为该市迄今“最大”科技交易之一</a></li></ol><div class="summary-stats"><span>10 条</span><span>CoolIT Systems</span></div></div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.coolitsystems.com/resources/news/15kw_press_release/" target="_blank" rel="noopener">CoolIT Systems在台北电脑展现场展示15kW单冷板液冷方案,这是面向下一代AI/HPC服务器的最高功率单冷板方案之一。</a></li><li><span class="num">02</span><a href="https://www.coolitsystems.com/resources/news/ecolab-to-acquire-coolit-systems/" target="_blank" rel="noopener">全球水、卫生和感染预防解决方案领导者 Ecolab 宣布将以约 66 亿美元收购 CoolIT Systems,加速布局 AI 数据中心液冷市场。</a></li><li><span class="num">03</span><a href="https://www.coolitsystems.com/resources/news/calgary-herald-crazy-cool-adventure-the-inside-story-of-a-calgary-startups-improbable-6-6b-journey/" target="_blank" rel="noopener">Calgary Herald 长篇报道 CoolIT Systems 从车库创业到被 Ecolab 收购的历程，聚焦液冷在 AI 时代的关键角色。</a></li><li><span class="num">04</span><a href="https://menafn.com/1111196132/Coolit-Systems-Demonstrates-15Kw-Coldplate-Extending-Single-Phase-DLC-Roadmap-Far-Beyond-2030" target="_blank" rel="noopener">Coolit Systems 展示 15Kw 冷板，将单相 DLC 技术路线图延展至 2030 年之后</a></li><li><span class="num">05</span><a href="https://www.cbc.ca/news/canada/calgary/coolit-sale-tech-deal-calgary-9.6941841" target="_blank" rel="noopener">美国公司以 66 亿美元收购卡尔加里 CoolIT，为该市迄今“最大”科技交易之一</a></li></ol><div class="summary-stats"><span>10 条</span><span>CoolIT Systems</span></div></div>
   <div class="news-grid">
 <article class="news-card">
   <div class="news-card-time">2026-06-01</div>
@@ -1994,7 +1592,7 @@ footer .mono {
 <article class="news-card">
   <div class="news-card-time">2026-04-27</div>
   <h3 class="news-card-title"><a href="https://www.coolitsystems.com/resources/news/calgary-herald-crazy-cool-adventure-the-inside-story-of-a-calgary-startups-improbable-6-6b-journey/" target="_blank" rel="noopener">Calgary Herald 报道 CoolIT 从 Calgary 创业公司走向 66 亿美元收购</a></h3>
-  <p class="news-card-snippet">Calgary Herald 长篇报道 CoolIT Systems 从车库创业到被 Ecolab 收购的历程,聚焦液冷在 AI 时代的关键角色。</p>
+  <p class="news-card-snippet">Calgary Herald 长篇报道 CoolIT Systems 从车库创业到被 Ecolab 收购的历程，聚焦液冷在 AI 时代的关键角色。</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>coolitsystems.com</span>
@@ -2002,7 +1600,7 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://menafn.com/1111196132/Coolit-Systems-Demonstrates-15Kw-Coldplate-Extending-Single-Phase-DLC-Roadmap-Far-Beyond-2030" target="_blank" rel="noopener">Coolit Systems 展示 15Kw 冷板,将单相 DLC 技术路线图延展至 2030 年之后</a></h3>
+  <h3 class="news-card-title"><a href="https://menafn.com/1111196132/Coolit-Systems-Demonstrates-15Kw-Coldplate-Extending-Single-Phase-DLC-Roadmap-Far-Beyond-2030" target="_blank" rel="noopener">Coolit Systems 展示 15Kw 冷板，将单相 DLC 技术路线图延展至 2030 年之后</a></h3>
   
   <div class="news-card-footer">
     
@@ -2085,11 +1683,7 @@ function selectRegion(region) {
   document.querySelectorAll('.company-section').forEach(s => {
     s.hidden = s.dataset.region !== region;
   });
-  // Filter hero by region
-  document.querySelectorAll('.hero[data-co]').forEach(h => {
-    h.hidden = h.dataset.region !== region;
-  });
-  // Auto-select first visible company tab and trigger its hero/section
+  // Auto-select first visible company tab and trigger its section
   const firstVisible = document.querySelector('.company-tab:not([hidden])');
   if (firstVisible) selectCompany(firstVisible.dataset.co);
 }
@@ -2109,10 +1703,6 @@ function selectCompany(co) {
   }
   document.querySelectorAll('.company-tab').forEach(t => {
     t.classList.toggle('active', t.dataset.co === co);
-  });
-  // Hero: show only matching one
-  document.querySelectorAll('.hero[data-co]').forEach(h => {
-    h.hidden = h.dataset.co !== co;
   });
   // Section: show only matching one
   document.querySelectorAll('.company-section').forEach(s => {
@@ -2141,9 +1731,6 @@ window.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
       document.querySelectorAll('.company-tab').forEach(c => {
         c.hidden = c.dataset.region !== region;
-      });
-      document.querySelectorAll('.hero[data-co]').forEach(h => {
-        h.hidden = h.dataset.region !== region;
       });
       selectCompany(hash);
     }

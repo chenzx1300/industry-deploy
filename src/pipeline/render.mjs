@@ -332,97 +332,6 @@ main section { animation: fadeIn 0.25s ease; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ============ HERO (featured news) ============ */
-.hero {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 32px;
-  margin-bottom: 48px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--divider);
-}
-.hero-main {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.hero-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 12px;
-  color: var(--text-faint);
-  letter-spacing: 0.04em;
-}
-.hero-meta .time { color: var(--accent); font-weight: 600; }
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-.hero-title a { color: var(--text); text-decoration: none; transition: color 0.2s; }
-.hero-title a:hover { color: var(--accent); }
-.hero-snippet {
-  font-size: 16px;
-  line-height: 1.65;
-  color: var(--text-soft);
-  margin: 0;
-}
-.hero-source {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 12px;
-  color: var(--text-faint);
-}
-.hero-arrow {
-  font-size: 14px;
-  color: var(--text-mute);
-  margin-left: 6px;
-  display: inline-block;
-  transition: transform 0.2s;
-}
-a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
-
-.hero-side {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding-left: 24px;
-  border-left: 1px solid var(--divider);
-}
-.hero-side-item {
-  padding: 8px 0;
-  border-bottom: 1px solid var(--divider);
-}
-.hero-side-item:last-child { border-bottom: none; }
-.hero-side-item .time {
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 11px;
-  color: var(--accent);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  display: block;
-  margin-bottom: 6px;
-}
-.hero-side-item .title {
-  font-size: 15px;
-  line-height: 1.45;
-  font-weight: 500;
-  color: var(--text);
-}
-.hero-side-item .title a {
-  color: var(--text);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.hero-side-item .title a:hover { color: var(--accent); }
-
 /* ============ SUMMARY (本周要点) ============ */
 .summary {
   background: var(--surface-soft);
@@ -633,11 +542,6 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   font-size: 14px;
 }
 
-/* ============ HEROES (one per company, only one shown at a time) ============ */
-.heroes {
-  margin-bottom: 32px;
-}
-
 /* ============ CONTENT AREA (single company section at a time) ============ */
 .content-area {
   min-height: 400px;
@@ -742,13 +646,6 @@ footer .mono {
   .company-tabs { overflow-x: auto; flex-wrap: nowrap; padding: 4px 0 8px; -webkit-overflow-scrolling: touch; }
   button.company-tab { font-size: 13px; padding: 8px 10px; flex-shrink: 0; white-space: nowrap; }
 
-  /* Hero — single column */
-  .hero { grid-template-columns: 1fr; gap: 20px; margin-bottom: 32px; padding-bottom: 24px; }
-  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 20px; }
-  .hero-title { font-size: 24px; line-height: 1.25; }
-  .hero-snippet { font-size: 15px; }
-  .hero-side-item .title { font-size: 14px; }
-
   /* Summary — narrower numbers */
   .summary { padding: 20px 18px 16px; margin-bottom: 28px; }
   .summary-label { font-size: 16px; }
@@ -779,7 +676,6 @@ footer .mono {
 /* Tiny phones — iPhone SE 375px */
 @media (max-width: 480px) {
   .masthead h1 { font-size: 26px; }
-  .hero-title { font-size: 21px; }
   .company-header h2 { font-size: 19px; }
   .news-card-title { font-size: 15px; }
   button.tab-region { font-size: 14px; padding: 8px 12px 10px; }
@@ -807,11 +703,7 @@ function selectRegion(region) {
   document.querySelectorAll('.company-section').forEach(s => {
     s.hidden = s.dataset.region !== region;
   });
-  // Filter hero by region
-  document.querySelectorAll('.hero[data-co]').forEach(h => {
-    h.hidden = h.dataset.region !== region;
-  });
-  // Auto-select first visible company tab and trigger its hero/section
+  // Auto-select first visible company tab and trigger its section
   const firstVisible = document.querySelector('.company-tab:not([hidden])');
   if (firstVisible) selectCompany(firstVisible.dataset.co);
 }
@@ -831,10 +723,6 @@ function selectCompany(co) {
   }
   document.querySelectorAll('.company-tab').forEach(t => {
     t.classList.toggle('active', t.dataset.co === co);
-  });
-  // Hero: show only matching one
-  document.querySelectorAll('.hero[data-co]').forEach(h => {
-    h.hidden = h.dataset.co !== co;
   });
   // Section: show only matching one
   document.querySelectorAll('.company-section').forEach(s => {
@@ -863,9 +751,6 @@ window.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
       document.querySelectorAll('.company-tab').forEach(c => {
         c.hidden = c.dataset.region !== region;
-      });
-      document.querySelectorAll('.hero[data-co]').forEach(h => {
-        h.hidden = h.dataset.region !== region;
       });
       selectCompany(hash);
     }
@@ -931,37 +816,12 @@ function topBar(latestNews) {
   </div>
 </div>`;
 }
-
 // Build a hero (featured news + 3-4 secondary on the right)
-function buildHero(news, promptName) {
-  if (!news || news.length === 0) return '';
-  const main = news[0];
-  const sides = news.slice(1, 5);
-  const isFile = isFileUrl(main.url);
-  const mainTime = formatTimeLabel(main.published_at);
-  const mainSnippet = (main.snippet && !isFile) ? main.snippet : '';
-
-  return `
-<div class="hero">
-  <div class="hero-main">
-    ${mainTime ? `<div class="hero-meta">
-      <span class="time">${escapeHtml(mainTime)}</span>
-      <span>头条</span>
-    </div>` : ''}
-    <h2 class="hero-title"><a href="${escapeHtml(main.url)}" target="_blank" rel="noopener">${escapeHtml(main.title)}<span class="hero-arrow">↗</span></a></h2>
-    ${mainSnippet ? `<p class="hero-snippet">${escapeHtml(mainSnippet)}</p>` : ''}
-    <div class="hero-source">${escapeHtml(hostnameOf(main.url) || main.source || '')}</div>
-  </div>
-  <div class="hero-side">
-    ${sides.map(n => `
-      <div class="hero-side-item">
-        ${formatTimeLabel(n.published_at) ? `<span class="time">${escapeHtml(formatTimeLabel(n.published_at))}</span>` : ''}
-        <div class="title"><a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title)}</a></div>
-      </div>
-    `).join('')}
-  </div>
-</div>`;
-}
+// (Removed in 2026-06 — hero block was deemed too verbose. Per-company
+// news sections below already list all items in a unified grid.)
+/* function buildHero(news, promptName) {
+  ...
+} */
 
 function formatTimeLabel(isoString) {
   if (!isoString) return '';
@@ -1012,10 +872,7 @@ export function renderIndustryPage(data) {
     return db - da;
   });
 
-  // Hero for every company (hidden except the default one)
-  const heroesHtml = data.companies.map(c =>
-    `<div class="hero" data-co="${escapeHtml(c.id)}" data-region="${c.region}"${c.id === defaultCo.id ? '' : ' hidden'}>${buildHero(c.news, c.name)}</div>`
-  ).join('');
+  // Hero block removed 2026-06 (per user feedback — too verbose, content redundant with per-company news grid)
 
   // Region tabs (cn = active by default)
   const regionTabsHtml = `
@@ -1116,7 +973,6 @@ ${topBar(latestNews)}
 </header>
 <main>
   <div class="container">
-    <div class="heroes">${heroesHtml}</div>
     <div class="content-area" id="content-area">
       ${visibleCompanySections}
     </div>

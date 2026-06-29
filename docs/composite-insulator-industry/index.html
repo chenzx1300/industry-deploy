@@ -323,97 +323,6 @@ main section { animation: fadeIn 0.25s ease; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ============ HERO (featured news) ============ */
-.hero {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 32px;
-  margin-bottom: 48px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--divider);
-}
-.hero-main {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.hero-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 12px;
-  color: var(--text-faint);
-  letter-spacing: 0.04em;
-}
-.hero-meta .time { color: var(--accent); font-weight: 600; }
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-.hero-title a { color: var(--text); text-decoration: none; transition: color 0.2s; }
-.hero-title a:hover { color: var(--accent); }
-.hero-snippet {
-  font-size: 16px;
-  line-height: 1.65;
-  color: var(--text-soft);
-  margin: 0;
-}
-.hero-source {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 12px;
-  color: var(--text-faint);
-}
-.hero-arrow {
-  font-size: 14px;
-  color: var(--text-mute);
-  margin-left: 6px;
-  display: inline-block;
-  transition: transform 0.2s;
-}
-a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
-
-.hero-side {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding-left: 24px;
-  border-left: 1px solid var(--divider);
-}
-.hero-side-item {
-  padding: 8px 0;
-  border-bottom: 1px solid var(--divider);
-}
-.hero-side-item:last-child { border-bottom: none; }
-.hero-side-item .time {
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 11px;
-  color: var(--accent);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  display: block;
-  margin-bottom: 6px;
-}
-.hero-side-item .title {
-  font-size: 15px;
-  line-height: 1.45;
-  font-weight: 500;
-  color: var(--text);
-}
-.hero-side-item .title a {
-  color: var(--text);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.hero-side-item .title a:hover { color: var(--accent); }
-
 /* ============ SUMMARY (本周要点) ============ */
 .summary {
   background: var(--surface-soft);
@@ -624,11 +533,6 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   font-size: 14px;
 }
 
-/* ============ HEROES (one per company, only one shown at a time) ============ */
-.heroes {
-  margin-bottom: 32px;
-}
-
 /* ============ CONTENT AREA (single company section at a time) ============ */
 .content-area {
   min-height: 400px;
@@ -733,13 +637,6 @@ footer .mono {
   .company-tabs { overflow-x: auto; flex-wrap: nowrap; padding: 4px 0 8px; -webkit-overflow-scrolling: touch; }
   button.company-tab { font-size: 13px; padding: 8px 10px; flex-shrink: 0; white-space: nowrap; }
 
-  /* Hero — single column */
-  .hero { grid-template-columns: 1fr; gap: 20px; margin-bottom: 32px; padding-bottom: 24px; }
-  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 20px; }
-  .hero-title { font-size: 24px; line-height: 1.25; }
-  .hero-snippet { font-size: 15px; }
-  .hero-side-item .title { font-size: 14px; }
-
   /* Summary — narrower numbers */
   .summary { padding: 20px 18px 16px; margin-bottom: 28px; }
   .summary-label { font-size: 16px; }
@@ -770,7 +667,6 @@ footer .mono {
 /* Tiny phones — iPhone SE 375px */
 @media (max-width: 480px) {
   .masthead h1 { font-size: 26px; }
-  .hero-title { font-size: 21px; }
   .company-header h2 { font-size: 19px; }
   .news-card-title { font-size: 15px; }
   button.tab-region { font-size: 14px; padding: 8px 12px 10px; }
@@ -828,267 +724,6 @@ footer .mono {
 </header>
 <main>
   <div class="container">
-    <div class="heroes"><div class="hero" data-co="abb" data-region="intl" hidden>
-<div class="hero">
-  <div class="hero-main">
-    <div class="hero-meta">
-      <span class="time">3天前</span>
-      <span>头条</span>
-    </div>
-    <h2 class="hero-title"><a href="https://global.abb/news/detail/136892/abb-to-acquire-hoglund-to-expand-marine-automation-offering" target="_blank" rel="noopener">ABB 收购Høglund以扩展船舶自动化业务<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">ABB 将通过此次收购扩展其船舶自动化产品组合，Høglund 在船舶过程自动化、燃料与货舱控制系统方面具有深厚积累。</p>
-    <div class="hero-source">global.abb</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        <span class="time">2026-05-11</span>
-        <div class="title"><a href="https://global.abb/news/detail/135595/abb-invests-200-million-across-europe-to-accelerate-grid-transformation" target="_blank" rel="noopener">ABB 投资2亿美元用于欧洲电网转型</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-03-26</span>
-        <div class="title"><a href="https://global.abb/news/detail/134418/abb-and-voltagrid-extend-collaboration-on-data-center-power-infrastructure" target="_blank" rel="noopener">ABB与VoltaGrid扩展数据中心电力基础设施合作</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.business-standard.com/content/press-releases-ani/a-csr-project-by-abb-india-and-apd-expands-reach-delivers-over-27-000-rehabilitation-interventions-in-fy-2022-26-126062600857_1.html" target="_blank" rel="noopener">ABB India与APD的CSR项目扩大覆盖范围,在2022-26财年提供超过27,000次康复干预</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.solarpowerworldonline.com/2026/06/abb-launches-proteus-line-of-solutions-after-gamesa-acquisition/" target="_blank" rel="noopener">ABB完成对Gamesa的收购</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="shenma" data-region="cn">
-<div class="hero">
-  <div class="hero-main">
-    
-    <h2 class="hero-title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpE9XBIaA2Kbh1-xLTtGRmwVqXa8Fplpd9X5hGqt28dkXb_JfgEpqyr7nPKUZMlYS15XSMpDbK5A2_Si6EOo5kmplA_9nkcOE69yu3AG5_P5_FoBmrJgeySO-UaHN1vBGotw4RvekMHisldr-kqkBJN8tk5NFA5zQp4kUe1RF8kNyOMJw8sKmSxyLJa5etTfgIrSzvHuSMKF1hWLv6O878UA..&amp;type=2&amp;query=%E7%A5%9E%E9%A9%AC%E7%94%B5%E5%8A%9B %E5%A4%8D%E5%90%88%E7%BB%9D%E7%BC%98%E5%AD%90&amp;token=EBA612D3809CE43A999FCCC055C88B6099823EE76A41AFC5" target="_blank" rel="noopener">神马电力在全球变电站复合绝缘子、国内特高压站用绝缘子领域占据领先地位,全球市场份额约 16%,是西门子、日立能源等国际头部...<span class="hero-arrow">↗</span></a></h2>
-    
-    <div class="hero-source">weixin.sogou.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpE9XBIaA2Kbh1-xLTtGRmwVqXa8Fplpd96w6OA5Mng_hqBOXGTb3i6xOG2RfJ_zJxkwNTEEQM_8KDhUMU-zPfeFA8nWg36-Nd6hz0yIXvXfzu4cWXFe3DJrLfUPYeN8-eZlRiU8mznTGSMLOuyqgvc32wgz8ObumioEKQFhuMl4UmHQGMECe_jz1Py7W8-HPHpRJESaVJInHvzHZXxeLdyg..&amp;type=2&amp;query=%E7%A5%9E%E9%A9%AC%E7%94%B5%E5%8A%9B %E5%A4%8D%E5%90%88%E7%BB%9D%E7%BC%98%E5%AD%90&amp;token=EBA612D3809CE43A999FCCC055C88B6099823EE76A41AFC5" target="_blank" rel="noopener">神马电力为藏中联网工程五座全复合变电站、换流站,全面提供复合绝缘子.2017年建设的藏中联网工程,将青藏工程和川藏工程的受...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpE9XBIaA2Kbh1-xLTtGRmwVqXa8Fplpd9bFbW43pMOlRbvSl2SMtrChIXjFKYofen7_R9owSqd9TlrSnWZeoFY-9l8qw4JY8yed2E44dalMI2RqNcGJX3hOtEyvpbB1Wk0bAO_tu2sgg0zTYSHsmwUNOb7yfCaeaI_ASJWhUIopCO_BzHzhEfoMwD8cHxDRz2mT8R0wA1y6ff3q8uRDTfkw..&amp;type=2&amp;query=%E7%A5%9E%E9%A9%AC%E7%94%B5%E5%8A%9B %E5%A4%8D%E5%90%88%E7%BB%9D%E7%BC%98%E5%AD%90&amp;token=EBA612D3809CE43A999FCCC055C88B6099823EE76A41AFC5" target="_blank" rel="noopener">神马电力(603530) 复合材料替代趋势清晰绝缘子强者蓄势待发... 考虑到复合绝缘子全生命周期成本优势凸显、国网采购政策等原因...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpE9XBIaA2Kbh1-xLTtGRmwVqXa8Fplpd9uJYQtpPwXEW_vwkfu0ugPLNiyGSM2xZzk8rB2VEyTqPEh2AHchf1r4mEgiVM3Kqf5d8x3mEct4RQqUkfJXH6akFaE8ghU6ddmUDCuIxeNhSdqpWHiS0JRVfStI-8GkcBClPQN8DQjT2KecOG-Nw8yPV5lltRU-3pSXZQUJcWCgPzAjcIGepUqA..&amp;type=2&amp;query=%E7%A5%9E%E9%A9%AC%E7%94%B5%E5%8A%9B %E5%A4%8D%E5%90%88%E7%BB%9D%E7%BC%98%E5%AD%90&amp;token=EBA612D3809CE43A999FCCC055C88B6099823EE76A41AFC5" target="_blank" rel="noopener">然而,神马电力的复合绝缘子却在冰雪灾害中表现优异,采购了公司复合绝缘子的孝感等地,在灾害时还能维持一定程度的供电能力,...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpE9XBIaA2Kbh1-xLTtGRmwVqXa8Fplpd99gema-MKF4Dn7hqGy9o_rT5kHZWnixKh2Gn_MA-bFsnhEP7u7b51Kz92Z_Jxgb4aCOFdM3a6XNFbz_-wUwjvf_jENYcDA3QxiyfXiFjouCgZVeHVJZl0zD43Ybr-S0Q4p3w26a9sZ-rV8nYZN4pimjH86yO95e21aLBy63N52vpf_71bqkOtiw..&amp;type=2&amp;query=%E7%A5%9E%E9%A9%AC%E7%94%B5%E5%8A%9B %E5%A4%8D%E5%90%88%E7%BB%9D%E7%BC%98%E5%AD%90&amp;token=EBA612D3809CE43A999FCCC055C88B6099823EE76A41AFC5" target="_blank" rel="noopener">1999年,神马电力研发出填补国际空白的变电站复合绝缘子.2008年,神马电力研发出性能国际领先的线路复合绝缘子,产品满足了...</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="ztt" data-region="cn" hidden>
-<div class="hero">
-  <div class="hero-main">
-    
-    <h2 class="hero-title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpAxlUpYYOpWF1-xLTtGRmwVqXa8Fplpd9wpasc6cAUDiRShLNB5j-hHCAAsPN1n2G-iIxAq0dt6KQgtZG3CgN9tTOd568yJiDns8370PPPi8JdMb46mCyRaPnVks25hhr3UFxlGJTTSJB322Lg6jlfgS2P47_zwaLTTexFGsBTPY8hx1EJPpK_pFPJUN5KODFmhC2nTcmru-TJmCU1UgHwQ..&amp;type=2&amp;query=ZTT cable&amp;token=EBA65A60A0BCC41AB8BEECE075A3DA60B90532496A41AFD2" target="_blank" rel="noopener">ZTT、LS Cable&amp;System、Shangshang、住友电气、Smarter Energy 以及古河电气。已上市的企业……<span class="hero-arrow">↗</span></a></h2>
-    
-    <div class="hero-source">weixin.sogou.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpAxlUpYYOpWF1-xLTtGRmwVqXa8Fplpd9UYIcJIHNZSDDpkY14uqMB91nQQ2sM6VqbFJ80S6FCPqb4gILqF2EFiDqD71S_v7RISWVkyFnFyjG5bH5hjGNFRJ_F7XmpImqTbkNggbB-nb2N9UbMYtNG6aj-A3Cq1cXc12mALyXcO7tS1_Hjwohk3wRsB3gtdlH6_tRFfqcpEqjotuuiAmOIg..&amp;type=2&amp;query=ZTT cable&amp;token=EBA65A60A0BCC41AB8BEECE075A3DA60B90532496A41AFD2" target="_blank" rel="noopener">ZTT 海底电缆与系统公司,自...以来一直是海洋产品和系统定制设计与制造的先驱领导者</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpAxlUpYYOpWF1-xLTtGRmwVqXa8Fplpd9GX982FkYEzNcNM9x4TNPnYPzDlw707qjNfnDnBk8oRFPavZwFT7F-0-MP30qAdRUsVw7dFa00lha4grLkIptiwk4nQa0D_t6EwHEzhKzI3mbhcFjM262sQX1Dk07kBGM4WSQRHUO4Z8WRawPEG5Sj1h6vpEwx8pECJJvJ1lIMQOjotuuiAmOIg..&amp;type=2&amp;query=ZTT cable&amp;token=EBA65A60A0BCC41AB8BEECE075A3DA60B90532496A41AFD2" target="_blank" rel="noopener">ZTT 已在孟加拉国成功完成首条 33kV 长距离海底电力电缆的供应和安装,连接……</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0Gi76ItR0TmcJQqL_gfAi85E1qXa8Fplpd9lOzZX-kJKAT6jXYIhex5E1WN1vkhSeVo5UzO64YdZwAVEKrGYCqz9obQHlKmACBQllB_HbCe4C5_MTDwQPbAbSwSo2Qb2oA1CsB0l_MAgdnXE6b9jAQ8LAuTUAmt2ZIj7TgkW7m35szvaesoDUitkf_0RTCQcvxm33RMvfJspnB5LU3lqtPw9g..&amp;type=2&amp;query=%E4%B8%AD%E5%A4%A9%E7%A7%91%E6%8A%80&amp;token=EF999399809CE53B9791CDFC5ED128D89852F3906A4278E6" target="_blank" rel="noopener">“海洋系列、5G新基建等是中天科技上半年业务增长的主要驱动力.”文 | 通信产业报(网) 高超尽管2020年上半年遭遇众多挑战,...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0Gi76ItR0TmcJQqL_gfAi85E1qXa8Fplpd9A_z-vIdP-9GxtTN_0lDOYAU8ytEUYD0z2vIRU0Mx6WrKpEEgOtfBsajXTY0O_eM-P_D34is0FogEQGX4qsOMVOhc75H8U3H2f9HeZyY5he_MlE3xIcgYbOoDNZ0fiVJlpJQxxWpgfOGJSAFfaZ7X-J8quCUJi00LrYJA8SQ3OfTf3q8uRDTfkw..&amp;type=2&amp;query=%E4%B8%AD%E5%A4%A9%E7%A7%91%E6%8A%80&amp;token=EF999399809CE53B9791CDFC5ED128D89852F3906A4278E6" target="_blank" rel="noopener">中天科技已经形成信息通信、智能电网、新能源、海洋系统、精工装备、新材料等多元产业格局.一直以来,中天科技以“光电传输,...</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="teconnectivity" data-region="intl" hidden>
-<div class="hero">
-  <div class="hero-main">
-    <div class="hero-meta">
-      <span class="time">2026-03-18</span>
-      <span>头条</span>
-    </div>
-    <h2 class="hero-title"><a href="https://www.te.com/en/about-te/news-center/corporate-news/2026/2026-03-18-te-connectivity-named-one-of-the-world-s-most-ethical-companies-for-12th-year.html" target="_blank" rel="noopener">TE Connectivity 连续 12 年入选全球最具商业道德企业<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">TE Connectivity 第 12 次入选 Ethisphere 评选的全球最具商业道德企业榜单,彰显其在合规与道德治理方面的持续承诺。</p>
-    <div class="hero-source">te.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        <span class="time">2026-05-04</span>
-        <div class="title"><a href="https://www.te.com/en/about-te/news-center/corporate-news/2026/2026-05-04-te-connectivity-maintains-position-on-dow-jones-best-in-class-index-through-continued-sustainability-governance-efforts.html" target="_blank" rel="noopener">TE Connectivity 因可持续发展与治理持续努力,蝉联道琼斯最佳企业指数</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-02-04</span>
-        <div class="title"><a href="https://www.te.com/en/about-te/news-center/corporate-news/2026/2026-02-04-te-connectivity-maintains-top-score-for-lgbtq-workplace-inclusion.html" target="_blank" rel="noopener">TE Connectivity 连续获得 LGBTQ 职场包容性最高评分</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.nasdaq.com/articles/earnings-preview-te-connectivity" target="_blank" rel="noopener">TE Connectivity 财报预览</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.theglobeandmail.com/investing/markets/stocks/TEL/pressreleases/14545/wells-fargo-sticks-to-their-hold-rating-for-te-connectivity-tel/" target="_blank" rel="noopener">富国银行坚持对 TE Connectivity (TEL) 给予持有评级</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="hubbell" data-region="intl" hidden>
-<div class="hero">
-  <div class="hero-main">
-    <div class="hero-meta">
-      <span class="time">2026-06-02</span>
-      <span>头条</span>
-    </div>
-    <h2 class="hero-title"><a href="https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-incorporated-completes-acquisition-nsi-industries" target="_blank" rel="noopener">Hubbell 完成对 NSI Industries 的收购<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">Hubbell 宣布完成对 NSI Industries 的收购,进一步扩展其电气与通信连接产品组合。</p>
-    <div class="hero-source">hubbell.gcs-web.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        <span class="time">2026-05-20</span>
-        <div class="title"><a href="https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-incorporated-prices-19-billion-senior-notes-offering" target="_blank" rel="noopener">Hubbell 发行 19 亿美元高级票据</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">2026-04-15</span>
-        <div class="title"><a href="https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-acquire-nsi-industries" target="_blank" rel="noopener">Hubbell 宣布收购 NSI Industries</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.zacks.com/commentary/2099902/bull-of-the-day-hubbell-incorporated-hubb" target="_blank" rel="noopener">今日牛股:Hubbell Incorporated (HUBB)</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.theglobeandmail.com/investing/markets/stocks/HUBB/pressreleases/2409578/hubbell-completes-nsi-acquisition-expands-electrical-solutions-portfolio/" target="_blank" rel="noopener">Hubbell完成NSI收购,拓展电气解决方案产品组合</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="macleanfogg" data-region="intl" hidden>
-<div class="hero">
-  <div class="hero-main">
-    <div class="hero-meta">
-      <span class="time">2026-03-04</span>
-      <span>头条</span>
-    </div>
-    <h2 class="hero-title"><a href="https://www.macleanpower.com/maclean-power-systems-and-power-grid-components-complete" target="_blank" rel="noopener">MacLean Power Systems 与 Power Grid Components 完成合并<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">MacLean Power Systems (MPS)与 Power Grid Components (PGC)完成合并,合并后公司以 MacLean Power Systems 名义运营,Steve Scharnhorst 任 CEO,Mike Plaster 任总裁。</p>
-    <div class="hero-source">macleanpower.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://menafn.com/1110658265/Maclean-Fogg-Celebrates-100-Years-Of-Family-Ownership-Manufacturing-Excellence-And-Innovation" target="_blank" rel="noopener">Maclean-Fogg 庆祝家族企业、卓越制造与创新 100 周年</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.businesswire.com/news/home/20150609006206/en/Novaria-Group-Acquires-Sky-Manufacturing-From-MacLean-Fogg" target="_blank" rel="noopener">Novaria Group从MacLean-Fogg收购Sky Manufacturing</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://menafn.com/1105384637/Tide-Rock-Holdings-Hires-Robert-Whitney-Former-Maclean-Fogg-Company-Executive-To-Lead-Accu-Fab-As-New-CEO" target="_blank" rel="noopener">Tide Rock Holdings 聘请前 Maclean-Fogg Company 高管 Robert Whitney 担任 Accu-Fab 新任 CEO</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.bloomberg.com/news/articles/2025-11-26/blackstone-nears-4-billion-deal-for-maclean-power-systems" target="_blank" rel="noopener">黑石接近达成40亿美元收购MacLean Power Systems的交易</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="goldwind" data-region="cn" hidden>
-<div class="hero">
-  <div class="hero-main">
-    
-    <h2 class="hero-title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6ft3wfAVofsP5Peu-UiA4DDv3hXGFI5YRv2nWxGFSEleVgrFeYQugDk1CEshfNBcSjUy5jQm05VPjMj2tkYsMGvE_oHX7FDR63zOayNRu-aTn4xl7XWcePLSfrpTutzUF-7KZei1MOB-ofhFgcOLxFxSaXNDr5IySWVWxePfWLGq-waq9860StPl22FuRfDfGsS_zJ7mPBr24F95IE-dtX5mviWj14ZWUpbjuVpdl6nUUPVM5URF04m2gl7kS_FTnxx3R_8sDvCbAc8sBmlwo8_K_e-2nwzJBiZqwg0yoRFw.&amp;type=2&amp;query=Goldwind wind turbine&amp;token=EBA62C25455920FE5C5B080490C7EDD45D4BF6B26A41AFCA" target="_blank" rel="noopener">金风 GW115/2000 S 7、Siemens SWT-2.5-120 IIB/IIIA 8、…带有集成抽水蓄能的风电机组 base 3、Siemens…<span class="hero-arrow">↗</span></a></h2>
-    
-    <div class="hero-source">weixin.sogou.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpUCnrispvzhV1-xLTtGRmwVqXa8Fplpd9VYpXgrxMMDHFC14VilvPX2CiOkKZXbrUXVx63JFf4bztlL16NbuXO3FNkekdN7M-XqJmYOr231hV5MU5a7MpO1EBSKJUQywnO5ukEyvrr7UAMf7amA_-MIxKAWh3a41-GbHs7x5ASjb28LCFFycVStnxbJfNpd6OW0F9W0S-cWeAFV_3u-a3OQ..&amp;type=2&amp;query=Goldwind wind turbine&amp;token=EBA62C25455920FE5C5B080490C7EDD45D4BF6B26A41AFCA" target="_blank" rel="noopener">turbine5、75.1米LM叶片用于Goldwind金风G154/6.7MW详情请点击大图﹀﹀﹀06风电创新奖金奖获得者：15MW SCDnezzy2 TOP...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpUCnrispvzhV1-xLTtGRmwVqXa8Fplpd9Zx_K7jCBvTK6SHUKsL1paB6lnT8n_9RcRp4n2514yV9L-tiKTemtuWH6AjfF6-1LP6OM7Vj9YlbAnjIU5fISDVTX8bjFVJ8Sr7WNjs0TESCcn7t5bcY7rPUXTCanaALf9Jblk6YJmZUk85N4eLvcm0UQui1purPN6ll2dTvlSYBS6t2rFt2rnA..&amp;type=2&amp;query=Goldwind wind turbine&amp;token=EBA62C25455920FE5C5B080490C7EDD45D4BF6B26A41AFCA" target="_blank" rel="noopener">风机制造商Goldwind及领先风电叶片制造商LZ Blades,从而实现该材料在大型风机叶片应用领域的重...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpUCnrispvzhV1-xLTtGRmwVqXa8Fplpd9LGkCLibnUV6m1xPC-zGHy5I-4ed4iUdIcqe0vgnK_fMOAUbDT1FALYn2SoS8yRM0beFbKx7h7XyyIVwiT_-dS700BtSXYm0KiaGvSKZVXx54HmHbYlvnPhGGiY9fDGM2QWqXt8E3trEbudgYhNfbbGRFnCdKLE_erLEZUBf-tIerCDCayYmfpA..&amp;type=2&amp;query=Goldwind wind turbine&amp;token=EBA62C25455920FE5C5B080490C7EDD45D4BF6B26A41AFCA" target="_blank" rel="noopener">Goldwind已连续12年在中国风机制造商市场排名第一,并在全球风机制造商市场排名前三</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpUCnrispvzhV1-xLTtGRmwVqXa8Fplpd9xXi4UocMUWabmtbR_knKnklmnrJCHXA-7_95pC0lL-fVXa8Pxo-ma187zbXLo4M6QJATb9JMSRzDp8RatPYShrZOXyVCYQWov1_kSpq-nrcYyz9LTJuwp-ZQ7A2TX3I9iRwMlRR704ly5wfKAmmj1yX876SboEQmclIK8coR_xIC2Qmj7RgGwQ..&amp;type=2&amp;query=Goldwind wind turbine&amp;token=EBA62C25455920FE5C5B080490C7EDD45D4BF6B26A41AFCA" target="_blank" rel="noopener">金风科技人员不断测试风力发电机组,为更新迭代积累数据,重温&quot;质量第一...</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="dalian" data-region="cn" hidden>
-<div class="hero">
-  <div class="hero-main">
-    
-    <h2 class="hero-title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpc6YLmycAtxd1-xLTtGRmwVqXa8Fplpd9Jgrh6PO3EkT-Qj2SDFTFBUHy0cPPbJXB9GnVT3R2L_MaP5Q8JVJipI-3h9xbUY5CDPH5b_B6M0DxNXVlal3gPpfxJZF4wv3sDvDQTeXkOMpJvfhTaZ51Him-Kxh16NaaldC7qMOaC88PN0gJD07NJom_7GZmPxPMgBvMHAtMaxdr1dbZWbKUeQ..&amp;type=2&amp;query=Dalian Insulator&amp;token=EBA63D900F126AB41611434EDBDDDAE717F1B4F26A41AFCD" target="_blank" rel="noopener">大连理工大学王译教授和新加坡国立大学Hyunsoo Yang教授的……在基于拓扑绝缘体的器件中得到验证。开关……<span class="hero-arrow">↗</span></a></h2>
-    
-    <div class="hero-source">weixin.sogou.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpc6YLmycAtxd1-xLTtGRmwVqXa8Fplpd9L4VHLAumJKvJTXhKommECAj9_jp7FxIL4-DMJAhKWGw-z_r-TagFXeNAhnnXIOye2cWzIoBuvMfuXWHwMNmW7mRD4iFaMM_w3hsHlLAdK9kLB9VFpzuVDCrIRj4oQ8zRAAIUZMD90G0_nNEz6O2Uc6pNbSxNwdUVLjxjSdoZ8HHI3OTRHYU2og..&amp;type=2&amp;query=Dalian Insulator&amp;token=EBA63D900F126AB41611434EDBDDDAE717F1B4F26A41AFCD" target="_blank" rel="noopener">性能通用要求和试验方法中国科学院大连化学物理研究所大连融科... 绝缘子串元件球窝联接：尺寸和试验</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpc6YLmycAtxd1-xLTtGRmwVqXa8Fplpd9nzRV1xeSjHXaFggTZXx9CxWdlaQQmRlfMblkDI1luF4lNSln2JCs3TkZmlN1UP7MTl67RbHzcEXBD129ZOfWDKNb9uvanaASzCs5Ywh0ue2iT3RyiR-CBH8wx2XN3VD5zRIQvxr_l4RaBvaQ_4m4v8PRyWULI-LctZn_yKfVMABf_71bqkOtiw..&amp;type=2&amp;query=Dalian Insulator&amp;token=EBA63D900F126AB41611434EDBDDDAE717F1B4F26A41AFCD" target="_blank" rel="noopener">性能通用要求和试验方法中国科学院大连化学物理研究所大连融科... insulator units绝缘子串元件的球窝连接尺寸西安高压电器研究院...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpc6YLmycAtxd1-xLTtGRmwVqXa8Fplpd9R8O-3oeCc2ZTwG9rcbitF66Y_MMfbHvPHumMckaVHZqVxbHTDZxfVIoUOjnrZQJrHvvOKKxq2XDdiDrMWy1wbjQzONYoMuzAhUU1u-z_YBO1RyTPjM_KbbAWLvVbPZ3u1oEJUW47KoGyyR5I19ctsMDtUFlF34wYnvAMQTEDTjT1AfaFW2DefQ..&amp;type=2&amp;query=Dalian Insulator&amp;token=EBA63D900F126AB41611434EDBDDDAE717F1B4F26A41AFCD" target="_blank" rel="noopener">拓扑绝缘体【目前单位】:合肥国家实验室...【目前单位】:中国科学院大连化学物理研究所【研究方向】:理...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtpc6YLmycAtxd1-xLTtGRmwVqXa8Fplpd9XmkFoj_62-Pfpxx_2HPj8x-yc1Xp6ufh01YvwUD9xMkf2q3tgaFgLjj-7MmAt-DHbk2DpMCI9DX_72SPwykGjqRam85jm1Nez9i4KzE9mlrtjdyBkdp_npM3nhJEahFIvE21FbfgF6nm_bvcnl2AZ_udEfqmDA4sSaU3aaF_nN3f3q8uRDTfkw..&amp;type=2&amp;query=Dalian Insulator&amp;token=EBA63D900F126AB41611434EDBDDDAE717F1B4F26A41AFCD" target="_blank" rel="noopener">用作低温栅极绝缘体 (16:40-17:00) Bo Sung Kim,...大连理工大学,大连,中国,2003年。他获得...</a></div>
-      </div>
-    
-  </div>
-</div></div></div>
     <div class="content-area" id="content-area">
       
 <section data-co="abb" data-region="intl" class="company-section" hidden>
@@ -1102,7 +737,7 @@ footer .mono {
       <span class="domain">abb.com · 国际</span>
     </div>
   </div>
-  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://global.abb/news/detail/136892/abb-to-acquire-hoglund-to-expand-marine-automation-offering" target="_blank" rel="noopener">ABB 将通过此次收购扩展其船舶自动化产品组合，Høglund 在船舶过程自动化、燃料与货舱控制系统方面具有深厚积累。</a></li><li><span class="num">02</span><a href="https://global.abb/news/detail/135595/abb-invests-200-million-across-europe-to-accelerate-grid-transformation" target="_blank" rel="noopener">ABB 宣布在欧洲多地投资约 2 亿美元，扩大制造与研发能力，支持电网去碳化与可再生能源整合。</a></li><li><span class="num">03</span><a href="https://global.abb/news/detail/134418/abb-and-voltagrid-extend-collaboration-on-data-center-power-infrastructure" target="_blank" rel="noopener">ABB与VoltaGrid延长战略合作,部署ABB的中压开关设备与配电解决方案,支持美国数据中心快速增长。</a></li><li><span class="num">04</span><a href="https://www.business-standard.com/content/press-releases-ani/a-csr-project-by-abb-india-and-apd-expands-reach-delivers-over-27-000-rehabilitation-interventions-in-fy-2022-26-126062600857_1.html" target="_blank" rel="noopener">ABB India与APD的CSR项目扩大覆盖范围,在2022-26财年提供超过27,000次康复干预</a></li><li><span class="num">05</span><a href="https://www.solarpowerworldonline.com/2026/06/abb-launches-proteus-line-of-solutions-after-gamesa-acquisition/" target="_blank" rel="noopener">ABB完成对Gamesa的收购</a></li></ol><div class="summary-stats"><span>10 条</span><span>ABB</span></div></div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://global.abb/news/detail/136892/abb-to-acquire-hoglund-to-expand-marine-automation-offering" target="_blank" rel="noopener">ABB 将通过此次收购扩展其船舶自动化产品组合，Høglund 在船舶过程自动化、燃料与货舱控制系统方面具有深厚积累。</a></li><li><span class="num">02</span><a href="https://global.abb/news/detail/135595/abb-invests-200-million-across-europe-to-accelerate-grid-transformation" target="_blank" rel="noopener">ABB 宣布在欧洲多地投资约 2 亿美元，扩大制造与研发能力，支持电网去碳化与可再生能源整合。</a></li><li><span class="num">03</span><a href="https://global.abb/news/detail/134418/abb-and-voltagrid-extend-collaboration-on-data-center-power-infrastructure" target="_blank" rel="noopener">ABB与VoltaGrid延长战略合作,部署ABB的中压开关设备与配电解决方案,支持美国数据中心快速增长。</a></li><li><span class="num">04</span><a href="https://www.business-standard.com/content/press-releases-ani/a-csr-project-by-abb-india-and-apd-expands-reach-delivers-over-27-000-rehabilitation-interventions-in-fy-2022-26-126062600857_1.html" target="_blank" rel="noopener">ABB印度与APD的CSR项目扩大覆盖范围,在2022-26财年提供超过27,000次康复干预</a></li><li><span class="num">05</span><a href="https://www.solarpowerworldonline.com/2026/06/abb-launches-proteus-line-of-solutions-after-gamesa-acquisition/" target="_blank" rel="noopener">ABB完成对Gamesa的收购</a></li></ol><div class="summary-stats"><span>10 条</span><span>ABB</span></div></div>
   <div class="news-grid">
 <article class="news-card">
   <div class="news-card-time">3天前</div>
@@ -1133,7 +768,7 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.business-standard.com/content/press-releases-ani/a-csr-project-by-abb-india-and-apd-expands-reach-delivers-over-27-000-rehabilitation-interventions-in-fy-2022-26-126062600857_1.html" target="_blank" rel="noopener">ABB India与APD的CSR项目扩大覆盖范围,在2022-26财年提供超过27,000次康复干预</a></h3>
+  <h3 class="news-card-title"><a href="https://www.business-standard.com/content/press-releases-ani/a-csr-project-by-abb-india-and-apd-expands-reach-delivers-over-27-000-rehabilitation-interventions-in-fy-2022-26-126062600857_1.html" target="_blank" rel="noopener">ABB印度与APD的CSR项目扩大覆盖范围,在2022-26财年提供超过27,000次康复干预</a></h3>
   
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
@@ -1944,11 +1579,7 @@ function selectRegion(region) {
   document.querySelectorAll('.company-section').forEach(s => {
     s.hidden = s.dataset.region !== region;
   });
-  // Filter hero by region
-  document.querySelectorAll('.hero[data-co]').forEach(h => {
-    h.hidden = h.dataset.region !== region;
-  });
-  // Auto-select first visible company tab and trigger its hero/section
+  // Auto-select first visible company tab and trigger its section
   const firstVisible = document.querySelector('.company-tab:not([hidden])');
   if (firstVisible) selectCompany(firstVisible.dataset.co);
 }
@@ -1968,10 +1599,6 @@ function selectCompany(co) {
   }
   document.querySelectorAll('.company-tab').forEach(t => {
     t.classList.toggle('active', t.dataset.co === co);
-  });
-  // Hero: show only matching one
-  document.querySelectorAll('.hero[data-co]').forEach(h => {
-    h.hidden = h.dataset.co !== co;
   });
   // Section: show only matching one
   document.querySelectorAll('.company-section').forEach(s => {
@@ -2000,9 +1627,6 @@ window.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
       document.querySelectorAll('.company-tab').forEach(c => {
         c.hidden = c.dataset.region !== region;
-      });
-      document.querySelectorAll('.hero[data-co]').forEach(h => {
-        h.hidden = h.dataset.region !== region;
       });
       selectCompany(hash);
     }

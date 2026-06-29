@@ -323,97 +323,6 @@ main section { animation: fadeIn 0.25s ease; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ============ HERO (featured news) ============ */
-.hero {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 32px;
-  margin-bottom: 48px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--divider);
-}
-.hero-main {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.hero-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 12px;
-  color: var(--text-faint);
-  letter-spacing: 0.04em;
-}
-.hero-meta .time { color: var(--accent); font-weight: 600; }
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-.hero-title a { color: var(--text); text-decoration: none; transition: color 0.2s; }
-.hero-title a:hover { color: var(--accent); }
-.hero-snippet {
-  font-size: 16px;
-  line-height: 1.65;
-  color: var(--text-soft);
-  margin: 0;
-}
-.hero-source {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 12px;
-  color: var(--text-faint);
-}
-.hero-arrow {
-  font-size: 14px;
-  color: var(--text-mute);
-  margin-left: 6px;
-  display: inline-block;
-  transition: transform 0.2s;
-}
-a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
-
-.hero-side {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding-left: 24px;
-  border-left: 1px solid var(--divider);
-}
-.hero-side-item {
-  padding: 8px 0;
-  border-bottom: 1px solid var(--divider);
-}
-.hero-side-item:last-child { border-bottom: none; }
-.hero-side-item .time {
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 11px;
-  color: var(--accent);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  display: block;
-  margin-bottom: 6px;
-}
-.hero-side-item .title {
-  font-size: 15px;
-  line-height: 1.45;
-  font-weight: 500;
-  color: var(--text);
-}
-.hero-side-item .title a {
-  color: var(--text);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.hero-side-item .title a:hover { color: var(--accent); }
-
 /* ============ SUMMARY (本周要点) ============ */
 .summary {
   background: var(--surface-soft);
@@ -624,11 +533,6 @@ a:hover .hero-arrow { transform: translate(2px, -2px); color: var(--accent); }
   font-size: 14px;
 }
 
-/* ============ HEROES (one per company, only one shown at a time) ============ */
-.heroes {
-  margin-bottom: 32px;
-}
-
 /* ============ CONTENT AREA (single company section at a time) ============ */
 .content-area {
   min-height: 400px;
@@ -733,13 +637,6 @@ footer .mono {
   .company-tabs { overflow-x: auto; flex-wrap: nowrap; padding: 4px 0 8px; -webkit-overflow-scrolling: touch; }
   button.company-tab { font-size: 13px; padding: 8px 10px; flex-shrink: 0; white-space: nowrap; }
 
-  /* Hero — single column */
-  .hero { grid-template-columns: 1fr; gap: 20px; margin-bottom: 32px; padding-bottom: 24px; }
-  .hero-side { padding-left: 0; border-left: none; border-top: 1px solid var(--divider); padding-top: 20px; }
-  .hero-title { font-size: 24px; line-height: 1.25; }
-  .hero-snippet { font-size: 15px; }
-  .hero-side-item .title { font-size: 14px; }
-
   /* Summary — narrower numbers */
   .summary { padding: 20px 18px 16px; margin-bottom: 28px; }
   .summary-label { font-size: 16px; }
@@ -770,7 +667,6 @@ footer .mono {
 /* Tiny phones — iPhone SE 375px */
 @media (max-width: 480px) {
   .masthead h1 { font-size: 26px; }
-  .hero-title { font-size: 21px; }
   .company-header h2 { font-size: 19px; }
   .news-card-title { font-size: 15px; }
   button.tab-region { font-size: 14px; padding: 8px 12px 10px; }
@@ -828,199 +724,6 @@ footer .mono {
 </header>
 <main>
   <div class="container">
-    <div class="heroes"><div class="hero" data-co="smic" data-region="cn">
-<div class="hero">
-  <div class="hero-main">
-    <div class="hero-meta">
-      <span class="time">5天前</span>
-      <span>头条</span>
-    </div>
-    <h2 class="hero-title"><a href="https://news.google.com/rss/articles/CBMiVkFVX3lxTFBVMksxaTVzOHU5OUpQSFd5Q0t3a2Fwdm1lSnROR0RBV0lFQ3dGeWlwNnNDUnJBeU1FdlJUdVcxaS1pMExLeVRUbmZnSUQyVlQ5UnJEVTJ3?oc=5" target="_blank" rel="noopener">中芯国际(688981):国家集成电路产业投资基金股份有限公司及其一致行动人关于所持中芯国际境内股票变动的提示性公告<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">国家大基金及其一致行动人持股变动</p>
-    <div class="hero-source">news.google.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        <span class="time">4天前</span>
-        <div class="title"><a href="https://news.google.com/rss/articles/CBMieEFVX3lxTFBCU0dINEc0TjhmaVZNdmRxX2JETWpBSEhGY0xmeVcxeTBBY0lVVHlVa3AxOUs2Q2xKSURiVU82NEk3ZG9uekdXTnd6MHUzWFFTQzBPdmJSNlpBQVBETjFQMDd5VDBVT01weDZjdGRZMERzZVlfbnBsRA?oc=5" target="_blank" rel="noopener">中芯国际：发行股份购买中芯北方49%股权实施完成 新增5.47亿股A股股份已于6月23日办结登记</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        <span class="time">4天前</span>
-        <div class="title"><a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxOQWhITUNfYzNQdk45MHVIR0U4cUkycE9Jc0lsM19SbTdvbTNvbWdzYXE4RkxkYjZ5cnNVcFRVMElsWWhka1V2aHZURkNYRDdGZDdjbjg2SVN0OFpFUmxWSDNlLW80RkVsa01wXzBhRVZaTUpRRTJZaWlRXzF6c3Z5N3lCWGx0UENwdGhTYWVfQzVIVUtmRWZrN2lwUUFJcVlGX2s4?oc=5" target="_blank" rel="noopener">中芯国际406亿定增落地，全资控股中芯北方</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.extremetech.com/computing/chinese-chip-maker-smic-rises-to-third-biggest-contract-fab-globally" target="_blank" rel="noopener">中国芯片制造商中芯国际跃升为全球第三大代工厂</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://global.chinadaily.com.cn/a/202509/24/WS68d38dd5a3108622abca29c5.html" target="_blank" rel="noopener">中芯国际试用国产光刻设备</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="ymtc" data-region="cn" hidden>
-<div class="hero">
-  <div class="hero-main">
-    <div class="hero-meta">
-      <span class="time">2026-06-04</span>
-      <span>头条</span>
-    </div>
-    <h2 class="hero-title"><a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE1vSk1MY1hBYl96cFVGNkJZMW02US1qREFuMmpmT2lpWEd3OUNzTUtJYVZjR0U3d2EyeTVWYWo3VlNiZTA4TTN3V3FuRlhoNm5VUlpZU2pwcGtqMUY2?oc=5" target="_blank" rel="noopener">全球NAND存储市场爆发式增长，长江存储市场份额提升至13%<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">2026 Q1 全球NAND存储市场，长江存储份额13%</p>
-    <div class="hero-source">news.google.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://global.chinadaily.com.cn/a/202605/21/WS6a0e5bd2a310d6866eb49da5.html" target="_blank" rel="noopener">芯片制造商YMTC寻求在上海上市</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://technode.com/2026/06/22/ymtc-nand-market-share-climbs-to-13-as-global-competition-intensifies/" target="_blank" rel="noopener">YMTC NAND市场份额攀升至13%，全球竞争加剧</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.scmp.com/tech/tech-trends/article/3354374/inside-ymtcs-ipo-plans-how-chinas-3d-nand-champion-chasing-capital-markets" target="_blank" rel="noopener">解读长江存储（YMTC）的IPO计划：中国3D NAND龙头如何追逐资本市场？</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.digitimes.com/news/a20260622PD212/cxmt-ymtc-nand-ssd-expansion.html" target="_blank" rel="noopener">长江存储NAND份额升至13%，引发韩国竞争对手警觉</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="cxmt" data-region="cn" hidden>
-<div class="hero">
-  <div class="hero-main">
-    
-    <h2 class="hero-title"><a href="https://www.eefocus.com/article/2036842.html" target="_blank" rel="noopener">长鑫存储目标市占20%，问鼎全球前三<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">长鑫存储（CXMT）历经十年发展，终于上市，标志着中国在存储半导体领域摆脱对韩国公司的依赖，实现自主。CXMT凭借内存市场的繁荣迅速扭转巨额亏损，计划通过IPO筹集资金，加速产能扩展和技术研发，目标是在在2030年超越美光（Micron），成为全球第三大DRAM厂商。面对韩国存储半导体公司的挑战，CXMT得到国家全力支持，有望在未来几年内显著扩大市场份额，对中国国内存储市场产生重大影响。</p>
-    <div class="hero-source">eefocus.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtphs1pJ4VZutJ1-xLTtGRmwVqXa8Fplpd9_UT8Wq7OeMBhjKJXXXlK7aKypq_zCz2Z2a2iCR4W_zHYYhrqCDqozTclDTmYWf0SbaWQ875lRI4-1do4Rbm_wDSp_1mPXJWeZB6fp97w1sbDw2MN7Wz7uxn83rGcZJbpWxDTcREWnZGU6_pHLi4N5PEyVb23Fv82D6IP_-trRukNGbbB75bUeA..&amp;type=2&amp;query=%E9%95%BF%E9%91%AB%E5%AD%98%E5%82%A8 DRAM&amp;token=EBACE427928EF6288B8CDED3551778CB8B7D3B5A6A41B109" target="_blank" rel="noopener">长期以来,DRAM芯片是中国芯片进口额最大的单一品类之一.随着长鑫存储量产后产能逐步扩张,国产DRAM芯片在市场上的占比将...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.msn.cn/zh-cn/news/other/%E8%8B%B9%E6%9E%9C%E6%8B%9F%E5%90%91%E4%B8%AD%E5%9B%BD%E9%95%BF%E9%91%AB%E5%AD%98%E5%82%A8%E9%87%87%E8%B4%ADdram-%E7%94%A8%E4%BA%8Eiphone-18/ar-AA26KxNK?ocid=BingNewsVerp" target="_blank" rel="noopener">苹果拟向中国长鑫存储采购DRAM 用于iPhone 18</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtphs1pJ4VZutJ1-xLTtGRmwVqXa8Fplpd9iSw-Sv5XP8JJTTtcVTTI1FoJFNencmpJMmHCrTzvcbuvrsWGotYx2CjpPs8JptP1eYiR86EpNlZ0R_h7PomrP2YtmO8wzQDYEDwJq4hpir0iqo_584Y5LkhqyLj7XJmnvObgRRysPo1TbclCgMvyzpfMUbQhXGd8cjTYo5VfQADFcvUoAZZH7Q..&amp;type=2&amp;query=%E9%95%BF%E9%91%AB%E5%AD%98%E5%82%A8 DRAM&amp;token=EBACE427928EF6288B8CDED3551778CB8B7D3B5A6A41B109" target="_blank" rel="noopener">6月27日,英国《金融时报》报道,苹果公司正游说美国政府,希望获批采购中国长鑫存储的DRAM芯片.此前一周,苹果因存储芯片...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.chosun.com/english/industry-en/2026/05/29/JPOJ4NZLBFFIFJRYGM2QK5DQZE/" target="_blank" rel="noopener">长鑫存储IPO临近完成,挑战韩国DRAM领军企业</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="tsmc" data-region="intl" hidden>
-<div class="hero">
-  <div class="hero-main">
-    
-    <h2 class="hero-title"><a href="https://www.forbes.com/sites/johnwerner/2026/06/27/will-intel-boom-fundamentally-challenge-tsmc/" target="_blank" rel="noopener">英特尔的崛起会从根本上挑战台积电吗？<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">英特尔18A技术可能凭借先进的晶体管和功耗设计挑战台积电，不过台积电在制造产能方面仍处于领先。</p>
-    <div class="hero-source">forbes.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://onmsft.com/news/tsmc-bets-on-glass-substrates-for-future-cowos-packaging-but-mass-production-remains-distant/" target="_blank" rel="noopener">TSMC押注玻璃基板用于未来CoWoS封装，但量产仍遥远</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.fox10phoenix.com/news/construction-worker-rescued-after-getting-trapped-phoenix-tsmc-plant" target="_blank" rel="noopener">台积电凤凰城工厂发生事故，一名建筑工人被困后获救</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://invezz.com/news/2026/06/18/intel-stock-is-being-valued-as-amd-or-tsmc-but-its-neither-yet/" target="_blank" rel="noopener">英特尔股票正被以AMD或TSMC的估值定价——但它目前两者都不是</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.techtimes.com/articles/318385/20260615/tsmc-readies-panel-level-packaging-ai-chips-setting-showdown-samsung.htm" target="_blank" rel="noopener">TSMC为AI芯片准备面板级封装，与三星正面交锋</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="samsung" data-region="intl" hidden>
-<div class="hero">
-  <div class="hero-main">
-    
-    <h2 class="hero-title"><a href="https://news.samsung.com/global/interview-patterns-that-hold-memory-athene-galiciadis-x-samsung-art-store" target="_blank" rel="noopener">【访谈】承载记忆的图案：Athene Galiciadis x Samsung Art Store<span class="hero-arrow">↗</span></a></h2>
-    <p class="hero-snippet">&quot;我不是通过语言来构建思想,而是用层层叠加的色彩进行创作。&quot;——Athene G</p>
-    <div class="hero-source">news.samsung.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiZkoBAzTUrSkqL_gfAi85E1qXa8Fplpd9hzVkeMU_YA64WMfu92ImmbwO7idSMfal-NsgJActwiScvzpmq1uephtjhcS0ptjJrCL_ok0bNCe-lg-ENkSLiwrgMf11uYT_6hlqdTYYJoy9KTvhFLKd8sfk6jjHP23GT9NaVGaBW33mOulHMZWtVK6McBKzX8stOX6GT06owBD0OK9DLfgmPA..&amp;type=2&amp;query=%E4%B8%89%E6%98%9F%E7%94%B5%E5%AD%90&amp;token=EF9A5B709488F1288C8AD9EF4773D6238CC5EE8F6A427913" target="_blank" rel="noopener">个股方面,三星电子、SK海力士盘中跌超5%.摩根大通发布的报告显示,今年以来,外资已从韩国股市净流出约950亿美元.与此同...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://biz.heraldcorp.com/article/10784934" target="_blank" rel="noopener">SK Hynix时隔26年首次取代三星电子成为Kospi市值最高股票</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiZkoBAzTUrSkqL_gfAi85E1qXa8Fplpd9Rw54iFkub9yx6X-p2Q4fzwV-ObiLNKJEFuu9HXlKdi-S_y_ZbIIXX2JleHOZsiLaDOGou6Jjw8wAQrtPZY8FgXxb_TtMWwPzO1gkP6HVUksAxNA7Kd-kdPNE-4v8GOutXl3aZ4j1dl6SuX7k-kQGElAvS6EfV-xbxzk1OsfveqTvzHZXxeLdyg..&amp;type=2&amp;query=%E4%B8%89%E6%98%9F%E7%94%B5%E5%AD%90&amp;token=EF9A5B709488F1288C8AD9EF4773D6238CC5EE8F6A427913" target="_blank" rel="noopener">个股方面,三星电子跌超5%,SK海力士跌近5%.三星生命跌5.2%,现代摩比斯跌3.7%,现代汽车跌2.91%.韩国交易所启动KOSDAQ...</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiZkoBAzTUrSkqL_gfAi85E1qXa8Fplpd9AKpLk489ATtiggqHBWBtRxDAV_wxVf1v7VzdHfOjifAJyblbS1kyUbWkbJQGumxbC50cIMgbd3U21ktC_ON1TW8pQ31N1kXST8v7ACG6kpXksTL2cvkLmWQ4l1SeFVBnWBQHQ8ISJZa73Dl1NgVqgn5D6i8BKm6ZHSdFtnoOYR6AFV_3u-a3OQ..&amp;type=2&amp;query=%E4%B8%89%E6%98%9F%E7%94%B5%E5%AD%90&amp;token=EF9A5B709488F1288C8AD9EF4773D6238CC5EE8F6A427913" target="_blank" rel="noopener">29日,韩国KOSPI指数低开低走,截至发稿,跌幅扩大至3%,三星电子跌5%,SK海力士跌4.5%.随后韩国交易所启动KOSDAQ买盘临...</a></div>
-      </div>
-    
-  </div>
-</div></div><div class="hero" data-co="nvidia" data-region="intl" hidden>
-<div class="hero">
-  <div class="hero-main">
-    
-    <h2 class="hero-title"><a href="https://247wallst.com/investing/2026/06/25/nvidia-price-prediction-the-forecast-climbs-again-heres-where-the-ai-leader-heads-next/" target="_blank" rel="noopener">Nvidia 价格预测：预测再度上调。这家AI领军企业的下一步走向<span class="hero-arrow">↗</span></a></h2>
-    
-    <div class="hero-source">247wallst.com</div>
-  </div>
-  <div class="hero-side">
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.forbes.com/sites/greatspeculations/2026/06/26/the-hidden-metric-behind-nvidias-ambition/" target="_blank" rel="noopener">NVIDIA雄心背后的隐藏指标</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.cnbc.com/2026/06/15/nvidia-plans-to-raise-about-20-billion-first-debt-sale-in-ai-boom.html" target="_blank" rel="noopener">英伟达计划在AI热潮开始以来首次发债中筹集至少200亿美元</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers" target="_blank" rel="noopener">欧洲推出创纪录的35款全新NVIDIA AI超级计算机</a></div>
-      </div>
-    
-      <div class="hero-side-item">
-        
-        <div class="title"><a href="https://www.fool.com/investing/2026/06/26/nvidia-stock-this-cheap-7-years-buying-opportunity/" target="_blank" rel="noopener">英伟达股票七年来从未如此便宜。这是否是终极买入机会？</a></div>
-      </div>
-    
-  </div>
-</div></div></div>
     <div class="content-area" id="content-area">
       
 <section data-co="smic" data-region="cn" class="company-section">
@@ -1206,7 +909,7 @@ footer .mono {
 <article class="news-card">
   
   <h3 class="news-card-title"><a href="https://www.eefocus.com/article/2034465.html" target="_blank" rel="noopener">重磅！长江存储攻进三星SK海力士老巢！</a></h3>
-  <p class="news-card-snippet">随着中国两大存储半导体公司——长鑫存储（CXMT）和长江存储（YMTC）即将进行IPO，YMTC因其在韩国市场的迅速扩张和对三星电子和SK海力士的挑战而备受关注。YMTC通过推出自家固态硬盘品牌&quot;智泰&quot;和三款新SSD，成功打入韩国市场，显示出其在NAND闪存市场的竞争力。尽管DRAM市场竞争激烈，但NAND闪存市场因供需不平衡而价格上涨，YMTC借此机会扩展业务，目标是在未来几年内超越三星电子和SK海力士，成为中国存储行业的领军者。</p>
+  <p class="news-card-snippet">随着中国两大存储半导体公司——长鑫存储（CXMT）和长江存储（YMTC）即将进行IPO，YMTC因其在韩国市场的迅速扩张和对三星电子和SK海力士的挑战而备受关注。YMTC通过推出自家固态硬盘品牌“智泰”和三款新SSD，成功打入韩国市场，显示出其在NAND闪存市场的竞争力。尽管DRAM市场竞争激烈，但NAND闪存市场因供需不平衡而价格上涨，YMTC借此机会扩展业务，目标是在未来几年内超越三星电子和SK海力士，成为中国存储行业的领军者。</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">文章</span>
     <span>eefocus.com</span>
@@ -1291,7 +994,7 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtphs1pJ4VZutJ1-xLTtGRmwVqXa8Fplpd9RIp79mpe-tGT7OW176B9AydhHm9LB634GVtsjgSpG-vKbqZQEOdnnvy0qHIKM3lV0nF5M9bJNbVWnTOi-hdI1gpK-RPKayEnfvmvnswLwAQdkznCJRl3F0cMBttrTBBV2E5sEJrceUrXXIRGFA9lsbhpL01t1N05qbFaEDlguYxQ_LeJW-Rhtg..&amp;type=2&amp;query=%E9%95%BF%E9%91%AB%E5%AD%98%E5%82%A8 DRAM&amp;token=EBACE427928EF6288B8CDED3551778CB8B7D3B5A6A41B109" target="_blank" rel="noopener">据中国证券报报道，在昨日(15日)召开的GSA Memory+论坛上，长鑫存储董事长朱一明透露，公司DRAM项目计划年内大规模投产...</a></h3>
+  <h3 class="news-card-title"><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS7aE941-VBtphs1pJ4VZutJ1-xLTtGRmwVqXa8Fplpd9RIp79mpe-tGT7OW176B9AydhHm9LB634GVtsjgSpG-vKbqZQEOdnnvy0qHIKM3lV0nF5M9bJNbVWnTOi-hdI1gpK-RPKayEnfvmvnswLwAQdkznCJRl3F0cMBttrTBBV2E5sEJrceUrXXIRGFA9lsbhpL01t1N05qbFaEDlguYxQ_LeJW-Rhtg..&amp;type=2&amp;query=%E9%95%BF%E9%91%AB%E5%AD%98%E5%82%A8 DRAM&amp;token=EBACE427928EF6288B8CDED3551778CB8B7D3B5A6A41B109" target="_blank" rel="noopener">据中国证券报报道,在昨日(15日)召开的GSA Memory+论坛上,长鑫存储董事长朱一明透露,公司DRAM项目计划年内大规模投产...</a></h3>
   
   <div class="news-card-footer">
     
@@ -1395,8 +1098,8 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://www.techspot.com/news/112800-samsung-foundry-booming-tsmc-struggles-demand-bags-nvidia.html" target="_blank" rel="noopener">三星晶圆代工业务蓬勃发展,TSMC难以满足需求——拿下Nvidia、Tesla和高通新客户</a></h3>
-  <p class="news-card-snippet">据Nikkei Asia报道,三星晶圆代工(Samsung Foundry)已接到或在洽谈来自Google、Nvidia、Tesla、AMD和BYD的订单……</p>
+  <h3 class="news-card-title"><a href="https://www.techspot.com/news/112800-samsung-foundry-booming-tsmc-struggles-demand-bags-nvidia.html" target="_blank" rel="noopener">三星晶圆代工业务蓬勃发展，TSMC难以满足需求——拿下Nvidia、Tesla和高通新客户</a></h3>
+  <p class="news-card-snippet">据Nikkei Asia报道，三星晶圆代工(Samsung Foundry)已接到或在洽谈来自Google、Nvidia、Tesla、AMD和BYD的订单……</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>techspot.com</span>
@@ -1450,12 +1153,12 @@ footer .mono {
       <span class="domain">samsung.com · 国际</span>
     </div>
   </div>
-  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://news.samsung.com/global/interview-patterns-that-hold-memory-athene-galiciadis-x-samsung-art-store" target="_blank" rel="noopener">&quot;我不是通过语言来构建思想,而是用层层叠加的色彩进行创作。&quot;——Athene G</a></li><li><span class="num">02</span><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiZkoBAzTUrSkqL_gfAi85E1qXa8Fplpd9hzVkeMU_YA64WMfu92ImmbwO7idSMfal-NsgJActwiScvzpmq1uephtjhcS0ptjJrCL_ok0bNCe-lg-ENkSLiwrgMf11uYT_6hlqdTYYJoy9KTvhFLKd8sfk6jjHP23GT9NaVGaBW33mOulHMZWtVK6McBKzX8stOX6GT06owBD0OK9DLfgmPA..&amp;type=2&amp;query=%E4%B8%89%E6%98%9F%E7%94%B5%E5%AD%90&amp;token=EF9A5B709488F1288C8AD9EF4773D6238CC5EE8F6A427913" target="_blank" rel="noopener">个股方面,三星电子、SK海力士盘中跌超5%.摩根大通发布的报告显示,今年以来,外资已从韩国股市净流出约950亿美元.与此同...</a></li><li><span class="num">03</span><a href="https://biz.heraldcorp.com/article/10784934" target="_blank" rel="noopener">SK Hynix时隔26年首次取代三星电子成为Kospi市值最高股票</a></li><li><span class="num">04</span><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiZkoBAzTUrSkqL_gfAi85E1qXa8Fplpd9Rw54iFkub9yx6X-p2Q4fzwV-ObiLNKJEFuu9HXlKdi-S_y_ZbIIXX2JleHOZsiLaDOGou6Jjw8wAQrtPZY8FgXxb_TtMWwPzO1gkP6HVUksAxNA7Kd-kdPNE-4v8GOutXl3aZ4j1dl6SuX7k-kQGElAvS6EfV-xbxzk1OsfveqTvzHZXxeLdyg..&amp;type=2&amp;query=%E4%B8%89%E6%98%9F%E7%94%B5%E5%AD%90&amp;token=EF9A5B709488F1288C8AD9EF4773D6238CC5EE8F6A427913" target="_blank" rel="noopener">个股方面,三星电子跌超5%,SK海力士跌近5%.三星生命跌5.2%,现代摩比斯跌3.7%,现代汽车跌2.91%.韩国交易所启动KOSDAQ...</a></li><li><span class="num">05</span><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiZkoBAzTUrSkqL_gfAi85E1qXa8Fplpd9AKpLk489ATtiggqHBWBtRxDAV_wxVf1v7VzdHfOjifAJyblbS1kyUbWkbJQGumxbC50cIMgbd3U21ktC_ON1TW8pQ31N1kXST8v7ACG6kpXksTL2cvkLmWQ4l1SeFVBnWBQHQ8ISJZa73Dl1NgVqgn5D6i8BKm6ZHSdFtnoOYR6AFV_3u-a3OQ..&amp;type=2&amp;query=%E4%B8%89%E6%98%9F%E7%94%B5%E5%AD%90&amp;token=EF9A5B709488F1288C8AD9EF4773D6238CC5EE8F6A427913" target="_blank" rel="noopener">29日,韩国KOSPI指数低开低走,截至发稿,跌幅扩大至3%,三星电子跌5%,SK海力士跌4.5%.随后韩国交易所启动KOSDAQ买盘临...</a></li></ol><div class="summary-stats"><span>10 条</span><span>三星电子 Samsung</span></div></div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://news.samsung.com/global/interview-patterns-that-hold-memory-athene-galiciadis-x-samsung-art-store" target="_blank" rel="noopener">&quot;我不是通过语言来构建思想，而是用层层叠加的色彩进行创作。&quot;——Athene G</a></li><li><span class="num">02</span><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiZkoBAzTUrSkqL_gfAi85E1qXa8Fplpd9hzVkeMU_YA64WMfu92ImmbwO7idSMfal-NsgJActwiScvzpmq1uephtjhcS0ptjJrCL_ok0bNCe-lg-ENkSLiwrgMf11uYT_6hlqdTYYJoy9KTvhFLKd8sfk6jjHP23GT9NaVGaBW33mOulHMZWtVK6McBKzX8stOX6GT06owBD0OK9DLfgmPA..&amp;type=2&amp;query=%E4%B8%89%E6%98%9F%E7%94%B5%E5%AD%90&amp;token=EF9A5B709488F1288C8AD9EF4773D6238CC5EE8F6A427913" target="_blank" rel="noopener">个股方面,三星电子、SK海力士盘中跌超5%.摩根大通发布的报告显示,今年以来,外资已从韩国股市净流出约950亿美元.与此同...</a></li><li><span class="num">03</span><a href="https://biz.heraldcorp.com/article/10784934" target="_blank" rel="noopener">SK Hynix时隔26年首次取代三星电子成为Kospi市值最高股票</a></li><li><span class="num">04</span><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiZkoBAzTUrSkqL_gfAi85E1qXa8Fplpd9Rw54iFkub9yx6X-p2Q4fzwV-ObiLNKJEFuu9HXlKdi-S_y_ZbIIXX2JleHOZsiLaDOGou6Jjw8wAQrtPZY8FgXxb_TtMWwPzO1gkP6HVUksAxNA7Kd-kdPNE-4v8GOutXl3aZ4j1dl6SuX7k-kQGElAvS6EfV-xbxzk1OsfveqTvzHZXxeLdyg..&amp;type=2&amp;query=%E4%B8%89%E6%98%9F%E7%94%B5%E5%AD%90&amp;token=EF9A5B709488F1288C8AD9EF4773D6238CC5EE8F6A427913" target="_blank" rel="noopener">个股方面,三星电子跌超5%,SK海力士跌近5%.三星生命跌5.2%,现代摩比斯跌3.7%,现代汽车跌2.91%.韩国交易所启动KOSDAQ...</a></li><li><span class="num">05</span><a href="https://weixin.sogou.com/link?url=dn9a_-gY295K0Rci_xozVXfdMkSQTLW6cwJThYulHEtVjXrGTiVgS1cyO6X3o0GiZkoBAzTUrSkqL_gfAi85E1qXa8Fplpd9AKpLk489ATtiggqHBWBtRxDAV_wxVf1v7VzdHfOjifAJyblbS1kyUbWkbJQGumxbC50cIMgbd3U21ktC_ON1TW8pQ31N1kXST8v7ACG6kpXksTL2cvkLmWQ4l1SeFVBnWBQHQ8ISJZa73Dl1NgVqgn5D6i8BKm6ZHSdFtnoOYR6AFV_3u-a3OQ..&amp;type=2&amp;query=%E4%B8%89%E6%98%9F%E7%94%B5%E5%AD%90&amp;token=EF9A5B709488F1288C8AD9EF4773D6238CC5EE8F6A427913" target="_blank" rel="noopener">29日,韩国KOSPI指数低开低走,截至发稿,跌幅扩大至3%,三星电子跌5%,SK海力士跌4.5%.随后韩国交易所启动KOSDAQ买盘临...</a></li></ol><div class="summary-stats"><span>10 条</span><span>三星电子 Samsung</span></div></div>
   <div class="news-grid">
 <article class="news-card">
   
   <h3 class="news-card-title"><a href="https://news.samsung.com/global/interview-patterns-that-hold-memory-athene-galiciadis-x-samsung-art-store" target="_blank" rel="noopener">【访谈】承载记忆的图案：Athene Galiciadis x Samsung Art Store</a></h3>
-  <p class="news-card-snippet">&quot;我不是通过语言来构建思想,而是用层层叠加的色彩进行创作。&quot;——Athene G</p>
+  <p class="news-card-snippet">&quot;我不是通过语言来构建思想，而是用层层叠加的色彩进行创作。&quot;——Athene G</p>
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
     <span>news.samsung.com</span>
@@ -1639,7 +1342,7 @@ footer .mono {
 </article>
 <article class="news-card">
   
-  <h3 class="news-card-title"><a href="https://indianexpress.com/article/technology/artificial-intelligence/nvidia-windows-ai-pc-key-announcements-computex-2026-10718349/" target="_blank" rel="noopener">Nvidia携全新RTX Spark芯片加入Windows AI PC竞赛：所有重要发布</a></h3>
+  <h3 class="news-card-title"><a href="https://indianexpress.com/article/technology/artificial-intelligence/nvidia-windows-ai-pc-key-announcements-computex-2026-10718349/" target="_blank" rel="noopener">Nvidia携全新RTX Spark芯片加入Windows AI PC竞赛:所有重要发布</a></h3>
   
   <div class="news-card-footer">
     <span class="news-badge badge-type">新闻稿</span>
@@ -1668,11 +1371,7 @@ function selectRegion(region) {
   document.querySelectorAll('.company-section').forEach(s => {
     s.hidden = s.dataset.region !== region;
   });
-  // Filter hero by region
-  document.querySelectorAll('.hero[data-co]').forEach(h => {
-    h.hidden = h.dataset.region !== region;
-  });
-  // Auto-select first visible company tab and trigger its hero/section
+  // Auto-select first visible company tab and trigger its section
   const firstVisible = document.querySelector('.company-tab:not([hidden])');
   if (firstVisible) selectCompany(firstVisible.dataset.co);
 }
@@ -1692,10 +1391,6 @@ function selectCompany(co) {
   }
   document.querySelectorAll('.company-tab').forEach(t => {
     t.classList.toggle('active', t.dataset.co === co);
-  });
-  // Hero: show only matching one
-  document.querySelectorAll('.hero[data-co]').forEach(h => {
-    h.hidden = h.dataset.co !== co;
   });
   // Section: show only matching one
   document.querySelectorAll('.company-section').forEach(s => {
@@ -1724,9 +1419,6 @@ window.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
       document.querySelectorAll('.company-tab').forEach(c => {
         c.hidden = c.dataset.region !== region;
-      });
-      document.querySelectorAll('.hero[data-co]').forEach(h => {
-        h.hidden = h.dataset.region !== region;
       });
       selectCompany(hash);
     }
