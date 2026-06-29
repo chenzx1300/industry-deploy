@@ -1,77 +1,52 @@
 {
-  "date": "2026-06-28",
+  "date": "2026-06-29",
   "results": [
     {
       "slug": "carbon-fiber-industry",
       "prompt": "碳纤维 · 先进复合材料",
-      "news_count": 45,
+      "news_count": 62,
+      "fallback_count": 0,
       "total_companies": 8,
-      "added": 11,
-      "dropped": [],
       "ok": true
     },
     {
       "slug": "thermal-materials-industry",
       "prompt": "高导热塑料",
-      "news_count": 4,
-      "total_companies": 1,
-      "added": 4,
-      "dropped": [
-        "bosom",
-        "feirongda",
-        "kingfa",
-        "huitong",
-        "henkel",
-        "honeywell"
-      ],
+      "news_count": 59,
+      "fallback_count": 0,
+      "total_companies": 7,
       "ok": true
     },
     {
       "slug": "new-energy-vehicles-industry",
       "prompt": "新能源汽车",
-      "news_count": 62,
-      "total_companies": 7,
-      "added": 27,
-      "dropped": [
-        "bmw"
-      ],
+      "news_count": 89,
+      "fallback_count": 0,
+      "total_companies": 9,
       "ok": true
     },
     {
       "slug": "composite-insulator-industry",
       "prompt": "复合绝缘子",
-      "news_count": 29,
-      "total_companies": 4,
-      "added": 29,
-      "dropped": [
-        "hubbell",
-        "macleanfogg",
-        "goldwind",
-        "dalian"
-      ],
+      "news_count": 70,
+      "fallback_count": 0,
+      "total_companies": 8,
       "ok": true
     },
     {
       "slug": "datacenter-cooling-industry",
       "prompt": "散热（AI 数据中心）",
-      "news_count": 51,
-      "total_companies": 7,
-      "added": 39,
-      "dropped": [
-        "vertiv",
-        "coolit"
-      ],
+      "news_count": 83,
+      "fallback_count": 0,
+      "total_companies": 9,
       "ok": true
     },
     {
       "slug": "semiconductor-industry",
       "prompt": "半导体",
-      "news_count": 51,
-      "total_companies": 6,
-      "added": 11,
-      "dropped": [
-        "intel"
-      ],
+      "news_count": 69,
+      "fallback_count": 0,
+      "total_companies": 7,
       "ok": true
     }
   ]
