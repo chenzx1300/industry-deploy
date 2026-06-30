@@ -15,7 +15,9 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const DATA_DIR = 'data';
-const SLUGS = ['semiconductor-industry','new-energy-vehicles-industry','carbon-fiber-industry','thermal-materials-industry'];
+const CONFIG_FILE = join(DATA_DIR, 'industries.json');
+// Slugs derived from industries.json so we never miss a new industry.
+const SLUGS = (JSON.parse(readFileSync(CONFIG_FILE, 'utf-8')).industries || []).map(i => i.slug);
 
 // "Hard" block-page indicators — when the snippet ONLY contains bot/geo-block
 // content, the linked URL is also blocked. Drop the whole item.

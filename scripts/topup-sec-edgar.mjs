@@ -26,7 +26,7 @@ const SEC_COMPANIES = {
   honeywell: { ticker: 'HON', cik: '0000773840', name: 'Honeywell' },
 };
 
-async function fetchSecFilings(cik) {
+async function fetchSecFilings(cik, companyName) {
   const url = `https://data.sec.gov/submissions/CIK${cik}.json`;
   try {
     const r = await fetch(url, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(8000) });
@@ -46,7 +46,7 @@ async function fetchSecFilings(cik) {
       const filingUrl = `https://www.sec.gov/Archives/edgar/data/${parseInt(cik)}/${accNo}/${primaryDoc}`;
       const desc = (recent.primaryDocDescription[i] || '').trim();
       // Human-readable title; falls back to form + accession if desc is empty
-      const title = desc ? `${sec.name} ${form}: ${desc}` : `${sec.name} ${form} (${recent.accessionNumber[i]})`;
+      const title = desc ? `${companyName} ${form}: ${desc}` : `${companyName} ${form} (${recent.accessionNumber[i]})`;
       out.push({
         title,
         url: filingUrl,
@@ -57,7 +57,10 @@ async function fetchSecFilings(cik) {
       if (out.length >= 40) break;
     }
     return out;
-  } catch { return []; }
+  } catch (e) {
+    console.log(`  [debug] fetchSecFilings(${cik}) failed: ${e.message}`);
+    return [];
+  }
 }
 
 const inds = JSON.parse(readFileSync(CONFIG_FILE, 'utf-8'));
@@ -75,7 +78,7 @@ for (const ind of inds.industries) {
     const need = TARGET - c.news.length;
     console.log(`\n▸ ${ind.slug}/${c.id} (${c.name}): have ${c.news.length}, need ${need}`);
 
-    const filings = await fetchSecFilings(sec.cik);
+    const filings = await fetchSecFilings(sec.cik, sec.name);
     console.log(`  filings: ${filings.length}`);
     const seen = new Set(c.news.map(n => n.url));
     const now = new Date().toISOString();
