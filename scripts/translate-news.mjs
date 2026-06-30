@@ -50,20 +50,18 @@ const MAX_PARALLEL = 3;
 
 function isMostlyCjk(s) {
   if (!s) return true;
-  // Heuristic: count "English word" tokens (3+ ASCII letters).
-  // - Pure Chinese title: 0-1 such words
-  // - Chinese-mixed-with-brand (e.g. "比亚迪 BYD 公告"): 1-2 words
-  // - Mostly English (e.g. "Honeywell 8-K 0000773840-26-000084"): 1-2 words
-  //   but contains Latin letters → still needs translation
-  // - Pure English (e.g. "Tesla delivers 100k cars in Q3"): 3+ words
-  //
-  // We translate if EITHER the title has >= 1 ASCII letter cluster AND
-  // fewer than half the chars are CJK. This catches both "Honeywell 8-K ..."
-  // (mostly Latin+digits) and proper English news.
+  // Heuristic: any of these → needs translation
+  //   - contains 2+ English words of 3+ ASCII letters (e.g. "Model Y vs Sealion 7")
+  //   - CJK < 50% of length (mostly English/digit content)
+  //   - has Latin letters AND CJK ratio is borderline
+  // Skip (already Chinese) only when ≥95% CJK and no English words ≥3 chars.
   const cjk = (s.match(/[一-鿿]/g) || []).length;
+  const words = (s.match(/\b[A-Za-z]{3,}\b/g) || []);
   const hasLatin = /[A-Za-z]/.test(s);
-  if (cjk > s.length / 2) return true;  // >50% CJK → already Chinese
-  if (hasLatin) return false;            // contains Latin → needs translation
+  if (words.length >= 2) return false;        // 2+ English words → translate
+  if (cjk < s.length / 2) return false;       // <50% CJK → translate
+  if (cjk >= 0.95 * s.length && words.length === 0) return true;  // pure Chinese
+  if (hasLatin && words.length >= 1) return false;  // has English brand → translate
   return true;
 }
 
