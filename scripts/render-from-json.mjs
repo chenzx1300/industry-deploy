@@ -86,6 +86,16 @@ for (const ind of industries) {
     process.exit(1);
   }
   const data = JSON.parse(readFileSync(fp, 'utf-8'));
+  // Safety net: enforce published_at DESC (newest first) at render time.
+  // The fill pipeline already sorts, but if a script bypasses sort-news.mjs
+  // (or the input is hand-edited), this keeps the UI contract intact.
+  for (const c of data.companies) {
+    c.news.sort((a, b) => {
+      const ta = a.published_at ? new Date(a.published_at).getTime() : 0;
+      const tb = b.published_at ? new Date(b.published_at).getTime() : 0;
+      return tb - ta;  // DESC
+    });
+  }
   const c = data.companies.reduce((s, x) => s + x.news.length, 0);
   totalNews += c;
   mkdirSync(join(DIST_DIR, ind.slug), { recursive: true });
