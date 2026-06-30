@@ -29,7 +29,30 @@ function extractDateFromText(text) {
   return null;
 }
 
+// Hard-blocked hostnames: never ingest as news sources.
+// finance.yahoo.com / yahoo.com blocked per user policy (often blocked in CN,
+// data quality is quote-only not primary news content).
+// weixin.sogou.com blocked: aggregator, no reliable date.
+// cninfo.com.cn blocked from Bing — handled by dedicated cninfo script.
+const HARD_BLOCKED_HOSTNAMES = new Set([
+  'finance.yahoo.com',
+  'uk.finance.yahoo.com',
+  'au.finance.yahoo.com',
+  'ca.finance.yahoo.com',
+  'yahoo.com',
+  'weixin.sogou.com',
+  'cninfo.com.cn',
+]);
+
+function isHardBlocked(url) {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, '');
+    return HARD_BLOCKED_HOSTNAMES.has(host);
+  } catch { return true; }
+}
+
 async function fetchHtml(url) {
+  if (isHardBlocked(url)) return null;
   try {
     const r = await fetch(url, { headers: { 'User-Agent': BROWSER_UA, 'Accept-Language': 'en-US,en;q=0.9,zh-CN;q=0.8' }, signal: AbortSignal.timeout(10000), redirect: 'follow' });
     if (!r.ok) return null;
@@ -89,8 +112,8 @@ async function scrapeCompany(c, slug) {
     try { it.url = new URL(it.url, c.news_url).href; } catch {}
     return it;
   });
-  // Filter date >= cutoff
-  items = items.filter(it => it.date && it.date >= CUTOFF);
+  // Filter: drop hard-blocked sources and items before cutoff
+  items = items.filter(it => it.url && !isHardBlocked(it.url) && it.date && it.date >= CUTOFF);
   // Dedup
   const seen = new Set();
   items = items.filter(it => {

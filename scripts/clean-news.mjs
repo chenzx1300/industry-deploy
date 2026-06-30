@@ -147,6 +147,10 @@ for (const slug of SLUGS) {
   const dedupItems = [];
 
   for (const c of data.companies) {
+    // Dedup is per-company by URL only (titles like "H股公告（变动月报表）"
+    // legitimately repeat across months for the same company, so title-dedup
+    // would wrongly remove valid news).
+    const coSeenUrls = new Set();
     const kept = [];
     for (const n of c.news) {
       const title = n.title || '';
@@ -174,14 +178,13 @@ for (const slug of SLUGS) {
         cleanedItems.push({ co: c.id, title: title.slice(0, 60) });
       }
 
-      // 4. Dedup by URL then by title
-      if (seenUrls.has(n.url) || seenTitles.has(title.toLowerCase())) {
+      // 4. Dedup by URL only (per-company)
+      if (coSeenUrls.has(n.url)) {
         dedup++;
         dedupItems.push({ co: c.id, title: title.slice(0, 60) });
         continue;
       }
-      seenUrls.add(n.url);
-      seenTitles.add(title.toLowerCase());
+      coSeenUrls.add(n.url);
 
       kept.push({ ...n, snippet: newSnippet });
     }

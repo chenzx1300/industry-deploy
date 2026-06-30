@@ -148,7 +148,7 @@ for (const ind of inds.industries) {
         const cand = queue.shift();
         if (!cand.url || seen.has(cand.url)) continue;
         if (!isRelevant(cand.title || '', cfg.aliases)) continue;
-        if (cand.url.includes('weixin.sogou.com') || cand.url.includes('cninfo.com.cn')) continue;
+        if (cand.url.includes('weixin.sogou.com') || cand.url.includes('cninfo.com.cn') || cand.url.includes('finance.yahoo.com') || cand.url.includes('yahoo.com')) continue;
 
         const r = await fetchPageAndExtract(cand.url);
         if (!r.ok) continue;

@@ -50,10 +50,21 @@ const MAX_PARALLEL = 3;
 
 function isMostlyCjk(s) {
   if (!s) return true;
-  // Count distinct "English word" tokens (3+ ASCII letters).
-  // Chinese-mixed-with-brand has 1-2 brand names; pure English title has 3+.
-  const words = (s.match(/\b[A-Za-z]{3,}\b/g) || []);
-  return words.length < 3;
+  // Heuristic: count "English word" tokens (3+ ASCII letters).
+  // - Pure Chinese title: 0-1 such words
+  // - Chinese-mixed-with-brand (e.g. "比亚迪 BYD 公告"): 1-2 words
+  // - Mostly English (e.g. "Honeywell 8-K 0000773840-26-000084"): 1-2 words
+  //   but contains Latin letters → still needs translation
+  // - Pure English (e.g. "Tesla delivers 100k cars in Q3"): 3+ words
+  //
+  // We translate if EITHER the title has >= 1 ASCII letter cluster AND
+  // fewer than half the chars are CJK. This catches both "Honeywell 8-K ..."
+  // (mostly Latin+digits) and proper English news.
+  const cjk = (s.match(/[一-鿿]/g) || []).length;
+  const hasLatin = /[A-Za-z]/.test(s);
+  if (cjk > s.length / 2) return true;  // >50% CJK → already Chinese
+  if (hasLatin) return false;            // contains Latin → needs translation
+  return true;
 }
 
 async function callModel(items) {

@@ -17,41 +17,55 @@ const CUTOFF = new Date('2025-06-30T00:00:00Z');
 // Company -> {aliases, blockedDomains, stock}
 const COMPANIES = {
   // NEV
-  li:    { aliases: ['Li Auto', '理想汽车', '理想', 'LI', 'Li Auto Inc'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  vw:    { aliases: ['Volkswagen', '大众汽车', 'VW Group', 'Volkswagen AG'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  nio:   { aliases: ['NIO', '蔚来', 'NIO Inc'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  xpeng: { aliases: ['XPeng', '小鹏汽车', 'XPENG'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  toyota:{ aliases: ['Toyota', '丰田'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
+  li:    { aliases: ['Li Auto', '理想汽车', '理想', 'LI', 'Li Auto Inc'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  vw:    { aliases: ['Volkswagen', '大众汽车', 'VW Group', 'Volkswagen AG'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  nio:   { aliases: ['NIO', '蔚来', 'NIO Inc'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  xpeng: { aliases: ['XPeng', '小鹏汽车', 'XPENG'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  toyota:{ aliases: ['Toyota', '丰田'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
   // Semiconductor
-  cxmt:  { aliases: ['CXMT', '长鑫存储', 'Changxin Memory'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  ymtc:  { aliases: ['YMTC', '长江存储', 'Yangtze Memory'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  tsmc:  { aliases: ['TSMC', '台积电', 'Taiwan Semiconductor'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  samsung:{aliases: ['Samsung Electronics', '三星电子', 'Samsung'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  nvidia:{aliases: ['NVIDIA', '英伟达'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  intel: {aliases: ['Intel', '英特尔'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
+  cxmt:  { aliases: ['CXMT', '长鑫存储', 'Changxin Memory'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  ymtc:  { aliases: ['YMTC', '长江存储', 'Yangtze Memory'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  tsmc:  { aliases: ['TSMC', '台积电', 'Taiwan Semiconductor'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  samsung:{aliases: ['Samsung Electronics', '三星电子', 'Samsung'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  nvidia:{aliases: ['NVIDIA', '英伟达'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  intel: {aliases: ['Intel', '英特尔'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
   // Carbon fiber
-  toray: {aliases: ['Toray', '东丽', 'Toray Industries'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  teijin:{aliases: ['Teijin', '帝人'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  mitsubishi:{aliases: ['Mitsubishi Chemical', '三菱化学'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  solvay:{aliases: ['Solvay', '苏威'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  jushi: {aliases: ['Jushi', '中国巨石', '巨石集团'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
+  toray: {aliases: ['Toray', '东丽', 'Toray Industries'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  teijin:{aliases: ['Teijin', '帝人'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  mitsubishi:{aliases: ['Mitsubishi Chemical', '三菱化学'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  solvay:{aliases: ['Solvay', '苏威'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  jushi: {aliases: ['Jushi', '中国巨石', '巨石集团'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
   // Thermal materials
-  mmm:   {aliases: ['3M', '3M Company'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  honeywell:{aliases: ['Honeywell', '霍尼韦尔'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  henkel:{aliases: ['Henkel', '汉高'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
+  mmm:   {aliases: ['3M', '3M Company'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  honeywell:{aliases: ['Honeywell', '霍尼韦尔'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  henkel:{aliases: ['Henkel', '汉高'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
   // Composite insulator
-  macleanfogg:{aliases: ['Maclean Power Systems', 'maclean-fogg', 'MacLean-Fogg'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  abb:   {aliases: ['ABB'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  hubbell:{aliases: ['Hubbell'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  teconnectivity:{aliases: ['TE Connectivity'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
+  macleanfogg:{aliases: ['Maclean Power Systems', 'maclean-fogg', 'MacLean-Fogg'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  abb:   {aliases: ['ABB'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  hubbell:{aliases: ['Hubbell'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  teconnectivity:{aliases: ['TE Connectivity'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
   // Datacenter cooling
-  avctw: {aliases: ['AVC', '奇鋐科技', 'AVC Corporation'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  aurastw:{aliases: ['Auras', '双鸿科技', 'Auras Technology'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  coolit:{aliases: ['CoolIT Systems'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  vertiv:{aliases: ['Vertiv'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  nidec: {aliases: ['Nidec', '日本电产'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
-  semco: {aliases: ['Samsung Electro-Mechanics', '三星电机'], blocked: ['weixin.sogou.com', 'cninfo.com.cn'] },
+  avctw: {aliases: ['AVC', '奇鋐科技', 'AVC Corporation'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com', 'm.mops'] },
+  aurastw:{aliases: ['Auras', '双鸿科技', 'Auras Technology'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  coolit:{aliases: ['CoolIT Systems'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  vertiv:{aliases: ['Vertiv'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  nidec: {aliases: ['Nidec', '日本电产'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
+  semco: {aliases: ['Samsung Electro-Mechanics', '三星电机'], blocked: ['weixin.sogou.com', 'cninfo.com.cn', 'finance.yahoo.com', 'yahoo.com'] },
 };
+
+// Hard-blocked hostnames (universal — applied to all companies)
+// finance.yahoo.com, uk.finance.yahoo.com, etc. blocked because
+// these pages often fail in mainland China and the data quality
+// from Yahoo Finance quotes is not primary news content.
+const HARD_BLOCKED_HOSTNAMES = [
+  'finance.yahoo.com',
+  'uk.finance.yahoo.com',
+  'au.finance.yahoo.com',
+  'ca.finance.yahoo.com',
+  'yahoo.com',
+  'weixin.sogou.com',
+  'cninfo.com.cn',
+];
 
 const STOPWORDS_CN = new Set('的 是 在 和 与 为 于 有 也 被 这 那 但 而 或 至 以 及 等 就 要 会 能 可 其 之 上下 中 外 我们 你 他 她 它 已 来 去 看 说 让 给 到 从 把 用 像 跟 跟 被 让 给'.split(/\s+/));
 const STOPWORDS_EN = new Set(['the','a','an','in','on','at','to','for','of','with','by','is','are','was','were','be','been','and','or','but','from','as','its','it','this','that','have','has','had','will','would','can','could','may','might','not','no','do','does','did','get','got','just','one','two','three','new','first','last','over','under','more','most','some','all','says','said','say','now','then','after','before','how','why','what','when','who','where','which','than','about','into','through','during','up','down','out','off','also','only','very','much','many','few','our','your','his','her','their','its','my']);
@@ -102,6 +116,8 @@ async function fetchForCompany(c) {
   const filtered = [];
   for (const r of candidates) {
     if (!r.url || seen.has(r.url)) continue;
+    // Universal hard-block (yahoo, sogou, etc.)
+    if (HARD_BLOCKED_HOSTNAMES.some(b => r.url.includes(b))) continue;
     if (cfg.blocked.some(b => r.url.includes(b))) continue;
     if (!isRelevant(r.title || '', cfg.aliases)) continue;
     seen.add(r.url);
