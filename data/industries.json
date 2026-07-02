@@ -11,7 +11,9 @@
           "domain": "toray.com",
           "monogram": "T",
           "monogram_color": "#9f1239",
-          "news_url": "https://www.toray.com/news/"
+          "news_url": "https://www.toray.com/news/",
+          "news": [],
+          "fallback_news": []
         },
         {
           "id": "teijin",
@@ -20,7 +22,9 @@
           "domain": "teijin.com",
           "monogram": "T",
           "monogram_color": "#8b5cf6",
-          "news_url": "https://www.teijin.com/news/"
+          "news_url": "https://www.teijin.com/news/",
+          "news": [],
+          "fallback_news": []
         },
         {
           "id": "mitsubishi",
@@ -29,7 +33,9 @@
           "domain": "m-chemical.co.jp",
           "monogram": "三",
           "monogram_color": "#dc2626",
-          "news_url": "https://www.m-chemical.co.jp/en/news/"
+          "news_url": "https://www.m-chemical.co.jp/en/news/",
+          "news": [],
+          "fallback_news": []
         },
         {
           "id": "solvay",
@@ -38,7 +44,9 @@
           "domain": "solvay.com",
           "monogram": "S",
           "monogram_color": "#0ea5e9",
-          "news_url": "https://www.solvay.com/en/press-releases"
+          "news_url": "https://www.solvay.com/en/press-releases",
+          "news": [],
+          "fallback_news": []
         },
         {
           "id": "jushi",
@@ -47,7 +55,9 @@
           "domain": "jushi.com",
           "monogram": "巨",
           "monogram_color": "#7c3aed",
-          "news_url": "https://www.jushi.com/news/"
+          "news_url": "https://www.jushi.com/news/",
+          "news": [],
+          "fallback_news": []
         },
         {
           "id": "sinofiber",
@@ -56,7 +66,90 @@
           "domain": "sinofiber.com",
           "monogram": "鹰",
           "monogram_color": "#dc2626",
-          "news_url": "https://www.sinofiber.com.cn/news/"
+          "news_url": "https://www.zfsycf.com.cn/#/news/company",
+          "news": [
+            {
+              "title": "三条世界级产线集中投产！中国建材碳纤维全谱系产业化能力跃上新台阶",
+              "url": "https://www.zfsycf.com.cn/#/newsContent?id=4363",
+              "snippet": "",
+              "published_at": "2026-06-28T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.861Z",
+              "source": "zfsycf.com.cn"
+            },
+            {
+              "title": "匠心砺技 自驱向新丨中复神鹰西宁公司职工在西宁市第二届职业技能大赛中斩获佳绩",
+              "url": "https://www.zfsycf.com.cn/#/newsContent?id=4352",
+              "snippet": "",
+              "published_at": "2026-06-18T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.861Z",
+              "source": "zfsycf.com.cn"
+            },
+            {
+              "title": "SAMPE 2026 | 中复神鹰\"京\"彩升级，闪耀盛会！",
+              "url": "https://www.zfsycf.com.cn/#/newsContent?id=4354",
+              "snippet": "",
+              "published_at": "2026-06-12T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.861Z",
+              "source": "zfsycf.com.cn"
+            },
+            {
+              "title": "中复神鹰西宁公司创新实践入选\"强根铸魂 非凡十年\"国企党建案例",
+              "url": "https://www.zfsycf.com.cn/#/newsContent?id=4358",
+              "snippet": "",
+              "published_at": "2026-06-05T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.861Z",
+              "source": "zfsycf.com.cn"
+            },
+            {
+              "title": "筑牢安全防线 护航高质量发展丨中联投资暨中复神鹰2026年\"安全生产月\"活动在西宁公司启动",
+              "url": "https://www.zfsycf.com.cn/#/newsContent?id=4359",
+              "snippet": "",
+              "published_at": "2026-06-04T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.861Z",
+              "source": "zfsycf.com.cn"
+            },
+            {
+              "title": "获两项权威认可！中复神鹰ESG发展再上新台阶",
+              "url": "https://www.zfsycf.com.cn/#/newsContent?id=4339",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.861Z",
+              "source": "zfsycf.com.cn"
+            },
+            {
+              "title": "高原铸\"材\"·匠心育\"鹰\"丨中复神鹰西宁公司产改实践入选\"2026新时代企业深化产业工人队伍建设改革优秀案例\"",
+              "url": "https://www.zfsycf.com.cn/#/newsContent?id=4338",
+              "snippet": "",
+              "published_at": "2026-05-09T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.861Z",
+              "source": "zfsycf.com.cn"
+            },
+            {
+              "title": "SYT80（T1200级）超高强度碳纤维全球首发！中国建材集团碳纤维技术实现重大超越",
+              "url": "https://www.zfsycf.com.cn/#/newsContent?id=4288",
+              "snippet": "",
+              "published_at": "2026-03-11T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.861Z",
+              "source": "zfsycf.com.cn"
+            },
+            {
+              "title": "纵深合作 再攀高峰丨中复神鹰与金博股份签署框架合作协议",
+              "url": "https://www.zfsycf.com.cn/#/newsContent?id=4125",
+              "snippet": "",
+              "published_at": "2025-07-21T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.861Z",
+              "source": "zfsycf.com.cn"
+            },
+            {
+              "title": "\"碳\"索未来 成就非凡 | 2025中复神鹰碳纤维应用交流活动成功举办",
+              "url": "https://www.zfsycf.com.cn/#/newsContent?id=4121",
+              "snippet": "",
+              "published_at": "2025-07-18T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.861Z",
+              "source": "zfsycf.com.cn"
+            }
+          ],
+          "fallback_news": []
         },
         {
           "id": "guangwei",
@@ -65,7 +158,90 @@
           "domain": "gwcomposite.com",
           "monogram": "威",
           "monogram_color": "#0d9488",
-          "news_url": "https://www.gwcomposite.com/news/"
+          "news_url": "https://www.gwcfc.cn/news/64.aspx",
+          "news": [
+            {
+              "title": "上工飞人碳纤维复材及轻型飞机制造项目顺利开工奠基",
+              "url": "https://www.gwcfc.cn/news/show-419.aspx",
+              "snippet": "",
+              "published_at": "2026-06-18T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.756Z",
+              "source": "gwcfc.cn"
+            },
+            {
+              "title": "喜报｜光威复材科技获评威海市绿色工厂！",
+              "url": "https://www.gwcfc.cn/news/show-418.aspx",
+              "snippet": "",
+              "published_at": "2026-06-17T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.756Z",
+              "source": "gwcfc.cn"
+            },
+            {
+              "title": "学习先辈攻坚事迹，厚植实业爱国情怀｜光威复材开展陈光威事迹专题授课活动",
+              "url": "https://www.gwcfc.cn/news/show-413.aspx",
+              "snippet": "",
+              "published_at": "2026-06-15T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.756Z",
+              "source": "gwcfc.cn"
+            },
+            {
+              "title": "相约SAMPE 2026｜光威复材诚邀各界共探复材产业新机遇",
+              "url": "https://www.gwcfc.cn/news/show-414.aspx",
+              "snippet": "",
+              "published_at": "2026-06-10T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.756Z",
+              "source": "gwcfc.cn"
+            },
+            {
+              "title": "光威复材董事长卢钊钧带队访问中船七二五所",
+              "url": "https://www.gwcfc.cn/news/show-411.aspx",
+              "snippet": "",
+              "published_at": "2026-06-04T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.756Z",
+              "source": "gwcfc.cn"
+            },
+            {
+              "title": "喜报！威海拓展团队上榜第27届山东青年五四奖章集体名单",
+              "url": "https://www.gwcfc.cn/news/show-396.aspx",
+              "snippet": "",
+              "published_at": "2026-05-25T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.756Z",
+              "source": "gwcfc.cn"
+            },
+            {
+              "title": "航空工业\"领航\"学术论坛暨第五届航空先进材料技术发展研讨会成功召开",
+              "url": "https://www.gwcfc.cn/news/show-416.aspx",
+              "snippet": "",
+              "published_at": "2026-05-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.756Z",
+              "source": "gwcfc.cn"
+            },
+            {
+              "title": "陈光威同志先进事迹首场宣讲报告会举行",
+              "url": "https://www.gwcfc.cn/news/show-417.aspx",
+              "snippet": "",
+              "published_at": "2026-05-21T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.756Z",
+              "source": "gwcfc.cn"
+            },
+            {
+              "title": "喜报！光威复材荣获中国航发航材院2025年度最佳质量奖",
+              "url": "https://www.gwcfc.cn/news/show-409.aspx",
+              "snippet": "",
+              "published_at": "2026-05-06T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.756Z",
+              "source": "gwcfc.cn"
+            },
+            {
+              "title": "内蒙古光威碳纤田源获评九原区劳动模范！",
+              "url": "https://www.gwcfc.cn/news/show-408.aspx",
+              "snippet": "",
+              "published_at": "2026-05-04T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.756Z",
+              "source": "gwcfc.cn"
+            }
+          ],
+          "fallback_news": []
         },
         {
           "id": "jlhx",
@@ -74,19 +250,88 @@
           "domain": "jlhx.com.cn",
           "monogram": "吉",
           "monogram_color": "#0ea5e9",
-          "news_url": "https://www.jlhx.com.cn/news/",
-          "fallback_news": [
+          "news_url": "https://www.jlhxjt.com/news",
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/02/12 吉林化纤年产5万吨碳纤维原丝项目正式投产",
-              "url": "https://www.jlhx.com.cn/news/show-126.html"
+              "title": "吉林化纤股份有限公司关于召开2026年第一次临时股东会的通知",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=000420&announcementId=1225398693",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.295Z",
+              "source": "cninfo.com.cn"
             },
             {
-              "title": "2025/11/08 吉林化纤与吉林大学共建碳纤维研究院",
-              "url": "https://www.jlhx.com.cn/news/show-125.html"
+              "title": "十一届八次董事会决议公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000420&orgId=gssz0000420",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.295Z",
+              "source": "cninfo.com.cn"
             },
             {
-              "title": "2025/08/15 吉林化纤T800级碳纤维实现批量供货",
-              "url": "https://www.jlhx.com.cn/news/show-124.html"
+              "title": "吉林化纤股份有限公司获得政府补助的公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000420&orgId=gssz0000420",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.295Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "关于实际控制人股权完成工商变更登记的公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000420&orgId=gssz0000420",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.295Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "关于公司实际控制人变更的提示性公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000420&orgId=gssz0000420",
+              "snippet": "",
+              "published_at": "2026-05-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.295Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "2025年年度股东会决议公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000420&orgId=gssz0000420",
+              "snippet": "",
+              "published_at": "2026-05-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.295Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "2025年年度报告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000420&orgId=gssz0000420",
+              "snippet": "",
+              "published_at": "2026-04-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.295Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "2026年一季度报告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000420&orgId=gssz0000420",
+              "snippet": "",
+              "published_at": "2026-04-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.295Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "吉林化纤股份有限公司关于2025年度利润分配预案的公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000420&orgId=gssz0000420",
+              "snippet": "",
+              "published_at": "2026-04-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.295Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "确认2025年日常关联交易和预计2026年日常关联交易的公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/stock?stockCode=000420&orgId=gssz0000420",
+              "snippet": "",
+              "published_at": "2026-04-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.295Z",
+              "source": "cninfo.com.cn"
             }
           ]
         }
@@ -121,7 +366,8 @@
               "title": "2024/06/24 2024 ALE邀请函 | 本松带您探索“塑代铝”奥秘，赋能轻量化/低碳出行",
               "url": "https://www.bosomchina.com/news_detail/id-175.html"
             }
-          ]
+          ],
+          "news": []
         },
         {
           "id": "feirongda",
@@ -144,7 +390,8 @@
               "title": "2024年12月 2024年度飞荣达结构件供应商质量大会圆满落幕",
               "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=832&Fid=t2:4:2"
             }
-          ]
+          ],
+          "news": []
         },
         {
           "id": "kingfa",
@@ -153,19 +400,88 @@
           "domain": "kingfa.com",
           "monogram": "金",
           "monogram_color": "#dc2626",
-          "news_url": "https://www.kingfa.com/portal/list/index/id/5.html",
-          "fallback_news": [
+          "news_url": "https://www.kingfa.com.cn/portal/list/index/id/5.html",
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2025年10月20日 金发科技与北京化工大学举行绿色生物制造战略合作签约仪式",
-              "url": "https://mp.weixin.qq.com/s/9hitAlkQyOgMNcC6pqeS4A"
+              "title": "供应链公司入选广东省首批制造业赋能资源名单",
+              "url": "https://www.kingfa.com.cn/portal/article/index/id/9021/cid/5.html",
+              "snippet": "",
+              "published_at": "2026-07-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.411Z",
+              "source": "kingfa.com.cn"
             },
             {
-              "title": "2024年09月10日 金发科技受邀出席2024国际绿色低碳与可持续发展大会",
-              "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzU5MzUxNA==&mid=2650422425&idx=2&sn=05058f778213cf2d3e4a14bf1cb2b9e6"
+              "title": "金发科技关于2026年6月为控股子公司提供担保的进展公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600143&announcementId=1225403269",
+              "snippet": "",
+              "published_at": "2026-07-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.411Z",
+              "source": "cninfo.com.cn"
             },
             {
-              "title": "2024年04月03日 金发科技受邀参加\"2024年澳门国际环保合作发展论坛及展览\"开幕典礼",
-              "url": "https://mp.weixin.qq.com/s/kaIYgAR7tdWtijhll8jKYg"
+              "title": "金发科技2025年年度权益分派实施公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600143&announcementId=1225379462",
+              "snippet": "",
+              "published_at": "2026-06-19T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.411Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "金发科技2026年员工持股计划持有人第一次会议决议公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600143&announcementId=1225367141",
+              "snippet": "",
+              "published_at": "2026-06-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.411Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "金发科技2025年度可持续发展报告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600143&announcementId=1225230178",
+              "snippet": "",
+              "published_at": "2026-06-06T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.411Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "金发科技关于调整2025年度利润分配现金分红总额的公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600143&announcementId=1225343638",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.411Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "金发科技关于2026年限制性股票激励计划限制性股票授予结果公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600143&announcementId=1225338017",
+              "snippet": "",
+              "published_at": "2026-05-30T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.411Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "金发科技2025年年度股东会决议公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600143&announcementId=1225320352",
+              "snippet": "",
+              "published_at": "2026-05-21T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.411Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "金发科技2025年度可持续发展报告摘要",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600143&announcementId=1225229975",
+              "snippet": "",
+              "published_at": "2026-04-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.411Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "金发科技2025年年度报告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=600143&announcementId=1225132815",
+              "snippet": "",
+              "published_at": "2026-04-21T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.411Z",
+              "source": "cninfo.com.cn"
             }
           ]
         },
@@ -177,18 +493,87 @@
           "monogram": "会",
           "monogram_color": "#0891b2",
           "news_url": "https://www.orinko.com.cn/news_index.html",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026-03-12 会通股份安庆基地年产30万吨高性能复合材料项目二期工程奠基",
-              "url": "https://mp.weixin.qq.com/s/TZO9a77-P72y6u5CK07oVA"
+              "title": "会通新材料股份有限公司2026年第二次临时股东会决议公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=688219&announcementId=1225403305",
+              "snippet": "",
+              "published_at": "2026-07-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.138Z",
+              "source": "cninfo.com.cn"
             },
             {
-              "title": "2026-02-06 会通股份发布2026战略蓝图 以产品与效率穿越周期",
-              "url": "https://mp.weixin.qq.com/s/56jiaUwAU072T3V_m9VFsA"
+              "title": "会通新材料股份有限公司关于回购注销公司2024年员工持股计划未解锁股份减资暨通知债权人的公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=688219&announcementId=1225403309",
+              "snippet": "",
+              "published_at": "2026-07-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.138Z",
+              "source": "cninfo.com.cn"
             },
             {
-              "title": "2026-02-05 会通股份实现日本市场发货首突破",
-              "url": "https://mp.weixin.qq.com/s/COlduVxzloLkyIkgp9dP2A"
+              "title": "会通新材料股份有限公司关于变更持续督导保荐代表人的公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=688219&announcementId=1225389675",
+              "snippet": "",
+              "published_at": "2026-06-27T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.138Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "会通新材料股份有限公司2025年年度权益分派实施公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=688219&announcementId=1225367604",
+              "snippet": "",
+              "published_at": "2026-06-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.138Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "会通新材料股份有限公司关于以集中竞价交易方式回购股份的预案",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=688219&announcementId=1225368013",
+              "snippet": "",
+              "published_at": "2026-06-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.138Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "会通新材料股份有限公司关于公司董事长、总经理提议公司回购股份的公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=688219&announcementId=1225367988",
+              "snippet": "",
+              "published_at": "2026-06-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.138Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "会通新材料股份有限公司关于员工持股计划第二个锁定期业绩考核指标部分达成暨锁定期届满的公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=688219&announcementId=1225367656",
+              "snippet": "",
+              "published_at": "2026-06-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.138Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "会通新材料股份有限公司2025年年度股东会决议公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=688219&announcementId=1225333422",
+              "snippet": "",
+              "published_at": "2026-05-28T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.138Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "会通新材料股份有限公司2025年环境、社会与公司治理（ESG）报告（英文版）",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=688219&announcementId=1225333259",
+              "snippet": "",
+              "published_at": "2026-05-28T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.138Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "会通新材料股份有限公司关于董事及核心技术人员变动的公告",
+              "url": "http://www.cninfo.com.cn/new/disclosure/detail?stockCode=688219&announcementId=1225307106",
+              "snippet": "",
+              "published_at": "2026-05-15T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.138Z",
+              "source": "cninfo.com.cn"
             }
           ]
         },
@@ -213,7 +598,8 @@
               "title": "2026年5月7日 汉高发布2026年第一季度财报",
               "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-05-07-publication-q1-2026-statement-2154392"
             }
-          ]
+          ],
+          "news": []
         },
         {
           "id": "mmm",
@@ -236,7 +622,8 @@
               "title": "2025/09/22 3M 推出AI驱动的Ask 3M 智能助手加速技术支持",
               "url": "https://news.3m.com/show-124.html"
             }
-          ]
+          ],
+          "news": []
         },
         {
           "id": "honeywell",
@@ -246,18 +633,87 @@
           "monogram": "H",
           "monogram_color": "#0891b2",
           "news_url": "https://www.honeywell.com/us/en/news",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/02/25 霍尼韦尔与波音联合发布60周年热传感技术白皮书",
-              "url": "https://www.honeywell.com/news/show-126.html"
+              "title": "Honeywell Technologies Launches As Independent, Pure-Play Automation Company Following Completion of Honeywell Aerospace Spin-Off",
+              "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-technologies-launches-independent-pure-play-automation-company-following-honeywell-aerospace-spin-off",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.895Z",
+              "source": "honeywell.com"
             },
             {
-              "title": "2025/11/08 霍尼韦尔Q3业绩超预期 智能建筑科技业务+12%",
-              "url": "https://www.honeywell.com/news/show-125.html"
+              "title": "Honeywell Technologies to Release Second Quarter Financial Results, Discuss 2026 Outlook and Hold Its Investor Conference Call on Thursday, July 23",
+              "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-technologies-to-release-second-quarter-financial-results-discuss-2026-outlook-and-hold-its-investor-conference-call-on-thursday-july-23",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.895Z",
+              "source": "honeywell.com"
             },
             {
-              "title": "2025/08/12 霍尼韦尔与B2M Solutions合作拓展移动设备运营洞察",
-              "url": "https://www.honeywell.com/news/show-124.html"
+              "title": "Honeywell Aerospace completes spin-off from Honeywell Technologies and begins trading on Nasdaq",
+              "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-aerospace-completes-spin-off-from-honeywell-technologies-and-begins-trading-on-nasdaq",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.895Z",
+              "source": "honeywell.com"
+            },
+            {
+              "title": "Honeywell and MIT Find Digital Technologies can Help Increase Energy Supply, Reduce Energy Production Cost by Tens of Billions Annually",
+              "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-and-mit-find-digital-technologies-can-help-increase-energy-supply-reduce-energy-production-cost-by-tens-of-billions-annually",
+              "snippet": "",
+              "published_at": "2026-06-24T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.895Z",
+              "source": "honeywell.com"
+            },
+            {
+              "title": "Honeywell Expands Fire Portfolio with Advanced Smoke Control and Connected Life Safety Innovations",
+              "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-expands-fire-portfolio-with-advanced-smoke-control-and-connected-life-safety-innovations",
+              "snippet": "",
+              "published_at": "2026-06-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.895Z",
+              "source": "honeywell.com"
+            },
+            {
+              "title": "Honeywell Modular Technology to Power and Automate Acelen Renewables Biofuel Production",
+              "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-modular-technology-to-power-and-automate-acelen-renewables-biofuel-production",
+              "snippet": "",
+              "published_at": "2026-06-17T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.895Z",
+              "source": "honeywell.com"
+            },
+            {
+              "title": "Honeywell Launches New Hospitality Solutions to Power the Connected Hotel",
+              "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-launches-new-hospitality-solutions-to-power-the-connected-hotel",
+              "snippet": "",
+              "published_at": "2026-06-16T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.895Z",
+              "source": "honeywell.com"
+            },
+            {
+              "title": "Honeywell Board of Directors Approves Spin-Off of Honeywell Aerospace",
+              "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-board-of-directors-approves-spin-off-of-honeywell-aerospace",
+              "snippet": "",
+              "published_at": "2026-06-15T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.895Z",
+              "source": "honeywell.com"
+            },
+            {
+              "title": "Honeywell Technologies Hosts 2026 Investor Day; Provides New Three-Year Financial Framework",
+              "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-technologies-hosts-2026-investor-day-provides-new-three-year-financial-framework",
+              "snippet": "",
+              "published_at": "2026-06-11T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.895Z",
+              "source": "honeywell.com"
+            },
+            {
+              "title": "Honeywell Introduces Experion Cognition to Deliver Autonomous Control Room Operations for Borouge International",
+              "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-introduces-experion-cognition-to-deliver-autonomous-control-room-operations-for-borouge-international",
+              "snippet": "",
+              "published_at": "2026-06-09T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.895Z",
+              "source": "honeywell.com"
             }
           ]
         }
@@ -274,7 +730,90 @@
           "domain": "byd.com",
           "monogram": "比",
           "monogram_color": "#dc2626",
-          "news_url": "https://www.bydglobal.com/en/news.html"
+          "news_url": "https://www.bydglobal.com/cn/NewsAndEvents/News.html",
+          "news": [
+            {
+              "title": "2026年6月产销快报",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-07-02/1225403848.PDF",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "自愿公告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-06-10/1225361412.PDF",
+              "snippet": "",
+              "published_at": "2026-06-09T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "比亚迪5月份销售383,453辆 海外销售突破16万辆，再创历史新高",
+              "url": "https://www.bydglobal.com/cn/news/2026-06-02/1617162804707",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "source": "bydglobal.com"
+            },
+            {
+              "title": "比亚迪率先承诺为城市领航安全兜底 发布中国首款4nm智驾芯片",
+              "url": "https://www.bydglobal.com/cn/news/2026-05-29/1617162805514",
+              "snippet": "",
+              "published_at": "2026-05-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "source": "bydglobal.com"
+            },
+            {
+              "title": "比亚迪成为第28届ANOC全体代表大会-2026年中国香港战略合作伙伴",
+              "url": "https://www.bydglobal.com/cn/news/2026-05-27/1617162804277",
+              "snippet": "",
+              "published_at": "2026-05-27T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "source": "bydglobal.com"
+            },
+            {
+              "title": "比亚迪荣登2026凯度BrandZ全球汽车品牌榜第五，连续四年蝉联全球汽车品牌前十",
+              "url": "https://www.bydglobal.com/cn/news/2026-05-15/1617162800843",
+              "snippet": "",
+              "published_at": "2026-05-15T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "source": "bydglobal.com"
+            },
+            {
+              "title": "比亚迪4月销售321,123辆，海外再创历史新高",
+              "url": "https://www.bydglobal.com/cn/news/2026-05-06/1617162799743",
+              "snippet": "",
+              "published_at": "2026-05-06T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "source": "bydglobal.com"
+            },
+            {
+              "title": "比亚迪第1600万辆新能源汽车下线 再铸就产业里程碑",
+              "url": "https://www.bydglobal.com/cn/news/2026-04-22/1617162793219",
+              "snippet": "",
+              "published_at": "2026-04-22T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "source": "bydglobal.com"
+            },
+            {
+              "title": "比亚迪3月份销售300,222辆，获得中国车企销量冠军",
+              "url": "https://www.bydglobal.com/cn/news/2026-04-02/1617162791146",
+              "snippet": "",
+              "published_at": "2026-04-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "source": "bydglobal.com"
+            },
+            {
+              "title": "比亚迪发布2025年ESG报告，积极履行可持续发展",
+              "url": "https://www.bydglobal.com/cn/news/2026-03-31/1617162789425",
+              "snippet": "",
+              "published_at": "2026-03-31T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "source": "bydglobal.com"
+            }
+          ],
+          "fallback_news": []
         },
         {
           "id": "catl",
@@ -283,7 +822,90 @@
           "domain": "catl.com",
           "monogram": "宁",
           "monogram_color": "#0ea5e9",
-          "news_url": "https://www.catl.com/en/news/"
+          "news_url": "https://www.catl.com/news/",
+          "news": [
+            {
+              "title": "宁德时代积极响应《动力和储能电池企业供应商账款支付规范倡议》",
+              "url": "https://www.catl.com/news/10065.html",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "source": "catl.com"
+            },
+            {
+              "title": "GECC从愿景到行动：\"全球能源循环经济联盟\"及《电池可循环设计指南》正式启动",
+              "url": "https://www.catl.com/news/10063.html",
+              "snippet": "",
+              "published_at": "2026-06-28T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "source": "catl.com"
+            },
+            {
+              "title": "关于2026年度第四期绿色科技创新债券发行完成的公告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-06-26/1225392395.PDF",
+              "snippet": "",
+              "published_at": "2026-06-26T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "宁德时代与中国节能再签战略合作协议",
+              "url": "https://www.catl.com/news/10062.html",
+              "snippet": "",
+              "published_at": "2026-06-26T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "source": "catl.com"
+            },
+            {
+              "title": "首款搭载宁德时代电池的重载人形机器人上岗",
+              "url": "https://www.catl.com/news/10053.html",
+              "snippet": "",
+              "published_at": "2026-06-24T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "source": "catl.com"
+            },
+            {
+              "title": "宁德时代发布全球首款实证型钠电储能场站解决方案",
+              "url": "https://www.catl.com/news/10052.html",
+              "snippet": "",
+              "published_at": "2026-06-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "source": "catl.com"
+            },
+            {
+              "title": "宁德时代携手泉州交发集团，共建\"交通+新能源\"全域融合生态",
+              "url": "https://www.catl.com/news/10031.html",
+              "snippet": "",
+              "published_at": "2026-06-18T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "source": "catl.com"
+            },
+            {
+              "title": "宁德时代成咪咕2026美加墨世界杯转播顶级战略合作伙伴",
+              "url": "https://www.catl.com/news/9919.html",
+              "snippet": "",
+              "published_at": "2026-06-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "source": "catl.com"
+            },
+            {
+              "title": "宁德时代与厦门公交集团签署战略合作协议，共筑绿色交通新生态",
+              "url": "https://www.catl.com/news/9918.html",
+              "snippet": "",
+              "published_at": "2026-06-12T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "source": "catl.com"
+            },
+            {
+              "title": "锂电行业首张！宁德时代获国家级碳足迹标识认证",
+              "url": "https://www.catl.com/news/9917.html",
+              "snippet": "",
+              "published_at": "2026-06-05T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "source": "catl.com"
+            }
+          ],
+          "fallback_news": []
         },
         {
           "id": "nio",
@@ -292,7 +914,82 @@
           "domain": "nio.com",
           "monogram": "蔚",
           "monogram_color": "#059669",
-          "news_url": "https://ir.nio.com/news-releases"
+          "news_url": "https://www.nio.cn/news",
+          "news": [
+            {
+              "title": "蔚来公司6月交付40,597台，同比增长62.9%",
+              "url": "https://www.nio.cn/news/20260701001",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "source": "nio.cn"
+            },
+            {
+              "title": "蔚来ES8完成第120,000台新车交付",
+              "url": "https://www.nio.cn/news/20260622001",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "source": "nio.cn"
+            },
+            {
+              "title": "蔚来先进制造新桥二工厂获评全球「灯塔工厂」",
+              "url": "https://www.nio.cn/news/202606220012",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "source": "nio.cn"
+            },
+            {
+              "title": "5月零售销量11,472台，蔚来全新ES8连续六个月斩获大型SUV销量冠军",
+              "url": "https://www.nio.cn/news/20260609001",
+              "snippet": "",
+              "published_at": "2026-06-09T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "source": "nio.cn"
+            },
+            {
+              "title": "蔚来公司5月交付37,705台，同比增长62.3%",
+              "url": "https://www.nio.cn/news/20260601001",
+              "snippet": "",
+              "published_at": "2026-06-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "source": "nio.cn"
+            },
+            {
+              "title": "售价49.8万元起，科技行政旗舰SUV蔚来ES9正式上市",
+              "url": "https://www.nio.cn/news/20260527001",
+              "snippet": "",
+              "published_at": "2026-05-27T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "source": "nio.cn"
+            },
+            {
+              "title": "开启交付245天，蔚来全新ES8完成第110,000台新车交付",
+              "url": "https://www.nio.cn/news/20260523001",
+              "snippet": "",
+              "published_at": "2026-05-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "source": "nio.cn"
+            },
+            {
+              "title": "蔚来公司发布2025年ESG报告",
+              "url": "https://www.nio.cn/news/20260520001",
+              "snippet": "",
+              "published_at": "2026-05-20T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "source": "nio.cn"
+            },
+            {
+              "title": "蔚来全新ES8成为2026 APEC 贸易部长会议主宾用车",
+              "url": "https://www.nio.cn/news/20260518001",
+              "snippet": "",
+              "published_at": "2026-05-18T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "source": "nio.cn"
+            }
+          ],
+          "fallback_news": []
         },
         {
           "id": "bmw",
@@ -301,7 +998,9 @@
           "domain": "bmwgroup.com",
           "monogram": "B",
           "monogram_color": "#0066b1",
-          "news_url": "https://www.bmwgroup.com/en/news.html"
+          "news_url": "https://www.bmwgroup.com/en/news.html",
+          "news": [],
+          "fallback_news": []
         },
         {
           "id": "vw",
@@ -310,7 +1009,9 @@
           "domain": "volkswagen.com",
           "monogram": "V",
           "monogram_color": "#1e40af",
-          "news_url": "https://www.volkswagen-newsroom.com/en/press-releases"
+          "news_url": "https://www.volkswagen-newsroom.com/en/press-releases",
+          "news": [],
+          "fallback_news": []
         },
         {
           "id": "toyota",
@@ -319,7 +1020,9 @@
           "domain": "toyota.com",
           "monogram": "T",
           "monogram_color": "#b91c1c",
-          "news_url": "https://global.toyota/en/newsroom/"
+          "news_url": "https://global.toyota/en/newsroom/",
+          "news": [],
+          "fallback_news": []
         },
         {
           "id": "li",
@@ -341,6 +1044,88 @@
             {
               "title": "2025/10/15 理想汽车与宁德时代签署5年100GWh电池供应协议",
               "url": "https://www.lixiang.com/news/show-124.html"
+            }
+          ],
+          "news": [
+            {
+              "title": "理想汽车2026年6月交付30,895辆",
+              "url": "https://www.lixiang.com/news/161.html",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "source": "lixiang.com"
+            },
+            {
+              "title": "全新理想L8正式发布",
+              "url": "https://www.lixiang.com/news/172.html",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "source": "lixiang.com"
+            },
+            {
+              "title": "理想汽车2026年5月交付33,350辆",
+              "url": "https://www.lixiang.com/news/160.html",
+              "snippet": "",
+              "published_at": "2026-06-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "source": "lixiang.com"
+            },
+            {
+              "title": "全新一代理想L9正式发布",
+              "url": "https://www.lixiang.com/news/159.html",
+              "snippet": "",
+              "published_at": "2026-05-15T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "source": "lixiang.com"
+            },
+            {
+              "title": "理想汽车2026年4月交付34,085辆",
+              "url": "https://www.lixiang.com/news/155.html",
+              "snippet": "",
+              "published_at": "2026-05-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "source": "lixiang.com"
+            },
+            {
+              "title": "理想汽车2026年3月交付41,053辆",
+              "url": "https://www.lixiang.com/news/154.html",
+              "snippet": "",
+              "published_at": "2026-04-27T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "source": "lixiang.com"
+            },
+            {
+              "title": "理想汽车2026年2月交付26,421辆",
+              "url": "https://www.lixiang.com/news/152.html",
+              "snippet": "",
+              "published_at": "2026-03-05T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "source": "lixiang.com"
+            },
+            {
+              "title": "理想汽车2026年1月交付27,668辆",
+              "url": "https://www.lixiang.com/news/151.html",
+              "snippet": "",
+              "published_at": "2026-02-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "source": "lixiang.com"
+            },
+            {
+              "title": "理想汽车2025年12月交付44,246辆",
+              "url": "https://www.lixiang.com/news/150.html",
+              "snippet": "",
+              "published_at": "2026-01-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "source": "lixiang.com"
+            },
+            {
+              "title": "理想AI眼镜 Livis 发布会",
+              "url": "https://www.lixiang.com/news/149.html",
+              "snippet": "",
+              "published_at": "2025-12-03T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "source": "lixiang.com"
             }
           ]
         },
@@ -365,6 +1150,88 @@
               "title": "2025/08/22 小鹏汽车与大众汽车签署联合采购协议",
               "url": "https://www.xiaopeng.com/news/show-124.html"
             }
+          ],
+          "news": [
+            {
+              "title": "小鹏集团联合东莞寮步公安开展系列反诈宣传，共筑全民反诈安全防线",
+              "url": "https://www.xiaopeng.com/news/company_news/5576.html",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "source": "xiaopeng.com"
+            },
+            {
+              "title": "物理AI，链接全球！小鹏集团携物理AI全品类亮相第四届链博会",
+              "url": "https://www.xiaopeng.com/news/company_news/5575.html",
+              "snippet": "",
+              "published_at": "2026-06-24T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "source": "xiaopeng.com"
+            },
+            {
+              "title": "小鹏集团再拓摩洛哥、突尼斯市场，北非\"战略铁三角\"成型",
+              "url": "https://www.xiaopeng.com/news/company_news/5570.html",
+              "snippet": "",
+              "published_at": "2026-06-09T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "source": "xiaopeng.com"
+            },
+            {
+              "title": "小鹏集团受邀参加2026世界智能博览会",
+              "url": "https://www.xiaopeng.com/news/company_news/5569.html",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "source": "xiaopeng.com"
+            },
+            {
+              "title": "小鹏集团5月共交付新车32,158台",
+              "url": "https://www.xiaopeng.com/news/company_news/5568.html",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "source": "xiaopeng.com"
+            },
+            {
+              "title": "AI改变世界：小鹏集团携物理AI全品类亮相2026粤港澳大湾区车展，彰显科技实力",
+              "url": "https://www.xiaopeng.com/news/company_news/5567.html",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "source": "xiaopeng.com"
+            },
+            {
+              "title": "小鹏集团完成从智能电动车企到物理AI公司的蜕变：第二代VLA规模落地、Robotaxi量产下线、人形机器人年底量产同步推进",
+              "url": "https://www.xiaopeng.com/news/company_news/5566.html",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "source": "xiaopeng.com"
+            },
+            {
+              "title": "小鹏集团发布2026年第一季度财报：毛利率维持20.6%高位，加速推动物理AI应用商业化",
+              "url": "https://www.xiaopeng.com/news/company_news/5565.html",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "source": "xiaopeng.com"
+            },
+            {
+              "title": "中国首台全栈自研Robotaxi量产下线！小鹏GX为原型车，本地算力3000 TOPS全球最高",
+              "url": "https://www.xiaopeng.com/news/company_news/5564.html",
+              "snippet": "",
+              "published_at": "2026-05-22T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "source": "xiaopeng.com"
+            },
+            {
+              "title": "用科技重新定义旗舰：小鹏GX正式上市，限时权益价26.98万元起",
+              "url": "https://www.xiaopeng.com/news/company_news/5563.html",
+              "snippet": "",
+              "published_at": "2026-05-21T00:00:00Z",
+              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "source": "xiaopeng.com"
+            }
           ]
         },
         {
@@ -374,7 +1241,9 @@
           "domain": "tesla.com",
           "monogram": "T",
           "monogram_color": "#cc0000",
-          "news_url": "https://www.tesla.com/blog"
+          "news_url": "https://www.tesla.com/blog",
+          "news": [],
+          "fallback_news": []
         }
       ]
     },
@@ -389,19 +1258,88 @@
           "domain": "hubbell.com",
           "monogram": "H",
           "monogram_color": "#0066b1",
-          "news_url": "https://www.hubbell.com/news",
-          "fallback_news": [
+          "news_url": "https://investor.hubbell.com/?tab=press&_gl=1*xhuk0z*_gcl_au*NjU1NzUyODgwLjE3ODMwMDM5NTg.*_ga*MTEwNzY5NTcuMTc4MzAwMzk1OA..*_ga_JKQM6DWNNM*czE3ODMwMDM5NTgkbzEkZzAkdDE3ODMwMDM5NTgkajYwJGwwJGgxMzAyNzM1ODE1*_ga_KF3SE324ZV*czE3ODMwMDM5NTgkbzEkZzAkdDE3ODMwMDM5NTgkajYwJGwwJGgyMjAwMzkzNTk.",
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/02/15 Hubbell 电力系统推出面向765kV的下一代聚合物绝缘子",
-              "url": "https://www.hubbell.com/news/show-126.html"
+              "title": "Hubbell Incorporated Completes Acquisition of NSI Industries",
+              "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-incorporated-completes-acquisition-nsi-industries",
+              "snippet": "",
+              "published_at": "2026-06-09T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.019Z",
+              "source": "hubbell.gcs-web.com"
             },
             {
-              "title": "2025/11/04 Hubbell 收购欧洲复合绝缘子制造商",
-              "url": "https://www.hubbell.com/news/show-125.html"
+              "title": "Hubbell Incorporated Prices $1.9 Billion Senior Notes Offering",
+              "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-incorporated-prices-19-billion-senior-notes-offering",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.019Z",
+              "source": "hubbell.gcs-web.com"
             },
             {
-              "title": "2025/09/12 Hubbell 2025年Q3业绩：绝缘子业务同比增长18%",
-              "url": "https://www.hubbell.com/news/show-124.html"
+              "title": "Hubbell to Participate in Upcoming Investor Conference (Wells Fargo Industrials)",
+              "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-participate-upcoming-investor-conference-4",
+              "snippet": "",
+              "published_at": "2026-05-28T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.019Z",
+              "source": "hubbell.gcs-web.com"
+            },
+            {
+              "title": "Hubbell to Acquire NSI Industries",
+              "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-acquire-nsi-industries",
+              "snippet": "",
+              "published_at": "2026-05-04T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.019Z",
+              "source": "hubbell.gcs-web.com"
+            },
+            {
+              "title": "Hubbell Reports First Quarter 2026 Results",
+              "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-reports-first-quarter-2026-results",
+              "snippet": "",
+              "published_at": "2026-04-30T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.019Z",
+              "source": "hubbell.gcs-web.com"
+            },
+            {
+              "title": "Hubbell Reports Regular Quarterly Dividend",
+              "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-reports-regular-quarterly-dividend",
+              "snippet": "",
+              "published_at": "2026-04-24T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.019Z",
+              "source": "hubbell.gcs-web.com"
+            },
+            {
+              "title": "Hubbell to Announce First Quarter 2026 Results on April 30, 2026",
+              "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-announce-first-quarter-2026-results-april-30-2026",
+              "snippet": "",
+              "published_at": "2026-04-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.019Z",
+              "source": "hubbell.gcs-web.com"
+            },
+            {
+              "title": "Hubbell to Participate in Upcoming Investor Conference (JP Morgan Industrials)",
+              "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-participate-upcoming-investor-conference-3",
+              "snippet": "",
+              "published_at": "2026-03-05T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.019Z",
+              "source": "hubbell.gcs-web.com"
+            },
+            {
+              "title": "Hubbell to Participate in Upcoming Investor Conference (Barclays)",
+              "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-participate-upcoming-investor-conference-2",
+              "snippet": "",
+              "published_at": "2026-02-12T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.019Z",
+              "source": "hubbell.gcs-web.com"
+            },
+            {
+              "title": "Hubbell Reports Fourth Quarter and Full Year 2025 Results",
+              "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-reports-fourth-quarter-and-full-year-2025-results",
+              "snippet": "",
+              "published_at": "2026-02-03T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:19.019Z",
+              "source": "hubbell.gcs-web.com"
             }
           ]
         },
@@ -418,7 +1356,8 @@
               "title": "2025/09/05 MacLean-Fogg 推出用于铁路电气化的 Track-Resist 聚合物绝缘子",
               "url": "https://www.macleanfogg.com/news/show-124.html"
             }
-          ]
+          ],
+          "news": []
         },
         {
           "id": "abb",
@@ -441,7 +1380,8 @@
               "title": "2025/09/18 ABB 与日立能源合作开发新一代电网绝缘子方案",
               "url": "https://new.abb.com/news/show-124.html"
             }
-          ]
+          ],
+          "news": []
         },
         {
           "id": "shenma",
@@ -450,19 +1390,88 @@
           "domain": "shenma.com.cn",
           "monogram": "神",
           "monogram_color": "#dc2626",
-          "news_url": "https://www.shenma.com.cn/news/",
-          "fallback_news": [
+          "news_url": "https://www.cninfo.com.cn/new/disclosure/stock?stockCode=603530&orgId=9900036545",
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/02/18 神马电力中标国家电网特高压复合绝缘子6.8亿元订单",
-              "url": "https://www.shenma.com.cn/news/show-126.html"
+              "title": "关于非公开发行股票全部募集资金投资项目结项并将节余募集资金永久性补充流动资金的公告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-07-01/1225400273.PDF",
+              "snippet": "",
+              "published_at": "2026-06-30T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.707Z",
+              "source": "cninfo.com.cn"
             },
             {
-              "title": "2025/11/15 神马电力复合绝缘子出口突破50个国家",
-              "url": "https://www.shenma.com.cn/news/show-125.html"
+              "title": "关于“藏粤工程”特高压项目中标的提示性公告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-06-13/1225367452.PDF",
+              "snippet": "",
+              "published_at": "2026-06-12T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.707Z",
+              "source": "cninfo.com.cn"
             },
             {
-              "title": "2025/08/04 神马电力新型硅橡胶复合绝缘子通过型式试验",
-              "url": "https://www.shenma.com.cn/news/show-124.html"
+              "title": "关于设立全资子公司并取得营业执照的公告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-06-06/1225353451.PDF",
+              "snippet": "",
+              "published_at": "2026-06-05T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.707Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "神马电力2026年一季度报告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-04-28/1225202722.PDF",
+              "snippet": "",
+              "published_at": "2026-04-27T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.707Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "关于召开2025年度暨2026年第一季度业绩说明会的公告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-04-28/1225202692.PDF",
+              "snippet": "",
+              "published_at": "2026-04-27T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.707Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "关于开展 2026年度“提质增效重回报”行动方案的公告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-04-28/1225202669.PDF",
+              "snippet": "",
+              "published_at": "2026-04-27T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.707Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "2025年年度权益分派实施公告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-06-05/1225351362.PDF",
+              "snippet": "",
+              "published_at": "2026-06-04T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.707Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "关于以集中竞价交易方式回购公司股份的进展公告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-06-03/1225345516.PDF",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.707Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "2025年年度股东会决议公告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-05-13/1225301726.PDF",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.707Z",
+              "source": "cninfo.com.cn"
+            },
+            {
+              "title": "关于以集中竞价交易方式回购公司股份的进展公告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-05-08/1225281283.PDF",
+              "snippet": "",
+              "published_at": "2026-05-07T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.707Z",
+              "source": "cninfo.com.cn"
             }
           ]
         },
@@ -473,19 +1482,88 @@
           "domain": "goldwind.com.cn",
           "monogram": "金",
           "monogram_color": "#0d9488",
-          "news_url": "https://www.goldwind.com.cn/news/",
-          "fallback_news": [
+          "news_url": "https://www.goldwind.com/cn/news/",
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/01/25 金风科技GW155-4.5MW风机配套复合绝缘子批量出货",
-              "url": "https://www.goldwind.com.cn/news/show-126.html"
+              "title": "金风科技完成越南朔庄海上风电项目首批机组交付",
+              "url": "https://www.goldwind.com/cn/news/focus-1256569732925188096",
+              "snippet": "",
+              "published_at": "2026-06-26T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.640Z",
+              "source": "goldwind.com"
             },
             {
-              "title": "2025/10/12 金风科技中标中广核海上风电场复合绝缘子集采",
-              "url": "https://www.goldwind.com.cn/news/show-125.html"
+              "title": "金风科技为沙特 PIF5 3GW 风电项目发运首批风电设备",
+              "url": "https://www.goldwind.com/cn/news/focus-1254727911093725184",
+              "snippet": "",
+              "published_at": "2026-06-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.640Z",
+              "source": "goldwind.com"
             },
             {
-              "title": "2025/07/03 金风科技联合清华大学研发新型风电用复合绝缘子",
-              "url": "https://www.goldwind.com.cn/news/show-125.html"
+              "title": "金风科技在南美风电装机突破3GW",
+              "url": "https://www.goldwind.com/cn/news/focus-1254740445016287232",
+              "snippet": "",
+              "published_at": "2026-06-09T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.640Z",
+              "source": "goldwind.com"
+            },
+            {
+              "title": "金风科技关于就欧盟委员会《外国补贴条例》调查提起司法诉讼的声明",
+              "url": "https://www.goldwind.com/cn/news/focus-1246914787565314048",
+              "snippet": "",
+              "published_at": "2026-06-03T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.640Z",
+              "source": "goldwind.com"
+            },
+            {
+              "title": "金风科技荣登 2026 年《财富》中国 ESG 影响力榜",
+              "url": "https://www.goldwind.com/cn/news/focus-1239882716955194368",
+              "snippet": "",
+              "published_at": "2026-05-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.640Z",
+              "source": "goldwind.com"
+            },
+            {
+              "title": "金风科技助力南水北调集团实现\"水能融合\"发展新模式",
+              "url": "https://www.goldwind.com/cn/news/focus-1238900451743867904",
+              "snippet": "",
+              "published_at": "2026-05-11T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.640Z",
+              "source": "goldwind.com"
+            },
+            {
+              "title": "连续七年！金风科技再次入选新财富最佳上市公司榜单",
+              "url": "https://www.goldwind.com/cn/news/focus-1238899928084962304",
+              "snippet": "",
+              "published_at": "2026-05-06T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.640Z",
+              "source": "goldwind.com"
+            },
+            {
+              "title": "金风科技与香港科技大学达成\"AI 气象+新能源\"战略合作",
+              "url": "https://www.goldwind.com/cn/news/focus-1234556503030211584",
+              "snippet": "",
+              "published_at": "2026-04-27T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.640Z",
+              "source": "goldwind.com"
+            },
+            {
+              "title": "金风科技正式发布风储智联一体化解决方案（ESIE2026）",
+              "url": "https://www.goldwind.com/cn/news/focus-1227223117278140416",
+              "snippet": "",
+              "published_at": "2026-04-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.640Z",
+              "source": "goldwind.com"
+            },
+            {
+              "title": "金风混塔，首入东南亚（泰国风电项目群首段浇筑）",
+              "url": "https://www.goldwind.com/cn/news/focus-1227223656460153856",
+              "snippet": "",
+              "published_at": "2026-03-30T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.640Z",
+              "source": "goldwind.com"
             }
           ]
         },
@@ -493,22 +1571,91 @@
           "id": "dalian",
           "name": "大连电瓷 Dalian Insulator",
           "region": "cn",
-          "domain": "dlpi.com.cn",
+          "domain": "insulators.cn",
           "monogram": "连",
           "monogram_color": "#7c3aed",
-          "news_url": "https://www.dlpi.com.cn/news/",
-          "fallback_news": [
+          "news_url": "https://www.insulators.cn/news.html",
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/03/08 大连电瓷复合绝缘子中标南方电网5.5亿元订单",
-              "url": "https://www.dlpi.com.cn/news/show-126.html"
+              "title": "一图读懂丨大连电瓷2025年年报",
+              "url": "https://www.insulators.cn/news_info/id-74.html",
+              "snippet": "",
+              "published_at": "2026-04-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.510Z",
+              "source": "insulators.cn"
             },
             {
-              "title": "2025/11/20 大连电瓷±800kV特高压复合绝缘子通过国家级鉴定",
-              "url": "https://www.dlpi.com.cn/news/show-125.html"
+              "title": "跨越百年坚守初心 大连电瓷赋能电力新纪元——大连电瓷集团隆重举行110周年庆典",
+              "url": "https://www.insulators.cn/news_info/id-71.html",
+              "snippet": "",
+              "published_at": "2025-10-19T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.510Z",
+              "source": "insulators.cn"
             },
             {
-              "title": "2025/08/18 大连电瓷复合绝缘子智能化生产线投产",
-              "url": "https://www.dlpi.com.cn/news/show-124.html"
+              "title": "大连电瓷总经理应莹庭：从一座工厂，看百年绝缘子企业突围",
+              "url": "https://www.insulators.cn/news_info/id-73.html",
+              "snippet": "",
+              "published_at": "2025-09-12T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.510Z",
+              "source": "insulators.cn"
+            },
+            {
+              "title": "大连电瓷集团股份有限公司与Union Power Company达成绝缘子领域合资合作",
+              "url": "https://www.insulators.cn/news_info/id-72.html",
+              "snippet": "",
+              "published_at": "2025-05-21T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.510Z",
+              "source": "insulators.cn"
+            },
+            {
+              "title": "心系投资者，携手共行动~5.15全国投资者保护宣传日",
+              "url": "https://www.insulators.cn/news_info/id-40.html",
+              "snippet": "",
+              "published_at": "2025-05-15T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.510Z",
+              "source": "insulators.cn"
+            },
+            {
+              "title": "一图读懂大连电瓷2024年度业绩",
+              "url": "https://www.insulators.cn/news_info/id-4.html",
+              "snippet": "",
+              "published_at": "2025-04-24T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.510Z",
+              "source": "insulators.cn"
+            },
+            {
+              "title": "一图读懂大连电瓷2023年年度报告",
+              "url": "https://www.insulators.cn/news_info/id-5.html",
+              "snippet": "",
+              "published_at": "2025-04-24T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.510Z",
+              "source": "insulators.cn"
+            },
+            {
+              "title": "证券时报专访大连电瓷董事长应坚：立足大连经开区 将产品送到五大洲电网",
+              "url": "https://www.insulators.cn/news_info/id-61.html",
+              "snippet": "",
+              "published_at": "2024-11-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.510Z",
+              "source": "insulators.cn"
+            },
+            {
+              "title": "我公司制坯车间刘崇军同志，荣获2024\"辽宁五一劳动奖章\"",
+              "url": "https://www.insulators.cn/news_info/id-62.html",
+              "snippet": "",
+              "published_at": "2024-04-30T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.510Z",
+              "source": "insulators.cn"
+            },
+            {
+              "title": "大连市机械行业协会成功组织完成科技成果鉴定会（特高压氟硅橡胶复合绝缘子）",
+              "url": "https://www.insulators.cn/news_info/id-63.html",
+              "snippet": "",
+              "published_at": "2024-04-26T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.510Z",
+              "source": "insulators.cn"
             }
           ]
         },
@@ -519,19 +1666,88 @@
           "domain": "ztt.com",
           "monogram": "中",
           "monogram_color": "#0d9488",
-          "news_url": "https://www.zttgroup.com/news/",
-          "fallback_news": [
+          "news_url": "https://www.ztt.cn/news_list.html?category_id=46",
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/02/10 中天科技复合绝缘子入选工信部制造业单项冠军名单",
-              "url": "https://www.ztt.com/news/show-127.html"
+              "title": "\"全国先进基层党组织\"！中天科技党委获中共中央表彰",
+              "url": "https://www.ztt.cn/news/show-53962.html",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.598Z",
+              "source": "ztt.cn"
             },
             {
-              "title": "2025/12/05 中天科技海缆与复合绝缘子业务双增长 营收破千亿",
-              "url": "https://www.ztt.com/news/show-126.html"
+              "title": "全球首发！中天科技推出10尺交直流一体液冷储能系统",
+              "url": "https://www.ztt.cn/news/show-53963.html",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.598Z",
+              "source": "ztt.cn"
             },
             {
-              "title": "2025/08/18 中天科技牵头制定复合绝缘子IEC国际标准",
-              "url": "https://www.ztt.com/news/show-125.html"
+              "title": "支撑 \"AI+制造\"，中天科技开建南通首座\"光电协同智算中心\"",
+              "url": "https://www.ztt.cn/news/show-53961.html",
+              "snippet": "",
+              "published_at": "2026-06-28T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.598Z",
+              "source": "ztt.cn"
+            },
+            {
+              "title": "\"蓝海领航\"！中天科技发布新一代16000T海缆敷设船",
+              "url": "https://www.ztt.cn/news/show-53959.html",
+              "snippet": "",
+              "published_at": "2026-06-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.598Z",
+              "source": "ztt.cn"
+            },
+            {
+              "title": "软硬一体+AI驱动 中天科技智慧能碳一体机来了",
+              "url": "https://www.ztt.cn/news/show-53958.html",
+              "snippet": "",
+              "published_at": "2026-06-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.598Z",
+              "source": "ztt.cn"
+            },
+            {
+              "title": "第四届链博会启幕 中天科技五大产业链解决方案展示前沿成果",
+              "url": "https://www.ztt.cn/news/show-53957.html",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.598Z",
+              "source": "ztt.cn"
+            },
+            {
+              "title": "链博会首日 中天科技重磅发布17280芯超大芯数高密度光缆",
+              "url": "https://www.ztt.cn/news/show-53956.html",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.598Z",
+              "source": "ztt.cn"
+            },
+            {
+              "title": "Global Offshore Wind 2026，中天科技全序列海缆方案尽显场景化优势",
+              "url": "https://www.ztt.cn/news/show-53954.html",
+              "snippet": "",
+              "published_at": "2026-06-17T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.598Z",
+              "source": "ztt.cn"
+            },
+            {
+              "title": "江苏中天科技股份有限公司关于中标互联网企业数据中心用耗材项目的公告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-06-06/1225353680.PDF",
+              "snippet": "",
+              "published_at": "2026-06-06T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.598Z",
+              "source": "ztt.cn"
+            },
+            {
+              "title": "江苏中天科技股份有限公司2026年第一季度报告",
+              "url": "http://static.cninfo.com.cn/finalpage/2026-04-25/1225177465.PDF",
+              "snippet": "",
+              "published_at": "2026-04-25T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.598Z",
+              "source": "ztt.cn"
             }
           ]
         },
@@ -542,19 +1758,88 @@
           "domain": "te.com",
           "monogram": "T",
           "monogram_color": "#0d9488",
-          "news_url": "https://www.te.com/usa-en/insulators.html",
-          "fallback_news": [
+          "news_url": "https://www.te.com/en/about-te/news-center.html?tab=corp-news-releases",
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/01/20 TE Connectivity 扩展 Raychem HVS 复合绝缘子产品线",
-              "url": "https://www.te.com/news/show-126.html"
+              "title": "TE Connectivity launches next generation AMP+ Charging Inlets for electric vehicles",
+              "url": "https://www.te.com/en/about-te/news-center/amp-charging-cables-and-inlets-next-gen-npi.html",
+              "snippet": "",
+              "published_at": "2026-07-02T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.233Z",
+              "source": "te.com"
             },
             {
-              "title": "2025/10/30 TE Connectivity 赢得欧洲电网绝缘子4500万欧元合同",
-              "url": "https://www.te.com/news/show-125.html"
+              "title": "TE Connectivity to power next generation AI data centers at COMPUTEX 2026",
+              "url": "https://www.te.com/en/about-te/news-center/computex-2026.html",
+              "snippet": "",
+              "published_at": "2026-05-27T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.233Z",
+              "source": "te.com"
             },
             {
-              "title": "2025/08/14 TE Connectivity 绝缘子业务Q3营收同比增长12%",
-              "url": "https://www.te.com/news/show-124.html"
+              "title": "TE Connectivity launches 56G MezzaWave connectors and cable assemblies",
+              "url": "https://www.te.com/en/about-te/news-center/56g-mezzawave.html",
+              "snippet": "",
+              "published_at": "2026-03-16T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.233Z",
+              "source": "te.com"
+            },
+            {
+              "title": "TE Connectivity to advance end-to-end optical infrastructure for next-generation AI data centers at OFC 2026",
+              "url": "https://www.te.com/en/about-te/news-center/te-ofc-2026.html",
+              "snippet": "",
+              "published_at": "2026-03-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.233Z",
+              "source": "te.com"
+            },
+            {
+              "title": "TE Connectivity acquires EV charging inlet assets from Phoenix Contact",
+              "url": "https://www.te.com/en/about-te/news-center/phoenixcontact.html",
+              "snippet": "",
+              "published_at": "2026-02-28T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.233Z",
+              "source": "te.com"
+            },
+            {
+              "title": "TE Connectivity to showcase rugged connectivity and high-speed interconnect solutions at embedded world 2026",
+              "url": "https://www.te.com/en/about-te/news-center/embedded-world-2026.html",
+              "snippet": "",
+              "published_at": "2026-02-25T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.233Z",
+              "source": "te.com"
+            },
+            {
+              "title": "Next2OEM: TE Connectivity actively shaping the future of automated wiring harness production",
+              "url": "https://www.te.com/en/about-te/news-center/next2oem.html",
+              "snippet": "",
+              "published_at": "2026-01-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.233Z",
+              "source": "te.com"
+            },
+            {
+              "title": "TE Connectivity expands rapid prototyping with new PROPELUS Prototype Centers in Wilsonville and Tlalnepantla",
+              "url": "https://www.te.com/en/about-te/news-center/propelus-wv-tl-opening.html",
+              "snippet": "",
+              "published_at": "2025-11-20T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.233Z",
+              "source": "te.com"
+            },
+            {
+              "title": "TE Connectivity to showcase fully automated manufacturing cell with Cellios at Productronica 2025",
+              "url": "https://www.te.com/en/about-te/news-center/productronica-2025.html",
+              "snippet": "",
+              "published_at": "2025-11-11T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.233Z",
+              "source": "te.com"
+            },
+            {
+              "title": "TE AI Hub convenes AWS and leading universities for industry-academia AI collaboration",
+              "url": "https://www.te.com/en/about-te/news-center/singapore-ai-hub-hackathon.html",
+              "snippet": "",
+              "published_at": "2025-10-20T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.233Z",
+              "source": "te.com"
             }
           ]
         }
@@ -585,7 +1870,8 @@
               "title": "2025/11/05 英维克Coolinside液冷全栈方案发布 覆盖CDU+快接头+Manifold",
               "url": "https://www.envicool.com/news/show-124.html"
             }
-          ]
+          ],
+          "news": []
         },
         {
           "id": "sugon",
@@ -594,19 +1880,88 @@
           "domain": "sugon.com",
           "monogram": "曙",
           "monogram_color": "#0d9488",
-          "news_url": "https://www.sugon.com/news/",
-          "fallback_news": [
+          "news_url": "https://www.sugon.com/about/news?time=0&category_id=1",
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/02/28 曙光数创浸没式液冷服务器中标国家级AI算力中心8亿元",
-              "url": "https://www.sugon.com/news/show-126.html"
+              "title": "入选央国企数智化转型创新实践成果",
+              "url": "https://www.sugon.com/cut?id=2917&nav_id=48",
+              "snippet": "",
+              "published_at": "2026-06-30T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.118Z",
+              "source": "sugon.com"
             },
             {
-              "title": "2025/12/18 曙光数创发布新一代C7000浸没液冷整机柜 PUE<1.05",
-              "url": "https://www.sugon.com/news/show-125.html"
+              "title": "中标！中科曙光斩获中国中车存储设备年度集采订单",
+              "url": "https://www.sugon.com/cut?id=2915&nav_id=48",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.118Z",
+              "source": "sugon.com"
             },
             {
-              "title": "2025/10/10 曙光数创液冷市占率连续三年保持国内第一",
-              "url": "https://www.sugon.com/news/show-124.html"
+              "title": "央视《对话》｜中科曙光：夯实算力新基建，开辟太空新战场",
+              "url": "https://www.sugon.com/cut?id=2913&nav_id=48",
+              "snippet": "",
+              "published_at": "2026-06-28T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.118Z",
+              "source": "sugon.com"
+            },
+            {
+              "title": "一图看懂全球\"双料冠军\"存储产品",
+              "url": "https://www.sugon.com/cut?id=2908&nav_id=48",
+              "snippet": "",
+              "published_at": "2026-06-25T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.118Z",
+              "source": "sugon.com"
+            },
+            {
+              "title": "全球榜单双料第一！中科曙光再次登顶 IO500",
+              "url": "https://www.sugon.com/cut?id=2906&nav_id=48",
+              "snippet": "",
+              "published_at": "2026-06-24T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.118Z",
+              "source": "sugon.com"
+            },
+            {
+              "title": "中科曙光亮相欧洲，展示全球领先的中国 AI 基础设施方案",
+              "url": "https://www.sugon.com/cut?id=2904&nav_id=48",
+              "snippet": "",
+              "published_at": "2026-06-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.118Z",
+              "source": "sugon.com"
+            },
+            {
+              "title": "金融 AI 落地提速！中科曙光\"元融\"金融数智化解决方案正式发布",
+              "url": "https://www.sugon.com/cut?id=2902&nav_id=48",
+              "snippet": "",
+              "published_at": "2026-06-16T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.118Z",
+              "source": "sugon.com"
+            },
+            {
+              "title": "万卡集群时代，中科曙光 scaleFabric 重新定义高速互联",
+              "url": "https://www.sugon.com/cut?id=2900&nav_id=48",
+              "snippet": "",
+              "published_at": "2026-06-12T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.118Z",
+              "source": "sugon.com"
+            },
+            {
+              "title": "从\"看天\"到\"算天\"，中科曙光超智融合锚定 AI 气象现代化",
+              "url": "https://www.sugon.com/cut?id=2898&nav_id=48",
+              "snippet": "",
+              "published_at": "2026-06-09T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.118Z",
+              "source": "sugon.com"
+            },
+            {
+              "title": "AIDC 迈入液冷时代，曙光数创四张先手牌锚定行业先机",
+              "url": "https://www.sugon.com/cut?id=2896&nav_id=48",
+              "snippet": "",
+              "published_at": "2026-06-04T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.118Z",
+              "source": "sugon.com"
             }
           ]
         },
@@ -631,7 +1986,8 @@
               "title": "2025/09/08 奇鋐2025年散热模组营收突破800亿新台币创历史新高",
               "url": "https://www.avc.com.tw/news/show-124.html"
             }
-          ]
+          ],
+          "news": []
         },
         {
           "id": "aurastw",
@@ -654,28 +2010,98 @@
               "title": "2025/08/22 双鸿与台达电合作开发浸没式液冷整机柜方案",
               "url": "https://www.auras.com.tw/news/show-124.html"
             }
-          ]
+          ],
+          "news": []
         },
         {
           "id": "caoe",
           "name": "中航光电",
           "region": "cn",
-          "domain": "caoe.com.cn",
+          "domain": "jonhon.cn",
           "monogram": "航",
           "monogram_color": "#cc0000",
-          "news_url": "https://www.caoe.com.cn/news/",
-          "fallback_news": [
+          "news_url": "https://www.jonhon.cn/News/news_list.htm",
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/02/26 中航光电液冷快接头全球出货突破1000万套",
-              "url": "https://www.caoe.com.cn/news/show-126.html"
+              "title": "互连新图景丨中航光电机器人智能无线充电组件，告别接线，高效补能",
+              "url": "https://www.jonhon.cn/News/news-detail-7840.htm",
+              "snippet": "",
+              "published_at": "2026-05-22T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:17.783Z",
+              "source": "jonhon.cn"
             },
             {
-              "title": "2025/12/08 中航光电入选国家AI算力中心液冷连接器主供方",
-              "url": "https://www.caoe.com.cn/news/show-125.html"
+              "title": "产品推荐丨中航光电盲插式 Manifold 产品：分液均衡，运维便捷，稳定可靠",
+              "url": "https://www.jonhon.cn/News/news-detail-7839.htm",
+              "snippet": "",
+              "published_at": "2026-05-15T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:17.783Z",
+              "source": "jonhon.cn"
             },
             {
-              "title": "2025/09/15 中航光电CDU液冷分配单元获头部云厂商认证",
-              "url": "https://www.caoe.com.cn/news/show-124.html"
+              "title": "产品推荐丨中航光电纳圆形系列连接器，助力电子通信设备小型化革新",
+              "url": "https://www.jonhon.cn/News/news-detail-7838.htm",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:17.783Z",
+              "source": "jonhon.cn"
+            },
+            {
+              "title": "全国汽标委电器分委会汽车线缆连接器标准工作组会议暨推荐性国家标准起草组启动会议暨汽车行业标准讨论会议成功召开",
+              "url": "https://www.jonhon.cn/News/news-detail-7833.htm",
+              "snippet": "",
+              "published_at": "2026-04-30T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:17.783Z",
+              "source": "jonhon.cn"
+            },
+            {
+              "title": "产品推荐丨中航光电新一代 Fakra 同轴连接器，创新结构加持，核心性能进阶",
+              "url": "https://www.jonhon.cn/News/news-detail-7831.htm",
+              "snippet": "",
+              "published_at": "2026-04-28T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:17.783Z",
+              "source": "jonhon.cn"
+            },
+            {
+              "title": "喜讯丨中航光电智能交流充电桩荣获2025年河南省工业设计大赛优秀奖",
+              "url": "https://www.jonhon.cn/News/news-detail-7829.htm",
+              "snippet": "",
+              "published_at": "2026-04-25T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:17.783Z",
+              "source": "jonhon.cn"
+            },
+            {
+              "title": "喜讯丨中航光电国标交直流一体式充电插座荣获\"高品质充电\"权威认证",
+              "url": "https://www.jonhon.cn/News/news-detail-7818.htm",
+              "snippet": "",
+              "published_at": "2026-04-14T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:17.783Z",
+              "source": "jonhon.cn"
+            },
+            {
+              "title": "展会直击丨中航光电走进中国国际医疗器械设计与制造技术展览会（ICMD）",
+              "url": "https://www.jonhon.cn/News/news-detail-7819.htm",
+              "snippet": "",
+              "published_at": "2026-04-11T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:17.783Z",
+              "source": "jonhon.cn"
+            },
+            {
+              "title": "展会直击丨中航光电走进大湾区国际液冷产业大会暨展览会（LCIE）",
+              "url": "https://www.jonhon.cn/News/news-detail-7820.htm",
+              "snippet": "",
+              "published_at": "2026-04-10T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:17.783Z",
+              "source": "jonhon.cn"
+            },
+            {
+              "title": "关于公司经销商授权情况的声明",
+              "url": "https://www.jonhon.cn/News/news-detail-7827.htm",
+              "snippet": "",
+              "published_at": "2026-04-20T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:17.783Z",
+              "source": "jonhon.cn"
             }
           ]
         },
@@ -700,7 +2126,8 @@
               "title": "2025/08/25 Vertiv 与 NVIDIA 合作开发 GB200 NVL72 参考架构",
               "url": "https://www.vertiv.com/news/show-124.html"
             }
-          ]
+          ],
+          "news": []
         },
         {
           "id": "coolit",
@@ -723,7 +2150,8 @@
               "title": "2025/08/30 CoolIT 与 Dell PowerEdge 合作开发直触式冷板",
               "url": "https://coolitsystems.com/news/show-124.html"
             }
-          ]
+          ],
+          "news": []
         },
         {
           "id": "nidec",
@@ -746,7 +2174,8 @@
               "title": "2025/08/18 Nidec 2026财年Q1业绩：数据中心电机与风扇业务同比增长42%",
               "url": "https://www.nidec.com/en/news/show-124.html"
             }
-          ]
+          ],
+          "news": []
         },
         {
           "id": "semco",
@@ -769,7 +2198,8 @@
               "title": "2025/09/04 三星电机子公司将向 NVIDIA GB200 供应链供应冷板",
               "url": "https://www.samsungsem.com/news/show-124.html"
             }
-          ]
+          ],
+          "news": []
         }
       ]
     },
@@ -784,7 +2214,90 @@
           "domain": "smics.com",
           "monogram": "芯",
           "monogram_color": "#0d9488",
-          "news_url": "https://www.smics.com/en/site/company_news/"
+          "news_url": "https://www.smics.com/site/news",
+          "news": [
+            {
+              "title": "中芯国际发布2026Q1财报，单季销售收入超25亿美元",
+              "url": "https://www.smics.com/site/news_read/3719",
+              "snippet": "",
+              "published_at": "2026-05-14T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.982Z",
+              "source": "smics.com"
+            },
+            {
+              "title": "中芯国际发布2025年报，经营业绩再上新台阶",
+              "url": "https://www.smics.com/site/news_read/3714",
+              "snippet": "",
+              "published_at": "2026-03-26T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.982Z",
+              "source": "smics.com"
+            },
+            {
+              "title": "中芯国际发布2025Q3财报，全年销售收入创新高",
+              "url": "https://www.smics.com/site/news_read/3712",
+              "snippet": "",
+              "published_at": "2026-02-10T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.982Z",
+              "source": "smics.com"
+            },
+            {
+              "title": "开放创\"芯\"，成就未来：中芯国际参展2025成都ICCAD",
+              "url": "https://www.smics.com/site/news_read/3692",
+              "snippet": "",
+              "published_at": "2025-11-26T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.982Z",
+              "source": "smics.com"
+            },
+            {
+              "title": "中芯国际发布2025Q3财报，产收规模实现新跨越",
+              "url": "https://www.smics.com/site/news_read/3691",
+              "snippet": "",
+              "published_at": "2025-11-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.982Z",
+              "source": "smics.com"
+            },
+            {
+              "title": "中芯国际举办第三届四地联动公益活动",
+              "url": "https://www.smics.com/site/news_read/3688",
+              "snippet": "",
+              "published_at": "2025-09-24T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.982Z",
+              "source": "smics.com"
+            },
+            {
+              "title": "中芯国际举行第十三届\"芯肝宝贝计划\"捐赠仪式",
+              "url": "https://www.smics.com/site/news_read/3686",
+              "snippet": "",
+              "published_at": "2025-09-03T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.982Z",
+              "source": "smics.com"
+            },
+            {
+              "title": "中芯国际发布2025Q2财报，上半年销售收入同比增长22%",
+              "url": "https://www.smics.com/site/news_read/3685",
+              "snippet": "",
+              "published_at": "2025-08-07T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.982Z",
+              "source": "smics.com"
+            },
+            {
+              "title": "中芯国际发布2025Q1财报，销售收入同比增长28.4%",
+              "url": "https://www.smics.com/site/news_read/3676",
+              "snippet": "",
+              "published_at": "2025-05-08T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.982Z",
+              "source": "smics.com"
+            },
+            {
+              "title": "中芯国际2024年度ESG报告获评\"五星级\"",
+              "url": "https://www.smics.com/site/news_read/3668",
+              "snippet": "",
+              "published_at": "2025-04-08T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.982Z",
+              "source": "smics.com"
+            }
+          ],
+          "fallback_news": []
         },
         {
           "id": "ymtc",
@@ -793,7 +2306,9 @@
           "domain": "ymtc.com",
           "monogram": "江",
           "monogram_color": "#7c3aed",
-          "news_url": "https://www.ymtc.com/cn/index.html"
+          "news_url": "https://www.ymtc.com/cn/index.html",
+          "news": [],
+          "fallback_news": []
         },
         {
           "id": "cxmt",
@@ -802,7 +2317,90 @@
           "domain": "cxmt.com",
           "monogram": "鑫",
           "monogram_color": "#0891b2",
-          "news_url": "https://www.cxmt.com/news"
+          "news_url": "https://www.cxmt.com/news.html",
+          "news": [
+            {
+              "title": "长鑫存储亮相IC China，首次全面展示DDR5和LPDDR5X最新产品",
+              "url": "https://www.cxmt.com/news/info_95.html",
+              "snippet": "",
+              "published_at": "2025-11-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.366Z",
+              "source": "cxmt.com"
+            },
+            {
+              "title": "长鑫存储宣布已量产LPDDR5X产品",
+              "url": "https://www.cxmt.com/news/info_94.html",
+              "snippet": "",
+              "published_at": "2025-10-28T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.366Z",
+              "source": "cxmt.com"
+            },
+            {
+              "title": "长鑫成立北京地区科协 助力区域科技发展",
+              "url": "https://www.cxmt.com/news/info_93.html",
+              "snippet": "",
+              "published_at": "2025-04-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.366Z",
+              "source": "cxmt.com"
+            },
+            {
+              "title": "长鑫科创班研学活动圆满收官",
+              "url": "https://www.cxmt.com/news/info_92.html",
+              "snippet": "",
+              "published_at": "2023-12-13T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.366Z",
+              "source": "cxmt.com"
+            },
+            {
+              "title": "长鑫存储推出多款LPDDR5产品",
+              "url": "https://www.cxmt.com/news/info_90.html",
+              "snippet": "",
+              "published_at": "2023-11-28T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.366Z",
+              "source": "cxmt.com"
+            },
+            {
+              "title": "长鑫存储与SEMI举办节能降碳研讨会",
+              "url": "https://www.cxmt.com/news/info_89.html",
+              "snippet": "",
+              "published_at": "2023-09-27T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.366Z",
+              "source": "cxmt.com"
+            },
+            {
+              "title": "长鑫存储与合肥八中共建\"长鑫科创班\"",
+              "url": "https://www.cxmt.com/news/info_88.html",
+              "snippet": "",
+              "published_at": "2023-09-06T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.366Z",
+              "source": "cxmt.com"
+            },
+            {
+              "title": "长鑫存储8Gb DDR4启动生产",
+              "url": "https://www.cxmt.com/news/info_83.html",
+              "snippet": "",
+              "published_at": "2023-02-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.366Z",
+              "source": "cxmt.com"
+            },
+            {
+              "title": "长鑫存储首次亮相国际论坛",
+              "url": "https://www.cxmt.com/news/info_84.html",
+              "snippet": "",
+              "published_at": "2023-02-01T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.366Z",
+              "source": "cxmt.com"
+            },
+            {
+              "title": "长鑫存储董事长担任全球半导体联盟董事会成员",
+              "url": "https://www.cxmt.com/news/info_77.html",
+              "snippet": "",
+              "published_at": "2023-01-05T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:18.366Z",
+              "source": "cxmt.com"
+            }
+          ],
+          "fallback_news": []
         },
         {
           "id": "tsmc",
@@ -811,7 +2409,90 @@
           "domain": "tsmc.com",
           "monogram": "台",
           "monogram_color": "#cc0000",
-          "news_url": "https://pr.tsmc.com/chinese"
+          "news_url": "https://pr.tsmc.com/chinese/latest-news",
+          "news": [
+            {
+              "title": "台積公司 2026 年 5 月營收報告",
+              "url": "https://pr.tsmc.com/chinese/news/3320",
+              "snippet": "",
+              "published_at": "2026-06-10T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.363Z",
+              "source": "pr.tsmc.com"
+            },
+            {
+              "title": "台積公司股東常會決議",
+              "url": "https://pr.tsmc.com/chinese/news/3317",
+              "snippet": "",
+              "published_at": "2026-06-04T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.363Z",
+              "source": "pr.tsmc.com"
+            },
+            {
+              "title": "台積公司擬出售 8.1% 世界先進公司股權",
+              "url": "https://pr.tsmc.com/chinese/news/3314",
+              "snippet": "",
+              "published_at": "2026-05-15T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.363Z",
+              "source": "pr.tsmc.com"
+            },
+            {
+              "title": "台積公司董事會決議",
+              "url": "https://pr.tsmc.com/chinese/news/3311",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.363Z",
+              "source": "pr.tsmc.com"
+            },
+            {
+              "title": "Sony 與台積公司初步達成下一世代影像感測器策略合作協議",
+              "url": "https://pr.tsmc.com/chinese/news/3308",
+              "snippet": "",
+              "published_at": "2026-05-08T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.363Z",
+              "source": "pr.tsmc.com"
+            },
+            {
+              "title": "台積公司 2026 年 4 月營收報告",
+              "url": "https://pr.tsmc.com/chinese/news/3305",
+              "snippet": "",
+              "published_at": "2026-05-08T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.363Z",
+              "source": "pr.tsmc.com"
+            },
+            {
+              "title": "台積公司舉辦 2026 年北美技術論壇 揭示 A13 製程技術",
+              "url": "https://pr.tsmc.com/chinese/news/3302",
+              "snippet": "",
+              "published_at": "2026-04-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.363Z",
+              "source": "pr.tsmc.com"
+            },
+            {
+              "title": "台積公司 2026 年第一季每股盈餘新台幣 22.08 元",
+              "url": "https://pr.tsmc.com/chinese/news/3297",
+              "snippet": "",
+              "published_at": "2026-04-16T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.363Z",
+              "source": "pr.tsmc.com"
+            },
+            {
+              "title": "台積公司 2026 年 3 月營收報告",
+              "url": "https://pr.tsmc.com/chinese/news/3294",
+              "snippet": "",
+              "published_at": "2026-04-10T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.363Z",
+              "source": "pr.tsmc.com"
+            },
+            {
+              "title": "台積公司 2026 年 2 月營收報告",
+              "url": "https://pr.tsmc.com/chinese/news/3290",
+              "snippet": "",
+              "published_at": "2026-03-10T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:21.363Z",
+              "source": "pr.tsmc.com"
+            }
+          ],
+          "fallback_news": []
         },
         {
           "id": "samsung",
@@ -820,7 +2501,9 @@
           "domain": "samsung.com",
           "monogram": "S",
           "monogram_color": "#1428a0",
-          "news_url": "https://news.samsung.com/global/"
+          "news_url": "https://news.samsung.com/global/",
+          "news": [],
+          "fallback_news": []
         },
         {
           "id": "intel",
@@ -829,7 +2512,9 @@
           "domain": "intel.com",
           "monogram": "I",
           "monogram_color": "#0071c5",
-          "news_url": "https://www.intel.com/content/www/us/en/newsroom/news.html"
+          "news_url": "https://www.intel.com/content/www/us/en/newsroom/news.html",
+          "news": [],
+          "fallback_news": []
         },
         {
           "id": "nvidia",
@@ -838,7 +2523,90 @@
           "domain": "nvidia.com",
           "monogram": "N",
           "monogram_color": "#76b900",
-          "news_url": "https://nvidianews.nvidia.com/"
+          "news_url": "https://nvidianews.nvidia.com/news?category=press-releases",
+          "news": [
+            {
+              "title": "NVIDIA Announces BioNeMo Agent Toolkit — Tools for Agents to Accelerate Scientific Discovery",
+              "url": "https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery",
+              "snippet": "",
+              "published_at": "2026-06-23T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.055Z",
+              "source": "nvidianews.nvidia.com"
+            },
+            {
+              "title": "NVIDIA Vera Rubin Delivers World-Class Supercomputers for Science",
+              "url": "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-delivers-world-class-supercomputers-for-science",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.055Z",
+              "source": "nvidianews.nvidia.com"
+            },
+            {
+              "title": "Europe Unveils a Record 35 New NVIDIA AI Supercomputers",
+              "url": "https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.055Z",
+              "source": "nvidianews.nvidia.com"
+            },
+            {
+              "title": "NVIDIA Announces Halos for Robotics, the Industry’s First Full-Stack Safety System for Physical AI",
+              "url": "https://nvidianews.nvidia.com/news/nvidia-announces-halos-for-robotics-the-industrys-first-full-stack-safety-system-for-physical-ai",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.055Z",
+              "source": "nvidianews.nvidia.com"
+            },
+            {
+              "title": "NVIDIA Stockholder Meeting Set for June 24; Individuals Can Participate Online",
+              "url": "https://nvidianews.nvidia.com/news/nvidia-stockholder-meeting-set-for-june-24-individuals-can-participate-online",
+              "snippet": "",
+              "published_at": "2026-06-11T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.055Z",
+              "source": "nvidianews.nvidia.com"
+            },
+            {
+              "title": "SK Telecom and NVIDIA Build AI Infrastructure to Power Korea’s AI Innovation",
+              "url": "https://nvidianews.nvidia.com/news/sk-telecom-ai-infrastructure",
+              "snippet": "",
+              "published_at": "2026-06-07T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.055Z",
+              "source": "nvidianews.nvidia.com"
+            },
+            {
+              "title": "NVIDIA and SK hynix Announce Multiyear Technology Partnership to Advance Memory for AI Factories",
+              "url": "https://nvidianews.nvidia.com/news/sk-hynix-ai-factory",
+              "snippet": "",
+              "published_at": "2026-06-07T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.055Z",
+              "source": "nvidianews.nvidia.com"
+            },
+            {
+              "title": "NAVER Expands AI Infrastructure With NVIDIA to Serve Surging Global AI Demand",
+              "url": "https://nvidianews.nvidia.com/news/naver-ai-infrastructure",
+              "snippet": "",
+              "published_at": "2026-06-07T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.055Z",
+              "source": "nvidianews.nvidia.com"
+            },
+            {
+              "title": "NVIDIA and TSMC Bring AI Into Fabs to Advance Semiconductor Design and Manufacturing",
+              "url": "https://nvidianews.nvidia.com/news/nvidia-and-tsmc-bring-ai-into-fabs-to-advance-semiconductor-design-and-manufacturing",
+              "snippet": "",
+              "published_at": "2026-05-31T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.055Z",
+              "source": "nvidianews.nvidia.com"
+            },
+            {
+              "title": "NVIDIA, Foxconn and Taiwan Medical Centers Bring Agentic and Physical AI to ‘Healthy Taiwan’",
+              "url": "https://nvidianews.nvidia.com/news/nvidia-foxconn-and-taiwan-medical-centers-bring-agentic-and-physical-ai-to-healthy-taiwan",
+              "snippet": "",
+              "published_at": "2026-05-31T00:00:00Z",
+              "fetched_at": "2026-07-02T23:25:20.055Z",
+              "source": "nvidianews.nvidia.com"
+            }
+          ],
+          "fallback_news": []
         }
       ]
     }
