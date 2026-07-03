@@ -12,7 +12,88 @@
           "monogram": "T",
           "monogram_color": "#9f1239",
           "news_url": "https://www.toray.com/news/",
-          "news": [],
+          "news": [
+            {
+              "title": "Toray Joint Venture in South Korea to Expand Production Facilities",
+              "url": "https://www.toray.com/news/article.html?contentId=e0ixjgd1",
+              "snippet": "",
+              "published_at": "2026-07-02T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.472Z",
+              "source": "toray.com"
+            },
+            {
+              "title": "Toray Marks 100 Years, Reinforcing Long-Term Commitment to Aerospace, Space, and Defense at Farnborough Air Show",
+              "url": "https://www.toray.com/news/article.html?contentId=1jbdqbmj",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.472Z",
+              "source": "toray.com"
+            },
+            {
+              "title": "JAXA Selects Toray 3D Printing Technology and Advanced Materials Project for Space Strategy Fund Program",
+              "url": "https://www.toray.com/news/article.html?contentId=tqzapr3j",
+              "snippet": "",
+              "published_at": "2026-06-18T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.472Z",
+              "source": "toray.com"
+            },
+            {
+              "title": "Toray Develops Breakthrough Hydrophilic Coating for Contact Lenses and Other Silicone-Based Medical Devices",
+              "url": "https://www.toray.com/news/article.html?contentId=qmn0u82u",
+              "snippet": "",
+              "published_at": "2026-06-17T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.472Z",
+              "source": "toray.com"
+            },
+            {
+              "title": "Toray to Set Up TORELINA™ PPS Resin Production Facility in India",
+              "url": "https://www.toray.com/news/article.html?contentId=uy4qkujo",
+              "snippet": "",
+              "published_at": "2026-06-04T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.472Z",
+              "source": "toray.com"
+            },
+            {
+              "title": "Toray and T2 Commercialize Autonomous Trucking for Petrochemicals Using Renewable Fuel",
+              "url": "https://www.toray.com/news/article.html?contentId=pwxpebk9",
+              "snippet": "",
+              "published_at": "2026-06-03T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.472Z",
+              "source": "toray.com"
+            },
+            {
+              "title": "Toray to Launch Next-Generation Reverse Osmosis Membranes Offering Industry-Leading Salt Rejection for More Cost-Effective Seawater Desalination",
+              "url": "https://www.toray.com/news/article.html?contentId=jvkcoijc",
+              "snippet": "",
+              "published_at": "2026-06-03T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.472Z",
+              "source": "toray.com"
+            },
+            {
+              "title": "Established 100% bio-based nylon 66 manufacturing technology",
+              "url": "https://www.toray.com/news/article.html?contentId=105wh8ne",
+              "snippet": "",
+              "published_at": "2026-05-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.472Z",
+              "source": "toray.com"
+            },
+            {
+              "title": "Toray to Launch Lower-Biofouling Ultrafiltration Membrane Module with One of the Industry’s Smallest Nominal Pore Sizes*, at Just 0.005 micrometers",
+              "url": "https://www.toray.com/news/article.html?contentId=qggvtmr8",
+              "snippet": "",
+              "published_at": "2026-04-26T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.472Z",
+              "source": "toray.com"
+            },
+            {
+              "title": "Toray Develops Fabric Adhesive Films with Eco-Friendly Release Liner-Free Design",
+              "url": "https://www.toray.com/news/article.html?contentId=w0mk4byi",
+              "snippet": "",
+              "published_at": "2026-04-20T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.472Z",
+              "source": "toray.com"
+            }
+          ],
           "fallback_news": []
         },
         {
@@ -23,7 +104,88 @@
           "monogram": "T",
           "monogram_color": "#8b5cf6",
           "news_url": "https://www.teijin.com/news/",
-          "news": [],
+          "news": [
+            {
+              "title": "Teijin Receives Approval for Additional Indications of XEOMIN® for Cervical Dystonia and Blepharospasm in Japan [Teijin Pharma]",
+              "url": "https://www.teijin.com/news/2026/06/19/20260619_01.pdf",
+              "snippet": "",
+              "published_at": "2026-06-19T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.242Z",
+              "source": "teijin.com"
+            },
+            {
+              "title": "Decision to Establish a Manufacturing and Sales Subsidiary in Germany [Japan Tissue Engineering]",
+              "url": "https://www.jpte.co.jp/sys/upload/save/13357066886a33eb780c488.pdf",
+              "snippet": "",
+              "published_at": "2026-06-19T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.242Z",
+              "source": "teijin.com"
+            },
+            {
+              "title": "Teijin Frontier Expands Product Lineup for RecoHand Mobile RFID Reader [Teijin Frontier]",
+              "url": "https://www.teijin.com/news/2026/06/10/20260610_01.pdf",
+              "snippet": "",
+              "published_at": "2026-06-10T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.242Z",
+              "source": "teijin.com"
+            },
+            {
+              "title": "Teijin Frontier’s New Polyester Fiber-based, Multi-functional Textile Uniquely Combines Excellent Heat Retention and High Breathability [Teijin Frontier]",
+              "url": "https://www.teijin.com/news/2026/06/02/20260602_01.pdf",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.242Z",
+              "source": "teijin.com"
+            },
+            {
+              "title": "Fincantieri and Teijin Automotive Technologies Sign Agreement to Develop Advanced Composite Bulkheads for Maritime Vessels [Teijin Automotive Technologies]",
+              "url": "https://www.teijin.com/news/2026/05/21/20260521_01.pdf",
+              "snippet": "",
+              "published_at": "2026-05-21T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.242Z",
+              "source": "teijin.com"
+            },
+            {
+              "title": "Teijin Frontier to Expand Production Capacity for OCTAIR Insulation Fiber at Matsuyama Plant [Teijin Frontier]",
+              "url": "https://www.teijin.com/news/2026/05/18/20260518_01.pdf",
+              "snippet": "",
+              "published_at": "2026-05-18T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.242Z",
+              "source": "teijin.com"
+            },
+            {
+              "title": "Teijin Frontier and Asahi Kasei Advance Announce New Company Name Ahead of Planned Business Integration [Teijin Frontier]",
+              "url": "https://www.teijin.com/news/2026/05/11/20260511_02.pdf",
+              "snippet": "",
+              "published_at": "2026-05-11T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.242Z",
+              "source": "teijin.com"
+            },
+            {
+              "title": "Teijin Limited’s New Gas Co-generation System Projected to Cut CO2 Emissions by 200,000 Tons Annually [Teijin]",
+              "url": "https://www.teijin.com/news/2026/04/21/20260421_01.pdf",
+              "snippet": "",
+              "published_at": "2026-04-21T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.242Z",
+              "source": "teijin.com"
+            },
+            {
+              "title": "Teijin Group’s Americas Representative Appointed Chair of the International Organization, Women in Manufacturing [Teijin]",
+              "url": "https://www.teijin.com/news/2026/04/07/20260407_01.pdf",
+              "snippet": "",
+              "published_at": "2026-04-07T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.242Z",
+              "source": "teijin.com"
+            },
+            {
+              "title": "Teijin Frontier Announces New Stretch Polyester Yarn Offering Exceptional Compatibility with High performance Polyester Materials [Teijin Frontier]",
+              "url": "https://www.teijin.com/news/2026/04/06/20260406_01.pdf",
+              "snippet": "",
+              "published_at": "2026-04-06T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.242Z",
+              "source": "teijin.com"
+            }
+          ],
           "fallback_news": []
         },
         {
@@ -34,7 +196,88 @@
           "monogram": "三",
           "monogram_color": "#dc2626",
           "news_url": "https://www.m-chemical.co.jp/en/news/",
-          "news": [],
+          "news": [
+            {
+              "title": "New Heat Dissipation Device Design Achieves a 47% Weight Reduction in an NTN Planar Antenna",
+              "url": "https://www.mcgc.com/english/news_release/pdf/02677/02922.pdf",
+              "snippet": "",
+              "published_at": "2026-06-17T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.379Z",
+              "source": "m-chemical.co.jp"
+            },
+            {
+              "title": "Audi Selects Mitsubishi Chemical’s DURABIO for New Q3 Door Switch Inserts",
+              "url": "https://www.mcgc.com/english/news_release/pdf/02675/02920.pdf",
+              "snippet": "",
+              "published_at": "2026-06-16T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.379Z",
+              "source": "m-chemical.co.jp"
+            },
+            {
+              "title": "Unleashing the Future: Japan’s First Verification of Advanced Industrial Complex Inspections Using Physical AI, IOWN® APN, and 60 GHz Wireless LAN",
+              "url": "https://www.mcgc.com/english/news_release/pdf/02668/02910.pdf",
+              "snippet": "",
+              "published_at": "2026-06-01T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.379Z",
+              "source": "m-chemical.co.jp"
+            },
+            {
+              "title": "Mitsubishi Chemical and Accenture Establish Joint Venture to Drive AI-Enabled Business Reinvention and Operational Transformation",
+              "url": "https://www.mcgc.com/english/news_release/pdf/02666/02908.pdf",
+              "snippet": "",
+              "published_at": "2026-05-28T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.379Z",
+              "source": "m-chemical.co.jp"
+            },
+            {
+              "title": "Discontinuance of Production and Sales of Some Grades of Epoxy Resins at the Tokai Plant Kawajiri Site",
+              "url": "https://www.mcgc.com/english/news_release/02662.html",
+              "snippet": "",
+              "published_at": "2026-05-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.379Z",
+              "source": "m-chemical.co.jp"
+            },
+            {
+              "title": "Notice Regarding Withdrawal from the Polybutylene Succinate (PBS) Business",
+              "url": "https://www.mcgc.com/english/news_release/02637.html",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.379Z",
+              "source": "m-chemical.co.jp"
+            },
+            {
+              "title": "Asahi Kasei, Mitsui Chemicals and Mitsubishi Chemical Agree Equity Ratio for the Joint Operating Entity to Integrate Ethylene Production Facilities in Western Japan",
+              "url": "https://www.mcgc.com/english/news_release/pdf/02635/02887.pdf",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.379Z",
+              "source": "m-chemical.co.jp"
+            },
+            {
+              "title": "SANPLATEC Adopts Mitsubishi Chemical’s Zelas™ TPS for Cell Culture Tubes",
+              "url": "https://www.mcgc.com/english/news_release/02617.html",
+              "snippet": "",
+              "published_at": "2026-04-23T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.379Z",
+              "source": "m-chemical.co.jp"
+            },
+            {
+              "title": "Starting Joint Research to Produce Novel Carbon Composite Materials for Fusion Reactor Divertor",
+              "url": "https://www.mcgc.com/english/news_release/pdf/02605/02854.pdf",
+              "snippet": "",
+              "published_at": "2026-04-10T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.379Z",
+              "source": "m-chemical.co.jp"
+            },
+            {
+              "title": "Mitsubishi Chemical and Sharp to Jointly Exhibit at 41st Space Symposium in Colorado, USA",
+              "url": "https://www.mcgc.com/english/news_release/pdf/02603/02851.pdf",
+              "snippet": "",
+              "published_at": "2026-04-10T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.379Z",
+              "source": "m-chemical.co.jp"
+            }
+          ],
           "fallback_news": []
         },
         {
@@ -45,7 +288,40 @@
           "monogram": "S",
           "monogram_color": "#0ea5e9",
           "news_url": "https://www.solvay.com/en/press-releases",
-          "news": [],
+          "news": [
+            {
+              "title": "European Patent Office upholds Solvay’s Soda Ash recycling patent",
+              "url": "https://www.solvay.com/en/press-release/european-patent-office-upholds-solvays-soda-ash-recycling-patent",
+              "snippet": "",
+              "published_at": "2026-06-16T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.837Z",
+              "source": "solvay.com"
+            },
+            {
+              "title": "Solvay and Viridis sign letter of intent (LOI) for rare earth materials sourcing",
+              "url": "https://www.solvay.com/en/press-release/solvay-and-viridis-sign-letter-intent-loi-rare-earth-materials-sourcing",
+              "snippet": "",
+              "published_at": "2026-06-01T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.837Z",
+              "source": "solvay.com"
+            },
+            {
+              "title": "Participation notification by SIH Partners - May 19, 2026",
+              "url": "https://www.solvay.com/en/press-release/participation-notification-sih-partners-may-19-2026",
+              "snippet": "",
+              "published_at": "2026-05-19T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.837Z",
+              "source": "solvay.com"
+            },
+            {
+              "title": "Participation notification by SIH Partners - May 13, 2026",
+              "url": "https://www.solvay.com/en/press-release/participation-notification-sih-partners-may-13-2026",
+              "snippet": "",
+              "published_at": "2026-05-13T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.837Z",
+              "source": "solvay.com"
+            }
+          ],
           "fallback_news": []
         },
         {
@@ -56,7 +332,88 @@
           "monogram": "巨",
           "monogram_color": "#7c3aed",
           "news_url": "https://www.jushi.com/news/",
-          "news": [],
+          "news": [
+            {
+              "title": "全国首个！巨石玻纤助力18兆瓦级规模化海上风电项目 成功吊装！",
+              "url": "https://www.jushi.com/news/news1-1037.html",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.933Z",
+              "source": "jushi.com"
+            },
+            {
+              "title": "中国建材集团党委副书记、总经理常张利赴埃及、西班牙调研中国巨石海外业务",
+              "url": "https://www.jushi.com/news/news1-1036.html",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.933Z",
+              "source": "jushi.com"
+            },
+            {
+              "title": "突破！中国巨石荣登2026年《财富》中国ESG影响力榜",
+              "url": "https://www.jushi.com/news/news1-1033.html",
+              "snippet": "",
+              "published_at": "2026-05-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.933Z",
+              "source": "jushi.com"
+            },
+            {
+              "title": "突破·攻坚 | 奏响创新超越最强音",
+              "url": "https://www.jushi.com/news/news1-1031.html",
+              "snippet": "",
+              "published_at": "2026-05-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.933Z",
+              "source": "jushi.com"
+            },
+            {
+              "title": "中国巨石亮相风电论坛，以创新材料助力实现双碳目标",
+              "url": "https://www.jushi.com/news/news1-1025.html",
+              "snippet": "",
+              "published_at": "2026-04-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.933Z",
+              "source": "jushi.com"
+            },
+            {
+              "title": "中国巨石召开2026年一季度工作情况通报分析会",
+              "url": "https://www.jushi.com/news/news1-1026.html",
+              "snippet": "",
+              "published_at": "2026-04-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.933Z",
+              "source": "jushi.com"
+            },
+            {
+              "title": "全球最大电子玻纤生产线点火",
+              "url": "https://www.jushi.com/news/news1-1022.html",
+              "snippet": "",
+              "published_at": "2026-03-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.933Z",
+              "source": "jushi.com"
+            },
+            {
+              "title": "中国巨石启动\"领航工程\"三年攻坚 全面加速数字智能升级",
+              "url": "https://www.jushi.com/news/news1-1021.html",
+              "snippet": "",
+              "published_at": "2026-03-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.933Z",
+              "source": "jushi.com"
+            },
+            {
+              "title": "中国巨石召开2025年度业绩说明会",
+              "url": "https://www.jushi.com/news/news1-1023.html",
+              "snippet": "",
+              "published_at": "2026-03-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.933Z",
+              "source": "jushi.com"
+            },
+            {
+              "title": "百亿基地春节赶工：探秘全球首个玻纤零碳智造工厂",
+              "url": "https://www.jushi.com/news/news1-1014.html",
+              "snippet": "",
+              "published_at": "2026-02-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.933Z",
+              "source": "jushi.com"
+            }
+          ],
           "fallback_news": []
         },
         {
@@ -109,7 +466,7 @@
               "source": "zfsycf.com.cn"
             },
             {
-              "title": "获两项权威认可！中复神鹰ESG发展再上新台阶",
+              "title": "获得两项权威认可！中复神鹰ESG发展再上新台阶",
               "url": "https://www.zfsycf.com.cn/#/newsContent?id=4339",
               "snippet": "",
               "published_at": "2026-05-12T00:00:00Z",
@@ -441,21 +798,89 @@
           "monogram": "飞",
           "monogram_color": "#0d9488",
           "news_url": "https://www.frd.cn/news.aspx?TypeId=4&FId=t2:4:2",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2025年12月 全国电磁屏蔽材料标准化技术委员会2025年年会在深圳召开",
-              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=838&Fid=t2:4:2"
+              "title": "飞荣达控股具身智能子公司——果力智能乔迁新址",
+              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=840&Fid=t2:4:2",
+              "snippet": "",
+              "published_at": "2026-02-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.763Z",
+              "source": "frd.cn"
             },
             {
-              "title": "2025年10月 飞荣达出席2025中国电磁兼容大会",
-              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=836&Fid=t2:4:2"
+              "title": "飞荣达携手果力智能参与灵巧手国家标准闭门起草研讨会",
+              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=839&Fid=t2:4:2",
+              "snippet": "",
+              "published_at": "2026-02-11T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.763Z",
+              "source": "frd.cn"
             },
             {
-              "title": "2024年12月 2024年度飞荣达结构件供应商质量大会圆满落幕",
-              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=832&Fid=t2:4:2"
+              "title": "全国电磁屏蔽材料标准化技术委员会2025年年会在深圳成功召开",
+              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=838&Fid=t2:4:2",
+              "snippet": "",
+              "published_at": "2025-12-08T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.763Z",
+              "source": "frd.cn"
+            },
+            {
+              "title": "京东工业与飞荣达等10家机器人零部件企业签署战略合作",
+              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=837&Fid=t2:4:2",
+              "snippet": "",
+              "published_at": "2025-12-02T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.763Z",
+              "source": "frd.cn"
+            },
+            {
+              "title": "飞荣达出席 2025 中国电磁兼容大会",
+              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=836&Fid=t2:4:2",
+              "snippet": "",
+              "published_at": "2025-05-13T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.763Z",
+              "source": "frd.cn"
+            },
+            {
+              "title": "飞荣达参与起草的两项国家标准正式发布",
+              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=835&Fid=t2:4:2",
+              "snippet": "",
+              "published_at": "2024-11-15T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.763Z",
+              "source": "frd.cn"
+            },
+            {
+              "title": "第五届热管理大会成功举办，飞荣达技术总监罗梅博士应邀演讲",
+              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=834&Fid=t2:4:2",
+              "snippet": "",
+              "published_at": "2024-11-14T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.763Z",
+              "source": "frd.cn"
+            },
+            {
+              "title": "导电橡胶新产品——大压缩量屏蔽橡胶",
+              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=833&Fid=t2:4:2",
+              "snippet": "",
+              "published_at": "2024-10-16T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.763Z",
+              "source": "frd.cn"
+            },
+            {
+              "title": "2024年度飞荣达结构件供应商质量大会圆满落幕",
+              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=832&Fid=t2:4:2",
+              "snippet": "",
+              "published_at": "2024-10-15T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.763Z",
+              "source": "frd.cn"
+            },
+            {
+              "title": "飞荣达喜获PCT专利美国发明授权",
+              "url": "https://www.frd.cn/news_view.aspx?TypeId=4&Id=831&Fid=t2:4:2",
+              "snippet": "",
+              "published_at": "2024-05-11T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.763Z",
+              "source": "frd.cn"
             }
-          ],
-          "news": []
+          ]
         },
         {
           "id": "kingfa",
@@ -649,21 +1074,89 @@
           "monogram": "H",
           "monogram_color": "#0066b1",
           "news_url": "https://www.henkel.com/press-and-media",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026年6月16日 汉高全球育儿假项目实施效果显著",
-              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-06-16-global-parental-leave-program-at-henkel-shows-clear-impact-2167530"
+              "title": "Henkel technology supports completion of the Sagrada Familia’s central towers",
+              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-06-17-henkel-technology-supports-completion-of-the-sagrada-familia-s-central-towers-2171148",
+              "snippet": "",
+              "published_at": "2026-06-17T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.110Z",
+              "source": "henkel.com"
             },
             {
-              "title": "2026年6月8日 汉高投资4500万欧元扩建杜塞尔多夫高货架仓库",
-              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-06-08-investment-of-45-million-euros-at-the-duesseldorf-site-henkel-opens-high-bay-warehouse-expansion-2165244"
+              "title": "Global parental leave program at Henkel shows clear impact",
+              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-06-16-global-parental-leave-program-at-henkel-shows-clear-impact-2167530",
+              "snippet": "",
+              "published_at": "2026-06-16T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.110Z",
+              "source": "henkel.com"
             },
             {
-              "title": "2026年5月7日 汉高发布2026年第一季度财报",
-              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-05-07-publication-q1-2026-statement-2154392"
+              "title": "Henkel advances decarbonized operations with carbon-neutral sites in Kurkumbh, India and Gebkim, Türkiye",
+              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-06-10-henkel-advances-decarbonized-operations-with-carbon-neutral-sites-in-kurkumbh-india-and-gebkim-tuerkiye-2166570",
+              "snippet": "",
+              "published_at": "2026-06-10T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.110Z",
+              "source": "henkel.com"
+            },
+            {
+              "title": "Investment of 45 million euros at the Düsseldorf site: Henkel opens high-bay warehouse expansion",
+              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-06-08-investment-of-45-million-euros-at-the-duesseldorf-site-henkel-opens-high-bay-warehouse-expansion-2165244",
+              "snippet": "",
+              "published_at": "2026-06-08T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.110Z",
+              "source": "henkel.com"
+            },
+            {
+              "title": "Henkel and Brilliant Matters partner to advance screen-printable silver inks for efficient, high-throughput organic photovoltaic panel manufacturing",
+              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-06-08-henkel-and-brilliant-matters-partner-to-advance-screen-printable-silver-inks-for-efficient-high-throughput-organic-photovoltaic-panel-manufacturing-2165972",
+              "snippet": "",
+              "published_at": "2026-06-08T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.110Z",
+              "source": "henkel.com"
+            },
+            {
+              "title": "Henkel opens application phase for the next edition of the Martha Schwarzkopf Award for Women in Science",
+              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-05-29-henkel-opens-application-phase-for-the-next-edition-of-the-martha-schwarzkopf-award-for-women-in-science-2163570",
+              "snippet": "",
+              "published_at": "2026-05-29T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.110Z",
+              "source": "henkel.com"
+            },
+            {
+              "title": "From the right product to an optimised manufacturing process",
+              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-05-28-from-the-right-product-to-an-optimised-manufacturing-process-2163060",
+              "snippet": "",
+              "published_at": "2026-05-28T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.110Z",
+              "source": "henkel.com"
+            },
+            {
+              "title": "Henkel ultra-low viscosity Technomelt material delivers rugged protection for challenging electronic device designs",
+              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-05-26-henkel-ultra-low-viscosity-technomelt-material-delivers-rugged-protection-for-challenging-electronic-device-designs-2162366",
+              "snippet": "",
+              "published_at": "2026-05-26T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.110Z",
+              "source": "henkel.com"
+            },
+            {
+              "title": "New Henkel automotive adhesive: one product, twice the power",
+              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-05-12-new-henkel-automotive-adhesive-one-product-twice-the-power-2154280",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.110Z",
+              "source": "henkel.com"
+            },
+            {
+              "title": "Henkel launches thermal gap filler and thermally conductive adhesive to improve EV battery thermal management",
+              "url": "https://www.henkel.com/press-and-media/press-releases-and-kits/2026-05-12-henkel-launches-thermal-gap-filler-and-thermally-conductive-adhesive-to-improve-ev-battery-thermal-management-2154282",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.110Z",
+              "source": "henkel.com"
             }
-          ],
-          "news": []
+          ]
         },
         {
           "id": "mmm",
@@ -673,21 +1166,89 @@
           "monogram": "3",
           "monogram_color": "#cc0000",
           "news_url": "https://news.3m.com/",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/03/05 3M 2025年Q4业绩超预期 上调全年指引",
-              "url": "https://news.3m.com/show-126.html"
+              "title": "3M and Discovery Education announce 37 State Merit Winners and four Honorable Mentions in 2026 3M Young Scientist Challenge",
+              "url": "https://news.3m.com/2026-07-01-3M-and-Discovery-Education-announce-37-State-Merit-Winners-and-four-Honorable-Mentions-in-2026-3M-Young-Scientist-Challenge",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.495Z",
+              "source": "news.3m.com"
             },
             {
-              "title": "2025/12/10 3M 与空客签署A220客舱舒适度技术合作协议",
-              "url": "https://news.3m.com/show-125.html"
+              "title": "3M joins Cadillac Formula 1® Team as Official Material Science Partner to accelerate racing performance",
+              "url": "https://news.3m.com/2026-06-30-3M-joins-Cadillac-Formula-1-R-Team-as-Official-Material-Science-Partner-to-accelerate-racing-performance",
+              "snippet": "",
+              "published_at": "2026-06-30T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.495Z",
+              "source": "news.3m.com"
             },
             {
-              "title": "2025/09/22 3M 推出AI驱动的Ask 3M 智能助手加速技术支持",
-              "url": "https://news.3m.com/show-124.html"
+              "title": "3M and Airbus announce agreement to advance A220 passenger comfort and aircraft performance through advanced insulation technology",
+              "url": "https://news.3m.com/2026-06-23-3M-and-Airbus-announce-agreement-to-advance-A220-passenger-comfort-and-aircraft-performance-through-advanced-insulation-technology",
+              "snippet": "",
+              "published_at": "2026-06-23T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.495Z",
+              "source": "news.3m.com"
+            },
+            {
+              "title": "3M launches Ask 3M, an AI-powered tool for faster access to technical expertise",
+              "url": "https://news.3m.com/2026-06-22-3M-launches-Ask-3M,-an-AI-powered-tool-for-faster-access-to-technical-expertise",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.495Z",
+              "source": "news.3m.com"
+            },
+            {
+              "title": "3M Announces New Board Appointment",
+              "url": "https://news.3m.com/2026-06-08-3M-Announces-New-Board-Appointment",
+              "snippet": "",
+              "published_at": "2026-06-08T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.495Z",
+              "source": "news.3m.com"
+            },
+            {
+              "title": "3M Announces Upcoming Investor Event",
+              "url": "https://news.3m.com/2026-05-27-3M-Announces-Upcoming-Investor-Event",
+              "snippet": "",
+              "published_at": "2026-05-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.495Z",
+              "source": "news.3m.com"
+            },
+            {
+              "title": "3M Board Declares Quarterly Dividend",
+              "url": "https://news.3m.com/2026-05-12-3M-Board-Declares-Quarterly-Dividend",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.495Z",
+              "source": "news.3m.com"
+            },
+            {
+              "title": "3M Annual Meeting Results",
+              "url": "https://news.3m.com/2026-05-12-3M-Annual-Meeting-Results",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.495Z",
+              "source": "news.3m.com"
+            },
+            {
+              "title": "New coalition launches to advance and scale optical connections for AI data centers",
+              "url": "https://news.3m.com/2026-05-12-New-coalition-launches-to-advance-and-scale-optical-connections-for-AI-data-centers",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.495Z",
+              "source": "news.3m.com"
+            },
+            {
+              "title": "3M Reports First-Quarter 2026 Results",
+              "url": "https://news.3m.com/2026-04-21-3M-Reports-First-Quarter-2026-Results",
+              "snippet": "",
+              "published_at": "2026-04-21T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.495Z",
+              "source": "news.3m.com"
             }
-          ],
-          "news": []
+          ]
         },
         {
           "id": "honeywell",
@@ -700,7 +1261,7 @@
           "fallback_news": [],
           "news": [
             {
-              "title": "Honeywell Technologies Launches As Independent, Pure-Play Automation Company Following Completion of Honeywell Aerospace Spin-Off",
+              "title": "霍尼韦尔技术公司作为独立的纯自动化公司启动运营，完成霍尼韦尔航空航天分拆",
               "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-technologies-launches-independent-pure-play-automation-company-following-honeywell-aerospace-spin-off",
               "snippet": "",
               "published_at": "2026-06-29T00:00:00Z",
@@ -708,7 +1269,7 @@
               "source": "honeywell.com"
             },
             {
-              "title": "Honeywell Technologies to Release Second Quarter Financial Results, Discuss 2026 Outlook and Hold Its Investor Conference Call on Thursday, July 23",
+              "title": "Honeywell Technologies将于7月23日星期四发布第二季度财务业绩、讨论2026年展望并召开投资者电话会议",
               "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-technologies-to-release-second-quarter-financial-results-discuss-2026-outlook-and-hold-its-investor-conference-call-on-thursday-july-23",
               "snippet": "",
               "published_at": "2026-06-29T00:00:00Z",
@@ -716,7 +1277,7 @@
               "source": "honeywell.com"
             },
             {
-              "title": "Honeywell Aerospace completes spin-off from Honeywell Technologies and begins trading on Nasdaq",
+              "title": "Honeywell Aerospace完成从Honeywell Technologies的分拆,开始在纳斯达克交易",
               "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-aerospace-completes-spin-off-from-honeywell-technologies-and-begins-trading-on-nasdaq",
               "snippet": "",
               "published_at": "2026-06-29T00:00:00Z",
@@ -724,7 +1285,7 @@
               "source": "honeywell.com"
             },
             {
-              "title": "Honeywell and MIT Find Digital Technologies can Help Increase Energy Supply, Reduce Energy Production Cost by Tens of Billions Annually",
+              "title": "Honeywell与MIT发现数字技术有助于增加能源供应、每年降低数十亿美元的能源生产成本",
               "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-and-mit-find-digital-technologies-can-help-increase-energy-supply-reduce-energy-production-cost-by-tens-of-billions-annually",
               "snippet": "",
               "published_at": "2026-06-24T00:00:00Z",
@@ -732,7 +1293,7 @@
               "source": "honeywell.com"
             },
             {
-              "title": "Honeywell Expands Fire Portfolio with Advanced Smoke Control and Connected Life Safety Innovations",
+              "title": "Honeywell通过先进的烟雾控制和互联生命安全创新扩展消防产品组合",
               "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-expands-fire-portfolio-with-advanced-smoke-control-and-connected-life-safety-innovations",
               "snippet": "",
               "published_at": "2026-06-23T00:00:00Z",
@@ -740,7 +1301,7 @@
               "source": "honeywell.com"
             },
             {
-              "title": "Honeywell Modular Technology to Power and Automate Acelen Renewables Biofuel Production",
+              "title": "Honeywell模块化技术将为Acelen Renewables的生物燃料生产提供动力和自动化支持",
               "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-modular-technology-to-power-and-automate-acelen-renewables-biofuel-production",
               "snippet": "",
               "published_at": "2026-06-17T00:00:00Z",
@@ -748,7 +1309,7 @@
               "source": "honeywell.com"
             },
             {
-              "title": "Honeywell Launches New Hospitality Solutions to Power the Connected Hotel",
+              "title": "霍尼韦尔推出全新酒店解决方案，为互联酒店提供动力",
               "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-launches-new-hospitality-solutions-to-power-the-connected-hotel",
               "snippet": "",
               "published_at": "2026-06-16T00:00:00Z",
@@ -756,7 +1317,7 @@
               "source": "honeywell.com"
             },
             {
-              "title": "Honeywell Board of Directors Approves Spin-Off of Honeywell Aerospace",
+              "title": "Honeywell 董事会批准 Honeywell Aerospace 分拆",
               "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-board-of-directors-approves-spin-off-of-honeywell-aerospace",
               "snippet": "",
               "published_at": "2026-06-15T00:00:00Z",
@@ -764,7 +1325,7 @@
               "source": "honeywell.com"
             },
             {
-              "title": "Honeywell Technologies Hosts 2026 Investor Day; Provides New Three-Year Financial Framework",
+              "title": "霍尼韦尔技术公司举办2026年投资者日；公布新三年财务框架",
               "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-technologies-hosts-2026-investor-day-provides-new-three-year-financial-framework",
               "snippet": "",
               "published_at": "2026-06-11T00:00:00Z",
@@ -772,7 +1333,7 @@
               "source": "honeywell.com"
             },
             {
-              "title": "Honeywell Introduces Experion Cognition to Deliver Autonomous Control Room Operations for Borouge International",
+              "title": "霍尼韦尔推出 Experion Cognition，为 Borouge International 提供自主控制室运营",
               "url": "https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-introduces-experion-cognition-to-deliver-autonomous-control-room-operations-for-borouge-international",
               "snippet": "",
               "published_at": "2026-06-09T00:00:00Z",
@@ -801,7 +1362,7 @@
               "url": "http://static.cninfo.com.cn/finalpage/2026-07-02/1225403848.PDF",
               "snippet": "",
               "published_at": "2026-07-01T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "fetched_at": "2026-07-03T13:43:26.577Z",
               "source": "cninfo.com.cn"
             },
             {
@@ -809,7 +1370,7 @@
               "url": "http://static.cninfo.com.cn/finalpage/2026-06-10/1225361412.PDF",
               "snippet": "",
               "published_at": "2026-06-09T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "fetched_at": "2026-07-03T13:43:26.577Z",
               "source": "cninfo.com.cn"
             },
             {
@@ -817,7 +1378,7 @@
               "url": "https://www.bydglobal.com/cn/news/2026-06-02/1617162804707",
               "snippet": "",
               "published_at": "2026-06-02T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "fetched_at": "2026-07-03T13:43:26.577Z",
               "source": "bydglobal.com"
             },
             {
@@ -825,7 +1386,7 @@
               "url": "https://www.bydglobal.com/cn/news/2026-05-29/1617162805514",
               "snippet": "",
               "published_at": "2026-05-29T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "fetched_at": "2026-07-03T13:43:26.577Z",
               "source": "bydglobal.com"
             },
             {
@@ -833,7 +1394,7 @@
               "url": "https://www.bydglobal.com/cn/news/2026-05-27/1617162804277",
               "snippet": "",
               "published_at": "2026-05-27T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "fetched_at": "2026-07-03T13:43:26.577Z",
               "source": "bydglobal.com"
             },
             {
@@ -841,7 +1402,7 @@
               "url": "https://www.bydglobal.com/cn/news/2026-05-15/1617162800843",
               "snippet": "",
               "published_at": "2026-05-15T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "fetched_at": "2026-07-03T13:43:26.577Z",
               "source": "bydglobal.com"
             },
             {
@@ -849,7 +1410,7 @@
               "url": "https://www.bydglobal.com/cn/news/2026-05-06/1617162799743",
               "snippet": "",
               "published_at": "2026-05-06T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "fetched_at": "2026-07-03T13:43:26.577Z",
               "source": "bydglobal.com"
             },
             {
@@ -857,7 +1418,7 @@
               "url": "https://www.bydglobal.com/cn/news/2026-04-22/1617162793219",
               "snippet": "",
               "published_at": "2026-04-22T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "fetched_at": "2026-07-03T13:43:26.577Z",
               "source": "bydglobal.com"
             },
             {
@@ -865,7 +1426,7 @@
               "url": "https://www.bydglobal.com/cn/news/2026-04-02/1617162791146",
               "snippet": "",
               "published_at": "2026-04-02T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "fetched_at": "2026-07-03T13:43:26.577Z",
               "source": "bydglobal.com"
             },
             {
@@ -873,7 +1434,7 @@
               "url": "https://www.bydglobal.com/cn/news/2026-03-31/1617162789425",
               "snippet": "",
               "published_at": "2026-03-31T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.273Z",
+              "fetched_at": "2026-07-03T13:43:26.577Z",
               "source": "bydglobal.com"
             }
           ],
@@ -893,7 +1454,7 @@
               "url": "https://www.catl.com/news/10065.html",
               "snippet": "",
               "published_at": "2026-06-29T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "fetched_at": "2026-07-03T13:43:27.180Z",
               "source": "catl.com"
             },
             {
@@ -901,7 +1462,7 @@
               "url": "https://www.catl.com/news/10063.html",
               "snippet": "",
               "published_at": "2026-06-28T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "fetched_at": "2026-07-03T13:43:27.180Z",
               "source": "catl.com"
             },
             {
@@ -909,7 +1470,7 @@
               "url": "http://static.cninfo.com.cn/finalpage/2026-06-26/1225392395.PDF",
               "snippet": "",
               "published_at": "2026-06-26T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "fetched_at": "2026-07-03T13:43:27.180Z",
               "source": "cninfo.com.cn"
             },
             {
@@ -917,7 +1478,7 @@
               "url": "https://www.catl.com/news/10062.html",
               "snippet": "",
               "published_at": "2026-06-26T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "fetched_at": "2026-07-03T13:43:27.180Z",
               "source": "catl.com"
             },
             {
@@ -925,7 +1486,7 @@
               "url": "https://www.catl.com/news/10053.html",
               "snippet": "",
               "published_at": "2026-06-24T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "fetched_at": "2026-07-03T13:43:27.180Z",
               "source": "catl.com"
             },
             {
@@ -933,7 +1494,7 @@
               "url": "https://www.catl.com/news/10052.html",
               "snippet": "",
               "published_at": "2026-06-23T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "fetched_at": "2026-07-03T13:43:27.180Z",
               "source": "catl.com"
             },
             {
@@ -941,7 +1502,7 @@
               "url": "https://www.catl.com/news/10031.html",
               "snippet": "",
               "published_at": "2026-06-18T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "fetched_at": "2026-07-03T13:43:27.180Z",
               "source": "catl.com"
             },
             {
@@ -949,7 +1510,7 @@
               "url": "https://www.catl.com/news/9919.html",
               "snippet": "",
               "published_at": "2026-06-13T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "fetched_at": "2026-07-03T13:43:27.180Z",
               "source": "catl.com"
             },
             {
@@ -957,7 +1518,7 @@
               "url": "https://www.catl.com/news/9918.html",
               "snippet": "",
               "published_at": "2026-06-12T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "fetched_at": "2026-07-03T13:43:27.180Z",
               "source": "catl.com"
             },
             {
@@ -965,7 +1526,7 @@
               "url": "https://www.catl.com/news/9917.html",
               "snippet": "",
               "published_at": "2026-06-05T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.721Z",
+              "fetched_at": "2026-07-03T13:43:27.180Z",
               "source": "catl.com"
             }
           ],
@@ -985,7 +1546,7 @@
               "url": "https://www.nio.cn/news/20260701001",
               "snippet": "",
               "published_at": "2026-07-01T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "fetched_at": "2026-07-03T13:43:29.710Z",
               "source": "nio.cn"
             },
             {
@@ -993,7 +1554,7 @@
               "url": "https://www.nio.cn/news/20260622001",
               "snippet": "",
               "published_at": "2026-06-22T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "fetched_at": "2026-07-03T13:43:29.710Z",
               "source": "nio.cn"
             },
             {
@@ -1001,7 +1562,7 @@
               "url": "https://www.nio.cn/news/202606220012",
               "snippet": "",
               "published_at": "2026-06-22T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "fetched_at": "2026-07-03T13:43:29.710Z",
               "source": "nio.cn"
             },
             {
@@ -1009,7 +1570,7 @@
               "url": "https://www.nio.cn/news/20260609001",
               "snippet": "",
               "published_at": "2026-06-09T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "fetched_at": "2026-07-03T13:43:29.710Z",
               "source": "nio.cn"
             },
             {
@@ -1017,7 +1578,7 @@
               "url": "https://www.nio.cn/news/20260601001",
               "snippet": "",
               "published_at": "2026-06-01T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "fetched_at": "2026-07-03T13:43:29.710Z",
               "source": "nio.cn"
             },
             {
@@ -1025,7 +1586,7 @@
               "url": "https://www.nio.cn/news/20260527001",
               "snippet": "",
               "published_at": "2026-05-27T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "fetched_at": "2026-07-03T13:43:29.710Z",
               "source": "nio.cn"
             },
             {
@@ -1033,7 +1594,7 @@
               "url": "https://www.nio.cn/news/20260523001",
               "snippet": "",
               "published_at": "2026-05-23T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "fetched_at": "2026-07-03T13:43:29.710Z",
               "source": "nio.cn"
             },
             {
@@ -1041,7 +1602,7 @@
               "url": "https://www.nio.cn/news/20260520001",
               "snippet": "",
               "published_at": "2026-05-20T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "fetched_at": "2026-07-03T13:43:29.710Z",
               "source": "nio.cn"
             },
             {
@@ -1049,7 +1610,7 @@
               "url": "https://www.nio.cn/news/20260518001",
               "snippet": "",
               "published_at": "2026-05-18T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.840Z",
+              "fetched_at": "2026-07-03T13:43:29.710Z",
               "source": "nio.cn"
             }
           ],
@@ -1063,7 +1624,88 @@
           "monogram": "B",
           "monogram_color": "#0066b1",
           "news_url": "https://www.bmwgroup.com/en/news.html",
-          "news": [],
+          "news": [
+            {
+              "title": "The new BMW iX5 Hydrogen.",
+              "url": "https://www.bmwgroup.com/en/news/general/2026/the-new-bmw-ix5-hydrogen.html",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.675Z",
+              "source": "bmwgroup.com"
+            },
+            {
+              "title": "The new BMW X5: one model, five drives.",
+              "url": "https://www.bmwgroup.com/en/news/general/2026/the-new-bmw-x5.html",
+              "snippet": "",
+              "published_at": "2026-06-30T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.675Z",
+              "source": "bmwgroup.com"
+            },
+            {
+              "title": "200 million kilometres of hands-free driving with the BMW Highway Assistant.",
+              "url": "https://www.bmwgroup.com/en/news/general/2026/highway-assistant.html",
+              "snippet": "",
+              "published_at": "2026-06-09T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.675Z",
+              "source": "bmwgroup.com"
+            },
+            {
+              "title": "How agentic AI is making life easier at the BMW Group.",
+              "url": "https://www.bmwgroup.com/en/news/general/2026/agentic-AI.html",
+              "snippet": "",
+              "published_at": "2026-05-22T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.675Z",
+              "source": "bmwgroup.com"
+            },
+            {
+              "title": "Advances in battery cell production: How the BMW Group uses AI.",
+              "url": "https://www.bmwgroup.com/en/news/general/2026/battery-cell-production-with-ai.html",
+              "snippet": "",
+              "published_at": "2026-05-08T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.675Z",
+              "source": "bmwgroup.com"
+            },
+            {
+              "title": "4,000,000 BMW Motorrad motorcycles: How Plant Berlin has helped shape the success of the BMW brand.",
+              "url": "https://www.bmwgroup.com/en/news/general/2026/four-million-motorcycles-made-in-berlin.html",
+              "snippet": "",
+              "published_at": "2026-04-14T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.675Z",
+              "source": "bmwgroup.com"
+            },
+            {
+              "title": "Technology-open approach meets the art of engineering: New hydrogen tank system in the BMW iX5 Hydrogen.",
+              "url": "https://www.bmwgroup.com/en/news/general/2026/bmw-ix5-hydrogen-tank-system.html",
+              "snippet": "",
+              "published_at": "2026-04-09T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.675Z",
+              "source": "bmwgroup.com"
+            },
+            {
+              "title": "How the BMW Group brings sustainability into the vehicle interior.",
+              "url": "https://www.bmwgroup.com/en/news/general/2026/sustainability-in-vehicle-interiors.html",
+              "snippet": "",
+              "published_at": "2026-03-25T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.675Z",
+              "source": "bmwgroup.com"
+            },
+            {
+              "title": "The new BMW i3: The second Neue Klasse model.",
+              "url": "https://www.bmwgroup.com/en/news/general/2026/bmwi3.html",
+              "snippet": "",
+              "published_at": "2026-03-19T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.675Z",
+              "source": "bmwgroup.com"
+            },
+            {
+              "title": "The new BMW i3: 360° approach to sustainability continues in the second Neue Klasse model.",
+              "url": "https://www.bmwgroup.com/en/news/general/2026/sustainability-approach-bmw-i3.html",
+              "snippet": "",
+              "published_at": "2026-03-17T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.675Z",
+              "source": "bmwgroup.com"
+            }
+          ],
           "fallback_news": []
         },
         {
@@ -1074,7 +1716,88 @@
           "monogram": "V",
           "monogram_color": "#1e40af",
           "news_url": "https://www.volkswagen-newsroom.com/en/press-releases",
-          "news": [],
+          "news": [
+            {
+              "title": "Tapping into a growth market: Volkswagen models now also available in Uzbekistan",
+              "url": "https://www.volkswagen-newsroom.com/en/press-releases/tapping-into-a-growth-market-volkswagen-models-now-also-available-in-uzbekistan-20482",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.949Z",
+              "source": "volkswagen-newsroom.com"
+            },
+            {
+              "title": "SEAT & CUPRA plant in Martorell starts production of CUPRA Raval and Volkswagen ID. Polo, leading a new era of mobility in Europe",
+              "url": "https://www.volkswagen-newsroom.com/en/press-releases/seat-and-cupra-plant-in-martorell-starts-production-of-cupra-raval-and-volkswagen-id-polo-leading-a-new-era-of-mobility-in-europe-20459",
+              "snippet": "",
+              "published_at": "2026-06-03T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.949Z",
+              "source": "volkswagen-newsroom.com"
+            },
+            {
+              "title": "100-per-cent electric, 100-per-cent GTI: Volkswagen presents the all-new electric ID. Polo GTI",
+              "url": "https://www.volkswagen-newsroom.com/en/press-releases/100-per-cent-electric-100-per-cent-gti-volkswagen-presents-the-allnew-electric-id-polo-gti-20375",
+              "snippet": "",
+              "published_at": "2026-05-15T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.949Z",
+              "source": "volkswagen-newsroom.com"
+            },
+            {
+              "title": "Volkswagen celebrates 50 years of GTI: world premiere of the electric ID. Polo GTI at the 24h Nürburgring",
+              "url": "https://www.volkswagen-newsroom.com/en/press-releases/volkswagen-celebrates-50-years-of-gti-world-premiere-of-the-electric-id-polo-gti-at-the-24h-nuerburgring-20369",
+              "snippet": "",
+              "published_at": "2026-05-08T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.949Z",
+              "source": "volkswagen-newsroom.com"
+            },
+            {
+              "title": "Golf GTI EDITION 50 is the fastest front-wheel drive production model on the Nürburgring Nordschleife",
+              "url": "https://www.volkswagen-newsroom.com/en/press-releases/golf-gti-edition-50-is-the-fastest-frontwheel-drive-production-model-on-the-nuerburgring-nordschleife-20365",
+              "snippet": "",
+              "published_at": "2026-05-07T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.949Z",
+              "source": "volkswagen-newsroom.com"
+            },
+            {
+              "title": "In the anniversary year: Volkswagen R to enter the 24h Nürburgring in 2027",
+              "url": "https://www.volkswagen-newsroom.com/en/press-releases/in-the-anniversary-year-volkswagen-r-to-enter-the-24h-nuerburgring-in-2027-20362",
+              "snippet": "",
+              "published_at": "2026-05-05T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.949Z",
+              "source": "volkswagen-newsroom.com"
+            },
+            {
+              "title": "Brand Group Core with solid results – special items impact Volkswagen Brand",
+              "url": "https://www.volkswagen-newsroom.com/en/press-releases/brand-group-core-with-solid-results-special-items-impact-volkswagen-brand-20358",
+              "snippet": "",
+              "published_at": "2026-04-30T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.949Z",
+              "source": "volkswagen-newsroom.com"
+            },
+            {
+              "title": "Much more than a city car: world premiere of the all-new electric ID. Polo",
+              "url": "https://www.volkswagen-newsroom.com/en/press-releases/much-more-than-a-city-car-world-premiere-of-the-all-new-electric-id-polo-20356",
+              "snippet": "",
+              "published_at": "2026-04-26T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.949Z",
+              "source": "volkswagen-newsroom.com"
+            },
+            {
+              "title": "Electrification made easy: Volkswagen presents new full hybrid for Golf and T-Roc",
+              "url": "https://www.volkswagen-newsroom.com/en/press-releases/electrification-made-easy-volkswagen-presents-new-full-hybrid-for-golf-and-t-roc-20334",
+              "snippet": "",
+              "published_at": "2026-04-22T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.949Z",
+              "source": "volkswagen-newsroom.com"
+            },
+            {
+              "title": "World premiere of the ID.3 Neo: new name, new design, new interior and new technologies",
+              "url": "https://www.volkswagen-newsroom.com/en/press-releases/world-premiere-of-the-id3-neo-new-name-new-design-new-interior-and-new-technologies-20320",
+              "snippet": "",
+              "published_at": "2026-04-14T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.949Z",
+              "source": "volkswagen-newsroom.com"
+            }
+          ],
           "fallback_news": []
         },
         {
@@ -1085,7 +1808,88 @@
           "monogram": "T",
           "monogram_color": "#b91c1c",
           "news_url": "https://global.toyota/en/newsroom/",
-          "news": [],
+          "news": [
+            {
+              "title": "Joby Aviation and Toyota Motor Corporation Launch Initial Phase of a Strategic Manufacturing Alliance to Realize Air Mobility for All",
+              "url": "https://global.toyota/en/newsroom/corporate/44579871.html",
+              "snippet": "",
+              "published_at": "2026-07-03T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.582Z",
+              "source": "global.toyota"
+            },
+            {
+              "title": "TMC Announces Changes to Board Members and Executive Structure",
+              "url": "https://global.toyota/en/newsroom/corporate/44505572.html",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.582Z",
+              "source": "global.toyota"
+            },
+            {
+              "title": "Toyota to participate in the \"1000 Miglia Gran Turismo Experience 2026,\" a special program of the historic Italian rally, the 1000 Miglia",
+              "url": "https://global.toyota/en/newsroom/corporate/44481016.html",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.582Z",
+              "source": "global.toyota"
+            },
+            {
+              "title": "Hydrogen-Powered GR Corolla Takes on World-First Challenge at Super Taikyu Fuji 24 Hours Race",
+              "url": "https://global.toyota/en/newsroom/corporate/44458612.html",
+              "snippet": "",
+              "published_at": "2026-06-19T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.582Z",
+              "source": "global.toyota"
+            },
+            {
+              "title": "THE MOVEUM YOKOHAMA to Launch New Film Program This Fall",
+              "url": "https://global.toyota/en/newsroom/corporate/44454144.html",
+              "snippet": "",
+              "published_at": "2026-06-17T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.582Z",
+              "source": "global.toyota"
+            },
+            {
+              "title": "GR Premiers GRMN Corolla",
+              "url": "https://global.toyota/en/newsroom/toyota/44385626.html",
+              "snippet": "",
+              "published_at": "2026-06-15T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.582Z",
+              "source": "global.toyota"
+            },
+            {
+              "title": "Toyota Announces New Exhibition at the Toyota Kaikan Museum",
+              "url": "https://global.toyota/en/newsroom/corporate/44438543.html",
+              "snippet": "",
+              "published_at": "2026-06-12T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.582Z",
+              "source": "global.toyota"
+            },
+            {
+              "title": "Toyota Launches New Hilux in Japan",
+              "url": "https://global.toyota/en/newsroom/toyota/44397819.html",
+              "snippet": "",
+              "published_at": "2026-05-28T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.582Z",
+              "source": "global.toyota"
+            },
+            {
+              "title": "Toyota Launches All-New Land Cruiser \"FJ\" Series in Japan",
+              "url": "https://global.toyota/en/newsroom/toyota/44331143.html",
+              "snippet": "",
+              "published_at": "2026-05-14T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.582Z",
+              "source": "global.toyota"
+            },
+            {
+              "title": "Temporary Closure of THE MOVEUM YOKOHAMA (From April 22, 2026)",
+              "url": "https://global.toyota/en/newsroom/corporate/44286995.html",
+              "snippet": "",
+              "published_at": "2026-04-22T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.582Z",
+              "source": "global.toyota"
+            }
+          ],
           "fallback_news": []
         },
         {
@@ -1116,7 +1920,7 @@
               "url": "https://www.lixiang.com/news/161.html",
               "snippet": "",
               "published_at": "2026-07-01T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "fetched_at": "2026-07-03T13:43:29.158Z",
               "source": "lixiang.com"
             },
             {
@@ -1124,7 +1928,7 @@
               "url": "https://www.lixiang.com/news/172.html",
               "snippet": "",
               "published_at": "2026-07-01T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "fetched_at": "2026-07-03T13:43:29.158Z",
               "source": "lixiang.com"
             },
             {
@@ -1132,7 +1936,7 @@
               "url": "https://www.lixiang.com/news/160.html",
               "snippet": "",
               "published_at": "2026-06-01T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "fetched_at": "2026-07-03T13:43:29.158Z",
               "source": "lixiang.com"
             },
             {
@@ -1140,7 +1944,7 @@
               "url": "https://www.lixiang.com/news/159.html",
               "snippet": "",
               "published_at": "2026-05-15T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "fetched_at": "2026-07-03T13:43:29.158Z",
               "source": "lixiang.com"
             },
             {
@@ -1148,7 +1952,7 @@
               "url": "https://www.lixiang.com/news/155.html",
               "snippet": "",
               "published_at": "2026-05-01T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "fetched_at": "2026-07-03T13:43:29.158Z",
               "source": "lixiang.com"
             },
             {
@@ -1156,7 +1960,7 @@
               "url": "https://www.lixiang.com/news/154.html",
               "snippet": "",
               "published_at": "2026-04-27T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "fetched_at": "2026-07-03T13:43:29.158Z",
               "source": "lixiang.com"
             },
             {
@@ -1164,7 +1968,7 @@
               "url": "https://www.lixiang.com/news/152.html",
               "snippet": "",
               "published_at": "2026-03-05T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "fetched_at": "2026-07-03T13:43:29.158Z",
               "source": "lixiang.com"
             },
             {
@@ -1172,7 +1976,7 @@
               "url": "https://www.lixiang.com/news/151.html",
               "snippet": "",
               "published_at": "2026-02-02T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "fetched_at": "2026-07-03T13:43:29.158Z",
               "source": "lixiang.com"
             },
             {
@@ -1180,7 +1984,7 @@
               "url": "https://www.lixiang.com/news/150.html",
               "snippet": "",
               "published_at": "2026-01-01T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "fetched_at": "2026-07-03T13:43:29.158Z",
               "source": "lixiang.com"
             },
             {
@@ -1188,7 +1992,7 @@
               "url": "https://www.lixiang.com/news/149.html",
               "snippet": "",
               "published_at": "2025-12-03T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:49.957Z",
+              "fetched_at": "2026-07-03T13:43:29.158Z",
               "source": "lixiang.com"
             }
           ]
@@ -1221,7 +2025,7 @@
               "url": "https://www.xiaopeng.com/news/company_news/5576.html",
               "snippet": "",
               "published_at": "2026-07-01T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "fetched_at": "2026-07-03T13:43:32.064Z",
               "source": "xiaopeng.com"
             },
             {
@@ -1229,7 +2033,7 @@
               "url": "https://www.xiaopeng.com/news/company_news/5575.html",
               "snippet": "",
               "published_at": "2026-06-24T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "fetched_at": "2026-07-03T13:43:32.064Z",
               "source": "xiaopeng.com"
             },
             {
@@ -1237,7 +2041,7 @@
               "url": "https://www.xiaopeng.com/news/company_news/5570.html",
               "snippet": "",
               "published_at": "2026-06-09T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "fetched_at": "2026-07-03T13:43:32.064Z",
               "source": "xiaopeng.com"
             },
             {
@@ -1245,7 +2049,7 @@
               "url": "https://www.xiaopeng.com/news/company_news/5569.html",
               "snippet": "",
               "published_at": "2026-06-02T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "fetched_at": "2026-07-03T13:43:32.064Z",
               "source": "xiaopeng.com"
             },
             {
@@ -1253,7 +2057,7 @@
               "url": "https://www.xiaopeng.com/news/company_news/5568.html",
               "snippet": "",
               "published_at": "2026-06-02T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "fetched_at": "2026-07-03T13:43:32.064Z",
               "source": "xiaopeng.com"
             },
             {
@@ -1261,7 +2065,7 @@
               "url": "https://www.xiaopeng.com/news/company_news/5567.html",
               "snippet": "",
               "published_at": "2026-06-02T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "fetched_at": "2026-07-03T13:43:32.064Z",
               "source": "xiaopeng.com"
             },
             {
@@ -1269,7 +2073,7 @@
               "url": "https://www.xiaopeng.com/news/company_news/5566.html",
               "snippet": "",
               "published_at": "2026-06-02T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "fetched_at": "2026-07-03T13:43:32.064Z",
               "source": "xiaopeng.com"
             },
             {
@@ -1277,7 +2081,7 @@
               "url": "https://www.xiaopeng.com/news/company_news/5565.html",
               "snippet": "",
               "published_at": "2026-06-02T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "fetched_at": "2026-07-03T13:43:32.064Z",
               "source": "xiaopeng.com"
             },
             {
@@ -1285,7 +2089,7 @@
               "url": "https://www.xiaopeng.com/news/company_news/5564.html",
               "snippet": "",
               "published_at": "2026-05-22T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "fetched_at": "2026-07-03T13:43:32.064Z",
               "source": "xiaopeng.com"
             },
             {
@@ -1293,7 +2097,7 @@
               "url": "https://www.xiaopeng.com/news/company_news/5563.html",
               "snippet": "",
               "published_at": "2026-05-21T00:00:00Z",
-              "fetched_at": "2026-07-02T23:30:50.070Z",
+              "fetched_at": "2026-07-03T13:43:32.064Z",
               "source": "xiaopeng.com"
             }
           ]
@@ -1306,7 +2110,88 @@
           "monogram": "T",
           "monogram_color": "#cc0000",
           "news_url": "https://www.tesla.com/blog",
-          "news": [],
+          "news": [
+            {
+              "title": "Standardizing Automotive Connectivity",
+              "url": "https://www.tesla.com/blog/standardizing-automotive-connectivity",
+              "snippet": "",
+              "published_at": "2024-10-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.357Z",
+              "source": "tesla.com"
+            },
+            {
+              "title": "Introducing the New Model 3 Performance",
+              "url": "https://www.tesla.com/blog/introducing-new-model-3-performance",
+              "snippet": "",
+              "published_at": "2024-04-23T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.357Z",
+              "source": "tesla.com"
+            },
+            {
+              "title": "Addressing Misleading Claims",
+              "url": "https://www.tesla.com/blog/addressing-misleading-claims",
+              "snippet": "",
+              "published_at": "2024-01-09T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.357Z",
+              "source": "tesla.com"
+            },
+            {
+              "title": "The Bigger Picture on Autopilot Safety",
+              "url": "https://www.tesla.com/blog/bigger-picture-autopilot-safety",
+              "snippet": "",
+              "published_at": "2024-01-09T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.357Z",
+              "source": "tesla.com"
+            },
+            {
+              "title": "Tesla Lithium Refinery Groundbreaking",
+              "url": "https://www.tesla.com/blog/tesla-lithium-refinery-groundbreaking",
+              "snippet": "",
+              "published_at": "2023-05-08T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.357Z",
+              "source": "tesla.com"
+            },
+            {
+              "title": "Master Plan Part 3",
+              "url": "https://www.tesla.com/blog/master-plan-part-3",
+              "snippet": "",
+              "published_at": "2023-04-19T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.357Z",
+              "source": "tesla.com"
+            },
+            {
+              "title": "In Response to False Allegations",
+              "url": "https://www.tesla.com/blog/in-response-false-allegations",
+              "snippet": "",
+              "published_at": "2023-02-19T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.357Z",
+              "source": "tesla.com"
+            },
+            {
+              "title": "Continuing Our Investment in Nevada",
+              "url": "https://www.tesla.com/blog/continuing-our-investment-nevada",
+              "snippet": "",
+              "published_at": "2023-01-24T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.357Z",
+              "source": "tesla.com"
+            },
+            {
+              "title": "Tesla's California Footprint",
+              "url": "https://www.tesla.com/blog/teslas-california-footprint",
+              "snippet": "",
+              "published_at": "2022-11-29T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.357Z",
+              "source": "tesla.com"
+            },
+            {
+              "title": "Model S Receives 5-Star Euro NCAP Safety Rating",
+              "url": "https://www.tesla.com/blog/model-s-receives-5-star-euro-ncap-safety-rating",
+              "snippet": "",
+              "published_at": "2022-11-16T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.357Z",
+              "source": "tesla.com"
+            }
+          ],
           "fallback_news": []
         }
       ]
@@ -1326,7 +2211,7 @@
           "fallback_news": [],
           "news": [
             {
-              "title": "Hubbell Incorporated Completes Acquisition of NSI Industries",
+              "title": "Hubbell Incorporated 完成对 NSI Industries 的收购",
               "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-incorporated-completes-acquisition-nsi-industries",
               "snippet": "",
               "published_at": "2026-06-09T00:00:00Z",
@@ -1334,7 +2219,7 @@
               "source": "hubbell.gcs-web.com"
             },
             {
-              "title": "Hubbell Incorporated Prices $1.9 Billion Senior Notes Offering",
+              "title": "Hubbell Incorporated 为19亿美元高级票据发行定价",
               "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-incorporated-prices-19-billion-senior-notes-offering",
               "snippet": "",
               "published_at": "2026-06-02T00:00:00Z",
@@ -1342,7 +2227,7 @@
               "source": "hubbell.gcs-web.com"
             },
             {
-              "title": "Hubbell to Participate in Upcoming Investor Conference (Wells Fargo Industrials)",
+              "title": "Hubbell将参加即将举行的投资者会议(富国银行工业大会)",
               "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-participate-upcoming-investor-conference-4",
               "snippet": "",
               "published_at": "2026-05-28T00:00:00Z",
@@ -1350,7 +2235,7 @@
               "source": "hubbell.gcs-web.com"
             },
             {
-              "title": "Hubbell to Acquire NSI Industries",
+              "title": "Hubbell将收购NSI Industries",
               "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-acquire-nsi-industries",
               "snippet": "",
               "published_at": "2026-05-04T00:00:00Z",
@@ -1358,7 +2243,7 @@
               "source": "hubbell.gcs-web.com"
             },
             {
-              "title": "Hubbell Reports First Quarter 2026 Results",
+              "title": "Hubbell公布2026年第一季度业绩",
               "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-reports-first-quarter-2026-results",
               "snippet": "",
               "published_at": "2026-04-30T00:00:00Z",
@@ -1366,7 +2251,7 @@
               "source": "hubbell.gcs-web.com"
             },
             {
-              "title": "Hubbell Reports Regular Quarterly Dividend",
+              "title": "Hubbell 报告定期季度股息",
               "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-reports-regular-quarterly-dividend",
               "snippet": "",
               "published_at": "2026-04-24T00:00:00Z",
@@ -1374,7 +2259,7 @@
               "source": "hubbell.gcs-web.com"
             },
             {
-              "title": "Hubbell to Announce First Quarter 2026 Results on April 30, 2026",
+              "title": "Hubbell将于2026年4月30日公布2026年第一季度业绩",
               "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-announce-first-quarter-2026-results-april-30-2026",
               "snippet": "",
               "published_at": "2026-04-13T00:00:00Z",
@@ -1382,7 +2267,7 @@
               "source": "hubbell.gcs-web.com"
             },
             {
-              "title": "Hubbell to Participate in Upcoming Investor Conference (JP Morgan Industrials)",
+              "title": "Hubbell将参加即将举行的投资者会议（JP Morgan Industrials）",
               "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-participate-upcoming-investor-conference-3",
               "snippet": "",
               "published_at": "2026-03-05T00:00:00Z",
@@ -1390,7 +2275,7 @@
               "source": "hubbell.gcs-web.com"
             },
             {
-              "title": "Hubbell to Participate in Upcoming Investor Conference (Barclays)",
+              "title": "Hubbell将出席即将召开的投资者会议（巴克莱）",
               "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-participate-upcoming-investor-conference-2",
               "snippet": "",
               "published_at": "2026-02-12T00:00:00Z",
@@ -1398,7 +2283,7 @@
               "source": "hubbell.gcs-web.com"
             },
             {
-              "title": "Hubbell Reports Fourth Quarter and Full Year 2025 Results",
+              "title": "哈贝尔公布2025年第四季度及全年业绩",
               "url": "https://hubbell.gcs-web.com/news-releases/news-release-details/hubbell-reports-fourth-quarter-and-full-year-2025-results",
               "snippet": "",
               "published_at": "2026-02-03T00:00:00Z",
@@ -1415,13 +2300,89 @@
           "monogram": "M",
           "monogram_color": "#b91c1c",
           "news_url": "https://www.macleanpower.com/news",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2025/09/05 MacLean-Fogg 推出用于铁路电气化的 Track-Resist 聚合物绝缘子",
-              "url": "https://www.macleanfogg.com/news/show-124.html"
+              "title": "MacLean Power Systems and Power Grid Components Complete Previously Announced Merger; Combined Company to Move Forward as MacLean Power Systems",
+              "url": "https://www.macleanpower.com/maclean-power-systems-and-power-grid-components-complete-previously-announced-merger-combined-company-to-move-forward-as-maclean-power-systems",
+              "snippet": "",
+              "published_at": "2026-03-04T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.269Z",
+              "source": "macleanpower.com"
+            },
+            {
+              "title": "Accelerating Storm Recovery While Strengthening Grid Resilience — ERGO Switch™ In-line Disconnect",
+              "url": "https://www.macleanpower.com/accelerating-storm-recovery-while-strengthening-grid-resilience-ergo-switch-in-line-disconnect",
+              "snippet": "",
+              "published_at": "2026-02-04T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.269Z",
+              "source": "macleanpower.com"
+            },
+            {
+              "title": "Multishot Weakens Reliability — MPS Builds the Future of EHV Insulators",
+              "url": "https://www.macleanpower.com/multishot-weakens-reliability-mps-builds-the-future-of-ehv-insulators",
+              "snippet": "",
+              "published_at": "2025-10-03T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.269Z",
+              "source": "macleanpower.com"
+            },
+            {
+              "title": "Grid Resilience by American Manufacturing",
+              "url": "https://www.macleanpower.com/grid-resilience-by-american-manufacturing",
+              "snippet": "",
+              "published_at": "2025-01-31T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.269Z",
+              "source": "macleanpower.com"
+            },
+            {
+              "title": "UVMAXX™ now added to fiberglass bracket line",
+              "url": "https://www.macleanpower.com/-3",
+              "snippet": "",
+              "published_at": "2022-03-08T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.269Z",
+              "source": "macleanpower.com"
+            },
+            {
+              "title": "1.5″ and 2″ Fiberglass Brackets: Veiled UV Protection System",
+              "url": "https://www.macleanpower.com/new-veiled-uv-system-fiberglass-brackets",
+              "snippet": "",
+              "published_at": "2022-01-06T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.269Z",
+              "source": "macleanpower.com"
+            },
+            {
+              "title": "Alabama Plant Update",
+              "url": "https://www.macleanpower.com/alabama-plant-update",
+              "snippet": "",
+              "published_at": "2021-09-08T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.269Z",
+              "source": "macleanpower.com"
+            },
+            {
+              "title": "New Product Feature: UVMAXX UL94 V-0 Fire Resiliency Rating",
+              "url": "https://www.macleanpower.com/new-product-feature-uvmaxx-ul94-v-0-fire-resiliency-rating",
+              "snippet": "",
+              "published_at": "2021-06-24T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.269Z",
+              "source": "macleanpower.com"
+            },
+            {
+              "title": "Product Spotlight: Guy Strain Insulators",
+              "url": "https://www.macleanpower.com/product-spotlight-guy-strain-insulators",
+              "snippet": "",
+              "published_at": "2021-06-15T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.269Z",
+              "source": "macleanpower.com"
+            },
+            {
+              "title": "Product Spotlight: Suspension Insulators",
+              "url": "https://www.macleanpower.com/suspension-insulators",
+              "snippet": "",
+              "published_at": "2021-04-24T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.269Z",
+              "source": "macleanpower.com"
             }
-          ],
-          "news": []
+          ]
         },
         {
           "id": "abb",
@@ -1431,21 +2392,89 @@
           "monogram": "A",
           "monogram_color": "#cc0000",
           "news_url": "https://new.abb.com/news",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/02/25 ABB 推出面向HVDC应用的高压复合绝缘子",
-              "url": "https://new.abb.com/news/show-126.html"
+              "title": "ABB completes acquisition of Specialtrasfo to expand offering with specialized transformers for industrial applications",
+              "url": "https://resources.news.e.abb.com/2026-05-11/SPE_esterni_headquarters03",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.336Z",
+              "source": "resources.news.e.abb.com"
             },
             {
-              "title": "2025/12/10 ABB 赢得中东8000万美元变电站绝缘子合同",
-              "url": "https://new.abb.com/news/show-125.html"
+              "title": "ABB becomes flag bearer of Switzerland’s 2038 Winter Olympics bid",
+              "url": "https://resources.news.e.abb.com/2026-06-26/Switzerland_2038_Hero_image_PVoser_FFavre_2",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.336Z",
+              "source": "resources.news.e.abb.com"
             },
             {
-              "title": "2025/09/18 ABB 与日立能源合作开发新一代电网绝缘子方案",
-              "url": "https://new.abb.com/news/show-124.html"
+              "title": "ABB to acquire Høglund to expand marine automation offering",
+              "url": "https://resources.news.e.abb.com/2026-06-26/Vessel_illustration_credit_Adobe",
+              "snippet": "",
+              "published_at": "2026-06-26T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.336Z",
+              "source": "resources.news.e.abb.com"
+            },
+            {
+              "title": "ABB to acquire Specialtrasfo to support industrial electrification with specialized transformer offering",
+              "url": "https://resources.news.e.abb.com/2026-05-11/SPE_esterni_headquarters03",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.336Z",
+              "source": "resources.news.e.abb.com"
+            },
+            {
+              "title": "ABB invests $200 million across Europe to accelerate grid transformation",
+              "url": "https://resources.news.e.abb.com/2026-05-08/ABB_Dalmine_1",
+              "snippet": "",
+              "published_at": "2026-05-11T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.336Z",
+              "source": "resources.news.e.abb.com"
+            },
+            {
+              "title": "Reduced number of shares and votes in ABB Ltd",
+              "url": "https://resources.news.e.abb.com/2026-01-27/ABB_HQ_Zurich_-_Switzerland",
+              "snippet": "",
+              "published_at": "2026-04-30T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.336Z",
+              "source": "resources.news.e.abb.com"
+            },
+            {
+              "title": "ABB Q1 2026 results",
+              "url": "https://resources.news.e.abb.com/2026-04-21/Q1-2026-thumbnail",
+              "snippet": "",
+              "published_at": "2026-04-21T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.336Z",
+              "source": "resources.news.e.abb.com"
+            },
+            {
+              "title": "ABB to power Eva Copper Mine Project with advanced e-house solution",
+              "url": "https://resources.news.e.abb.com/2026-04-14/Eva_Copper_Mine_Projec_12",
+              "snippet": "",
+              "published_at": "2026-04-14T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.336Z",
+              "source": "resources.news.e.abb.com"
+            },
+            {
+              "title": "ABB secures major order for Vargas webb Övriga project",
+              "url": "https://resources.news.e.abb.com/2026-03-27/65cf2787de88c78c2f4e9f9a_Vargas_webb_Ovriga_1_16x9",
+              "snippet": "",
+              "published_at": "2026-03-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.336Z",
+              "source": "resources.news.e.abb.com"
+            },
+            {
+              "title": "ABB India announces major expansion plan",
+              "url": "https://resources.news.e.abb.com/2026-03-05/India-PR-2-Hero-1280x720",
+              "snippet": "",
+              "published_at": "2026-03-05T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.336Z",
+              "source": "resources.news.e.abb.com"
             }
-          ],
-          "news": []
+          ]
         },
         {
           "id": "shenma",
@@ -1826,7 +2855,7 @@
           "fallback_news": [],
           "news": [
             {
-              "title": "TE Connectivity launches next generation AMP+ Charging Inlets for electric vehicles",
+              "title": "TE Connectivity 推出面向电动汽车的下一代 AMP+ 充电插座",
               "url": "https://www.te.com/en/about-te/news-center/amp-charging-cables-and-inlets-next-gen-npi.html",
               "snippet": "",
               "published_at": "2026-07-02T00:00:00Z",
@@ -1834,7 +2863,7 @@
               "source": "te.com"
             },
             {
-              "title": "TE Connectivity to power next generation AI data centers at COMPUTEX 2026",
+              "title": "TE Connectivity 将在 COMPUTEX 2026 上为下一代 AI 数据中心提供动力",
               "url": "https://www.te.com/en/about-te/news-center/computex-2026.html",
               "snippet": "",
               "published_at": "2026-05-27T00:00:00Z",
@@ -1842,7 +2871,7 @@
               "source": "te.com"
             },
             {
-              "title": "TE Connectivity launches 56G MezzaWave connectors and cable assemblies",
+              "title": "TE Connectivity推出56G MezzaWave连接器及电缆组件",
               "url": "https://www.te.com/en/about-te/news-center/56g-mezzawave.html",
               "snippet": "",
               "published_at": "2026-03-16T00:00:00Z",
@@ -1850,7 +2879,7 @@
               "source": "te.com"
             },
             {
-              "title": "TE Connectivity to advance end-to-end optical infrastructure for next-generation AI data centers at OFC 2026",
+              "title": "TE Connectivity 将在 OFC 2026 上推进面向下一代 AI 数据中心的端到端光基础设施",
               "url": "https://www.te.com/en/about-te/news-center/te-ofc-2026.html",
               "snippet": "",
               "published_at": "2026-03-13T00:00:00Z",
@@ -1858,7 +2887,7 @@
               "source": "te.com"
             },
             {
-              "title": "TE Connectivity acquires EV charging inlet assets from Phoenix Contact",
+              "title": "TE Connectivity 收购 Phoenix Contact 的电动汽车充电插座资产",
               "url": "https://www.te.com/en/about-te/news-center/phoenixcontact.html",
               "snippet": "",
               "published_at": "2026-02-28T00:00:00Z",
@@ -1866,7 +2895,7 @@
               "source": "te.com"
             },
             {
-              "title": "TE Connectivity to showcase rugged connectivity and high-speed interconnect solutions at embedded world 2026",
+              "title": "TE Connectivity将在embedded world 2026上展示坚固型连接与高速互连解决方案",
               "url": "https://www.te.com/en/about-te/news-center/embedded-world-2026.html",
               "snippet": "",
               "published_at": "2026-02-25T00:00:00Z",
@@ -1874,7 +2903,7 @@
               "source": "te.com"
             },
             {
-              "title": "Next2OEM: TE Connectivity actively shaping the future of automated wiring harness production",
+              "title": "Next2OEM:TE Connectivity正积极塑造自动化线束生产的未来",
               "url": "https://www.te.com/en/about-te/news-center/next2oem.html",
               "snippet": "",
               "published_at": "2026-01-29T00:00:00Z",
@@ -1882,7 +2911,7 @@
               "source": "te.com"
             },
             {
-              "title": "TE Connectivity expands rapid prototyping with new PROPELUS Prototype Centers in Wilsonville and Tlalnepantla",
+              "title": "TE Connectivity在Wilsonville和Tlalnepantla新设PROPELUS原型中心,拓展快速原型制作能力",
               "url": "https://www.te.com/en/about-te/news-center/propelus-wv-tl-opening.html",
               "snippet": "",
               "published_at": "2025-11-20T00:00:00Z",
@@ -1890,7 +2919,7 @@
               "source": "te.com"
             },
             {
-              "title": "TE Connectivity to showcase fully automated manufacturing cell with Cellios at Productronica 2025",
+              "title": "TE Connectivity将在Productronica 2025上展示与Cellios合作的完全自动化制造单元",
               "url": "https://www.te.com/en/about-te/news-center/productronica-2025.html",
               "snippet": "",
               "published_at": "2025-11-11T00:00:00Z",
@@ -1898,7 +2927,7 @@
               "source": "te.com"
             },
             {
-              "title": "TE AI Hub convenes AWS and leading universities for industry-academia AI collaboration",
+              "title": "TE AI Hub 召集 AWS 及多所顶尖大学，推动产学研 AI 合作",
               "url": "https://www.te.com/en/about-te/news-center/singapore-ai-hub-hackathon.html",
               "snippet": "",
               "published_at": "2025-10-20T00:00:00Z",
@@ -1921,21 +2950,89 @@
           "monogram": "英",
           "monogram_color": "#dc2626",
           "news_url": "https://www.envicool.com/news/",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/03/20 英维克2025年液冷服务器营收同比增长180%",
-              "url": "https://www.envicool.com/news/show-126.html"
+              "title": "英维克SoluKing长效液冷工质通过英特尔认证",
+              "url": "https://www.envicool.com/newsinfo1489.html",
+              "snippet": "",
+              "published_at": "2026-06-24T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.645Z",
+              "source": "envicool.com"
             },
             {
-              "title": "2026/01/15 英维克中标某头部互联网厂商AI数据中心液冷项目5.2亿元",
-              "url": "https://www.envicool.com/news/show-125.html"
+              "title": "广西某运营商机房改造：应用英维克能效焕新方案，节电超过40%",
+              "url": "https://www.envicool.com/newsinfo1488.html",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.645Z",
+              "source": "envicool.com"
             },
             {
-              "title": "2025/11/05 英维克Coolinside液冷全栈方案发布 覆盖CDU+快接头+Manifold",
-              "url": "https://www.envicool.com/news/show-124.html"
+              "title": "助力大湾区算力协同，英维克保障广东省交通行业智算中心高效运行",
+              "url": "https://www.envicool.com/newsinfo1487.html",
+              "snippet": "",
+              "published_at": "2026-06-17T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.645Z",
+              "source": "envicool.com"
+            },
+            {
+              "title": "无热岛、低噪音、高能效！英维克BattCool 5.0护航储能\"大\"时代",
+              "url": "https://www.envicool.com/newsinfo1486.html",
+              "snippet": "",
+              "published_at": "2026-06-24T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.645Z",
+              "source": "envicool.com"
+            },
+            {
+              "title": "厄尔尼诺加剧，储能如何耐高温？英维克55℃不衰减方案全球落地",
+              "url": "https://www.envicool.com/newsinfo1483.html",
+              "snippet": "",
+              "published_at": "2026-06-05T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.645Z",
+              "source": "envicool.com"
+            },
+            {
+              "title": "上海CDCC丨英维克\"三全\"液冷助力每度电产出更多Token",
+              "url": "https://www.envicool.com/newsinfo1482.html",
+              "snippet": "",
+              "published_at": "2026-06-05T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.645Z",
+              "source": "envicool.com"
+            },
+            {
+              "title": "SNEC上海储能展：英维克储能全场景液冷保障储能高效运行",
+              "url": "https://www.envicool.com/newsinfo1481.html",
+              "snippet": "",
+              "published_at": "2026-06-04T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.645Z",
+              "source": "envicool.com"
+            },
+            {
+              "title": "中东\"在建规模最大\"电池储能项目：英维克BattCool提供可靠温控保障",
+              "url": "https://www.envicool.com/newsinfo1480.html",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.645Z",
+              "source": "envicool.com"
+            },
+            {
+              "title": "全球\"词元工厂\"崛起，英维克助力庆阳万卡集群高效运行",
+              "url": "https://www.envicool.com/newsinfo1479.html",
+              "snippet": "",
+              "published_at": "2026-05-23T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.645Z",
+              "source": "envicool.com"
+            },
+            {
+              "title": "英维克助力国家首个大规模算电协同项目节能运行",
+              "url": "https://www.envicool.com/newsinfo1478.html",
+              "snippet": "",
+              "published_at": "2026-05-16T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.645Z",
+              "source": "envicool.com"
             }
-          ],
-          "news": []
+          ]
         },
         {
           "id": "sugon",
@@ -2037,20 +3134,7 @@
           "monogram": "奇",
           "monogram_color": "#7c3aed",
           "news_url": "https://www.avc.com.tw/news",
-          "fallback_news": [
-            {
-              "title": "2026/03/10 奇鋐AI服务器液冷散热模组出货量月增40%",
-              "url": "https://www.avc.com.tw/news/show-126.html"
-            },
-            {
-              "title": "2025/12/22 奇鋐携手台积电开发下一代2nm芯片液冷参考设计",
-              "url": "https://www.avc.com.tw/news/show-125.html"
-            },
-            {
-              "title": "2025/09/08 奇鋐2025年散热模组营收突破800亿新台币创历史新高",
-              "url": "https://www.avc.com.tw/news/show-124.html"
-            }
-          ],
+          "fallback_news": [],
           "news": []
         },
         {
@@ -2061,21 +3145,65 @@
           "monogram": "双",
           "monogram_color": "#0891b2",
           "news_url": "https://www.auras.com.tw/news",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/03/15 双鸿AI服务器液冷散热订单满载 2026 Q2营收估增30%",
-              "url": "https://www.auras.com.tw/news/show-126.html"
+              "title": "COMPUTEX 2026 — Auras Goes All Out at Computex to Showcase New Thermal Solutions",
+              "url": "https://www.auras.com.tw/News/NewsContent/14-11",
+              "snippet": "",
+              "published_at": "2026-05-29T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.453Z",
+              "source": "auras.com.tw"
             },
             {
-              "title": "2025/11/28 双鸿3D VC均热板技术应用于NVIDIA GB200 NVL72",
-              "url": "https://www.auras.com.tw/news/show-125.html"
+              "title": "OCP Global Summit 2025",
+              "url": "https://www.auras.com.tw/News/NewsContent/14-10",
+              "snippet": "",
+              "published_at": "2025-10-15T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.453Z",
+              "source": "auras.com.tw"
             },
             {
-              "title": "2025/08/22 双鸿与台达电合作开发浸没式液冷整机柜方案",
-              "url": "https://www.auras.com.tw/news/show-124.html"
+              "title": "COMPUTEX 2025",
+              "url": "https://www.auras.com.tw/News/NewsContent/14-8",
+              "snippet": "",
+              "published_at": "2025-05-19T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.453Z",
+              "source": "auras.com.tw"
+            },
+            {
+              "title": "OCP Global Summit 2024",
+              "url": "https://www.auras.com.tw/News/NewsContent/14-7",
+              "snippet": "",
+              "published_at": "2024-10-15T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.453Z",
+              "source": "auras.com.tw"
+            },
+            {
+              "title": "OCP Global Summit 2023",
+              "url": "https://www.auras.com.tw/News/NewsContent/14-2",
+              "snippet": "",
+              "published_at": "2023-10-17T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.453Z",
+              "source": "auras.com.tw"
+            },
+            {
+              "title": "Super Computing 2022",
+              "url": "https://www.auras.com.tw/News/NewsContent/14-3",
+              "snippet": "",
+              "published_at": "2022-11-14T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.453Z",
+              "source": "auras.com.tw"
+            },
+            {
+              "title": "OCP Global Summit 2019",
+              "url": "https://www.auras.com.tw/News/NewsContent/14-4",
+              "snippet": "",
+              "published_at": "2019-03-14T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:25.453Z",
+              "source": "auras.com.tw"
             }
-          ],
-          "news": []
+          ]
         },
         {
           "id": "caoe",
@@ -2120,7 +3248,7 @@
               "source": "jonhon.cn"
             },
             {
-              "title": "产品推荐丨中航光电新一代 Fakra 同轴连接器，创新结构加持，核心性能进阶",
+              "title": "产品推荐丨中航光电新一代 Fakra 同轴连接器,创新结构加持,核心性能进阶",
               "url": "https://www.jonhon.cn/News/news-detail-7831.htm",
               "snippet": "",
               "published_at": "2026-04-28T00:00:00Z",
@@ -2177,21 +3305,89 @@
           "monogram": "V",
           "monogram_color": "#0066b1",
           "news_url": "https://www.vertiv.com/en-us/about/news-and-insights/",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/02/18 Vertiv 推出面向 AI 集群的 CoolCenter Row 液冷分配单元",
-              "url": "https://www.vertiv.com/news/show-126.html"
+              "title": "Vertiv increases manufacturing capacity with new facility in Malaysia, to support growing demand for AI and digital infrastructure across Asia",
+              "url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-increases-manufacturing-capacity-with-new-facility-in-malaysia-to-support-growing-demand-for-ai-and-digital-infrastructure-across-asia/",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.818Z",
+              "source": "vertiv.com"
             },
             {
-              "title": "2025/11/04 Vertiv 2025年Q3营收同比增长26%，液冷订单激增",
-              "url": "www.vertiv.com/news/show-125.html"
+              "title": "Vertiv completes acquisition of ThermoKey, expanding heat rejection portfolio for AI data centers",
+              "url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-completes-acquisition-of-thermokey-expanding-heat-rejection-portfolio-for-ai-data-centers/",
+              "snippet": "",
+              "published_at": "2026-06-12T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.818Z",
+              "source": "vertiv.com"
             },
             {
-              "title": "2025/08/25 Vertiv 与 NVIDIA 合作开发 GB200 NVL72 参考架构",
-              "url": "https://www.vertiv.com/news/show-124.html"
+              "title": "Vertiv unveils high-capacity rack platform for AI and high-density IT deployments",
+              "url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-unveils-high-capacity-rack-platform-for-ai-and-high-density-it-deployments/",
+              "snippet": "",
+              "published_at": "2026-06-09T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.818Z",
+              "source": "vertiv.com"
+            },
+            {
+              "title": "Vertiv expands fluid management services to help reduce water use during data center fluid system commissioning",
+              "url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-expands-fluid-management-services-to-help-reduce-water-use-during-data-center-fluid-system-commissioning/",
+              "snippet": "",
+              "published_at": "2026-06-03T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.818Z",
+              "source": "vertiv.com"
+            },
+            {
+              "title": "Vertiv introduces first converged physical infrastructure digital twin for NVIDIA Omniverse DSX",
+              "url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-introduces-first-converged-physical-infrastructure-digital-twin-for-nvidia-omniverse-dsx/",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.818Z",
+              "source": "vertiv.com"
+            },
+            {
+              "title": "Vertiv expands power portfolio with new compact desktop UPS for personal computing, gaming and networking devices",
+              "url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-expands-power-portfolio-with-new-compact-desktop-ups-for-personal-computing-gaming-and-networking-devices/",
+              "snippet": "",
+              "published_at": "2026-05-06T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.818Z",
+              "source": "vertiv.com"
+            },
+            {
+              "title": "Vertiv appoints Frieda He as chief procurement officer",
+              "url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-appoints-frieda-he-as-chief-procurement-officer/",
+              "snippet": "",
+              "published_at": "2026-05-05T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.818Z",
+              "source": "vertiv.com"
+            },
+            {
+              "title": "Vertiv strengthens liquid-cooling system capability with acquisition of Strategic Thermal Labs",
+              "url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-strengthens-liquid-cooling-system-capability-with-acquisition-of-strategic-thermal-labs/",
+              "snippet": "",
+              "published_at": "2026-04-27T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.818Z",
+              "source": "vertiv.com"
+            },
+            {
+              "title": "Vertiv Reports Strong First Quarter with Diluted EPS Growth of 136% (Adjusted Diluted EPS Growth of +83%); Raises Full-Year Guidance",
+              "url": "https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-First-Quarter-with-Diluted-EPS-Growth-of-136-Adjusted-Diluted-EPS-Growth-of-83-Raises-Full-Year-Guidance/default.aspx",
+              "snippet": "",
+              "published_at": "2026-04-22T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.818Z",
+              "source": "vertiv.com"
+            },
+            {
+              "title": "Vertiv and CPower collaborate to help data centers accelerate interconnection and unlock value from energy assets",
+              "url": "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-and-cpower-collaborate-to-help-data-centers-accelerate-interconnection-and-unlock-value-from-energy-assets/",
+              "snippet": "",
+              "published_at": "2026-04-14T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:31.818Z",
+              "source": "vertiv.com"
             }
-          ],
-          "news": []
+          ]
         },
         {
           "id": "coolit",
@@ -2201,21 +3397,81 @@
           "monogram": "C",
           "monogram_color": "#0d9488",
           "news_url": "https://coolitsystems.com/news/",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/02/12 CoolIT 赢得超大规模云厂商2亿美元液冷合同",
-              "url": "https://coolitsystems.com/news/show-126.html"
+              "title": "CoolIT Systems Launches 15kW Coldplate for High-Density Data Center Liquid Cooling",
+              "url": "https://coolitsystems.com/resources/news/15kw-coldplate/",
+              "snippet": "",
+              "published_at": "2026-06-01T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.298Z",
+              "source": "coolitsystems.com"
             },
             {
-              "title": "2025/11/18 CoolIT 俄亥俄州产能扩大3倍应对AI需求",
-              "url": "https://coolitsystems.com/news/show-125.html"
+              "title": "CoolIT Systems Unveils Industry-First 15kW Press Release at COMPUTEX 2026",
+              "url": "https://coolitsystems.com/resources/news/15kw_press_release/",
+              "snippet": "",
+              "published_at": "2026-05-19T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.298Z",
+              "source": "coolitsystems.com"
             },
             {
-              "title": "2025/08/30 CoolIT 与 Dell PowerEdge 合作开发直触式冷板",
-              "url": "https://coolitsystems.com/news/show-124.html"
+              "title": "Calgary Herald: CoolIT Systems - A Crazy Cool Adventure in Liquid Cooling",
+              "url": "https://coolitsystems.com/resources/news/calgary-herald-crazy-cool-adventure/",
+              "snippet": "",
+              "published_at": "2026-05-12T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.298Z",
+              "source": "coolitsystems.com"
+            },
+            {
+              "title": "CBC Features CoolIT Systems: Powering the Future of AI Cooling in Calgary",
+              "url": "https://coolitsystems.com/resources/news/cbc-coolit-systems-canada-cooling-ai/",
+              "snippet": "",
+              "published_at": "2026-04-08T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.298Z",
+              "source": "coolitsystems.com"
+            },
+            {
+              "title": "Ecolab to Acquire CoolIT Systems, Expanding Data Center Liquid Cooling Portfolio",
+              "url": "https://coolitsystems.com/resources/news/ecolab-to-acquire-coolit-systems/",
+              "snippet": "",
+              "published_at": "2026-04-01T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.298Z",
+              "source": "coolitsystems.com"
+            },
+            {
+              "title": "CoolIT Systems CHx2000 High-Density CDU Wins Data Centre Liquid Cooling Innovation Award",
+              "url": "https://coolitsystems.com/resources/news/chx2000/",
+              "snippet": "",
+              "published_at": "2026-03-15T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.298Z",
+              "source": "coolitsystems.com"
+            },
+            {
+              "title": "Liquid Cooling for AI: CoolIT Systems and the Rise of Two-Phase Direct-to-Chip",
+              "url": "https://coolitsystems.com/resources/news/liquid-cooling-ai/",
+              "snippet": "",
+              "published_at": "2026-03-04T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.298Z",
+              "source": "coolitsystems.com"
+            },
+            {
+              "title": "CoolIT Systems Celebrates 25 Years of Pioneering Liquid Cooling Innovation",
+              "url": "https://coolitsystems.com/resources/news/coolit-25-years/",
+              "snippet": "",
+              "published_at": "2026-02-12T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.298Z",
+              "source": "coolitsystems.com"
+            },
+            {
+              "title": "GWDG Customer Story: CoolIT Systems Liquid Cooling Powers AI Research at NHR@GWDG",
+              "url": "https://coolitsystems.com/resources/news/gwdg-customer/",
+              "snippet": "",
+              "published_at": "2026-01-22T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:27.298Z",
+              "source": "coolitsystems.com"
             }
-          ],
-          "news": []
+          ]
         },
         {
           "id": "nidec",
@@ -2225,21 +3481,89 @@
           "monogram": "N",
           "monogram_color": "#0d9488",
           "news_url": "https://www.nidec.com/en/news/",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/02/22 Nidec 推出面向 AI 服务器液冷的超紧凑浸没式泵",
-              "url": "https://www.nidec.com/en/news/show-126.html"
+              "title": "Nidec Machine Tool Launches \"Nidec NC Twin\", a Digital Twin Platform",
+              "url": "https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0701-02/260701-02en.pdf",
+              "snippet": "",
+              "published_at": "2026-07-01T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.604Z",
+              "source": "nidec.com"
             },
             {
-              "title": "2025/12/05 Nidec 收购美国 CIMA 拓展 AI 数据中心液冷业务",
-              "url": "https://www.nidec.com/en/news/show-125.html"
+              "title": "Takisawa Machine Tool Launches, in Full Scale, TEX-2500S, a Middle-class Multi-tasking Machine",
+              "url": "https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0629-02/260629-02en.pdf",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.604Z",
+              "source": "nidec.com"
             },
             {
-              "title": "2025/08/18 Nidec 2026财年Q1业绩：数据中心电机与风扇业务同比增长42%",
-              "url": "https://www.nidec.com/en/news/show-124.html"
+              "title": "Initial Report on Ransomware-caused Damage to an Overseas Subsidiary of Nidec Corporation",
+              "url": "https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0624-01/260624-01en.pdf",
+              "snippet": "",
+              "published_at": "2026-06-24T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.604Z",
+              "source": "nidec.com"
+            },
+            {
+              "title": "Notice Regarding Potential Quality Issues and Establishment of an Investigation Committee Composed of External Experts",
+              "url": "https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0513-02/260513-02en.pdf",
+              "snippet": "",
+              "published_at": "2026-05-13T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.604Z",
+              "source": "nidec.com"
+            },
+            {
+              "title": "Toward Nidec Reform",
+              "url": "https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0513-05/260513-05en.pdf",
+              "snippet": "",
+              "published_at": "2026-05-13T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.604Z",
+              "source": "nidec.com"
+            },
+            {
+              "title": "Nidec Announces Organizational and Personnel Changes",
+              "url": "https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0423-01/260423-01en.pdf",
+              "snippet": "",
+              "published_at": "2026-04-23T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.604Z",
+              "source": "nidec.com"
+            },
+            {
+              "title": "Nidec Launches New High-Power Motor for EV Truck Applications",
+              "url": "https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0326-02/260326-02en.pdf",
+              "snippet": "",
+              "published_at": "2026-03-26T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.604Z",
+              "source": "nidec.com"
+            },
+            {
+              "title": "Nidec and Renault Group Expand E-Axle Production Partnership in France",
+              "url": "https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0219-01/260219-01en.pdf",
+              "snippet": "",
+              "published_at": "2026-02-19T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.604Z",
+              "source": "nidec.com"
+            },
+            {
+              "title": "Nidec Establishes New Motor Manufacturing Subsidiary in Mexico",
+              "url": "https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0128-01/260128-01en.pdf",
+              "snippet": "",
+              "published_at": "2026-01-28T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.604Z",
+              "source": "nidec.com"
+            },
+            {
+              "title": "Nidec and Foxconn Form Strategic Alliance for Robotics Motor Development",
+              "url": "https://www.nidec.com/files/user/www-nidec-com/corporate/news/2025/1218-02/251218-02en.pdf",
+              "snippet": "",
+              "published_at": "2025-12-18T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.604Z",
+              "source": "nidec.com"
             }
-          ],
-          "news": []
+          ]
         },
         {
           "id": "semco",
@@ -2249,21 +3573,89 @@
           "monogram": "三",
           "monogram_color": "#1428a0",
           "news_url": "https://www.samsungsem.com/global/news/",
-          "fallback_news": [
+          "fallback_news": [],
+          "news": [
             {
-              "title": "2026/03/05 三星电机推出基于MLCC的AI加速器热界面材料",
-              "url": "https://www.samsungsem.com/news/show-126.html"
+              "title": "Samsung Electro-Mechanics Launches the Automotive Ultra-High Capacitance MLCC (1206 inch, 100uF, 4V)",
+              "url": "https://product.samsungsem.com/product-news/view.do?idx=3906&language=en",
+              "snippet": "",
+              "published_at": "2026-06-17T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.095Z",
+              "source": "samsungsem.com"
             },
             {
-              "title": "2025/11/12 三星电机推出面向移动AI芯片的超薄均热板",
-              "url": "https://www.samsungsem.com/news/show-125.html"
+              "title": "Introducing the Silicon Capacitor Lineup",
+              "url": "https://product.samsungsem.com/product-news/view.do?idx=3902&language=en",
+              "snippet": "",
+              "published_at": "2026-06-17T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.095Z",
+              "source": "samsungsem.com"
             },
             {
-              "title": "2025/09/04 三星电机子公司将向 NVIDIA GB200 供应链供应冷板",
-              "url": "https://www.samsungsem.com/news/show-124.html"
+              "title": "June Newsletter Published",
+              "url": "https://www.samsungsem.com/global/newsroom/newsletter/view.do?id=1622",
+              "snippet": "",
+              "published_at": "2026-06-01T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.095Z",
+              "source": "samsungsem.com"
+            },
+            {
+              "title": "Samsung Electro-Mechanics Signs 1.5 Trillion KRW Silicon Capacitor Supply Contract with Global Large-Scale Company",
+              "url": "https://www.samsungsem.com/global/newsroom/news/view.do?id=10310",
+              "snippet": "",
+              "published_at": "2026-05-20T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.095Z",
+              "source": "samsungsem.com"
+            },
+            {
+              "title": "Low ESL MLCC Solutions for High-Performance ADAS SoCs",
+              "url": "https://product.samsungsem.com/product-news/view.do?idx=3886&language=en",
+              "snippet": "",
+              "published_at": "2026-05-20T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.095Z",
+              "source": "samsungsem.com"
+            },
+            {
+              "title": "Presenting the Ultra-Compact 008004 inch High Q MLCC",
+              "url": "https://product.samsungsem.com/product-news/view.do?idx=3882&language=en",
+              "snippet": "",
+              "published_at": "2026-05-20T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.095Z",
+              "source": "samsungsem.com"
+            },
+            {
+              "title": "Samsung Electro-Mechanics Hosts '2026 Win-Win Cooperation Day'",
+              "url": "https://www.samsungsem.com/global/newsroom/news/view.do?id=10262",
+              "snippet": "",
+              "published_at": "2026-04-29T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.095Z",
+              "source": "samsungsem.com"
+            },
+            {
+              "title": "Samsung Electro-Mechanics introduces the Ultra-High-Voltage MLCCs for xEV High-Voltage Powertrains",
+              "url": "https://product.samsungsem.com/product-news/view.do?idx=3866&language=en",
+              "snippet": "",
+              "published_at": "2026-04-15T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.095Z",
+              "source": "samsungsem.com"
+            },
+            {
+              "title": "Robot Strategy as The Next AI Infrastructure: MLCC Optimization Focused on the Three Core Units—Computing, Motor Control, and Sensors",
+              "url": "https://product.samsungsem.com/product-news/view.do?idx=3862&language=en",
+              "snippet": "",
+              "published_at": "2026-04-15T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.095Z",
+              "source": "samsungsem.com"
+            },
+            {
+              "title": "Introducing MLCCs for 35V Class Medium-Voltage and Flying Capacitors",
+              "url": "https://product.samsungsem.com/product-news/view.do?idx=3842&language=en",
+              "snippet": "",
+              "published_at": "2026-03-23T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:30.095Z",
+              "source": "samsungsem.com"
             }
-          ],
-          "news": []
+          ]
         }
       ]
     },
@@ -2371,7 +3763,88 @@
           "monogram": "江",
           "monogram_color": "#7c3aed",
           "news_url": "https://www.ymtc.com/cn/index.html",
-          "news": [],
+          "news": [
+            {
+              "title": "致态TiPlus9100震撼发布，PCIe 5.0赛道疾速引擎解锁游戏新体验",
+              "url": "https://www.ymtc.com/cn/news/63.html",
+              "snippet": "",
+              "published_at": "2026-04-16T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:32.175Z",
+              "source": "ymtc.com"
+            },
+            {
+              "title": "备份每一份热爱 致态灵·潮流版移动固态硬盘上市",
+              "url": "https://www.ymtc.com/cn/news/61.html",
+              "snippet": "",
+              "published_at": "2025-12-16T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:32.175Z",
+              "source": "ymtc.com"
+            },
+            {
+              "title": "4TB大容量 职场更从容 致态灵·先锋版移动固态硬盘上新",
+              "url": "https://www.ymtc.com/cn/news/62.html",
+              "snippet": "",
+              "published_at": "2026-01-13T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:32.175Z",
+              "source": "ymtc.com"
+            },
+            {
+              "title": "致态TiPlus7100s固态硬盘正式发布，性能全面跃迁",
+              "url": "https://www.ymtc.com/cn/news/60.html",
+              "snippet": "",
+              "published_at": "2025-11-10T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:32.175Z",
+              "source": "ymtc.com"
+            },
+            {
+              "title": "长江存储晶栈®Xtacking®4.0 荣获FMS 2025最具创新存储技术奖",
+              "url": "https://www.ymtc.com/cn/news/58.html",
+              "snippet": "",
+              "published_at": "2025-08-06T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:32.175Z",
+              "source": "ymtc.com"
+            },
+            {
+              "title": "掀起PCIe 5.0性能狂潮 TiPro9000固态硬盘《黑神话：悟空》联名版开启预售",
+              "url": "https://www.ymtc.com/cn/news/57.html",
+              "snippet": "",
+              "published_at": "2025-05-22T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:32.175Z",
+              "source": "ymtc.com"
+            },
+            {
+              "title": "银翼新境 致态TiPro9000引领个人存储PCIe 5.0新时代",
+              "url": "https://www.ymtc.com/cn/news/56.html",
+              "snippet": "",
+              "published_at": "2024-12-24T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:32.175Z",
+              "source": "ymtc.com"
+            },
+            {
+              "title": "致态产品案例被收录至人民网\"2024国民消费创新案例库\"",
+              "url": "https://www.ymtc.com/cn/news/55.html",
+              "snippet": "",
+              "published_at": "2024-12-13T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:32.175Z",
+              "source": "ymtc.com"
+            },
+            {
+              "title": "行者无畏，天命致远！致态TiPlus7100固态硬盘《黑神话：悟空》联名版限量正式发售",
+              "url": "https://www.ymtc.com/cn/news/53.html",
+              "snippet": "",
+              "published_at": "2024-08-19T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:32.175Z",
+              "source": "ymtc.com"
+            },
+            {
+              "title": "超·有Ti度！长江存储致态Ti系列首款固态硬盘Ti600发布",
+              "url": "https://www.ymtc.com/cn/news/52.html",
+              "snippet": "",
+              "published_at": "2023-09-26T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:32.175Z",
+              "source": "ymtc.com"
+            }
+          ],
           "fallback_news": []
         },
         {
@@ -2566,7 +4039,88 @@
           "monogram": "S",
           "monogram_color": "#1428a0",
           "news_url": "https://news.samsung.com/global/",
-          "news": [],
+          "news": [
+            {
+              "title": "[Interview] Art Made for the Senses: Karim Noureldin x Samsung Art Store",
+              "url": "https://news.samsung.com/global/interview-art-made-for-the-senses-karim-noureldin-x-samsung-art-store",
+              "snippet": "",
+              "published_at": "2026-07-03T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.951Z",
+              "source": "news.samsung.com"
+            },
+            {
+              "title": "Samsung and KDDI Successfully Complete AI-Powered Network Optimization Trial on Commercial 5G Standalone Network in Japan",
+              "url": "https://news.samsung.com/global/samsung-and-kddi-successfully-complete-ai-powered-network-optimization-trial-on-commercial-5g-standalone-network-in-japan",
+              "snippet": "",
+              "published_at": "2026-06-30T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.951Z",
+              "source": "news.samsung.com"
+            },
+            {
+              "title": "Samsung Introduces New Education Tools for Interactive Displays at ISTELive 26",
+              "url": "https://news.samsung.com/global/samsung-introduces-new-education-tools-for-interactive-displays-at-istelive-26",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.951Z",
+              "source": "news.samsung.com"
+            },
+            {
+              "title": "Samsung Electronics Releases 2026 Sustainability Report, Expanding Water Replenishment Efforts",
+              "url": "https://news.samsung.com/global/samsung-electronics-releases-2026-sustainability-report-expanding-water-replenishment-efforts",
+              "snippet": "",
+              "published_at": "2026-06-26T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.951Z",
+              "source": "news.samsung.com"
+            },
+            {
+              "title": "[Interview] Patterns That Hold Memory: Athene Galiciadis x Samsung Art Store",
+              "url": "https://news.samsung.com/global/interview-patterns-that-hold-memory-athene-galiciadis-x-samsung-art-store",
+              "snippet": "",
+              "published_at": "2026-06-26T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.951Z",
+              "source": "news.samsung.com"
+            },
+            {
+              "title": "Samsung Galaxy A27 5G Brings an Immersive Display and Awesome Intelligence to More Users",
+              "url": "https://news.samsung.com/global/samsung-galaxy-a27-5g-brings-an-immersive-display-and-awesome-intelligence-to-more-users",
+              "snippet": "",
+              "published_at": "2026-06-25T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.951Z",
+              "source": "news.samsung.com"
+            },
+            {
+              "title": "Finding Your Voice Anywhere: The Tech Behind Galaxy Buds4 Pro's Crystal-Clear Calls",
+              "url": "https://news.samsung.com/global/finding-your-voice-anywhere-the-tech-behindgalaxy-buds4-pros-crystal-clear-calls",
+              "snippet": "",
+              "published_at": "2026-06-25T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.951Z",
+              "source": "news.samsung.com"
+            },
+            {
+              "title": "Samsung Partners With Alcedis To Advance Clinical Research Using Wearable-Based Endpoints",
+              "url": "https://news.samsung.com/global/samsung-partners-with-alcedis-to-advance-clinical-research-using-wearable-based-endpoints",
+              "snippet": "",
+              "published_at": "2026-06-24T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.951Z",
+              "source": "news.samsung.com"
+            },
+            {
+              "title": "Samsung Partners With Warner Bros. Pictures and DC Studios To Bring 'Supergirl' Experiences to Fans",
+              "url": "https://news.samsung.com/global/samsung-partners-with-warner-bros-pictures-and-dc-studios-to-bring-supergirl-experiences-to-fans",
+              "snippet": "",
+              "published_at": "2026-06-24T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.951Z",
+              "source": "news.samsung.com"
+            },
+            {
+              "title": "Samsung Unveils Industry's Fastest UFS 5.0 Solution for Next-Gen On-Device AI Applications",
+              "url": "https://news.samsung.com/global/samsung-unveils-industrys-fastest-ufs-5-0-solution-for-next-gen-on-device-ai-applications",
+              "snippet": "",
+              "published_at": "2026-06-23T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:29.951Z",
+              "source": "news.samsung.com"
+            }
+          ],
           "fallback_news": []
         },
         {
@@ -2577,7 +4131,88 @@
           "monogram": "I",
           "monogram_color": "#0071c5",
           "news_url": "https://www.intel.com/content/www/us/en/newsroom/news.html",
-          "news": [],
+          "news": [
+            {
+              "title": "Intel to Report Second-Quarter 2026 Financial Results",
+              "url": "https://newsroom.intel.com/corporate/intel-to-report-second-quarter-2026-financial-results",
+              "snippet": "",
+              "published_at": "2026-06-30T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.703Z",
+              "source": "newsroom.intel.com"
+            },
+            {
+              "title": "Three ways Intel and MSI co-engineered the world's first Arc G3 handheld",
+              "url": "https://newsroom.intel.com/client-computing/three-ways-intel-msi-co-engineered-worlds-first-arc-g3-handheld",
+              "snippet": "",
+              "published_at": "2026-06-30T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.703Z",
+              "source": "newsroom.intel.com"
+            },
+            {
+              "title": "America 250: At a Pivotal Moment for the Nation, Intel is Advancing U.S. Innovation, AI, and Manufacturing",
+              "url": "https://newsroom.intel.com/corporate/america-250-intel-is-advancing-us-innovation",
+              "snippet": "",
+              "published_at": "2026-06-29T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.703Z",
+              "source": "newsroom.intel.com"
+            },
+            {
+              "title": "Intel Announces Leadership Appointment at Intel Foundry to Accelerate Development and Manufacturing",
+              "url": "https://newsroom.intel.com/corporate/intel-announces-leadership-appointment-at-intel-foundry-to-accelerate-development-and-manufacturing",
+              "snippet": "",
+              "published_at": "2026-06-18T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.703Z",
+              "source": "newsroom.intel.com"
+            },
+            {
+              "title": "CEO Letter: 2025-26 Intel Corporate Responsibility Report",
+              "url": "https://newsroom.intel.com/corporate/ceo-letter-2025-26-intel-corporate-responsibility-report",
+              "snippet": "",
+              "published_at": "2026-06-17T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.703Z",
+              "source": "newsroom.intel.com"
+            },
+            {
+              "title": "Intel Advances Responsible Business Practices and AI-Driven Growth in 2025–2026 Corporate Responsibility Report",
+              "url": "https://newsroom.intel.com/corporate/intel-advances-growth-in-ai-era-2025-2026-csr-report",
+              "snippet": "",
+              "published_at": "2026-06-17T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.703Z",
+              "source": "newsroom.intel.com"
+            },
+            {
+              "title": "Intel Foundry Details Process Milestones and Future Innovation at VLSI Symposium",
+              "url": "https://newsroom.intel.com/intel-foundry/intel-foundry-details-process-milestones-future-innovation-at-vlsi-symposium",
+              "snippet": "",
+              "published_at": "2026-06-16T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.703Z",
+              "source": "newsroom.intel.com"
+            },
+            {
+              "title": "New Smart City Pilot Network to Bridge Digital Divide for 50 U.S. Cities",
+              "url": "https://newsroom.intel.com/5g-wireless/intel-5g-network-bridges-digital-divide",
+              "snippet": "",
+              "published_at": "2026-06-09T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.703Z",
+              "source": "newsroom.intel.com"
+            },
+            {
+              "title": "Postcard from Computex 2026: New Intel® Core™ Series 3 laptops for Everyday Creation and All-day Productivity",
+              "url": "https://newsroom.intel.com/client-computing/postcard-from-computex-2026-new-intel-core-series-3-laptops-for-creation-productivity",
+              "snippet": "",
+              "published_at": "2026-06-05T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.703Z",
+              "source": "newsroom.intel.com"
+            },
+            {
+              "title": "Intel Introduces Ethernet E835 Controllers and Network Adapters for Cloud, Edge and Enterprise Data Center Infrastructure",
+              "url": "https://newsroom.intel.com/data-center/intel-introduces-ethernet-e835-controllers-network-adapters",
+              "snippet": "",
+              "published_at": "2026-06-02T00:00:00Z",
+              "fetched_at": "2026-07-03T13:43:28.703Z",
+              "source": "newsroom.intel.com"
+            }
+          ],
           "fallback_news": []
         },
         {
@@ -2590,7 +4225,7 @@
           "news_url": "https://nvidianews.nvidia.com/news?category=press-releases",
           "news": [
             {
-              "title": "NVIDIA Announces BioNeMo Agent Toolkit — Tools for Agents to Accelerate Scientific Discovery",
+              "title": "NVIDIA发布BioNeMo Agent Toolkit——加速科学发现的智能体工具",
               "url": "https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery",
               "snippet": "",
               "published_at": "2026-06-23T00:00:00Z",
@@ -2598,7 +4233,7 @@
               "source": "nvidianews.nvidia.com"
             },
             {
-              "title": "NVIDIA Vera Rubin Delivers World-Class Supercomputers for Science",
+              "title": "NVIDIA Vera Rubin 为科学领域提供世界级超级计算机",
               "url": "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-delivers-world-class-supercomputers-for-science",
               "snippet": "",
               "published_at": "2026-06-22T00:00:00Z",
@@ -2606,7 +4241,7 @@
               "source": "nvidianews.nvidia.com"
             },
             {
-              "title": "Europe Unveils a Record 35 New NVIDIA AI Supercomputers",
+              "title": "欧洲推出35台创纪录的全新NVIDIA AI超级计算机",
               "url": "https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers",
               "snippet": "",
               "published_at": "2026-06-22T00:00:00Z",
@@ -2614,7 +4249,7 @@
               "source": "nvidianews.nvidia.com"
             },
             {
-              "title": "NVIDIA Announces Halos for Robotics, the Industry’s First Full-Stack Safety System for Physical AI",
+              "title": "NVIDIA发布Halos机器人系统——业界首个面向物理AI的全栈式安全系统",
               "url": "https://nvidianews.nvidia.com/news/nvidia-announces-halos-for-robotics-the-industrys-first-full-stack-safety-system-for-physical-ai",
               "snippet": "",
               "published_at": "2026-06-22T00:00:00Z",
@@ -2622,7 +4257,7 @@
               "source": "nvidianews.nvidia.com"
             },
             {
-              "title": "NVIDIA Stockholder Meeting Set for June 24; Individuals Can Participate Online",
+              "title": "NVIDIA 股东大会定于 6 月 24 日举行;个人可在线参与",
               "url": "https://nvidianews.nvidia.com/news/nvidia-stockholder-meeting-set-for-june-24-individuals-can-participate-online",
               "snippet": "",
               "published_at": "2026-06-11T00:00:00Z",
@@ -2630,7 +4265,7 @@
               "source": "nvidianews.nvidia.com"
             },
             {
-              "title": "SK Telecom and NVIDIA Build AI Infrastructure to Power Korea’s AI Innovation",
+              "title": "SK Telecom 与 NVIDIA 建设 AI 基础设施，为韩国 AI 创新提供算力支持",
               "url": "https://nvidianews.nvidia.com/news/sk-telecom-ai-infrastructure",
               "snippet": "",
               "published_at": "2026-06-07T00:00:00Z",
@@ -2638,7 +4273,7 @@
               "source": "nvidianews.nvidia.com"
             },
             {
-              "title": "NVIDIA and SK hynix Announce Multiyear Technology Partnership to Advance Memory for AI Factories",
+              "title": "NVIDIA 与 SK hynix 宣布多年期技术合作伙伴关系，推动 AI 工厂的内存技术发展",
               "url": "https://nvidianews.nvidia.com/news/sk-hynix-ai-factory",
               "snippet": "",
               "published_at": "2026-06-07T00:00:00Z",
@@ -2646,7 +4281,7 @@
               "source": "nvidianews.nvidia.com"
             },
             {
-              "title": "NAVER Expands AI Infrastructure With NVIDIA to Serve Surging Global AI Demand",
+              "title": "NAVER 与 NVIDIA 扩展 AI 基础设施，应对全球 AI 需求的激增",
               "url": "https://nvidianews.nvidia.com/news/naver-ai-infrastructure",
               "snippet": "",
               "published_at": "2026-06-07T00:00:00Z",
@@ -2654,7 +4289,7 @@
               "source": "nvidianews.nvidia.com"
             },
             {
-              "title": "NVIDIA and TSMC Bring AI Into Fabs to Advance Semiconductor Design and Manufacturing",
+              "title": "NVIDIA与TSMC将AI引入晶圆厂，以推动半导体设计与制造",
               "url": "https://nvidianews.nvidia.com/news/nvidia-and-tsmc-bring-ai-into-fabs-to-advance-semiconductor-design-and-manufacturing",
               "snippet": "",
               "published_at": "2026-05-31T00:00:00Z",
@@ -2662,7 +4297,7 @@
               "source": "nvidianews.nvidia.com"
             },
             {
-              "title": "NVIDIA, Foxconn and Taiwan Medical Centers Bring Agentic and Physical AI to ‘Healthy Taiwan’",
+              "title": "NVIDIA、富士康及台湾医疗中心将代理式AI与实体AI引入“健康台湾”",
               "url": "https://nvidianews.nvidia.com/news/nvidia-foxconn-and-taiwan-medical-centers-bring-agentic-and-physical-ai-to-healthy-taiwan",
               "snippet": "",
               "published_at": "2026-05-31T00:00:00Z",
