@@ -3133,9 +3133,90 @@
           "domain": "avc.com.tw",
           "monogram": "奇",
           "monogram_color": "#7c3aed",
-          "news_url": "https://www.avc.com.tw/news",
+          "news_url": "https://www.avc.co/zh-cn/最新消息",
           "fallback_news": [],
-          "news": []
+          "news": [
+            {
+              "title": "奇鋐科技以優異的經營績效，持續推動ESG永續發展各項工作，再次經篩選自2026年6月起納入「臺灣永續指數」成分股並得使用「臺灣永續指數專屬標章」",
+              "url": "https://www.avc.co/zh-cn/最新消息/202606-000001",
+              "snippet": "",
+              "published_at": "2026-06-22T00:00:00Z",
+              "fetched_at": "2026-07-04T00:19:03.603Z",
+              "source": "avc.co"
+            },
+            {
+              "title": "與供應商開展氣候層面合作，奇鋐科技榮獲CDP 2025供應商合作評估（SEA）頂級A評分",
+              "url": "https://www.avc.co/zh-cn/最新消息/202605-000001",
+              "snippet": "",
+              "published_at": "2026-05-21T00:00:00Z",
+              "fetched_at": "2026-07-04T00:19:03.603Z",
+              "source": "avc.co"
+            },
+            {
+              "title": "AVC 以優異的經營績效，再次納入「臺灣永續指數」成分股並獲得「臺灣永續指數專屬標章」",
+              "url": "https://www.avc.co/zh-cn/最新消息/202512-000001",
+              "snippet": "",
+              "published_at": "2025-12-24T00:00:00Z",
+              "fetched_at": "2026-07-04T00:19:03.603Z",
+              "source": "avc.co"
+            },
+            {
+              "title": "奇鋐公司獲頒2025年外資百強第六名",
+              "url": "https://www.avc.co/zh-cn/最新消息/202509-000001",
+              "snippet": "",
+              "published_at": "2025-09-30T00:00:00Z",
+              "fetched_at": "2026-07-04T00:19:03.603Z",
+              "source": "avc.co"
+            },
+            {
+              "title": "AVC 連續第2年納入「臺灣永續指數」成分股並獲得「臺灣永續指數專屬標章」",
+              "url": "https://www.avc.co/zh-cn/最新消息/202507-000001",
+              "snippet": "",
+              "published_at": "2025-07-01T00:00:00Z",
+              "fetched_at": "2026-07-04T00:19:03.603Z",
+              "source": "avc.co"
+            },
+            {
+              "title": "AVC榮獲2025年聯想全球供應商大會所頒發之鑽石獎",
+              "url": "https://www.avc.co/zh-cn/最新消息/202505-000005",
+              "snippet": "",
+              "published_at": "2025-05-26T00:00:00Z",
+              "fetched_at": "2026-07-04T00:19:03.603Z",
+              "source": "avc.co"
+            },
+            {
+              "title": "奇鋐科技於2025年取得健康職場認證健康促進標章認證標章",
+              "url": "https://www.avc.co/zh-cn/最新消息/202504-000001",
+              "snippet": "",
+              "published_at": "2025-04-21T00:00:00Z",
+              "fetched_at": "2026-07-04T00:19:03.603Z",
+              "source": "avc.co"
+            },
+            {
+              "title": "東莞明鑫通過SBTi審核",
+              "url": "https://www.avc.co/zh-cn/最新消息/202411-000001",
+              "snippet": "",
+              "published_at": "2024-11-22T00:00:00Z",
+              "fetched_at": "2026-07-04T00:19:03.603Z",
+              "source": "avc.co"
+            },
+            {
+              "title": "2024年10月18日奇鋐科技參加玉山銀行「 玉山ESG永續倡議行動 」",
+              "url": "https://www.avc.co/zh-cn/最新消息/202410-000001",
+              "snippet": "",
+              "published_at": "2024-10-22T00:00:00Z",
+              "fetched_at": "2026-07-04T00:19:03.603Z",
+              "source": "avc.co"
+            },
+            {
+              "title": "奇鋐公司獲頒外資百強前十名",
+              "url": "https://www.avc.co/zh-cn/最新消息/202409-000002",
+              "snippet": "",
+              "published_at": "2024-09-26T00:00:00Z",
+              "fetched_at": "2026-07-04T00:19:03.603Z",
+              "source": "avc.co"
+            }
+          ]
         },
         {
           "id": "aurastw",
