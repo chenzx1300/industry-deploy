@@ -22,6 +22,14 @@ const REFILL_SUFFIX = '-v1.mjs';
 const DATA_DIR = 'data';
 const INDUSTRIES_FILE = join(DATA_DIR, 'industries.json');
 
+// Per-company overrides: when a newer "-vN.mjs" exists, use it instead of "-v1.mjs".
+// Keep this list short — only add entries when the v1 is deprecated and a v2 has
+// superseded it. Existing v1 scripts are kept on disk for historical reference.
+const REFILL_OVERRIDES = {
+  huitong: 'refill-huitong-v2.mjs',  // 2026-07-04: switched to orinko.com.cn + WeChat links
+  avctw:   'refill-avctw-v2.mjs',    // 2026-07-04: avc.com.tw/news was empty DNN shell
+};
+
 function run(cmd, opts = {}) {
   console.log(`\n▸ ${cmd}`);
   try {
@@ -35,9 +43,19 @@ function run(cmd, opts = {}) {
 }
 
 function listRefillScripts() {
-  return readdirSync(SCRIPTS_DIR)
+  const all = readdirSync(SCRIPTS_DIR)
     .filter(f => f.startsWith(REFILL_PREFIX) && f.endsWith(REFILL_SUFFIX))
     .sort();
+  // Apply per-company overrides: skip the v1 if a newer version is listed in REFILL_OVERRIDES.
+  const overriddenSlugs = new Set(Object.keys(REFILL_OVERRIDES));
+  const overridden = Object.values(REFILL_OVERRIDES).filter(f => all.includes(f) || existsSync(join(SCRIPTS_DIR, f)));
+  const filtered = all.filter(f => {
+    // match refill-<slug>-v1.mjs → check if slug is overridden
+    const m = f.match(/^refill-(.+?)-v1\.mjs$/);
+    if (m && overriddenSlugs.has(m[1])) return false;
+    return true;
+  });
+  return [...filtered, ...overridden].sort();
 }
 
 async function main() {
