@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新能源汽车电机 · 行业雷达</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #fafafa;
+  --surface-elevated: #ffffff;
+  --border: #e8e8e8;
+  --border-strong: #d0d0d0;
+  --divider: #f0f0f0;
+  --text: #1a1a1a;
+  --text-soft: #555;
+  --text-faint: #888;
+  --text-mute: #aaa;
+  --accent: #c00;
+  --accent-hover: #a00;
+  --accent-soft: #fef0f0;
+  --accent-tint: #fef5f5;
+  --intl: #1a5490;
+  --intl-soft: #f0f4f9;
+  --cn-tint: #c00;
+  --intl-tint: #1a5490;
+  --highlight: #fff8e6;
+  --live: #e60012;
+  --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-serif: 'PingFang SC', 'Source Han Serif SC', 'Noto Serif CJK SC', 'STSong', Georgia, serif;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+[data-theme="dark"] {
+  --bg: #0e0e10;
+  --surface: #1a1a1c;
+  --surface-soft: #232325;
+  --surface-elevated: #252528;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --divider: rgba(255, 255, 255, 0.06);
+  --text: #f5f5f7;
+  --text-soft: #a8a8ad;
+  --text-faint: #6e6e73;
+  --text-mute: #555;
+  --accent: #ff3838;
+  --accent-hover: #ff5555;
+  --accent-soft: rgba(255, 56, 56, 0.12);
+  --accent-tint: rgba(255, 56, 56, 0.05);
+  --intl: #5b9dd9;
+  --intl-soft: rgba(91, 157, 217, 0.10);
+  --cn-tint: #ff3838;
+  --intl-tint: #5b9dd9;
+  --highlight: #3a2e0a;
+  --live: #ff3838;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+html { background: var(--bg); }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  font-size: 16px;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+a { color: inherit; }
+
+/* ============ TOP BAR (live ticker) ============ */
+.topbar {
+  background: #1a1a1a;
+  color: #e5e5e5;
+  border-bottom: 1px solid #000;
+}
+[data-theme="dark"] .topbar { background: #050505; }
+.topbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.brand {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: -0.04em;
+  border-radius: 4px;
+}
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--live);
+  color: #fff;
+  padding: 4px 10px 4px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 1.4s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.ticker {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13.5px;
+  color: #ddd;
+  position: relative;
+  height: 24px;
+}
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 60s linear infinite;
+  padding-left: 100%;
+}
+.ticker-track span { padding: 0 24px; }
+.ticker-track span::before {
+  content: '●';
+  color: var(--accent);
+  margin-right: 8px;
+  font-size: 8px;
+  vertical-align: middle;
+}
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+.topbar-meta {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 4px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.theme-toggle:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
+
+/* ============ MASTHEAD (logo + main nav) ============ */
+.masthead {
+  background: var(--bg);
+  border-bottom: 2px solid var(--accent);
+}
+.masthead-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 32px 0;
+}
+.masthead-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+.masthead-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.masthead h1 {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+}
+.masthead h1 .accent { color: var(--accent); }
+.masthead .dateline {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+.masthead-stats {
+  display: flex;
+  gap: 24px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+.masthead-stats .num { color: var(--accent); font-weight: 600; }
+
+/* Region tabs (clickable scroll anchors) */
+.section-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+button.tab-region {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px 12px;
+  margin-right: 8px;
+  color: var(--text-faint);
+  transition: all 0.2s;
+}
+button.tab-region:hover { color: var(--text); }
+button.tab-region.cn.active { color: var(--accent); border-bottom-color: var(--accent); }
+button.tab-region.intl.active { color: var(--intl); border-bottom-color: var(--intl); }
+button.tab-region .count {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--text-faint);
+  font-weight: 500;
+}
+button.tab-region.active .count { color: inherit; }
+
+/* Company tab buttons */
+.company-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 4px;
+  padding-bottom: 12px;
+  padding-top: 8px;
+}
+button.company-tab {
+  font-family: var(--font-sans);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: var(--text-soft);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+button.company-tab:hover { color: var(--text); }
+button.company-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+button.company-tab .mono-count {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 10px;
+  background: var(--surface-soft);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--text-faint);
+}
+button.company-tab.active .mono-count {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ============ MAIN CONTENT ============ */
+main { padding: 32px 0 64px; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+main section { animation: fadeIn 0.25s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ SUMMARY (本周要点) ============ */
+.summary {
+  background: var(--surface-soft);
+  border-top: 3px solid var(--accent);
+  padding: 24px 28px 20px;
+  margin-bottom: 40px;
+}
+.summary-label {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.summary-label::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: var(--accent);
+}
+.summary-list {
+  list-style: none;
+  margin: 0 0 16px;
+}
+.summary-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--divider);
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.summary-list li:last-child { border-bottom: none; }
+.summary-list .num {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  flex-shrink: 0;
+  min-width: 18px;
+}
+.summary-list a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.summary-list a:hover { color: var(--accent); }
+.summary-stats {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  padding-top: 12px;
+  border-top: 1px solid var(--divider);
+  display: flex;
+  gap: 16px;
+}
+
+/* ============ COMPANY HEADER ============ */
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 24px;
+}
+.company-section[data-region="intl"] .company-header {
+  border-bottom-color: var(--intl);
+}
+.company-section.is-active .company-header {
+  border-bottom-width: 3px;
+}
+.company-section.is-active {
+  background: var(--accent-tint);
+  padding: 16px 16px;
+  margin: 0 -16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.company-section[data-region="intl"].is-active {
+  background: var(--intl-soft);
+}
+.company-header .logo {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+.company-header .name-block { flex: 1; min-width: 0; }
+.company-header h2 {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.company-header .domain {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+}
+
+/* ============ NEWS GRID (3 columns) ============ */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 32px;
+}
+.news-card {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--divider);
+}
+.news-card-time {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.news-card-time::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+}
+.news-card-title {
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.005em;
+}
+.news-card-title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.news-card-title a:hover { color: var(--accent); }
+.news-card-snippet {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-soft);
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--text-faint);
+  flex-wrap: wrap;
+}
+.news-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.badge-file {
+  color: var(--text-soft);
+  border-color: var(--border-strong);
+  background: var(--surface-soft);
+}
+.badge-type {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+  background: var(--accent-tint);
+}
+
+.empty {
+  color: var(--text-soft);
+  padding: 40px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ============ CONTENT AREA (single company section at a time) ============ */
+.content-area {
+  min-height: 400px;
+}
+.company-section {
+  scroll-margin-top: 80px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  background: #1a1a1a;
+  color: #888;
+  margin-top: 64px;
+  padding: 32px;
+  font-size: 13px;
+  text-align: center;
+  border-top: 2px solid var(--accent);
+}
+[data-theme="dark"] footer { background: #050505; }
+footer .mono {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  color: #aaa;
+}
+
+/* ============ HOMEPAGE (industry cards) ============ */
+.industry-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+.industry-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.industry-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+.industry-card a {
+  display: block;
+  padding: 28px;
+  text-decoration: none;
+  color: var(--text);
+}
+.industry-card h3 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.industry-card .stats {
+  color: var(--text-soft);
+  font-size: 13px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  display: flex;
+  gap: 12px;
+}
+.industry-card .stats .num { color: var(--accent); font-weight: 600; }
+.industry-card time {
+  display: block;
+  color: var(--text-faint);
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--divider);
+}
+.empty-state {
+  text-align: center;
+  padding: 96px 32px;
+  color: var(--text-soft);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+}
+
+@media (max-width: 960px) {
+  /* Topbar — hide meta on small screens, keep brand + theme */
+  .topbar-inner { height: auto; padding: 8px 16px; gap: 10px; flex-wrap: wrap; }
+  .topbar-meta { display: none; }
+  .brand { font-size: 16px; }
+  .brand-mark { width: 22px; height: 22px; font-size: 12px; }
+  .live-pill { font-size: 10px; padding: 3px 8px 3px 6px; }
+
+  /* Masthead — stack title + stats */
+  .masthead-inner { padding: 16px 16px 0; }
+  .masthead-top { flex-direction: column; align-items: flex-start; gap: 12px; padding-bottom: 12px; }
+  .masthead h1 { font-size: 30px; }
+  .masthead .dateline { font-size: 11px; }
+  .masthead-stats { gap: 14px; font-size: 11px; flex-wrap: wrap; }
+
+  /* Section tabs + company tabs — horizontal scroll on small screens */
+  .section-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  button.tab-region { font-size: 15px; padding: 10px 14px 12px; white-space: nowrap; }
+  .company-tabs { overflow-x: auto; flex-wrap: nowrap; padding: 4px 0 8px; -webkit-overflow-scrolling: touch; }
+  button.company-tab { font-size: 13px; padding: 8px 10px; flex-shrink: 0; white-space: nowrap; }
+
+  /* Summary — narrower numbers */
+  .summary { padding: 20px 18px 16px; margin-bottom: 28px; }
+  .summary-label { font-size: 16px; }
+  .summary-list li { font-size: 14px; gap: 10px; }
+  .summary-list .num { min-width: 16px; font-size: 10px; }
+  .summary-stats { font-size: 11px; gap: 12px; flex-wrap: wrap; }
+
+  /* Company section header — smaller */
+  .company-header { padding: 12px 0; gap: 10px; margin-bottom: 16px; }
+  .company-header .logo { width: 36px; height: 36px; font-size: 15px; }
+  .company-header h2 { font-size: 21px; }
+  .company-header .domain { font-size: 11px; }
+
+  /* News grid — single column, tighter spacing */
+  .news-grid { grid-template-columns: 1fr; gap: 0; }
+  .news-card { padding: 18px 0; }
+  .news-card-time { font-size: 10px; }
+  .news-card-title { font-size: 16px; line-height: 1.35; }
+  .news-card-snippet { font-size: 13px; }
+  .news-card-footer { font-size: 10px; }
+
+  /* Main + container */
+  main { padding: 16px 0 40px; }
+  .container { padding: 0 16px; }
+  footer { padding: 24px 16px; font-size: 12px; }
+}
+
+/* Tiny phones — iPhone SE 375px */
+@media (max-width: 480px) {
+  .masthead h1 { font-size: 26px; }
+  .company-header h2 { font-size: 19px; }
+  .news-card-title { font-size: 15px; }
+  button.tab-region { font-size: 14px; padding: 8px 12px 10px; }
+  button.company-tab { font-size: 12.5px; padding: 7px 9px; }
+  .masthead-stats { gap: 10px; font-size: 10.5px; }
+}
+
+/* Dark mode auto — make sure mobile overrides the data-theme attribute on body/html */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) { color-scheme: dark; }
+}
+</style>
+</head>
+<body>
+
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">雷</span>
+      行业雷达
+      <span class="live-pill"><span class="live-dot"></span>LIVE</span>
+    </div>
+    <div class="ticker"><div class="ticker-track"><span>关于股票回购情况的公告</span><span>株洲中车时代电气股份有限公司关于变更持续督导保荐代表人的公告</span><span>致同会计师事务所（特殊普通合伙）关于精进电动科技股份有限公司2025年年报问询函的回复</span><span>华泰联合证券有限责任公司关于精进电动科技股份有限公司2025年年度报告的信息披露监管问询函回复的核查意见</span><span>关于回购公司股份的进展公告</span></div></div>
+    <div class="topbar-meta">
+      <span>2026年07月10日 · 周五</span>
+      <button class="theme-toggle" aria-label="切换主题">☾ 深色</button>
+    </div>
+  </div>
+</div>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="masthead-title-block">
+        <h1>新能源汽车电机</h1>
+        <div class="dateline">2026年07月10日 · 周五 · 第 11 期 · 110 条新闻</div>
+      </div>
+      <div class="masthead-stats">
+        <span><span class="num">4</span> 中国头部</span>
+        <span><span class="num">7</span> 国际头部</span>
+        <span><span class="num">110</span> 总新闻</span>
+      </div>
+    </div>
+    
+<nav class="section-tabs">
+  <button class="tab-region cn active" data-region="cn">中国头部 <span class="count">4 家</span></button>
+  <button class="tab-region intl" data-region="intl">国际头部 <span class="count">7 家</span></button>
+</nav>
+    
+<div class="company-tabs">
+  <button class="company-tab active" data-co="inovance" data-region="cn">汇川技术 Inovance<span class="mono-count">10</span></button><button class="company-tab" data-co="jjelectric" data-region="cn">精进电动 JJ Electric<span class="mono-count">10</span></button><button class="company-tab" data-co="crrc-tel" data-region="cn">中车时代电气 CRRC Times Electric<span class="mono-count">10</span></button><button class="company-tab" data-co="founder" data-region="cn">方正电机 Founder Motor<span class="mono-count">10</span></button>
+  <button class="company-tab" data-co="nidec" data-region="intl" hidden>尼得科 Nidec<span class="mono-count">10</span></button><button class="company-tab" data-co="borgwarner" data-region="intl" hidden>博格华纳 BorgWarner<span class="mono-count">10</span></button><button class="company-tab" data-co="magna" data-region="intl" hidden>麦格纳 Magna International<span class="mono-count">10</span></button><button class="company-tab" data-co="bosch" data-region="intl" hidden>博世 Bosch<span class="mono-count">10</span></button><button class="company-tab" data-co="continental" data-region="intl" hidden>大陆集团 Continental<span class="mono-count">10</span></button><button class="company-tab" data-co="aisin" data-region="intl" hidden>爱信 Aisin<span class="mono-count">10</span></button><button class="company-tab" data-co="hitachi-astemo" data-region="intl" hidden>日立安斯泰莫 Hitachi Astemo<span class="mono-count">10</span></button>
+</div>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <div class="content-area" id="content-area">
+      
+<section data-co="nidec" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#dc2626"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">尼</text>
+  </svg>
+    <div class="name-block">
+      <h2>尼得科 Nidec</h2>
+      <span class="domain">nidec.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0630-02/260630-02en.pdf" target="_blank" rel="noopener">关于人事变动的通知</a></li><li><span class="num">02</span><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0630-01/260630-01en.pdf" target="_blank" rel="noopener">关于批准延长第53财年(截至2026年3月31日)年度证券报告提交期限的通知</a></li><li><span class="num">03</span><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0629-03/260629-03en.pdf" target="_blank" rel="noopener">关于提交第53财年(截至2026年3月31日)年度证券报告提交期限延长批准申请的通知</a></li><li><span class="num">04</span><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0624-01/260624-01en.pdf" target="_blank" rel="noopener">关于日本电产株式会社海外子公司遭受勒索软件攻击损害的初次报告</a></li><li><span class="num">05</span><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0618-03/260618-03en.pdf" target="_blank" rel="noopener">问候函</a></li></ol><div class="summary-stats"><span>10 条</span><span>尼得科 Nidec</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-06-30</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0630-02/260630-02en.pdf" target="_blank" rel="noopener">关于人事变动的通知</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-30</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0630-01/260630-01en.pdf" target="_blank" rel="noopener">关于批准延长第53财年(截至2026年3月31日)年度证券报告提交期限的通知</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-29</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0629-03/260629-03en.pdf" target="_blank" rel="noopener">关于提交第53财年(截至2026年3月31日)年度证券报告提交期限延长批准申请的通知</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-24</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0624-01/260624-01en.pdf" target="_blank" rel="noopener">关于日本电产株式会社海外子公司遭受勒索软件攻击损害的初次报告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-18</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0618-03/260618-03en.pdf" target="_blank" rel="noopener">问候函</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-18</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0618-02/260618-02en.pdf" target="_blank" rel="noopener">关于新电产董事会及委员会架构的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-18</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0618-01/260618-01en.pdf" target="_blank" rel="noopener">关于第53届定期股东大会决议事项的通知</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-16</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0616-01/260616-01en.pdf" target="_blank" rel="noopener">关于审议延长第53财年年度证券报告提交期限申请批准事宜的通知</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-12</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0612-01/260612-01en.pdf" target="_blank" rel="noopener">关于公司章程部分修订的通知</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-02</div>
+  <h3 class="news-card-title"><a href="https://www.nidec.com/files/user/www-nidec-com/corporate/news/2026/0602-01/260602-01en.pdf" target="_blank" rel="noopener">关于ISS报告建议在电产第53届定期股东大会上对所有公司议案投赞成票的通知</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>nidec.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="borgwarner" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#ea580c"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">博</text>
+  </svg>
+    <div class="name-block">
+      <h2>博格华纳 BorgWarner</h2>
+      <span class="domain">borgwarner.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.borgwarner.com/newsroom/press-releases/2026/06/24/borgwarner-awarded-on-time-s-list-of-the-world-s-most-sustainable-companies-2026" target="_blank" rel="noopener">BorgWarner 入选《TIME》2026 年度全球最具可持续性公司榜单</a></li><li><span class="num">02</span><a href="https://www.borgwarner.com/newsroom/press-releases/2026/05/06/borgwarner-secures-multiple-turbocharger-awards-with-major-european-oem" target="_blank" rel="noopener">BorgWarner 获得某主要欧洲 OEM 多个涡轮增压器业务奖项</a></li><li><span class="num">03</span><a href="https://www.borgwarner.com/newsroom/press-releases/2026/05/06/borgwarner-to-supply-variable-turbine-geometry-turbocharger-and-exhaust-gas-recirculation-cooler-for-major-european-commercial-vehicle-oem" target="_blank" rel="noopener">博格华纳将为欧洲某主流商用车OEM供应可变截面涡轮增压器和废气再循环冷却器</a></li><li><span class="num">04</span><a href="https://www.borgwarner.com/newsroom/press-releases/2026/05/06/borgwarner-wins-two-conquest-awards-in-asia-for-combustion-and-hybrid-powertrain-programs" target="_blank" rel="noopener">博格华纳在亚洲凭借内燃机及混合动力动力总成项目荣获两项征服奖</a></li><li><span class="num">05</span><a href="https://www.borgwarner.com/newsroom/press-releases/2026/05/06/borgwarner-reports-strong-first-quarter-2026-results--returned--185-million-to-shareholders-during-first-quarter-2026--announces-12-awards-across-portfolio-to-support-long-term-profitable-growth" target="_blank" rel="noopener">博格华纳公布2026年第一季度强劲业绩，2026年第一季度向股东返还1.85亿美元，并宣布在其产品组合中获得12项奖项以支持长期盈利增长</a></li></ol><div class="summary-stats"><span>10 条</span><span>博格华纳 BorgWarner</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-06-24</div>
+  <h3 class="news-card-title"><a href="https://www.borgwarner.com/newsroom/press-releases/2026/06/24/borgwarner-awarded-on-time-s-list-of-the-world-s-most-sustainable-companies-2026" target="_blank" rel="noopener">BorgWarner 入选《TIME》2026 年度全球最具可持续性公司榜单</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>borgwarner.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-06</div>
+  <h3 class="news-card-title"><a href="https://www.borgwarner.com/newsroom/press-releases/2026/05/06/borgwarner-secures-multiple-turbocharger-awards-with-major-european-oem" target="_blank" rel="noopener">BorgWarner 获得某主要欧洲 OEM 多个涡轮增压器业务奖项</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>borgwarner.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-06</div>
+  <h3 class="news-card-title"><a href="https://www.borgwarner.com/newsroom/press-releases/2026/05/06/borgwarner-to-supply-variable-turbine-geometry-turbocharger-and-exhaust-gas-recirculation-cooler-for-major-european-commercial-vehicle-oem" target="_blank" rel="noopener">博格华纳将为欧洲某主流商用车OEM供应可变截面涡轮增压器和废气再循环冷却器</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>borgwarner.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-06</div>
+  <h3 class="news-card-title"><a href="https://www.borgwarner.com/newsroom/press-releases/2026/05/06/borgwarner-wins-two-conquest-awards-in-asia-for-combustion-and-hybrid-powertrain-programs" target="_blank" rel="noopener">博格华纳在亚洲凭借内燃机及混合动力动力总成项目荣获两项征服奖</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>borgwarner.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-06</div>
+  <h3 class="news-card-title"><a href="https://www.borgwarner.com/newsroom/press-releases/2026/05/06/borgwarner-reports-strong-first-quarter-2026-results--returned--185-million-to-shareholders-during-first-quarter-2026--announces-12-awards-across-portfolio-to-support-long-term-profitable-growth" target="_blank" rel="noopener">博格华纳公布2026年第一季度强劲业绩，2026年第一季度向股东返还1.85亿美元，并宣布在其产品组合中获得12项奖项以支持长期盈利增长</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>borgwarner.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-30</div>
+  <h3 class="news-card-title"><a href="https://www.borgwarner.com/newsroom/press-releases/2026/04/30/borgwarner-secures-three-electric-motor-awards-in-china-and-south-korea" target="_blank" rel="noopener">BorgWarner在中国和韩国斩获三项电机业务订单</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>borgwarner.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-30</div>
+  <h3 class="news-card-title"><a href="https://www.borgwarner.com/newsroom/press-releases/2026/04/30/borgwarner-declares-quarterly-dividend" target="_blank" rel="noopener">BorgWarner宣布派发季度股息</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>borgwarner.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-28</div>
+  <h3 class="news-card-title"><a href="https://www.borgwarner.com/newsroom/press-releases/2026/04/28/borgwarner-showcases-thermal--power-electronics--battery-solutions-at-advanced-clean-transportation-expo-2026" target="_blank" rel="noopener">博格华纳在2026年先进清洁运输博览会上展示热管理、功率电子及电池解决方案</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>borgwarner.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-21</div>
+  <h3 class="news-card-title"><a href="https://www.borgwarner.com/newsroom/press-releases/2026/04/21/borgwarner-extends-controller-business-with-world-leading-off-highway-manufacturer" target="_blank" rel="noopener">博格华纳与全球领先的非公路制造商扩展控制器业务</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>borgwarner.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-02-11</div>
+  <h3 class="news-card-title"><a href="https://www.borgwarner.com/newsroom/press-releases/2026/02/11/borgwarner-secures-its-first-48v-electric-cross-differential-program" target="_blank" rel="noopener">博格华纳拿下首个48V电动交叉差速器项目</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>borgwarner.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="magna" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#16a34a"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">麦</text>
+  </svg>
+    <div class="name-block">
+      <h2>麦格纳 Magna International</h2>
+      <span class="domain">magna.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.magna.com/stories/news-press-release/2026/magna-earns-five-2025-general-motors-supplier-of-the-year-awards" target="_blank" rel="noopener">麦格纳荣获通用汽车五项2025年度供应商奖</a></li><li><span class="num">02</span><a href="https://www.magna.com/stories/news-press-release/2026/magna-awarded-driver-and-occupant-monitoring-system-program-with-european-oem" target="_blank" rel="noopener">麦格纳获得欧洲OEM驾驶员与乘员监控系统项目</a></li><li><span class="num">03</span><a href="https://www.magna.com/stories/news-press-release/2026/magna-announces-sale-of-its-lighting-and-rooftop-systems-businesses" target="_blank" rel="noopener">麦格纳宣布出售其照明和车顶系统业务</a></li><li><span class="num">04</span><a href="https://www.magna.com/stories/news-press-release/2026/magna-unveils-dhd-rex-hybrid-drive-for-enhanced-ev-range" target="_blank" rel="noopener">Magna推出DHD REX混合动力驱动系统以提升电动汽车续航</a></li><li><span class="num">05</span><a href="https://www.magna.com/stories/news-press-release/2026/magna-to-offer-drive-hyperion-compatible-ecus-and-tier-1-integration-services-for-nvidia-drive-av" target="_blank" rel="noopener">Magna 将为 NVIDIA Drive AV 提供 Drive Hyperion 兼容 ECU 及 Tier-1 集成服务</a></li></ol><div class="summary-stats"><span>10 条</span><span>麦格纳 Magna International</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-05-21</div>
+  <h3 class="news-card-title"><a href="https://www.magna.com/stories/news-press-release/2026/magna-earns-five-2025-general-motors-supplier-of-the-year-awards" target="_blank" rel="noopener">麦格纳荣获通用汽车五项2025年度供应商奖</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>magna.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-19</div>
+  <h3 class="news-card-title"><a href="https://www.magna.com/stories/news-press-release/2026/magna-awarded-driver-and-occupant-monitoring-system-program-with-european-oem" target="_blank" rel="noopener">麦格纳获得欧洲OEM驾驶员与乘员监控系统项目</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>magna.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-09</div>
+  <h3 class="news-card-title"><a href="https://www.magna.com/stories/news-press-release/2026/magna-announces-sale-of-its-lighting-and-rooftop-systems-businesses" target="_blank" rel="noopener">麦格纳宣布出售其照明和车顶系统业务</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>magna.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-03-24</div>
+  <h3 class="news-card-title"><a href="https://www.magna.com/stories/news-press-release/2026/magna-unveils-dhd-rex-hybrid-drive-for-enhanced-ev-range" target="_blank" rel="noopener">Magna推出DHD REX混合动力驱动系统以提升电动汽车续航</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>magna.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-01-05</div>
+  <h3 class="news-card-title"><a href="https://www.magna.com/stories/news-press-release/2026/magna-to-offer-drive-hyperion-compatible-ecus-and-tier-1-integration-services-for-nvidia-drive-av" target="_blank" rel="noopener">Magna 将为 NVIDIA Drive AV 提供 Drive Hyperion 兼容 ECU 及 Tier-1 集成服务</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>magna.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-11-21</div>
+  <h3 class="news-card-title"><a href="https://www.magna.com/stories/news-press-release/2025/gac-accelerates-european-ev-strategy-with-magna-vehicle-assembly-program" target="_blank" rel="noopener">广汽加速欧洲电动汽车战略,与麦格纳启动整车组装项目</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>magna.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-11-19</div>
+  <h3 class="news-card-title"><a href="https://www.magna.com/stories/news-press-release/2025/magna-deepens-china-footprint-to-meet-growing-ev-demand" target="_blank" rel="noopener">麦格纳深化在华布局,以满足不断增长的电动汽车需求</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>magna.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-10-29</div>
+  <h3 class="news-card-title"><a href="https://www.magna.com/stories/news-press-release/2025/magna-ramps-up-driver-and-occupant-monitoring-system-deployment-in-china-with-germany-based-oem" target="_blank" rel="noopener">麦格纳携手德国整车厂,加速在中国部署驾驶员及乘员监控系统</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>magna.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-09-15</div>
+  <h3 class="news-card-title"><a href="https://www.magna.com/stories/news-press-release/2025/magna-awarded-vehicle-assembly-business-with-chinese-oem-xpeng" target="_blank" rel="noopener">麦格纳获中国整车厂小鹏汽车整车制造业务</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>magna.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-08-11</div>
+  <h3 class="news-card-title"><a href="https://www.magna.com/stories/news-press-release/2025/magna-to-showcase-its-vision-for-safer--smarter--greener-mobility-at-iaa-mobility-2025" target="_blank" rel="noopener">麦格纳将在2025年IAA Mobility展上展示其更安全、更智能、更绿色出行的愿景</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>magna.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="bosch" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#7c2d12"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">世</text>
+  </svg>
+    <div class="name-block">
+      <h2>博世 Bosch</h2>
+      <span class="domain">bosch.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.bosch.com/research/news/looking-back-at-the-stadt-up-project/" target="_blank" rel="noopener">城市自动驾驶</a></li><li><span class="num">02</span><a href="https://www.bosch.com/research/news/bosch-deutscher-zukunftspreis-2025/" target="_blank" rel="noopener">博世团队凭借燃料电池动力模块荣获德国未来奖</a></li><li><span class="num">03</span><a href="https://www.bosch.com/research/news/ten-years-bosch-research-campus-renningen/" target="_blank" rel="noopener">雷宁根研究园区十周年</a></li><li><span class="num">04</span><a href="https://www.bosch.com/research/news/shuttle2x-automated-driving/" target="_blank" rel="noopener">智能基础设施可推进自动驾驶</a></li><li><span class="num">05</span><a href="https://www.bosch.com/research/news/sustainable-mems-production/" target="_blank" rel="noopener">Bosch推进可持续MEMS生产</a></li></ol><div class="summary-stats"><span>10 条</span><span>博世 Bosch</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-06-10</div>
+  <h3 class="news-card-title"><a href="https://www.bosch.com/research/news/looking-back-at-the-stadt-up-project/" target="_blank" rel="noopener">城市自动驾驶</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosch.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-11-19</div>
+  <h3 class="news-card-title"><a href="https://www.bosch.com/research/news/bosch-deutscher-zukunftspreis-2025/" target="_blank" rel="noopener">博世团队凭借燃料电池动力模块荣获德国未来奖</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosch.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-10-22</div>
+  <h3 class="news-card-title"><a href="https://www.bosch.com/research/news/ten-years-bosch-research-campus-renningen/" target="_blank" rel="noopener">雷宁根研究园区十周年</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosch.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-10-14</div>
+  <h3 class="news-card-title"><a href="https://www.bosch.com/research/news/shuttle2x-automated-driving/" target="_blank" rel="noopener">智能基础设施可推进自动驾驶</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosch.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-06-16</div>
+  <h3 class="news-card-title"><a href="https://www.bosch.com/research/news/sustainable-mems-production/" target="_blank" rel="noopener">Bosch推进可持续MEMS生产</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosch.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2024-06-05</div>
+  <h3 class="news-card-title"><a href="https://www.bosch.com/research/news/world-environment-day/" target="_blank" rel="noopener">能源转型、电气化与电解——研究亮点</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosch.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2024-03-27</div>
+  <h3 class="news-card-title"><a href="https://www.bosch.com/research/news/ipcei-cis-project/" target="_blank" rel="noopener">博世通过边缘云扩展车辆功能</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosch.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2023-04-27</div>
+  <h3 class="news-card-title"><a href="https://www.bosch.com/research/news/cooperation-with-the-technical-university-of-munich/" target="_blank" rel="noopener">巧妙组合：面向电动汽车的新型充电转换器</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosch.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2023-03-27</div>
+  <h3 class="news-card-title"><a href="https://www.bosch.com/research/news/cooperation-with-the-university-of-cambridge/" target="_blank" rel="noopener">博世与剑桥大学开发面向电动出行的新型功率半导体</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosch.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2023-01-24</div>
+  <h3 class="news-card-title"><a href="https://www.bosch.com/research/news/hydrogen-innovations/" target="_blank" rel="noopener">博世：氢经济的动力源泉</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>bosch.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="continental" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#b91c1c"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">陆</text>
+  </svg>
+    <div class="name-block">
+      <h2>大陆集团 Continental</h2>
+      <span class="domain">continental.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.aumovio.com/en/company/press/press-releases/20260428-vdo-20-years-dtco.html" target="_blank" rel="noopener">AUMOVIO庆祝数字行车记录仪问世20周年</a></li><li><span class="num">02</span><a href="https://www.aumovio.com/en/company/press/press-releases/20260423-blood-alcohol.html" target="_blank" rel="noopener">指尖触碰取代呼气测试：AUMOVIO 与 trinamiX 将血液酒精检测整合至汽车座舱</a></li><li><span class="num">03</span><a href="https://www.aumovio.com/en/company/press/press-releases/20260421-display-debonding.html" target="_blank" rel="noopener">AUMOVIO 与 tesa 联合开发可剥离的汽车显示屏粘合解决方案</a></li><li><span class="num">04</span><a href="https://www.aumovio.com/en/company/press/press-releases/20260407-camera-under-oled.html" target="_blank" rel="noopener">AUMOVIO 斩获 OLED 显示屏重大订单，摄像头隐式集成</a></li><li><span class="num">05</span><a href="https://www.aumovio.com/en/company/press/press-releases/20260202-leapmotor-coop.html" target="_blank" rel="noopener">Leapmotor 最新的车型采用 AUMOVIO 解决方案</a></li></ol><div class="summary-stats"><span>10 条</span><span>大陆集团 Continental</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-04-28</div>
+  <h3 class="news-card-title"><a href="https://www.aumovio.com/en/company/press/press-releases/20260428-vdo-20-years-dtco.html" target="_blank" rel="noopener">AUMOVIO庆祝数字行车记录仪问世20周年</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aumovio.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-23</div>
+  <h3 class="news-card-title"><a href="https://www.aumovio.com/en/company/press/press-releases/20260423-blood-alcohol.html" target="_blank" rel="noopener">指尖触碰取代呼气测试：AUMOVIO 与 trinamiX 将血液酒精检测整合至汽车座舱</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aumovio.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-21</div>
+  <h3 class="news-card-title"><a href="https://www.aumovio.com/en/company/press/press-releases/20260421-display-debonding.html" target="_blank" rel="noopener">AUMOVIO 与 tesa 联合开发可剥离的汽车显示屏粘合解决方案</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aumovio.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-07</div>
+  <h3 class="news-card-title"><a href="https://www.aumovio.com/en/company/press/press-releases/20260407-camera-under-oled.html" target="_blank" rel="noopener">AUMOVIO 斩获 OLED 显示屏重大订单，摄像头隐式集成</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aumovio.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-02-02</div>
+  <h3 class="news-card-title"><a href="https://www.aumovio.com/en/company/press/press-releases/20260202-leapmotor-coop.html" target="_blank" rel="noopener">Leapmotor 最新的车型采用 AUMOVIO 解决方案</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aumovio.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-01-06</div>
+  <h3 class="news-card-title"><a href="https://www.aumovio.com/en/company/press/press-releases/20260106-vc-hpc.html" target="_blank" rel="noopener">AUMOVIO 最新的中央高性能计算机</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aumovio.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-01-06</div>
+  <h3 class="news-card-title"><a href="https://www.aumovio.com/en/company/press/press-releases/20260106-aws-collaboration.html" target="_blank" rel="noopener">AUMOVIO 与 AWS 携手合作，推动自动驾驶研发变革</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aumovio.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-01-05</div>
+  <h3 class="news-card-title"><a href="https://www.aumovio.com/en/company/press/press-releases/20260105-surface-projection.html" target="_blank" rel="noopener">AUMOVIO 表面投影 座舱投影</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aumovio.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-12-11</div>
+  <h3 class="news-card-title"><a href="https://www.aumovio.com/en/company/press/press-releases/20251211-trailer-assistants.html" target="_blank" rel="noopener">新型拖车辅助系统：AUMOVIO 使车辆与拖车组合的操控更轻松、更安全</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aumovio.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2025-12-09</div>
+  <h3 class="news-card-title"><a href="https://www.aumovio.com/en/company/press/press-releases/20251209-ces-preview.html" target="_blank" rel="noopener">AUMOVIO在CES 2026上发布下一代汽车技术</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aumovio.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="aisin" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#c2410c"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">爱</text>
+  </svg>
+    <div class="name-block">
+      <h2>爱信 Aisin</h2>
+      <span class="domain">aisin.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.aisin.com/en/news/uploads/20260706_en.pdf" target="_blank" rel="noopener">关于股票回购情况的公告</a></li><li><span class="num">02</span><a href="https://www.aisin.com/en/news/uploads/20260622_1630_En.pdf" target="_blank" rel="noopener">关于将库存股作为限制性股票报酬处理完成的通知</a></li><li><span class="num">03</span><a href="https://www.aisin.com/en/news/2026/010660.html" target="_blank" rel="noopener">关于执行架构的通知</a></li><li><span class="num">04</span><a href="https://www.aisin.com/en/news/2026/010659.html" target="_blank" rel="noopener">第103届年度股东大会会议结果</a></li><li><span class="num">05</span><a href="https://www.aisin.com/en/news/2026/010650.html" target="_blank" rel="noopener">AISIN于6月22日在com-center揭幕全新翻新的&quot;历史专区&quot;</a></li></ol><div class="summary-stats"><span>10 条</span><span>爱信 Aisin</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">4天前</div>
+  <h3 class="news-card-title"><a href="https://www.aisin.com/en/news/uploads/20260706_en.pdf" target="_blank" rel="noopener">关于股票回购情况的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>aisin.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-22</div>
+  <h3 class="news-card-title"><a href="https://www.aisin.com/en/news/uploads/20260622_1630_En.pdf" target="_blank" rel="noopener">关于将库存股作为限制性股票报酬处理完成的通知</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>aisin.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-19</div>
+  <h3 class="news-card-title"><a href="https://www.aisin.com/en/news/2026/010660.html" target="_blank" rel="noopener">关于执行架构的通知</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aisin.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-19</div>
+  <h3 class="news-card-title"><a href="https://www.aisin.com/en/news/2026/010659.html" target="_blank" rel="noopener">第103届年度股东大会会议结果</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aisin.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-11</div>
+  <h3 class="news-card-title"><a href="https://www.aisin.com/en/news/2026/010650.html" target="_blank" rel="noopener">AISIN于6月22日在com-center揭幕全新翻新的&quot;历史专区&quot;</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aisin.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-04</div>
+  <h3 class="news-card-title"><a href="https://www.aisin.com/en/news/uploads/20260604_e.pdf" target="_blank" rel="noopener">关于股票回购状况的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>aisin.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-02</div>
+  <h3 class="news-card-title"><a href="https://www.aisin.com/en/news/uploads/20260602_e.pdf" target="_blank" rel="noopener">关于自身股份要约收购结果的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>aisin.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-26</div>
+  <h3 class="news-card-title"><a href="https://www.aisin.com/en/news/2026/010638.html" target="_blank" rel="noopener">通过TABLE FOR TWO活动在2025财年向发展中国家儿童捐赠19万份校园餐</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aisin.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-20</div>
+  <h3 class="news-card-title"><a href="https://www.aisin.com/en/news/uploads/20260520_en.pdf" target="_blank" rel="noopener">关于作为限制性股票报酬处置库存股的通知</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>aisin.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-20</div>
+  <h3 class="news-card-title"><a href="https://www.aisin.com/en/news/2026/010630.html" target="_blank" rel="noopener">AISIN 将亮相 2026 年汽车工程博览会</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>aisin.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="hitachi-astemo" data-region="intl" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#be185d"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">日</text>
+  </svg>
+    <div class="name-block">
+      <h2>日立安斯泰莫 Hitachi Astemo</h2>
+      <span class="domain">astemo.com · 国际</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="https://www.astemo.com/en/news/pdf/20260630-01.pdf" target="_blank" rel="noopener">资本结构调整预定执行日期延后的通知</a></li><li><span class="num">02</span><a href="https://www.astemo.com/en/news/20260629-01/" target="_blank" rel="noopener">Astemo将在JR新宿站的大型数字标牌上展示全新企业品牌信息&quot;Innovating dreams into motion&quot;</a></li><li><span class="num">03</span><a href="https://www.astemo.com/en/news/20260624-01/" target="_blank" rel="noopener">Astemo Cypremos将在2026年Response大会上展示最新SDV工程解决方案</a></li><li><span class="num">04</span><a href="https://www.astemo.com/en/assets/pdf/news/20260618-01.pdf" target="_blank" rel="noopener">Astemo 宣布人事变动及子公司 CEO 更替</a></li><li><span class="num">05</span><a href="https://www.astemo.com/en/assets/pdf/news/20260617-01.pdf" target="_blank" rel="noopener">Astemo 宣布董事会成员变更</a></li></ol><div class="summary-stats"><span>10 条</span><span>日立安斯泰莫 Hitachi Astemo</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-06-30</div>
+  <h3 class="news-card-title"><a href="https://www.astemo.com/en/news/pdf/20260630-01.pdf" target="_blank" rel="noopener">资本结构调整预定执行日期延后的通知</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>astemo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-29</div>
+  <h3 class="news-card-title"><a href="https://www.astemo.com/en/news/20260629-01/" target="_blank" rel="noopener">Astemo将在JR新宿站的大型数字标牌上展示全新企业品牌信息&quot;Innovating dreams into motion&quot;</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>astemo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-24</div>
+  <h3 class="news-card-title"><a href="https://www.astemo.com/en/news/20260624-01/" target="_blank" rel="noopener">Astemo Cypremos将在2026年Response大会上展示最新SDV工程解决方案</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>astemo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-18</div>
+  <h3 class="news-card-title"><a href="https://www.astemo.com/en/assets/pdf/news/20260618-01.pdf" target="_blank" rel="noopener">Astemo 宣布人事变动及子公司 CEO 更替</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>astemo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-17</div>
+  <h3 class="news-card-title"><a href="https://www.astemo.com/en/assets/pdf/news/20260617-01.pdf" target="_blank" rel="noopener">Astemo 宣布董事会成员变更</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>astemo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-16</div>
+  <h3 class="news-card-title"><a href="https://www.astemo.com/en/news/20260616-01/" target="_blank" rel="noopener">Astemo以全新企业品牌口号启动FY2026推广活动</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>astemo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-12</div>
+  <h3 class="news-card-title"><a href="https://www.astemo.com/en/news/20260612-01/" target="_blank" rel="noopener">Astemo赞助2026年汽车峰会，展示面向SDV时代的先进智能出行技术</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>astemo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-11</div>
+  <h3 class="news-card-title"><a href="https://www.astemo.com/en/news/20260611-01/" target="_blank" rel="noopener">Astemo的电机与逆变器被采用于日产新款电动车 Nissan LEAF</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>astemo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-29</div>
+  <h3 class="news-card-title"><a href="https://www.astemo.com/en/assets/pdf/news/20260529-02.pdf" target="_blank" rel="noopener">Astemo宣布更换代表董事、总裁兼首席执行官</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>astemo.com</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-21</div>
+  <h3 class="news-card-title"><a href="https://www.astemo.com/en/news/20260521-01/" target="_blank" rel="noopener">Astemo将在2026年横滨汽车工程博览会上展示推动SDV时代的先进解决方案和创新产品</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-type">新闻稿</span>
+    <span>astemo.com</span>
+  </div>
+</article></div>
+</section>
+<section data-co="inovance" data-region="cn" class="company-section">
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#4f46e5"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">汇</text>
+  </svg>
+    <div class="name-block">
+      <h2>汇川技术 Inovance</h2>
+      <span class="domain">inovance.com · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="http://static.cninfo.com.cn/finalpage/2026-07-01/1225402651.PDF" target="_blank" rel="noopener">关于回购公司股份的进展公告</a></li><li><span class="num">02</span><a href="http://static.cninfo.com.cn/finalpage/2026-06-03/1225348524.PDF" target="_blank" rel="noopener">关于深圳市汇川技术股份有限公司第七期股权激励计划相关价格调整的法律意见书</a></li><li><span class="num">03</span><a href="http://static.cninfo.com.cn/finalpage/2026-06-03/1225348523.PDF" target="_blank" rel="noopener">第六届董事会第十五次会议决议公告</a></li><li><span class="num">04</span><a href="http://static.cninfo.com.cn/finalpage/2026-06-03/1225348522.PDF" target="_blank" rel="noopener">关于调整第六期股权激励计划、第七期股权激励计划所涉权益工具回购价格、授予价格及行权价格的公告</a></li><li><span class="num">05</span><a href="http://static.cninfo.com.cn/finalpage/2026-06-03/1225348525.PDF" target="_blank" rel="noopener">关于深圳市汇川技术股份有限公司第六期股权激励计划相关价格调整的法律意见书</a></li></ol><div class="summary-stats"><span>10 条</span><span>汇川技术 Inovance</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-07-01</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-07-01/1225402651.PDF" target="_blank" rel="noopener">关于回购公司股份的进展公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-03</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-03/1225348524.PDF" target="_blank" rel="noopener">关于深圳市汇川技术股份有限公司第七期股权激励计划相关价格调整的法律意见书</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-03</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-03/1225348523.PDF" target="_blank" rel="noopener">第六届董事会第十五次会议决议公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-03</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-03/1225348522.PDF" target="_blank" rel="noopener">关于调整第六期股权激励计划、第七期股权激励计划所涉权益工具回购价格、授予价格及行权价格的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-03</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-03/1225348525.PDF" target="_blank" rel="noopener">关于深圳市汇川技术股份有限公司第六期股权激励计划相关价格调整的法律意见书</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-01</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-01/1225342278.PDF" target="_blank" rel="noopener">关于回购公司股份的进展公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-27</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-27/1225332956.PDF" target="_blank" rel="noopener">关于2025年年度权益分派实施后调整回购股份价格上限的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-27</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-27/1225332955.PDF" target="_blank" rel="noopener">2025年年度权益分派实施公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-21</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-21/1225324209.PDF" target="_blank" rel="noopener">公司薪酬管理制度（2026年5月）</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-21</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-21/1225324208.PDF" target="_blank" rel="noopener">北京市康达（广州）律师事务所关于深圳市汇川技术股份有限公司2025年年度股东会的法律意见书</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article></div>
+</section>
+<section data-co="jjelectric" data-region="cn" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#0891b2"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">精</text>
+  </svg>
+    <div class="name-block">
+      <h2>精进电动 JJ Electric</h2>
+      <span class="domain">jjecn.com · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="http://static.cninfo.com.cn/finalpage/2026-07-04/1225409494.PDF" target="_blank" rel="noopener">致同会计师事务所（特殊普通合伙）关于精进电动科技股份有限公司2025年年报问询函的回复</a></li><li><span class="num">02</span><a href="http://static.cninfo.com.cn/finalpage/2026-07-04/1225409487.PDF" target="_blank" rel="noopener">华泰联合证券有限责任公司关于精进电动科技股份有限公司2025年年度报告的信息披露监管问询函回复的核查意见</a></li><li><span class="num">03</span><a href="http://static.cninfo.com.cn/finalpage/2026-07-04/1225409485.PDF" target="_blank" rel="noopener">精进电动科技股份有限公司关于收到上海证券交易所《关于对精进电动科技股份有限公司2025年年度报告的信息披露监管问询函》的回复公告</a></li><li><span class="num">04</span><a href="http://static.cninfo.com.cn/finalpage/2026-05-23/1225324857.PDF" target="_blank" rel="noopener">精进电动科技股份有限公司关于召开2025年年度暨2026年第一季度业绩说明会的公告</a></li><li><span class="num">05</span><a href="http://static.cninfo.com.cn/finalpage/2026-05-16/1225310038.PDF" target="_blank" rel="noopener">北京市竞天公诚律师事务所关于精进电动科技股份有限公司2025年年度股东会的法律意见书</a></li></ol><div class="summary-stats"><span>10 条</span><span>精进电动 JJ Electric</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-07-03</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-07-04/1225409494.PDF" target="_blank" rel="noopener">致同会计师事务所（特殊普通合伙）关于精进电动科技股份有限公司2025年年报问询函的回复</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-07-03</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-07-04/1225409487.PDF" target="_blank" rel="noopener">华泰联合证券有限责任公司关于精进电动科技股份有限公司2025年年度报告的信息披露监管问询函回复的核查意见</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-07-03</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-07-04/1225409485.PDF" target="_blank" rel="noopener">精进电动科技股份有限公司关于收到上海证券交易所《关于对精进电动科技股份有限公司2025年年度报告的信息披露监管问询函》的回复公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-22</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-23/1225324857.PDF" target="_blank" rel="noopener">精进电动科技股份有限公司关于召开2025年年度暨2026年第一季度业绩说明会的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-15</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-16/1225310038.PDF" target="_blank" rel="noopener">北京市竞天公诚律师事务所关于精进电动科技股份有限公司2025年年度股东会的法律意见书</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-15</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-16/1225310025.PDF" target="_blank" rel="noopener">精进电动科技股份有限公司2025年年度股东会决议公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-13</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-14/1225304617.PDF" target="_blank" rel="noopener">精进电动科技股份有限公司股票交易严重异常波动公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-06</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-07/1225279645.PDF" target="_blank" rel="noopener">精进电动科技股份有限公司股票交易严重异常波动公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-30</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-01/1225272875.PDF" target="_blank" rel="noopener">精进电动科技股份有限公司股票交易异常波动公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-28</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-04-29/1225233445.PDF" target="_blank" rel="noopener">精进电动科技股份有限公司2026年第一季度报告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article></div>
+</section>
+<section data-co="crrc-tel" data-region="cn" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#65a30d"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">车</text>
+  </svg>
+    <div class="name-block">
+      <h2>中车时代电气 CRRC Times Electric</h2>
+      <span class="domain">tec.crrczic.cc · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="http://static.cninfo.com.cn/finalpage/2026-07-07/1225411185.PDF" target="_blank" rel="noopener">株洲中车时代电气股份有限公司关于变更持续督导保荐代表人的公告</a></li><li><span class="num">02</span><a href="http://static.cninfo.com.cn/finalpage/2026-07-01/1225399329.PDF" target="_blank" rel="noopener">H股公告</a></li><li><span class="num">03</span><a href="http://static.cninfo.com.cn/finalpage/2026-06-30/1225394634.PDF" target="_blank" rel="noopener">株洲中车时代电气股份有限公司关于核心技术人员变动的公告</a></li><li><span class="num">04</span><a href="http://static.cninfo.com.cn/finalpage/2026-06-27/1225392319.PDF" target="_blank" rel="noopener">株洲中车时代电气股份有限公司2025年年度股东会、2026年第一次A股类别股东会及2026年第一次H股类别股东会决议公告</a></li><li><span class="num">05</span><a href="http://static.cninfo.com.cn/finalpage/2026-06-27/1225392310.PDF" target="_blank" rel="noopener">株洲中车时代电气股份有限公司关于选举第八届职工董事的公告</a></li></ol><div class="summary-stats"><span>10 条</span><span>中车时代电气 CRRC Times Electric</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">4天前</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-07-07/1225411185.PDF" target="_blank" rel="noopener">株洲中车时代电气股份有限公司关于变更持续督导保荐代表人的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-30</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-07-01/1225399329.PDF" target="_blank" rel="noopener">H股公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-29</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-30/1225394634.PDF" target="_blank" rel="noopener">株洲中车时代电气股份有限公司关于核心技术人员变动的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-26</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-27/1225392319.PDF" target="_blank" rel="noopener">株洲中车时代电气股份有限公司2025年年度股东会、2026年第一次A股类别股东会及2026年第一次H股类别股东会决议公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-26</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-27/1225392310.PDF" target="_blank" rel="noopener">株洲中车时代电气股份有限公司关于选举第八届职工董事的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-26</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-27/1225392308.PDF" target="_blank" rel="noopener">株洲中车时代电气股份有限公司关于选举董事长、副董事长、董事会专门委员会成员及聘任高级管理人员、证券事务代表的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-26</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-27/1225392307.PDF" target="_blank" rel="noopener">国浩律师（杭州）事务所关于株洲中车时代电气股份有限公司2025年年度股东会、2026年第一次A股类别股东会及2026年第一次H股类别股东会法律意见书</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-26</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-27/1225392121.PDF" target="_blank" rel="noopener">H股公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-25</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-26/1225387912.PDF" target="_blank" rel="noopener">H股公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-06-24</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-25/1225385646.PDF" target="_blank" rel="noopener">H股公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article></div>
+</section>
+<section data-co="founder" data-region="cn" class="company-section" hidden>
+  <div class="company-header">
+    <svg class="logo" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="44" height="44" rx="6" fill="#a16207"/>
+    <text x="22" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#ffffff">方</text>
+  </svg>
+    <div class="name-block">
+      <h2>方正电机 Founder Motor</h2>
+      <span class="domain">fdm.com.cn · 中国</span>
+    </div>
+  </div>
+  <div class="summary"><div class="summary-label">近期要点</div><ol class="summary-list"><li><span class="num">01</span><a href="http://static.cninfo.com.cn/finalpage/2026-06-25/1225386404.PDF" target="_blank" rel="noopener">关于公司部分董事及高级管理人员减持股份预披露公告</a></li><li><span class="num">02</span><a href="http://static.cninfo.com.cn/finalpage/2026-05-20/1225317054.PDF" target="_blank" rel="noopener">关于股票异动的公告</a></li><li><span class="num">03</span><a href="http://static.cninfo.com.cn/finalpage/2026-05-08/1225282471.PDF" target="_blank" rel="noopener">关于参加浙江辖区上市公司2026年投资者网上集体接待日暨2025年度业绩说明会的公告</a></li><li><span class="num">04</span><a href="http://static.cninfo.com.cn/finalpage/2026-05-08/1225282470.PDF" target="_blank" rel="noopener">关于董事会完成换届选举并聘任高级管理人员的公告</a></li><li><span class="num">05</span><a href="http://static.cninfo.com.cn/finalpage/2026-05-08/1225282469.PDF" target="_blank" rel="noopener">方正电机2025年年度股东会法律意见书</a></li></ol><div class="summary-stats"><span>10 条</span><span>方正电机 Founder Motor</span></div></div>
+  <div class="news-grid">
+<article class="news-card">
+  <div class="news-card-time">2026-06-24</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-06-25/1225386404.PDF" target="_blank" rel="noopener">关于公司部分董事及高级管理人员减持股份预披露公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-19</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-20/1225317054.PDF" target="_blank" rel="noopener">关于股票异动的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-07</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-08/1225282471.PDF" target="_blank" rel="noopener">关于参加浙江辖区上市公司2026年投资者网上集体接待日暨2025年度业绩说明会的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-07</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-08/1225282470.PDF" target="_blank" rel="noopener">关于董事会完成换届选举并聘任高级管理人员的公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-07</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-08/1225282469.PDF" target="_blank" rel="noopener">方正电机2025年年度股东会法律意见书</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-07</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-08/1225282468.PDF" target="_blank" rel="noopener">2025年年度股东会决议公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-05-07</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-05-08/1225282467.PDF" target="_blank" rel="noopener">公司第九届董事会第一次会议决议公告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-14</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-04-15/1225102331.PDF" target="_blank" rel="noopener">内部控制规则落实自查表</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-14</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-04-15/1225102330.PDF" target="_blank" rel="noopener">2025年度董事会工作报告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article>
+<article class="news-card">
+  <div class="news-card-time">2026-04-14</div>
+  <h3 class="news-card-title"><a href="http://static.cninfo.com.cn/finalpage/2026-04-15/1225102329.PDF" target="_blank" rel="noopener">2025年度总经理工作报告</a></h3>
+  
+  <div class="news-card-footer">
+    <span class="news-badge badge-file">PDF</span>
+    <span>static.cninfo.com.cn</span>
+  </div>
+</article></div>
+</section>
+    </div>
+  </div>
+</main>
+<footer>
+  行业雷达 · 头部公司新闻聚合 · 数据来自各公司新闻中心 · 仅供研究参考<br>
+  <span class="mono">构建于 2026-07-10 · GitHub Pages</span>
+</footer>
+<script>
+// Region tab click: filter company tabs + content area to that region.
+// Active company stays selected; if its region changes, auto-select first visible.
+function selectRegion(region) {
+  document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+  document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
+  // Filter company tabs by region
+  document.querySelectorAll('.company-tab').forEach(c => {
+    c.hidden = c.dataset.region !== region;
+  });
+  // Filter company sections in content area
+  document.querySelectorAll('.company-section').forEach(s => {
+    s.hidden = s.dataset.region !== region;
+  });
+  // Auto-select first visible company tab and trigger its section
+  const firstVisible = document.querySelector('.company-tab:not([hidden])');
+  if (firstVisible) selectCompany(firstVisible.dataset.co);
+}
+
+// Company tab click: switch hero + show only that company's section.
+function selectCompany(co) {
+  // If the company belongs to a different region than the active one,
+  // switch the region first so its tab becomes clickable/visible.
+  const target = document.querySelector('.company-tab[data-co="' + co + '"]');
+  if (target) {
+    const targetRegion = target.dataset.region;
+    const activeRegion = document.querySelector('.tab-region.active');
+    if (activeRegion && activeRegion.dataset.region !== targetRegion) {
+      selectRegion(targetRegion);
+      return;
+    }
+  }
+  document.querySelectorAll('.company-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.co === co);
+  });
+  // Section: show only matching one
+  document.querySelectorAll('.company-section').forEach(s => {
+    s.hidden = s.dataset.co !== co;
+  });
+  history.replaceState(null, '', '#' + co);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.tab-region').forEach(tab => {
+  tab.addEventListener('click', () => selectRegion(tab.dataset.region));
+});
+document.querySelectorAll('.company-tab').forEach(tab => {
+  tab.addEventListener('click', () => selectCompany(tab.dataset.co));
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  // Restore state from URL hash if present
+  const hash = location.hash.replace('#', '');
+  if (hash) {
+    const tab = document.querySelector('.company-tab[data-co="' + hash + '"]');
+    if (tab) {
+      // Make sure the right region is active
+      const region = tab.dataset.region;
+      document.querySelectorAll('.tab-region').forEach(t => t.classList.remove('active'));
+      document.querySelector('.tab-region[data-region="' + region + '"]').classList.add('active');
+      document.querySelectorAll('.company-tab').forEach(c => {
+        c.hidden = c.dataset.region !== region;
+      });
+      selectCompany(hash);
+    }
+  }
+  // Theme toggle
+  const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.dataset.theme = theme;
+  const btn = document.querySelector('.theme-toggle');
+  if (btn) {
+    btn.textContent = theme === 'dark' ? '☀ 浅色' : '☾ 深色';
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      btn.textContent = next === 'dark' ? '☀ 浅色' : '☾ 深色';
+    });
+  }
+});
+</script>
+</body>
+</html>
