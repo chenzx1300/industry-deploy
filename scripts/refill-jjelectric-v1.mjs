@@ -1,8 +1,10 @@
 #!/usr/bin/env node
-// JJ Electric (精进电动, SH:688280) — 10 cninfo announcements.
-// corp site (jjecn.com) redirects to jjeglobal.com (verified 2026-07-11).
-// corp site is a JS shell; cninfo API is the only reliable source.
-// orgId verified 2026-07-10 via topSearch API: nssc1000348.
+// JJ Electric (精进电动, SH:688280) — 10 corp-site items from Chrome MCP scrape.
+// Source: https://www.jjeglobal.com/news/2/ (pages 1+2+3, anchor #N pagination).
+// Verified 2026-07-11 via Chrome MCP — all 10 entries scraped live from corp
+// site (no cninfo fallback needed). Top 10 by date desc with NEV-motor-product
+// + partnership + governance mix.
+// Run: node scripts/refill-jjelectric-v1.mjs
 import { readFileSync, writeFileSync } from 'node:fs';
 const fp = 'data/new-energy-vehicle-motor-industry.json';
 const data = JSON.parse(readFileSync(fp, 'utf-8'));
@@ -10,20 +12,24 @@ const c = data.companies.find(x => x.id === 'jjelectric');
 const now = new Date().toISOString();
 c.news_url = 'https://www.jjeglobal.com/news/2/';
 const N = [
-  ['2026-07-03', 'finalpage/2026-07-04/1225409494.PDF', '致同会计师事务所（特殊普通合伙）关于精进电动科技股份有限公司2025年年报问询函的回复'],
-  ['2026-07-03', 'finalpage/2026-07-04/1225409487.PDF', '华泰联合证券有限责任公司关于精进电动科技股份有限公司2025年年度报告的信息披露监管问询函回复的核查意见'],
-  ['2026-07-03', 'finalpage/2026-07-04/1225409485.PDF', '精进电动科技股份有限公司关于收到上海证券交易所《关于对精进电动科技股份有限公司2025年年度报告的信息披露监管问询函》的回复公告'],
-  ['2026-05-22', 'finalpage/2026-05-23/1225324857.PDF', '精进电动科技股份有限公司关于召开2025年年度暨2026年第一季度业绩说明会的公告'],
-  ['2026-05-15', 'finalpage/2026-05-16/1225310038.PDF', '北京市竞天公诚律师事务所关于精进电动科技股份有限公司2025年年度股东会的法律意见书'],
-  ['2026-05-15', 'finalpage/2026-05-16/1225310025.PDF', '精进电动科技股份有限公司2025年年度股东会决议公告'],
-  ['2026-05-13', 'finalpage/2026-05-14/1225304617.PDF', '精进电动科技股份有限公司股票交易严重异常波动公告'],
-  ['2026-05-06', 'finalpage/2026-05-07/1225279645.PDF', '精进电动科技股份有限公司股票交易严重异常波动公告'],
-  ['2026-04-30', 'finalpage/2026-05-01/1225272875.PDF', '精进电动科技股份有限公司股票交易异常波动公告'],
-  ['2026-04-28', 'finalpage/2026-04-29/1225233445.PDF', '精进电动科技股份有限公司2026年第一季度报告'],
+  ['2026-06-30', '/news/183.html', '精进电动联手庆铃汽车，推出超级油冷三合一电驱桥，打造轻卡行业标杆'],
+  ['2026-05-20', '/news/182.html', '精进电动率先推出三合一电驱系统 配套商用车电驱桥 新一代超级油冷电机技术 实现行业最高的持续功率比'],
+  ['2026-03-03', '/news/179.html', '精进电动任命总经理 加强核心管理团队'],
+  ['2026-02-16', '/news/178.html', '精进电动给您拜年了！祝您在马年，乘风势起，马力全开，满电驰骋，宏图大展！'],
+  ['2026-02-13', '/news/177.html', '衷心感谢区委区政府的鼓励与支持。2026年，精进电动将以此为动力，笃行不怠，以实绩回报信任，以奋进不负期望!'],
+  ['2026-01-24', '/news/176.html', '强强联合 共谋发展 | 精进电动科技股份有限公司董事长余平一行到访东风德纳车桥'],
+  ['2025-12-31', '/news/175.html', '精进电动祝您新年快乐，万事如意！'],
+  ['2025-12-22', '/news/174.html', '三连奖！精进电动获中国电源学会科技进步二等奖'],
+  ['2025-11-27', '/news/171.html', '精进电动荣获2024年度北京市科学技术进步奖二等奖'],
+  ['2025-11-25', '/news/170.html', '精进电动“电机电控二合一”配套轻卡电驱桥，能效大幅领先行业'],
 ];
 c.news = N.map(([d, p, t]) => ({
-  title: t, url: 'http://static.cninfo.com.cn/' + p,
-  snippet: '', published_at: d + 'T00:00:00Z', fetched_at: now, source: 'cninfo.com.cn',
+  title: t,
+  url: 'https://www.jjeglobal.com' + p,
+  snippet: '',
+  published_at: d + 'T00:00:00Z',
+  fetched_at: now,
+  source: 'jjeglobal.com',
 }));
 c.fallback_news = [];
 writeFileSync(fp, JSON.stringify(data, null, 2));

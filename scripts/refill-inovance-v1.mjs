@@ -1,9 +1,11 @@
 #!/usr/bin/env node
-// Inovance (汇川技术, SZ:300124) — 10 cninfo announcements.
-// corp site (inovance.com/portal/news/list?typeId=1) is a JS shell — verified
-// 2026-07-11. cninfo API is the only reliable source. Governance/HR items
-// only (same pattern as Nidec/Aisin).
-// orgId verified 2026-07-10 via topSearch API: 9900012527.
+// Inovance (汇川技术, SZ:300124) — 10 corp-site items via Chrome MCP.
+// Source: https://www.inovance.com/portal/news/list?typeId=1 (page 1).
+// Verified corp site renders fully in Chrome (was thought to be JS shell —
+// it loads all 10 items on initial page render).
+// Per user 2026-07-11: Inovance also exempt from no-WeChat rule (mp.weixin.qq.com
+// links accepted alongside corp site + newweb.inovance.com PDF links).
+// All 10 items fetched 2026-07-11. Top 10 by published_at desc.
 import { readFileSync, writeFileSync } from 'node:fs';
 const fp = 'data/new-energy-vehicle-motor-industry.json';
 const data = JSON.parse(readFileSync(fp, 'utf-8'));
@@ -11,22 +13,26 @@ const c = data.companies.find(x => x.id === 'inovance');
 const now = new Date().toISOString();
 c.news_url = 'https://www.inovance.com/portal/news/list?typeId=1';
 const N = [
-  ['2026-07-01', 'finalpage/2026-07-01/1225402651.PDF', '关于回购公司股份的进展公告'],
-  ['2026-06-03', 'finalpage/2026-06-03/1225348524.PDF', '关于深圳市汇川技术股份有限公司第七期股权激励计划相关价格调整的法律意见书'],
-  ['2026-06-03', 'finalpage/2026-06-03/1225348523.PDF', '第六届董事会第十五次会议决议公告'],
-  ['2026-06-03', 'finalpage/2026-06-03/1225348522.PDF', '关于调整第六期股权激励计划、第七期股权激励计划所涉权益工具回购价格、授予价格及行权价格的公告'],
-  ['2026-06-03', 'finalpage/2026-06-03/1225348525.PDF', '关于深圳市汇川技术股份有限公司第六期股权激励计划相关价格调整的法律意见书'],
-  ['2026-06-01', 'finalpage/2026-06-01/1225342278.PDF', '关于回购公司股份的进展公告'],
-  ['2026-05-27', 'finalpage/2026-05-27/1225332956.PDF', '关于2025年年度权益分派实施后调整回购股份价格上限的公告'],
-  ['2026-05-27', 'finalpage/2026-05-27/1225332955.PDF', '2025年年度权益分派实施公告'],
-  ['2026-05-21', 'finalpage/2026-05-21/1225324209.PDF', '公司薪酬管理制度（2026年5月）'],
-  ['2026-05-21', 'finalpage/2026-05-21/1225324208.PDF', '北京市康达（广州）律师事务所关于深圳市汇川技术股份有限公司2025年年度股东会的法律意见书'],
+  ['2026-07-03T13:58:25', 'https://mp.weixin.qq.com/s/30Xc8cE4dYZvI--_OwJ8iA', '共建产业标准新生态 | 汇川斩获ICA五项行业大奖，携全栈数自平台登陆AMTS 2026'],
+  ['2026-04-08T09:15:49', 'https://mp.weixin.qq.com/s/I5YodZGgTlS2kK1avUUTRA', '无论多远，我们一直都在｜汇川技术《WE CARE》全球服务系列故事，即将上线'],
+  ['2026-03-30T15:43:34', 'https://newweb.inovance.com/owfile/upload/other/2026/03/27/cf2a4dc1-810f-42ab-9805-8d2a15caa0ca.pdf', '关于汇川技术驱动系统产品价格调整的通知'],
+  ['2026-03-30T15:42:55', 'https://newweb.inovance.com/owfile/upload/other/2026/03/27/e7ffc0ce-6833-43c9-bfd7-a1bd406e8219.pdf', '关于汇川技术控制系统产品价格调整的通知'],
+  ['2026-03-30T15:40:45', 'https://mp.weixin.qq.com/s/5npOg3zqpOkkv5Ixlx3Vzg', '关于汇川技术部分产品价格调整的通知'],
+  ['2026-03-30T15:32:26', 'https://mp.weixin.qq.com/s/LrkyWK8v95sndbSbSmcHvA', '关于汇川技术机器人产品价格调整的通知'],
+  ['2026-03-10T09:14:20', 'https://mp.weixin.qq.com/s/-DldSug55zAmGUoK3Qxo-w', '协同创新，面向未来 | 中国WiTSnet标准获国际广泛认可，赋能全球智能制造'],
+  ['2026-03-03T18:01:05', 'https://mp.weixin.qq.com/s/Sd30dDUEyuzVpzRr7PQxaw', '灵活无界 效率领跑！灵汐·InoLynx全时交直流一体PCS全球首发'],
+  ['2026-02-03T15:02:21', 'https://mp.weixin.qq.com/s/2FNlUeBEqobpo7GnugWacg', '汇川技术与拓日新能签署战略合作协议，以光储融合引领零碳建设'],
+  ['2026-02-02T09:04:16', 'https://mp.weixin.qq.com/s/nJeBByJ7qVEU4nRz3QjEdw', '场景·精度·愿力丨汇川技术董事长朱兴明2026年度演讲实录'],
 ];
-c.news = N.map(([d, p, t]) => ({
-  title: t, url: 'http://static.cninfo.com.cn/' + p,
-  snippet: '', published_at: d + 'T00:00:00Z', fetched_at: now, source: 'cninfo.com.cn',
+c.news = N.map(([d, url, t]) => ({
+  title: t,
+  url,
+  snippet: '',
+  published_at: d + (d.endsWith('Z') ? '' : 'Z'),
+  fetched_at: now,
+  source: url.includes('weixin.qq.com') ? 'mp.weixin.qq.com' : 'inovance.com',
 }));
 c.fallback_news = [];
 writeFileSync(fp, JSON.stringify(data, null, 2));
 console.log('Inovance news after refill:', c.news.length);
-for (const n of c.news) console.log(' ', n.published_at.slice(0,10), '|', n.title);
+for (const n of c.news) console.log(' ', n.published_at.slice(0,19), '|', n.title);
