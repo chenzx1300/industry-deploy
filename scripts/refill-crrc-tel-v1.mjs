@@ -7,7 +7,7 @@ const fp = 'data/new-energy-vehicle-motor-industry.json';
 const data = JSON.parse(readFileSync(fp, 'utf-8'));
 const c = data.companies.find(x => x.id === 'crrc-tel');
 const now = new Date().toISOString();
-c.news_url = 'http://www.tec.crrczic.cc/';
+c.news_url = 'http://www.tec.crrczic.cc/1621.html';
 const N = [
   ['2026-07-06', 'finalpage/2026-07-07/1225411185.PDF', '株洲中车时代电气股份有限公司关于变更持续督导保荐代表人的公告'],
   ['2026-06-30', 'finalpage/2026-07-01/1225399329.PDF', 'H股公告'],

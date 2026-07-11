@@ -8,7 +8,7 @@ const fp = 'data/new-energy-vehicle-motor-industry.json';
 const data = JSON.parse(readFileSync(fp, 'utf-8'));
 const c = data.companies.find(x => x.id === 'jjelectric');
 const now = new Date().toISOString();
-c.news_url = 'http://www.jjeglobal.com/';
+c.news_url = 'https://www.jjeglobal.com/news/2/';
 const N = [
   ['2026-07-03', 'finalpage/2026-07-04/1225409494.PDF', '致同会计师事务所（特殊普通合伙）关于精进电动科技股份有限公司2025年年报问询函的回复'],
   ['2026-07-03', 'finalpage/2026-07-04/1225409487.PDF', '华泰联合证券有限责任公司关于精进电动科技股份有限公司2025年年度报告的信息披露监管问询函回复的核查意见'],

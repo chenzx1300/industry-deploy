@@ -15,7 +15,7 @@ const c = data.companies.find(x => x.id === 'magna');
 
 const now = new Date().toISOString();
 
-c.news_url = 'https://www.magna.com/newsroom/news';
+c.news_url = 'https://www.magna.com/newsroom/news?year=all&lang=en&page=1';
 
 const MAGNA_NEWS = [
   { date: '2026-05-21', url: 'https://www.magna.com/stories/news-press-release/2026/magna-earns-five-2025-general-motors-supplier-of-the-year-awards', title: 'Magna Earns Five 2025 General Motors Supplier of the Year Awards' },
