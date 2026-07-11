@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 // JJ Electric (精进电动, SH:688280) — 10 cninfo announcements.
-// corp site (jjecn.com) is a JS shell; cninfo API is the only reliable source.
+// corp site (jjecn.com) redirects to jjeglobal.com (verified 2026-07-11).
+// corp site is a JS shell; cninfo API is the only reliable source.
 // orgId verified 2026-07-10 via topSearch API: nssc1000348.
 import { readFileSync, writeFileSync } from 'node:fs';
 const fp = 'data/new-energy-vehicle-motor-industry.json';
 const data = JSON.parse(readFileSync(fp, 'utf-8'));
 const c = data.companies.find(x => x.id === 'jjelectric');
 const now = new Date().toISOString();
-c.news_url = 'http://www.jjecn.com';
+c.news_url = 'http://www.jjeglobal.com/';
 const N = [
   ['2026-07-03', 'finalpage/2026-07-04/1225409494.PDF', '致同会计师事务所（特殊普通合伙）关于精进电动科技股份有限公司2025年年报问询函的回复'],
   ['2026-07-03', 'finalpage/2026-07-04/1225409487.PDF', '华泰联合证券有限责任公司关于精进电动科技股份有限公司2025年年度报告的信息披露监管问询函回复的核查意见'],
