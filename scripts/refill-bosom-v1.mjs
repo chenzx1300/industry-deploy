@@ -1,31 +1,25 @@
 #!/usr/bin/env node
-// Bosom (本松新材 / 杭州本松新材料技术股份有限公司) refill: bosomchina.com/news/typeid-31.html
-// Article URL pattern: /news_detail/id-<id>.html
+// Bosom (本松新材 / 杭州本松新材料技术股份有限公司) refill — WeChat 公众号 source.
 //
-// Bosom is NOT publicly traded (no cninfo orgId for "本松" or "杭州本松新材料" —
-// the ticker 688603 used to be mistakenly assigned to Bosom but is actually Skychem).
-// Therefore cninfo fallback does NOT apply. We use ONLY official site content.
+// User policy update 2026-07-12: Bosom's primary public-news channel is the
+// official WeChat 公众号 "本松新材" (biz ID MzI2NjQ4NDUxOA==), not bosomchina.com
+// (corp site news list is stale — last item 2025-09-08, beyond 12-month cutoff).
 //
-// Critical filter: the news list has 4 categories on the site:
-//   - 公司新闻 (typeid-31)   — REAL business news ✓
-//   - 展会动态 (typeid-32)   — trade show invitations (NOT news) ✗
-//   - 团队生活 (typeid-34)   — internal team life (NOT news) ✗
-//   - 公示     (typeid-43)   — public notices (real news) ✓
+// Per user-provided WeChat articles (10 total collected 2026-07-12):
+//   - All biz IDs verified as MzI2NjQ4NDUxOA== (nickname "本松新材")
+//   - Per news-quality-policy.md (2026-07-11 revision): user-provided WeChat
+//     links ARE accepted for verified official channels
+//   - cninfo fallback does NOT apply (Bosom is NOT publicly traded —
+//     ticker 688603 is Skychem, see [[bosom-feirongda-knowledge-base]])
 //
-// (NB: the site's category filter is broken — items from all categories appear
-// on the typeid-31 page; we manually filter by title/content instead.)
+// Source note: WeChat articles cannot be programmatically enumerated (profile_ext /
+// cgi-bin/appmsg / appmsgalbum all return auth errors without WeChat session).
+// Going forward, user will provide new article links manually; this script
+// maintains the curated top-10 list.
 //
-// Removed in this revision:
-//   - id-175 (2024 ALE邀请函 / 2024-06-24) — trade-show invitation (展会动态)
-//
-// Replacements sourced from pages 2-5 of /news/typeid-31.html:
-//   - id-173 (2024/04/24) — 龙泉研究院 R&D 中心 (real news)
-//   - id-169 (2024/01/04) — AACS 战略合作伙伴
-//   - id-166 (2023/12/15) — 新沪屏蔽泵 客户拜访
-//   - id-163 (2023/12/06) — 安工程&本松以塑代钢研究院挂牌
-//   - id-162 (2023/11/01) — 第二个 CNAS 认可实验室
-//   - id-161 (2023/09/16) — 龙泉副市长调研
-//   - id-160 (2023/03/10) — 浙江省科技进步奖提名（公示）
+// news_url stays as bosomchina.com (corp site, still works for "About" page)
+// even though no new corp-site news exists; the actual article URLs come
+// from mp.weixin.qq.com.
 
 import { readFileSync, writeFileSync } from 'node:fs';
 
@@ -40,32 +34,38 @@ if (!c) throw new Error('Bosom not found in industries.json');
 
 const now = new Date().toISOString();
 
-// 10 real business news items, sorted desc by date
+// Approved news_url — keep as Bosom corp site (stays as company homepage link).
+c.news_url = 'https://www.bosomchina.com/';
+
+// Top 10 WeChat articles, sorted desc by create_time (extracted via Chrome MCP).
+// Each row: [YYYY-MM-DDTHH:MM:SS, <mp.weixin.qq.com url>, <title>]
 const BOSOM_NEWS = [
-  { date: '2025-09-08', title: '本松新材与浙江大学联合培养博士后开题审核顺利举行', url: 'https://www.bosomchina.com/news_detail/id-178.html' },
-  { date: '2025-08-20', title: '企业互访，共结纽带 ——施耐德电气与本松新材商讨合作路径', url: 'https://www.bosomchina.com/news_detail/id-177.html' },
-  { date: '2025-06-19', title: '本松新材新能源汽车电驱逆变器模块轻量化项目启动', url: 'https://www.bosomchina.com/news_detail/id-176.html' },
-  { date: '2024-04-24', title: '龙泉创业创新研究院•本松新材成立热管理系统联合研发中心', url: 'https://www.bosomchina.com/news_detail/id-173.html' },
-  { date: '2024-01-04', title: '本松新材荣结AACS战略合作伙伴', url: 'https://www.bosomchina.com/news_detail/id-169.html' },
-  { date: '2023-12-15', title: '随着新沪的节奏"泵"发——本松新材拜访新沪屏蔽泵', url: 'https://www.bosomchina.com/news_detail/id-166.html' },
-  { date: '2023-12-06', title: '安工程&本松新材·汽车与航空领域以塑代钢产业化技术研究院挂牌', url: 'https://www.bosomchina.com/news_detail/id-163.html' },
-  { date: '2023-11-01', title: '喜获第二个CNAS认可实验室', url: 'https://www.bosomchina.com/news_detail/id-162.html' },
-  { date: '2023-09-16', title: '龙泉副市长金伟君等领导一行莅临本松新材调研指导', url: 'https://www.bosomchina.com/news_detail/id-161.html' },
-  { date: '2023-03-10', title: '关于拟提名2022年度浙江省科学技术进步奖项目的公示', url: 'https://www.bosomchina.com/news_detail/id-160.html' },
+  ['2026-07-11T16:35:44', 'https://mp.weixin.qq.com/s/FcSWPNyBLtZ5YH03Oi7lEA', '燃青春，向未来！2026届青苗成长营一周高光回顾'],
+  ['2026-07-10T10:30:00', 'https://mp.weixin.qq.com/s/fAX4OnEyQdjzjtt9QvHzzw', '交流互鉴，共促发展 | 华江科技与本松新材共话行业未来'],
+  ['2026-07-07T10:30:00', 'https://mp.weixin.qq.com/s/V_tZaHp0MDCT7bjHcsGqCQ', '价值创造，共"塑"未来 | 本松新材2026届青苗成长营正式开营'],
+  ['2026-07-04T01:00:00', 'https://mp.weixin.qq.com/s/jg-47hwwjDADc4hzydw8qw', '共话发展，同频共振｜本松新材迎来两批高校师生参观交流'],
+  ['2026-06-10T08:12:35', 'https://mp.weixin.qq.com/s/pM60obkIx3nTrxR77Rog1Q', '直击CIME 2026 | 走进本松新材14H01展位，解锁多场景散热解决方案'],
+  ['2026-06-08T12:17:50', 'https://mp.weixin.qq.com/s/gPGNLZ2zEmIxfp3IX3aSaw', '本松新材邀您共赴2026深圳导热散热及液冷技术展览会'],
+  ['2026-06-06T12:45:00', 'https://mp.weixin.qq.com/s/j5TKryfhtoH_WVYJtFL4dw', '本松新材召开评优表彰大会'],
+  ['2026-05-27T06:16:40', 'https://mp.weixin.qq.com/s/IU3sEdEjmOp3i2YUddgXQQ', '杭州市公检法司老同志前来本松参观考察'],
+  ['2026-04-25T12:06:34', 'https://mp.weixin.qq.com/s/UsJS6QQiYnpinu4XTIw6ww', '本松新材与UL Solutions达成战略合作'],
+  ['2026-04-15T02:43:38', 'https://mp.weixin.qq.com/s/GN2G2LN6l5FQCgT5e_fEMA', '本松新材邀您共赴2026国际橡塑展'],
 ];
 
-c.news = BOSOM_NEWS.map(n => ({
-  title: n.title,
-  url: n.url,
+c.news = BOSOM_NEWS.map(([d, url, t]) => ({
+  title: t,
+  url,
   snippet: '',
-  published_at: n.date + 'T00:00:00Z',
+  published_at: d + 'Z',
   fetched_at: now,
-  source: 'bosomchina.com',
+  source: 'mp.weixin.qq.com',
 }));
 
-// Clear stale fallback_news (was 4 items incl. the 展会动态 id-175)
+// Clear stale fallback_news from prior v1 (was 4 items incl. 展会动态 id-175)
 c.fallback_news = [];
 
 writeFileSync(fp, JSON.stringify(data, null, 2));
 console.log('Bosom news after refill:', c.news.length);
-for (const n of c.news) console.log(' ', n.published_at.slice(0, 10), '|', n.title);
+console.log('  news_url:', c.news_url);
+console.log('  source:   mp.weixin.qq.com (user-provided WeChat, policy exempt 2026-07-11)');
+for (const n of c.news) console.log(' ', n.published_at.slice(0, 19), '|', n.title);
