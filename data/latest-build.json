@@ -1,5 +1,5 @@
 {
-  "date": "2026-08-10",
+  "date": "2026-08-11",
   "results": [
     {
       "slug": "carbon-fiber-industry",
@@ -12,7 +12,7 @@
     {
       "slug": "thermal-materials-industry",
       "prompt": "高导热塑料",
-      "news_count": 56,
+      "news_count": 58,
       "fallback_count": 0,
       "total_companies": 7,
       "ok": true
@@ -20,7 +20,7 @@
     {
       "slug": "new-energy-vehicles-industry",
       "prompt": "新能源汽车",
-      "news_count": 89,
+      "news_count": 87,
       "fallback_count": 0,
       "total_companies": 9,
       "ok": true
@@ -44,7 +44,7 @@
     {
       "slug": "semiconductor-industry",
       "prompt": "半导体",
-      "news_count": 69,
+      "news_count": 68,
       "fallback_count": 0,
       "total_companies": 7,
       "ok": true
@@ -52,7 +52,7 @@
     {
       "slug": "new-energy-vehicle-motor-industry",
       "prompt": "新能源汽车电机",
-      "news_count": 109,
+      "news_count": 108,
       "fallback_count": 0,
       "total_companies": 11,
       "ok": true
