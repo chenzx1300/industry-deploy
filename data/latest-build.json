@@ -1,10 +1,10 @@
 {
-  "date": "2026-08-14",
+  "date": "2026-08-15",
   "results": [
     {
       "slug": "carbon-fiber-industry",
       "prompt": "碳纤维 · 先进复合材料",
-      "news_count": 68,
+      "news_count": 69,
       "fallback_count": 0,
       "total_companies": 8,
       "ok": true
@@ -28,7 +28,7 @@
     {
       "slug": "composite-insulator-industry",
       "prompt": "复合绝缘子",
-      "news_count": 79,
+      "news_count": 78,
       "fallback_count": 0,
       "total_companies": 8,
       "ok": true
