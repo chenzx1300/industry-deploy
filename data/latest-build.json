@@ -1,5 +1,5 @@
 {
-  "date": "2026-08-25",
+  "date": "2026-08-28",
   "results": [
     {
       "slug": "carbon-fiber-industry",
@@ -52,7 +52,7 @@
     {
       "slug": "new-energy-vehicle-motor-industry",
       "prompt": "新能源汽车电机",
-      "news_count": 110,
+      "news_count": 109,
       "fallback_count": 0,
       "total_companies": 11,
       "ok": true
