@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-09",
+  "date": "2026-09-10",
   "results": [
     {
       "slug": "carbon-fiber-industry",
@@ -36,7 +36,7 @@
     {
       "slug": "datacenter-cooling-industry",
       "prompt": "散热（AI 数据中心）",
-      "news_count": 86,
+      "news_count": 87,
       "fallback_count": 0,
       "total_companies": 9,
       "ok": true
