@@ -1,10 +1,10 @@
 {
-  "date": "2026-09-15",
+  "date": "2026-09-16",
   "results": [
     {
       "slug": "carbon-fiber-industry",
       "prompt": "碳纤维 · 先进复合材料",
-      "news_count": 71,
+      "news_count": 69,
       "fallback_count": 0,
       "total_companies": 8,
       "ok": true
@@ -36,7 +36,7 @@
     {
       "slug": "datacenter-cooling-industry",
       "prompt": "散热（AI 数据中心）",
-      "news_count": 85,
+      "news_count": 86,
       "fallback_count": 0,
       "total_companies": 9,
       "ok": true
@@ -52,7 +52,7 @@
     {
       "slug": "new-energy-vehicle-motor-industry",
       "prompt": "新能源汽车电机",
-      "news_count": 106,
+      "news_count": 104,
       "fallback_count": 0,
       "total_companies": 11,
       "ok": true
