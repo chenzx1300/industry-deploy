@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-09",
+  "date": "2026-10-10",
   "results": [
     {
       "slug": "carbon-fiber-industry",
@@ -20,7 +20,7 @@
     {
       "slug": "new-energy-vehicles-industry",
       "prompt": "新能源汽车",
-      "news_count": 76,
+      "news_count": 78,
       "fallback_count": 0,
       "total_companies": 9,
       "ok": true
@@ -44,7 +44,7 @@
     {
       "slug": "semiconductor-industry",
       "prompt": "半导体",
-      "news_count": 66,
+      "news_count": 70,
       "fallback_count": 0,
       "total_companies": 7,
       "ok": true
@@ -52,7 +52,7 @@
     {
       "slug": "new-energy-vehicle-motor-industry",
       "prompt": "新能源汽车电机",
-      "news_count": 102,
+      "news_count": 101,
       "fallback_count": 0,
       "total_companies": 11,
       "ok": true
