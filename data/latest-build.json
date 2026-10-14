@@ -1,10 +1,10 @@
 {
-  "date": "2026-10-13",
+  "date": "2026-10-14",
   "results": [
     {
       "slug": "carbon-fiber-industry",
       "prompt": "碳纤维 · 先进复合材料",
-      "news_count": 62,
+      "news_count": 60,
       "fallback_count": 0,
       "total_companies": 8,
       "ok": true
@@ -20,7 +20,7 @@
     {
       "slug": "new-energy-vehicles-industry",
       "prompt": "新能源汽车",
-      "news_count": 77,
+      "news_count": 80,
       "fallback_count": 0,
       "total_companies": 9,
       "ok": true
@@ -52,7 +52,7 @@
     {
       "slug": "new-energy-vehicle-motor-industry",
       "prompt": "新能源汽车电机",
-      "news_count": 102,
+      "news_count": 104,
       "fallback_count": 0,
       "total_companies": 11,
       "ok": true
